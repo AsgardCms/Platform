@@ -2,5 +2,5 @@
 
 Route::group(['prefix' => Config::get('core::core.admin-prefix'), 'namespace' => 'Modules\Dashboard\Http\Controllers'], function()
 {
-	Route::get('/', 'Admin\DashboardController@index');
+	Route::get('/', ['as' => 'dashboard.index', 'uses' => 'Admin\DashboardController@index']);
 });
