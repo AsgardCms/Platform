@@ -12,7 +12,7 @@
 @section('content')
 <div class="row">
     <div class="col-md-12">
-        <p>asd</p>
+        <p>Welcome on your admin dashboard</p>
     </div>
 </div>
 @stop
