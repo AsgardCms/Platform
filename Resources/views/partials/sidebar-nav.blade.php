@@ -16,7 +16,6 @@
 
         <!-- sidebar menu: : style can be found in sidebar.less -->
         <ul class="sidebar-menu">
-            <?php $items = []; ?>
             <?php foreach($items as $i => $item): ?>
                 <?php if (is_object($item)): ?>
                     <li class="treeview {{ Request::is($item[0]['request']) ? 'active' : ''}}">
