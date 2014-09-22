@@ -14,18 +14,24 @@
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                     <i class="glyphicon glyphicon-user"></i>
                     <span>
-                        <em>Complete your profile.</em>
+                        <?php if ($user->present()->fullname() != ' '): ?>
+                            <?= $user->present()->fullName(); ?>
+                        <?php else: ?>
+                            <em>Complete your profile.</em>
+                        <?php endif; ?>
                         <i class="caret"></i>
                     </span>
                 </a>
                 <ul class="dropdown-menu">
                     <!-- User image -->
                     <li class="user-header bg-light-blue">
-                        <img src="" class="img-circle" alt="User Image" />
+                        <img src="{{ $user->present()->gravatar() }}" class="img-circle" alt="User Image" />
                         <p>
-
-                            <em>Complete your profile.</em>
-                            <small>Member since Nov. 2012</small>
+                            <?php if ($user->present()->fullname() != ' '): ?>
+                                <?= $user->present()->fullname(); ?>
+                            <?php else: ?>
+                                <em>Complete your profile.</em>
+                            <?php endif; ?>
                         </p>
                     </li>
                     <!-- Menu Footer-->

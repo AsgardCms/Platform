@@ -5,10 +5,14 @@
         <!-- Sidebar user panel -->
         <div class="user-panel">
             <div class="pull-left image">
-                <img src="#" class="img-circle" alt="User Image" />
+                <img src="{{ $user->present()->gravatar() }}" class="img-circle" alt="User Image" />
             </div>
             <div class="pull-left info">
-                <p><em>Complete your profile.</em></p>
+                <?php if ($user->present()->fullname() != ' '): ?>
+                    <p><?= $user->present()->fullname(); ?></p>
+                <?php else: ?>
+                    <p><em>Complete your profile.</em></p>
+                <?php endif; ?>
 
                 <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
             </div>
