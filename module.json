@@ -1,7 +1,7 @@
 {
     "name": "Dashboard",
     "alias": "dashboard",
-    "description": "",
+    "description": "The module responsible for the admin dashboard page.",
     "keywords": [
 
     ],
