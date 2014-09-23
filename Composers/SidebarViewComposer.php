@@ -8,7 +8,7 @@ class SidebarViewComposer
             'weight' => 1,
             'request' => $view->prefix,
             'route' => 'dashboard.user.index',
-            'icon-class' => 'fa fa-dashboard',
+            'icon-class' => 'fa fa-user',
             'title' => 'Users',
         ]);
     }

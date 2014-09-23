@@ -5,8 +5,8 @@
     Users
 </h1>
 <ol class="breadcrumb">
-    <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-    <li class="active"><a href="#"><i class="fa fa-dashboard"></i> Users</a></li>
+    <li><a href="{{ URL::route('dashboard.index') }}"><i class="fa fa-dashboard"></i> Home</a></li>
+    <li class="active">Users</li>
 </ol>
 @stop
 
