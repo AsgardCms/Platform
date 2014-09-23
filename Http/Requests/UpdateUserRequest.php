@@ -2,15 +2,14 @@
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class CreateUserRequest extends FormRequest
+class UpdateUserRequest extends FormRequest
 {
     public function rules()
     {
         return [
+            'email' => 'required|email',
             'first_name' => 'required',
             'last_name' => 'required',
-            'email' => 'required|unique:users|email',
-            'password' => 'required|min:3|confirmed',
         ];
     }
 

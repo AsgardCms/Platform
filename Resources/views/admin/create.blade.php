@@ -43,6 +43,22 @@
                         </div>
                     </div>
                 </div>
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
+                            {!! Form::label('password', 'Password:') !!}
+                            {!! Form::password('password', ['class' => 'form-control']) !!}
+                            {!! $errors->first('password', '<span class="help-block">:message</span>') !!}
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-group{{ $errors->has('password_confirmation') ? ' has-error' : '' }}">
+                            {!! Form::label('password_confirmation', 'Password confirmation:') !!}
+                            {!! Form::password('password_confirmation', ['class' => 'form-control']) !!}
+                            {!! $errors->first('password_confirmation', '<span class="help-block">:message</span>') !!}
+                        </div>
+                    </div>
+                </div>
             </div>
             <div class="box-footer">
                 <button type="submit" class="btn btn-primary btn-flat">Create</button>
