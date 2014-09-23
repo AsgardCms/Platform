@@ -6,7 +6,7 @@ class SidebarViewComposer
     {
         $view->items->put('user', [
             'weight' => 1,
-            'request' => $view->prefix,
+            'request' => "{$view->prefix}/users",
             'route' => 'dashboard.user.index',
             'icon-class' => 'fa fa-user',
             'title' => 'Users',
