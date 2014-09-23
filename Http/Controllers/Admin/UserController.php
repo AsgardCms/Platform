@@ -25,7 +25,7 @@ class UserController extends AdminBaseController
      */
     public function index()
     {
-        $users = $this->users->createModel()->paginate();
+        $users = $this->users->createModel()->all();
 
         return View::make('user::admin.index', compact('users'));
     }
