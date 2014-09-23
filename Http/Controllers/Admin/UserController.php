@@ -84,6 +84,7 @@ class UserController extends AdminBaseController
     public function edit($id)
     {
         if (!$user = $this->users->createModel()->find($id)) {
+            Flash::error('User not found');
             return Redirect::route('dashboard.user.index');
         }
 
@@ -116,7 +117,18 @@ class UserController extends AdminBaseController
      */
     public function destroy($id)
     {
-        //
+        if ($user = $this->users->createModel()->find($id))
+        {
+            $user->delete();
+
+            Flash::success('User deleted');
+
+            return Redirect::to('users');
+        }
+
+        Flash::error('User not found');
+
+        return Redirect::to('users');
     }
 
 }
