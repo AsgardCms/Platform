@@ -1,6 +1,7 @@
 <?php namespace Modules\User\Http\Controllers\Admin;
 
 use Cartalyst\Sentinel\Laravel\Facades\Sentinel;
+use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\View;
 use Modules\Core\Http\Controllers\Admin\AdminBaseController;
 
@@ -37,7 +38,7 @@ class UserController extends AdminBaseController
      */
     public function create()
     {
-        return \View::make('collection.create');
+        return View::make('user::admin.create');
     }
 
     /**
@@ -69,7 +70,11 @@ class UserController extends AdminBaseController
      */
     public function edit($id)
     {
-        return \View::make('collection.edit');
+        if (!$user = $this->users->createModel()->find($id)) {
+            return Redirect::route('dashboard.user.index');
+        }
+
+        return View::make('user::admin.edit', compact('user'));
     }
 
     /**
