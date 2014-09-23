@@ -39,18 +39,18 @@
                         <?php foreach($users as $user): ?>
                             <tr>
                                 <td>
-                                    <a href="{{ URL::route('dashboard.user.edit', $user->id) }}">
+                                    <a href="{{ URL::route('dashboard.user.edit', [$user->id]) }}">
                                         {{ $user->created_at }}
                                     </a>
                                 </td>
                                 <td>
-                                    <a href="{{ URL::route('dashboard.user.edit', $user->id) }}">
+                                    <a href="{{ URL::route('dashboard.user.edit', [$user->id]) }}">
                                         {{ $user->first_name }}
                                     </a>
                                 </td>
                                 <td>
                                     <div class="btn-group">
-                                        <a href="{{ URL::route('dashboard.user.edit', $user->id) }}" class="btn btn-default btn-flat"><i class="glyphicon glyphicon-pencil"></i></a>
+                                        <a href="{{ URL::route('dashboard.user.edit', [$user->id]) }}" class="btn btn-default btn-flat"><i class="glyphicon glyphicon-pencil"></i></a>
                                         <button class="btn btn-danger btn-flat" data-toggle="modal" data-target="#confirmation-{{ $user->id }}"><i class="glyphicon glyphicon-trash"></i></button>
                                     </div>
                                 </td>
