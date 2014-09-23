@@ -74,3 +74,23 @@
 </div>
 </div>
 @stop
+
+@section('scripts')
+<script type="text/javascript">
+    $(function () {
+        $('.data-table').dataTable({
+            "bPaginate": true,
+            "bLengthChange": true,
+            "bFilter": true,
+            "bSort": true,
+            "bInfo": true,
+            "bAutoWidth": true,
+            "aoColumns": [
+                null,
+                null,
+                { "bSortable": false }
+            ]
+        });
+    });
+</script>
+@stop
