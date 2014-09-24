@@ -59,6 +59,18 @@
                         </div>
                     </div>
                 </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label>Role(s)</label>
+                            <select multiple="" class="form-control" name="roles[]">
+                                <?php foreach($roles as $role): ?>
+                                    <option value="{{ $role->id }}">{{ $role->name }}</option>
+                                <?php endforeach; ?>
+                            </select>
+                        </div>
+                    </div>
+                </div>
             </div>
             <div class="box-footer">
                 <button type="submit" class="btn btn-primary btn-flat">Create</button>

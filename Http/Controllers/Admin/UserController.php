@@ -47,7 +47,9 @@ class UserController extends AdminBaseController
      */
     public function create()
     {
-        return View::make('user::admin.users.create');
+        $roles = $this->roles->all();
+
+        return View::make('user::admin.users.create', compact('roles'));
     }
 
     /**
@@ -59,13 +61,12 @@ class UserController extends AdminBaseController
     public function store(CreateUserRequest $request)
     {
         $user = $this->users->create($request->all());
+        $user->roles()->attach($request->roles);
 
         $code = Activation::create($user);
-
         Activation::complete($user, $code);
 
         Flash::success('User created.');
-
         return Redirect::route('dashboard.user.index');
     }
 
