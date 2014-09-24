@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\View;
 use Laracasts\Flash\Flash;
 use Modules\Core\Http\Controllers\Admin\AdminBaseController;
 use Modules\User\Http\Requests\CreateRolesRequest;
+use Modules\User\Http\Requests\UpdateRoleRequest;
 
 class RolesController extends AdminBaseController
 {
@@ -83,11 +84,19 @@ class RolesController extends AdminBaseController
      * Update the specified resource in storage.
      *
      * @param  int $id
+     * @param UpdateRoleRequest $request
      * @return Response
      */
-    public function update($id)
+    public function update($id, UpdateRoleRequest $request)
     {
-        //
+        $role = $this->roles->find($id);
+
+        $role->fill($request->all());
+        $role->save();
+
+        Flash::success('Role updated!');
+
+        return Redirect::route('dashboard.role.index');
     }
 
     /**
@@ -98,6 +107,14 @@ class RolesController extends AdminBaseController
      */
     public function destroy($id)
     {
-        //
+        if ($role = $this->roles->find($id))
+        {
+            $role->delete();
+
+            Flash::success('Role deleted!');
+            return Redirect::route('dashboard.role.index');
+        }
+
+        return Redirect::route('dashboard.role.index');
     }
 }
