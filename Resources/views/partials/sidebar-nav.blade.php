@@ -22,7 +22,7 @@
         <ul class="sidebar-menu">
             <?php foreach($items as $i => $item): ?>
                 <?php if (is_object($item)): ?>
-                    <li class="treeview {{ Request::is($item[0]['request']) ? 'active' : ''}}">
+                    <li class="treeview {{ $item[0]['request'] ? 'active' : ''}}">
                         <a href="#">
                             <i class="{{ $item[0]['icon-class'] }}"></i> <span>{{ $item[0]['title'] }}</span>
                             <i class="fa fa-angle-left pull-right"></i>
