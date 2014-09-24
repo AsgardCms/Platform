@@ -1,8 +1,11 @@
 <?php namespace Modules\User\Http\Controllers\Admin;
 
 use Cartalyst\Sentinel\Laravel\Facades\Sentinel;
+use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\View;
+use Laracasts\Flash\Flash;
 use Modules\Core\Http\Controllers\Admin\AdminBaseController;
+use Modules\User\Http\Requests\CreateRolesRequest;
 
 class RolesController extends AdminBaseController
 {
@@ -39,11 +42,16 @@ class RolesController extends AdminBaseController
     /**
      * Store a newly created resource in storage.
      *
+     * @param CreateRolesRequest $request
      * @return Response
      */
-    public function store()
+    public function store(CreateRolesRequest $request)
     {
-        //
+        $this->roles->create($request->all());
+
+        Flash::success('Role created');
+
+        return Redirect::route('dashboard.role.index');
     }
 
     /**
