@@ -22,7 +22,7 @@ class SidebarViewComposer
             ],
             [
                 'request' => "{$view->prefix}/messages/roles",
-                'route' => 'dashboard.user.index',
+                'route' => 'dashboard.role.index',
                 'icon-class' => 'fa fa-flag-o',
                 'title' => 'Roles',
             ]
