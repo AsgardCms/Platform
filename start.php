@@ -27,3 +27,4 @@ Config::addNamespace('user', __DIR__ . '/Config/');
 
 require __DIR__ . '/Http/routes.php';
 require __DIR__ . '/composers.php';
+require __DIR__ . '/helpers.php';

@@ -11,6 +11,10 @@
 </ol>
 @stop
 
+@section('styles')
+<link href="{{{ user_asset('css/vendor/switchery.min.css') }}}" rel="stylesheet" type="text/css" />
+@stop
+
 @section('content')
 <div class="row">
     <div class="col-md-12">
@@ -48,6 +52,17 @@
                         </ul>
                     </div>
                 </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <?php foreach($role->permissions as $name => $value): ?>
+                            <div class="checkbox">
+                                <label for="perm1">
+                                    {{ $name }}<input id="perm1" type="checkbox" class="simple" <?php echo $value ? 'checked' : '' ?> />
+                                </label>
+                            </div>
+                        <?php endforeach; ?>
+                    </div>
+                </div>
             </div>
             <div class="box-footer">
                 <button type="submit" class="btn btn-primary btn-flat">Update</button>
@@ -57,4 +72,19 @@
         </div>
     </div>
 </div>
+@stop
+
+@section('scripts')
+<script src="{{{ user_asset('js/vendor/switchery.min.js') }}}" type="text/javascript"></script>
+<script>
+$( document ).ready(function() {
+    //Flat red color scheme for iCheck
+    $('input[type="checkbox"].flat-red, input[type="radio"].flat-red').iCheck({
+        checkboxClass: 'icheckbox_flat-red',
+        radioClass: 'iradio_flat-red'
+    });
+    var elem = $('.js-switch');
+    var init = new Switchery(elem, { disabled: true, disabledOpacity: 0.75 });
+});
+</script>
 @stop
