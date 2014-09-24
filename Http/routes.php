@@ -10,7 +10,7 @@ Route::group(['prefix' => Config::get('core::core.admin-prefix'), 'namespace' =>
             'update' => 'dashboard.user.update',
             'destroy' => 'dashboard.user.destroy',
         ]]);
-    Route::resource('users', 'Admin\RolesController', ['except' => ['show'], 'names' => [
+    Route::resource('roles', 'Admin\RolesController', ['except' => ['show'], 'names' => [
         'index' => 'dashboard.role.index',
         'create' => 'dashboard.role.create',
         'store' => 'dashboard.role.store',
