@@ -2,7 +2,6 @@
 
 use Cartalyst\Sentinel\Laravel\Facades\Activation;
 use Cartalyst\Sentinel\Laravel\Facades\Sentinel;
-use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\View;
 use Laracasts\Flash\Flash;
@@ -33,7 +32,7 @@ class UserController extends AdminBaseController
     {
         $users = $this->users->createModel()->all();
 
-        return View::make('user::admin.index', compact('users'));
+        return View::make('user::admin.users.index', compact('users'));
     }
 
     /**
@@ -43,7 +42,7 @@ class UserController extends AdminBaseController
      */
     public function create()
     {
-        return View::make('user::admin.create');
+        return View::make('user::admin.users.create');
     }
 
     /**
@@ -88,7 +87,7 @@ class UserController extends AdminBaseController
             return Redirect::route('dashboard.user.index');
         }
 
-        return View::make('user::admin.edit', compact('user'));
+        return View::make('user::admin.users.edit', compact('user'));
     }
 
     /**
