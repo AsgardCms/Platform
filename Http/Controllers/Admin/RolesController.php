@@ -13,6 +13,7 @@ class RolesController extends AdminBaseController
         parent::__construct();
         $this->roles = Sentinel::getRoleRepository()->createModel();
     }
+
     /**
      * Display a listing of the resource.
      *
@@ -32,7 +33,7 @@ class RolesController extends AdminBaseController
      */
     public function create()
     {
-        return \View::make('user::admin.roles.create');
+        return View::make('user::admin.roles.create');
     }
 
     /**
@@ -53,7 +54,6 @@ class RolesController extends AdminBaseController
      */
     public function show($id)
     {
-        return \View::make('user::admin.roles.show');
     }
 
     /**
@@ -64,7 +64,11 @@ class RolesController extends AdminBaseController
      */
     public function edit($id)
     {
-        return \View::make('user::admin.roles.edit');
+        if (!$role = $this->roles->find($id)) {
+            return Redirect::to('user::admin.roles.index');
+        }
+
+        return View::make('user::admin.roles.edit', compact('role'));
     }
 
     /**
