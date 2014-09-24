@@ -15,12 +15,17 @@ class UserController extends AdminBaseController
      * @var \Modules\Session\Entities\User
      */
     protected $users;
+    /**
+     * @var \Cartalyst\Sentinel\Roles\EloquentRole
+     */
+    protected $roles;
 
     public function __construct()
     {
         parent::__construct();
 
         $this->users = Sentinel::getUserRepository();
+        $this->roles = Sentinel::getRoleRepository()->createModel();
     }
 
     /**
@@ -86,8 +91,9 @@ class UserController extends AdminBaseController
             Flash::error('User not found');
             return Redirect::route('dashboard.user.index');
         }
+        $roles = $this->roles->all();
 
-        return View::make('user::admin.users.edit', compact('user'));
+        return View::make('user::admin.users.edit', compact('user', 'roles'));
     }
 
     /**
@@ -100,11 +106,11 @@ class UserController extends AdminBaseController
     public function update($id, UpdateUserRequest $request)
     {
         $user = $this->users->createModel()->find($id);
-
         $this->users->update($user, $request->all());
 
-        Flash::success('User updated.');
+        $user->roles()->sync($request->roles);
 
+        Flash::success('User updated.');
         return Redirect::route('dashboard.user.index');
     }
 

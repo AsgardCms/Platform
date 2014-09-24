@@ -43,6 +43,18 @@
                         </div>
                     </div>
                 </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label>Role(s)</label>
+                            <select multiple="" class="form-control" name="roles[]">
+                                <?php foreach($roles as $role): ?>
+                                    <option value="{{ $role->id }}" <?php echo $user->roles()->whereId($role->id)->get()->count() >= 1 ? 'selected' : '' ?>>{{ $role->name }}</option>
+                                <?php endforeach; ?>
+                            </select>
+                        </div>
+                    </div>
+                </div>
             </div>
             <div class="box-footer">
                 <button type="submit" class="btn btn-primary btn-flat">Update</button>
