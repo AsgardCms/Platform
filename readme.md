@@ -5,7 +5,7 @@ This module is responsible for handling the users and roles.
 
 ## Installation
 
-This module is loading the the [Pingpong-labs/module](https://github.com/pingpong-labs/modules) package. One way of installing it, is with the `php artisan module:install nWidart-Modules/Session` command.
+This module is loading the the [Pingpong-labs/module](https://github.com/pingpong-labs/modules) package. One way of installing it, is with the `php artisan module:install nWidart-Modules/User` command.
 
 
 ### Module dependencies
