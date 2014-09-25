@@ -54,12 +54,19 @@
                 </div>
                 <div class="row">
                     <div class="col-md-6">
-                        <?php foreach($role->permissions as $name => $value): ?>
-                            <div class="checkbox">
-                                <label for="perm1">
-                                    {{ $name }}<input id="perm1" type="checkbox" class="simple" <?php echo $value ? 'checked' : '' ?> />
-                                </label>
-                            </div>
+                        <?php foreach($permissions as $name => $value): ?>
+                            <h3>{{ $name }} Module</h3>
+                            <?php foreach($value as $subRoleTitle => $roleName): ?>
+                                <h4>{{ $subRoleTitle }}</h4>
+                                <?php foreach($roleName as $rolePerm): ?>
+                                    <div class="checkbox">
+                                        <label for="<?php echo "$subRoleTitle.$rolePerm" ?>">
+                                            {{ $rolePerm }}
+                                            <input id="<?php echo "$subRoleTitle.$rolePerm" ?>" name="roles[<?php echo "$subRoleTitle.$rolePerm" ?>]" type="checkbox" class="simple" <?php echo $role->hasAccess("$subRoleTitle.$rolePerm") ? 'checked' : '' ?> value="true" />
+                                        </label>
+                                    </div>
+                                <?php endforeach; ?>
+                            <?php endforeach; ?>
                         <?php endforeach; ?>
                     </div>
                 </div>

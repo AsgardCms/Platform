@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\View;
 use Laracasts\Flash\Flash;
 use Modules\Core\Http\Controllers\Admin\AdminBaseController;
+use Modules\Core\Permissions\PermissionManager;
 use Modules\User\Http\Requests\CreateRolesRequest;
 use Modules\User\Http\Requests\UpdateRoleRequest;
 
@@ -71,13 +72,16 @@ class RolesController extends AdminBaseController
      * @param  int $id
      * @return Response
      */
-    public function edit($id)
+    public function edit($id, PermissionManager $manager)
     {
         if (!$role = $this->roles->find($id)) {
             return Redirect::to('user::admin.roles.index');
         }
 
-        return View::make('user::admin.roles.edit', compact('role'));
+        // Get all permissions
+        $permissions = $manager->all();
+
+        return View::make('user::admin.roles.edit', compact('role', 'permissions'));
     }
 
     /**
@@ -89,9 +93,14 @@ class RolesController extends AdminBaseController
      */
     public function update($id, UpdateRoleRequest $request)
     {
+        $roles = [];
+        foreach ($request->roles as $roleName => $checkedRole) {
+            $roles[$roleName] = (bool)$checkedRole;
+        }
         $role = $this->roles->find($id);
 
         $role->fill($request->all());
+        $role->permissions = $roles;
         $role->save();
 
         Flash::success('Role updated!');
