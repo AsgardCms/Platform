@@ -1,6 +1,6 @@
 # User module
 
-This module is responsible for handling the user sign in, sign up, forgot password.
+This module is responsible for handling the users and roles.
 
 
 ## Installation
