@@ -25,6 +25,7 @@ class RolesController extends AdminBaseController
         parent::__construct();
         $this->roles = Sentinel::getRoleRepository()->createModel();
         $this->permissions = $permissions;
+        $this->beforeFilter('permissions');
     }
 
     /**

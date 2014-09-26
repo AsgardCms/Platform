@@ -24,6 +24,8 @@ class UserController extends AdminBaseController
     {
         parent::__construct();
 
+        $this->beforeFilter('permissions');
+
         $this->users = Sentinel::getUserRepository();
         $this->roles = Sentinel::getRoleRepository()->createModel();
     }
