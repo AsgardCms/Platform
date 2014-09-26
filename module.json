@@ -2,8 +2,6 @@
     "name": "Core",
     "alias": "core",
     "description": "The core module with all base classes and logic.",
-    "keywords": [
-
-    ],
+    "keywords": [],
     "active": 1
 }
