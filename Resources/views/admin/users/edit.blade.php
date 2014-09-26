@@ -22,7 +22,8 @@
         <div class="nav-tabs-custom">
             <ul class="nav nav-tabs">
                 <li class="active"><a href="#tab_1-1" data-toggle="tab">Data</a></li>
-                <li class=""><a href="#tab_2-2" data-toggle="tab">Permissions</a></li>
+                <li class=""><a href="#tab_2-2" data-toggle="tab">Roles</a></li>
+                <li class=""><a href="#tab_3-3" data-toggle="tab">Permissions</a></li>
             </ul>
             <div class="tab-content">
                 <div class="tab-pane active" id="tab_1-1">
@@ -53,21 +54,23 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label>Role(s)</label>
-                                    <select multiple="" class="form-control" name="roles[]">
-                                        <?php foreach($roles as $role): ?>
-                                            <option value="{{ $role->id }}" <?php echo $user->roles()->whereId($role->id)->count() >= 1 ? 'selected' : '' ?>>{{ $role->name }}</option>
-                                        <?php endforeach; ?>
-                                    </select>
-                                </div>
+                    </div>
+                </div>
+                <div class="tab-pane" id="tab_2-2">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Role(s)</label>
+                                <select multiple="" class="form-control" name="roles[]">
+                                    <?php foreach($roles as $role): ?>
+                                        <option value="{{ $role->id }}" <?php echo $user->roles()->whereId($role->id)->count() >= 1 ? 'selected' : '' ?>>{{ $role->name }}</option>
+                                    <?php endforeach; ?>
+                                </select>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="tab-pane" id="tab_2-2">
+                <div class="tab-pane" id="tab_3-3">
                     <div class="box-body">
                         @include('user::admin.users.partials.permissions')
                     </div>
