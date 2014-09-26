@@ -1,6 +1,9 @@
 <?php
 
-View::composer('core::partials.sidebar-nav', 'Modules\User\Composers\SidebarViewComposer');
+if (Module::active('User')) {
+    View::composer('core::partials.sidebar-nav', 'Modules\User\Composers\SidebarViewComposer');
+}
+
 View::composer([
         'user::admin.roles.partials.permissions',
         'user::admin.roles.partials.permissions-create',
