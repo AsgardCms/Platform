@@ -50,7 +50,7 @@
                     </div>
                 </div><!-- /.tab-pane -->
                 <div class="tab-pane" id="tab_2-2">
-                    @include('user::admin.partials.permissions')
+                    @include('user::admin.roles.partials.permissions')
                 </div><!-- /.tab-pane -->
                 <div class="tab-pane" id="tab_3-3">
                     <div class="box-body">

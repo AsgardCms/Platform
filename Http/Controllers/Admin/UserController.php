@@ -6,11 +6,17 @@ use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\View;
 use Laracasts\Flash\Flash;
 use Modules\Core\Http\Controllers\Admin\AdminBaseController;
+use Modules\Core\Permissions\PermissionManager;
 use Modules\User\Http\Requests\CreateUserRequest;
 use Modules\User\Http\Requests\UpdateUserRequest;
 
 class UserController extends AdminBaseController
 {
+    /**
+     * @var PermissionManager
+     */
+    private $permissions;
+
     /**
      * @var \Modules\Session\Entities\User
      */
@@ -20,7 +26,7 @@ class UserController extends AdminBaseController
      */
     protected $roles;
 
-    public function __construct()
+    public function __construct(PermissionManager $permissions)
     {
         parent::__construct();
 
@@ -28,6 +34,7 @@ class UserController extends AdminBaseController
 
         $this->users = Sentinel::getUserRepository();
         $this->roles = Sentinel::getRoleRepository()->createModel();
+        $this->permissions = $permissions;
     }
 
     /**
@@ -109,7 +116,8 @@ class UserController extends AdminBaseController
     public function update($id, UpdateUserRequest $request)
     {
         $user = $this->users->createModel()->find($id);
-        $this->users->update($user, $request->all());
+        $data = array_merge($request->all(), ['permissions' => $this->permissions->clean($request->permissions)]);
+        $this->users->update($user, $data);
 
         $user->roles()->sync($request->roles);
 

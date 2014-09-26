@@ -47,7 +47,7 @@
                     </div>
                 </div>
                 <div class="tab-pane" id="tab_2-2">
-                    @include('user::admin.partials.permissions-create')
+                    @include('user::admin.roles.partials.permissions-create')
                 </div>
                 <div class="box-footer">
                     <button type="submit" class="btn btn-primary btn-flat">Create</button>

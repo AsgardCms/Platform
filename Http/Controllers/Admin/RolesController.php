@@ -88,7 +88,7 @@ class RolesController extends AdminBaseController
             return Redirect::to('user::admin.roles.index');
         }
 
-        return View::make('user::admin.roles.edit', compact('role', 'permissions'));
+        return View::make('user::admin.roles.edit', compact('role'));
     }
 
     /**
