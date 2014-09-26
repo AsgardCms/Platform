@@ -69,7 +69,8 @@ class UserController extends AdminBaseController
      */
     public function store(CreateUserRequest $request)
     {
-        $user = $this->users->create($request->all());
+        $data = array_merge($request->all(), ['permissions' => $this->permissions->clean($request->permissions)]);
+        $user = $this->users->create($data);
         $user->roles()->attach($request->roles);
 
         $code = Activation::create($user);
