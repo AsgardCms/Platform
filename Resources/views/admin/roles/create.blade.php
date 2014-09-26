@@ -1,15 +1,13 @@
 @extends('core::layouts.master')
 
 @section('content-header')
-     <h1>
-         New Role
-     </h1>
-     <ol class="breadcrumb">
-         <li><a href="{{ URL::route('dashboard.index') }}"><i class="fa fa-dashboard"></i> Home</a></li>
-         <li class=""><a href="{{ URL::route('dashboard.role.index') }}">Roles</a></li>
-         <li class="active">New</li>
-     </ol>
-     @stop
+    <h1>New Role</h1>
+    <ol class="breadcrumb">
+        <li><a href="{{ URL::route('dashboard.index') }}"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li class=""><a href="{{ URL::route('dashboard.role.index') }}">Roles</a></li>
+        <li class="active">New</li>
+    </ol>
+@stop
 
 @section('styles')
 <link href="{{{ core_asset('css/vendor/iCheck/flat/blue.css') }}}" rel="stylesheet" type="text/css" />
