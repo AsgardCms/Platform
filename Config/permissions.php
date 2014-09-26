@@ -6,7 +6,7 @@ return [
         'store',
         'edit',
         'update',
-        'delete'
+        'destroy'
     ],
     'roles' => [
         'index',
@@ -14,6 +14,6 @@ return [
         'store',
         'edit',
         'update',
-        'delete'
+        'destroy'
     ],
 ];

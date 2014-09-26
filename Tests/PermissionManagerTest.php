@@ -38,14 +38,18 @@ class PermissionManagerTest extends \TestCase
                 'users' => [
                     'index',
                     'create',
+                    'store',
                     'edit',
-                    'delete'
+                    'update',
+                    'destroy'
                 ],
                 'roles' => [
                     'index',
                     'create',
+                    'store',
                     'edit',
-                    'delete',
+                    'update',
+                    'destroy'
                 ]
             ],
         ];
