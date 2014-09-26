@@ -58,7 +58,8 @@ class RolesController extends AdminBaseController
      */
     public function store(CreateRolesRequest $request)
     {
-        $this->roles->create($request->all());
+        $data = array_merge($request->all(), ['permissions' => $this->permissions->clean($request->permissions)]);
+        $this->roles->create($data);
 
         Flash::success('Role created');
 
@@ -86,9 +87,6 @@ class RolesController extends AdminBaseController
         if (!$role = $this->roles->find($id)) {
             return Redirect::to('user::admin.roles.index');
         }
-
-        // Get all permissions
-        $permissions = $this->permissions->all();
 
         return View::make('user::admin.roles.edit', compact('role', 'permissions'));
     }

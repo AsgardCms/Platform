@@ -50,25 +50,7 @@
                     </div>
                 </div><!-- /.tab-pane -->
                 <div class="tab-pane" id="tab_2-2">
-                    <div class="box-body">
-                        <div class="row">
-                            <div class="col-md-12">
-                                <?php foreach($permissions as $name => $value): ?>
-                                    <h3>{{ $name }} Module</h3>
-                                    <?php foreach($value as $subPermissionTitle => $permissionName): ?>
-                                        <h4>{{ ucfirst($subPermissionTitle) }}</h4>
-                                        <?php foreach($permissionName as $permissionAction): ?>
-                                            <div class="checkbox">
-                                                <label for="<?php echo "$subPermissionTitle.$permissionAction" ?>">
-                                                    <input id="<?php echo "$subPermissionTitle.$permissionAction" ?>" name="permissions[<?php echo "$subPermissionTitle.$permissionAction" ?>]" type="checkbox" class="flat-blue" <?php echo $role->hasAccess("$subPermissionTitle.$permissionAction") ? 'checked' : '' ?> value="true" /> {{ ucfirst($permissionAction) }}
-                                                </label>
-                                            </div>
-                                        <?php endforeach; ?>
-                                    <?php endforeach; ?>
-                                <?php endforeach; ?>
-                            </div>
-                        </div>
-                    </div>
+                    @include('user::admin.partials.permissions')
                 </div><!-- /.tab-pane -->
                 <div class="tab-pane" id="tab_3-3">
                     <div class="box-body">
@@ -89,7 +71,6 @@
 
                 <button type="submit" class="btn btn-primary btn-flat">Update</button>
                 <a class="btn btn-danger pull-right btn-flat" href="{{ URL::route('dashboard.role.index')}}"><i class="fa fa-times"></i> Cancel</a>
-                <div class="clearfix"></div>
             </div><!-- /.tab-content -->
         </div>
         {!! Form::close() !!}
