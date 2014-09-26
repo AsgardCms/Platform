@@ -16,7 +16,6 @@
     <link href="{{{ core_asset('css/vendor/ionicons.min.css') }}}" rel="stylesheet" type="text/css" />
     <link href="{{{ core_asset('css/vendor/alertify/alertify.core.css') }}}" rel="stylesheet" type="text/css" />
     <link href="{{{ core_asset('css/vendor/alertify/alertify.default.css') }}}" rel="stylesheet" type="text/css" />
-    <link href="{{{ core_asset('css/vendor/iCheck/minimal/blue.css') }}}" rel="stylesheet" type="text/css" />
     <link href="{{{ core_asset('css/vendor/datatables/dataTables.bootstrap.css') }}}" rel="stylesheet" type="text/css" />
     <!-- Theme style -->
     <link href="{{{ core_asset('css/AdminLTE.css') }}}" rel="stylesheet" type="text/css" />
