@@ -62,7 +62,7 @@
                                     <div class="checkbox">
                                         <label for="<?php echo "$subRoleTitle.$rolePerm" ?>">
                                             {{ $rolePerm }}
-                                            <input id="<?php echo "$subRoleTitle.$rolePerm" ?>" name="roles[<?php echo "$subRoleTitle.$rolePerm" ?>]" type="checkbox" class="simple" <?php echo $role->hasAccess("$subRoleTitle.$rolePerm") ? 'checked' : '' ?> value="true" />
+                                            <input id="<?php echo "$subRoleTitle.$rolePerm" ?>" name="permissions[<?php echo "$subRoleTitle.$rolePerm" ?>]" type="checkbox" class="simple" <?php echo $role->hasAccess("$subRoleTitle.$rolePerm") ? 'checked' : '' ?> value="true" />
                                         </label>
                                     </div>
                                 <?php endforeach; ?>

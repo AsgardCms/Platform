@@ -11,12 +11,20 @@ use Modules\User\Http\Requests\UpdateRoleRequest;
 
 class RolesController extends AdminBaseController
 {
+    /**
+     * @var \Cartalyst\Sentinel\Roles\EloquentRole
+     */
     protected $roles;
+    /**
+     * @var PermissionManager
+     */
+    private $permissions;
 
-    public function __construct()
+    public function __construct(PermissionManager $permissions)
     {
         parent::__construct();
         $this->roles = Sentinel::getRoleRepository()->createModel();
+        $this->permissions = $permissions;
     }
 
     /**
@@ -72,14 +80,14 @@ class RolesController extends AdminBaseController
      * @param  int $id
      * @return Response
      */
-    public function edit($id, PermissionManager $manager)
+    public function edit($id)
     {
         if (!$role = $this->roles->find($id)) {
             return Redirect::to('user::admin.roles.index');
         }
 
         // Get all permissions
-        $permissions = $manager->all();
+        $permissions = $this->permissions->all();
 
         return View::make('user::admin.roles.edit', compact('role', 'permissions'));
     }
@@ -93,18 +101,14 @@ class RolesController extends AdminBaseController
      */
     public function update($id, UpdateRoleRequest $request)
     {
-        $roles = [];
-        foreach ($request->roles as $roleName => $checkedRole) {
-            $roles[$roleName] = (bool)$checkedRole;
-        }
+        $permissions = $this->permissions->clean($request->permissions);
         $role = $this->roles->find($id);
 
         $role->fill($request->all());
-        $role->permissions = $roles;
+        $role->permissions = $permissions;
         $role->save();
 
         Flash::success('Role updated!');
-
         return Redirect::route('dashboard.role.index');
     }
 
