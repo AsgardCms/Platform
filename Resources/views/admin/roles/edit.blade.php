@@ -16,9 +16,9 @@
 @stop
 
 @section('content')
+{!! Form::open(['route' => ['dashboard.role.update', $role->id], 'method' => 'put']) !!}
 <div class="row">
     <div class="col-md-12">
-        {!! Form::open(['route' => ['dashboard.role.update', $role->id], 'method' => 'put']) !!}
         <div class="nav-tabs-custom">
             <ul class="nav nav-tabs">
                 <li class="active"><a href="#tab_1-1" data-toggle="tab">Data</a></li>
@@ -68,14 +68,15 @@
                         </div>
                     </div>
                 </div>
-
-                <button type="submit" class="btn btn-primary btn-flat">Update</button>
-                <a class="btn btn-danger pull-right btn-flat" href="{{ URL::route('dashboard.role.index')}}"><i class="fa fa-times"></i> Cancel</a>
+                <div class="box-footer">
+                    <button type="submit" class="btn btn-primary btn-flat">Update</button>
+                    <a class="btn btn-danger pull-right btn-flat" href="{{ URL::route('dashboard.role.index')}}"><i class="fa fa-times"></i> Cancel</a>
+                </div>
             </div><!-- /.tab-content -->
         </div>
-        {!! Form::close() !!}
     </div>
 </div>
+{!! Form::close() !!}
 @stop
 
 @section('scripts')

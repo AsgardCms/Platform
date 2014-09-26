@@ -1,24 +1,24 @@
 @extends('core::layouts.master')
 
 @section('content-header')
-<h1>
-    New Role
-</h1>
-<ol class="breadcrumb">
-    <li><a href="{{ URL::route('dashboard.index') }}"><i class="fa fa-dashboard"></i> Home</a></li>
-    <li class=""><a href="{{ URL::route('dashboard.role.index') }}">Roles</a></li>
-    <li class="active">New</li>
-</ol>
-@stop
+     <h1>
+         New Role
+     </h1>
+     <ol class="breadcrumb">
+         <li><a href="{{ URL::route('dashboard.index') }}"><i class="fa fa-dashboard"></i> Home</a></li>
+         <li class=""><a href="{{ URL::route('dashboard.role.index') }}">Roles</a></li>
+         <li class="active">New</li>
+     </ol>
+     @stop
 
 @section('styles')
 <link href="{{{ core_asset('css/vendor/iCheck/flat/blue.css') }}}" rel="stylesheet" type="text/css" />
 @stop
 
 @section('content')
+{!! Form::open(['route' => 'dashboard.role.store', 'method' => 'post']) !!}
 <div class="row">
     <div class="col-md-12">
-        {!! Form::open(['route' => 'dashboard.role.store', 'method' => 'post']) !!}
         <div class="nav-tabs-custom">
             <ul class="nav nav-tabs">
                 <li class="active"><a href="#tab_1-1" data-toggle="tab">Data</a></li>
@@ -57,9 +57,9 @@
                 </div>
             </div>
         </div>
-        {!! Form::close() !!}
     </div>
 </div>
+{!! Form::close() !!}
 @stop
 
 @section('scripts')
