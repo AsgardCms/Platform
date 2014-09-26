@@ -15,7 +15,7 @@
 @stop
 
 @section('content')
-{!! Form::open(['route' => 'dashboard.user.store', 'method' => 'post']) !!}
+{!! Form::open(['route' => 'dashboard.modules.store', 'method' => 'post']) !!}
 <div class="row">
     <div class="col-md-12">
         <div class="nav-tabs-custom">
@@ -24,17 +24,21 @@
             </ul>
             <div class="tab-content">
                 <div class="tab-pane active" id="tab_1-1">
+                    @include('flash::message')
                     <ul>
                         @foreach($modules as $module)
                             <li>
                                 <div class="checkbox">
                                     <label for="{{ $module }}">
-                                        <input id="{{ $module }}" name="modules[]" type="checkbox" class="flat-blue" <?php echo Module::active($module) ? 'checked' : '' ?> value="true" /> {{ $module }}
+                                        <input id="{{ $module }}" name="modules[{{ $module }}]" type="checkbox" class="flat-blue" <?php echo Module::active($module) ? 'checked' : '' ?> value="true" /> {{ $module }}
                                     </label>
                                 </div>
                             </li>
                         @endforeach
                     </ul>
+                    <div class="box-footer">
+                        <button type="submit" class="btn btn-primary btn-flat">Save module configuration</button>
+                    </div>
                 </div>
             </div>
         </div>
