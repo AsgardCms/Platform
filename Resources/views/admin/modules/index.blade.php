@@ -30,7 +30,7 @@
                             <li>
                                 <div class="checkbox">
                                     <label for="{{ $module }}">
-                                        <input id="{{ $module }}" name="modules[{{ $module }}]" type="checkbox" class="flat-blue" <?php echo Module::active($module) ? 'checked' : '' ?> value="true" /> {{ $module }}
+                                        <input id="{{ $module }}" name="modules[{{ $module }}]" type="checkbox" class="flat-blue" <?php echo Module::active($module) ? 'checked' : '' ?> <?php echo isset($coreModules[$module]) ? 'disabled' : ''; ?> value="true" /> {{ $module }}
                                     </label>
                                 </div>
                             </li>

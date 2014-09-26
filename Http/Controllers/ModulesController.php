@@ -1,5 +1,6 @@
 <?php namespace Modules\Workshop\Http\Controllers;
 
+use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\View;
 use Laracasts\Flash\Flash;
@@ -23,14 +24,14 @@ class ModulesController extends AdminBaseController
     public function index()
     {
         $modules = $this->module->all();
+        $coreModules = $this->getCoreModules();
 
-        return View::make('workshop::admin.modules.index', compact('modules'));
+        return View::make('workshop::admin.modules.index', compact('modules', 'coreModules'));
     }
 
     public function store(ModulesRequest $request)
     {
-        $enabledModules = $this->module->enabled();
-        $enabledModules = array_flip($enabledModules);
+        $enabledModules = $this->getFlippedEnabledModules();
 
         $modules = $request->modules;
         foreach ($modules as $module => $value) {
@@ -40,15 +41,53 @@ class ModulesController extends AdminBaseController
             }
         }
         // Disabled not needed modules
-        foreach ($enabledModules as $moduleToDisable => $value) {
-            $this->module->disable($moduleToDisable);
-        }
+        $this->disableModules($enabledModules);
         // Enable new modules
-        foreach ($modules as $moduleToEnable => $value) {
-            $this->module->enable($moduleToEnable);
-        }
+        $this->enableModules($modules);
 
         Flash::success('Modules configuration saved!');
         return Redirect::route('dashboard.modules.index');
+    }
+
+    /**
+     * @return array
+     */
+    private function getCoreModules()
+    {
+        $coreModules = Config::get('core::config.CoreModules');
+        $coreModules = array_flip($coreModules);
+        return $coreModules;
+    }
+
+    /**
+     * @return array
+     */
+    private function getFlippedEnabledModules()
+    {
+        $enabledModules = $this->module->enabled();
+        $enabledModules = array_flip($enabledModules);
+        return $enabledModules;
+    }
+
+    private function disableModules($enabledModules)
+    {
+        $coreModules = $this->getCoreModules();
+
+        foreach ($enabledModules as $moduleToDisable => $value) {
+            if (isset($coreModules[$moduleToDisable])) {
+                continue;
+            }
+            $this->module->disable($moduleToDisable);
+        }
+    }
+
+    /**
+     * @param $modules
+     */
+    private function enableModules($modules)
+    {
+        foreach ($modules as $moduleToEnable => $value) {
+            $this->module->enable($moduleToEnable);
+        }
     }
 }
