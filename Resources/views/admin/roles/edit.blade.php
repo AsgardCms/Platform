@@ -12,7 +12,7 @@
 @stop
 
 @section('styles')
-<link href="{{{ user_asset('css/vendor/switchery.min.css') }}}" rel="stylesheet" type="text/css" />
+<link href="{{{ core_asset('css/vendor/iCheck/flat/red.css') }}}" rel="stylesheet" type="text/css" />
 @stop
 
 @section('content')
@@ -61,8 +61,7 @@
                                 <?php foreach($roleName as $rolePerm): ?>
                                     <div class="checkbox">
                                         <label for="<?php echo "$subRoleTitle.$rolePerm" ?>">
-                                            {{ $rolePerm }}
-                                            <input id="<?php echo "$subRoleTitle.$rolePerm" ?>" name="permissions[<?php echo "$subRoleTitle.$rolePerm" ?>]" type="checkbox" class="simple" <?php echo $role->hasAccess("$subRoleTitle.$rolePerm") ? 'checked' : '' ?> value="true" />
+                                            <input id="<?php echo "$subRoleTitle.$rolePerm" ?>" name="permissions[<?php echo "$subRoleTitle.$rolePerm" ?>]" type="checkbox" class="flat-red" <?php echo $role->hasAccess("$subRoleTitle.$rolePerm") ? 'checked' : '' ?> value="true" /> {{ $rolePerm }}
                                         </label>
                                     </div>
                                 <?php endforeach; ?>
@@ -82,7 +81,6 @@
 @stop
 
 @section('scripts')
-<script src="{{{ user_asset('js/vendor/switchery.min.js') }}}" type="text/javascript"></script>
 <script>
 $( document ).ready(function() {
     //Flat red color scheme for iCheck
@@ -90,8 +88,6 @@ $( document ).ready(function() {
         checkboxClass: 'icheckbox_flat-red',
         radioClass: 'iradio_flat-red'
     });
-    var elem = $('.js-switch');
-    var init = new Switchery(elem, { disabled: true, disabledOpacity: 0.75 });
 });
 </script>
 @stop
