@@ -82,4 +82,16 @@ class PermissionManagerTest extends \TestCase
 
         $this->assertEquals($expected, $cleanedPermissions);
     }
+
+    /** @test */
+    public function itShouldReturnEmptyArrayIfNoRolesAreSupplied()
+    {
+        $request = [];
+
+        $expected = [];
+
+        $cleanedPermissions = $this->permissions->clean($request);
+
+        $this->assertEquals($expected, $cleanedPermissions);
+    }
 }
