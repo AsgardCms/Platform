@@ -9,6 +9,8 @@ use Modules\Core\Http\Controllers\Admin\AdminBaseController;
 use Modules\Core\Permissions\PermissionManager;
 use Modules\User\Http\Requests\CreateUserRequest;
 use Modules\User\Http\Requests\UpdateUserRequest;
+use Modules\User\Repositories\RoleRepository;
+use Modules\User\Repositories\UserRepository;
 
 class UserController extends AdminBaseController
 {
@@ -16,25 +18,24 @@ class UserController extends AdminBaseController
      * @var PermissionManager
      */
     private $permissions;
-
     /**
-     * @var \Modules\Session\Entities\User
+     * @var UserRepository
      */
-    protected $users;
+    private $user;
     /**
-     * @var \Cartalyst\Sentinel\Roles\EloquentRole
+     * @var RoleRepository
      */
-    protected $roles;
+    private $role;
 
-    public function __construct(PermissionManager $permissions)
+    public function __construct(PermissionManager $permissions, UserRepository $user, RoleRepository $role)
     {
         parent::__construct();
 
         $this->beforeFilter('permissions');
 
-        $this->users = Sentinel::getUserRepository();
-        $this->roles = Sentinel::getRoleRepository()->createModel();
         $this->permissions = $permissions;
+        $this->user = $user;
+        $this->role = $role;
     }
 
     /**
@@ -44,7 +45,7 @@ class UserController extends AdminBaseController
      */
     public function index()
     {
-        $users = $this->users->createModel()->all();
+        $users = $this->user->all();
 
         return View::make('user::admin.users.index', compact('users'));
     }
@@ -56,7 +57,7 @@ class UserController extends AdminBaseController
      */
     public function create()
     {
-        $roles = $this->roles->all();
+        $roles = $this->role->all();
 
         return View::make('user::admin.users.create', compact('roles'));
     }
@@ -70,24 +71,11 @@ class UserController extends AdminBaseController
     public function store(CreateUserRequest $request)
     {
         $data = array_merge($request->all(), ['permissions' => $this->permissions->clean($request->permissions)]);
-        $user = $this->users->create($data);
-        $user->roles()->attach($request->roles);
 
-        $code = Activation::create($user);
-        Activation::complete($user, $code);
+        $this->user->createWithRoles($data, $request->roles);
 
         Flash::success('User created.');
         return Redirect::route('dashboard.user.index');
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int $id
-     * @return Response
-     */
-    public function show($id)
-    {
     }
 
     /**
@@ -98,11 +86,11 @@ class UserController extends AdminBaseController
      */
     public function edit($id)
     {
-        if (!$user = $this->users->createModel()->find($id)) {
+        if (!$user = $this->user->find($id)) {
             Flash::error('User not found');
             return Redirect::route('dashboard.user.index');
         }
-        $roles = $this->roles->all();
+        $roles = $this->role->all();
 
         return View::make('user::admin.users.edit', compact('user', 'roles'));
     }
@@ -116,11 +104,9 @@ class UserController extends AdminBaseController
      */
     public function update($id, UpdateUserRequest $request)
     {
-        $user = $this->users->createModel()->find($id);
         $data = array_merge($request->all(), ['permissions' => $this->permissions->clean($request->permissions)]);
-        $this->users->update($user, $data);
 
-        $user->roles()->sync($request->roles);
+        $this->user->updateAndSyncRoles($id, $data, $request->roles);
 
         Flash::success('User updated.');
         return Redirect::route('dashboard.user.index');
@@ -134,17 +120,9 @@ class UserController extends AdminBaseController
      */
     public function destroy($id)
     {
-        if ($user = $this->users->createModel()->find($id))
-        {
-            $user->delete();
+        $this->user->delete($id);
 
-            Flash::success('User deleted');
-
-            return Redirect::to('users');
-        }
-
-        Flash::error('User not found');
-
+        Flash::success('User deleted');
         return Redirect::to('users');
     }
 
