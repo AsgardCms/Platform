@@ -19,11 +19,20 @@ class WorkbenchController extends AdminBaseController
         $this->beforeFilter('permissions');
     }
 
+    /**
+     * Show the index view
+     * @return mixed
+     */
     public function index()
     {
         return View::make('workshop::admin.workbench.index');
     }
 
+    /**
+     * Generate a module given its name
+     * @param GenerateModuleRequest $request
+     * @return mixed
+     */
     public function generate(GenerateModuleRequest $request)
     {
         $output = new BufferedOutput;
@@ -33,6 +42,11 @@ class WorkbenchController extends AdminBaseController
         return Redirect::route('dashboard.workbench.index');
     }
 
+    /**
+     * Run the migration for the given module
+     * @param MigrateModuleRequest $request
+     * @return mixed
+     */
     public function migrate(MigrateModuleRequest $request)
     {
         $output = new BufferedOutput;
@@ -42,6 +56,11 @@ class WorkbenchController extends AdminBaseController
         return Redirect::route('dashboard.workbench.index');
     }
 
+    /**
+     * Run the install command for the given vendor/module
+     * @param InstallModuleRequest $request
+     * @return mixed
+     */
     public function install(InstallModuleRequest $request)
     {
         $output = new BufferedOutput;
@@ -55,6 +74,11 @@ class WorkbenchController extends AdminBaseController
         return Redirect::route('dashboard.workbench.index');
     }
 
+    /**
+     * Run the seed command for the given module
+     * @param SeedModuleRequest $request
+     * @return mixed
+     */
     public function seed(SeedModuleRequest $request)
     {
         $output = new BufferedOutput;
