@@ -24,7 +24,7 @@ class SidebarViewComposer
             [
                 'request' => "{$view->prefix}/workbench*",
                 'route' => 'dashboard.workbench.index',
-                'icon-class' => 'fa fa-cog',
+                'icon-class' => 'fa fa-terminal',
                 'title' => 'Workbench',
             ]
         ]));
