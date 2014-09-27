@@ -34,6 +34,15 @@ class ModuleManager
     }
 
     /**
+     * Return all the enabled modules
+     * @return array
+     */
+    public function enabled()
+    {
+        return $this->module->enabled();
+    }
+
+    /**
      * Get the core modules that shouldn't be disabled
      * @return array|mixed
      */

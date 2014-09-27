@@ -3,7 +3,7 @@
     <div class="box-body">
         <div class='form-group{{ $errors->has('module') ? ' has-error' : '' }}'>
             {!! Form::label('module', 'Module Name:') !!}
-            {!! Form::text('module', Input::old('name'), ['class' => 'form-control', 'placeholder' => 'Module Name']) !!}
+            {!! Form::select('module', $modules, null, ['class' => 'form-control']) !!}
             {!! $errors->first('module', '<span class="help-block">:message</span>') !!}
         </div>
     </div>
