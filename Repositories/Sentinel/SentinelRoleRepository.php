@@ -30,6 +30,43 @@ class SentinelRoleRepository implements RoleRepository
      */
     public function create($data)
     {
-        // TODO: Implement create() method.
+        $this->role->create($data);
+    }
+
+    /**
+     * Find a role by its id
+     * @param $id
+     * @return mixed
+     */
+    public function find($id)
+    {
+        return $this->role->find($id);
+    }
+
+    /**
+     * Update a role
+     * @param $id
+     * @param $data
+     * @return mixed
+     */
+    public function update($id, $data)
+    {
+        $role = $this->role->find($id);
+
+        $role->fill($data);
+
+        $role->save();
+    }
+
+    /**
+     * Delete a role
+     * @param $id
+     * @return mixed
+     */
+    public function delete($id)
+    {
+        $role = $this->role->find($id);
+
+        return $role->delete();
     }
 }

@@ -8,6 +8,7 @@ use Modules\Core\Http\Controllers\Admin\AdminBaseController;
 use Modules\Core\Permissions\PermissionManager;
 use Modules\User\Http\Requests\CreateRolesRequest;
 use Modules\User\Http\Requests\UpdateRoleRequest;
+use Modules\User\Repositories\RoleRepository;
 
 class RolesController extends AdminBaseController
 {
@@ -19,12 +20,17 @@ class RolesController extends AdminBaseController
      * @var PermissionManager
      */
     private $permissions;
+    /**
+     * @var RoleRepository
+     */
+    private $role;
 
-    public function __construct(PermissionManager $permissions)
+    public function __construct(PermissionManager $permissions, RoleRepository $role)
     {
         parent::__construct();
         $this->roles = Sentinel::getRoleRepository()->createModel();
         $this->permissions = $permissions;
+        $this->role = $role;
         $this->beforeFilter('permissions');
     }
 
@@ -35,7 +41,7 @@ class RolesController extends AdminBaseController
      */
     public function index()
     {
-        $roles = $this->roles->all();
+        $roles = $this->role->all();
 
         return View::make('user::admin.roles.index', compact('roles'));
     }
@@ -59,21 +65,11 @@ class RolesController extends AdminBaseController
     public function store(CreateRolesRequest $request)
     {
         $data = array_merge($request->all(), ['permissions' => $this->permissions->clean($request->permissions)]);
-        $this->roles->create($data);
+
+        $this->role->create($data);
 
         Flash::success('Role created');
-
         return Redirect::route('dashboard.role.index');
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int $id
-     * @return Response
-     */
-    public function show($id)
-    {
     }
 
     /**
@@ -84,7 +80,7 @@ class RolesController extends AdminBaseController
      */
     public function edit($id)
     {
-        if (!$role = $this->roles->find($id)) {
+        if (!$role = $this->role->find($id)) {
             return Redirect::to('user::admin.roles.index');
         }
 
@@ -100,12 +96,9 @@ class RolesController extends AdminBaseController
      */
     public function update($id, UpdateRoleRequest $request)
     {
-        $permissions = $this->permissions->clean($request->permissions);
-        $role = $this->roles->find($id);
+        $data = array_merge($request->all(), ['permissions' => $this->permissions->clean($request->permissions)]);
 
-        $role->fill($request->all());
-        $role->permissions = $permissions;
-        $role->save();
+        $this->role->update($id, $data);
 
         Flash::success('Role updated!');
         return Redirect::route('dashboard.role.index');
@@ -119,14 +112,9 @@ class RolesController extends AdminBaseController
      */
     public function destroy($id)
     {
-        if ($role = $this->roles->find($id))
-        {
-            $role->delete();
+        $this->role->delete($id);
 
-            Flash::success('Role deleted!');
-            return Redirect::route('dashboard.role.index');
-        }
-
+        Flash::success('Role deleted!');
         return Redirect::route('dashboard.role.index');
     }
 }
