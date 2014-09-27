@@ -1,10 +1,10 @@
 <?php namespace Modules\Workshop\Providers;
 
+use Illuminate\Routing\Router;
 use Illuminate\Support\ServiceProvider;
 
 class WorkshopServiceProvider extends ServiceProvider
 {
-
     /**
      * Indicates if loading of the provider is deferred.
      *
@@ -13,13 +13,41 @@ class WorkshopServiceProvider extends ServiceProvider
     protected $defer = false;
 
     /**
+     * The filters base class name.
+     *
+     * @var array
+     */
+    protected $filters = [
+        'permissions' => 'PermissionFilter'
+    ];
+
+    /**
+     * Register the filters.
+     *
+     * @param  Router $router
+     * @return void
+     */
+    public function registerFilters(Router $router)
+    {
+        foreach ($this->filters as $name => $filter) {
+            $class = 'Modules\\Workshop\\Http\\Filters\\' . $filter;
+
+            $router->filter($name, $class);
+        }
+    }
+
+    /**
      * Register the service provider.
      *
      * @return void
      */
     public function register()
     {
-        //
+        $this->app->booted(
+            function ($app) {
+                $this->registerFilters($app['router']);
+            }
+        );
     }
 
     /**

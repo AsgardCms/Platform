@@ -12,6 +12,12 @@ use Symfony\Component\Console\Output\BufferedOutput;
 
 class WorkbenchController extends AdminBaseController
 {
+    public function __construct()
+    {
+        parent::__construct();
+        $this->beforeFilter('permissions');
+    }
+
     public function index()
     {
         return View::make('workshop::admin.workbench.index');
