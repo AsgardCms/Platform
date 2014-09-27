@@ -1,6 +1,5 @@
 <?php namespace Modules\User\Http\Controllers\Admin;
 
-use Cartalyst\Sentinel\Laravel\Facades\Sentinel;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\View;
 use Laracasts\Flash\Flash;
@@ -13,10 +12,6 @@ use Modules\User\Repositories\RoleRepository;
 class RolesController extends AdminBaseController
 {
     /**
-     * @var \Cartalyst\Sentinel\Roles\EloquentRole
-     */
-    protected $roles;
-    /**
      * @var PermissionManager
      */
     private $permissions;
@@ -28,7 +23,6 @@ class RolesController extends AdminBaseController
     public function __construct(PermissionManager $permissions, RoleRepository $role)
     {
         parent::__construct();
-        $this->roles = Sentinel::getRoleRepository()->createModel();
         $this->permissions = $permissions;
         $this->role = $role;
         $this->beforeFilter('permissions');
