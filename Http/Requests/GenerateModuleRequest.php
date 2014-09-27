@@ -6,7 +6,9 @@ class GenerateModuleRequest extends FormRequest
 {
     public function rules()
     {
-        return [];
+        return [
+            'name' => 'required'
+        ];
     }
 
     public function authorize()

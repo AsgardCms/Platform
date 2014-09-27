@@ -23,9 +23,10 @@
                     @include('flash::message')
                     {!! Form::open(['route' => 'dashboard.workbench.generate.index', 'method' => 'post']) !!}
                     <div class="box-body">
-                        <div class='form-group'>
+                        <div class='form-group{{ $errors->has('name') ? ' has-error' : '' }}'>
                             {!! Form::label('name', 'Module Name:') !!}
                             {!! Form::text('name', Input::old('name'), ['class' => 'form-control', 'placeholder' => 'Module Name']) !!}
+                            {!! $errors->first('name', '<span class="help-block">:message</span>') !!}
                         </div>
                     </div>
                     <div class="box-footer">
@@ -37,9 +38,10 @@
                     @include('flash::message')
                     {!! Form::open(['route' => 'dashboard.workbench.migrate.index', 'method' => 'post']) !!}
                         <div class="box-body">
-                            <div class='form-group'>
-                                {!! Form::label('name', 'Module Name:') !!}
-                                {!! Form::text('name', Input::old('name'), ['class' => 'form-control', 'placeholder' => 'Module Name']) !!}
+                            <div class='form-group{{ $errors->has('module') ? ' has-error' : '' }}'>
+                                {!! Form::label('module', 'Module Name:') !!}
+                                {!! Form::text('module', Input::old('name'), ['class' => 'form-control', 'placeholder' => 'Module Name']) !!}
+                                {!! $errors->first('module', '<span class="help-block">:message</span>') !!}
                             </div>
                         </div>
                         <div class="box-footer">

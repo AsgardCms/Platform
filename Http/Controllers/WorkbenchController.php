@@ -28,8 +28,7 @@ class WorkbenchController extends AdminBaseController
     public function migrate(MigrateModuleRequest $request)
     {
         $output = new BufferedOutput;
-        $arguments = $request->name ? ['module' => $request->name] : [];
-        Artisan::call('module:migrate', $arguments, $output);
+        Artisan::call('module:migrate', ['module' => $request->module], $output);
 
         Flash::message($output->fetch());
         return Redirect::route('dashboard.workbench.index');

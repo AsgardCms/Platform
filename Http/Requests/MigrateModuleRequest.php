@@ -6,7 +6,9 @@ class MigrateModuleRequest extends FormRequest
 {
     public function rules()
     {
-        return [];
+        return [
+            'module' => 'required'
+        ];
     }
 
     public function authorize()
