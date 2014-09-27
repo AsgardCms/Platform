@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\View;
 use Laracasts\Flash\Flash;
 use Modules\Core\Http\Controllers\Admin\AdminBaseController;
 use Modules\Workshop\Http\Requests\GenerateModuleRequest;
+use Modules\Workshop\Http\Requests\MigrateModuleRequest;
 use Symfony\Component\Console\Output\BufferedOutput;
 
 class WorkbenchController extends AdminBaseController
@@ -19,6 +20,16 @@ class WorkbenchController extends AdminBaseController
     {
         $output = new BufferedOutput;
         Artisan::call('module:make', ['name' => $request->name], $output);
+
+        Flash::message($output->fetch());
+        return Redirect::route('dashboard.workbench.index');
+    }
+
+    public function migrate(MigrateModuleRequest $request)
+    {
+        $output = new BufferedOutput;
+        $arguments = $request->name ? ['module' => $request->name] : [];
+        Artisan::call('module:migrate', $arguments, $output);
 
         Flash::message($output->fetch());
         return Redirect::route('dashboard.workbench.index');
