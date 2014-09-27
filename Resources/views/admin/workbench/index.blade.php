@@ -21,6 +21,7 @@
             <ul class="nav nav-tabs">
                 <li class="active"><a href="#tab_1-1" data-toggle="tab">Generator</a></li>
                 <li><a href="#tab_2-2" data-toggle="tab">Migrations</a></li>
+                <li><a href="#tab_3-3" data-toggle="tab">Seeds</a></li>
             </ul>
             <div class="tab-content">
                 <div class="tab-pane active" id="tab_1-1">
@@ -28,6 +29,9 @@
                 </div>
                 <div class="tab-pane" id="tab_2-2">
                     @include('workshop::admin.workbench.tabs.migrate')
+                </div>
+                <div class="tab-pane" id="tab_3-3">
+                    @include('workshop::admin.workbench.tabs.seed')
                 </div>
             </div>
         </div>

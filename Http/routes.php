@@ -9,5 +9,6 @@ Route::group(['prefix' => Config::get('core::core.admin-prefix'), 'namespace' =>
         Route::post('generate', ['as' => 'dashboard.workbench.generate.index', 'uses' => 'WorkbenchController@generate']);
         Route::post('migrate', ['as' => 'dashboard.workbench.migrate.index', 'uses' => 'WorkbenchController@migrate']);
         Route::post('install', ['as' => 'dashboard.workbench.install.index', 'uses' => 'WorkbenchController@install']);
+        Route::post('seed', ['as' => 'dashboard.workbench.seed.index', 'uses' => 'WorkbenchController@seed']);
     }
 );

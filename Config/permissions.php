@@ -9,5 +9,6 @@ return [
         'generate',
         'migrate',
         'install',
+        'seed',
     ]
 ];
