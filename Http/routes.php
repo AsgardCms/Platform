@@ -8,5 +8,6 @@ Route::group(['prefix' => Config::get('core::core.admin-prefix').'/workshop', 'n
         Route::get('workbench', ['as' => 'dashboard.workbench.index', 'uses' => 'WorkbenchController@index']);
         Route::post('generate', ['as' => 'dashboard.workbench.generate.index', 'uses' => 'WorkbenchController@generate']);
         Route::post('migrate', ['as' => 'dashboard.workbench.migrate.index', 'uses' => 'WorkbenchController@migrate']);
+        Route::post('install', ['as' => 'dashboard.workbench.install.index', 'uses' => 'WorkbenchController@install']);
     }
 );
