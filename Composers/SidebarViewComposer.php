@@ -20,6 +20,12 @@ class SidebarViewComposer
                 'route' => 'dashboard.modules.index',
                 'icon-class' => 'fa fa-cog',
                 'title' => 'Modules',
+            ],
+            [
+                'request' => "{$view->prefix}/workshop/workbench*",
+                'route' => 'dashboard.workbench.index',
+                'icon-class' => 'fa fa-cog',
+                'title' => 'Workbench',
             ]
         ]));
     }
