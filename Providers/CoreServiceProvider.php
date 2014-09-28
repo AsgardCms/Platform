@@ -11,6 +11,11 @@ class CoreServiceProvider extends ServiceProvider
      */
     protected $defer = false;
 
+    public function boot()
+    {
+        include __DIR__ . '/../start.php';
+    }
+
     /**
      * Register the service provider.
      *
@@ -18,7 +23,6 @@ class CoreServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //
     }
 
     /**
