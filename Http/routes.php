@@ -1,6 +1,10 @@
 <?php
 
-//Route::group(['prefix' => Config::get('core::core.admin-prefix'), 'namespace' => 'Modules\Core\Http\Controllers'], function()
-//{
-//	Route::get('/', 'DashboardController@index');
-//});
+/*
+|--------------------------------------------------------------------------
+| Language Settings
+|--------------------------------------------------------------------------
+*/
+$lang = substr($_SERVER['HTTP_ACCEPT_LANGUAGE'], 0, 2);
+
+App::setLocale('fr');
