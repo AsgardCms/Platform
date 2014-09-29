@@ -22,4 +22,32 @@ class Helper
         }
         $model->save();
     }
+
+    public static function separateLanguages($data)
+    {
+        $cleanedData = [];
+        foreach ($data as $key => $value) {
+            if (is_array($value)) {
+                foreach ($value as $lang => $input) {
+                    $cleanedData[$lang][$key] = $input;
+                }
+            } else {
+                $cleanedData[$key] = $value;
+            }
+        }
+        return $cleanedData;
+    }
+
+    public static function createTranslatedFields($model, $data)
+    {
+        $model = new $model;
+        foreach ($data as $key => $value) {
+            if (is_array($value)) {
+                foreach ($value as $lang => $input) {
+                    $model->translate($lang)->$key = $input;
+                }
+            }
+        }
+        $model->save();
+    }
 }
