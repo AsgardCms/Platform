@@ -51,8 +51,8 @@ class SentinelUserRepository implements UserRepository
         $user = $this->user->create($data);
         $user->roles()->attach($roles);
 
-        $code = Activation::create($user);
-        Activation::complete($user, $code);
+        $activation = Activation::create($user);
+        Activation::complete($user, $activation->code);
     }
 
     /**
