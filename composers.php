@@ -14,3 +14,5 @@ Event::listen('modules.load.end', function()
 //    $modules = Module::enabled();
 //    dd($modules);
 });
+
+Event::listen('Modules\User\Events\RegisterSidebarMenuItemEvent', 'Modules\Core\Listeners\SidebarNavigationListener');
