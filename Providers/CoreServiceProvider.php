@@ -23,6 +23,10 @@ class CoreServiceProvider extends ServiceProvider
      */
     public function register()
     {
+        $this->app->booted(function ($app)
+        {
+            $app['events']->fire('Modules\User\Events\RegisterSidebarMenuItemEvent');
+        });
     }
 
     /**
