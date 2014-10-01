@@ -121,7 +121,7 @@ class UserController extends AdminBaseController
         $this->user->delete($id);
 
         Flash::success('User deleted');
-        return Redirect::to('users');
+        return Redirect::route('dashboard.user.index');
     }
 
 }
