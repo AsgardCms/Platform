@@ -49,12 +49,13 @@ class SentinelUserRepository implements UserRepository
     public function createWithRoles($data, $roles)
     {
         $user = $this->user->create($data);
+
         if (!empty($roles)) {
             $user->roles()->attach($roles);
         }
 
-        $code = Activation::create($user);
-        Activation::complete($user, $code);
+        $activation = Activation::create($user);
+        Activation::complete($user, $activation->code);
     }
 
     /**
