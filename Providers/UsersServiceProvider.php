@@ -2,6 +2,7 @@
 
 use Illuminate\Routing\Router;
 use Illuminate\Support\ServiceProvider;
+use Modules\User\Events\RegisterSidebarMenuItemEvent;
 
 class UsersServiceProvider extends ServiceProvider
 {
@@ -33,6 +34,7 @@ class UsersServiceProvider extends ServiceProvider
         $this->app->booted(function ($app) {
 			$this->registerFilters($app['router']);
 			$this->registerBindings();
+            $this->registerEvents($app['events']);
 		});
     }
 
@@ -74,4 +76,9 @@ class UsersServiceProvider extends ServiceProvider
 			'Modules\User\Repositories\Sentinel\SentinelRoleRepository'
 		);
 	}
+
+    private function registerEvents($events)
+    {
+        $events->fire('sidebar.menu.item_event', new RegisterSidebarMenuItemEvent);
+    }
 }
