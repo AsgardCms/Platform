@@ -6,6 +6,6 @@ class AdminBaseController extends Controller
 {
     public function __construct()
     {
-        $this->beforeFilter('dashboard');
+        $this->beforeFilter('auth.admin');
     }
 }

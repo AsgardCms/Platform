@@ -23,6 +23,11 @@ class Helper
         $model->save();
     }
 
+    /**
+     * Separate the input fields into their own language key
+     * @param $data
+     * @return array
+     */
     public static function separateLanguages($data)
     {
         $cleanedData = [];
@@ -38,6 +43,11 @@ class Helper
         return $cleanedData;
     }
 
+    /**
+     * Create the given model and save its translated attributes
+     * @param $model
+     * @param $data
+     */
     public static function createTranslatedFields($model, $data)
     {
         $model = new $model;
