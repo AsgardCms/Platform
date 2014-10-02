@@ -4,6 +4,6 @@ class SidebarNavigationListener
 {
     public function handle($event)
     {
-        dd($event);
+        //dd($event);
     }
 }
