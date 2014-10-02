@@ -11,5 +11,6 @@ return [
         'Dashboard',
         'Session',
         'User',
+        'Workshop'
     ]
 ];
