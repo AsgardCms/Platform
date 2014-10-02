@@ -4,7 +4,7 @@ use Illuminate\Routing\Router;
 use Illuminate\Support\ServiceProvider;
 use Modules\User\Events\RegisterSidebarMenuItemEvent;
 
-class UsersServiceProvider extends ServiceProvider
+class UserServiceProvider extends ServiceProvider
 {
     /**
      * Indicates if loading of the provider is deferred.
