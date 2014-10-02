@@ -1,6 +1,7 @@
 <?php namespace Modules\Core\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use Modules\User\Events\RegisterSidebarMenuItemEvent;
 
 class CoreServiceProvider extends ServiceProvider
 {
@@ -25,7 +26,7 @@ class CoreServiceProvider extends ServiceProvider
     {
         $this->app->booted(function ($app)
         {
-            $app['events']->fire('Modules\User\Events\RegisterSidebarMenuItemEvent');
+            $app['events']->listen('sidebar.menu.item_event', 'Modules\Core\Listeners\SidebarNavigationListener');
         });
     }
 

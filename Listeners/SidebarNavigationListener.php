@@ -2,8 +2,8 @@
 
 class SidebarNavigationListener
 {
-    public function handle()
+    public function handle($event)
     {
-       // dd('??');
+        dd($event);
     }
 }
