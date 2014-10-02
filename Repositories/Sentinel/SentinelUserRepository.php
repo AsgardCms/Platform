@@ -33,6 +33,7 @@ class SentinelUserRepository implements UserRepository
 
     /**
      * Create a user resource
+     * @param $data
      * @return mixed
      */
     public function create($data)
