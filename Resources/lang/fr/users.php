@@ -6,13 +6,17 @@ return [
         'cancel' => 'Annuler',
         'delete' => 'Suprimmer',
         'create' => 'Créer',
+        'update' => 'Mise à jour',
     ],
     'title' => [
         'new-user' => 'Nouvel utilisateur',
+        'edit-user' => 'Edition d\'utilisateur',
     ],
     'breadcrumb' => [
+        'home' => 'Accueil',
         'users' => 'Utilisateurs',
         'new' => 'Nouveau',
+        'edit-user' => 'Edition d\'utilisateur',
     ],
     'tabs' => [
         'data' => 'Données',

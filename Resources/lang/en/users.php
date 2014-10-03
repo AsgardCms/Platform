@@ -6,13 +6,17 @@ return [
         'cancel' => 'Cancel',
         'delete' => 'Delete',
         'create' => 'Create',
+        'update' => 'Update',
     ],
     'title' => [
         'new-user' => 'New user',
+        'edit-user' => 'Edit user',
     ],
     'breadcrumb' => [
+        'home' => 'Home',
         'users' => 'Users',
         'new' => 'New',
+        'edit-user' => 'Edit user',
     ],
     'tabs' => [
         'data' => 'Data',

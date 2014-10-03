@@ -5,8 +5,8 @@
     Users
 </h1>
 <ol class="breadcrumb">
-    <li><a href="{{ URL::route('dashboard.index') }}"><i class="fa fa-dashboard"></i> Home</a></li>
-    <li class="active">Users</li>
+    <li><a href="{{ URL::route('dashboard.index') }}"><i class="fa fa-dashboard"></i> {{ trans('user::users.breadcrumb.home') }}</a></li>
+    <li class="active">{{ trans('user::users.breadcrumb.users') }}</li>
 </ol>
 @stop
 
