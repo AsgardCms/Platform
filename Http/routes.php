@@ -1,6 +1,7 @@
 <?php
 
-Route::group(['prefix' => Config::get('core::core.admin-prefix'), 'namespace' => 'Modules\User\Http\Controllers'], function()
+$locale = LaravelLocalization::setLocale();
+Route::group(['prefix' => $locale . '/' . Config::get('core::core.admin-prefix'), 'namespace' => 'Modules\User\Http\Controllers'], function()
 {
     Route::resource('users', 'Admin\UserController', ['except' => ['show'], 'names' => [
             'index' => 'dashboard.user.index',
