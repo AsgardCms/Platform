@@ -5,11 +5,13 @@ return [
         'new-role'=> 'New role'
     ],
     'title' => [
-        'roles' => 'Roles'
+        'roles' => 'Roles',
+        'edit' => 'Edit role',
     ],
     'breadcrumb' => [
         'roles' => 'Roles',
         'new' => 'New',
+        'edit' => 'Edit role',
     ],
     'table' => [
         'name' => 'Name'

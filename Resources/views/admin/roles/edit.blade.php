@@ -2,12 +2,12 @@
 
 @section('content-header')
 <h1>
-    Updating Role <small>{{ $role->name }}</small>
+    {{ trans('user::roles.title.edit') }} <small>{{ $role->name }}</small>
 </h1>
 <ol class="breadcrumb">
-    <li><a href="{{ URL::route('dashboard.index') }}"><i class="fa fa-dashboard"></i> Home</a></li>
-    <li class=""><a href="{{ URL::route('dashboard.role.index') }}">Roles</a></li>
-    <li class="active">Update</li>
+    <li><a href="{{ URL::route('dashboard.index') }}"><i class="fa fa-dashboard"></i> {{ trans('user::users.breadcrumb.home') }}</a></li>
+    <li class=""><a href="{{ URL::route('dashboard.role.index') }}">{{ trans('user::roles.breadcrumb.roles') }}</a></li>
+    <li class="active">{{ trans('user::roles.breadcrumb.edit') }}</li>
 </ol>
 @stop
 
@@ -21,9 +21,9 @@
     <div class="col-md-12">
         <div class="nav-tabs-custom">
             <ul class="nav nav-tabs">
-                <li class="active"><a href="#tab_1-1" data-toggle="tab">Data</a></li>
-                <li class=""><a href="#tab_2-2" data-toggle="tab">Permissions</a></li>
-                <li class=""><a href="#tab_3-3" data-toggle="tab">Users</a></li>
+                <li class="active"><a href="#tab_1-1" data-toggle="tab">{{ trans('user::roles.tabs.data') }}</a></li>
+                <li class=""><a href="#tab_2-2" data-toggle="tab">{{ trans('user::roles.tabs.permissions') }}</a></li>
+                <li class=""><a href="#tab_3-3" data-toggle="tab">{{ trans('user::users.title.users') }}</a></li>
             </ul>
             <div class="tab-content">
                 <div class="tab-pane active" id="tab_1-1">
@@ -34,15 +34,15 @@
                         <div class="row">
                             <div class="col-sm-6">
                                 <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
-                                    {!! Form::label('name', 'Role name:') !!}
-                                    {!! Form::text('name', Input::old('name', $role->name), ['class' => 'form-control', 'placeholder' => 'First name']) !!}
+                                    {!! Form::label('name', trans('user::roles.form.name')) !!}
+                                    {!! Form::text('name', Input::old('name', $role->name), ['class' => 'form-control', 'placeholder' => trans('user::roles.form.name')]) !!}
                                     {!! $errors->first('name', '<span class="help-block">:message</span>') !!}
                                 </div>
                             </div>
                             <div class="col-sm-6">
                                 <div class="form-group{{ $errors->has('slug') ? ' has-error' : '' }}">
-                                    {!! Form::label('slug', 'Role slug:') !!}
-                                    {!! Form::text('slug', Input::old('slug', $role->slug), ['class' => 'form-control', 'placeholder' => 'Last name']) !!}
+                                    {!! Form::label('slug', trans('user::roles.form.slug')) !!}
+                                    {!! Form::text('slug', Input::old('slug', $role->slug), ['class' => 'form-control', 'placeholder' => trans('user::roles.form.slug')]) !!}
                                     {!! $errors->first('slug', '<span class="help-block">:message</span>') !!}
                                 </div>
                             </div>
@@ -69,8 +69,8 @@
                     </div>
                 </div>
                 <div class="box-footer">
-                    <button type="submit" class="btn btn-primary btn-flat">Update</button>
-                    <a class="btn btn-danger pull-right btn-flat" href="{{ URL::route('dashboard.role.index')}}"><i class="fa fa-times"></i> Cancel</a>
+                    <button type="submit" class="btn btn-primary btn-flat">{{ trans('user::button.update') }}</button>
+                    <a class="btn btn-danger pull-right btn-flat" href="{{ URL::route('dashboard.role.index')}}"><i class="fa fa-times"></i> {{ trans('user::button.cancel') }}</a>
                 </div>
             </div><!-- /.tab-content -->
         </div>

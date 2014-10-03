@@ -6,10 +6,12 @@ return [
     ],
     'title' => [
         'roles' => 'Rôles',
+        'edit' => 'Editez un rôle',
     ],
     'breadcrumb' => [
         'roles' => 'Rôles',
         'new' => 'Nouveau',
+        'edit' => 'Editez un rôle',
     ],
     'table' => [
         'name' => 'Nom'
