@@ -29,11 +29,11 @@
                 <table class="data-table table table-bordered table-hover">
                     <thead>
                         <tr>
-                            <th>Created at</th>
-                            <th>First name</th>
-                            <th>Last name</th>
-                            <th>Email</th>
-                            <th>Actions</th>
+                            <th>{{ trans('user::users.table.created-at') }}</th>
+                            <th>{{ trans('user::users.table.first-name') }}</th>
+                            <th>{{ trans('user::users.table.last-name') }}</th>
+                            <th>{{ trans('user::users.table.email') }}</th>
+                            <th>{{ trans('user::users.table.actions') }}</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -72,11 +72,11 @@
                     </tbody>
                     <tfoot>
                         <tr>
-                            <th>Created at</th>
-                            <th>First name</th>
-                            <th>Last name</th>
-                            <th>Email</th>
-                            <th>Actions</th>
+                            <th>{{ trans('user::users.table.created-at') }}</th>
+                            <th>{{ trans('user::users.table.first-name') }}</th>
+                            <th>{{ trans('user::users.table.last-name') }}</th>
+                            <th>{{ trans('user::users.table.email') }}</th>
+                            <th>{{ trans('user::users.table.actions') }}</th>
                         </tr>
                     </tfoot>
                 </table>
