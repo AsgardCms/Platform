@@ -8,11 +8,18 @@ return [
         'roles' => 'Roles'
     ],
     'breadcrumb' => [
-        'roles' => 'Roles'
+        'roles' => 'Roles',
+        'new' => 'New',
     ],
     'table' => [
         'name' => 'Name'
     ],
-    'tabs' => [],
-    'form' => [],
+    'tabs' => [
+        'data' => 'Data',
+        'permissions' => 'Permissions'
+    ],
+    'form' => [
+        'name' => 'Role name',
+        'slug' => 'Role slug'
+    ],
 ];
