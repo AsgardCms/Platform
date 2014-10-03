@@ -33,8 +33,7 @@ class PermissionFilter
         $segmentPosition = 2;
 
         if ($request->segment($segmentPosition) == Config::get('core::core.admin-prefix')) {
-            $segmentPosition++;
-            return $segmentPosition;
+            return ++$segmentPosition;
         }
 
         return $segmentPosition;
