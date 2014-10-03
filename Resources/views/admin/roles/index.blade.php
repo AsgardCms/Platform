@@ -2,11 +2,11 @@
 
 @section('content-header')
 <h1>
-    Roles
+    {{ trans('user::roles.title.roles') }}
 </h1>
 <ol class="breadcrumb">
-    <li><a href="{{ URL::route('dashboard.index') }}"><i class="fa fa-dashboard"></i> Home</a></li>
-    <li class="active">Roles</li>
+    <li><a href="{{ URL::route('dashboard.index') }}"><i class="fa fa-dashboard"></i> {{ trans('user::users.breadcrumb.home') }}</a></li>
+    <li class="active">{{ trans('user::roles.breadcrumb.roles') }}</li>
 </ol>
 @stop
 
@@ -17,7 +17,7 @@
             @include('flash::message')
             <div class="btn-group pull-right" style="margin: 0 15px 15px 0;">
                 <a href="{{ URL::route('dashboard.role.create') }}" class="btn btn-primary btn-flat" style="padding: 4px 10px;">
-                    <i class="fa fa-pencil"></i> New Role
+                    <i class="fa fa-pencil"></i> {{ trans('user::roles.button.new-role') }}
                 </a>
             </div>
         </div>
@@ -29,8 +29,8 @@
                 <table class="data-table table table-bordered table-hover">
                     <thead>
                         <tr>
-                            <th>Created at</th>
-                            <th>Name</th>
+                            <th>{{ trans('user::users.table.created-at') }}</th>
+                            <th>{{ trans('user::roles.table.name') }}</th>
                             <th>Actions</th>
                         </tr>
                     </thead>
@@ -60,8 +60,8 @@
                     </tbody>
                     <tfoot>
                         <tr>
-                            <th>Created at</th>
-                            <th>Name</th>
+                            <th>{{ trans('user::users.table.created-at') }}</th>
+                            <th>{{ trans('user::roles.table.name') }}</th>
                             <th>Actions</th>
                         </tr>
                     </tfoot>
@@ -85,12 +85,12 @@
                     <h4 class="modal-title" id="myModalLabel">Confirmation</h4>
                 </div>
                 <div class="modal-body">
-                    Are you sure you want to delete this record?
+                    {{ trans('user::users.modal.confirmation-message') }}
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">{{ trans('user::button.cancel') }}</button>
                     {!! Form::open(['route' => ['dashboard.role.destroy', $role->id], 'method' => 'delete', 'class' => 'pull-left']) !!}
-                        <button type="submit" class="btn btn-danger btn-flat"><i class="glyphicon glyphicon-trash"></i> Delete</button>
+                        <button type="submit" class="btn btn-danger btn-flat"><i class="glyphicon glyphicon-trash"></i> {{ trans('user::button.delete') }}</button>
                     {!! Form::close() !!}
                 </div>
             </div>
