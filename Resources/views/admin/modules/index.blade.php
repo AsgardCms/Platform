@@ -2,11 +2,11 @@
 
 @section('content-header')
 <h1>
-    Module management
+    {{ trans('workshop::modules.title') }}
 </h1>
 <ol class="breadcrumb">
-    <li><a href="{{ URL::route('dashboard.index') }}"><i class="fa fa-dashboard"></i> Home</a></li>
-    <li class="active">Modules</li>
+    <li><a href="{{ URL::route('dashboard.index') }}"><i class="fa fa-dashboard"></i> {{ trans('user::users.breadcrumb.home') }}</a></li>
+    <li class="active">{{ trans('workshop::modules.breadcrumb.modules') }}</li>
 </ol>
 @stop
 
@@ -20,7 +20,7 @@
     <div class="col-md-12">
         <div class="nav-tabs-custom">
             <ul class="nav nav-tabs">
-                <li class="active"><a href="#tab_1-1" data-toggle="tab">Module list</a></li>
+                <li class="active"><a href="#tab_1-1" data-toggle="tab">{{ trans('workshop::modules.tab.module list') }}</a></li>
             </ul>
             <div class="tab-content">
                 <div class="tab-pane active" id="tab_1-1">
@@ -37,7 +37,7 @@
                         @endforeach
                     </ul>
                     <div class="box-footer">
-                        <button type="submit" class="btn btn-primary btn-flat">Save module configuration</button>
+                        <button type="submit" class="btn btn-primary btn-flat">{{ trans('workshop::modules.button.save module configuration') }}</button>
                     </div>
                 </div>
             </div>
