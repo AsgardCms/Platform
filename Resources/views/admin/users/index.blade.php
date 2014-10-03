@@ -17,7 +17,7 @@
             @include('flash::message')
             <div class="btn-group pull-right" style="margin: 0 15px 15px 0;">
                 <a href="{{ URL::route('dashboard.user.create') }}" class="btn btn-primary btn-flat" style="padding: 4px 10px;">
-                    <i class="fa fa-pencil"></i> {{ trans('user::users.new-user') }}
+                    <i class="fa fa-pencil"></i> {{ trans('user::users.button.new-user') }}
                 </a>
             </div>
         </div>
@@ -101,12 +101,12 @@
                     <h4 class="modal-title" id="myModalLabel">Confirmation</h4>
                 </div>
                 <div class="modal-body">
-                    Are you sure you want to delete this record?
+                    {{ trans('user::users.modal.confirmation-message') }}
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">{{ trans('user::users.button.cancel') }}</button>
                     {!! Form::open(['route' => ['dashboard.user.destroy', $user->id], 'method' => 'delete', 'class' => 'pull-left']) !!}
-                        <button type="submit" class="btn btn-danger btn-flat"><i class="glyphicon glyphicon-trash"></i> Delete</button>
+                        <button type="submit" class="btn btn-danger btn-flat"><i class="glyphicon glyphicon-trash"></i> {{ trans('user::users.button.delete') }}</button>
                     {!! Form::close() !!}
                 </div>
             </div>
