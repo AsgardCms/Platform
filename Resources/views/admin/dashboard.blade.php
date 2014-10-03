@@ -12,7 +12,7 @@
 @section('content')
 <div class="row">
     <div class="col-md-12">
-        <p>Welcome on your admin dashboard</p>
+        <p>{{ trans('dashboard::dashboard.welcome-message') }}</p>
     </div>
 </div>
 @stop
