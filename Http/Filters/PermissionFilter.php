@@ -12,12 +12,31 @@ class PermissionFilter
         $action = $route->getActionName();
         $actionMethod = substr($action, strpos($action, "@") + 1);
 
-        if (Sentinel::hasAccess("{$request->segment(2)}.$actionMethod"))
+        $segmentPosition = $this->getSegmentPosition($request);
+
+        if (Sentinel::hasAccess("{$request->segment($segmentPosition)}.$actionMethod"))
         {
             return;
         }
 
         Flash::error('Permission denied.');
         return Redirect::to('/' . Config::get('core::core.admin-prefix'));
+    }
+
+    /**
+     * Get the correct segment position based on the locale or not
+     * @param $request
+     * @return mixed
+     */
+    private function getSegmentPosition($request)
+    {
+        $segmentPosition = 2;
+
+        if ($request->segment($segmentPosition) == Config::get('core::core.admin-prefix')) {
+            $segmentPosition++;
+            return $segmentPosition;
+        }
+
+        return $segmentPosition;
     }
 }
