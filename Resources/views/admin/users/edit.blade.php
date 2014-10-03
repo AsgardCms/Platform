@@ -76,8 +76,8 @@
                     </div>
                 </div>
                 <div class="box-footer">
-                    <button type="submit" class="btn btn-primary btn-flat">{{ trans('user::users.button.update') }}</button>
-                    <a class="btn btn-danger pull-right btn-flat" href="{{ URL::route('dashboard.user.index')}}"><i class="fa fa-times"></i> {{ trans('user::users.button.cancel') }}</a>
+                    <button type="submit" class="btn btn-primary btn-flat">{{ trans('user::button.update') }}</button>
+                    <a class="btn btn-danger pull-right btn-flat" href="{{ URL::route('dashboard.user.index')}}"><i class="fa fa-times"></i> {{ trans('user::button.cancel') }}</a>
                 </div>
             </div>
         </div>

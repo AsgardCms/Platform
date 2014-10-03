@@ -3,10 +3,6 @@
 return [
     'button' => [
         'new-user' => 'New User',
-        'cancel' => 'Cancel',
-        'delete' => 'Delete',
-        'create' => 'Create',
-        'update' => 'Update',
     ],
     'title' => [
         'new-user' => 'New user',

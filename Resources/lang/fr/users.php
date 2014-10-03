@@ -3,10 +3,6 @@
 return [
     'button' => [
         'new-user' => 'Nouvel utilisateur',
-        'cancel' => 'Annuler',
-        'delete' => 'Suprimmer',
-        'create' => 'Créer',
-        'update' => 'Mise à jour',
     ],
     'title' => [
         'new-user' => 'Nouvel utilisateur',

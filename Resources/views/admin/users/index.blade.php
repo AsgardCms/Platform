@@ -104,9 +104,9 @@
                     {{ trans('user::users.modal.confirmation-message') }}
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">{{ trans('user::users.button.cancel') }}</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">{{ trans('user::button.cancel') }}</button>
                     {!! Form::open(['route' => ['dashboard.user.destroy', $user->id], 'method' => 'delete', 'class' => 'pull-left']) !!}
-                        <button type="submit" class="btn btn-danger btn-flat"><i class="glyphicon glyphicon-trash"></i> {{ trans('user::users.button.delete') }}</button>
+                        <button type="submit" class="btn btn-danger btn-flat"><i class="glyphicon glyphicon-trash"></i> {{ trans('user::button.delete') }}</button>
                     {!! Form::close() !!}
                 </div>
             </div>
