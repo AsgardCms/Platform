@@ -5,6 +5,7 @@ return [
         'new-user' => 'Nouvel utilisateur',
     ],
     'title' => [
+        'users' => 'Utilisateurs',
         'new-user' => 'Nouvel utilisateur',
         'edit-user' => 'Edition d\'utilisateur',
     ],
