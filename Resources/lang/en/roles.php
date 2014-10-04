@@ -7,6 +7,7 @@ return [
     'title' => [
         'roles' => 'Roles',
         'edit' => 'Edit role',
+        'users-with-roles' => 'Users with this role',
     ],
     'breadcrumb' => [
         'roles' => 'Roles',

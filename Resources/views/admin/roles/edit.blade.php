@@ -56,7 +56,7 @@
                     <div class="box-body">
                         <div class="row">
                             <div class="col-md-12">
-                                <h3>Users with this role</h3>
+                                <h3>{{ trans('user::roles.title.users-with-roles') }}</h3>
                                 <ul>
                                     <?php foreach($role->users()->get() as $user): ?>
                                         <li>

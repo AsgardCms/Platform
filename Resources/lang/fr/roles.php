@@ -7,6 +7,7 @@ return [
     'title' => [
         'roles' => 'Rôles',
         'edit' => 'Editez un rôle',
+        'users-with-roles' => 'Utilisateurs avec ce rôle',
     ],
     'breadcrumb' => [
         'roles' => 'Rôles',
