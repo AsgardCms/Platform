@@ -33,8 +33,5 @@ return [
         'last-name' => 'Last name',
         'email' => 'Email',
         'actions' => 'Actions',
-    ],
-    'modal' => [
-        'confirmation-message' => 'Are you sure you want to delete this record?'
     ]
 ];

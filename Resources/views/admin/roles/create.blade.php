@@ -3,7 +3,7 @@
 @section('content-header')
     <h1>New Role</h1>
     <ol class="breadcrumb">
-        <li><a href="{{ URL::route('dashboard.index') }}"><i class="fa fa-dashboard"></i> {{ trans('user::users.breadcrumb.home') }}</a></li>
+        <li><a href="{{ URL::route('dashboard.index') }}"><i class="fa fa-dashboard"></i> {{ trans('core::core.breadcrumb.home') }}</a></li>
         <li class=""><a href="{{ URL::route('dashboard.role.index') }}">{{ trans('user::roles.breadcrumb.roles') }}</a></li>
         <li class="active">{{ trans('user::roles.breadcrumb.new') }}</li>
     </ol>

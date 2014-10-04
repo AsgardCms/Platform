@@ -33,8 +33,5 @@ return [
         'last-name' => 'Nom de famille',
         'email' => 'Email',
         'actions' => 'Actions',
-    ],
-    'modal' => [
-        'confirmation-message' => 'Etes vous sur de vouloir suprimer ce contenu?'
     ]
 ];
