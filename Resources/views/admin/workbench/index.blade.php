@@ -2,11 +2,11 @@
 
 @section('content-header')
 <h1>
-    Module helpers
+    {{ trans('workshop::workbench.title') }}
 </h1>
 <ol class="breadcrumb">
-    <li><a href="{{ URL::route('dashboard.index') }}"><i class="fa fa-dashboard"></i> Home</a></li>
-    <li class="active">Workbench</li>
+    <li><a href="{{ URL::route('dashboard.index') }}"><i class="fa fa-dashboard"></i> {{ trans('user::users.breadcrumb.home') }}</a></li>
+    <li class="active">{{ trans('workshop::workbench.title') }}</li>
 </ol>
 @stop
 
@@ -19,9 +19,9 @@
     <div class="col-md-12">
         <div class="nav-tabs-custom">
             <ul class="nav nav-tabs">
-                <li class="active"><a href="#tab_1-1" data-toggle="tab">Generator</a></li>
-                <li><a href="#tab_2-2" data-toggle="tab">Migrations</a></li>
-                <li><a href="#tab_3-3" data-toggle="tab">Seeds</a></li>
+                <li class="active"><a href="#tab_1-1" data-toggle="tab">{{ trans('workshop::workbench.tab.generators') }}</a></li>
+                <li><a href="#tab_2-2" data-toggle="tab">{{ trans('workshop::workbench.tab.migrations') }}</a></li>
+                <li><a href="#tab_3-3" data-toggle="tab">{{ trans('workshop::workbench.tab.seeds') }}</a></li>
             </ul>
             <div class="tab-content">
                 <div class="tab-pane active" id="tab_1-1">
