@@ -11,10 +11,15 @@ return [
     ],
     'button' => [
         'cancel' => 'Annuler',
+        'create' => 'Créer',
         'update' => 'Mise à jour',
         'delete' => 'Suprimer',
     ],
     'breadcrumb' => [
         'home' => 'Accueil'
+    ],
+    'tab' => [
+        'english' => 'Anglais',
+        'french' => 'Français',
     ]
 ];

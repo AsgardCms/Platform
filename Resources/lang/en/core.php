@@ -9,8 +9,13 @@ return [
         'created at' => 'Created at',
         'actions' => 'Actions',
     ],
+    'tab' => [
+        'english' => 'English',
+        'french' => 'French',
+    ],
     'button' => [
         'cancel' => 'Cancel',
+        'create' => 'Create',
         'update' => 'Update',
         'delete' => 'Delete',
     ],
