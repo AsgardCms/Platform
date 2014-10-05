@@ -79,6 +79,5 @@ class UserServiceProvider extends ServiceProvider
 
     private function registerEvents($events)
     {
-        $events->fire('sidebar.menu.item_event', new RegisterSidebarMenuItemEvent);
     }
 }
