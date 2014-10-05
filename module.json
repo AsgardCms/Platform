@@ -4,5 +4,8 @@
   "description": "",
   "keywords": [
   ],
-  "active": 1
+  "active": 1,
+  "providers": [
+      "Modules\\Workshop\\Providers\\WorkshopServiceProvider"
+  ]
 }
