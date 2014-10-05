@@ -24,10 +24,6 @@ class CoreServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->app->booted(function ($app)
-        {
-            $app['events']->listen('sidebar.menu.item_event', 'Modules\Core\Listeners\SidebarNavigationListener');
-        });
     }
 
     /**
