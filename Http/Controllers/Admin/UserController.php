@@ -29,8 +29,6 @@ class UserController extends AdminBaseController
     {
         parent::__construct();
 
-        $this->beforeFilter('permissions');
-
         $this->permissions = $permissions;
         $this->user = $user;
         $this->role = $role;
