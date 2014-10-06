@@ -16,7 +16,6 @@ class WorkbenchController extends AdminBaseController
     public function __construct()
     {
         parent::__construct();
-        $this->beforeFilter('permissions');
     }
 
     /**

@@ -19,7 +19,6 @@ class ModulesController extends AdminBaseController
         parent::__construct();
 
         $this->moduleManager = $moduleManager;
-        $this->beforeFilter('permissions');
     }
 
     public function index()
