@@ -25,7 +25,6 @@ class RolesController extends AdminBaseController
         parent::__construct();
         $this->permissions = $permissions;
         $this->role = $role;
-        $this->beforeFilter('permissions');
     }
 
     /**
