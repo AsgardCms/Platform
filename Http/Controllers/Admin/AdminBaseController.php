@@ -1,11 +1,12 @@
 <?php namespace Modules\Core\Http\Controllers\Admin;
 
-use Illuminate\Routing\Controller;
-
-class AdminBaseController extends Controller
+/**
+ * @Before("auth.admin")
+ */
+class AdminBaseController
 {
     public function __construct()
     {
-        $this->beforeFilter('auth.admin');
+        //$this->beforeFilter('auth.admin');
     }
 }
