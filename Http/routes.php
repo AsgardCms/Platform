@@ -5,10 +5,10 @@
 | Language Settings
 |--------------------------------------------------------------------------
 */
-$lang = Request::getPreferredLanguage(['fr', 'en', 'en', 'de']);
+$lang = Request::getPreferredLanguage(['fr', 'en', 'de']);
 
 if (App::environment() == 'testing') {
     $lang = 'fr';
 }
 
-App::setLocale('fr');
+App::setLocale($lang);

@@ -7,6 +7,5 @@ class AdminBaseController
 {
     public function __construct()
     {
-        //$this->beforeFilter('auth.admin');
     }
 }
