@@ -1,6 +1,6 @@
 <?php
 
-Route::group(['prefix' => LaravelLocalization::setLocale(), 'before' => 'LaravelLocalizationRedirectFilter|permissions'], function()
+Route::group(['prefix' => LaravelLocalization::setLocale(), 'before' => 'LaravelLocalizationRedirectFilter|auth.admin|permissions'], function()
 {
     Route::group(['prefix' => Config::get('core::core.admin-prefix'), 'namespace' => 'Modules\Workshop\Http\Controllers'],
         function () {
