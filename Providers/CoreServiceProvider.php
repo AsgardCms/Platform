@@ -1,5 +1,6 @@
 <?php namespace Modules\Core\Providers;
 
+use Illuminate\Routing\Router;
 use Illuminate\Support\ServiceProvider;
 use Modules\User\Events\RegisterSidebarMenuItemEvent;
 
@@ -11,6 +12,18 @@ class CoreServiceProvider extends ServiceProvider
      * @var bool
      */
     protected $defer = false;
+
+    /**
+     * The filters base class name.
+     *
+     * @var array
+     */
+    protected $filters = [
+        'Core' => [
+            'permissions' => 'PermissionFilter',
+            'auth.admin' => 'AdminFilter',
+        ]
+    ];
 
     public function boot()
     {
@@ -25,6 +38,9 @@ class CoreServiceProvider extends ServiceProvider
     public function register()
     {
         $this->loadModuleProviders();
+        $this->app->booted(function ($app) {
+            $this->registerFilters($app['router']);
+        });
     }
 
     /**
@@ -53,5 +69,22 @@ class CoreServiceProvider extends ServiceProvider
                 }
             }
         });
+    }
+
+    /**
+     * Register the filters.
+     *
+     * @param  Router $router
+     * @return void
+     */
+    public function registerFilters(Router $router)
+    {
+        foreach ($this->filters as $module => $filters) {
+            foreach ($filters as $name => $filter) {
+                $class = "Modules\\{$module}\\Http\\Filters\\{$filter}";
+
+                $router->filter($name, $class);
+            }
+        }
     }
 }
