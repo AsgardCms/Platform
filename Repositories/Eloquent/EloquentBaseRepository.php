@@ -43,7 +43,7 @@ abstract class EloquentBaseRepository implements BaseRepository
      * @param mixed $data
      * @return mixed
      */
-    public function add($data)
+    public function create($data)
     {
         return $this->model->create($data);
     }
@@ -52,7 +52,7 @@ abstract class EloquentBaseRepository implements BaseRepository
      * @param int|int[] $ids
      * @return mixed
      */
-    public function remove($ids)
+    public function destroy($ids)
     {
         return $this->model->destroy($ids);
     }

@@ -21,12 +21,19 @@ interface BaseRepository
      * @param $data
      * @return mixed
      */
-    public function add($data);
+    public function create($data);
+
+    /**
+     * Update a category
+     * @param $id
+     * @param $data
+     * @return mixed
+     */
+    public function update($id, $data);
 
     /**
      * @param $ids
      * @return mixed
      */
-    public function remove($ids);
-
+    public function destroy($ids);
 }
