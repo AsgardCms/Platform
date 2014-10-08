@@ -4,7 +4,7 @@
  * Interface CoreRepository
  * @package Modules\Core\Repositories
  */
-interface CoreRepository
+interface BaseRepository
 {
     /**
      * @param $id

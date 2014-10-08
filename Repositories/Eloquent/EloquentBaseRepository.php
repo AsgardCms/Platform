@@ -1,13 +1,13 @@
 <?php  namespace Modules\Core\Repositories\Eloquent;
 
 use Illuminate\Database\Eloquent\Model;
-use Modules\Core\Repositories\CoreRepository;
+use Modules\Core\Repositories\BaseRepository;
 
 /**
  * Class EloquentCoreRepository
  * @package Modules\Core\Repositories\Eloquent
  */
-abstract class EloquentCoreRepository implements CoreRepository
+abstract class EloquentBaseRepository implements BaseRepository
 {
     /**
      * @var Model An instance of the Eloquent Model
