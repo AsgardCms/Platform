@@ -24,7 +24,7 @@ interface BaseRepository
     public function create($data);
 
     /**
-     * Update a category
+     * Update a resource
      * @param $id
      * @param $data
      * @return mixed
