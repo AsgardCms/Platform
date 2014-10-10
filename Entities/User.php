@@ -15,5 +15,5 @@ class User extends SentryUser
         'last_name'
     ];
 
-    protected $presenter = 'Modules\Session\Presenters\UserPresenter';
+    protected $presenter = 'Modules\User\Presenters\UserPresenter';
 }
