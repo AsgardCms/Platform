@@ -3,7 +3,7 @@
 use Cartalyst\Sentinel\Laravel\Facades\Sentinel;
 use Illuminate\Support\Facades\Config;
 
-class UrlTest extends \TestCase
+class UserUrlTest extends \TestCase
 {
     public function setUp()
     {
