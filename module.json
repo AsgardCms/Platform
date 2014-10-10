@@ -8,7 +8,9 @@
         "laracasts/commander": "dev-master",
         "laracasts/flash": "~1.0",
         "laracasts/presenter": "0.2.*",
-        "guzzlehttp/guzzle": "4.2.2"
+        "guzzlehttp/guzzle": "4.2.2",
+        "dimsav/laravel-translatable": "dev-laravel-5",
+        "mcamara/laravel-localization": "dev-Laravel5Support"
     },
     "active": 1
 }
