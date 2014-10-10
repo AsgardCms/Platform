@@ -1,6 +1,7 @@
 <?php namespace Modules\User\Tests;
 
 use Cartalyst\Sentinel\Laravel\Facades\Sentinel;
+use Illuminate\Support\Facades\Config;
 use TestCase;
 
 class SessionUrlTest extends TestCase
