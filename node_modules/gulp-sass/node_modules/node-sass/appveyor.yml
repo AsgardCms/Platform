@@ -1,0 +1,22 @@
+version: "{build}"
+
+init:
+  - git config --global core.autocrlf input
+
+environment:
+  matrix:
+    - nodejs_version: 0.10.32
+    - nodejs_version: 0.11.13
+
+install:
+  - ps: Install-Product node $env:nodejs_version
+  - cmd: SET PATH=C:\python27;%PATH%
+  - cmd: git submodule update --init --recursive
+  - npm install --msvs_version=2013
+
+test_script:
+  - node --version
+  - npm --version
+  - cmd: npm test
+
+build: off

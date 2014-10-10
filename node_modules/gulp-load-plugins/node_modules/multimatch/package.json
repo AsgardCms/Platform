@@ -1,0 +1,71 @@
+{
+  "name": "multimatch",
+  "version": "1.0.0",
+  "description": "Extends minimatch.match() with support for multiple patterns",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/sindresorhus/multimatch"
+  },
+  "author": {
+    "name": "Sindre Sorhus",
+    "email": "sindresorhus@gmail.com",
+    "url": "http://sindresorhus.com"
+  },
+  "maintainers": [
+    {
+      "name": "sindresorhus",
+      "email": "sindresorhus@gmail.com"
+    }
+  ],
+  "engines": {
+    "node": ">=0.10.0"
+  },
+  "scripts": {
+    "test": "mocha"
+  },
+  "files": [
+    "index.js"
+  ],
+  "keywords": [
+    "minimatch",
+    "match",
+    "matcher",
+    "pattern",
+    "patterns",
+    "glob",
+    "globs",
+    "globbing",
+    "expand",
+    "wildcard",
+    "find"
+  ],
+  "dependencies": {
+    "array-differ": "^1.0.0",
+    "array-union": "^1.0.0",
+    "minimatch": "^1.0.0"
+  },
+  "devDependencies": {
+    "chai": "^1.9.1",
+    "mocha": "*"
+  },
+  "gitHead": "9e8f0b3218a0043d72ec061ebdefd0e9d459425a",
+  "bugs": {
+    "url": "https://github.com/sindresorhus/multimatch/issues"
+  },
+  "homepage": "https://github.com/sindresorhus/multimatch",
+  "_id": "multimatch@1.0.0",
+  "_shasum": "dcdf749896f51480e0e1c48dab9cba41edf464ab",
+  "_from": "multimatch@1.0.0",
+  "_npmVersion": "2.0.0",
+  "_npmUser": {
+    "name": "sindresorhus",
+    "email": "sindresorhus@gmail.com"
+  },
+  "dist": {
+    "shasum": "dcdf749896f51480e0e1c48dab9cba41edf464ab",
+    "tarball": "http://registry.npmjs.org/multimatch/-/multimatch-1.0.0.tgz"
+  },
+  "directories": {},
+  "_resolved": "https://registry.npmjs.org/multimatch/-/multimatch-1.0.0.tgz"
+}
