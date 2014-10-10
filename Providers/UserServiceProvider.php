@@ -21,6 +21,9 @@ class UserServiceProvider extends ServiceProvider
     protected $filters = [
         'Core' => [
             'permissions' => 'PermissionFilter'
+        ],
+        'User' => [
+            'auth.guest' => 'GuestFilter'
         ]
     ];
 
