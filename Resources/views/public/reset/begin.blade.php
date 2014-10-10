@@ -1,4 +1,4 @@
-@extends('session::layouts.account')
+@extends('user::layouts.account')
 
 @section('title')
 Reset password | @parent

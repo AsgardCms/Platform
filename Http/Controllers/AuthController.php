@@ -56,7 +56,7 @@ class AuthController
 
     public function getRegister()
     {
-        return View::make('session::public.register');
+        return View::make('user::public.register');
     }
 
     public function postRegister(RegisterRequest $request)
