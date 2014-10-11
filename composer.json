@@ -8,6 +8,13 @@
     "emulsion"
   ],
   "license": "MIT",
+  "authors": [
+    {
+      "name": "Nicolas Widart",
+      "homepage": "http://www.nwidart.com/",
+      "role": "Developer"
+    }
+  ],
   "type": "project",
   "require": {
     "laravel/framework": "~5.0",
