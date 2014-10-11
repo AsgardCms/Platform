@@ -1,0 +1,10 @@
+{
+    "name": "User",
+    "alias": "user",
+    "description": "",
+    "keywords": [],
+    "active": 1,
+    "providers": [
+        "Modules\\User\\Providers\\UserServiceProvider"
+    ]
+}
