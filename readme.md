@@ -42,8 +42,7 @@ php artisan module:seed User
 
 ### Enjoy
 
-You can now login with `n.widart@gmail.com` and password `test` .
-
+You can now login on `/backend` with `n.widart@gmail.com` and password `test` .
 
 
 
