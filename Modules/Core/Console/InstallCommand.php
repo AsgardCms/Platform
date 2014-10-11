@@ -60,6 +60,8 @@ class InstallCommand extends Command
 
 		$this->createFirstUser();
 
+		$this->publishAssets();
+
 		$this->blockMessage('Success!', 'Platform ready! You can now login with your username and password at /backend');
     }
 
@@ -118,5 +120,13 @@ class InstallCommand extends Command
 		$errorMessages = [$title, $message];
 		$formattedBlock = $formatter->formatBlock($errorMessages, $style, true);
 		$this->line($formattedBlock);
+	}
+
+	/**
+	 * Publish the CMS assets
+     */
+	private function publishAssets()
+	{
+		$this->call('module:publish', ['module' => 'Core']);
 	}
 }
