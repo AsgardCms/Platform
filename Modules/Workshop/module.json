@@ -1,0 +1,11 @@
+{
+  "name": "Workshop",
+  "alias": "workshop",
+  "description": "",
+  "keywords": [
+  ],
+  "active": 1,
+  "providers": [
+      "Modules\\Workshop\\Providers\\WorkshopServiceProvider"
+  ]
+}
