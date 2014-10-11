@@ -1,6 +1,8 @@
 # Emulsion/Platform
 
-This is the core repository for the CMS. All modules are installed as subtrees.
+This is the core repository for the CMS. The admin is fully translatable in English and French by default.
+
+![](https://i.cloudup.com/WcLe-ORql4.thumb.png)
 
 ## Requirements
 
