@@ -30,21 +30,16 @@ Create a `.env` file at the project root. It needs to contain the following key.
 APP_ENV=development
 ```
 
-### Run migrations
+### Run install command
 
+Run the installation command to run the migrations and seeds. This will as well ask you information to create an admin account.
 ```
-php artisan migrate --package=cartalyst/sentinel
-```
-
-### Run seeds
-
-```
-php artisan module:seed User
+php artisan platform:install
 ```
 
 ### Enjoy
 
-You can now login on `/backend` with `n.widart@gmail.com` and password `test` .
+You can now login on `/backend` with your email and password asked during the install command.
 
 
 
