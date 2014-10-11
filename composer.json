@@ -1,9 +1,11 @@
 {
-  "name": "laravel/laravel",
-  "description": "The Laravel Framework.",
+  "name": "emulsion/platform",
+  "description": "The Emulsion core platform",
   "keywords": [
     "framework",
-    "laravel"
+    "laravel",
+    "platform",
+    "emulsion"
   ],
   "license": "MIT",
   "type": "project",
