@@ -3,7 +3,7 @@
 use Illuminate\Database\Seeder;
 use Illuminate\Database\Eloquent\Model;
 
-class UsersDatabaseSeeder extends Seeder
+class UserDatabaseSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -14,8 +14,8 @@ class UsersDatabaseSeeder extends Seeder
     {
         Model::unguard();
 
-        $this->call("Modules\\Session\\Database\\Seeders\\SentryGroupSeedTableSeeder");
-        $this->call("Modules\\Session\\Database\\Seeders\\SentryUserSeedTableSeeder");
+        $this->call("Modules\\User\\Database\\Seeders\\SentryGroupSeedTableSeeder");
+        $this->call("Modules\\User\\Database\\Seeders\\SentryUserSeedTableSeeder");
     }
 
 }
