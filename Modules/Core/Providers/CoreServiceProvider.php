@@ -2,6 +2,7 @@
 
 use Illuminate\Routing\Router;
 use Illuminate\Support\ServiceProvider;
+use Modules\Core\Console\InstallCommand;
 use Modules\User\Events\RegisterSidebarMenuItemEvent;
 
 class CoreServiceProvider extends ServiceProvider
@@ -41,6 +42,7 @@ class CoreServiceProvider extends ServiceProvider
         $this->app->booted(function ($app) {
             $this->registerFilters($app['router']);
         });
+        $this->registerCommands();
     }
 
     /**
@@ -86,5 +88,30 @@ class CoreServiceProvider extends ServiceProvider
                 $router->filter($name, $class);
             }
         }
+    }
+
+    /**
+     * Register the console commands
+     */
+    private function registerCommands()
+    {
+        $this->registerInstallCommand();
+    }
+
+    /**
+     * Register the installation command
+     */
+    private function registerInstallCommand()
+    {
+        $this->app->bindShared('command.platform.install', function($app) {
+            return new InstallCommand(
+                $app['Modules\User\Repositories\UserRepository'],
+                $app['Modules\User\Repositories\RoleRepository']
+            );
+        });
+
+        $this->commands(
+            'command.platform.install'
+        );
     }
 }
