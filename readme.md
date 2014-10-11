@@ -42,6 +42,10 @@ php artisan platform:install
 You can now login on `/backend` with your email and password asked during the install command.
 
 
+## Documentation
+
+You can read the documentation on its specific [github repository](https://github.com/nWidart-Modules/Documentation).
+
 
 ## Development
 
