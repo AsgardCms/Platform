@@ -107,6 +107,12 @@ return [
 
 		'Illuminate\Html\HtmlServiceProvider',
 		'Pingpong\Modules\ModulesServiceProvider',
+		'Cartalyst\Sentinel\Laravel\SentinelServiceProvider',
+		'Laracasts\Commander\CommanderServiceProvider',
+		'Laracasts\Flash\FlashServiceProvider',
+		'Mcamara\LaravelLocalization\LaravelLocalizationServiceProvider',
+
+		'Modules\Core\Providers\CoreServiceProvider',
 
 		/*
 		 * Laravel Framework Service Providers...
@@ -190,7 +196,14 @@ return [
 		'Validator' => 'Illuminate\Support\Facades\Validator',
 		'View'      => 'Illuminate\Support\Facades\View',
 		'Form' => 'Illuminate\Html\FormFacade',
-		'Module'        => 'Pingpong\Modules\Facades\Module',
+		/* Packages */
+		'Form' => 'Illuminate\Html\FormFacade',
+		'Module' => 'Pingpong\Modules\Facades\Module',
+		'Activation' => 'Cartalyst\Sentinel\Laravel\Facades\Activation',
+		'Reminder' => 'Cartalyst\Sentinel\Laravel\Facades\Reminder',
+		'Sentinel' => 'Cartalyst\Sentinel\Laravel\Facades\Sentinel',
+		'Flash' => 'Laracasts\Flash\Flash',
+		'LaravelLocalization' => 'Mcamara\LaravelLocalization\Facades\LaravelLocalization',
 	],
 
 ];
