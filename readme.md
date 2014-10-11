@@ -30,7 +30,7 @@ Create a `.env` file at the project root. It needs to contain the following key.
 APP_ENV=development
 ```
 
-### Run install command
+### Run the install command
 
 Run the installation command to run the migrations and seeds. This will as well ask you information to create an admin account.
 ```
