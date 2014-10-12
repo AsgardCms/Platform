@@ -37,6 +37,9 @@ This install command will perform the following actions:
 - Publishing assets
 - Create a first admin account
 
+*Note: The installation fails mysteriously on the run of the platform:install command. Running it a second time works.*
+
+
 ### Enjoy
 
 You can now login on `/backend` with your email and password asked during the install command.
