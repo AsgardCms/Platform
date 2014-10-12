@@ -1,4 +1,4 @@
-# Emulsion/Platform
+# nWidart/Platform
 
 This is the core repository for the CMS. The admin is fully translatable in English and French by default.
 
