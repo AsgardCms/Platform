@@ -31,10 +31,6 @@ This install command will perform the following actions:
 - Publishing assets
 - Create a first admin account
 
-```
-php artisan platform:install
-```
-
 ### Enjoy
 
 You can now login on `/backend` with your email and password asked during the install command.
