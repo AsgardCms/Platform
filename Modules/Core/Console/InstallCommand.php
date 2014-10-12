@@ -1,6 +1,7 @@
 <?php namespace Modules\Core\Console;
 
 use Illuminate\Console\Command;
+use Illuminate\Filesystem\Filesystem;
 use Illuminate\Support\Facades\Hash;
 use Modules\User\Repositories\RoleRepository;
 use Modules\User\Repositories\UserRepository;
@@ -30,19 +31,25 @@ class InstallCommand extends Command
 	 * @var RoleRepository
 	 */
 	private $role;
+	/**
+	 * @var Filesystem
+	 */
+	private $finder;
 
 	/**
 	 * Create a new command instance.
 	 *
 	 * @param UserRepository $user
 	 * @param RoleRepository $role
+	 * @param Filesystem $finder
 	 * @return \Modules\Core\Console\InstallCommand
 	 */
-    public function __construct($user, $role)
+    public function __construct($user, $role, Filesystem $finder)
     {
         parent::__construct();
 		$this->user = $user;
 		$this->role = $role;
+		$this->finder = $finder;
 	}
 
     /**
@@ -53,6 +60,8 @@ class InstallCommand extends Command
     public function fire()
     {
 		$this->info('Starting the installation process...');
+
+		$this->configureDatabase();
 
 		$this->runMigrations();
 
@@ -128,5 +137,48 @@ class InstallCommand extends Command
 	private function publishAssets()
 	{
 		$this->call('module:publish', ['module' => 'Core']);
+	}
+
+	/**
+	 * Configuring the database information
+     */
+	private function configureDatabase()
+	{
+		// Ask for credentials
+		$databaseName = $this->ask('Enter your database name');
+		$databaseUsername = $this->ask('Enter your database username');
+		$databasePassword = $this->secret('Enter your database password');
+
+		$this->configureEnvironmentFile($databaseName, $databaseUsername, $databasePassword);
+	}
+
+	/**
+	 * Writing the environment file
+	 * @param $databaseName
+	 * @param $databaseUsername
+	 * @param $databasePassword
+     */
+	private function configureEnvironmentFile($databaseName, $databaseUsername, $databasePassword)
+	{
+		$environmentFile = $this->finder->get('.env.example');
+
+		$search = [
+			"DB_USERNAME=homestead",
+			"DB_PASSWORD=homestead"
+		];
+
+		$replace = [
+			"DB_USERNAME=$databaseUsername",
+			"DB_PASSWORD=$databasePassword" . PHP_EOL
+		];
+		$newEnvironmentFile = str_replace($search, $replace, $environmentFile);
+		$newEnvironmentFile .= "DB_NAME=$databaseName";
+
+		// Write the new environment file
+		$this->finder->put('.env', $newEnvironmentFile);
+		// Delete the old environment file
+		$this->finder->delete('env.example');
+
+		$this->info('Environment file written');
 	}
 }
