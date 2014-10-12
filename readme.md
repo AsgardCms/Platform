@@ -17,7 +17,11 @@ This is the core repository for the CMS. The admin is fully translatable in Engl
 composer create-project emulsion/platform your-project-name --prefer-dist --stability=dev
 ```
 
-### Run the install command
+### Run composer install
+
+Run the usual `composer install` to get the dependencies.
+
+A `platform:install` command will run as a *post create project* command.
 
 This install command will perform the following actions:
 
