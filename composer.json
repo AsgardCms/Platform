@@ -1,11 +1,11 @@
 {
   "name": "nwidart/platform",
-  "description": "The Emulsion core platform",
+  "description": "The core platform hosting the main nwidart-modules.",
   "keywords": [
     "framework",
     "laravel",
     "platform",
-    "emulsion"
+    "nwidart"
   ],
   "license": "MIT",
   "authors": [

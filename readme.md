@@ -14,7 +14,7 @@ This is the core repository for the CMS. The admin is fully translatable in Engl
 ### Install Platform
 
 ```
-composer create-project emulsion/platform your-project-name --prefer-dist --stability=dev
+composer create-project nwidart/platform your-project-name --prefer-dist --stability=dev
 ```
 
 ### Run composer install
