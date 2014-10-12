@@ -17,22 +17,16 @@ This is the core repository for the CMS. The admin is fully translatable in Engl
 composer create-project emulsion/platform your-project-name --prefer-dist --stability=dev
 ```
 
-### Configure your database settings
-
-Configure your development settings in `config/development`.
-
-
-### Create .env environment file
-
-Create a `.env` file at the project root. It needs to contain the following key.
-
-```
-APP_ENV=development
-```
-
 ### Run the install command
 
-Run the installation command to run the migrations and seeds. This will as well ask you information to create an admin account.
+This install command will perform the following actions:
+
+- Setup database information
+- Running migrations
+- Running seeds
+- Publishing assets
+- Create a first admin account
+
 ```
 php artisan platform:install
 ```
