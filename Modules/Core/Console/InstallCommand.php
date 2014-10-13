@@ -149,6 +149,7 @@ class InstallCommand extends Command
 		$databaseUsername = $this->ask('Enter your database username');
 		$databasePassword = $this->secret('Enter your database password');
 
+		$this->setLaravelConfiguration($databaseName, $databaseUsername, $databasePassword);
 		$this->configureEnvironmentFile($databaseName, $databaseUsername, $databasePassword);
 	}
 
@@ -180,5 +181,18 @@ class InstallCommand extends Command
 		$this->finder->delete('env.example');
 
 		$this->info('Environment file written');
+	}
+
+	/**
+	 * Set DB credentials to laravel config
+	 * @param $databaseName
+	 * @param $databaseUsername
+	 * @param $databasePassword
+     */
+	private function setLaravelConfiguration($databaseName, $databaseUsername, $databasePassword)
+	{
+		$this->laravel['config']['database.connections.mysql.database'] = $databaseName;
+		$this->laravel['config']['database.connections.mysql.username'] = $databaseUsername;
+		$this->laravel['config']['database.connections.mysql.password'] = $databasePassword;
 	}
 }
