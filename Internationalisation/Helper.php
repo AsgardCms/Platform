@@ -13,9 +13,9 @@ class Helper
      */
     public static function saveTranslated($model, $data)
     {
-        foreach ($data as $key => $value) {
+        foreach ($data as $lang => $value) {
             if (is_array($value)) {
-                foreach ($value as $lang => $input) {
+                foreach ($value as $key => $input) {
                     $model->translate($lang)->$key = $input;
                 }
             }
