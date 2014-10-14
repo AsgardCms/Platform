@@ -9,7 +9,6 @@ return [
     'CoreModules' => [
         'Core',
         'Dashboard',
-        'Session',
         'User',
         'Workshop'
     ]
