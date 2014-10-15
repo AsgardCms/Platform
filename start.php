@@ -10,11 +10,11 @@
 |
 */
 
-View::addNamespace('dashboard', __DIR__ . '/Resources/views/');
+View::addNamespace('core', __DIR__ . '/Resources/views/');
 
-Lang::addNamespace('dashboard', __DIR__ . '/Resources/lang/');
+Lang::addNamespace('core', __DIR__ . '/Resources/lang/');
 
-Config::addNamespace('dashboard', __DIR__ . '/Config/');
+Config::addNamespace('core', __DIR__ . '/Config/');
 
 /*
 |--------------------------------------------------------------------------
@@ -26,5 +26,5 @@ Config::addNamespace('dashboard', __DIR__ . '/Config/');
 */
 
 require __DIR__ . '/Http/routes.php';
-
 require __DIR__ . '/composers.php';
+require __DIR__ . '/helpers.php';
