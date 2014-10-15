@@ -5,5 +5,8 @@
     "keywords": [
 
     ],
-    "active": 1
+    "active": 1,
+    "providers": [
+        "Modules\\Setting\\Providers\\SettingServiceProvider"
+    ]
 }

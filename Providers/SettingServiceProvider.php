@@ -1,6 +1,8 @@
 <?php namespace Modules\Setting\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use Modules\Setting\Entities\Setting;
+use Modules\Setting\Repositories\Eloquent\EloquentSettingRepository;
 
 class SettingServiceProvider extends ServiceProvider {
 
@@ -18,7 +20,9 @@ class SettingServiceProvider extends ServiceProvider {
 	 */
 	public function register()
 	{
-		//
+		$this->app->booted(function ($app) {
+			$this->registerBindings();
+		});
 	}
 
 	/**
@@ -31,4 +35,13 @@ class SettingServiceProvider extends ServiceProvider {
 		return array();
 	}
 
+	private function registerBindings()
+	{
+		$this->app->bind(
+			'Modules\Setting\Repositories\SettingRepository',
+			function() {
+				return new EloquentSettingRepository(new Setting);
+			}
+		);
+	}
 }
