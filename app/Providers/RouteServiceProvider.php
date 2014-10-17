@@ -19,8 +19,6 @@ class RouteServiceProvider extends ServiceProvider {
 	 */
 	protected $scan = [
 		'App\Http\Controllers\HomeController',
-		'App\Http\Controllers\Auth\AuthController',
-		'App\Http\Controllers\Auth\PasswordController',
 	];
 
 	/**
