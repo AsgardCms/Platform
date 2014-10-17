@@ -8,7 +8,7 @@ use Modules\User\Repositories\UserRepository;
 class SentinelUserRepository implements UserRepository
 {
     /**
-     * @var \Modules\Session\Entities\User
+     * @var \Modules\User\Entities\User
      */
     protected $user;
     /**
@@ -49,7 +49,7 @@ class SentinelUserRepository implements UserRepository
      */
     public function createWithRoles($data, $roles)
     {
-        $user = $this->user->create($data);
+        $user = $this->create((array) $data);
 
         if (!empty($roles)) {
             $user->roles()->attach($roles);

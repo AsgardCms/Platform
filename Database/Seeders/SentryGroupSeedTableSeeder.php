@@ -44,6 +44,18 @@ class SentryGroupSeedTableSeeder extends Seeder
             'workbench.seed' => true,
             'modules.index' => true,
             'modules.store' => true,
+            'roles.index' => true,
+            'roles.create' => true,
+            'roles.store' => true,
+            'roles.edit' => true,
+            'roles.update' => true,
+            'roles.destroy' => true,
+            'users.index' => true,
+            'users.create' => true,
+            'users.store' => true,
+            'users.edit' => true,
+            'users.update' => true,
+            'users.destroy' => true,
         ];
         $group->save();
 
