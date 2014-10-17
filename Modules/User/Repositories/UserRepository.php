@@ -14,9 +14,10 @@ interface UserRepository
 
     /**
      * Create a user resource
+     * @param array $data
      * @return mixed
      */
-    public function create($data);
+    public function create(array $data);
 
     /**
      * Create a user and assign roles to it

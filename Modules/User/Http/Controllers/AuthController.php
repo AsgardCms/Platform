@@ -35,7 +35,7 @@ class AuthController
         ];
         $remember = (bool)$request->get('remember_me', false);
         try {
-            if ($user = Sentinel::authenticate($credentials, $remember)) {
+            if (Sentinel::authenticate($credentials, $remember)) {
                 Flash::success('Successfully logged in.');
                 return Redirect::route('dashboard.index', compact('user'));
             }

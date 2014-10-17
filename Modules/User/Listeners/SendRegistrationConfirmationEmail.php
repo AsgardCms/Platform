@@ -1,6 +1,7 @@
 <?php namespace Modules\User\Listeners;
 
 use Cartalyst\Sentinel\Laravel\Facades\Activation;
+use Illuminate\Mail\Message;
 use Illuminate\Support\Facades\Mail;
 use Laracasts\Commander\Events\EventListener;
 
@@ -16,7 +17,7 @@ class SendRegistrationConfirmationEmail extends EventListener
             'activationcode' => $activation->code
         ];
         Mail::queue('session::emails.welcome',$data,
-            function ($m) use ($user) {
+            function (Message $m) use ($user) {
                 $m->to($user->email)->subject('Welcome.');
             }
         );

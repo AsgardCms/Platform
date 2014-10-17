@@ -12,7 +12,7 @@
 @stop
 
 @section('styles')
-<link href="{{{ core_asset('css/vendor/iCheck/flat/blue.css') }}}" rel="stylesheet" type="text/css" />
+<link href="{{{ Module::asset('core', 'css/vendor/iCheck/flat/blue.css') }}}" rel="stylesheet" type="text/css" />
 @stop
 
 @section('content')
@@ -50,7 +50,7 @@
                     </div>
                 </div><!-- /.tab-pane -->
                 <div class="tab-pane" id="tab_2-2">
-                    @include('user::admin.roles.partials.permissions')
+                    @include('user::admin.partials.permissions', ['model' => $role])
                 </div><!-- /.tab-pane -->
                 <div class="tab-pane" id="tab_3-3">
                     <div class="box-body">

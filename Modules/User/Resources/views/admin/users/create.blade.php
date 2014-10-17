@@ -12,7 +12,7 @@
 @stop
 
 @section('styles')
-<link href="{{{ core_asset('css/vendor/iCheck/flat/blue.css') }}}" rel="stylesheet" type="text/css" />
+<link href="{{{ Module::asset('core', 'css/vendor/iCheck/flat/blue.css') }}}" rel="stylesheet" type="text/css" />
 @stop
 
 @section('content')
@@ -90,7 +90,7 @@
                 </div>
                 <div class="tab-pane" id="tab_3-3">
                     <div class="box-body">
-                        @include('user::admin.users.partials.permissions-create')
+                        @include('user::admin.partials.permissions-create')
                     </div>
                 </div>
                 <div class="box-footer">

@@ -2,7 +2,6 @@
 
 use Illuminate\Routing\Router;
 use Illuminate\Support\ServiceProvider;
-use Modules\User\Events\RegisterSidebarMenuItemEvent;
 
 class UserServiceProvider extends ServiceProvider
 {
@@ -26,6 +25,11 @@ class UserServiceProvider extends ServiceProvider
             'auth.guest' => 'GuestFilter'
         ]
     ];
+    protected $middleware = [
+        'User' => [
+            'auth.guest' => 'GuestFilter'
+        ]
+    ];
 
     /**
      * Register the service provider.
@@ -36,8 +40,8 @@ class UserServiceProvider extends ServiceProvider
     {
         $this->app->booted(function ($app) {
 			$this->registerFilters($app['router']);
+			$this->registerMiddleware($app['router']);
 			$this->registerBindings();
-            $this->registerEvents($app['events']);
 		});
     }
 
@@ -80,7 +84,14 @@ class UserServiceProvider extends ServiceProvider
 		);
 	}
 
-    private function registerEvents($events)
+    private function registerMiddleware($router)
     {
+        foreach ($this->middleware as $module => $middlewares) {
+            foreach ($middlewares as $name => $middleware) {
+                $class = "Modules\\{$module}\\Http\\Middleware\\{$middleware}";
+
+                $router->middleware($name, $class);
+            }
+        }
     }
 }
