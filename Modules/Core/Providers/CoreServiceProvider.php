@@ -3,7 +3,6 @@
 use Illuminate\Routing\Router;
 use Illuminate\Support\ServiceProvider;
 use Modules\Core\Console\InstallCommand;
-use Modules\User\Events\RegisterSidebarMenuItemEvent;
 
 class CoreServiceProvider extends ServiceProvider
 {
@@ -106,7 +105,6 @@ class CoreServiceProvider extends ServiceProvider
         $this->app->bindShared('command.platform.install', function($app) {
             return new InstallCommand(
                 $app['Modules\User\Repositories\UserRepository'],
-                $app['Modules\User\Repositories\RoleRepository'],
                 $app['files']
             );
         });

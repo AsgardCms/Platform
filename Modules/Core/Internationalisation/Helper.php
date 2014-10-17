@@ -11,16 +11,21 @@ class Helper
      * @param $model
      * @param $data
      */
-    public static function saveTranslated($model, $data)
+    public static function updateTranslated($model, $data)
     {
-        foreach ($data as $lang => $value) {
-            if (is_array($value)) {
-                foreach ($value as $key => $input) {
-                    $model->translate($lang)->$key = $input;
-                }
-            }
-        }
-        $model->save();
+        self::saveTranslatedProperties($model, $data);
+    }
+
+    /**
+     * Create the given model and save its translated attributes
+     * @param $model
+     * @param $data
+     */
+    public static function createTranslatedFields($model, $data)
+    {
+        $model = new $model;
+
+        self::saveTranslatedProperties($model, $data);
     }
 
     /**
@@ -44,20 +49,20 @@ class Helper
     }
 
     /**
-     * Create the given model and save its translated attributes
+     * Save the given properties for the model
      * @param $model
      * @param $data
      */
-    public static function createTranslatedFields($model, $data)
+    private static function saveTranslatedProperties($model, $data)
     {
-        $model = new $model;
-        foreach ($data as $key => $value) {
+        foreach ($data as $lang => $value) {
             if (is_array($value)) {
-                foreach ($value as $lang => $input) {
+                foreach ($value as $key => $input) {
                     $model->translate($lang)->$key = $input;
                 }
             }
         }
         $model->save();
     }
+
 }

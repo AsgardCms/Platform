@@ -1,13 +1,15 @@
 <?php namespace Modules\Core\Http\Filters;
 
 use Cartalyst\Sentinel\Laravel\Facades\Sentinel;
+use Illuminate\Http\Request;
+use Illuminate\Routing\Route;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\Redirect;
 use Laracasts\Flash\Flash;
 
 class PermissionFilter
 {
-    public function filter($route, $request)
+    public function filter(Route $route, Request $request)
     {
         $action = $route->getActionName();
         $actionMethod = substr($action, strpos($action, "@") + 1);
@@ -28,7 +30,7 @@ class PermissionFilter
      * @param $request
      * @return mixed
      */
-    private function getSegmentPosition($request)
+    private function getSegmentPosition(Request $request)
     {
         $segmentPosition = 2;
 
