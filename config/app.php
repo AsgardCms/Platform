@@ -105,15 +105,6 @@ return [
 		'App\Providers\LogServiceProvider',
 		'App\Providers\RouteServiceProvider',
 
-		'Illuminate\Html\HtmlServiceProvider',
-		'Pingpong\Modules\ModulesServiceProvider',
-		'Cartalyst\Sentinel\Laravel\SentinelServiceProvider',
-		'Laracasts\Commander\CommanderServiceProvider',
-		'Laracasts\Flash\FlashServiceProvider',
-		'Mcamara\LaravelLocalization\LaravelLocalizationServiceProvider',
-
-		'Modules\Core\Providers\CoreServiceProvider',
-
 		/*
 		 * Laravel Framework Service Providers...
 		 */
@@ -121,6 +112,7 @@ return [
 		'Illuminate\Auth\AuthServiceProvider',
 		'Illuminate\Cache\CacheServiceProvider',
 		'Illuminate\Foundation\Providers\ConsoleSupportServiceProvider',
+		'Illuminate\Routing\ControllerServiceProvider',
 		'Illuminate\Cookie\CookieServiceProvider',
 		'Illuminate\Database\DatabaseServiceProvider',
 		'Illuminate\Encryption\EncryptionServiceProvider',
@@ -132,7 +124,7 @@ return [
 		'Illuminate\Pagination\PaginationServiceProvider',
 		'Illuminate\Queue\QueueServiceProvider',
 		'Illuminate\Redis\RedisServiceProvider',
-		'Illuminate\Auth\Reminders\ReminderServiceProvider',
+		'Illuminate\Auth\Passwords\PasswordResetServiceProvider',
 		'Illuminate\Session\SessionServiceProvider',
 		'Illuminate\Translation\TranslationServiceProvider',
 		'Illuminate\Validation\ValidationServiceProvider',
@@ -195,15 +187,7 @@ return [
 		'URL'       => 'Illuminate\Support\Facades\URL',
 		'Validator' => 'Illuminate\Support\Facades\Validator',
 		'View'      => 'Illuminate\Support\Facades\View',
-		'Form' => 'Illuminate\Html\FormFacade',
-		/* Packages */
-		'Form' => 'Illuminate\Html\FormFacade',
-		'Module' => 'Pingpong\Modules\Facades\Module',
-		'Activation' => 'Cartalyst\Sentinel\Laravel\Facades\Activation',
-		'Reminder' => 'Cartalyst\Sentinel\Laravel\Facades\Reminder',
-		'Sentinel' => 'Cartalyst\Sentinel\Laravel\Facades\Sentinel',
-		'Flash' => 'Laracasts\Flash\Flash',
-		'LaravelLocalization' => 'Mcamara\LaravelLocalization\Facades\LaravelLocalization',
+
 	],
 
 ];
