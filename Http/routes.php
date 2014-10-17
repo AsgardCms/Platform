@@ -1,10 +1,10 @@
 <?php
 
-Route::group(['prefix' => LaravelLocalization::setLocale(), 'before' => 'LaravelLocalizationRedirectFilter|auth.admin|permissions'], function()
+$router->group(['prefix' => LaravelLocalization::setLocale(), 'before' => 'LaravelLocalizationRedirectFilter|auth.admin|permissions'], function($router)
 {
-    Route::group(['prefix' => Config::get('core::core.admin-prefix'), 'namespace' => 'Modules\User\Http\Controllers'], function()
+    $router->group(['prefix' => Config::get('core::core.admin-prefix')], function($router)
     {
-        Route::resource('users', 'Admin\UserController', ['except' => ['show'], 'names' => [
+        $router->resource('users', 'Admin\UserController', ['except' => ['show'], 'names' => [
                 'index' => 'dashboard.user.index',
                 'create' => 'dashboard.user.create',
                 'store' => 'dashboard.user.store',
@@ -12,7 +12,7 @@ Route::group(['prefix' => LaravelLocalization::setLocale(), 'before' => 'Laravel
                 'update' => 'dashboard.user.update',
                 'destroy' => 'dashboard.user.destroy',
             ]]);
-        Route::resource('roles', 'Admin\RolesController', ['except' => ['show'], 'names' => [
+        $router->resource('roles', 'Admin\RolesController', ['except' => ['show'], 'names' => [
             'index' => 'dashboard.role.index',
             'create' => 'dashboard.role.create',
             'store' => 'dashboard.role.store',
@@ -23,21 +23,21 @@ Route::group(['prefix' => LaravelLocalization::setLocale(), 'before' => 'Laravel
     });
 });
 
-Route::group(['prefix' => 'auth', 'namespace' => 'Modules\User\Http\Controllers'], function()
+$router->group(['prefix' => 'auth'], function($router)
 {
     # Login
-    Route::get('login', ['before' => 'auth.guest', 'as' => 'login', 'uses' => 'AuthController@getLogin']);
-    Route::post('login', array('as' => 'login.post', 'uses' => 'AuthController@postLogin'));
+    $router->get('login', ['before' => 'auth.guest', 'as' => 'login', 'uses' => 'AuthController@getLogin']);
+    $router->post('login', array('as' => 'login.post', 'uses' => 'AuthController@postLogin'));
     # Register
-    Route::get('register', ['before' => 'auth.guest', 'as' => 'register', 'uses' => 'AuthController@getRegister']);
-    Route::post('register', array('as' => 'register.post', 'uses' => 'AuthController@postRegister'));
+    $router->get('register', ['before' => 'auth.guest', 'as' => 'register', 'uses' => 'AuthController@getRegister']);
+    $router->post('register', array('as' => 'register.post', 'uses' => 'AuthController@postRegister'));
     # Account Activation
-    Route::get('activate/{userId}/{activationCode}', 'AuthController@getActivate');
+    $router->get('activate/{userId}/{activationCode}', 'AuthController@getActivate');
     # Reset password
-    Route::get('reset', ['as' => 'reset', 'uses' => 'AuthController@getReset']);
-    Route::post('reset', ['as' => 'reset.post', 'uses' => 'AuthController@postReset']);
-    Route::get('reset/{id}/{code}', ['as' => 'reset.complete', 'uses' => 'AuthController@getResetComplete']);
-    Route::post('reset/{id}/{code}', ['as' => 'reset.complete.post', 'uses' => 'AuthController@postResetComplete']);
+    $router->get('reset', ['as' => 'reset', 'uses' => 'AuthController@getReset']);
+    $router->post('reset', ['as' => 'reset.post', 'uses' => 'AuthController@postReset']);
+    $router->get('reset/{id}/{code}', ['as' => 'reset.complete', 'uses' => 'AuthController@getResetComplete']);
+    $router->post('reset/{id}/{code}', ['as' => 'reset.complete.post', 'uses' => 'AuthController@postResetComplete']);
     # Logout
-    Route::get('logout', array('as' => 'logout', 'uses' => 'AuthController@getLogout'));
+    $router->get('logout', array('as' => 'logout', 'uses' => 'AuthController@getLogout'));
 });

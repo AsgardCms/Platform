@@ -5,6 +5,7 @@
     "keywords": [],
     "active": 1,
     "providers": [
-        "Modules\\User\\Providers\\UserServiceProvider"
+        "Modules\\User\\Providers\\UserServiceProvider",
+        "Modules\\User\\Providers\\RouteServiceProvider"
     ]
 }
