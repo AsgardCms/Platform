@@ -3,5 +3,8 @@
     "alias": "dashboard",
     "description": "The module responsible for the admin dashboard page.",
     "keywords": [],
-    "active": 1
+    "active": 1,
+    "providers": [
+        "Modules\\Dashboard\\Providers\\RouteServiceProvider"
+    ]
 }
