@@ -10,5 +10,17 @@ return [
         'migrate',
         'install',
         'seed',
+    ],
+    'generate' => [
+        'generate'
+    ],
+    'install' => [
+        'install'
+    ],
+    'migrate' => [
+        'migrate'
+    ],
+    'seed' => [
+        'seed'
     ]
 ];
