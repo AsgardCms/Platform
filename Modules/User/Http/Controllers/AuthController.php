@@ -14,10 +14,6 @@ use Modules\User\Http\Requests\RegisterRequest;
 use Modules\User\Http\Requests\ResetCompleteRequest;
 use Modules\User\Http\Requests\ResetRequest;
 
-/**
- * @Controller()
- * @Before("auth.guest", on={"getLogin", "getRegister"})
- */
 class AuthController
 {
     use CommanderTrait;
