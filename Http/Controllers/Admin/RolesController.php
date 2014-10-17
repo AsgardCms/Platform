@@ -3,18 +3,12 @@
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\View;
 use Laracasts\Flash\Flash;
-use Modules\Core\Http\Controllers\Admin\AdminBaseController;
 use Modules\Core\Permissions\PermissionManager;
-use Modules\User\Http\Requests\CreateRolesRequest;
-use Modules\User\Http\Requests\UpdateRoleRequest;
+use Modules\User\Http\Requests\RolesRequest;
 use Modules\User\Repositories\RoleRepository;
 
-class RolesController extends AdminBaseController
+class RolesController extends BaseUserModuleController
 {
-    /**
-     * @var PermissionManager
-     */
-    private $permissions;
     /**
      * @var RoleRepository
      */
@@ -23,6 +17,7 @@ class RolesController extends AdminBaseController
     public function __construct(PermissionManager $permissions, RoleRepository $role)
     {
         parent::__construct();
+
         $this->permissions = $permissions;
         $this->role = $role;
     }
@@ -52,12 +47,12 @@ class RolesController extends AdminBaseController
     /**
      * Store a newly created resource in storage.
      *
-     * @param CreateRolesRequest $request
+     * @param RolesRequest $request
      * @return Response
      */
-    public function store(CreateRolesRequest $request)
+    public function store(RolesRequest $request)
     {
-        $data = array_merge($request->all(), ['permissions' => $this->permissions->clean($request->permissions)]);
+        $data = $this->mergeRequestWithPermissions($request);
 
         $this->role->create($data);
 
@@ -84,12 +79,12 @@ class RolesController extends AdminBaseController
      * Update the specified resource in storage.
      *
      * @param  int $id
-     * @param UpdateRoleRequest $request
+     * @param RolesRequest $request
      * @return Response
      */
-    public function update($id, UpdateRoleRequest $request)
+    public function update($id, RolesRequest $request)
     {
-        $data = array_merge($request->all(), ['permissions' => $this->permissions->clean($request->permissions)]);
+        $data = $this->mergeRequestWithPermissions($request);
 
         $this->role->update($id, $data);
 
@@ -110,4 +105,5 @@ class RolesController extends AdminBaseController
         Flash::success('Role deleted!');
         return Redirect::route('dashboard.role.index');
     }
+
 }

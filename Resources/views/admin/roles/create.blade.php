@@ -10,7 +10,7 @@
 @stop
 
 @section('styles')
-<link href="{{{ core_asset('css/vendor/iCheck/flat/blue.css') }}}" rel="stylesheet" type="text/css" />
+<link href="{{{ Module::asset('core', 'css/vendor/iCheck/flat/blue.css') }}}" rel="stylesheet" type="text/css" />
 @stop
 
 @section('content')
@@ -47,7 +47,7 @@
                     </div>
                 </div>
                 <div class="tab-pane" id="tab_2-2">
-                    @include('user::admin.roles.partials.permissions-create')
+                    @include('user::admin.partials.permissions-create')
                 </div>
                 <div class="box-footer">
                     <button type="submit" class="btn btn-primary btn-flat">{{ trans('user::button.create') }}</button>

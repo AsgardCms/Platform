@@ -14,10 +14,6 @@ use Modules\User\Http\Requests\RegisterRequest;
 use Modules\User\Http\Requests\ResetCompleteRequest;
 use Modules\User\Http\Requests\ResetRequest;
 
-/**
- * @Controller()
- * @Before("auth.guest", on={"getLogin", "getRegister"})
- */
 class AuthController
 {
     use CommanderTrait;
@@ -39,7 +35,7 @@ class AuthController
         ];
         $remember = (bool)$request->get('remember_me', false);
         try {
-            if ($user = Sentinel::authenticate($credentials, $remember)) {
+            if (Sentinel::authenticate($credentials, $remember)) {
                 Flash::success('Successfully logged in.');
                 return Redirect::route('dashboard.index', compact('user'));
             }
