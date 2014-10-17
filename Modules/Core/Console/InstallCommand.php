@@ -92,7 +92,7 @@ class InstallCommand extends Command
 			'email' => $email,
 			'password' => Hash::make($password),
 		];
-		$this->user->createWithRoles($userInfo, ['admin']);
+		$this->user->createWithRoles($userInfo, ['1']);
 
 		$this->info('Admin account created!');
 	}
