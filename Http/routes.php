@@ -1,9 +1,9 @@
 <?php
 
-Route::group(['prefix' => LaravelLocalization::setLocale(), 'before' => 'LaravelLocalizationRedirectFilter|auth.admin'], function() {
-	Route::group(['prefix' => Config::get('core::core.admin-prefix'), 'namespace' => 'Modules\Setting\Http\Controllers'], function()
+$router->group(['prefix' => LaravelLocalization::setLocale(), 'before' => 'LaravelLocalizationRedirectFilter|auth.admin'], function($router) {
+	$router->group(['prefix' => Config::get('core::core.admin-prefix'), 'namespace' => 'Modules\Setting\Http\Controllers'], function($router)
 	{
-		Route::resource('settings', 'Admin\SettingController', ['except' => ['show'], 'names' => [
+		$router->resource('settings', 'Admin\SettingController', ['except' => ['show'], 'names' => [
 			'index' => 'dashboard.setting.index',
 			'create' => 'dashboard.setting.create',
 			'store' => 'dashboard.setting.store',
