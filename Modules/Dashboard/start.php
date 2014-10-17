@@ -16,15 +16,5 @@ Lang::addNamespace('dashboard', __DIR__ . '/Resources/lang/');
 
 Config::addNamespace('dashboard', __DIR__ . '/Config/');
 
-/*
-|--------------------------------------------------------------------------
-| Require The Routes file.
-|--------------------------------------------------------------------------
-|
-| Next, this module will load filters and routes file.
-|
-*/
-
-require __DIR__ . '/Http/routes.php';
 
 require __DIR__ . '/composers.php';
