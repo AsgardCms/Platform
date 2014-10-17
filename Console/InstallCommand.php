@@ -3,7 +3,6 @@
 use Illuminate\Console\Command;
 use Illuminate\Filesystem\Filesystem;
 use Illuminate\Support\Facades\Hash;
-use Modules\User\Repositories\RoleRepository;
 use Modules\User\Repositories\UserRepository;
 
 class InstallCommand extends Command
@@ -28,10 +27,6 @@ class InstallCommand extends Command
 	private $user;
 
 	/**
-	 * @var RoleRepository
-	 */
-	private $role;
-	/**
 	 * @var Filesystem
 	 */
 	private $finder;
@@ -40,15 +35,13 @@ class InstallCommand extends Command
 	 * Create a new command instance.
 	 *
 	 * @param UserRepository $user
-	 * @param RoleRepository $role
 	 * @param Filesystem $finder
 	 * @return \Modules\Core\Console\InstallCommand
 	 */
-    public function __construct($user, $role, Filesystem $finder)
+    public function __construct($user, Filesystem $finder)
     {
         parent::__construct();
 		$this->user = $user;
-		$this->role = $role;
 		$this->finder = $finder;
 	}
 
