@@ -2,7 +2,7 @@
 
 $router->group(['prefix' => LaravelLocalization::setLocale(), 'before' => 'LaravelLocalizationRedirectFilter|auth.admin|permissions'], function($router)
 {
-    $router->group(['prefix' => Config::get('core::core.admin-prefix')], function($router)
+    $router->group(['prefix' => Config::get('core::core.admin-prefix'), 'namespace' => 'Modules\User\Http\Controllers'], function($router)
     {
         $router->resource('users', 'Admin\UserController', ['except' => ['show'], 'names' => [
                 'index' => 'dashboard.user.index',
@@ -23,7 +23,7 @@ $router->group(['prefix' => LaravelLocalization::setLocale(), 'before' => 'Larav
     });
 });
 
-$router->group(['prefix' => 'auth'], function($router)
+$router->group(['prefix' => 'auth', 'namespace' => 'Modules\User\Http\Controllers'], function($router)
 {
     # Login
     $router->get('login', ['before' => 'auth.guest', 'as' => 'login', 'uses' => 'AuthController@getLogin']);
