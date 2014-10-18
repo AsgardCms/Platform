@@ -24,6 +24,18 @@ class EloquentSettingRepository extends EloquentBaseRepository implements Settin
     {
     }
 
+    public function all()
+    {
+        $rawSettings = parent::all();
+
+        $settings = [];
+        foreach ($rawSettings as $setting) {
+            $settings[$setting->name] = $setting;
+        }
+
+        return $settings;
+    }
+
     /**
      * Create or update the settings
      * @param $settings

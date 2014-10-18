@@ -23,12 +23,7 @@ class SettingController extends AdminBaseController
 
     public function index()
     {
-        $rawSettings = $this->setting->all();
-
-        $settings = [];
-        foreach ($rawSettings as $setting) {
-            $settings[$setting->name] = $setting;
-        }
+        $settings = $this->setting->all();
 
         return View::make('setting::admin.settings', compact('settings'));
     }
