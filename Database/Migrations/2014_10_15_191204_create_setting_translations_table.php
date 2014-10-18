@@ -17,7 +17,6 @@ class CreateSettingTranslationsTable extends Migration {
             $table->increments('id');
 			$table->integer('setting_id')->unsigned();
 			$table->string('locale')->index();
-			$table->string('name');
 			$table->string('value');
 			$table->text('description');
 			$table->unique(['setting_id','locale']);
