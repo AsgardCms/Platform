@@ -1,8 +1,9 @@
-<?php
+<?php namespace Modules\Dashboard\Tests;
 
 use Cartalyst\Sentinel\Laravel\Facades\Sentinel;
+use Modules\Core\Tests\BaseTestCase;
 
-class UrlTest extends TestCase
+class UrlTest extends BaseTestCase
 {
     /** @test */
     public function testDashboardAccessible()
@@ -10,10 +11,6 @@ class UrlTest extends TestCase
         $user = Sentinel::findById(4);
         Sentinel::login($user);
 
-        $crawler = $this->client->request('GET', '/' . Config::get('core::core.admin-prefix'));
-
-        $this->assertTrue($this->client->getResponse()->isOk());
-
-        $this->assertCount(1, $crawler->filter('h1:contains("Dashboard")'));
+        $this->checkResponseIsOkAndContains(['GET', '/' . Config::get('core::core.admin-prefix')], 'h1:contains("Dashboard")');
     }
 }
