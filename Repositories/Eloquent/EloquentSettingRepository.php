@@ -16,8 +16,67 @@ class EloquentSettingRepository extends EloquentBaseRepository implements Settin
     {
     }
 
+    /**
+     * @param mixed $data
+     * @return mixed
+     */
     public function create($data)
     {
+    }
 
+    /**
+     * Create or update the settings
+     * @param $settings
+     * @return mixed|void
+     */
+    public function createOrUpdate($settings)
+    {
+        $this->removeTokenKey($settings);
+
+        foreach ($settings as $settingName => $settingValues) {
+            // Check if setting exists
+            if ($setting = $this->findByName($settingName)) {
+
+            }
+            $this->createForName($settingName, $settingValues);
+        }
+
+    }
+
+    /**
+     * Remove the token from the input array
+     * @param $settings
+     */
+    private function removeTokenKey(&$settings)
+    {
+        unset($settings['_token']);
+    }
+
+    /**
+     * Find a setting by its name
+     * @param $settingName
+     * @return mixed
+     */
+    public function findByName($settingName)
+    {
+        return $this->model->whereHas('translations', function($q) use($settingName)
+        {
+            $q->where('name', $settingName);
+        })->first();
+    }
+
+    /**
+     * Create a setting with the given name
+     * @param $settingName
+     * @param $settingValues
+     */
+    private function createForName($settingName, $settingValues)
+    {
+        $setting = new $this->model;
+        $setting->name = $settingName;
+        foreach ($settingValues as $lang => $value) {
+            $setting->translate($lang)->value = $value;
+        }
+        $setting->save();
     }
 }

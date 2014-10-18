@@ -1,7 +1,10 @@
 <?php namespace Modules\Setting\Http\Controllers\Admin;
 
+use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\View;
+use Laracasts\Flash\Flash;
 use Modules\Core\Http\Controllers\Admin\AdminBaseController;
+use Modules\Setting\Http\Requests\SettingRequest;
 use Modules\Setting\Repositories\SettingRepository;
 
 class SettingController extends AdminBaseController
@@ -23,8 +26,11 @@ class SettingController extends AdminBaseController
         return View::make('setting::admin.settings');
     }
 
-    public function store()
+    public function store(SettingRequest $request)
     {
+        $this->setting->createOrUpdate($request->all());
 
+        Flash::success('Settings saved!');
+        return Redirect::route('dashboard.setting.index');
     }
 }
