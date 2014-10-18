@@ -6,4 +6,3 @@ $router->group(['prefix' => LaravelLocalization::setLocale(), 'before' => 'Larav
 		$router->get('/', ['as' => 'dashboard.index', 'uses' => 'Admin\DashboardController@index']);
 	});
 });
-
