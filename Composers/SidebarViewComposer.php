@@ -1,7 +1,5 @@
 <?php namespace Modules\Setting\Composers;
 
-use Illuminate\Support\Collection;
-use Illuminate\Support\Facades\Request;
 use Illuminate\View\View;
 
 class SidebarViewComposer
