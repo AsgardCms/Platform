@@ -20,7 +20,7 @@ class SettingServiceProvider extends ServiceProvider {
 	 */
 	public function register()
 	{
-		$this->app->booted(function ($app) {
+		$this->app->booted(function () {
 			$this->registerBindings();
 		});
 	}
