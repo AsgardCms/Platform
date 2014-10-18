@@ -48,11 +48,10 @@ class EloquentSettingRepository extends EloquentBaseRepository implements Settin
         foreach ($settings as $settingName => $settingValues) {
             // Check if setting exists
             if ($setting = $this->findByName($settingName)) {
-
+                $this->updateSetting($setting, $settingValues); continue;
             }
             $this->createForName($settingName, $settingValues);
         }
-
     }
 
     /**
@@ -86,9 +85,32 @@ class EloquentSettingRepository extends EloquentBaseRepository implements Settin
     {
         $setting = new $this->model;
         $setting->name = $settingName;
+        $this->setTranslatedAttributes($settingValues, $setting);
+
+        return $setting->save();
+    }
+
+    /**
+     * Update the given setting
+     * @param $setting
+     * @param $settingValues
+     */
+    private function updateSetting($setting, $settingValues)
+    {
+        $this->setTranslatedAttributes($settingValues, $setting);
+
+        return $setting->save();
+    }
+
+    /**
+     * @param $settingValues
+     * @param $setting
+     */
+    private function setTranslatedAttributes($settingValues, $setting)
+    {
         foreach ($settingValues as $lang => $value) {
             $setting->translate($lang)->value = $value;
         }
-        $setting->save();
     }
+
 }
