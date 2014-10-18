@@ -24,6 +24,10 @@ class EloquentSettingRepository extends EloquentBaseRepository implements Settin
     {
     }
 
+    /**
+     * Return all settings, with the setting name as key
+     * @return array
+     */
     public function all()
     {
         $rawSettings = parent::all();
