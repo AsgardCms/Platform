@@ -2,7 +2,7 @@
 
 @section('content-header')
 <h1>
-    {{ trans('setting::settings.title.module settings', ['module' => ucfirst($module)]) }}
+    {{ trans('setting::settings.title.module name settings', ['module' => ucfirst($module)]) }}
 </h1>
 <ol class="breadcrumb">
     <li><a href="#"><i class="fa fa-dashboard"></i> {{ trans('core::core.breadcrumb.home') }}</a></li>
