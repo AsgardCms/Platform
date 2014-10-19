@@ -21,8 +21,8 @@ interface SettingRepository extends BaseRepository
     /**
      * Return all modules that have settings
      * with its settings
-     * @param array $modules
+     * @param array|string $modules
      * @return array
      */
-    public function moduleSettings(array $modules);
+    public function moduleSettings($modules);
 }
