@@ -47,7 +47,7 @@
             <div class="box-body">
                 <ul>
                     <?php foreach($modulesWithSettings as $module => $settings): ?>
-                        <li><a href="{{ URL::route('dashboard.module.settings', [$module]) }}">{{ $module }}</a></li>
+                        <li><a href="{{ URL::route('dashboard.module.settings', [strtolower($module)]) }}">{{ $module }}</a></li>
                     <?php endforeach; ?>
                 </ul>
             </div>

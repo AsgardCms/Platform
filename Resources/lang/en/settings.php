@@ -5,8 +5,10 @@ return [
         'settings' => 'Settings',
         'general settings' => 'General settings',
         'module settings' => 'Module settings',
+        'module settings' => ':module module settings',
     ],
     'breadcrumb' => [
-        'settings' => 'Settings'
+        'settings' => 'Settings',
+        'module settings' => ':module module settings',
     ]
 ];
