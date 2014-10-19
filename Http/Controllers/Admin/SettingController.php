@@ -46,9 +46,11 @@ class SettingController extends AdminBaseController
 
     public function getModuleSettings($module)
     {
-        $moduleWithSettings = $this->setting->moduleSettings($module);
+        $moduleSettings = $this->setting->moduleSettings($module);
 
-        return View::make('setting::admin.module-settings', compact('module'));
+        $settings = $this->setting->savedModuleSettings($module);
+
+        return View::make('setting::admin.module-settings', compact('module', 'moduleSettings', 'settings'));
     }
 
     public function postModuleSettings($module)

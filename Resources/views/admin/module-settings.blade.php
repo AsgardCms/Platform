@@ -25,10 +25,10 @@
                     </ul>
                     <div class="tab-content">
                         <div class="tab-pane {{ App::getLocale() == 'en' ? 'active' : '' }}" id="tab_1-1">
-                            @include('setting::admin.partials.fields', ['lang' => 'en'])
+                            @include('setting::admin.partials.module-fields', ['lang' => 'en', 'moduleSettings' => $moduleSettings, 'settings' => $settings])
                         </div>
                         <div class="tab-pane {{ App::getLocale() == 'fr' ? 'active' : '' }}" id="tab_2-2">
-                            @include('setting::admin.partials.fields', ['lang' => 'fr'])
+                            @include('setting::admin.partials.module-fields', ['lang' => 'fr', 'moduleSettings' => $moduleSettings, 'settings' => $settings])
                         </div>
                     </div>
                 </div>

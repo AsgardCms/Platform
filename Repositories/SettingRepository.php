@@ -25,4 +25,11 @@ interface SettingRepository extends BaseRepository
      * @return array
      */
     public function moduleSettings($modules);
+
+    /**
+     * Return the saved module settings
+     * @param $module
+     * @return mixed
+     */
+    public function savedModuleSettings($module);
 }

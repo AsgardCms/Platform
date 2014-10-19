@@ -3,7 +3,6 @@
 use Illuminate\Support\Facades\Config;
 use Modules\Core\Repositories\Eloquent\EloquentBaseRepository;
 use Modules\Setting\Repositories\SettingRepository;
-use Pingpong\Modules\Module;
 
 class EloquentSettingRepository extends EloquentBaseRepository implements SettingRepository
 {
@@ -53,7 +52,8 @@ class EloquentSettingRepository extends EloquentBaseRepository implements Settin
         foreach ($settings as $settingName => $settingValues) {
             // Check if setting exists
             if ($setting = $this->findByName($settingName)) {
-                $this->updateSetting($setting, $settingValues); continue;
+                $this->updateSetting($setting, $settingValues);
+                continue;
             }
             $this->createForName($settingName, $settingValues);
         }
@@ -75,10 +75,12 @@ class EloquentSettingRepository extends EloquentBaseRepository implements Settin
      */
     public function findByName($settingName)
     {
-        return $this->model->whereHas('translations', function($q) use($settingName)
-        {
-            $q->where('name', $settingName);
-        })->first();
+        return $this->model->whereHas(
+            'translations',
+            function ($q) use ($settingName) {
+                $q->where('name', $settingName);
+            }
+        )->first();
     }
 
     /**
@@ -126,6 +128,10 @@ class EloquentSettingRepository extends EloquentBaseRepository implements Settin
      */
     public function moduleSettings($modules)
     {
+        if (is_string($modules)) {
+            return Config::get(strtolower($modules) . "::settings");
+        }
+
         $modulesWithSettings = [];
         foreach ($modules as $module) {
             if ($moduleSettings = Config::get(strtolower($module) . "::settings")) {
@@ -134,5 +140,25 @@ class EloquentSettingRepository extends EloquentBaseRepository implements Settin
         }
 
         return $modulesWithSettings;
+    }
+
+    /**
+     * Return the saved module settings
+     * @param $module
+     * @return mixed
+     */
+    public function savedModuleSettings($module)
+    {
+        return $this->findByModule($module);
+    }
+
+    /**
+     * Find settings by module name
+     * @param string $module Module name
+     * @return mixed
+     */
+    private function findByModule($module)
+    {
+        return $this->model->where('name', "$module%")->get();
     }
 }
