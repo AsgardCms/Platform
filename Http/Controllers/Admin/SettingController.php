@@ -44,7 +44,7 @@ class SettingController extends AdminBaseController
         return Redirect::route('dashboard.setting.index');
     }
 
-    public function moduleSettings($module)
+    public function getModuleSettings($module)
     {
         dd($module . ' settings');
     }
