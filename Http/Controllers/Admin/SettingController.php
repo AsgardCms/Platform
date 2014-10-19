@@ -43,4 +43,9 @@ class SettingController extends AdminBaseController
         Flash::success('Settings saved!');
         return Redirect::route('dashboard.setting.index');
     }
+
+    public function moduleSettings($module)
+    {
+        dd($module . ' settings');
+    }
 }
