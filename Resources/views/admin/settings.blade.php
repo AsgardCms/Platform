@@ -45,7 +45,9 @@
             <div class="box-header"><h3 class="box-title">Module Settings</h3></div>
             <div class="box-body">
                 <ul>
-                    <li><a href="">Module 1</a></li>
+                    <?php foreach($modulesWithSettings as $module => $settings): ?>
+                        <li><a href="">{{ $module }}</a></li>
+                    <?php endforeach; ?>
                 </ul>
             </div>
         </div>

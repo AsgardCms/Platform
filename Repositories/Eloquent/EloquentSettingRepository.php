@@ -1,8 +1,9 @@
 <?php namespace Modules\Setting\Repositories\Eloquent;
 
-
+use Illuminate\Support\Facades\Config;
 use Modules\Core\Repositories\Eloquent\EloquentBaseRepository;
 use Modules\Setting\Repositories\SettingRepository;
+use Pingpong\Modules\Module;
 
 class EloquentSettingRepository extends EloquentBaseRepository implements SettingRepository
 {
@@ -117,4 +118,21 @@ class EloquentSettingRepository extends EloquentBaseRepository implements Settin
         }
     }
 
+    /**
+     * Return all modules that have settings
+     * with its settings
+     * @param array $modules
+     * @return array
+     */
+    public function moduleSettings(array $modules)
+    {
+        $modulesWithSettings = [];
+        foreach ($modules as $module) {
+            if ($moduleSettings = Config::get(strtolower($module) . "::settings")) {
+                $modulesWithSettings[$module] = $moduleSettings;
+            }
+        }
+
+        return $modulesWithSettings;
+    }
 }

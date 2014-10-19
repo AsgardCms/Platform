@@ -17,4 +17,12 @@ interface SettingRepository extends BaseRepository
      * @return mixed
      */
     public function findByName($settingName);
+
+    /**
+     * Return all modules that have settings
+     * with its settings
+     * @param array $modules
+     * @return array
+     */
+    public function moduleSettings(array $modules);
 }

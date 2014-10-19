@@ -6,6 +6,7 @@ use Laracasts\Flash\Flash;
 use Modules\Core\Http\Controllers\Admin\AdminBaseController;
 use Modules\Setting\Http\Requests\SettingRequest;
 use Modules\Setting\Repositories\SettingRepository;
+use Pingpong\Modules\Module;
 
 class SettingController extends AdminBaseController
 {
@@ -13,19 +14,26 @@ class SettingController extends AdminBaseController
      * @var SettingRepository
      */
     private $setting;
+    /**
+     * @var Module
+     */
+    private $module;
 
-    public function __construct(SettingRepository $setting)
+    public function __construct(SettingRepository $setting, Module $module)
     {
         parent::__construct();
 
         $this->setting = $setting;
+        $this->module = $module;
     }
 
     public function index()
     {
         $settings = $this->setting->all();
 
-        return View::make('setting::admin.settings', compact('settings'));
+        $modulesWithSettings = $this->setting->moduleSettings($this->module->enabled());
+
+        return View::make('setting::admin.settings', compact('settings', 'modulesWithSettings'));
     }
 
     public function store(SettingRequest $request)
