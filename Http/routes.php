@@ -4,6 +4,7 @@ $router->group(['prefix' => LaravelLocalization::setLocale(), 'before' => 'Larav
 	$router->group(['prefix' => Config::get('core::core.admin-prefix'), 'namespace' => 'Modules\Setting\Http\Controllers'], function($router)
 	{
 		$router->get('settings/{module}', ['as' => 'dashboard.module.settings', 'uses' => 'Admin\SettingController@getModuleSettings']);
+		$router->post('settings/{module}', ['as' => 'dashboard.module.settings.post', 'uses' => 'Admin\SettingController@postModuleSettings']);
 		$router->resource('settings', 'Admin\SettingController', ['except' => ['show', 'edit', 'update', 'destroy', 'create'], 'names' => [
 			'index' => 'dashboard.setting.index',
 			'store' => 'dashboard.setting.store'

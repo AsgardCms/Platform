@@ -2,7 +2,7 @@
 
 @section('content-header')
 <h1>
-    Settings
+    {{ trans('setting::settings.title.settings') }}
 </h1>
 <ol class="breadcrumb">
     <li><a href="#"><i class="fa fa-cog"></i> {{ trans('core::core.breadcrumb.home') }}</a></li>

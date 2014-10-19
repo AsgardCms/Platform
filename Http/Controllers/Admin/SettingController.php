@@ -48,4 +48,9 @@ class SettingController extends AdminBaseController
     {
         dd($module . ' settings');
     }
+
+    public function postModuleSettings($module)
+    {
+        dd('Module settings posted');
+    }
 }
