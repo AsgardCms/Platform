@@ -52,9 +52,4 @@ class SettingController extends AdminBaseController
 
         return View::make('setting::admin.module-settings', compact('module', 'moduleSettings', 'settings'));
     }
-
-    public function postModuleSettings($module)
-    {
-        dd('Module settings posted');
-    }
 }

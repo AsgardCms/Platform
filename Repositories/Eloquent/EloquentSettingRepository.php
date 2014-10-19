@@ -149,7 +149,12 @@ class EloquentSettingRepository extends EloquentBaseRepository implements Settin
      */
     public function savedModuleSettings($module)
     {
-        return $this->findByModule($module);
+        $moduleSettings = [];
+        foreach ($this->findByModule($module) as $setting) {
+            $moduleSettings[$setting->name] = $setting;
+        }
+
+        return $moduleSettings;
     }
 
     /**
@@ -159,6 +164,6 @@ class EloquentSettingRepository extends EloquentBaseRepository implements Settin
      */
     private function findByModule($module)
     {
-        return $this->model->where('name', "$module%")->get();
+        return $this->model->where('name', 'LIKE', $module . '_%')->get();
     }
 }

@@ -13,7 +13,7 @@
 
 @section('content')
 @include('flash::message')
-{!! Form::open(['route' => ['dashboard.module.settings.post', $module], 'method' => 'post']) !!}
+{!! Form::open(['route' => ['dashboard.module.settings.post'], 'method' => 'post']) !!}
 <div class="row">
     <div class="col-md-12">
         <div class="box box-info">
@@ -25,10 +25,10 @@
                     </ul>
                     <div class="tab-content">
                         <div class="tab-pane {{ App::getLocale() == 'en' ? 'active' : '' }}" id="tab_1-1">
-                            @include('setting::admin.partials.module-fields', ['lang' => 'en', 'moduleSettings' => $moduleSettings, 'settings' => $settings])
+                            @include('setting::admin.partials.module-fields', ['lang' => 'en', 'moduleSettings' => $moduleSettings, 'settings' => $settings, 'module' => $module])
                         </div>
                         <div class="tab-pane {{ App::getLocale() == 'fr' ? 'active' : '' }}" id="tab_2-2">
-                            @include('setting::admin.partials.module-fields', ['lang' => 'fr', 'moduleSettings' => $moduleSettings, 'settings' => $settings])
+                            @include('setting::admin.partials.module-fields', ['lang' => 'fr', 'moduleSettings' => $moduleSettings, 'settings' => $settings, 'module' => $module])
                         </div>
                     </div>
                 </div>
