@@ -2,11 +2,10 @@
 
 @section('content-header')
 <h1>
-    {{ trans('setting::settings.title.settings') }}
+    {{ trans('setting::settings.title.module settings') }}
 </h1>
 <ol class="breadcrumb">
-    <li><a href="#"><i class="fa fa-dashboard"></i> {{ trans('core::core.breadcrumb.home') }}</a></li>
-    <li><i class="fa fa-cog"></i> {{ trans('setting::settings.breadcrumb.settings') }}</li>
+    <li><a href="#"><i class="fa fa-cog"></i> {{ trans('core::core.breadcrumb.home') }}</a></li>
 </ol>
 @stop
 
