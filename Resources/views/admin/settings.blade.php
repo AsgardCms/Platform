@@ -6,7 +6,7 @@
 </h1>
 <ol class="breadcrumb">
     <li><a href="#"><i class="fa fa-dashboard"></i> {{ trans('core::core.breadcrumb.home') }}</a></li>
-    <li><i class="fa fa-cog"></i> {{ trans('setting::settings.breadcrumb.settings') }}</li>
+    <li class="active"><i class="fa fa-cog"></i> {{ trans('setting::settings.breadcrumb.settings') }}</li>
 </ol>
 @stop
 
