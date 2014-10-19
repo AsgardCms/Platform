@@ -8,7 +8,7 @@ class SidebarViewComposer
     {
         $view->items->put('setting', [
             'weight' => 5,
-            'request' => "*/$view->prefix/settings",
+            'request' => "*/$view->prefix/settings*",
             'route' => 'dashboard.setting.index',
             'icon-class' => 'fa fa-cog',
             'title' => 'Settings',
