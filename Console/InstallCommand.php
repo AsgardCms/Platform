@@ -1,5 +1,6 @@
 <?php namespace Modules\Core\Console;
 
+use Dotenv;
 use Illuminate\Console\Command;
 use Illuminate\Filesystem\Filesystem;
 use Illuminate\Support\Facades\Hash;
@@ -154,6 +155,8 @@ class InstallCommand extends Command
      */
 	private function configureEnvironmentFile($databaseName, $databaseUsername, $databasePassword)
 	{
+		Dotenv::makeMutable();
+
 		$environmentFile = $this->finder->get('.env.example');
 
 		$search = [
@@ -174,6 +177,8 @@ class InstallCommand extends Command
 		$this->finder->delete('env.example');
 
 		$this->info('Environment file written');
+
+		Dotenv::makeImmutable();
 	}
 
 	/**
