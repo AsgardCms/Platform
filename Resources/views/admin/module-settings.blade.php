@@ -25,13 +25,27 @@
                     </ul>
                     <div class="tab-content">
                         <div class="tab-pane {{ App::getLocale() == 'en' ? 'active' : '' }}" id="tab_1-1">
-                            <?php foreach($moduleSettings as $moduleInfo): ?>
-                                @include("setting::admin.partials.module-{$moduleInfo['type']}-field", ['lang' => 'en', 'moduleSettings' => $moduleSettings, 'settings' => $settings, 'module' => $module])
+                            <?php foreach($moduleSettings as $settingName => $moduleInfo): ?>
+                                @include("setting::admin.partials.module-{$moduleInfo['type']}-field", [
+                                    'lang' => 'en',
+                                    'moduleSettings' => $moduleSettings,
+                                    'settings' => $settings,
+                                    'module' => $module,
+                                    'setting' => $settingName,
+                                    'moduleInfo' => $moduleInfo,
+                                ])
                             <?php endforeach; ?>
                         </div>
                         <div class="tab-pane {{ App::getLocale() == 'fr' ? 'active' : '' }}" id="tab_2-2">
-                            <?php foreach($moduleSettings as $moduleInfo): ?>
-                                @include("setting::admin.partials.module-{$moduleInfo['type']}-field", ['lang' => 'fr', 'moduleSettings' => $moduleSettings, 'settings' => $settings, 'module' => $module])
+                            <?php foreach($moduleSettings as $settingName => $moduleInfo): ?>
+                                @include("setting::admin.partials.module-{$moduleInfo['type']}-field", [
+                                    'lang' => 'fr',
+                                    'moduleSettings' => $moduleSettings,
+                                    'settings' => $settings,
+                                    'module' => $module,
+                                    'setting' => $settingName,
+                                    'moduleInfo' => $moduleInfo,
+                                ])
                             <?php endforeach; ?>
                         </div>
                     </div>
