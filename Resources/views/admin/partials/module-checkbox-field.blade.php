@@ -1,9 +1,12 @@
 <?php $settingName = $module . '_' . $setting; ?>
-<div class='form-group'>
-    {!! Form::label($settingName . "[$lang]", $moduleInfo['description']) !!}
-    <?php if (isset($settings[$settingName])): ?>
-        {!! Form::text($settingName . "[$lang]", Input::old($settingName . "[$lang]", $settings[$settingName]->translate($lang)->value), ['class' => 'form-control', 'placeholder' => $moduleInfo['description']]) !!}
-    <?php else: ?>
-        {!! Form::text($settingName . "[$lang]", Input::old($settingName . "[$lang]"), ['class' => 'form-control', 'placeholder' => $moduleInfo['description']]) !!}
-    <?php endif; ?>
+<div class="checkbox">
+    <label for="{{ $settingName . "[$lang]" }}">
+        <input id="{{ $settingName . "[$lang]" }}"
+                name="{{ $settingName . "[$lang]" }}"
+                type="checkbox"
+                class="flat-blue"
+                {{ isset($settings[$settingName]) && (bool)$settings[$settingName]->translate($lang)->value == true ? 'checked' : '' }}
+                value="true" />
+        {{ $moduleInfo['description'] }}
+    </label>
 </div>

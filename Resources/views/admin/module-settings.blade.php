@@ -11,9 +11,13 @@
 </ol>
 @stop
 
+@section('styles')
+<link href="{{{ Module::asset('core', 'css/vendor/iCheck/flat/blue.css') }}}" rel="stylesheet" type="text/css" />
+@stop
+
 @section('content')
 @include('flash::message')
-{!! Form::open(['route' => ['dashboard.module.settings.post'], 'method' => 'post']) !!}
+{!! Form::open(['route' => ['dashboard.setting.store'], 'method' => 'post']) !!}
 <div class="row">
     <div class="col-md-12">
         <div class="box box-info">
@@ -59,4 +63,15 @@
     </div>
 </div>
 {!! Form::close() !!}
+@stop
+
+@section('scripts')
+<script>
+$( document ).ready(function() {
+    $('input[type="checkbox"].flat-blue, input[type="radio"].flat-blue').iCheck({
+        checkboxClass: 'icheckbox_flat-blue',
+        radioClass: 'iradio_flat-blue'
+    });
+});
+</script>
 @stop
