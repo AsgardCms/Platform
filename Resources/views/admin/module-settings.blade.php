@@ -25,10 +25,14 @@
                     </ul>
                     <div class="tab-content">
                         <div class="tab-pane {{ App::getLocale() == 'en' ? 'active' : '' }}" id="tab_1-1">
-                            @include('setting::admin.partials.module-fields', ['lang' => 'en', 'moduleSettings' => $moduleSettings, 'settings' => $settings, 'module' => $module])
+                            <?php foreach($moduleSettings as $moduleInfo): ?>
+                                @include("setting::admin.partials.module-{$moduleInfo['type']}-field", ['lang' => 'en', 'moduleSettings' => $moduleSettings, 'settings' => $settings, 'module' => $module])
+                            <?php endforeach; ?>
                         </div>
                         <div class="tab-pane {{ App::getLocale() == 'fr' ? 'active' : '' }}" id="tab_2-2">
-                            @include('setting::admin.partials.module-fields', ['lang' => 'fr', 'moduleSettings' => $moduleSettings, 'settings' => $settings, 'module' => $module])
+                            <?php foreach($moduleSettings as $moduleInfo): ?>
+                                @include("setting::admin.partials.module-{$moduleInfo['type']}-field", ['lang' => 'fr', 'moduleSettings' => $moduleSettings, 'settings' => $settings, 'module' => $module])
+                            <?php endforeach; ?>
                         </div>
                     </div>
                 </div>
