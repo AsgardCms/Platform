@@ -30,7 +30,7 @@
                     <div class="tab-content">
                         <div class="tab-pane {{ App::getLocale() == 'en' ? 'active' : '' }}" id="tab_1-1">
                             <?php foreach($moduleSettings as $settingName => $moduleInfo): ?>
-                                @include("setting::admin.partials.module-{$moduleInfo['type']}-field", [
+                                @include($moduleInfo['view'], [
                                     'lang' => 'en',
                                     'moduleSettings' => $moduleSettings,
                                     'settings' => $settings,
@@ -42,7 +42,7 @@
                         </div>
                         <div class="tab-pane {{ App::getLocale() == 'fr' ? 'active' : '' }}" id="tab_2-2">
                             <?php foreach($moduleSettings as $settingName => $moduleInfo): ?>
-                                @include("setting::admin.partials.module-{$moduleInfo['type']}-field", [
+                                @include($moduleInfo['view'], [
                                     'lang' => 'fr',
                                     'moduleSettings' => $moduleSettings,
                                     'settings' => $settings,
