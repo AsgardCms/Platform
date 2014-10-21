@@ -1,0 +1,13 @@
+{
+    "name": "Setting",
+    "alias": "setting",
+    "description": "",
+    "keywords": [
+
+    ],
+    "active": 1,
+    "providers": [
+        "Modules\\Setting\\Providers\\SettingServiceProvider",
+        "Modules\\Setting\\Providers\\RouteServiceProvider"
+    ]
+}
