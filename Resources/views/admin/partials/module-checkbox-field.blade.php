@@ -6,7 +6,7 @@
                 type="checkbox"
                 class="flat-blue"
                 {{ isset($settings[$settingName]) && (bool)$settings[$settingName]->translate($lang)->value == true ? 'checked' : '' }}
-                value="true" />
+                value="1" />
         {{ $moduleInfo['description'] }}
     </label>
 </div>

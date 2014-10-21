@@ -72,6 +72,16 @@ $( document ).ready(function() {
         checkboxClass: 'icheckbox_flat-blue',
         radioClass: 'iradio_flat-blue'
     });
+
+    $('input[type="checkbox"]').on('ifChecked', function(){
+      $(this).parent().find('input[type=hidden]').remove();
+    });
+
+    $('input[type="checkbox"]').on('ifUnchecked', function(){
+      var name = $(this).attr('name'),
+          input = '<input type="hidden" name="' + name + '" value="0" />';
+      $(this).parent().append(input);
+    });
 });
 </script>
 @stop
