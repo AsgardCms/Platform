@@ -97,7 +97,7 @@ class InstallCommand extends Command
 	private function runMigrations()
 	{
 		$this->call('migrate', ['--package' => 'cartalyst/sentinel']);
-		$this->call('module:migrate', ['--module' => 'Setting']);
+		$this->call('module:migrate', ['module' => 'Setting']);
 
 		$this->info('Application migrated!');
 	}
