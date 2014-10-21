@@ -21,7 +21,9 @@ composer create-project nwidart/platform your-project-name --prefer-dist --stabi
 
 Run the usual `composer install` to get the dependencies.
 
-This will run `platform:install` command as a post-composer-create hook.
+## Run the install command
+
+Now run `php artisan platform:install` command to perform to start the installation process.
 
 This install command will perform the following actions:
 
