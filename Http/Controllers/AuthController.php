@@ -1,8 +1,5 @@
 <?php namespace Modules\User\Http\Controllers;
 
-use Cartalyst\Sentinel\Checkpoints\NotActivatedException;
-use Cartalyst\Sentinel\Checkpoints\ThrottlingException;
-use Cartalyst\Sentinel\Laravel\Facades\Sentinel;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\View;
 use Laracasts\Commander\CommanderTrait;
@@ -13,13 +10,20 @@ use Modules\User\Http\Requests\LoginRequest;
 use Modules\User\Http\Requests\RegisterRequest;
 use Modules\User\Http\Requests\ResetCompleteRequest;
 use Modules\User\Http\Requests\ResetRequest;
+use Modules\User\Repositories\AuthenticationRepository;
 
 class AuthController
 {
     use CommanderTrait;
 
-    public function __construct()
+    /**
+     * @var AuthenticationRepository
+     */
+    private $auth;
+
+    public function __construct(AuthenticationRepository $auth)
     {
+        $this->auth = $auth;
     }
 
     public function getLogin()
@@ -34,19 +38,14 @@ class AuthController
             'password' => $request->password
         ];
         $remember = (bool)$request->get('remember_me', false);
-        try {
-            if (Sentinel::authenticate($credentials, $remember)) {
-                Flash::success('Successfully logged in.');
-                return Redirect::route('dashboard.index', compact('user'));
-            }
-            Flash::error('Invalid login or password.');
-        } catch (NotActivatedException $e) {
-            Flash::error('Account not yet validated. Please check your email.');
-        } catch (ThrottlingException $e) {
-            $delay = $e->getDelay();
-            Flash::error("Your account is blocked for {$delay} second(s).");
+
+        $error = $this->auth->login($credentials, $remember);
+        if (!$error) {
+            Flash::success('Successfully logged in.');
+            return Redirect::route('dashboard.index');
         }
 
+        Flash::error($error);
         return Redirect::back()->withInput();
     }
 
@@ -66,9 +65,19 @@ class AuthController
 
     public function getLogout()
     {
-        Sentinel::logout();
+        $this->auth->logout();
 
         return Redirect::route('login');
+    }
+
+    public function getActivate($userId, $code)
+    {
+        if ($this->auth->activate($userId, $code)) {
+            Flash::success('Account activated. You can now login.');
+            return Redirect::route('login');
+        }
+        Flash::error('There was an error with the activation.');
+        return Redirect::route('register');
     }
 
     public function getReset()
@@ -105,16 +114,13 @@ class AuthController
             );
         } catch (UserNotFoundException $e) {
             Flash::error('The user no longer exists.');
-
             return Redirect::back()->withInput();
-        } catch(InvalidOrExpiredResetCode $e) {
+        } catch (InvalidOrExpiredResetCode $e) {
             Flash::error('Invalid or expired reset code.');
-
             return Redirect::back()->withInput();
         }
 
         Flash::success('Password has been reset. You can now login with your new password.');
-
         return Redirect::route('login');
     }
 }

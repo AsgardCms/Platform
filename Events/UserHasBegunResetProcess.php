@@ -3,11 +3,11 @@
 class UserHasBegunResetProcess
 {
     public $user;
-    public $reminder;
+    public $code;
 
-    public function __construct($user, $reminder)
+    public function __construct($user, $code)
     {
         $this->user = $user;
-        $this->reminder = $reminder;
+        $this->code = $code;
     }
 }

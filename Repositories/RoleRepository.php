@@ -39,4 +39,11 @@ interface RoleRepository
      * @return mixed
      */
     public function delete($id);
+
+    /**
+     * Find a role by its name
+     * @param string $name
+     * @return mixed
+     */
+    public function findByName($name);
 }

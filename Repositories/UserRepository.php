@@ -57,4 +57,11 @@ interface UserRepository
      * @return mixed
      */
     public function delete($id);
+
+    /**
+     * Find a user by its credentials
+     * @param array $credentials
+     * @return mixed
+     */
+    public function findByCredentials(array $credentials);
 }
