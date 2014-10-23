@@ -22,29 +22,29 @@ class InstallCommand extends Command
      */
     protected $description = 'Install the Platform CMS';
 
-	/**
-	 * @var UserRepository
-	 */
-	private $user;
+    /**
+     * @var UserRepository
+     */
+    private $user;
 
-	/**
-	 * @var Filesystem
-	 */
-	private $finder;
+    /**
+     * @var Filesystem
+     */
+    private $finder;
 
-	/**
-	 * Create a new command instance.
-	 *
-	 * @param UserRepository $user
-	 * @param Filesystem $finder
-	 * @return \Modules\Core\Console\InstallCommand
-	 */
+    /**
+     * Create a new command instance.
+     *
+     * @param UserRepository $user
+     * @param Filesystem $finder
+     * @return \Modules\Core\Console\InstallCommand
+     */
     public function __construct($user, Filesystem $finder)
     {
         parent::__construct();
-		$this->user = $user;
-		$this->finder = $finder;
-	}
+        $this->user = $user;
+        $this->finder = $finder;
+    }
 
     /**
      * Execute the actions
@@ -53,145 +53,171 @@ class InstallCommand extends Command
      */
     public function fire()
     {
-		$this->info('Starting the installation process...');
+        $this->info('Starting the installation process...');
 
-		$this->configureDatabase();
+        $this->configureDatabase();
 
-		$this->runMigrations();
+		if ($this->confirm('Do you wish to init sentinel and create its first user? [yes|no]')) {
+			$this->runUserCommands();
+		}
 
-		$this->runSeeds();
+        $this->runMigrations();
 
-		$this->createFirstUser();
+        $this->publishAssets();
 
-		$this->publishAssets();
-
-		$this->blockMessage('Success!', 'Platform ready! You can now login with your username and password at /backend');
+        $this->blockMessage(
+            'Success!',
+            'Platform ready! You can now login with your username and password at /backend'
+        );
     }
 
 	/**
-	 * Create the first user that'll have admin access
-     */
-	private function createFirstUser()
+	 *
+	 */
+	private function runUserCommands()
 	{
-		$this->line('Creating an Admin user account...');
+		$this->runSentinelMigrations();
+		$this->runUserSeeds();
+		$this->createFirstUser();
 
-		$firstname = $this->ask('Enter your first name');
-		$lastname = $this->ask('Enter your last name');
-		$email = $this->ask('Enter your email address');
-		$password = $this->secret('Enter a password');
-
-		$userInfo = [
-			'first_name' => $firstname,
-			'last_name' => $lastname,
-			'email' => $email,
-			'password' => Hash::make($password),
-		];
-		$this->user->createWithRoles($userInfo, ['admin']);
-
-		$this->info('Admin account created!');
+		$this->info('User commands done.');
 	}
 
-	/**
-	 * Run the migrations
+    /**
+     * Create the first user that'll have admin access
      */
-	private function runMigrations()
+    private function createFirstUser()
+    {
+        $this->line('Creating an Admin user account...');
+
+        $firstname = $this->ask('Enter your first name');
+        $lastname = $this->ask('Enter your last name');
+        $email = $this->ask('Enter your email address');
+        $password = $this->secret('Enter a password');
+
+        $userInfo = [
+            'first_name' => $firstname,
+            'last_name' => $lastname,
+            'email' => $email,
+            'password' => Hash::make($password),
+        ];
+        $this->user->createWithRoles($userInfo, ['admin']);
+
+        $this->info('Admin account created!');
+    }
+
+	/**
+	 * Run migrations specific to Sentinel
+     */
+	private function runSentinelMigrations()
 	{
 		$this->call('migrate', ['--package' => 'cartalyst/sentinel']);
-		$this->call('module:migrate', ['module' => 'Setting']);
-
-		$this->info('Application migrated!');
 	}
 
-	/**
-	 * Run the seeds
+    /**
+     * Run the migrations
      */
-	private function runSeeds()
+    private function runMigrations()
+    {
+        $this->call('module:migrate', ['module' => 'Setting']);
+
+        $this->info('Application migrated!');
+    }
+
+	private function runUserSeeds()
 	{
 		$this->call('module:seed', ['module' => 'User']);
-
-		$this->info('Application seeded!');
 	}
 
-	/**
-	 * Symfony style block messages
-	 * @param $title
-	 * @param $message
-	 * @param string $style
+    /**
+     * Run the seeds
      */
-	protected function blockMessage($title, $message, $style = 'info')
-	{
-		$formatter = $this->getHelperSet()->get('formatter');
-		$errorMessages = [$title, $message];
-		$formattedBlock = $formatter->formatBlock($errorMessages, $style, true);
-		$this->line($formattedBlock);
-	}
+    private function runSeeds()
+    {
+        $this->info('Application seeded!');
+    }
 
-	/**
-	 * Publish the CMS assets
+    /**
+     * Symfony style block messages
+     * @param $title
+     * @param $message
+     * @param string $style
      */
-	private function publishAssets()
-	{
-		$this->call('module:publish', ['module' => 'Core']);
-	}
+    protected function blockMessage($title, $message, $style = 'info')
+    {
+        $formatter = $this->getHelperSet()->get('formatter');
+        $errorMessages = [$title, $message];
+        $formattedBlock = $formatter->formatBlock($errorMessages, $style, true);
+        $this->line($formattedBlock);
+    }
 
-	/**
-	 * Configuring the database information
+    /**
+     * Publish the CMS assets
      */
-	private function configureDatabase()
-	{
-		// Ask for credentials
-		$databaseName = $this->ask('Enter your database name');
-		$databaseUsername = $this->ask('Enter your database username');
-		$databasePassword = $this->secret('Enter your database password');
+    private function publishAssets()
+    {
+        $this->call('module:publish', ['module' => 'Core']);
+    }
 
-		$this->setLaravelConfiguration($databaseName, $databaseUsername, $databasePassword);
-		$this->configureEnvironmentFile($databaseName, $databaseUsername, $databasePassword);
-	}
-
-	/**
-	 * Writing the environment file
-	 * @param $databaseName
-	 * @param $databaseUsername
-	 * @param $databasePassword
+    /**
+     * Configuring the database information
      */
-	private function configureEnvironmentFile($databaseName, $databaseUsername, $databasePassword)
-	{
-		Dotenv::makeMutable();
+    private function configureDatabase()
+    {
+        // Ask for credentials
+        $databaseName = $this->ask('Enter your database name');
+        $databaseUsername = $this->ask('Enter your database username');
+        $databasePassword = $this->secret('Enter your database password');
 
-		$environmentFile = $this->finder->get('.env.example');
+        $this->setLaravelConfiguration($databaseName, $databaseUsername, $databasePassword);
+        $this->configureEnvironmentFile($databaseName, $databaseUsername, $databasePassword);
+    }
 
-		$search = [
-			"DB_USERNAME=homestead",
-			"DB_PASSWORD=homestead"
-		];
-
-		$replace = [
-			"DB_USERNAME=$databaseUsername",
-			"DB_PASSWORD=$databasePassword" . PHP_EOL
-		];
-		$newEnvironmentFile = str_replace($search, $replace, $environmentFile);
-		$newEnvironmentFile .= "DB_NAME=$databaseName";
-
-		// Write the new environment file
-		$this->finder->put('.env', $newEnvironmentFile);
-		// Delete the old environment file
-		$this->finder->delete('env.example');
-
-		$this->info('Environment file written');
-
-		Dotenv::makeImmutable();
-	}
-
-	/**
-	 * Set DB credentials to laravel config
-	 * @param $databaseName
-	 * @param $databaseUsername
-	 * @param $databasePassword
+    /**
+     * Writing the environment file
+     * @param $databaseName
+     * @param $databaseUsername
+     * @param $databasePassword
      */
-	private function setLaravelConfiguration($databaseName, $databaseUsername, $databasePassword)
-	{
-		$this->laravel['config']['database.connections.mysql.database'] = $databaseName;
-		$this->laravel['config']['database.connections.mysql.username'] = $databaseUsername;
-		$this->laravel['config']['database.connections.mysql.password'] = $databasePassword;
-	}
+    private function configureEnvironmentFile($databaseName, $databaseUsername, $databasePassword)
+    {
+        Dotenv::makeMutable();
+
+        $environmentFile = $this->finder->get('.env.example');
+
+        $search = [
+            "DB_USERNAME=homestead",
+            "DB_PASSWORD=homestead"
+        ];
+
+        $replace = [
+            "DB_USERNAME=$databaseUsername",
+            "DB_PASSWORD=$databasePassword" . PHP_EOL
+        ];
+        $newEnvironmentFile = str_replace($search, $replace, $environmentFile);
+        $newEnvironmentFile .= "DB_NAME=$databaseName";
+
+        // Write the new environment file
+        $this->finder->put('.env', $newEnvironmentFile);
+        // Delete the old environment file
+        $this->finder->delete('env.example');
+
+        $this->info('Environment file written');
+
+        Dotenv::makeImmutable();
+    }
+
+    /**
+     * Set DB credentials to laravel config
+     * @param $databaseName
+     * @param $databaseUsername
+     * @param $databasePassword
+     */
+    private function setLaravelConfiguration($databaseName, $databaseUsername, $databasePassword)
+    {
+        $this->laravel['config']['database.connections.mysql.database'] = $databaseName;
+        $this->laravel['config']['database.connections.mysql.username'] = $databaseUsername;
+        $this->laravel['config']['database.connections.mysql.password'] = $databasePassword;
+    }
+
 }
