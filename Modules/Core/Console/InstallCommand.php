@@ -8,19 +8,19 @@ use Modules\User\Repositories\UserRepository;
 
 class InstallCommand extends Command
 {
-    /**
-     * The console command name.
-     *
-     * @var string
-     */
-    protected $name = 'platform:install';
+	/**
+	 * The console command name.
+	 *
+	 * @var string
+	 */
+	protected $name = 'platform:install';
 
-    /**
-     * The console command description.
-     *
-     * @var string
-     */
-    protected $description = 'Install the Platform CMS';
+	/**
+	 * The console command description.
+	 *
+	 * @var string
+	 */
+	protected $description = 'Install the Platform CMS';
 
 	/**
 	 * @var UserRepository
@@ -39,38 +39,53 @@ class InstallCommand extends Command
 	 * @param Filesystem $finder
 	 * @return \Modules\Core\Console\InstallCommand
 	 */
-    public function __construct($user, Filesystem $finder)
-    {
-        parent::__construct();
+	public function __construct($user, Filesystem $finder)
+	{
+		parent::__construct();
 		$this->user = $user;
 		$this->finder = $finder;
 	}
 
-    /**
-     * Execute the actions
-     *
-     * @return mixed
-     */
-    public function fire()
-    {
+	/**
+	 * Execute the actions
+	 *
+	 * @return mixed
+	 */
+	public function fire()
+	{
 		$this->info('Starting the installation process...');
 
 		$this->configureDatabase();
 
+		if ($this->confirm('Do you wish to init sentinel and create its first user? [yes|no]')) {
+			$this->runUserCommands();
+		}
+
 		$this->runMigrations();
-
-		$this->runSeeds();
-
-		$this->createFirstUser();
 
 		$this->publishAssets();
 
-		$this->blockMessage('Success!', 'Platform ready! You can now login with your username and password at /backend');
-    }
+		$this->blockMessage(
+			'Success!',
+			'Platform ready! You can now login with your username and password at /backend'
+		);
+	}
+
+	/**
+	 *
+	 */
+	private function runUserCommands()
+	{
+		$this->runSentinelMigrations();
+		$this->runUserSeeds();
+		$this->createFirstUser();
+
+		$this->info('User commands done.');
+	}
 
 	/**
 	 * Create the first user that'll have admin access
-     */
+	 */
 	private function createFirstUser()
 	{
 		$this->line('Creating an Admin user account...');
@@ -86,29 +101,39 @@ class InstallCommand extends Command
 			'email' => $email,
 			'password' => Hash::make($password),
 		];
-		$this->user->createWithRoles($userInfo, ['1']);
+		$this->user->createWithRoles($userInfo, ['admin']);
 
 		$this->info('Admin account created!');
 	}
 
 	/**
-	 * Run the migrations
-     */
-	private function runMigrations()
+	 * Run migrations specific to Sentinel
+	 */
+	private function runSentinelMigrations()
 	{
 		$this->call('migrate', ['--package' => 'cartalyst/sentinel']);
+	}
+
+	/**
+	 * Run the migrations
+	 */
+	private function runMigrations()
+	{
 		$this->call('module:migrate', ['module' => 'Setting']);
 
 		$this->info('Application migrated!');
 	}
 
-	/**
-	 * Run the seeds
-     */
-	private function runSeeds()
+	private function runUserSeeds()
 	{
 		$this->call('module:seed', ['module' => 'User']);
+	}
 
+	/**
+	 * Run the seeds
+	 */
+	private function runSeeds()
+	{
 		$this->info('Application seeded!');
 	}
 
@@ -117,7 +142,7 @@ class InstallCommand extends Command
 	 * @param $title
 	 * @param $message
 	 * @param string $style
-     */
+	 */
 	protected function blockMessage($title, $message, $style = 'info')
 	{
 		$formatter = $this->getHelperSet()->get('formatter');
@@ -128,7 +153,7 @@ class InstallCommand extends Command
 
 	/**
 	 * Publish the CMS assets
-     */
+	 */
 	private function publishAssets()
 	{
 		$this->call('module:publish', ['module' => 'Core']);
@@ -136,7 +161,7 @@ class InstallCommand extends Command
 
 	/**
 	 * Configuring the database information
-     */
+	 */
 	private function configureDatabase()
 	{
 		// Ask for credentials
@@ -153,7 +178,7 @@ class InstallCommand extends Command
 	 * @param $databaseName
 	 * @param $databaseUsername
 	 * @param $databasePassword
-     */
+	 */
 	private function configureEnvironmentFile($databaseName, $databaseUsername, $databasePassword)
 	{
 		Dotenv::makeMutable();
@@ -187,7 +212,7 @@ class InstallCommand extends Command
 	 * @param $databaseName
 	 * @param $databaseUsername
 	 * @param $databasePassword
-     */
+	 */
 	private function setLaravelConfiguration($databaseName, $databaseUsername, $databasePassword)
 	{
 		$this->laravel['config']['database.connections.mysql.database'] = $databaseName;
