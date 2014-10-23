@@ -32,10 +32,10 @@
 </head>
 <body class="skin-blue">
 <header class="header">
-    <a href="#" class="logo">
-        @section('title')
-        SocialDashy
-        @show
+    <a href="{{ URL::route('dashboard.index') }}" class="logo">
+        <?php if (isset($sitename)): ?>
+            {{ $sitename->translate(App::getLocale())->value }}
+        <?php endif; ?>
     </a>
     @include('core::partials.top-nav')
 </header>

@@ -2,23 +2,6 @@
 <aside class="left-side sidebar-offcanvas">
     <!-- sidebar: style can be found in sidebar.less -->
     <section class="sidebar">
-        <!-- Sidebar user panel -->
-        <div class="user-panel">
-            <div class="pull-left image">
-                <img src="{{ $user->present()->gravatar() }}" class="img-circle" alt="User Image" />
-            </div>
-            <div class="pull-left info">
-                <?php if ($user->present()->fullname() != ' '): ?>
-                    <p><?= $user->present()->fullname(); ?></p>
-                <?php else: ?>
-                    <p><em>Complete your profile.</em></p>
-                <?php endif; ?>
-
-                <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
-            </div>
-        </div>
-
-        <!-- sidebar menu: : style can be found in sidebar.less -->
         <ul class="sidebar-menu">
             <?php $items = \Modules\Core\Navigation\NavigationOrdener::order($items); ?>
             <?php foreach($items as $i => $item): ?>
