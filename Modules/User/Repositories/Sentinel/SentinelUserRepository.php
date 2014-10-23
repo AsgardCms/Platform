@@ -2,7 +2,7 @@
 
 use Cartalyst\Sentinel\Laravel\Facades\Activation;
 use Cartalyst\Sentinel\Laravel\Facades\Sentinel;
-use Modules\Session\Exceptions\UserNotFoundException;
+use Modules\User\Exceptions\UserNotFoundException;
 use Modules\User\Repositories\UserRepository;
 
 class SentinelUserRepository implements UserRepository
@@ -112,5 +112,15 @@ class SentinelUserRepository implements UserRepository
         };
 
         throw new UserNotFoundException;
+    }
+
+    /**
+     * Find a user by its credentials
+     * @param array $credentials
+     * @return mixed
+     */
+    public function findByCredentials(array $credentials)
+    {
+        return Sentinel::findByCredentials($credentials);
     }
 }

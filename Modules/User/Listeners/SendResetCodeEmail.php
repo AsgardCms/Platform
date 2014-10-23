@@ -9,9 +9,9 @@ class SendResetCodeEmail extends EventListener
     public function whenUserHasBegunResetProcess($event)
     {
         $user = $event->user;
-        $code = $event->reminder->code;
+        $code = $event->code;
 
-        Mail::queue('SessionModule::emails.reminder', compact('user', 'code'), function(Message $m) use ($user)
+        Mail::queue('user::emails.reminder', compact('user', 'code'), function(Message $m) use ($user)
         {
             $m->to($user->email)->subject('Reset your account password.');
         });

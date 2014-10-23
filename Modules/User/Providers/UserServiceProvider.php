@@ -82,6 +82,10 @@ class UserServiceProvider extends ServiceProvider
 			'Modules\User\Repositories\RoleRepository',
 			'Modules\User\Repositories\Sentinel\SentinelRoleRepository'
 		);
+        $this->app->bind(
+            'Modules\User\Repositories\AuthenticationRepository',
+            'Modules\User\Repositories\Sentinel\SentinelAuthenticationRepository'
+        );
 	}
 
     private function registerMiddleware($router)
