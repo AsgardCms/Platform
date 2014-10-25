@@ -50,7 +50,6 @@ class EloquentSettingRepository extends EloquentBaseRepository implements Settin
         $this->removeTokenKey($settings);
 
         foreach ($settings as $settingName => $settingValues) {
-            // Check if setting exists
             if ($setting = $this->findByName($settingName)) {
                 $this->updateSetting($setting, $settingValues);
                 continue;
@@ -75,24 +74,26 @@ class EloquentSettingRepository extends EloquentBaseRepository implements Settin
      */
     public function findByName($settingName)
     {
-        return $this->model->whereHas(
-            'translations',
-            function ($q) use ($settingName) {
-                $q->where('name', $settingName);
-            }
-        )->first();
+        return $this->model->where('name', $settingName)->first();
     }
 
     /**
      * Create a setting with the given name
-     * @param $settingName
+     * @param string $settingName
      * @param $settingValues
      */
     private function createForName($settingName, $settingValues)
     {
         $setting = new $this->model;
         $setting->name = $settingName;
-        $this->setTranslatedAttributes($settingValues, $setting);
+
+        if (is_array($settingValues)) {
+            $setting->isTranslatable = true;
+            $this->setTranslatedAttributes($settingValues, $setting);
+        } else {
+            $setting->isTranslatable = false;
+            $setting->plainValue = $settingValues;
+        }
 
         return $setting->save();
     }
@@ -104,7 +105,11 @@ class EloquentSettingRepository extends EloquentBaseRepository implements Settin
      */
     private function updateSetting($setting, $settingValues)
     {
-        $this->setTranslatedAttributes($settingValues, $setting);
+        if (is_array($settingValues)) {
+            $this->setTranslatedAttributes($settingValues, $setting);
+        } else {
+            $setting->plainValue = $settingValues;
+        }
 
         return $setting->save();
     }
@@ -164,21 +169,40 @@ class EloquentSettingRepository extends EloquentBaseRepository implements Settin
      */
     public function findByModule($module)
     {
-        return $this->model->where('name', 'LIKE', $module . '_%')->get();
+        return $this->model->where('name', 'LIKE', $module . '::%')->get();
     }
 
     /**
      * Find the given setting name for the given module
-     * @param $settingName
+     * @param string $settingName
+     * @return mixed
+     */
+    public function get($settingName)
+    {
+        return $this->model->where('name', 'LIKE', "{$settingName}")->first();
+    }
+
+    /**
+     * Return the translatable module settings
      * @param $module
      * @return mixed
      */
-    public function findSettingForModule($settingName, $module = null)
+    public function translatableModuleSettings($module)
     {
-        if (is_null($module)) {
-            return $this->model->where('name', 'LIKE', "%{$settingName}")->first();
-        }
+        return array_filter($this->moduleSettings($module), function($setting) {
+            return isset($setting['translatable']);
+        });
+    }
 
-        return $this->model->where('name', 'LIKE', "{$module}_{$settingName}")->first();
+    /**
+     * Return the non translatable module settings
+     * @param $module
+     * @return array
+     */
+    public function plainModuleSettings($module)
+    {
+        return array_filter($this->moduleSettings($module), function($setting) {
+            return !isset($setting['translatable']);
+        });
     }
 }
