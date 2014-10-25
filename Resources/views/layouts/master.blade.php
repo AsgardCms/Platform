@@ -34,7 +34,7 @@
 <header class="header">
     <a href="{{ URL::route('dashboard.index') }}" class="logo">
         <?php if (isset($sitename)): ?>
-            {{ $sitename->translate(App::getLocale())->value }}
+            {{ $sitename }}
         <?php endif; ?>
     </a>
     @include('core::partials.top-nav')
