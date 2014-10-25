@@ -21,5 +21,9 @@ return [
     ],
     'breadcrumb' => [
         'home' => 'Home'
+    ],
+    'title' => [
+        'translatable fields' => 'Translatable fields',
+        'non translatable fields' => 'Non translatable fields',
     ]
 ];

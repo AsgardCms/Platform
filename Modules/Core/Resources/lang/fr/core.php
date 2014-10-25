@@ -21,5 +21,9 @@ return [
     'tab' => [
         'english' => 'Anglais',
         'french' => 'Français',
+    ],
+    'title' => [
+        'translatable fields' => 'Champs traduisible',
+        'non translatable fields' => 'Champs non traduisible',
     ]
 ];
