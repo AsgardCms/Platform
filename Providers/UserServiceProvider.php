@@ -83,8 +83,8 @@ class UserServiceProvider extends ServiceProvider
 			'Modules\User\Repositories\Sentinel\SentinelRoleRepository'
 		);
         $this->app->bind(
-            'Modules\User\Repositories\AuthenticationRepository',
-            'Modules\User\Repositories\Sentinel\SentinelAuthenticationRepository'
+            'Modules\Core\Contracts\Authentication',
+            'Modules\User\Repositories\Sentinel\SentinelAuthentication'
         );
 	}
 

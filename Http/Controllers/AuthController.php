@@ -4,13 +4,13 @@ use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\View;
 use Laracasts\Commander\CommanderTrait;
 use Laracasts\Flash\Flash;
+use Modules\Core\Contracts\Authentication;
 use Modules\User\Exceptions\InvalidOrExpiredResetCode;
 use Modules\User\Exceptions\UserNotFoundException;
 use Modules\User\Http\Requests\LoginRequest;
 use Modules\User\Http\Requests\RegisterRequest;
 use Modules\User\Http\Requests\ResetCompleteRequest;
 use Modules\User\Http\Requests\ResetRequest;
-use Modules\User\Repositories\AuthenticationRepository;
 
 class AuthController
 {
@@ -21,7 +21,7 @@ class AuthController
      */
     private $auth;
 
-    public function __construct(AuthenticationRepository $auth)
+    public function __construct(Authentication $auth)
     {
         $this->auth = $auth;
     }
