@@ -8,5 +8,5 @@ class Setting extends Model
     use Translatable;
 
     public $translatedAttributes = ['value', 'description'];
-    protected $fillable = ['name', 'value', 'description'];
+    protected $fillable = ['name', 'value', 'description', 'isTranslatable', 'plainValue'];
 }

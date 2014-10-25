@@ -42,9 +42,22 @@ interface SettingRepository extends BaseRepository
 
     /**
      * Find the given setting name for the given module
-     * @param $settingName
-     * @param $module
+     * @param string $settingName
      * @return mixed
      */
-    public function findSettingForModule($settingName, $module = null);
+    public function get($settingName);
+
+    /**
+     * Return the translatable module settings
+     * @param $module
+     * @return array
+     */
+    public function translatableModuleSettings($module);
+
+    /**
+     * Return the non translatable module settings
+     * @param $module
+     * @return array
+     */
+    public function plainModuleSettings($module);
 }

@@ -2,12 +2,12 @@
 
 @section('content-header')
 <h1>
-    {{ trans('setting::settings.title.module name settings', ['module' => ucfirst($module)]) }}
+    {{ trans('setting::settings.title.module name settings', ['module' => ucfirst($currentModule)]) }}
 </h1>
 <ol class="breadcrumb">
     <li><a href="#"><i class="fa fa-dashboard"></i> {{ trans('core::core.breadcrumb.home') }}</a></li>
     <li><a href="{{ URL::route('dashboard.setting.index') }}"><i class="fa fa-cog"></i> {{ trans('setting::settings.breadcrumb.settings') }}</a></li>
-    <li class="active"><i class="fa fa-cog"></i> {{ trans('setting::settings.breadcrumb.module settings', ['module' => ucfirst($module)]) }}</li>
+    <li class="active"><i class="fa fa-cog"></i> {{ trans('setting::settings.breadcrumb.module settings', ['module' => ucfirst($currentModule)]) }}</li>
 </ol>
 @stop
 
@@ -19,46 +19,61 @@
 @include('flash::message')
 {!! Form::open(['route' => ['dashboard.setting.store'], 'method' => 'post']) !!}
 <div class="row">
-    <div class="col-md-12">
+    <div class="col-md-2">
         <div class="box box-info">
+            <div class="box-header"><h3 class="box-title">{{ trans('setting::settings.title.module settings') }}</h3></div>
+            <div class="box-body">
+                <ul>
+                    <?php foreach($modulesWithSettings as $module => $settings): ?>
+                        <li style="margin-bottom: 15px"><a href="{{ URL::route('dashboard.module.settings', [$module]) }}" class="btn btn-default btn-flat {{ $module == ucfirst($currentModule) ? 'disabled' : '' }}">{{ $module }}</a></li>
+                    <?php endforeach; ?>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-10">
+        <div class="box box-info">
+            <div class="box-header">
+                <h3 class="box-title">{{ trans('core::core.title.translatable fields') }}</h3>
+            </div>
+            <?php if ($translatableSettings): ?>
             <div class="box-body">
                 <div class="nav-tabs-custom">
                     <ul class="nav nav-tabs">
-                        <li class="{{ App::getLocale() == 'en' ? 'active' : '' }}"><a href="#tab_1-1" data-toggle="tab">{{ trans('core::core.tab.english') }}</a></li>
-                        <li class="{{ App::getLocale() == 'fr' ? 'active' : '' }}"><a href="#tab_2-2" data-toggle="tab">{{ trans('core::core.tab.french') }}</a></li>
+                        <?php $i = 0; ?>
+                        <?php foreach(LaravelLocalization::getSupportedLocales() as $locale => $language): ?>
+                            <?php $i++; ?>
+                            <li class="{{ App::getLocale() == $locale ? 'active' : '' }}">
+                                <a href="#tab_{{ $i }}" data-toggle="tab">{{ trans('core::core.tab.'. strtolower($language['name'])) }}</a>
+                            </li>
+                        <?php endforeach; ?>
                     </ul>
                     <div class="tab-content">
-                        <div class="tab-pane {{ App::getLocale() == 'en' ? 'active' : '' }}" id="tab_1-1">
-                            <?php foreach($moduleSettings as $settingName => $moduleInfo): ?>
-                                @include($moduleInfo['view'], [
-                                    'lang' => 'en',
-                                    'moduleSettings' => $moduleSettings,
-                                    'settings' => $settings,
-                                    'module' => $module,
-                                    'setting' => $settingName,
-                                    'moduleInfo' => $moduleInfo,
-                                ])
-                            <?php endforeach; ?>
-                        </div>
-                        <div class="tab-pane {{ App::getLocale() == 'fr' ? 'active' : '' }}" id="tab_2-2">
-                            <?php foreach($moduleSettings as $settingName => $moduleInfo): ?>
-                                @include($moduleInfo['view'], [
-                                    'lang' => 'fr',
-                                    'moduleSettings' => $moduleSettings,
-                                    'settings' => $settings,
-                                    'module' => $module,
-                                    'setting' => $settingName,
-                                    'moduleInfo' => $moduleInfo,
-                                ])
-                            <?php endforeach; ?>
-                        </div>
+                        <?php $i = 0; ?>
+                        <?php foreach(LaravelLocalization::getSupportedLocales() as $locale => $language): ?>
+                            <?php $i++; ?>
+                            <div class="tab-pane {{ App::getLocale() == $locale ? 'active' : '' }}" id="tab_{{ $i }}">
+                                @include('setting::admin.partials.fields', ['settings' => $translatableSettings])
+                            </div>
+                        <?php endforeach; ?>
                     </div>
                 </div>
             </div>
-            <div class="box-footer">
-                <button type="submit" class="btn btn-primary btn-flat">{{ trans('core::core.button.create') }}</button>
-                <a class="btn btn-danger pull-right btn-flat" href="{{ URL::route('dashboard.setting.index')}}"><i class="fa fa-times"></i> {{ trans('core::core.button.cancel') }}</a>
+            <?php endif; ?>
+        </div>
+        <?php if ($plainSettings): ?>
+        <div class="box box-info">
+            <div class="box-header">
+                <h3 class="box-title">{{ trans('core::core.title.non translatable fields') }}</h3>
             </div>
+            <div class="box-body">
+                @include('setting::admin.partials.fields', ['settings' => $plainSettings])
+            </div>
+        </div>
+        <?php endif; ?>
+        <div class="box-footer">
+            <button type="submit" class="btn btn-primary btn-flat">{{ trans('core::core.button.create') }}</button>
+            <a class="btn btn-danger pull-right btn-flat" href="{{ URL::route('dashboard.setting.index')}}"><i class="fa fa-times"></i> {{ trans('core::core.button.cancel') }}</a>
         </div>
     </div>
 </div>

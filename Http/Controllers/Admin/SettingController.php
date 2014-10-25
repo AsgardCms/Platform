@@ -29,11 +29,7 @@ class SettingController extends AdminBaseController
 
     public function index()
     {
-        $settings = $this->setting->all();
-
-        $modulesWithSettings = $this->setting->moduleSettings($this->module->enabled());
-
-        return View::make('setting::admin.settings', compact('settings', 'modulesWithSettings'));
+        return Redirect::route('dashboard.module.settings', ['core']);
     }
 
     public function store(SettingRequest $request)
@@ -44,12 +40,16 @@ class SettingController extends AdminBaseController
         return Redirect::route('dashboard.setting.index');
     }
 
-    public function getModuleSettings($module)
+    public function getModuleSettings($currentModule)
     {
-        $moduleSettings = $this->setting->moduleSettings($module);
+        $modulesWithSettings = $this->setting->moduleSettings($this->module->enabled());
 
-        $settings = $this->setting->savedModuleSettings($module);
+        $translatableSettings = $this->setting->translatableModuleSettings($currentModule);
+        $plainSettings = $this->setting->plainModuleSettings($currentModule);
 
-        return View::make('setting::admin.module-settings', compact('module', 'moduleSettings', 'settings'));
+        $dbSettings = $this->setting->savedModuleSettings($currentModule);
+
+        return View::make('setting::admin.module-settings',
+            compact('currentModule', 'translatableSettings', 'plainSettings', 'dbSettings', 'modulesWithSettings'));
     }
 }
