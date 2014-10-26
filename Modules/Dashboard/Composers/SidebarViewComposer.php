@@ -1,8 +1,9 @@
 <?php namespace Modules\Dashboard\Composers;
 
-use Illuminate\View\View;
+use Illuminate\Contracts\View\View;
+use Modules\Core\Composers\BaseSidebarViewComposer;
 
-class SidebarViewComposer
+class SidebarViewComposer extends BaseSidebarViewComposer
 {
     public function compose(View $view)
     {
@@ -12,6 +13,7 @@ class SidebarViewComposer
             'route' => 'dashboard.index',
             'icon-class' => 'fa fa-dashboard',
             'title' => 'Dashboard',
+            'permission' => $this->auth->hasAccess('dashboard.index')
         ]);
     }
 }
