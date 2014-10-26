@@ -1,0 +1,11 @@
+{
+  "name": "Media",
+  "alias": "media",
+  "description": "",
+  "keywords": [
+  ],
+  "active": 1,
+  "providers": [
+    "Modules\\Setting\\Providers\\RouteServiceProvider"
+  ]
+}
