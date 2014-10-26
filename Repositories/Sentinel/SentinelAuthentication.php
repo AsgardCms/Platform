@@ -106,4 +106,14 @@ class SentinelAuthentication implements Authentication
     {
         return Reminder::complete($user, $code, $password);
     }
+
+    /**
+     * Determines if the current user has access to given permission
+     * @param $permission
+     * @return bool
+     */
+    public function hasAccess($permission)
+    {
+        return Sentinel::hasAccess($permission);
+    }
 }
