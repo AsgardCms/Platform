@@ -1,8 +1,9 @@
 <?php namespace Modules\Setting\Composers;
 
-use Illuminate\View\View;
+use Illuminate\Contracts\View\View;
+use Modules\Core\Composers\BaseSidebarViewComposer;
 
-class SidebarViewComposer
+class SidebarViewComposer extends BaseSidebarViewComposer
 {
     public function compose(View $view)
     {
@@ -12,6 +13,7 @@ class SidebarViewComposer
             'route' => 'dashboard.setting.index',
             'icon-class' => 'fa fa-cog',
             'title' => 'Settings',
+            'permission' => $this->auth->hasAccess('settings.index')
         ]);
     }
 }
