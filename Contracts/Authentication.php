@@ -61,4 +61,11 @@ interface Authentication
      * @return bool
      */
     public function completeResetPassword($user, $code, $password);
+
+    /**
+     * Determines if the current user has access to given permission
+     * @param $permission
+     * @return bool
+     */
+    public function hasAccess($permission);
 }

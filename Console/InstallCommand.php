@@ -130,14 +130,6 @@ class InstallCommand extends Command
 	}
 
     /**
-     * Run the seeds
-     */
-    private function runSeeds()
-    {
-        $this->info('Application seeded!');
-    }
-
-    /**
      * Symfony style block messages
      * @param $title
      * @param $message
