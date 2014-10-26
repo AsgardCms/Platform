@@ -15,3 +15,5 @@ View::addNamespace('media', __DIR__ . '/Resources/views/');
 Lang::addNamespace('media', __DIR__ . '/Resources/lang/');
 
 Config::addNamespace('media', __DIR__ . '/Config/');
+
+require __DIR__ . '/composers.php';
