@@ -23,7 +23,7 @@
 
 @section('content')
 <div class="row col-md-12">
-    <form action="{{ URL::route('api.media.store')}}" method="POST" class="dropzone" id="my-awesome-dropzone">
+    <form action="{{ URL::route('api.media.store')}}" method="POST" class="dropzone">
         {!! Form::token() !!}
     </form>
 </div>
@@ -73,9 +73,9 @@
 <script src="{!! Module::asset('media', 'js/dropzone.js') !!}"></script>
 <script>
 $( document ).ready(function() {
-    $(".dropzone").dropzone({
-        url: $(this).attr('action')
-    });
+//    $(".dropzone").dropzone({
+//        url: $(this).attr('action')
+//    });
     var tableRow = '<tr><td>23/09/2140</td><td>filename</td><td>500</td><td>500</td><td>action</td></tr>'
     $('table>tbody').append(tableRow);
 });
