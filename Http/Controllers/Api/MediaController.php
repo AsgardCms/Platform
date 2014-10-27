@@ -1,9 +1,21 @@
 <?php namespace Modules\Media\Http\Controllers\Api;
 
+use Illuminate\Support\Str;
 use Modules\Media\Http\Requests\UploadMediaRequest;
+use Modules\Media\Repositories\FileRepository;
 
 class MediaController
 {
+    /**
+     * @var FileRepository
+     */
+    private $file;
+
+    public function __construct(FileRepository $file)
+    {
+        $this->file = $file;
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -32,6 +44,16 @@ class MediaController
      */
     public function store(UploadMediaRequest $request)
     {
+        $file = $request->file('file');
+        $fileName = Str::slug($file->getClientOriginalName());
+
+        // Move the uploaded file to /public/assets/media/
+        $file->move(public_path() . '/assets/media', $fileName);
+
+        // Save the file info to db
+        $savedFile = $this->file->createFromFile($file);
+
+        // Return json response about those
         dd($request->file('file'));
     }
 
