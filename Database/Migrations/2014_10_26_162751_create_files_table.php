@@ -22,7 +22,7 @@ class CreateFilesTable extends Migration {
 		    $table->string('width');
 		    $table->string('height');
 		    $table->string('filesize');
-		    $table->string('folder_id')->unsigned();
+		    $table->integer('folder_id')->unsigned();
             $table->timestamps();
 		});
 	}
