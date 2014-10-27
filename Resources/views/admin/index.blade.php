@@ -16,6 +16,7 @@
 .dropzone {
     border: 1px dashed #CCC;
     min-height: 227px;
+    margin-bottom: 20px;
 }
 </style>
 @stop
@@ -30,7 +31,43 @@
 <div class="row">
     <div class="col-md-12">
         @include('flash::message')
-        <p>media!</p>
+        <div class="box">
+            <div class="box-header">
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body table-responsive">
+                <table class="data-table table table-bordered table-hover">
+                    <thead>
+                        <tr>
+                            <th>{{ trans('core::core.table.created at') }}</th>
+                            <th>{{ trans('media::media.table.filename') }}</th>
+                            <th>{{ trans('media::media.table.width') }}</th>
+                            <th>{{ trans('media::media.table.height') }}</th>
+                            <th>{{ trans('core::core.table.actions') }}</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>23/09/1990</td>
+                            <td>filename</td>
+                            <td>500</td>
+                            <td>500</td>
+                            <td>action</td>
+                        </tr>
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <th>{{ trans('core::core.table.created at') }}</th>
+                            <th>{{ trans('media::media.table.filename') }}</th>
+                            <th>{{ trans('media::media.table.width') }}</th>
+                            <th>{{ trans('media::media.table.height') }}</th>
+                            <th>{{ trans('core::core.table.actions') }}</th>
+                        </tr>
+                    </tfoot>
+                </table>
+            <!-- /.box-body -->
+            </div>
+        <!-- /.box -->
     </div>
 </div>
 @stop

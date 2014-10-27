@@ -7,4 +7,9 @@ return [
     'breadcrumb' => [
         'media' => 'Media'
     ],
+    'table' => [
+        'filename' => 'Filename',
+        'width' => 'Width',
+        'height' => 'Height'
+    ]
 ];
