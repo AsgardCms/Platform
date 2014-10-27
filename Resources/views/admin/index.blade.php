@@ -11,10 +11,42 @@
 @stop
 
 @section('content')
+<style>
+.dropzone {
+    border: 1px dashed #CCC;
+    position: relative;
+    min-height: 227px;
+    margin-bottom: 20px;
+    display: block;
+}
+.dz-message {
+    font-size: 24px;
+    color: #CCC;
+    text-align: center;
+    left: 50%;
+    top: 50%;
+    width: 260px;
+    height: 70px;
+    margin: -35px 0 0 -130px;
+    position: absolute;
+    z-index: 1000;
+}
+</style>
+<div class="row col-md-12">
+    <form action="/file-upload"
+          class="dropzone"
+          id="my-awesome-dropzone"></form>
+</div>
+
 <div class="row">
     <div class="col-md-12">
         @include('flash::message')
         <p>media!</p>
     </div>
 </div>
+@stop
+
+@section('scripts')
+<script src="{!! Module::asset('media', 'js/dropzone.js') !!}"></script>
+
 @stop
