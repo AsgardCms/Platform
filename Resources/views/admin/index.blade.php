@@ -74,11 +74,18 @@
 <script>
 $( document ).ready(function() {
     Dropzone.autoDiscover = false;
-    $(".dropzone").dropzone({
-        url: $(this).attr('action')
+    var tableRow = '<tr><td>23/09/2140</td><td>filename</td><td>500</td><td>500</td><td>action</td></tr>';
+
+    var myDropzone = new Dropzone(".dropzone", {
+        url: $(this).attr('action'),
+        autoProcessQueue: true
     });
-    var tableRow = '<tr><td>23/09/2140</td><td>filename</td><td>500</td><td>500</td><td>action</td></tr>'
-    $('table>tbody').append(tableRow);
+    myDropzone.on("success", function(file, http) {
+        //console.log(http);
+        var elem = $(tableRow).css('display', 'none');
+        $('table tbody').prepend(elem);
+        elem.fadeIn();
+    });
 });
 </script>
 <?php $locale = App::getLocale(); ?>
