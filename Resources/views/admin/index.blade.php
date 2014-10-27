@@ -32,9 +32,6 @@
     <div class="col-md-12">
         @include('flash::message')
         <div class="box">
-            <div class="box-header">
-            </div>
-            <!-- /.box-header -->
             <div class="box-body table-responsive">
                 <table class="data-table table table-bordered table-hover">
                     <thead>
@@ -67,7 +64,7 @@
                 </table>
             <!-- /.box-body -->
             </div>
-        <!-- /.box -->
+        </div>
     </div>
 </div>
 @stop
@@ -79,6 +76,31 @@ $( document ).ready(function() {
     $(".dropzone").dropzone({
         url: $(this).attr('action')
     });
+    var tableRow = '<tr><td>23/09/2140</td><td>filename</td><td>500</td><td>500</td><td>action</td></tr>'
+    $('table>tbody').append(tableRow);
 });
+</script>
+<?php $locale = App::getLocale(); ?>
+<script type="text/javascript">
+    $(function () {
+        $('.data-table').dataTable({
+            "bPaginate": true,
+            "bLengthChange": true,
+            "bFilter": true,
+            "bSort": true,
+            "bInfo": true,
+            "bAutoWidth": true,
+            "oLanguage": {
+                "sUrl": '<?php echo Module::asset('core', "js/vendor/datatables/{$locale}.json") ?>'
+            },
+            "aoColumns": [
+                null,
+                null,
+                null,
+                null,
+                { "bSortable": false }
+            ]
+        });
+    });
 </script>
 @stop
