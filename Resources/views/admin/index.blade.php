@@ -73,9 +73,10 @@
 <script src="{!! Module::asset('media', 'js/dropzone.js') !!}"></script>
 <script>
 $( document ).ready(function() {
-//    $(".dropzone").dropzone({
-//        url: $(this).attr('action')
-//    });
+    Dropzone.autoDiscover = false;
+    $(".dropzone").dropzone({
+        url: $(this).attr('action')
+    });
     var tableRow = '<tr><td>23/09/2140</td><td>filename</td><td>500</td><td>500</td><td>action</td></tr>'
     $('table>tbody').append(tableRow);
 });
