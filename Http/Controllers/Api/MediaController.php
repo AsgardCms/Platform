@@ -1,6 +1,7 @@
 <?php namespace Modules\Media\Http\Controllers\Api;
 
 use Illuminate\Support\Facades\Input;
+use Modules\Media\Http\Requests\UploadMediaRequest;
 
 class MediaController
 {
@@ -27,13 +28,12 @@ class MediaController
     /**
      * Store a newly created resource in storage.
      *
+     * @param UploadMediaRequest $request
      * @return Response
      */
-    public function store()
+    public function store(UploadMediaRequest $request)
     {
-        dd(Input::file('file'));
-        dd(Input::all());
-        dd('store called');
+        dd($request->file('file'));
     }
 
     /**
