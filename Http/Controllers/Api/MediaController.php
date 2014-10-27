@@ -1,5 +1,7 @@
 <?php namespace Modules\Media\Http\Controllers\Api;
 
+use Illuminate\Support\Facades\Input;
+
 class MediaController
 {
     /**
@@ -29,6 +31,8 @@ class MediaController
      */
     public function store()
     {
+        dd(Input::file('file'));
+        dd(Input::all());
         dd('store called');
     }
 

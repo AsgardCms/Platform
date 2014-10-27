@@ -11,25 +11,11 @@
 @stop
 
 @section('styles')
+<link href="{!! Module::asset('media', 'css/dropzone.css') !!}" rel="stylesheet" type="text/css" />
 <style>
 .dropzone {
     border: 1px dashed #CCC;
-    position: relative;
     min-height: 227px;
-    margin-bottom: 20px;
-    display: block;
-}
-.dz-message {
-    font-size: 24px;
-    color: #CCC;
-    text-align: center;
-    left: 50%;
-    top: 50%;
-    width: 260px;
-    height: 70px;
-    margin: -35px 0 0 -130px;
-    position: absolute;
-    z-index: 1000;
 }
 </style>
 @stop
@@ -51,5 +37,11 @@
 
 @section('scripts')
 <script src="{!! Module::asset('media', 'js/dropzone.js') !!}"></script>
-
+<script>
+$( document ).ready(function() {
+    $(".dropzone").dropzone({
+        url: $(this).attr('action')
+    });
+});
+</script>
 @stop
