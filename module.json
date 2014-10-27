@@ -6,6 +6,6 @@
   ],
   "active": 1,
   "providers": [
-    "Modules\\Setting\\Providers\\RouteServiceProvider"
+    "Modules\\Media\\Providers\\RouteServiceProvider"
   ]
 }

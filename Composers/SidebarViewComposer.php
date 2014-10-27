@@ -10,7 +10,7 @@ class SidebarViewComposer extends BaseSidebarViewComposer
         $view->items->put('medias', [
             'weight' => 6,
             'request' => "*/$view->prefix/media",
-            'route' => 'dashboard.index',
+            'route' => 'dashboard.media.index',
             'icon-class' => 'fa fa-camera',
             'title' => 'Medias',
             'permission' => $this->auth->hasAccess('dashboard.index')
