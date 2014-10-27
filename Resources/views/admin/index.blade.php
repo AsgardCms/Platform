@@ -10,7 +10,7 @@
 </ol>
 @stop
 
-@section('content')
+@section('styles')
 <style>
 .dropzone {
     border: 1px dashed #CCC;
@@ -32,6 +32,9 @@
     z-index: 1000;
 }
 </style>
+@stop
+
+@section('content')
 <div class="row col-md-12">
     <form action="/file-upload"
           class="dropzone"
