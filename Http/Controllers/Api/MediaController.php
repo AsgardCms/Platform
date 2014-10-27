@@ -1,6 +1,5 @@
 <?php namespace Modules\Media\Http\Controllers\Api;
 
-use Illuminate\Support\Facades\Input;
 use Modules\Media\Http\Requests\UploadMediaRequest;
 
 class MediaController
