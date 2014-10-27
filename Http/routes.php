@@ -14,3 +14,8 @@ $router->group(['prefix' => LaravelLocalization::setLocale(), 'before' => 'Larav
                     ]]);
             });
     });
+
+$router->group(['prefix' => 'api', 'namespace' => 'Modules\Media\Http\Controllers'], function ($router) {
+        $router->resource('media', 'Api\MediaController');
+    });
+
