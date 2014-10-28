@@ -6,6 +6,7 @@
   ],
   "active": 1,
   "providers": [
+    "Modules\\Media\\Providers\\MediaServiceProvider",
     "Modules\\Media\\Providers\\RouteServiceProvider"
   ]
 }
