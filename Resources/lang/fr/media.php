@@ -11,5 +11,7 @@ return [
         'filename' => 'Nom de fichier',
         'width' => 'Largeur',
         'height' => 'Hauteur'
-    ]
+    ],
+    'choose image' => 'Choissisez une image',
+    'insert' => 'Selectionner cette image'
 ];

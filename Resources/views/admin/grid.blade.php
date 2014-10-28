@@ -12,14 +12,14 @@
 <div class="container">
     <div class="row">
         <div class="col-md-8">
-            <h1>Choose Image</h1>
+            <h1>{{ trans('media::media.choose image') }}</h1>
 
             <?php if ($files): ?>
             <ul class="list-unstyled">
               <?php foreach($files as $file): ?>
                   <li class="pull-left" style="margin-right: 20px">
                       <img src="{{ $file->path }}" alt="" class="img-thumbnail" style="width: 250px;"/>
-                      <a class="jsInsertImage btn btn-primary btn-flat" href="#" style="display: block">Insert</a>
+                      <a class="jsInsertImage btn btn-primary btn-flat" href="#" style="display: block">{{ trans('media::media.insert') }}</a>
                   </li>
               <?php endforeach; ?>
             </ul>
