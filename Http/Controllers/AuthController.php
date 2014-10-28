@@ -42,7 +42,7 @@ class AuthController
         $error = $this->auth->login($credentials, $remember);
         if (!$error) {
             Flash::success('Successfully logged in.');
-            return Redirect::route('dashboard.index');
+            return Redirect::intended('/');
         }
 
         Flash::error($error);

@@ -1,6 +1,5 @@
 <?php namespace Modules\User\Commands;
 
-use Cartalyst\Sentinel\Laravel\Facades\Sentinel;
 use Illuminate\Support\Facades\Event;
 use Laracasts\Commander\CommandHandler;
 use Modules\User\Events\UserHasRegistered;
