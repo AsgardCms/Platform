@@ -74,14 +74,13 @@
 <script>
 $( document ).ready(function() {
     Dropzone.autoDiscover = false;
-    var tableRow = '<tr><td>23/09/2140</td><td>filename</td><td>500</td><td>500</td><td>action</td></tr>';
 
     var myDropzone = new Dropzone(".dropzone", {
         url: $(this).attr('action'),
         autoProcessQueue: true
     });
     myDropzone.on("success", function(file, http) {
-        //console.log(http);
+        var tableRow = '<tr><td>' + http.created_at + '</td><td>'+http.filename+'</td><td></td><td></td><td>action</td></tr>';
         var elem = $(tableRow).css('display', 'none');
         $('table tbody').prepend(elem);
         elem.fadeIn();
