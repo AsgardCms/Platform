@@ -20,7 +20,7 @@ class FileService
         $savedFile = $this->file->createFromFile($file);
 
         // Move the uploaded file to /public/assets/media/
-        $file->move(public_path() . '/assets/media', $savedFile->path);
+        $file->move(public_path() . '/assets/media', $savedFile->filename);
 
         return $savedFile;
     }
