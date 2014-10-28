@@ -2,9 +2,20 @@
 
 use Illuminate\Support\Facades\View;
 use Modules\Core\Http\Controllers\Admin\AdminBaseController;
+use Modules\Media\Repositories\FileRepository;
 
 class MediaController extends AdminBaseController
 {
+    /**
+     * @var FileRepository
+     */
+    private $file;
+
+    public function __construct(FileRepository $file)
+    {
+        $this->file = $file;
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -12,7 +23,9 @@ class MediaController extends AdminBaseController
      */
     public function index()
     {
-        return View::make('media::admin.index');
+        $files = $this->file->all();
+
+        return View::make('media::admin.index', compact('files'));
     }
 
     /**

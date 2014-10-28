@@ -44,13 +44,38 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>23/09/1990</td>
-                            <td>filename</td>
-                            <td>500</td>
-                            <td>500</td>
-                            <td>action</td>
-                        </tr>
+                        <?php if ($files): ?>
+                            <?php foreach($files as $file): ?>
+                                <tr>
+                                    <td>
+                                        <a href="{{ URL::route('dashboard.media.edit', [$file->id]) }}">
+                                            {{ $file->created_at }}
+                                        </a>
+                                    </td>
+                                    <td>
+                                        <a href="{{ URL::route('dashboard.media.edit', [$file->id]) }}">
+                                            {{ $file->filename }}
+                                        </a>
+                                    </td>
+                                    <td>
+                                        <a href="{{ URL::route('dashboard.media.edit', [$file->id]) }}">
+                                            {{ $file->width }}
+                                        </a>
+                                    </td>
+                                    <td>
+                                        <a href="{{ URL::route('dashboard.media.edit', [$file->id]) }}">
+                                            {{ $file->height }}
+                                        </a>
+                                    </td>
+                                    <td>
+                                        <div class="btn-group">
+                                            <a href="{{ URL::route('dashboard.media.edit', [$file->id]) }}" class="btn btn-default btn-flat"><i class="glyphicon glyphicon-pencil"></i></a>
+                                            <button class="btn btn-danger btn-flat" data-toggle="modal" data-target="#confirmation-{{ $file->id }}"><i class="glyphicon glyphicon-trash"></i></button>
+                                        </div>
+                                    </td>
+                                </tr>
+                            <?php endforeach; ?>
+                        <?php endif; ?>
                     </tbody>
                     <tfoot>
                         <tr>
