@@ -19,8 +19,6 @@ class CreateFilesTable extends Migration {
 		    $table->string('path');
 		    $table->string('extension');
 		    $table->string('mimetype');
-		    $table->string('width');
-		    $table->string('height');
 		    $table->string('filesize');
 		    $table->integer('folder_id')->unsigned();
             $table->timestamps();
