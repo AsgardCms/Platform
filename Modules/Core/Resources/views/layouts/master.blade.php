@@ -55,12 +55,13 @@
     </aside><!-- /.right-side -->
 </div><!-- ./wrapper -->
 
-<script src="{{{ Module::asset('core', 'js/vendor/bootstrap.min.js') }}}" type="text/javascript"></script>
-<script src="{{{ Module::asset('core', 'js/vendor/alertify/alertify.js') }}}" type="text/javascript"></script>
-<script src="{{{ Module::asset('core', 'js/vendor/iCheck/icheck.min.js') }}}" type="text/javascript"></script>
-<script src="{{{ Module::asset('core', 'js/vendor/datatables/jquery.dataTables.js') }}}" type="text/javascript"></script>
-<script src="{{{ Module::asset('core', 'js/vendor/datatables/dataTables.bootstrap.js') }}}" type="text/javascript"></script>
-<script src="{{{ Module::asset('core', 'js/app.js') }}}" type="text/javascript"></script>
+<script src="{!! Module::asset('core', 'js/vendor/bootstrap.min.js') !!}" type="text/javascript"></script>
+<script src="{!! Module::asset('core', 'js/vendor/alertify/alertify.js') !!}" type="text/javascript"></script>
+<script src="{!! Module::asset('core', 'js/vendor/iCheck/icheck.min.js') !!}" type="text/javascript"></script>
+<script src="{!! Module::asset('core', 'js/vendor/datatables/jquery.dataTables.js') !!}" type="text/javascript"></script>
+<script src="{!! Module::asset('core', 'js/vendor/datatables/dataTables.bootstrap.js') !!}" type="text/javascript"></script>
+<script src="{!! Module::asset('core', 'js/vendor/jquery.slug.js') !!}" type="text/javascript"></script>
+<script src="{!! Module::asset('core', 'js/app.js') !!}" type="text/javascript"></script>
 @section('scripts')
 @show
 </body>
