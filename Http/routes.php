@@ -1,5 +1,7 @@
 <?php
 
+$router->model('media', 'Modules\Media\Entities\File');
+
 $router->group(['prefix' => LaravelLocalization::setLocale(), 'before' => 'LaravelLocalizationRedirectFilter|auth.admin|permissions'], function($router)
     {
         $router->group(['prefix' => Config::get('core::core.admin-prefix'), 'namespace' => 'Modules\Media\Http\Controllers'], function($router)

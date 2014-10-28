@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\View;
 use Modules\Core\Http\Controllers\Admin\AdminBaseController;
+use Modules\Media\Entities\File;
 use Modules\Media\Repositories\FileRepository;
 
 class MediaController extends AdminBaseController
@@ -58,10 +59,10 @@ class MediaController extends AdminBaseController
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int $id
+     * @param File $file
      * @return Response
      */
-    public function edit($id)
+    public function edit(File $file)
     {
         return View::make('media.edit');
     }
