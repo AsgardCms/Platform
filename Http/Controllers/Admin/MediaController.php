@@ -28,6 +28,13 @@ class MediaController extends AdminBaseController
         return View::make('media::admin.index', compact('files'));
     }
 
+    public function gridFiles()
+    {
+        $files = $this->file->all();
+
+        return View::make('media::admin.grid', compact('files'));
+    }
+
     /**
      * Show the form for creating a new resource.
      *
