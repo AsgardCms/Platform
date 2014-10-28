@@ -28,7 +28,7 @@ class EloquentFileRepository extends EloquentBaseRepository implements FileRepos
 
         return $this->model->create([
             'filename' => $fileName,
-            'path' => public_path() . "/assets/media/{$fileName}",
+            'path' => "/assets/media/{$fileName}",
             'extension' => $file->guessClientExtension(),
             'mimetype' => $file->getClientMimeType(),
             'filesize' => $file->getFileInfo()->getSize(),
