@@ -116,4 +116,13 @@ class SentinelAuthentication implements Authentication
     {
         return Sentinel::hasAccess($permission);
     }
+
+    /**
+     * Check if the user is logged in
+     * @return mixed
+     */
+    public function check()
+    {
+        return Sentinel::check();
+    }
 }
