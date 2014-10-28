@@ -56,17 +56,6 @@ class MediaController extends AdminBaseController
     }
 
     /**
-     * Display the specified resource.
-     *
-     * @param  int $id
-     * @return Response
-     */
-    public function show($id)
-    {
-        return \View::make('media.show');
-    }
-
-    /**
      * Show the form for editing the specified resource.
      *
      * @param  int $id
@@ -74,7 +63,7 @@ class MediaController extends AdminBaseController
      */
     public function edit($id)
     {
-        return \View::make('media.edit');
+        return View::make('media.edit');
     }
 
     /**
