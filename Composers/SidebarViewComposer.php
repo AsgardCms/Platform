@@ -13,7 +13,7 @@ class SidebarViewComposer extends BaseSidebarViewComposer
             'route' => 'dashboard.media.index',
             'icon-class' => 'fa fa-camera',
             'title' => 'Medias',
-            'permission' => $this->auth->hasAccess('dashboard.index')
+            'permission' => $this->auth->hasAccess('media.index')
         ]);
     }
 }
