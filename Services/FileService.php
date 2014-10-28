@@ -1,6 +1,5 @@
 <?php namespace Modules\Media\Services;
 
-use Modules\Media\Helpers\FileHelper;
 use Modules\Media\Repositories\FileRepository;
 
 class FileService
@@ -19,7 +18,7 @@ class FileService
     {
         // Save the file info to db
         $savedFile = $this->file->createFromFile($file);
-        dd($savedFile);
+
         // Move the uploaded file to /public/assets/media/
         $file->move(public_path() . '/assets/media', $savedFile->path);
 
