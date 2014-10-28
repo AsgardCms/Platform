@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <title>File picker</title>
-    <link href="{{{ Module::asset('core', 'css/vendor/bootstrap.min.css') }}}" rel="stylesheet" type="text/css" />
-    <script src="{{{ Module::asset('core', 'js/vendor/jquery.min.js') }}}"></script>
+    <link href="{!! Module::asset('core', 'css/vendor/bootstrap.min.css') !!}" rel="stylesheet" type="text/css" />
+    <script src="{!! Module::asset('core', 'js/vendor/jquery.min.js') !!}"></script>
     <style>
     </style>
 </head>
