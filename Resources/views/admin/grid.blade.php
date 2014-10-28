@@ -1,25 +1,32 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>File picker</title>
-  <link href="{{{ Module::asset('core', 'css/vendor/bootstrap.min.css') }}}" rel="stylesheet" type="text/css" />
-  <script src="{{{ Module::asset('core', 'js/vendor/jquery.min.js') }}}"></script>
+    <meta charset="UTF-8">
+    <title>File picker</title>
+    <link href="{{{ Module::asset('core', 'css/vendor/bootstrap.min.css') }}}" rel="stylesheet" type="text/css" />
+    <script src="{{{ Module::asset('core', 'js/vendor/jquery.min.js') }}}"></script>
+    <style>
+    </style>
 </head>
 <body>
-  <h1>Choose Image</h1>
+<div class="container">
+    <div class="row">
+        <div class="col-md-8">
+            <h1>Choose Image</h1>
 
-  <?php if ($files): ?>
-  <ul>
-      <?php foreach($files as $file): ?>
-          <li>
-              <img src="{{ $file->path }}" alt=""/>
-              <a class="jsInsertImage btn btn-primary btn-flat" href="">Insert</a>
-          </li>
-      <?php endforeach; ?>
-  </ul>
-  <?php endif; ?>
-
+            <?php if ($files): ?>
+            <ul class="list-unstyled">
+              <?php foreach($files as $file): ?>
+                  <li class="pull-left" style="margin-right: 20px">
+                      <img src="{{ $file->path }}" alt="" class="img-thumbnail" style="width: 250px;"/>
+                      <a class="jsInsertImage btn btn-primary btn-flat" href="#" style="display: block">Insert</a>
+                  </li>
+              <?php endforeach; ?>
+            </ul>
+            <?php endif; ?>
+        </div>
+    </div>
+</div>
   <script>
     $( document ).ready(function() {
         $('.jsInsertImage').on('click', function(e) {
