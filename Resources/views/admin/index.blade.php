@@ -38,8 +38,6 @@
                         <tr>
                             <th>{{ trans('core::core.table.created at') }}</th>
                             <th>{{ trans('media::media.table.filename') }}</th>
-                            <th>{{ trans('media::media.table.width') }}</th>
-                            <th>{{ trans('media::media.table.height') }}</th>
                             <th>{{ trans('core::core.table.actions') }}</th>
                         </tr>
                     </thead>
@@ -58,16 +56,6 @@
                                         </a>
                                     </td>
                                     <td>
-                                        <a href="{{ URL::route('dashboard.media.edit', [$file->id]) }}">
-                                            {{ $file->width }}
-                                        </a>
-                                    </td>
-                                    <td>
-                                        <a href="{{ URL::route('dashboard.media.edit', [$file->id]) }}">
-                                            {{ $file->height }}
-                                        </a>
-                                    </td>
-                                    <td>
                                         <div class="btn-group">
                                             <a href="{{ URL::route('dashboard.media.edit', [$file->id]) }}" class="btn btn-default btn-flat"><i class="glyphicon glyphicon-pencil"></i></a>
                                             <button class="btn btn-danger btn-flat" data-toggle="modal" data-target="#confirmation-{{ $file->id }}"><i class="glyphicon glyphicon-trash"></i></button>
@@ -81,8 +69,6 @@
                         <tr>
                             <th>{{ trans('core::core.table.created at') }}</th>
                             <th>{{ trans('media::media.table.filename') }}</th>
-                            <th>{{ trans('media::media.table.width') }}</th>
-                            <th>{{ trans('media::media.table.height') }}</th>
                             <th>{{ trans('core::core.table.actions') }}</th>
                         </tr>
                     </tfoot>
@@ -126,8 +112,6 @@ $( document ).ready(function() {
                 "sUrl": '<?php echo Module::asset('core', "js/vendor/datatables/{$locale}.json") ?>'
             },
             "aoColumns": [
-                null,
-                null,
                 null,
                 null,
                 { "bSortable": false }
