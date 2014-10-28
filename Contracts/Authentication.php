@@ -68,4 +68,10 @@ interface Authentication
      * @return bool
      */
     public function hasAccess($permission);
+
+    /**
+     * Check if the user is logged in
+     * @return mixed
+     */
+    public function check();
 }

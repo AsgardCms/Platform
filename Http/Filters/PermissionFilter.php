@@ -1,14 +1,24 @@
 <?php namespace Modules\Core\Http\Filters;
 
-use Cartalyst\Sentinel\Laravel\Facades\Sentinel;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Route;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\Redirect;
 use Laracasts\Flash\Flash;
+use Modules\Core\Contracts\Authentication;
 
 class PermissionFilter
 {
+    /**
+     * @var Authentication
+     */
+    private $auth;
+
+    public function __construct(Authentication $auth)
+    {
+        $this->auth = $auth;
+    }
+
     public function filter(Route $route, Request $request)
     {
         $action = $route->getActionName();
@@ -16,7 +26,7 @@ class PermissionFilter
 
         $segmentPosition = $this->getSegmentPosition($request);
 
-        if (Sentinel::hasAccess("{$request->segment($segmentPosition)}.$actionMethod"))
+        if ($this->auth->hasAccess("{$request->segment($segmentPosition)}.$actionMethod"))
         {
             return;
         }
