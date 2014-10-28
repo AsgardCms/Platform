@@ -1,8 +1,8 @@
 <?php namespace Modules\Media\Http\Controllers\Api;
 
-use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Response;
 use Modules\Media\Http\Requests\UploadMediaRequest;
-use Modules\Media\Repositories\FileRepository;
+use Modules\Media\Services\FileService;
 
 class MediaController
 {
@@ -10,10 +10,14 @@ class MediaController
      * @var FileRepository
      */
     private $file;
+    /**
+     * @var FileService
+     */
+    private $fileService;
 
-    public function __construct(FileRepository $file)
+    public function __construct(FileService $fileService)
     {
-        $this->file = $file;
+        $this->fileService = $fileService;
     }
 
     /**
@@ -44,17 +48,9 @@ class MediaController
      */
     public function store(UploadMediaRequest $request)
     {
-        $file = $request->file('file');
-        $fileName = Str::slug($file->getClientOriginalName());
+        $savedFile = $this->fileService->store($request->file('file'));
 
-        // Move the uploaded file to /public/assets/media/
-        $file->move(public_path() . '/assets/media', $fileName);
-
-        // Save the file info to db
-        $savedFile = $this->file->createFromFile($file);
-
-        // Return json response about those
-        dd($request->file('file'));
+        return Response::json($savedFile->toArray());
     }
 
     /**

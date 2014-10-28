@@ -1,6 +1,7 @@
 <?php namespace Modules\Media\Repositories\Eloquent;
 
 use Modules\Core\Repositories\Eloquent\EloquentBaseRepository;
+use Modules\Media\Helpers\FileHelper;
 use Modules\Media\Repositories\FileRepository;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 
@@ -23,8 +24,16 @@ class EloquentFileRepository extends EloquentBaseRepository implements FileRepos
      */
     public function createFromFile(UploadedFile $file)
     {
+        $fileName = FileHelper::slug($file->getClientOriginalName());
+
         $this->model->create([
-            'filename' => ''
+            'filename' => $fileName,
+            'path' => public_path() . "/assets/media/{$fileName}",
+            'extension' => $file->guessClientExtension(),
+            'mimetype' => $file->getClientMimeType(),
+            'filesize' => $file->getFileInfo()->getSize(),
         ]);
+
+        return $this->model;
     }
 }
