@@ -12,6 +12,7 @@ return [
         'width' => 'Width',
         'height' => 'Height'
     ],
-    'choose image' => 'Choose an image',
-    'insert' => 'Insert this image'
+    'choose file' => 'Choose a file',
+    'insert' => 'Insert this file',
+    'file picker' => 'File Picker'
 ];

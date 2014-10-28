@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>File picker</title>
+    <title>{{ trans('media::media.file picker') }}</title>
     <link href="{!! Module::asset('core', 'css/vendor/bootstrap.min.css') !!}" rel="stylesheet" type="text/css" />
     <script src="{!! Module::asset('core', 'js/vendor/jquery.min.js') !!}"></script>
     <style>
@@ -12,7 +12,7 @@
 <div class="container">
     <div class="row">
         <div class="col-md-8">
-            <h1>{{ trans('media::media.choose image') }}</h1>
+            <h1>{{ trans('media::media.choose file') }}</h1>
 
             <?php if ($files): ?>
             <ul class="list-unstyled">

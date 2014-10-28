@@ -12,6 +12,7 @@ return [
         'width' => 'Largeur',
         'height' => 'Hauteur'
     ],
-    'choose image' => 'Choissisez une image',
-    'insert' => 'Selectionner cette image'
+    'choose file' => 'Choissisez un fichier',
+    'insert' => 'Sélectionner ce fichier',
+    'file picker' => 'Sélectionneur de fichier'
 ];
