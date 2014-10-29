@@ -10,6 +10,7 @@
   },
   "providers": [
     "Modules\\Media\\Providers\\MediaServiceProvider",
-    "Modules\\Media\\Providers\\RouteServiceProvider"
+    "Modules\\Media\\Providers\\RouteServiceProvider",
+    "Modules\\Media\\Croppy\\CroppyServiceProvider"
   ]
 }
