@@ -1,8 +1,11 @@
 <?php namespace Modules\Media\Http\Controllers\Admin;
 
+use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\View;
+use Laracasts\Flash\Flash;
 use Modules\Core\Http\Controllers\Admin\AdminBaseController;
 use Modules\Media\Entities\File;
+use Modules\Media\Http\Requests\UpdateMediaRequest;
 use Modules\Media\Repositories\FileRepository;
 
 class MediaController extends AdminBaseController
@@ -71,11 +74,15 @@ class MediaController extends AdminBaseController
      * Update the specified resource in storage.
      *
      * @param File $file
+     * @param UpdateMediaRequest $request
      * @return Response
      */
-    public function update(File $file)
+    public function update(File $file, UpdateMediaRequest $request)
     {
-        dd('form posted');
+        $this->file->update($file, $request->all());
+
+        Flash::success('File updated');
+        return Redirect::route('dashboard.media.index');
     }
 
     /**

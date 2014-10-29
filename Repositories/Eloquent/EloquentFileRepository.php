@@ -1,6 +1,8 @@
 <?php namespace Modules\Media\Repositories\Eloquent;
 
+use Modules\Core\Internationalisation\Helper;
 use Modules\Core\Repositories\Eloquent\EloquentBaseRepository;
+use Modules\Media\Entities\File;
 use Modules\Media\Helpers\FileHelper;
 use Modules\Media\Repositories\FileRepository;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
@@ -9,12 +11,16 @@ class EloquentFileRepository extends EloquentBaseRepository implements FileRepos
 {
     /**
      * Update a resource
-     * @param $id
+     * @param File $file
      * @param $data
      * @return mixed
      */
-    public function update($id, $data)
+    public function update($file, $data)
     {
+        $translatableData = Helper::separateLanguages($data);
+        Helper::updateTranslated($file, $translatableData);
+
+        return $file;
     }
 
     /**
