@@ -78,6 +78,30 @@
         </div>
     </div>
 </div>
+<?php if ($files): ?>
+    <?php foreach($files as $file): ?>
+    <!-- Modal -->
+    <div class="modal fade" id="confirmation-{{ $file->id }}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                    <h4 class="modal-title" id="myModalLabel">{{ trans('core::core.modal.title') }}</h4>
+                </div>
+                <div class="modal-body">
+                    {{ trans('core::core.modal.confirmation-message') }}
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">{{ trans('core::core.button.cancel') }}</button>
+                    {!! Form::open(['route' => ['dashboard.media.destroy', $file->id], 'method' => 'delete', 'class' => 'pull-left']) !!}
+                        <button type="submit" class="btn btn-danger btn-flat"><i class="glyphicon glyphicon-trash"></i> {{ trans('core::core.button.delete') }}</button>
+                    {!! Form::close() !!}
+                </div>
+            </div>
+        </div>
+    </div>
+    <?php endforeach; ?>
+<?php endif; ?>
 @stop
 
 @section('scripts')

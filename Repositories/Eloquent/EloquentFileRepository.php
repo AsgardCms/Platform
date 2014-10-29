@@ -57,7 +57,7 @@ class EloquentFileRepository extends EloquentBaseRepository implements FileRepos
 
     public function destroy($file)
     {
-        $this->finder->delete(public_path() . $file->path);
+        $this->finder->delete('public/' . $file->path);
 
         $file->delete();
     }

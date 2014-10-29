@@ -40,8 +40,8 @@ class MediaServiceProvider extends ServiceProvider
     {
         $this->app->bind(
             'Modules\Media\Repositories\FileRepository',
-            function() {
-                return new EloquentFileRepository(new File);
+            function($app) {
+                return new EloquentFileRepository(new File, $app['filesystem.disk']);
             }
         );
     }

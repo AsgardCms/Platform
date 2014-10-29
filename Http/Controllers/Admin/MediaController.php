@@ -88,11 +88,15 @@ class MediaController extends AdminBaseController
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int $id
+     * @param File $file
+     * @internal param int $id
      * @return Response
      */
-    public function destroy($id)
+    public function destroy(File $file)
     {
-        //
+        $this->file->destroy($file);
+
+        Flash::success('File deleted');
+        return Redirect::route('dashboard.media.index');
     }
 }
