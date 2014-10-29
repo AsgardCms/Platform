@@ -2,7 +2,8 @@
 
 return [
     'title' => [
-        'media' => 'Media'
+        'media' => 'Media',
+        'edit media' => 'Edit media'
     ],
     'breadcrumb' => [
         'media' => 'Media'
@@ -11,6 +12,11 @@ return [
         'filename' => 'Filename',
         'width' => 'Width',
         'height' => 'Height'
+    ],
+    'form' => [
+        'alt_attribute' => 'Alt attribute',
+        'description' => 'Description',
+        'keywords' => 'Keywords',
     ],
     'choose file' => 'Choose a file',
     'insert' => 'Insert this file',

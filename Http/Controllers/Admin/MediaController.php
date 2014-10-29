@@ -64,18 +64,18 @@ class MediaController extends AdminBaseController
      */
     public function edit(File $file)
     {
-        return View::make('media.edit');
+        return View::make('media::admin.edit', compact('file'));
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  int $id
+     * @param File $file
      * @return Response
      */
-    public function update($id)
+    public function update(File $file)
     {
-        //
+        dd('form posted');
     }
 
     /**

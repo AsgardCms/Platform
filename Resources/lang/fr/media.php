@@ -2,7 +2,8 @@
 
 return [
     'title' => [
-        'media' => 'Média'
+        'media' => 'Média',
+        'edit media' => 'Edition de média'
     ],
     'breadcrumb' => [
         'media' => 'Média'
