@@ -1,6 +1,7 @@
 <?php namespace Modules\Media\Services;
 
 use Modules\Media\Repositories\FileRepository;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 class FileService
 {
@@ -14,7 +15,7 @@ class FileService
         $this->file = $file;
     }
 
-    public function store($file)
+    public function store(UploadedFile $file)
     {
         // Save the file info to db
         $savedFile = $this->file->createFromFile($file);
