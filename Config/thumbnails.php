@@ -22,8 +22,11 @@ return [
 //            'green' => 0,
 //            'blue' => 99
 //        ],
-        'contrast' => [
-            'level' => 65
-        ]
+//        'contrast' => [
+//            'level' => 65
+//        ],
+        'flip' => [
+            'mode' => 'h'
+        ],
     ]
 ];
