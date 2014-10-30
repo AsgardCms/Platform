@@ -11,6 +11,6 @@
   "providers": [
     "Modules\\Media\\Providers\\MediaServiceProvider",
     "Modules\\Media\\Providers\\RouteServiceProvider",
-    "Modules\\Media\\Croppy\\CroppyServiceProvider"
+    "Modules\\Media\\Image\\ImageServiceProvider"
   ]
 }

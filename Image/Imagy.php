@@ -1,47 +1,53 @@
-<?php namespace Modules\Media\Croppy;
+<?php namespace Modules\Media\Image;
 
-use Illuminate\Contracts\Config\Repository;
-use Illuminate\Contracts\Filesystem\Filesystem;
 use Illuminate\Filesystem\FileNotFoundException;
 use Illuminate\Support\Facades\App;
-use Intervention\Image\Image;
+use Illuminate\Contracts\Config\Repository;
 
-class Croppy
+class Imagy
 {
     /**
-     * @var Image
+     * @var \Intervention\Image\Image
      */
     private $image;
     /**
-     * @var Filesystem
+     * @var \Illuminate\Filesystem\Filesystem
      */
     private $finder;
     /**
-     * @var Repository
+     * @var \Illuminate\Contracts\Config\Repository
      */
     private $config;
+    /**
+     * @var ImageFactoryInterface
+     */
+    private $imageFactory;
 
-    public function __construct(Filesystem $finder, Repository $config)
+    public function __construct(Repository $config, ImageFactoryInterface $imageFactory)
     {
         $this->image = App::make('Intervention\Image\ImageManager');
         $this->finder = App::make('Illuminate\Filesystem\Filesystem');
         $this->config = $config;
+        $this->imageFactory = $imageFactory;
     }
 
-    public function image($path, $thumbnail)
+    public function get($path, $thumbnail)
     {
         $filename = '/assets/media/' . $this->newFilename($path, $thumbnail);
         try {
             $this->finder->get(public_path(). $filename);
             return $filename;
         } catch (FileNotFoundException $e) {
+            $image = $this->image->make(public_path() . $path);
+
+            foreach ($this->config->get("media::thumbnails.{$thumbnail}") as $manipulation => $options) {
+                $image = $this->imageFactory->make($manipulation)->handle($image, $options);
+            }
+
+            $image = $image->encode(pathinfo($path, PATHINFO_EXTENSION));
+
+            $this->finder->put(public_path() . $filename, $image);
         }
-
-        $image = $this->makeImage($path, $thumbnail);
-
-        $this->finder->put(public_path() . $filename, $image);
-
-        return $filename;
     }
 
     /**
@@ -56,15 +62,4 @@ class Croppy
 
         return $filename . '_' . $thumbnail . '.' . pathinfo($path, PATHINFO_EXTENSION);
     }
-
-    private function makeImage($path, $thumbnail)
-    {
-        $thumbnailActions = $this->config->get("media::thumbnails.{$thumbnail}");
-
-        $image = $this->image->make(public_path() . $path);
-
-        return $image->crop($thumbnailActions['crop']['width'], $thumbnailActions['crop']['height'])
-            ->encode(pathinfo($path, PATHINFO_EXTENSION));
-    }
-
 }

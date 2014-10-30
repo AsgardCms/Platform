@@ -4,9 +4,9 @@ use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\View;
 use Laracasts\Flash\Flash;
 use Modules\Core\Http\Controllers\Admin\AdminBaseController;
-use Modules\Media\Croppy\Croppy;
 use Modules\Media\Entities\File;
 use Modules\Media\Http\Requests\UpdateMediaRequest;
+use Modules\Media\Image\Imagy;
 use Modules\Media\Repositories\FileRepository;
 
 class MediaController extends AdminBaseController
@@ -16,14 +16,14 @@ class MediaController extends AdminBaseController
      */
     private $file;
     /**
-     * @var Croppy
+     * @var Imagy
      */
-    private $croppy;
+    private $imagy;
 
-    public function __construct(FileRepository $file, Croppy $croppy)
+    public function __construct(FileRepository $file, Imagy $imagy)
     {
         $this->file = $file;
-        $this->croppy = $croppy;
+        $this->imagy = $imagy;
     }
 
     /**
@@ -73,7 +73,8 @@ class MediaController extends AdminBaseController
      */
     public function edit(File $file)
     {
-        dd($this->croppy->image('/assets/media/screen-shot-2014-10-25-at-44939-pm.png', 'smallThumb'));
+        dd($this->imagy->get('/assets/media/screen-shot-2014-10-25-at-44939-pm.png', 'smallThumb'));
+        //dd($this->croppy->image('/assets/media/screen-shot-2014-10-25-at-44939-pm.png', 'smallThumb'));
         return View::make('media::admin.edit', compact('file'));
     }
 

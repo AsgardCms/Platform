@@ -5,6 +5,7 @@ return [
         'crop' => [
             'width' => '200',
             'height' => '250'
-        ]
+        ],
+//        'blur' => '15'
     ]
 ];
