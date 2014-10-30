@@ -2,6 +2,7 @@
 
 return [
     'smallThumb' => [
+
 //        'crop' => [
 //            'width' => '100',
 //            'height' => '200'
@@ -38,6 +39,10 @@ return [
 //                 $constraint->upsize();
 //             }
 //         ]
-           'invert' => [],
+//           'invert' => [],
+        'limitColors' => [
+            'count' => 90,
+            'matte' => '#ff9900'
+        ],
     ]
 ];
