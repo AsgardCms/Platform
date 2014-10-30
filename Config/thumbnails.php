@@ -31,6 +31,12 @@ return [
 //        'gamma' => [
 //            'correction' => '1.8'
 //        ],
-          'greyscale' => [],
+//          'greyscale' => [],
+          'heighten' => [
+              'height' => 500,
+              'callback' => function($constraint) {
+                  $constraint->upsize();
+              }
+          ]
     ]
 ];
