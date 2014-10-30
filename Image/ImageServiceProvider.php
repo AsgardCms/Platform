@@ -29,7 +29,7 @@ class ImageServiceProvider extends ServiceProvider
         $this->app->booting(function()
         {
             $loader = AliasLoader::getInstance();
-            $loader->alias('Imagy', 'Modules\Media\Image\Facades\Imagy');
+            $loader->alias('Imagy', 'Modules\Media\Image\Facade\Imagy');
         });
     }
 
