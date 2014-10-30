@@ -44,8 +44,9 @@ return [
 //            'count' => 90,
 //            'matte' => '#ff9900'
 //        ],
-        'opacity' => [
-            'transparency' => 10
-        ],
+//        'opacity' => [
+//            'transparency' => 10
+//        ],
+        'orientate' => [],
     ]
 ];
