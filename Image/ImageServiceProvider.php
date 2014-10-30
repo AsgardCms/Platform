@@ -1,5 +1,6 @@
 <?php namespace Modules\Media\Image;
 
+use Illuminate\Foundation\AliasLoader;
 use Illuminate\Support\ServiceProvider;
 use Modules\Media\Image\Intervention\InterventionFactory;
 
@@ -29,7 +30,7 @@ class ImageServiceProvider extends ServiceProvider
         $this->app->booting(function()
         {
             $loader = AliasLoader::getInstance();
-            $loader->alias('Imagy', 'Modules\Media\Image\Facade\Imagy');
+            $loader->alias('Modules\Media\Image\Facade\Imagy', 'Imagy');
         });
     }
 
