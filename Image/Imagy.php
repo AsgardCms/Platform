@@ -1,6 +1,5 @@
 <?php namespace Modules\Media\Image;
 
-use Illuminate\Filesystem\FileNotFoundException;
 use Illuminate\Support\Facades\App;
 use Illuminate\Contracts\Config\Repository;
 
