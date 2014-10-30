@@ -4,7 +4,7 @@ interface ImageFactoryInterface
 {
     /**
      * Return a new Manipulation class
-     * @param array $manipulation
+     * @param string $manipulation
      * @return \Modules\Media\Image\ImageHandlerInterface
      */
     public function make($manipulation);

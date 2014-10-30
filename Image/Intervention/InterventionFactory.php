@@ -5,8 +5,8 @@ use Modules\Media\Image\ImageFactoryInterface;
 class InterventionFactory implements ImageFactoryInterface
 {
     /**
-     * @param $manipulation
-     * @return mixed
+     * @param string $manipulation
+     * @return \Modules\Media\Image\ImageHandlerInterface
      */
     public function make($manipulation)
     {
