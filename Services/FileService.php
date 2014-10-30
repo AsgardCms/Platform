@@ -23,6 +23,8 @@ class FileService
         // Move the uploaded file to /public/assets/media/
         $file->move(public_path() . '/assets/media', $savedFile->filename);
 
+        // Create the thumbnails
+
         return $savedFile;
     }
 

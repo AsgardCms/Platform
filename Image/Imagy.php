@@ -1,7 +1,6 @@
 <?php namespace Modules\Media\Image;
 
 use Illuminate\Support\Facades\App;
-use Illuminate\Contracts\Config\Repository;
 
 class Imagy
 {
@@ -14,20 +13,20 @@ class Imagy
      */
     private $finder;
     /**
-     * @var \Illuminate\Contracts\Config\Repository
-     */
-    private $config;
-    /**
      * @var ImageFactoryInterface
      */
     private $imageFactory;
+    /**
+     * @var ThumbnailsManager
+     */
+    private $manager;
 
-    public function __construct(Repository $config, ImageFactoryInterface $imageFactory)
+    public function __construct(ImageFactoryInterface $imageFactory, ThumbnailsManager $manager)
     {
         $this->image = App::make('Intervention\Image\ImageManager');
         $this->finder = App::make('Illuminate\Filesystem\Filesystem');
-        $this->config = $config;
         $this->imageFactory = $imageFactory;
+        $this->manager = $manager;
     }
 
     /**
@@ -45,7 +44,7 @@ class Imagy
             return $filename;
         }
 
-        $this->makeNew($path, $thumbnail, $filename);
+        $this->makeNew($path, $filename, $thumbnail);
 
         return $filename;
     }
@@ -98,14 +97,16 @@ class Imagy
     /**
      * Make a new image
      * @param string $path
-     * @param string $thumbnail
      * @param string $filename
+     * @param string null $thumbnail
      */
-    private function makeNew($path, $thumbnail, $filename)
+    private function makeNew($path, $filename, $thumbnail = null)
     {
         $image = $this->image->make(public_path() . $path);
 
-        foreach ($this->config->get("media::thumbnails.{$thumbnail}") as $manipulation => $options) {
+        $thumbnails = $thumbnail ?: $this->manager->all();
+
+        foreach ($thumbnails as $manipulation => $options) {
             $image = $this->imageFactory->make($manipulation)->handle($image, $options);
         }
 
@@ -113,4 +114,5 @@ class Imagy
 
         $this->writeImage($filename, $image);
     }
+
 }
