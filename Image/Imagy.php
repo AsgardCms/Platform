@@ -45,17 +45,20 @@ class Imagy
             return $filename;
         }
 
-        $image = $this->image->make(public_path() . $path);
-
-        foreach ($this->config->get("media::thumbnails.{$thumbnail}") as $manipulation => $options) {
-            $image = $this->imageFactory->make($manipulation)->handle($image, $options);
-        }
-
-        $image = $image->encode(pathinfo($path, PATHINFO_EXTENSION));
-
-        $this->writeImage($filename, $image);
+        $this->makeNew($path, $thumbnail, $filename);
 
         return $filename;
+    }
+
+    /**
+     * Return the thumbnail path
+     * @param string $originalImage
+     * @param string $thumbnail
+     * @return string
+     */
+    public function getThumbnail($originalImage, $thumbnail)
+    {
+        return '/assets/media/' . $this->newFilename($originalImage, $thumbnail);
     }
 
     /**
@@ -90,5 +93,24 @@ class Imagy
     private function writeImage($filename, $image)
     {
         $this->finder->put(public_path() . $filename, $image);
+    }
+
+    /**
+     * Make a new image
+     * @param string $path
+     * @param string $thumbnail
+     * @param string $filename
+     */
+    private function makeNew($path, $thumbnail, $filename)
+    {
+        $image = $this->image->make(public_path() . $path);
+
+        foreach ($this->config->get("media::thumbnails.{$thumbnail}") as $manipulation => $options) {
+            $image = $this->imageFactory->make($manipulation)->handle($image, $options);
+        }
+
+        $image = $image->encode(pathinfo($path, PATHINFO_EXTENSION));
+
+        $this->writeImage($filename, $image);
     }
 }
