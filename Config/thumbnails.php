@@ -61,8 +61,11 @@ return [
 //        'sharpen' => [
 //            'amount' => 30
 //        ],
-        'trim' => [
-            'base' => 'top-left',
+//        'trim' => [
+//            'base' => 'top-left',
+//        ],
+        'widen' => [
+            'width' => 1500
         ],
     ]
 ];
