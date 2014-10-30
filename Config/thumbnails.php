@@ -47,6 +47,9 @@ return [
 //        'opacity' => [
 //            'transparency' => 10
 //        ],
-        'orientate' => [],
+//        'orientate' => [],
+        'pixelate' => [
+            'size' => 12
+        ],
     ]
 ];
