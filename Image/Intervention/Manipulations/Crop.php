@@ -1,10 +1,16 @@
 <?php namespace Modules\Media\Image\Intervention\Manipulations;
 
-use InvalidArgumentException;
 use Modules\Media\Image\ImageHandlerInterface;
 
 class Crop implements ImageHandlerInterface
 {
+    private $defaults = [
+        'width' => '100',
+        'height' => '100',
+        'x' => null,
+        'y' => null,
+    ];
+
     /**
      * Handle the image manipulation request
      * @param \Intervention\Image\Image $image
@@ -13,10 +19,8 @@ class Crop implements ImageHandlerInterface
      */
     public function handle($image, $options)
     {
-        if (!isset($options['width']) or !isset($options['height'])) {
-            throw new InvalidArgumentException('A width and height parameter are required');
-        }
+        $options = array_merge($this->defaults, $options);
 
-        return $image->crop($options['width'], $options['height']);
+        return $image->crop($options['width'], $options['height'], $options['x'], $options['y']);
     }
 }
