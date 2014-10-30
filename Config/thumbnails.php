@@ -17,10 +17,13 @@ return [
 //        'brightness' => [
 //            'level' => '50'
 //        ],
-        'colorize' => [
-            'red' => 0,
-            'green' => 0,
-            'blue' => 99
+//        'colorize' => [
+//            'red' => 0,
+//            'green' => 0,
+//            'blue' => 99
+//        ],
+        'contrast' => [
+            'level' => 65
         ]
     ]
 ];
