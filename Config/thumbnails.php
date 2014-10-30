@@ -51,9 +51,12 @@ return [
 //        'pixelate' => [
 //            'size' => 12
 //        ],
-        'resize' => [
-            'width' => 500,
-            'height' => 100,
+//        'resize' => [
+//            'width' => 500,
+//            'height' => 100,
+//        ],
+        'rotate' => [
+            'angle' => -45
         ],
     ]
 ];
