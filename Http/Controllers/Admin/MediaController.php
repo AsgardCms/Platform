@@ -73,7 +73,7 @@ class MediaController extends AdminBaseController
      */
     public function edit(File $file)
     {
-        dd($this->imagy->get('/assets/media/screen-shot-2014-10-25-at-44939-pm.png', 'smallThumb'));
+        dd($this->imagy->get('/assets/media/screen-shot-2014-10-25-at-44939-pm.png', 'smallThumb', true));
         return View::make('media::admin.edit', compact('file'));
     }
 

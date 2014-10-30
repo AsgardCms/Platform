@@ -13,8 +13,11 @@ return [
             'height' => '200',
             'position' => 'top-left'
         ],
-        'blur' => [
-            'amount' => '1'
-        ]
+//        'blur' => [
+//            'amount' => '15'
+//        ],
+        'brightness' => [
+            'level' => '50'
+        ],
     ]
 ];
