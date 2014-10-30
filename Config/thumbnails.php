@@ -48,8 +48,12 @@ return [
 //            'transparency' => 10
 //        ],
 //        'orientate' => [],
-        'pixelate' => [
-            'size' => 12
+//        'pixelate' => [
+//            'size' => 12
+//        ],
+        'resize' => [
+            'width' => 500,
+            'height' => 100,
         ],
     ]
 ];
