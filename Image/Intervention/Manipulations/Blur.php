@@ -1,5 +1,6 @@
 <?php namespace Modules\Media\Image\Intervention\Manipulations;
 
+use InvalidArgumentException;
 use Modules\Media\Image\ImageHandlerInterface;
 
 class Blur implements ImageHandlerInterface
@@ -12,6 +13,10 @@ class Blur implements ImageHandlerInterface
      */
     public function handle($image, $options)
     {
+        if (!isset($options['amount'])) {
+            throw new InvalidArgumentException('An amount option is required');
+        }
+
         return $image->blur($options['amount']);
     }
 }
