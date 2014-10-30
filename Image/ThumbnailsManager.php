@@ -39,4 +39,17 @@ class ThumbnailsManager
         return $thumbnails;
     }
 
+    /**
+     * Find the filters for the given thumbnail
+     * @param $thumbnail
+     */
+    public function find($thumbnail)
+    {
+        foreach ($this->all() as $thumbName => $filters) {
+            if ($thumbName == $thumbnail) {
+                return $filters;
+            }
+        }
+    }
+
 }

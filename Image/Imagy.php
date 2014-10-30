@@ -117,18 +117,15 @@ class Imagy
      * @param string $filename
      * @param string null $thumbnail
      */
-    private function makeNew($path, $filename, $thumbnail = null)
+    private function makeNew($path, $filename, $thumbnail)
     {
         $image = $this->image->make(public_path() . $path);
 
-        $thumbnails = $thumbnail ?: $this->manager->all();
-
-        foreach ($thumbnails as $manipulation => $options) {
+        foreach ($this->manager->find($thumbnail) as $manipulation => $options) {
             $image = $this->imageFactory->make($manipulation)->handle($image, $options);
         }
 
         $image = $image->encode(pathinfo($path, PATHINFO_EXTENSION));
-
         $this->writeImage($filename, $image);
     }
 
