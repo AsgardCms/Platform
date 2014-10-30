@@ -40,9 +40,12 @@ return [
 //             }
 //         ]
 //           'invert' => [],
-        'limitColors' => [
-            'count' => 90,
-            'matte' => '#ff9900'
+//        'limitColors' => [
+//            'count' => 90,
+//            'matte' => '#ff9900'
+//        ],
+        'opacity' => [
+            'transparency' => 10
         ],
     ]
 ];
