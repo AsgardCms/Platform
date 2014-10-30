@@ -28,8 +28,9 @@ return [
 //        'flip' => [
 //            'mode' => 'h'
 //        ],
-        'gamma' => [
-            'correction' => '1.8'
-        ],
+//        'gamma' => [
+//            'correction' => '1.8'
+//        ],
+          'greyscale' => [],
     ]
 ];
