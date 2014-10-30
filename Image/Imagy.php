@@ -47,6 +47,8 @@ class Imagy
             $image = $image->encode(pathinfo($path, PATHINFO_EXTENSION));
 
             $this->finder->put(public_path() . $filename, $image);
+
+            return $filename;
         }
     }
 
