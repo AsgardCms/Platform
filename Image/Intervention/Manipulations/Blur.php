@@ -2,16 +2,16 @@
 
 use Modules\Media\Image\ImageHandlerInterface;
 
-class Crop implements ImageHandlerInterface
+class Blur implements ImageHandlerInterface
 {
     /**
      * Handle the image manipulation request
      * @param \Intervention\Image\Image $image
      * @param array $options
-     * @return mixed
+     * @return \Intervention\Image\Image
      */
     public function handle($image, $options)
     {
-        return $image->crop($options['width'], $options['height']);
+        return $image->blur((int)$options);
     }
 }
