@@ -54,7 +54,7 @@ class Imagy
 
         $image = $image->encode(pathinfo($path, PATHINFO_EXTENSION));
 
-        $this->finder->put(public_path() . $filename, $image);
+        $this->writeImage($filename, $image);
 
         return $filename;
     }
@@ -81,5 +81,15 @@ class Imagy
     private function returnCreatedFile($filename, $forceCreate)
     {
         return $this->finder->isFile(public_path() . $filename) && !$forceCreate;
+    }
+
+    /**
+     * Write the given image
+     * @param string $filename
+     * @param string $image
+     */
+    private function writeImage($filename, $image)
+    {
+        $this->finder->put(public_path() . $filename, $image);
     }
 }
