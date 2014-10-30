@@ -60,6 +60,10 @@ class Imagy
         return '/assets/media/' . $this->newFilename($originalImage, $thumbnail);
     }
 
+    /**
+     * Create all thumbnails for the given image path
+     * @param string $path
+     */
     public function createAll($path)
     {
         foreach ($this->manager->all() as $thumbName => $filters) {
