@@ -120,7 +120,7 @@ $( document ).ready(function() {
         autoProcessQueue: true
     });
     myDropzone.on("success", function(file, http) {
-        var tableRow = '<tr><td>' + http.created_at + '</td><td>'+http.filename+'</td><td></td></tr>';
+        var tableRow = '<tr><td>' + http.created_at + '</td><td></td><td>'+http.filename+'</td><td></td></tr>';
         var elem = $(tableRow).css('display', 'none');
         $('table tbody').prepend(elem);
         elem.fadeIn();
