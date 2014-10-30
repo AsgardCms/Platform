@@ -22,8 +22,14 @@ class ImageServiceProvider extends ServiceProvider
             'Modules\Media\Image\Intervention\InterventionFactory'
         );
 
-        $app['imagy'] = $this->app->share(function ($app) {
+        $this->app['imagy'] = $this->app->share(function ($app) {
             return new Imagy($app['config'], new InterventionFactory);
+        });
+
+        $this->app->booting(function()
+        {
+            $loader = AliasLoader::getInstance();
+            $loader->alias('Imagy', 'Modules\Media\Image\Facades\Imagy');
         });
     }
 
