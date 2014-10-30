@@ -12,6 +12,6 @@ class Blur implements ImageHandlerInterface
      */
     public function handle($image, $options)
     {
-        return $image->blur((int)$options);
+        return $image->blur($options['amount']);
     }
 }

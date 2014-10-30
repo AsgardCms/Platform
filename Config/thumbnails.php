@@ -6,6 +6,8 @@ return [
             'width' => '200',
             'height' => '250'
         ],
-        'blur' => '15'
+        'blur' => [
+            'amount' => '15'
+        ]
     ]
 ];
