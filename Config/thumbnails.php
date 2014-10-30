@@ -25,8 +25,11 @@ return [
 //        'contrast' => [
 //            'level' => 65
 //        ],
-        'flip' => [
-            'mode' => 'h'
+//        'flip' => [
+//            'mode' => 'h'
+//        ],
+        'gamma' => [
+            'correction' => '1.8'
         ],
     ]
 ];
