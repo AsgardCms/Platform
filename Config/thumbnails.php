@@ -55,8 +55,11 @@ return [
 //            'width' => 500,
 //            'height' => 100,
 //        ],
-        'rotate' => [
-            'angle' => -45
+//        'rotate' => [
+//            'angle' => -45
+//        ],
+        'sharpen' => [
+            'amount' => 30
         ],
     ]
 ];
