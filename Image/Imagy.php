@@ -41,14 +41,11 @@ class Imagy
     public function get($path, $thumbnail, $forceCreate = false)
     {
         $filename = '/assets/media/' . $this->newFilename($path, $thumbnail);
-        try {
-            $this->finder->get(public_path(). $filename);
-            if (!$forceCreate) {
-                return $filename;
-            }
-        } catch (FileNotFoundException $e) {
-            // Continue execution
+
+        if ($this->returnCreatedFile($filename, $forceCreate)) {
+            return $filename;
         }
+
         $image = $this->image->make(public_path() . $path);
 
         foreach ($this->config->get("media::thumbnails.{$thumbnail}") as $manipulation => $options) {
@@ -73,5 +70,16 @@ class Imagy
         $filename = pathinfo($path, PATHINFO_FILENAME);
 
         return $filename . '_' . $thumbnail . '.' . pathinfo($path, PATHINFO_EXTENSION);
+    }
+
+    /**
+     * Return the already created file if it exists and force create is false
+     * @param string $filename
+     * @param bool $forceCreate
+     * @return bool
+     */
+    private function returnCreatedFile($filename, $forceCreate)
+    {
+        return $this->finder->isFile(public_path() . $filename) && !$forceCreate;
     }
 }
