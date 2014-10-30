@@ -31,25 +31,28 @@ class Imagy
         $this->imageFactory = $imageFactory;
     }
 
-    public function get($path, $thumbnail)
+    public function get($path, $thumbnail, $forceCreate = false)
     {
         $filename = '/assets/media/' . $this->newFilename($path, $thumbnail);
         try {
             $this->finder->get(public_path(). $filename);
-            return $filename;
-        } catch (FileNotFoundException $e) {
-            $image = $this->image->make(public_path() . $path);
-
-            foreach ($this->config->get("media::thumbnails.{$thumbnail}") as $manipulation => $options) {
-                $image = $this->imageFactory->make($manipulation)->handle($image, $options);
+            if (!$forceCreate) {
+                return $filename;
             }
-
-            $image = $image->encode(pathinfo($path, PATHINFO_EXTENSION));
-
-            $this->finder->put(public_path() . $filename, $image);
-
-            return $filename;
+        } catch (FileNotFoundException $e) {
+            // Continue execution
         }
+        $image = $this->image->make(public_path() . $path);
+
+        foreach ($this->config->get("media::thumbnails.{$thumbnail}") as $manipulation => $options) {
+            $image = $this->imageFactory->make($manipulation)->handle($image, $options);
+        }
+
+        $image = $image->encode(pathinfo($path, PATHINFO_EXTENSION));
+
+        $this->finder->put(public_path() . $filename, $image);
+
+        return $filename;
     }
 
     /**
