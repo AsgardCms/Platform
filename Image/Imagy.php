@@ -60,6 +60,19 @@ class Imagy
         return '/assets/media/' . $this->newFilename($originalImage, $thumbnail);
     }
 
+    public function createAll($path)
+    {
+        foreach ($this->manager->all() as $thumbName => $filters) {
+            $image = $this->image->make(public_path() . $path);
+            $filename = '/assets/media/' . $this->newFilename($path, $thumbName);
+            foreach ($filters as $manipulation => $options) {
+                $image = $this->imageFactory->make($manipulation)->handle($image, $options);
+            }
+            $image = $image->encode(pathinfo($path, PATHINFO_EXTENSION));
+            $this->writeImage($filename, $image);
+        }
+    }
+
     /**
      * Prepend the thumbnail name to filename
      * @param $path
