@@ -6,7 +6,6 @@ use Laracasts\Flash\Flash;
 use Modules\Core\Http\Controllers\Admin\AdminBaseController;
 use Modules\Media\Entities\File;
 use Modules\Media\Http\Requests\UpdateMediaRequest;
-use Modules\Media\Image\Imagy;
 use Modules\Media\Repositories\FileRepository;
 
 class MediaController extends AdminBaseController
@@ -15,15 +14,10 @@ class MediaController extends AdminBaseController
      * @var FileRepository
      */
     private $file;
-    /**
-     * @var Imagy
-     */
-    private $imagy;
 
-    public function __construct(FileRepository $file, Imagy $imagy)
+    public function __construct(FileRepository $file)
     {
         $this->file = $file;
-        $this->imagy = $imagy;
     }
 
     /**
