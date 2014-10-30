@@ -36,7 +36,8 @@
                 <table class="data-table table table-bordered table-hover">
                     <thead>
                         <tr>
-                            <th>{{ trans('core::core.table.created at') }}</th>
+                            <th>{{ trans('media::media.table.filename') }}</th>
+                            <th>{{ trans('core::core.table.thumbnail') }}</th>
                             <th>{{ trans('media::media.table.filename') }}</th>
                             <th>{{ trans('core::core.table.actions') }}</th>
                         </tr>
@@ -49,6 +50,9 @@
                                         <a href="{{ URL::route('dashboard.media.edit', [$file->id]) }}">
                                             {{ $file->created_at }}
                                         </a>
+                                    </td>
+                                    <td>
+                                        <img src="{{ Imagy::getThumbnail($file->path, 'smallThumb') }}" alt=""/>
                                     </td>
                                     <td>
                                         <a href="{{ URL::route('dashboard.media.edit', [$file->id]) }}">
@@ -68,6 +72,7 @@
                     <tfoot>
                         <tr>
                             <th>{{ trans('core::core.table.created at') }}</th>
+                            <th>{{ trans('core::core.table.thumbnail') }}</th>
                             <th>{{ trans('media::media.table.filename') }}</th>
                             <th>{{ trans('core::core.table.actions') }}</th>
                         </tr>
