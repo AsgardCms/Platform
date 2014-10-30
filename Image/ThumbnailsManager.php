@@ -24,6 +24,10 @@ class ThumbnailsManager
         $this->config = $config;
     }
 
+    /**
+     * Return all thumbnails for all modules
+     * @return array
+     */
     public function all()
     {
         $thumbnails = [];
@@ -34,4 +38,5 @@ class ThumbnailsManager
 
         return $thumbnails;
     }
+
 }
