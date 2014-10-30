@@ -58,8 +58,11 @@ return [
 //        'rotate' => [
 //            'angle' => -45
 //        ],
-        'sharpen' => [
-            'amount' => 30
+//        'sharpen' => [
+//            'amount' => 30
+//        ],
+        'trim' => [
+            'base' => 'top-left',
         ],
     ]
 ];
