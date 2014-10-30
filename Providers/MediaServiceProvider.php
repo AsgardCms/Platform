@@ -1,12 +1,15 @@
 <?php namespace Modules\Media\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use Modules\Media\Console\RefreshThumbnailCommand;
 use Modules\Media\Entities\File;
+use Modules\Media\Image\Imagy;
+use Modules\Media\Image\Intervention\InterventionFactory;
+use Modules\Media\Image\ThumbnailsManager;
 use Modules\Media\Repositories\Eloquent\EloquentFileRepository;
 
 class MediaServiceProvider extends ServiceProvider
 {
-
     /**
      * Indicates if loading of the provider is deferred.
      *
@@ -24,6 +27,7 @@ class MediaServiceProvider extends ServiceProvider
         $this->app->booted(function () {
             $this->registerBindings();
         });
+        $this->registerCommands();
     }
 
     /**
@@ -46,4 +50,27 @@ class MediaServiceProvider extends ServiceProvider
         );
     }
 
+    /**
+     * Register all commands for this module
+     */
+    private function registerCommands()
+    {
+        $this->registerRefreshCommand();
+    }
+
+    /**
+     * Register the refresh thumbnails command
+     */
+    private function registerRefreshCommand()
+    {
+        $this->app->bindShared('command.media.refresh', function($app) {
+            $thumbnailManager = new ThumbnailsManager($app['config'], $app['modules']);
+            $imagy = new Imagy(new InterventionFactory, $thumbnailManager);
+            return new RefreshThumbnailCommand($imagy, $app['Modules\Media\Repositories\FileRepository']);
+        });
+
+        $this->commands(
+            'command.media.refresh'
+        );
+    }
 }
