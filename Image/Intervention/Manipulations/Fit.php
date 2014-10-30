@@ -20,6 +20,8 @@ class Fit implements ImageHandlerInterface
     {
         $options = array_merge($this->defaults, $options);
 
-        return $image->fit($options['width'], $options['height'], null, $options['position']);
+        $callback = isset($options['callback']) ? $options['callback'] : null;
+
+        return $image->fit($options['width'], $options['height'], $callback, $options['position']);
     }
 }
