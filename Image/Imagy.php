@@ -31,6 +31,13 @@ class Imagy
         $this->imageFactory = $imageFactory;
     }
 
+    /**
+     * Get an image in the given thumbnail options
+     * @param string $path
+     * @param string $thumbnail
+     * @param bool $forceCreate
+     * @return string
+     */
     public function get($path, $thumbnail, $forceCreate = false)
     {
         $filename = '/assets/media/' . $this->newFilename($path, $thumbnail);
