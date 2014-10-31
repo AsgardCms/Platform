@@ -5,7 +5,7 @@
 </div>
 
 <div class='form-group{{ $errors->has("description[{$lang}]") ? ' has-error' : '' }}'>
-    {!! Form::label("description[{$lang}]", trans('media.media.form.description')) !!}
+    {!! Form::label("description[{$lang}]", trans('media::media.form.description')) !!}
     {!! Form::textarea("description[{$lang}]", Input::old("description[{$lang}]", $file->translate($lang)->description), ['class' => 'form-control', 'placeholder' => trans('media::media.form.description')]) !!}
     {!! $errors->first("description[{$lang}]", '<span class="help-block">:message</span>') !!}
 </div>
