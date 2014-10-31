@@ -14,7 +14,7 @@
 @section('content')
 {!! Form::open(['route' => ['dashboard.media.update', $file->id], 'method' => 'put']) !!}
 <div class="row">
-    <div class="col-md-12">
+    <div class="col-md-8">
         <div class="nav-tabs-custom">
             <ul class="nav nav-tabs">
                 <?php $i = 0; ?>
@@ -44,6 +44,9 @@
                 </div>
             </div>
         </div> {{-- end nav-tabs-custom --}}
+    </div>
+    <div class="col-md-4">
+        <img src="{{ $file->path }}" alt="{{ $file->translate()->alt_attribute }}" style="width: 100%;"/>
     </div>
 </div>
 
