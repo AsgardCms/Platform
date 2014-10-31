@@ -78,6 +78,8 @@ class Imagy
      */
     public function createAll($path)
     {
+        if (!$this->isImage($path)) return;
+
         foreach ($this->manager->all() as $thumbName => $filters) {
             $image = $this->image->make(public_path() . $path);
             $filename = '/assets/media/' . $this->newFilename($path, $thumbName);
