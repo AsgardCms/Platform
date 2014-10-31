@@ -69,6 +69,8 @@ class Imagy
      */
     public function getThumbnail($originalImage, $thumbnail)
     {
+        if (!$this->isImage($originalImage)) return $originalImage;
+
         return '/assets/media/' . $this->newFilename($originalImage, $thumbnail);
     }
 

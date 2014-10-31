@@ -45,4 +45,22 @@ class ImagyTest extends BaseTestCase
 
         $this->assertFalse($this->finder->isFile(public_path() . '/assets/media/test-pdf_smallThumb.png'));
     }
+
+    /** @test */
+    public function it_should_return_thumbnail_path()
+    {
+        $path = $this->imagy->getThumbnail('/assets/media/google-map.png', 'smallThumb');
+        $expected = '/assets/media/google-map_smallThumb.png';
+
+        $this->assertEquals($expected, $path);
+    }
+
+    /** @test */
+    public function it_should_return_same_path_for_non_images()
+    {
+        $path = $this->imagy->getThumbnail('/assets/media/test-pdf.pdf', 'smallThumb');
+        $expected = '/assets/media/test-pdf.pdf';
+
+        $this->assertEquals($expected, $path);
+    }
 }
