@@ -29,7 +29,9 @@ class ImagyTest extends BaseTestCase
     /** @test */
     public function it_should_create_a_file()
     {
-        $this->finder->delete(public_path() . '/assets/media/google-map_smallThumb.png');
+        if ($this->finder->isFile(public_path() . '/assets/media/google-map_smallThumb.png')) {
+            $this->finder->delete(public_path() . '/assets/media/google-map_smallThumb.png');
+        }
 
         $this->imagy->get('/assets/media/google-map.png', 'smallThumb', true);
 

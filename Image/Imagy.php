@@ -21,6 +21,16 @@ class Imagy
      */
     private $manager;
 
+    /**
+     * All the different images types where thumbnails should be created
+     * @var array
+     */
+    private $imageExtensions = ['jpg','png','jpeg','gif'];
+
+    /**
+     * @param ImageFactoryInterface $imageFactory
+     * @param ThumbnailsManager $manager
+     */
     public function __construct(ImageFactoryInterface $imageFactory, ThumbnailsManager $manager)
     {
         $this->image = App::make('Intervention\Image\ImageManager');
@@ -38,6 +48,8 @@ class Imagy
      */
     public function get($path, $thumbnail, $forceCreate = false)
     {
+        if (!$this->isImage($path)) return;
+
         $filename = '/assets/media/' . $this->newFilename($path, $thumbnail);
 
         if ($this->returnCreatedFile($filename, $forceCreate)) {
@@ -127,6 +139,16 @@ class Imagy
 
         $image = $image->encode(pathinfo($path, PATHINFO_EXTENSION));
         $this->writeImage($filename, $image);
+    }
+
+    /**
+     * Check if the given path is en image
+     * @param string $path
+     * @return bool
+     */
+    private function isImage($path)
+    {
+        return in_array(pathinfo($path, PATHINFO_EXTENSION), $this->imageExtensions);
     }
 
 }
