@@ -1,5 +1,6 @@
 <?php namespace Modules\Media\Image;
 
+use Illuminate\Contracts\Config\Repository;
 use Illuminate\Support\Facades\App;
 
 class Imagy
@@ -26,17 +27,23 @@ class Imagy
      * @var array
      */
     private $imageExtensions = ['jpg','png','jpeg','gif'];
+    /**
+     * @var Repository
+     */
+    private $config;
 
     /**
      * @param ImageFactoryInterface $imageFactory
      * @param ThumbnailsManager $manager
+     * @param Repository $config
      */
-    public function __construct(ImageFactoryInterface $imageFactory, ThumbnailsManager $manager)
+    public function __construct(ImageFactoryInterface $imageFactory, ThumbnailsManager $manager, Repository $config)
     {
         $this->image = App::make('Intervention\Image\ImageManager');
         $this->finder = App::make('Illuminate\Filesystem\Filesystem');
         $this->imageFactory = $imageFactory;
         $this->manager = $manager;
+        $this->config = $config;
     }
 
     /**
@@ -50,7 +57,7 @@ class Imagy
     {
         if (!$this->isImage($path)) return;
 
-        $filename = '/assets/media/' . $this->newFilename($path, $thumbnail);
+        $filename = $this->config->get('media::config.files-path') . $this->newFilename($path, $thumbnail);
 
         if ($this->returnCreatedFile($filename, $forceCreate)) {
             return $filename;
@@ -71,7 +78,7 @@ class Imagy
     {
         if (!$this->isImage($originalImage)) return $originalImage;
 
-        return '/assets/media/' . $this->newFilename($originalImage, $thumbnail);
+        return $this->config->get('media::config.files-path') . $this->newFilename($originalImage, $thumbnail);
     }
 
     /**
@@ -84,7 +91,7 @@ class Imagy
 
         foreach ($this->manager->all() as $thumbName => $filters) {
             $image = $this->image->make(public_path() . $path);
-            $filename = '/assets/media/' . $this->newFilename($path, $thumbName);
+            $filename = $this->config->get('media::config.files-path') . $this->newFilename($path, $thumbName);
             foreach ($filters as $manipulation => $options) {
                 $image = $this->imageFactory->make($manipulation)->handle($image, $options);
             }

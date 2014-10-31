@@ -27,7 +27,7 @@ class ImageServiceProvider extends ServiceProvider
             $factory = new InterventionFactory;
             $thumbnailManager = new ThumbnailsManager($app['config'], $app['modules']);
 
-            return new Imagy($factory, $thumbnailManager);
+            return new Imagy($factory, $thumbnailManager, $app['config']);
         });
 
         $this->app->booting(function()
