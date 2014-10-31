@@ -1,5 +1,6 @@
 <?php namespace Modules\Media\Http\Controllers\Admin;
 
+use Illuminate\Contracts\Config\Repository;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\View;
 use Laracasts\Flash\Flash;
@@ -14,10 +15,15 @@ class MediaController extends AdminBaseController
      * @var FileRepository
      */
     private $file;
+    /**
+     * @var Repository
+     */
+    private $config;
 
-    public function __construct(FileRepository $file)
+    public function __construct(FileRepository $file, Repository $config)
     {
         $this->file = $file;
+        $this->config = $config;
     }
 
     /**
@@ -29,7 +35,9 @@ class MediaController extends AdminBaseController
     {
         $files = $this->file->all();
 
-        return View::make('media::admin.index', compact('files'));
+        $config = $this->config->get('media::config');
+
+        return View::make('media::admin.index', compact('files', 'config'));
     }
 
     public function gridFiles()

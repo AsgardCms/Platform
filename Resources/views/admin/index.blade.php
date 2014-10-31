@@ -117,7 +117,9 @@ $( document ).ready(function() {
 
     var myDropzone = new Dropzone(".dropzone", {
         url: $(this).attr('action'),
-        autoProcessQueue: true
+        autoProcessQueue: true,
+        maxFilesize: '<?php echo $config["max-file-size"] ?>',
+        acceptedFiles : '<?php echo $config["allowed-types"] ?>'
     });
     myDropzone.on("success", function(file, http) {
         var tableRow = '<tr><td>' + http.created_at + '</td><td></td><td>'+http.filename+'</td><td></td></tr>';
