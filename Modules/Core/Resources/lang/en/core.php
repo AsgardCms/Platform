@@ -8,6 +8,7 @@ return [
     'table' => [
         'created at' => 'Created at',
         'actions' => 'Actions',
+        'thumbnail' => 'Thumbnail',
     ],
     'tab' => [
         'english' => 'English',

@@ -8,6 +8,7 @@ return [
     'table' => [
         'created at' => 'Crée à',
         'actions' => 'Actions',
+        'thumbnail' => 'Vignette',
     ],
     'button' => [
         'cancel' => 'Annuler',
