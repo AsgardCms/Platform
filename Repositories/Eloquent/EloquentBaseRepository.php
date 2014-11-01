@@ -36,7 +36,7 @@ abstract class EloquentBaseRepository implements BaseRepository
      */
     public function all()
     {
-        return $this->model->all();
+        return $this->model->orderBy('created_at', 'DESC')->get();
     }
 
     /**
