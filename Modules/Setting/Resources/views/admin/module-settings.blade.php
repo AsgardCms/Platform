@@ -19,17 +19,28 @@
 @include('flash::message')
 {!! Form::open(['route' => ['dashboard.setting.store'], 'method' => 'post']) !!}
 <div class="row">
-    <div class="col-md-2">
+    <div class="sidebar-nav col-sm-2">
         <div class="box box-info">
-            <div class="box-header"><h3 class="box-title">{{ trans('setting::settings.title.module settings') }}</h3></div>
-            <div class="box-body">
-                <ul>
-                    <?php foreach($modulesWithSettings as $module => $settings): ?>
-                        <li style="margin-bottom: 15px"><a href="{{ URL::route('dashboard.module.settings', [$module]) }}" class="btn btn-default btn-flat {{ $module == ucfirst($currentModule) ? 'disabled' : '' }}">{{ $module }}</a></li>
-                    <?php endforeach; ?>
-                </ul>
+            <div class="box-header">
+                <h3 class="box-title">{{ trans('setting::settings.title.module settings') }}</h3>
             </div>
-        </div>
+            <style>
+                a.active {
+                    text-decoration: none;
+                    background-color: #eee;
+                }
+            </style>
+    		<ul class="nav nav-list">
+    		  <?php foreach($modulesWithSettings as $module => $settings): ?>
+                  <li>
+                    <a href="{{ URL::route('dashboard.module.settings', [$module]) }}" class="{{ $module == ucfirst($currentModule) ? 'active' : '' }}">
+                        {{ $module }}
+                        <small class="badge pull-right bg-blue">{{ count($settings) }}</small>
+                    </a>
+                    </li>
+              <?php endforeach; ?>
+    		</ul>
+    	</div>
     </div>
     <div class="col-md-10">
         <div class="box box-info">
