@@ -37,7 +37,7 @@ class FileService
         // Save the file info to db
         $savedFile = $this->file->createFromFile($file);
 
-        // Move the uploaded file to /public/assets/media/
+        // Move the uploaded file to files path
         $file->move(public_path() . $this->config->get('media::config.files-path'), $savedFile->filename);
 
         $this->createThumbnails($savedFile);
