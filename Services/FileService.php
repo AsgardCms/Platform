@@ -1,6 +1,8 @@
 <?php namespace Modules\Media\Services;
 
-use Modules\Media\Image\Imagy;
+use Illuminate\Contracts\Config\Repository;
+use Illuminate\Contracts\Queue\Queue;
+use Modules\Media\Image\Facade\Imagy;
 use Modules\Media\Repositories\FileRepository;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 
@@ -11,28 +13,49 @@ class FileService
      */
     private $file;
     /**
-     * @var Imagy
+     * @var Repository
      */
-    private $imagy;
+    private $config;
+    /**
+     * @var Queue
+     */
+    private $queue;
 
-    public function __construct(FileRepository $file, Imagy $imagy)
+    public function __construct(FileRepository $file, Repository $config, Queue $queue)
     {
         $this->file = $file;
-        $this->imagy = $imagy;
+        $this->config = $config;
+        $this->queue = $queue;
     }
 
+    /**
+     * @param UploadedFile $file
+     * @return mixed
+     */
     public function store(UploadedFile $file)
     {
         // Save the file info to db
         $savedFile = $this->file->createFromFile($file);
 
         // Move the uploaded file to /public/assets/media/
-        $file->move(public_path() . '/assets/media', $savedFile->filename);
+        $file->move(public_path() . $this->config->get('media::config.files-path'), $savedFile->filename);
 
-        // Create the thumbnails
-        $this->imagy->createAll($savedFile->path);
+        $this->createThumbnails($savedFile);
 
         return $savedFile;
+    }
+
+    /**
+     * Create the necessary thumbnails for the given file
+     * @param $savedFile
+     */
+    private function createThumbnails($savedFile)
+    {
+        $this->queue->push(function($job) use ($savedFile)
+        {
+            Imagy::createAll($savedFile->path);
+            $job->delete();
+        });
     }
 
 }
