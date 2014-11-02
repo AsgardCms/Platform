@@ -7,6 +7,7 @@ use Laracasts\Flash\Flash;
 use Modules\Core\Http\Controllers\Admin\AdminBaseController;
 use Modules\Media\Entities\File;
 use Modules\Media\Http\Requests\UpdateMediaRequest;
+use Modules\Media\Image\Imagy;
 use Modules\Media\Repositories\FileRepository;
 
 class MediaController extends AdminBaseController
@@ -19,11 +20,16 @@ class MediaController extends AdminBaseController
      * @var Repository
      */
     private $config;
+    /**
+     * @var Imagy
+     */
+    private $imagy;
 
-    public function __construct(FileRepository $file, Repository $config)
+    public function __construct(FileRepository $file, Repository $config, Imagy $imagy)
     {
         $this->file = $file;
         $this->config = $config;
+        $this->imagy = $imagy;
     }
 
     /**
@@ -102,6 +108,7 @@ class MediaController extends AdminBaseController
      */
     public function destroy(File $file)
     {
+        $this->imagy->deleteAllFor($file);
         $this->file->destroy($file);
 
         Flash::success('File deleted');

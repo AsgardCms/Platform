@@ -26,7 +26,7 @@ class Imagy
      * All the different images types where thumbnails should be created
      * @var array
      */
-    private $imageExtensions = ['jpg','png','jpeg','gif'];
+    private $imageExtensions = ['jpg', 'png', 'jpeg', 'gif'];
     /**
      * @var Repository
      */
@@ -55,7 +55,9 @@ class Imagy
      */
     public function get($path, $thumbnail, $forceCreate = false)
     {
-        if (!$this->isImage($path)) return;
+        if (!$this->isImage($path)) {
+            return;
+        }
 
         $filename = $this->config->get('media::config.files-path') . $this->newFilename($path, $thumbnail);
 
@@ -76,7 +78,9 @@ class Imagy
      */
     public function getThumbnail($originalImage, $thumbnail)
     {
-        if (!$this->isImage($originalImage)) return $originalImage;
+        if (!$this->isImage($originalImage)) {
+            return $originalImage;
+        }
 
         return $this->config->get('media::config.files-path') . $this->newFilename($originalImage, $thumbnail);
     }
@@ -87,7 +91,9 @@ class Imagy
      */
     public function createAll($path)
     {
-        if (!$this->isImage($path)) return;
+        if (!$this->isImage($path)) {
+            return;
+        }
 
         foreach ($this->manager->all() as $thumbName => $filters) {
             $image = $this->image->make(public_path() . $path);
@@ -157,9 +163,32 @@ class Imagy
      * @param string $path
      * @return bool
      */
-    private function isImage($path)
+    public function isImage($path)
     {
         return in_array(pathinfo($path, PATHINFO_EXTENSION), $this->imageExtensions);
+    }
+
+    /**
+     * Delete all files on disk for the given file in storage
+     * This means the original and the thumbnails
+     * @param $file
+     * @return bool
+     */
+    public function deleteAllFor($file)
+    {
+        if (!$this->isImage($file->path)) {
+            return $this->finder->delete($file->path);
+        }
+
+        $paths[] = public_path() . $file->path;
+        $fileName = pathinfo($file->path, PATHINFO_FILENAME);
+        $extension = pathinfo($file->path, PATHINFO_EXTENSION);
+        foreach ($this->manager->all() as $thumbnail => $filters) {
+            $paths[] = public_path() . $this->config->get(
+                    'media::config.files-path'
+                ) . "{$fileName}_{$thumbnail}.{$extension}";
+        }
+        return $this->finder->delete($paths);
     }
 
 }
