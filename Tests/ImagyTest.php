@@ -81,7 +81,7 @@ class ImagyTest extends BaseTestCase
     public function it_should_detect_an_image()
     {
         $jpg = $this->imagy->isImage('image.jpg');
-        $png = $this->imagy->isImage('image.jpg');
+        $png = $this->imagy->isImage('image.png');
         $pdf = $this->imagy->isImage('pdf.pdf');
 
         $this->assertTrue($jpg);
