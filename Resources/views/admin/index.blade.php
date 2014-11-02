@@ -30,10 +30,9 @@
 
 <div class="row">
     <div class="col-md-12">
-        @include('flash::message')
         <div class="box">
             <div class="box-body table-responsive">
-                <table class="data-table table table-bordered table-hover">
+                <table class="data-table table table-bordered table-hover jsFileList">
                     <thead>
                         <tr>
                             <th>{{ trans('media::media.table.filename') }}</th>
@@ -122,10 +121,18 @@ $( document ).ready(function() {
         acceptedFiles : '<?php echo $config["allowed-types"] ?>'
     });
     myDropzone.on("success", function(file, http) {
-        var tableRow = '<tr><td>' + http.created_at + '</td><td></td><td>'+http.filename+'</td><td></td></tr>';
-        var elem = $(tableRow).css('display', 'none');
-        $('table tbody').prepend(elem);
-        elem.fadeIn();
+        var _this = this;
+        window.setTimeout(function(){
+            $(file.previewElement).fadeOut('fast', function(){
+                _this.removeFile(file);
+            });
+
+            var tableRow = '<tr><td>' + http.created_at + '</td><td></td><td>'+http.filename+'</td><td></td></tr>';
+            var elem = $(tableRow).css('display', 'none');
+            $('.jsFileList tbody').prepend(elem);
+            elem.fadeIn();
+
+        }, 1000);
     });
 });
 </script>
@@ -143,6 +150,7 @@ $( document ).ready(function() {
                 "sUrl": '<?php echo Module::asset('core', "js/vendor/datatables/{$locale}.json") ?>'
             },
             "aoColumns": [
+                null,
                 null,
                 null,
                 { "bSortable": false }
