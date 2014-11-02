@@ -2,7 +2,7 @@
 
 use Illuminate\Contracts\Config\Repository;
 use Illuminate\Contracts\Queue\Queue;
-use Modules\Media\Image\Facade\Imagy;
+use Illuminate\Support\Facades\App;
 use Modules\Media\Repositories\FileRepository;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 
@@ -53,7 +53,7 @@ class FileService
     {
         $this->queue->push(function($job) use ($savedFile)
         {
-            Imagy::createAll($savedFile->path);
+            App::make('imagy')->createAll($savedFile->path);
             $job->delete();
         });
     }
