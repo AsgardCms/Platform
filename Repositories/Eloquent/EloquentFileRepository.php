@@ -1,7 +1,5 @@
 <?php namespace Modules\Media\Repositories\Eloquent;
 
-use Illuminate\Contracts\Filesystem\Filesystem;
-use Illuminate\Database\Eloquent\Model;
 use Modules\Core\Internationalisation\Helper;
 use Modules\Core\Repositories\Eloquent\EloquentBaseRepository;
 use Modules\Media\Entities\File;
@@ -11,18 +9,6 @@ use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 class EloquentFileRepository extends EloquentBaseRepository implements FileRepository
 {
-    /**
-     * @var Filesystem
-     */
-    private $finder;
-
-    public function __construct(Model $model, Filesystem $finder)
-    {
-        parent::__construct($model);
-
-        $this->finder = $finder;
-    }
-
     /**
      * Update a resource
      * @param File $file
