@@ -2,6 +2,7 @@
 
 use Illuminate\Contracts\Config\Repository;
 use Illuminate\Support\Facades\App;
+use Modules\Media\Entities\File;
 
 class Imagy
 {
@@ -174,7 +175,7 @@ class Imagy
      * @param $file
      * @return bool
      */
-    public function deleteAllFor($file)
+    public function deleteAllFor(File $file)
     {
         if (!$this->isImage($file->path)) {
             return $this->finder->delete($file->path);
