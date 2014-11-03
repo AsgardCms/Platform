@@ -4,7 +4,6 @@ use Illuminate\Contracts\Config\Repository;
 use Illuminate\Contracts\Queue\Queue;
 use Illuminate\Queue\Jobs\Job;
 use Illuminate\Support\Facades\App;
-use Modules\Media\Image\Imagy;
 use Modules\Media\Repositories\FileRepository;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 
@@ -22,21 +21,15 @@ class FileService
      * @var Queue
      */
     private $queue;
-    /**
-     * @var Imagy
-     */
-    private $imagy;
 
     public function __construct(
         FileRepository $file,
         Repository $config,
-        Queue $queue,
-        Imagy $imagy)
+        Queue $queue)
     {
         $this->file = $file;
         $this->config = $config;
         $this->queue = $queue;
-        $this->imagy = $imagy;
     }
 
     /**
