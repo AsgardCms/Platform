@@ -2,6 +2,7 @@
 
 use Illuminate\Contracts\Config\Repository;
 use Illuminate\Contracts\Queue\Queue;
+use Illuminate\Queue\Jobs\Job;
 use Illuminate\Support\Facades\App;
 use Modules\Media\Image\Imagy;
 use Modules\Media\Repositories\FileRepository;
@@ -61,7 +62,7 @@ class FileService
      */
     private function createThumbnails($savedFile)
     {
-        $this->queue->push(function($job) use ($savedFile)
+        $this->queue->push(function(Job $job) use ($savedFile)
         {
             App::make('imagy')->createAll($savedFile->path);
             $job->delete();
