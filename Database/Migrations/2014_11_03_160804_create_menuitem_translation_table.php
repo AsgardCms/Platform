@@ -18,7 +18,7 @@ class CreateMenuitemTranslationTable extends Migration
 			$table->integer('menuitem_id')->unsigned();
 			$table->string('locale')->index();
 
-			$table->integer('status');
+			$table->tinyInteger('status')->default(0);
 			$table->string('title');
 			$table->string('url');
 			$table->string('uri');

@@ -18,7 +18,7 @@ class CreateMenuTranslationsTable extends Migration
 			$table->integer('menu_id')->unsigned();
 			$table->string('locale')->index();
 
-			$table->integer('status');
+			$table->tinyInteger('status')->default(0);
 			$table->string('title');
 
 			$table->unique(['menu_id', 'locale']);
