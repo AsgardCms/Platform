@@ -2,6 +2,9 @@
 
 use Illuminate\Routing\Router;
 
+$router->model('menus', 'Modules\Menu\Entities\Menu');
+$router->model('menuitem', 'Modules\Menu\Entities\Menuitem');
+
 $router->group(['prefix' => LaravelLocalization::setLocale(), 'before' => 'LaravelLocalizationRedirectFilter|auth.admin|permissions'], function(Router $router)
 {
     $router->group(['prefix' => Config::get('core::core.admin-prefix'), 'namespace' => 'Modules\Menu\Http\Controllers'], function(Router $router)
@@ -15,13 +18,13 @@ $router->group(['prefix' => LaravelLocalization::setLocale(), 'before' => 'Larav
             'destroy' => 'dashboard.menu.destroy',
         ]]);
 
-        $router->resource('menus.menulinks', 'Admin\MenuLinkController', ['except' => ['show'], 'names' => [
-            'index' => 'dashboard.menulink.index',
-            'create' => 'dashboard.menulink.create',
-            'store' => 'dashboard.menulink.store',
-            'edit' => 'dashboard.menulink.edit',
-            'update' => 'dashboard.menulink.update',
-            'destroy' => 'dashboard.menulink.destroy',
+        $router->resource('menus.menuitem', 'Admin\MenuItemController', ['except' => ['show'], 'names' => [
+            'index' => 'dashboard.menuitem.index',
+            'create' => 'dashboard.menuitem.create',
+            'store' => 'dashboard.menuitem.store',
+            'edit' => 'dashboard.menuitem.edit',
+            'update' => 'dashboard.menuitem.update',
+            'destroy' => 'dashboard.menuitem.destroy',
         ]]);
     });
 });
