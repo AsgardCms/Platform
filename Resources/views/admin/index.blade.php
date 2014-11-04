@@ -45,6 +45,12 @@
 @section('scripts')
 <script src="{!! Module::asset('menu', 'js/jquery.nestable.js') !!}"></script>
 <script>
-$('.dd').nestable();
+$( document ).ready(function() {
+    $('.dd').nestable();
+    $('.dd').on('change', function() {
+        var data = $('.dd').nestable('serialize');
+        console.log(data);
+    });
+});
 </script>
 @stop
