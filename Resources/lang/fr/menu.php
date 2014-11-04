@@ -18,5 +18,10 @@ return [
     'table' => [
         'name' => 'Nom',
         'title' => 'Titre',
+    ],
+    'form' => [
+        'title' => 'Titre',
+        'name' => 'Nom',
+        'status' => 'Status',
     ]
 ];
