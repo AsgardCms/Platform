@@ -6,5 +6,8 @@ return [
     ],
     'breadcrumb' => [
         'menu' => 'Menu management'
+    ],
+    'button' => [
+        'create menu item' => 'Create a menu item'
     ]
 ];

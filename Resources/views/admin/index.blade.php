@@ -16,7 +16,12 @@
 
 @section('content')
 <div class="row">
-    <div class="col-md-12">
+    <div class="col-md-6">
+        <div class="btn-group pull-right" style="margin: 0 15px 15px 0;">
+            <a href="{{ URL::route('dashboard.menu.create') }}" class="btn btn-primary btn-flat" style="padding: 4px 10px;">
+                <i class="fa fa-pencil"></i> {{ trans('menu::menu.button.create menu item') }}
+            </a>
+        </div>
         <div class="dd">
             <ol class="dd-list">
                 <li class="dd-item" data-id="1">
