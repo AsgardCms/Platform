@@ -39,12 +39,12 @@
                             <tr>
                                 <td>
                                     <a href="{{ URL::route('dashboard.post.edit', [$menu->id]) }}">
-                                        {{ $menu->title }}
+                                        {{ $menu->name }}
                                     </a>
                                 </td>
                                 <td>
                                     <a href="{{ URL::route('dashboard.post.edit', [$menu->id]) }}">
-                                        {{ $menu->slug }}
+                                        {{ $menu->title }}
                                     </a>
                                 </td>
                                 <td>
