@@ -15,3 +15,5 @@ View::addNamespace('menu', __DIR__ . '/Resources/views/');
 Lang::addNamespace('menu', __DIR__ . '/Resources/lang/');
 
 Config::addNamespace('menu', __DIR__ . '/Config/');
+
+require __DIR__ . '/composers.php';
