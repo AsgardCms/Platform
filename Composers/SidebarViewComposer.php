@@ -10,10 +10,10 @@ class SidebarViewComposer extends BaseSidebarViewComposer
         $view->items->put('menus', [
             'weight' => 7,
             'request' => "*/$view->prefix/menu*",
-            'route' => 'dashboard.media.index',
+            'route' => 'dashboard.menu.index',
             'icon-class' => 'fa fa-bars',
             'title' => 'Menus',
-            'permission' => $this->auth->hasAccess('media.index')
+            'permission' => $this->auth->hasAccess('menu.index')
         ]);
     }
 }
