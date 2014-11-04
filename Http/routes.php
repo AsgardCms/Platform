@@ -6,7 +6,7 @@ $router->group(['prefix' => LaravelLocalization::setLocale(), 'before' => 'Larav
 {
     $router->group(['prefix' => Config::get('core::core.admin-prefix'), 'namespace' => 'Modules\Menu\Http\Controllers'], function(Router $router)
     {
-        $router->resource('menu', 'Admin\MenuController', ['except' => ['show'], 'names' => [
+        $router->resource('menus', 'Admin\MenuController', ['except' => ['show'], 'names' => [
             'index' => 'dashboard.menu.index',
             'create' => 'dashboard.menu.create',
             'store' => 'dashboard.menu.store',
