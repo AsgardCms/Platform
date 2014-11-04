@@ -17,7 +17,7 @@
 @section('content')
 <div class="row">
     <div class="col-md-6">
-        <div class="btn-group pull-right" style="margin: 0 15px 15px 0;">
+        <div class="btn-group pull-right">
             <a href="{{ URL::route('dashboard.menu.create') }}" class="btn btn-primary btn-flat" style="padding: 4px 10px;">
                 <i class="fa fa-pencil"></i> {{ trans('menu::menu.button.create menu item') }}
             </a>
