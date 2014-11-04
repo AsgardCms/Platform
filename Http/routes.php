@@ -14,6 +14,15 @@ $router->group(['prefix' => LaravelLocalization::setLocale(), 'before' => 'Larav
             'update' => 'dashboard.menu.update',
             'destroy' => 'dashboard.menu.destroy',
         ]]);
+
+        $router->resource('menus.menulinks', 'Admin\MenuLinkController', ['except' => ['show'], 'names' => [
+            'index' => 'dashboard.menulink.index',
+            'create' => 'dashboard.menulink.create',
+            'store' => 'dashboard.menulink.store',
+            'edit' => 'dashboard.menulink.edit',
+            'update' => 'dashboard.menulink.update',
+            'destroy' => 'dashboard.menulink.destroy',
+        ]]);
     });
 });
 

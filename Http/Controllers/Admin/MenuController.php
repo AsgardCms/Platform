@@ -7,12 +7,12 @@ class MenuController extends AdminBaseController
 {
     public function index()
     {
-        return View::make('menu::admin.index');
+        return View::make('menu::admin.menus.index');
     }
 
     public function create()
     {
-        return View::make('menu::admin.create');
+        return View::make('menu::admin.menus.create');
     }
 
     public function store()
