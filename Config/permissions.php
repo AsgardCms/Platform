@@ -1,6 +1,6 @@
 <?php
 return [
-    'menu' => [
+    'menus' => [
         'index',
         'create',
         'store',
