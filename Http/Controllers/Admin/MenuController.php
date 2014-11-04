@@ -9,4 +9,14 @@ class MenuController extends AdminBaseController
     {
         return View::make('menu::admin.index');
     }
+
+    public function create()
+    {
+        return View::make('menu::admin.create');
+    }
+
+    public function store()
+    {
+        dd('form posted');
+    }
 }
