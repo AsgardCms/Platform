@@ -8,6 +8,11 @@ return [
         'menu' => 'Gestionnaire de menu'
     ],
     'button' => [
-        'create menu item' => 'Créer un élément de menu'
+        'create menu item' => 'Créer un élément de menu',
+        'create menu' => 'Créer un menu'
+    ],
+    'table' => [
+        'name' => 'Nom',
+        'title' => 'Titre',
     ]
 ];

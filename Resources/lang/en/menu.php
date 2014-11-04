@@ -10,6 +10,11 @@ return [
         'create menu item' => 'Create a menu item',
     ],
     'button' => [
-        'create menu item' => 'Create a menu item'
+        'create menu item' => 'Create a menu item',
+        'create menu' => 'Create a menu'
+    ],
+    'table' => [
+        'name' => 'Name',
+        'title' => 'Title',
     ]
 ];
