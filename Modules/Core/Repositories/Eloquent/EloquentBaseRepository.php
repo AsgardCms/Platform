@@ -1,6 +1,5 @@
 <?php  namespace Modules\Core\Repositories\Eloquent;
 
-use Illuminate\Database\Eloquent\Model;
 use Modules\Core\Repositories\BaseRepository;
 
 /**
@@ -17,7 +16,7 @@ abstract class EloquentBaseRepository implements BaseRepository
     /**
      * @param Model $model
      */
-    public function __construct(Model $model)
+    public function __construct($model)
     {
         $this->model = $model;
     }
@@ -48,12 +47,17 @@ abstract class EloquentBaseRepository implements BaseRepository
         return $this->model->create($data);
     }
 
+    public function update($model, $data)
+    {
+        return $model->update($data);
+    }
+
     /**
-     * @param int|int[] $ids
+     * @param Model $model
      * @return mixed
      */
-    public function destroy($ids)
+    public function destroy($model)
     {
-        return $this->model->destroy($ids);
+        return $model->delete();
     }
 }
