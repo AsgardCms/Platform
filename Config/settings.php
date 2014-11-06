@@ -11,4 +11,8 @@ return [
         'view' => 'textarea',
         'translatable' => true
     ],
+    'template' => [
+        'description' => trans('core::settings.template'),
+        'view' => 'core::fields.select-theme'
+    ],
 ];
