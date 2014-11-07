@@ -24,7 +24,6 @@
             </ul>
             <div class="tab-content">
                 <div class="tab-pane active" id="tab_1-1">
-                    @include('flash::message')
                     <ul>
                         @foreach($modules as $module)
                             <li>

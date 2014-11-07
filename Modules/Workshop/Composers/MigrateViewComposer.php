@@ -1,5 +1,6 @@
 <?php namespace Modules\Workshop\Composers;
 
+use Illuminate\Contracts\View\View;
 use Modules\Workshop\Manager\ModuleManager;
 
 class MigrateViewComposer
@@ -14,7 +15,7 @@ class MigrateViewComposer
         $this->module = $module;
     }
 
-    public function compose($view)
+    public function compose(View $view)
     {
         $view->modules = $this->module->enabled();
     }

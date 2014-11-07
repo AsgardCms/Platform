@@ -1,4 +1,3 @@
-@include('flash::message')
 <div class="row">
     <div class="col-md-6">
         {!! Form::open(['route' => 'dashboard.workbench.generate.index', 'method' => 'post']) !!}

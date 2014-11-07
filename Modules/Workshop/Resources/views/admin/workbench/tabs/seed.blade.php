@@ -1,4 +1,3 @@
-@include('flash::message')
 {!! Form::open(['route' => 'dashboard.workbench.seed.index', 'method' => 'post']) !!}
     <div class="box-body">
         <div class='form-group{{ $errors->has('module') ? ' has-error' : '' }}'>

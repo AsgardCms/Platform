@@ -6,6 +6,7 @@
   ],
   "active": 1,
   "providers": [
+      "Modules\\Workshop\\Providers\\RouteServiceProvider",
       "Modules\\Workshop\\Providers\\WorkshopServiceProvider"
   ]
 }
