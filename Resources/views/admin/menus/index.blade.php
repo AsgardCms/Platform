@@ -102,19 +102,20 @@
 <script type="text/javascript">
     $(function () {
         $('.data-table').dataTable({
-            "bPaginate": true,
-            "bLengthChange": true,
-            "bFilter": true,
-            "bSort": true,
-            "bInfo": true,
-            "bAutoWidth": true,
-            "oLanguage": {
-                "sUrl": '<?php echo Module::asset('core', "js/vendor/datatables/{$locale}.json") ?>'
+            "paginate": true,
+            "lengthChange": true,
+            "filter": true,
+            "sort": true,
+            "info": true,
+            "autoWidth": true,
+            "order": [[ 0, "asc" ]],
+            "language": {
+                "url": '<?php echo Module::asset('core', "js/vendor/datatables/{$locale}.json") ?>'
             },
-            "aoColumns": [
+            "columns": [
                 null,
                 null,
-                { "bSortable": false }
+                { "sortable": false }
             ]
         });
     });
