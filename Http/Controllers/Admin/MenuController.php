@@ -1,9 +1,10 @@
 <?php namespace Modules\Menu\Http\Controllers\Admin;
 
-use Illuminate\Support\Facades\Redirect;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\View;
 use Laracasts\Flash\Flash;
 use Modules\Core\Http\Controllers\Admin\AdminBaseController;
+use Modules\Menu\Entities\Menu;
 use Modules\Menu\Http\Requests\CreateMenuRequest;
 use Modules\Menu\Repositories\MenuRepository;
 
@@ -13,11 +14,16 @@ class MenuController extends AdminBaseController
      * @var MenuRepository
      */
     private $menu;
+    /**
+     * @var Request
+     */
+    private $request;
 
-    public function __construct(MenuRepository $menu)
+    public function __construct(MenuRepository $menu, Request $request)
     {
         parent::__construct();
         $this->menu = $menu;
+        $this->request = $request;
     }
 
     public function index()
@@ -37,6 +43,11 @@ class MenuController extends AdminBaseController
         $this->menu->create($request->all());
 
         Flash::success('Menu created!');
-        return Redirect::route('dashboard.menu.index');
+        return $this->request->route('dashboard.menu.index');
+    }
+
+    public function edit(Menu $menu)
+    {
+        dd('editing menu');
     }
 }

@@ -38,18 +38,18 @@
                         <?php foreach($menus as $menu): ?>
                             <tr>
                                 <td>
-                                    <a href="{{ URL::route('dashboard.post.edit', [$menu->id]) }}">
+                                    <a href="{{ URL::route('dashboard.menu.edit', [$menu->id]) }}">
                                         {{ $menu->name }}
                                     </a>
                                 </td>
                                 <td>
-                                    <a href="{{ URL::route('dashboard.post.edit', [$menu->id]) }}">
+                                    <a href="{{ URL::route('dashboard.menu.edit', [$menu->id]) }}">
                                         {{ $menu->title }}
                                     </a>
                                 </td>
                                 <td>
                                     <div class="btn-group">
-                                        <a href="{{ URL::route('dashboard.post.edit', [$menu->id]) }}" class="btn btn-default btn-flat"><i class="glyphicon glyphicon-pencil"></i></a>
+                                        <a href="{{ URL::route('dashboard.menu.edit', [$menu->id]) }}" class="btn btn-default btn-flat"><i class="glyphicon glyphicon-pencil"></i></a>
                                         <button class="btn btn-danger btn-flat" data-toggle="modal" data-target="#confirmation-{{ $menu->id }}"><i class="glyphicon glyphicon-trash"></i></button>
                                     </div>
                                 </td>
@@ -86,7 +86,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">{{ trans('core::core.button.cancel') }}</button>
-                    {!! Form::open(['route' => ['dashboard.post.destroy', $menu->id], 'method' => 'delete', 'class' => 'pull-left']) !!}
+                    {!! Form::open(['route' => ['dashboard.menu.destroy', $menu->id], 'method' => 'delete', 'class' => 'pull-left']) !!}
                         <button type="submit" class="btn btn-danger btn-flat"><i class="glyphicon glyphicon-trash"></i> {{ trans('core::core.button.delete') }}</button>
                     {!! Form::close() !!}
                 </div>
