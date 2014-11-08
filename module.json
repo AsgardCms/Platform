@@ -6,6 +6,7 @@
   ],
   "active": 1,
   "providers": [
-    "Modules\\Menu\\Providers\\RouteServiceProvider"
+    "Modules\\Menu\\Providers\\RouteServiceProvider",
+    "Modules\\Menu\\Providers\\MenuServiceProvider"
   ]
 }
