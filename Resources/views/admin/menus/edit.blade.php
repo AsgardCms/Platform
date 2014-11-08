@@ -18,7 +18,10 @@
 @section('content')
 {!! Form::open(['route' => ['dashboard.menu.update'], 'method' => 'post']) !!}
 <div class="row">
-    <div class="col-md-12">
+    <div class="col-md-6">
+
+    </div>
+    <div class="col-md-6">
         <div class="box box-info">
             <div class="box-header">
                 <h3 class="box-title">{{ trans('core::core.title.translatable fields') }}</h3>
