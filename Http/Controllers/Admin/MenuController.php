@@ -1,6 +1,8 @@
 <?php namespace Modules\Menu\Http\Controllers\Admin;
 
+use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\View;
+use Laracasts\Flash\Flash;
 use Modules\Core\Http\Controllers\Admin\AdminBaseController;
 use Modules\Menu\Http\Requests\CreateMenuRequest;
 use Modules\Menu\Repositories\MenuRepository;
@@ -17,6 +19,7 @@ class MenuController extends AdminBaseController
         parent::__construct();
         $this->menu = $menu;
     }
+
     public function index()
     {
         return View::make('menu::admin.menus.index');
