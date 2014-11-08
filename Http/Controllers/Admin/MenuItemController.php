@@ -2,5 +2,8 @@
 
 class MenuItemController
 {
-
+    public function update()
+    {
+        dd('ok?');
+    }
 }

@@ -7,6 +7,7 @@ use Laracasts\Flash\Flash;
 use Modules\Core\Http\Controllers\Admin\AdminBaseController;
 use Modules\Menu\Entities\Menu;
 use Modules\Menu\Http\Requests\CreateMenuRequest;
+use Modules\Menu\Http\Requests\UpdateMenuRequest;
 use Modules\Menu\Repositories\MenuRepository;
 
 class MenuController extends AdminBaseController
@@ -50,6 +51,14 @@ class MenuController extends AdminBaseController
     public function edit(Menu $menu)
     {
         return View::make('menu::admin.menus.edit', compact('menu'));
+    }
+
+    public function update(Menu $menu, UpdateMenuRequest $request)
+    {
+        $this->menu->update($menu, $request->all());
+
+        Flash::success('Menu updated!');
+        return $this->redirector->route('dashboard.menu.index');
     }
 
     public function destroy(Menu $menu)
