@@ -48,6 +48,6 @@ class MenuController extends AdminBaseController
 
     public function edit(Menu $menu)
     {
-        dd('editing menu');
+        return View::make('menu::admin.menus.edit', compact('menu'));
     }
 }
