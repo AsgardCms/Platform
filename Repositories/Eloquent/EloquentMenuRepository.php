@@ -9,8 +9,13 @@ class EloquentMenuRepository extends EloquentBaseRepository implements MenuRepos
 {
     public function create($data)
     {
+        $menu = new Menu;
+        $menu->name = $data['name'];
+
+        unset($data['name']);
         $translatableData = Helper::separateLanguages($data);
-        dd($translatableData);
-        Menu::create($translatableData);
+        Helper::updateTranslated($menu, $translatableData);
+
+        return $menu;
     }
 }
