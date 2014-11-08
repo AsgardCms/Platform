@@ -2,9 +2,21 @@
 
 use Illuminate\Support\Facades\View;
 use Modules\Core\Http\Controllers\Admin\AdminBaseController;
+use Modules\Menu\Http\Requests\CreateMenuRequest;
+use Modules\Menu\Repositories\MenuRepository;
 
 class MenuController extends AdminBaseController
 {
+    /**
+     * @var MenuRepository
+     */
+    private $menu;
+
+    public function __construct(MenuRepository $menu)
+    {
+        parent::__construct();
+        $this->menu = $menu;
+    }
     public function index()
     {
         return View::make('menu::admin.menus.index');
@@ -15,8 +27,11 @@ class MenuController extends AdminBaseController
         return View::make('menu::admin.menus.create');
     }
 
-    public function store()
+    public function store(CreateMenuRequest $request)
     {
-        dd('form posted');
+        $this->menu->create($request->all());
+
+        Flash::success('Menu created!');
+        return Redirect::route('dashboard.menu.index');
     }
 }
