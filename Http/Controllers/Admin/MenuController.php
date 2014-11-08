@@ -22,7 +22,9 @@ class MenuController extends AdminBaseController
 
     public function index()
     {
-        return View::make('menu::admin.menus.index');
+        $menus = $this->menu->all();
+
+        return View::make('menu::admin.menus.index', compact('menus'));
     }
 
     public function create()
