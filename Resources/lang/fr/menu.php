@@ -4,11 +4,13 @@ return [
     'titles' => [
         'menu' => 'Gestionnaire de menu',
         'create menu' => 'Créer un menu',
+        'edit menu' => 'Editer un menu',
         'create menu item' => 'Créer un élément du menu',
     ],
     'breadcrumb' => [
         'menu' => 'Gestionnaire de menu',
         'create menu' => 'Créer un menu',
+        'edit menu' => 'Editer un menu',
         'create menu item' => 'Créer un élément du menu',
     ],
     'button' => [
