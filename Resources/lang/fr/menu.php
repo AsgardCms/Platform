@@ -24,6 +24,7 @@ return [
     'form' => [
         'title' => 'Titre',
         'name' => 'Nom',
-        'status' => 'Status',
+        'status' => 'En ligne',
+        'uri' => 'URI'
     ]
 ];
