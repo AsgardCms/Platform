@@ -12,7 +12,7 @@
 @stop
 
 @section('content')
-{!! Form::open(['route' => ['dashboard.menu.store'], 'method' => 'post']) !!}
+{!! Form::open(['route' => ['dashboard.menuitem.store', $menu->id], 'method' => 'post']) !!}
 <div class="row">
     <div class="col-md-12">
 

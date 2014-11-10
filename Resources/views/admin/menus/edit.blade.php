@@ -19,7 +19,13 @@
 {!! Form::open(['route' => ['dashboard.menu.update', $menu->id], 'method' => 'put']) !!}
 <div class="row">
     <div class="col-md-6">
-
+        <div class="row">
+            <div class="btn-group pull-right">
+                <a href="{{ URL::route('dashboard.menuitem.create', [$menu->id]) }}" class="btn btn-primary btn-flat">
+                    <i class="fa fa-pencil"></i> {{ trans('menu::menu.button.create menu item') }}
+                </a>
+            </div>
+        </div>
     </div>
     <div class="col-md-6">
         <div class="box box-info">
