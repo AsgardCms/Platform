@@ -23,7 +23,7 @@
 
 @section('content')
 <div class="row col-md-12">
-    <form action="{{ URL::route('api.media.store')}}" method="POST" class="dropzone">
+    <form action="{{ URL::route('api.file.store')}}" method="POST" class="dropzone">
         {!! Form::token() !!}
     </form>
 </div>

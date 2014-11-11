@@ -22,5 +22,5 @@ $router->group(['prefix' => LaravelLocalization::setLocale(), 'before' => 'Larav
 $router->get('admin/grid-files', 'Modules\Media\Http\Controllers\Admin\MediaController@gridFiles');
 
 $router->group(['prefix' => 'api', 'namespace' => 'Modules\Media\Http\Controllers'], function (Router $router) {
-    $router->resource('media', 'Api\MediaController', ['only' => ['store']]);
+    $router->resource('file', 'Api\MediaController', ['only' => ['store']]);
 });
