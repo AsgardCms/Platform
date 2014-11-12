@@ -46,6 +46,18 @@
                 </div>
             </div>
         </div>
+        <div class="box box-info">
+            <div class="box-header">
+                <h3 class="box-title">{{ trans('core::core.title.non translatable fields') }}</h3>
+            </div>
+            <div class="box-body">
+                @include('menu::admin.menus.partials.create-fields')
+            </div>
+        </div>
+        <div class="box-footer">
+            <button type="submit" class="btn btn-primary btn-flat">{{ trans('core::core.button.create') }}</button>
+            <a class="btn btn-danger pull-right btn-flat" href="{{ URL::route('dashboard.menu.index')}}"><i class="fa fa-times"></i> {{ trans('core::core.button.cancel') }}</a>
+        </div>
     </div>
 </div>
 {!! Form::close() !!}
