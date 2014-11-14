@@ -51,7 +51,7 @@
                 <h3 class="box-title">{{ trans('core::core.title.non translatable fields') }}</h3>
             </div>
             <div class="box-body">
-                @include('menu::admin.menus.partials.create-fields')
+                @include('menu::admin.menuitems.partials.create-fields')
             </div>
         </div>
         <div class="box-footer">
