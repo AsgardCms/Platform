@@ -13,6 +13,7 @@
 
 @section('styles')
 <link href="{!! Module::asset('core', 'css/vendor/iCheck/flat/blue.css') !!}" rel="stylesheet" type="text/css" />
+<link href="{!! Module::asset('menu', 'css/nestable.css') !!}" rel="stylesheet" type="text/css" />
 @stop
 
 @section('content')
@@ -20,10 +21,24 @@
 <div class="row">
     <div class="col-md-6">
         <div class="row">
-            <div class="btn-group pull-right">
+            <div class="btn-group pull-right" style="margin: 0 15px 15px 0;">
                 <a href="{{ URL::route('dashboard.menuitem.create', [$menu->id]) }}" class="btn btn-primary btn-flat">
                     <i class="fa fa-pencil"></i> {{ trans('menu::menu.button.create menu item') }}
                 </a>
+            </div>
+        </div>
+        <div class="box box-info" style="overflow: hidden;">
+            <div class="box-body">
+                <div class="dd">
+                    <ol class="dd-list">
+                        <?php foreach($menuItems as $menuItem): ?>
+                            <li class="dd-item" data-id="{{ $menuItem->id }}">
+                                <a href="" class="btn btn-sm btn-info" style="float: left; margin-right: 15px">Edit</a>
+                                <div class="dd-handle" style="margin-left: 50px;">{{ $menuItem->title }}</div>
+                            </li>
+                        <?php endforeach; ?>
+                    </ol>
+                </div>
             </div>
         </div>
     </div>
@@ -88,6 +103,16 @@ $( document ).ready(function() {
       var name = $(this).attr('name'),
           input = '<input type="hidden" name="' + name + '" value="0" />';
       $(this).parent().append(input);
+    });
+});
+</script>
+<script src="{!! Module::asset('menu', 'js/jquery.nestable.js') !!}"></script>
+<script>
+$( document ).ready(function() {
+    $('.dd').nestable();
+    $('.dd').on('change', function() {
+        var data = $('.dd').nestable('serialize');
+        console.log(data);
     });
 });
 </script>

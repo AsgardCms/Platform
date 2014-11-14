@@ -7,6 +7,7 @@ use Modules\Core\Http\Controllers\Admin\AdminBaseController;
 use Modules\Menu\Entities\Menu;
 use Modules\Menu\Http\Requests\CreateMenuRequest;
 use Modules\Menu\Http\Requests\UpdateMenuRequest;
+use Modules\Menu\Repositories\MenuItemRepository;
 use Modules\Menu\Repositories\MenuRepository;
 
 class MenuController extends AdminBaseController
@@ -19,12 +20,17 @@ class MenuController extends AdminBaseController
      * @var Redirector
      */
     private $redirector;
+    /**
+     * @var MenuItemRepository
+     */
+    private $menuItem;
 
-    public function __construct(MenuRepository $menu, Redirector $redirector)
+    public function __construct(MenuRepository $menu, MenuItemRepository $menuItem, Redirector $redirector)
     {
         parent::__construct();
         $this->menu = $menu;
         $this->redirector = $redirector;
+        $this->menuItem = $menuItem;
     }
 
     public function index()
@@ -49,7 +55,8 @@ class MenuController extends AdminBaseController
 
     public function edit(Menu $menu)
     {
-        return View::make('menu::admin.menus.edit', compact('menu'));
+        $menuItems = $this->menuItem->all();
+        return View::make('menu::admin.menus.edit', compact('menu', 'menuItems'));
     }
 
     public function update(Menu $menu, UpdateMenuRequest $request)
