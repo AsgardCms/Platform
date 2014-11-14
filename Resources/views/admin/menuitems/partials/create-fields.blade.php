@@ -1,4 +1,11 @@
 <div class="form-group">
+    <label for="page">{{ trans('menu::menu-items.form.page') }}</label>
+    <select class="form-control" name="page" id="page">
+        <option value=""></option>
+    </select>
+</div>
+
+<div class="form-group">
     <label for="module">{{ trans('menu::menu-items.form.module') }}</label>
     <select class="form-control" name="module" id="module">
         <option value=""></option>
