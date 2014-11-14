@@ -15,7 +15,7 @@ class EloquentMenuItemRepository extends EloquentBaseRepository implements MenuI
         $menuItem->target = $data['target'];
         $menuItem->module_name = $data['module'];
 
-        unset($data['menu_id'], $data['page_id'], $data['target'], $data['module_name']);
+        unset($data['menu_id'], $data['page_id'], $data['target'], $data['module']);
 
         $translatableData = Helper::separateLanguages($data);
         Helper::updateTranslated($menuItem, $translatableData);

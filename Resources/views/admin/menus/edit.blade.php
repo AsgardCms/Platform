@@ -27,20 +27,22 @@
                 </a>
             </div>
         </div>
-        <div class="box box-info" style="overflow: hidden;">
-            <div class="box-body">
-                <div class="dd">
-                    <ol class="dd-list">
-                        <?php foreach($menuItems as $menuItem): ?>
-                            <li class="dd-item" data-id="{{ $menuItem->id }}">
-                                <a href="" class="btn btn-sm btn-info" style="float: left; margin-right: 15px">Edit</a>
-                                <div class="dd-handle" style="margin-left: 50px;">{{ $menuItem->title }}</div>
-                            </li>
-                        <?php endforeach; ?>
-                    </ol>
+        <?php if (!$menuItems->isEmpty()): ?>
+            <div class="box box-info" style="overflow: hidden;">
+                <div class="box-body">
+                    <div class="dd">
+                        <ol class="dd-list">
+                            <?php foreach($menuItems as $menuItem): ?>
+                                <li class="dd-item" data-id="{{ $menuItem->id }}">
+                                    <a href="" class="btn btn-sm btn-info" style="float: left; margin-right: 15px">Edit</a>
+                                    <div class="dd-handle" style="margin-left: 50px;">{{ $menuItem->title }}</div>
+                                </li>
+                            <?php endforeach; ?>
+                        </ol>
+                    </div>
                 </div>
             </div>
-        </div>
+        <?php endif; ?>
     </div>
     <div class="col-md-6">
         <div class="box box-info">
