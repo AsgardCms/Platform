@@ -37,12 +37,12 @@ class MenuItemController
         return $this->redirector->route('dashboard.menu.edit', [$menu->id]);
     }
 
-    public function edit(Menu $menu, Menuitem $menuitem)
+    public function edit(Menu $menu, Menuitem $menuItem)
     {
-        dd('edit form');
+        return view('menu::admin.menuitems.edit', compact('menu', 'menuItem'));
     }
 
-    public function update(Menu $menu)
+    public function update(Menu $menu, Menuitem $menuItem)
     {
     }
 }
