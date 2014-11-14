@@ -29,9 +29,6 @@
                 <div class="tab-pane active" id="tab_1-1">
                     <div class="box-body">
                         <div class="row">
-                            @include('flash::message')
-                        </div>
-                        <div class="row">
                             <div class="col-sm-4">
                                 <div class="form-group{{ $errors->has('first_name') ? ' has-error' : '' }}">
                                     {!! Form::label('first_name', trans('user::users.form.first-name')) !!}
