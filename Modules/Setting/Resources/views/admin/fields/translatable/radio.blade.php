@@ -1,4 +1,3 @@
-<?php $settingName = strtolower($currentModule) . '::' . $setting; ?>
 <div class="checkbox">
     <?php foreach($moduleInfo['options'] as $value => $optionName): ?>
         <label for="{{ $optionName . "[$lang]" }}">

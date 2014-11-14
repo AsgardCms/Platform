@@ -1,4 +1,3 @@
-<?php $settingName = strtolower($currentModule) . '::' . $setting; ?>
 <div class='form-group'>
     {!! Form::label($settingName . "[$lang]", $moduleInfo['description']) !!}
     <?php if (isset($dbSettings[$settingName])): ?>

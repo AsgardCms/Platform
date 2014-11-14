@@ -1,5 +1,6 @@
 <?php namespace Modules\Setting\Support;
 
+use Illuminate\Contracts\Cache\Repository;
 use Modules\Core\Contracts\Setting;
 use Modules\Setting\Repositories\SettingRepository;
 
@@ -9,13 +10,19 @@ class Settings implements Setting
      * @var SettingRepository
      */
     private $setting;
+    /**
+     * @var Repository
+     */
+    private $cache;
 
     /**
      * @param SettingRepository $setting
+     * @param Repository $cache
      */
-    public function __construct(SettingRepository $setting)
+    public function __construct(SettingRepository $setting, Repository $cache)
     {
         $this->setting = $setting;
+        $this->cache = $cache;
     }
 
     /**
@@ -27,7 +34,11 @@ class Settings implements Setting
      */
     public function get($name, $locale = null, $default = null)
     {
-        $setting = $this->setting->get($name);
+        if (!$this->cache->has("setting.$name")) {
+            $setting = $this->setting->get($name);
+            $this->cache->put("setting.$name", $setting, '3600');
+        }
+        $setting = $this->cache->get("setting.$name");
 
         if ($setting) {
             if ($setting->isTranslatable) {

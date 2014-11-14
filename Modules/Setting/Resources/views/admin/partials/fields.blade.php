@@ -6,5 +6,6 @@
         'settings' => $settings,
         'setting' => $settingName,
         'moduleInfo' => $moduleInfo,
+        'settingName' => strtolower($currentModule) . '::' . $settingName
     ])
 <?php endforeach;
