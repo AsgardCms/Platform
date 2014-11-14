@@ -34,8 +34,8 @@
                         <ol class="dd-list">
                             <?php foreach($menuItems as $menuItem): ?>
                                 <li class="dd-item" data-id="{{ $menuItem->id }}">
+                                    <a href="{{ URL::route('dashboard.menuitem.edit', [$menu->id, $menuItem->id]) }}" class="btn btn-sm btn-info" style="float:left; margin-right: 15px;">Edit</a>
                                     <div class="dd-handle">
-                                        <a href="" class="btn btn-sm btn-info">Edit</a>
                                         {{ $menuItem->title }}
                                     </div>
                                 </li>
