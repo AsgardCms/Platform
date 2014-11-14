@@ -16,7 +16,7 @@
 @stop
 
 @section('content')
-{!! Form::open(['route' => ['dashboard.menuitem.edit', $menu->id, $menuItem->id], 'method' => 'post']) !!}
+{!! Form::open(['route' => ['dashboard.menuitem.update', $menu->id, $menuItem->id], 'method' => 'put']) !!}
 <div class="row">
     <div class="col-md-12">
         <div class="box box-info">

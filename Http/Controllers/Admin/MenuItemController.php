@@ -5,6 +5,7 @@ use Laracasts\Flash\Flash;
 use Modules\Menu\Entities\Menu;
 use Modules\Menu\Entities\Menuitem;
 use Modules\Menu\Http\Requests\CreateMenuItemRequest;
+use Modules\Menu\Http\Requests\UpdateMenuItemRequest;
 use Modules\Menu\Repositories\MenuItemRepository;
 
 class MenuItemController
@@ -31,7 +32,7 @@ class MenuItemController
 
     public function store(Menu $menu, CreateMenuItemRequest $request)
     {
-        $this->menuItem->create(array_merge($request->all(), ['menu_id' => $menu->id]));
+        $this->menuItem->create($this->addMenuId($menu, $request));
 
         Flash::success('Menu item created!');
         return $this->redirector->route('dashboard.menu.edit', [$menu->id]);
@@ -42,7 +43,21 @@ class MenuItemController
         return view('menu::admin.menuitems.edit', compact('menu', 'menuItem'));
     }
 
-    public function update(Menu $menu, Menuitem $menuItem)
+    public function update(Menu $menu, Menuitem $menuItem, UpdateMenuItemRequest $request)
     {
+        $this->menuItem->update($menuItem, $this->addMenuId($menu, $request));
+
+        Flash::success('Menu item updated!');
+        return $this->redirector->route('dashboard.menu.edit', [$menu->id]);
+    }
+
+    /**
+     * @param Menu $menu
+     * @param \Illuminate\Foundation\Http\FormRequest $request
+     * @return array
+     */
+    private function addMenuId(Menu $menu, $request)
+    {
+        return array_merge($request->all(), ['menu_id' => $menu->id]);
     }
 }
