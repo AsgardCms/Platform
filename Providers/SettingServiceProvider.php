@@ -28,7 +28,7 @@ class SettingServiceProvider extends ServiceProvider {
 
 		$this->app['setting.settings'] = $this->app->share(function($app)
 		{
-			return new Settings($app['Modules\Setting\Repositories\SettingRepository']);
+			return new Settings($app['Modules\Setting\Repositories\SettingRepository'], $app['cache']);
 		});
 
 		$this->app->booting(function()

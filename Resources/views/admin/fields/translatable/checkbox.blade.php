@@ -1,4 +1,3 @@
-<?php $settingName = strtolower($currentModule) . '::' . $setting; ?>
 <div class="checkbox">
     <label for="{{ $settingName . "[$lang]" }}">
         <input id="{{ $settingName . "[$lang]" }}"
