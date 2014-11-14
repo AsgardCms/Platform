@@ -34,8 +34,10 @@
                         <ol class="dd-list">
                             <?php foreach($menuItems as $menuItem): ?>
                                 <li class="dd-item" data-id="{{ $menuItem->id }}">
-                                    <a href="" class="btn btn-sm btn-info" style="float: left; margin-right: 15px">Edit</a>
-                                    <div class="dd-handle" style="margin-left: 50px;">{{ $menuItem->title }}</div>
+                                    <div class="dd-handle">
+                                        <a href="" class="btn btn-sm btn-info">Edit</a>
+                                        {{ $menuItem->title }}
+                                    </div>
                                 </li>
                             <?php endforeach; ?>
                         </ol>
