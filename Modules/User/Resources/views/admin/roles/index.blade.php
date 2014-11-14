@@ -14,7 +14,6 @@
 <div class="row">
     <div class="col-xs-12">
         <div class="row">
-            @include('flash::message')
             <div class="btn-group pull-right" style="margin: 0 15px 15px 0;">
                 <a href="{{ URL::route('dashboard.role.create') }}" class="btn btn-primary btn-flat" style="padding: 4px 10px;">
                     <i class="fa fa-pencil"></i> {{ trans('user::roles.button.new-role') }}
