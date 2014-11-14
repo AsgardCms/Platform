@@ -1,6 +1,6 @@
 <div class="form-group">
     <label for="page">{{ trans('menu::menu-items.form.page') }}</label>
-    <select class="form-control" name="page" id="page">
+    <select class="form-control" name="page_id" id="page">
         <option value=""></option>
     </select>
 </div>

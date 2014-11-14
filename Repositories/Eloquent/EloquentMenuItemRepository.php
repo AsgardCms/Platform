@@ -1,5 +1,6 @@
 <?php namespace Modules\Menu\Repositories\Eloquent;
 
+use Modules\Core\Internationalisation\Helper;
 use Modules\Core\Repositories\Eloquent\EloquentBaseRepository;
 use Modules\Menu\Entities\Menuitem;
 use Modules\Menu\Repositories\MenuItemRepository;
@@ -8,12 +9,11 @@ class EloquentMenuItemRepository extends EloquentBaseRepository implements MenuI
 {
     public function create($data)
     {
-        dd($data);
         $menuItem = new Menuitem;
         $menuItem->menu_id = $data['menu_id'];
         $menuItem->page_id = $data['page_id'];
         $menuItem->target = $data['target'];
-        $menuItem->module_name = $data['module_name'];
+        $menuItem->module_name = $data['module'];
 
         unset($data['menu_id'], $data['page_id'], $data['target'], $data['module_name']);
 
