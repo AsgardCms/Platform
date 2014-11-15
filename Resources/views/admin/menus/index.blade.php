@@ -20,7 +20,7 @@
                 </a>
             </div>
         </div>
-        <div class="box">
+        <div class="box box-info">
             <div class="box-header">
             </div>
             <!-- /.box-header -->
