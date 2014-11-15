@@ -20,6 +20,6 @@ class Widen implements ImageHandlerInterface
 
         $callback = isset($options['callback']) ? $options['callback'] : null;
 
-        return $image->heighten($options['width'], $callback);
+        return $image->widen($options['width'], $callback);
     }
 }
