@@ -27,36 +27,11 @@
                 </a>
             </div>
         </div>
-        <?php if (!$menuItems->isEmpty()): ?>
-            <div class="box box-info" style="overflow: hidden;">
-                <div class="box-body">
-                    <div class="dd">
-                        <ol class="dd-list">
-                            <?php foreach($menuItems as $menuItem): ?>
-                                <li class="dd-item" data-id="{{ $menuItem->id }}">
-                                    <a href="{{ URL::route('dashboard.menuitem.edit', [$menu->id, $menuItem->id]) }}" class="btn btn-sm btn-info" style="float:left; margin-right: 15px;">Edit</a>
-                                    <div class="dd-handle">
-                                        {{ $menuItem->title }}
-                                    </div>
-                                    <?php if (!$menuItem->children()->get()->isEmpty()): ?>
-                                        <ol class="dd-list">
-                                        <?php foreach($menuItem->children()->get() as $leaf): ?>
-                                            <li class="dd-item" data-id="{{ $leaf->id }}">
-                                                <a href="{{ URL::route('dashboard.menuitem.edit', [$menu->id, $leaf->id]) }}" class="btn btn-sm btn-info" style="float:left; margin-right: 15px;">Edit</a>
-                                                <div class="dd-handle">
-                                                    {{ $leaf->title }}
-                                                </div>
-                                            </li>
-                                        <?php endforeach; ?>
-                                        </ol>
-                                    <?php endif; ?>
-                                </li>
-                            <?php endforeach; ?>
-                        </ol>
-                    </div>
-                </div>
+        <div class="box box-info" style="overflow: hidden;">
+            <div class="box-body">
+                {!! $menuStructure !!}
             </div>
-        <?php endif; ?>
+        </div>
     </div>
     <div class="col-md-6">
         <div class="box box-info">
