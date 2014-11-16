@@ -40,9 +40,6 @@
   font-weight: bold;
   border: 1px solid #ccc;
   background: #fafafa;
-  background: -webkit-linear-gradient(top, #fafafa 0%, #eeeeee 100%);
-  background: -moz-linear-gradient(top, #fafafa 0%, #eeeeee 100%);
-  background: linear-gradient(top, #fafafa 0%, #eeeeee 100%);
   -webkit-border-radius: 3px;
   border-radius: 3px;
   box-sizing: border-box;
@@ -51,6 +48,7 @@
 .dd-handle:hover {
   color: #2ea8e5;
   background: #fff;
+  cursor: move;
 }
 .dd-item > button {
   display: block;
