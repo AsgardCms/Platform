@@ -31,7 +31,7 @@ class MenuRenderer
         $this->menuId = $menuId;
 
         $this->menu .= $this->startTag;
-        $this->renderItems($menuItems);
+        $this->generateHtmlFor($menuItems);
         $this->menu .= $this->endTag;
 
         return $this->menu;
@@ -41,7 +41,7 @@ class MenuRenderer
      * Generate the html for the given items
      * @param $items
      */
-    private function renderItems($items)
+    private function generateHtmlFor($items)
     {
         $this->menu .= '<ol class="dd-list">';
         foreach ($items as $item) {
@@ -53,7 +53,7 @@ class MenuRenderer
             $this->menu .= "<div class=\"dd-handle\">{$item->title}</div>";
 
             if (!$item->children()->get()->isEmpty()) {
-                $this->renderItems($item->children()->get());
+                $this->generateHtmlFor($item->children()->get());
             }
 
             $this->menu .= '</li>';
