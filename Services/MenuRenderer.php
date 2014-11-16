@@ -4,11 +4,28 @@ use Illuminate\Support\Facades\URL;
 
 class MenuRenderer
 {
+    /**
+     * @var int Id of the menu to render
+     */
     protected $menuId;
+    /**
+     * @var string
+     */
     private $startTag = '<div class="dd">';
+    /**
+     * @var string
+     */
     private $endTag = '</div>';
+    /**
+     * @var string
+     */
     private $menu = '';
 
+    /**
+     * @param $menuId
+     * @param $menuItems
+     * @return string
+     */
     public function renderForMenu($menuId, $menuItems)
     {
         $this->menuId = $menuId;
@@ -20,6 +37,10 @@ class MenuRenderer
         return $this->menu;
     }
 
+    /**
+     * Generate the html for the given items
+     * @param $items
+     */
     private function renderItems($items)
     {
         $this->menu .= '<ol class="dd-list">';
