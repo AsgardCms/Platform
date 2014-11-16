@@ -52,12 +52,21 @@ class MenuRenderer
                                    Edit</a>';
             $this->menu .= "<div class=\"dd-handle\">{$item->title}</div>";
 
-            if (!$item->children()->get()->isEmpty()) {
+            if ($this->hasChildren($item)) {
                 $this->generateHtmlFor($item->children()->get());
             }
 
             $this->menu .= '</li>';
         }
         $this->menu .= '</ol>';
+    }
+
+    /**
+     * @param $item
+     * @return bool
+     */
+    private function hasChildren($item)
+    {
+        return !$item->children()->get()->isEmpty();
     }
 }
