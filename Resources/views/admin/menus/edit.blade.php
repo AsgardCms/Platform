@@ -38,6 +38,18 @@
                                     <div class="dd-handle">
                                         {{ $menuItem->title }}
                                     </div>
+                                    <?php if (!$menuItem->children()->get()->isEmpty()): ?>
+                                        <ol class="dd-list">
+                                        <?php foreach($menuItem->children()->get() as $leaf): ?>
+                                            <li class="dd-item" data-id="{{ $leaf->id }}">
+                                                <a href="{{ URL::route('dashboard.menuitem.edit', [$menu->id, $leaf->id]) }}" class="btn btn-sm btn-info" style="float:left; margin-right: 15px;">Edit</a>
+                                                <div class="dd-handle">
+                                                    {{ $leaf->title }}
+                                                </div>
+                                            </li>
+                                        <?php endforeach; ?>
+                                        </ol>
+                                    <?php endif; ?>
                                 </li>
                             <?php endforeach; ?>
                         </ol>
@@ -116,7 +128,18 @@ $( document ).ready(function() {
     $('.dd').nestable();
     $('.dd').on('change', function() {
         var data = $('.dd').nestable('serialize');
-        console.log(data);
+        $.ajax({
+            type: 'POST',
+            url: '/api/menuitem/update',
+            data: JSON.stringify(data),
+            contentType: 'application/json;',
+            dataType: 'json',
+            success: function(data) {
+
+            },
+            error:function (xhr, ajaxOptions, thrownError){
+            }
+        });
     });
 });
 </script>

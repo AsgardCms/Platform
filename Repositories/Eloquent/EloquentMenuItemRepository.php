@@ -33,4 +33,9 @@ class EloquentMenuItemRepository extends EloquentBaseRepository implements MenuI
 
         return $menuItem;
     }
+
+    public function roots()
+    {
+        return $this->model->roots()->orderBy('position')->get();
+    }
 }

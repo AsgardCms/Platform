@@ -55,7 +55,8 @@ class MenuController extends AdminBaseController
 
     public function edit(Menu $menu)
     {
-        $menuItems = $this->menuItem->all();
+        $menuItems = $this->menuItem->roots();
+
         return View::make('menu::admin.menus.edit', compact('menu', 'menuItems'));
     }
 

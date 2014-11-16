@@ -31,4 +31,5 @@ $router->group(['prefix' => LaravelLocalization::setLocale(), 'before' => 'Larav
 
 $router->group(['prefix' => 'api', 'namespace' => 'Modules\Menu\Http\Controllers'], function (Router $router) {
     $router->resource('media', 'Api\MenuController', ['only' => ['store']]);
+    $router->post('menuitem/update', 'Api\MenuItemController@update');
 });
