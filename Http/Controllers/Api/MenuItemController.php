@@ -15,6 +15,10 @@ class MenuItemController
         $this->menuService = $menuService;
     }
 
+    /**
+     * Update all menu items
+     * @param Request $request
+     */
     public function update(Request $request)
     {
         foreach ($request->all() as $position => $item) {
