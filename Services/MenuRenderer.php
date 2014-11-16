@@ -1,5 +1,6 @@
 <?php namespace Modules\Menu\Services;
 
+use Baum\Node;
 use Illuminate\Support\Facades\URL;
 
 class MenuRenderer
@@ -65,7 +66,7 @@ class MenuRenderer
      * @param $item
      * @return bool
      */
-    private function hasChildren($item)
+    private function hasChildren(Node $item)
     {
         return !$item->children()->get()->isEmpty();
     }
