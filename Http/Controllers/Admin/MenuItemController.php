@@ -1,5 +1,6 @@
 <?php namespace Modules\Menu\Http\Controllers\Admin;
 
+use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Routing\Redirector;
 use Laracasts\Flash\Flash;
 use Modules\Menu\Entities\Menu;
@@ -56,7 +57,7 @@ class MenuItemController
      * @param \Illuminate\Foundation\Http\FormRequest $request
      * @return array
      */
-    private function addMenuId(Menu $menu, $request)
+    private function addMenuId(Menu $menu, FormRequest $request)
     {
         return array_merge($request->all(), ['menu_id' => $menu->id]);
     }
