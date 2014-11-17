@@ -6,7 +6,7 @@ use Modules\Media\Repositories\FileRepository;
 
 class RefreshThumbnailCommand extends Command
 {
-    protected $name = 'media:thumb-refresh';
+    protected $name = 'asgard:media:refresh';
     protected $description = 'Create and or refresh the thumbnails';
     /**
      * @var Imagy
