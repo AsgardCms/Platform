@@ -1,6 +1,6 @@
-# nWidart/Platform
+# Asgard/Platform
 
-This is the core repository for the CMS. The admin is fully translatable in English and French by default.
+This is the core repository for the Asgard CMS. The admin is fully translatable in English and French by default.
 
 ![](https://i.cloudup.com/WcLe-ORql4.thumb.png)
 
@@ -14,7 +14,7 @@ This is the core repository for the CMS. The admin is fully translatable in Engl
 ### Install Platform
 
 ```
-composer create-project nwidart/platform your-project-name --prefer-dist --stability=dev
+composer create-project asgard/platform your-project-name --prefer-dist --stability=dev
 ```
 
 ### Run composer install
@@ -23,7 +23,7 @@ Run the usual `composer install` to get the dependencies.
 
 ## Run the install command
 
-Now run `php artisan platform:install` command to perform to start the installation process.
+Now run `php artisan asgard:install` command to perform to start the installation process.
 
 This install command will perform the following actions:
 
@@ -40,13 +40,8 @@ You can now login on `/backend` with your email and password asked during the in
 
 ## Documentation
 
-You can read the documentation on its specific [github repository](https://github.com/nWidart-Modules/Documentation).
+You can read the documentation on its specific [github repository](https://github.com/AsgardCms/Documentation).
 
-
-## Development
-
-
-For manually adding the subtrees please refer to the [install as subtree](https://github.com/nWidart-Modules/Documentation/blob/master/Installation/module-installation-as-subtree.md) documentation.
 
 
 
