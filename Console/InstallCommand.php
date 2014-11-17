@@ -13,14 +13,14 @@ class InstallCommand extends Command
      *
      * @var string
      */
-    protected $name = 'platform:install';
+    protected $name = 'asgard:install';
 
     /**
      * The console command description.
      *
      * @var string
      */
-    protected $description = 'Install the Platform CMS';
+    protected $description = 'Install Asgard CMS';
 
     /**
      * @var UserRepository

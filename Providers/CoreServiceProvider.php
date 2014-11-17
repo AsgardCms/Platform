@@ -102,7 +102,7 @@ class CoreServiceProvider extends ServiceProvider
      */
     private function registerInstallCommand()
     {
-        $this->app->bindShared('command.platform.install', function($app) {
+        $this->app->bindShared('command.asgard.install', function($app) {
             return new InstallCommand(
                 $app['Modules\User\Repositories\UserRepository'],
                 $app['files']
@@ -110,7 +110,7 @@ class CoreServiceProvider extends ServiceProvider
         });
 
         $this->commands(
-            'command.platform.install'
+            'command.asgard.install'
         );
     }
 }
