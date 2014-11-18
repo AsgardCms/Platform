@@ -4,5 +4,15 @@ use Modules\Core\Repositories\BaseRepository;
 
 interface MenuItemRepository extends BaseRepository
 {
+    /**
+     * Get all root elements
+     * @return mixed
+     */
     public function roots();
+
+    /**
+     * Get the menu items ready for routes
+     * @return mixed
+     */
+    public function getForRoutes();
 }

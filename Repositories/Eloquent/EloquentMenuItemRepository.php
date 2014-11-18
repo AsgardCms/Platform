@@ -1,5 +1,6 @@
 <?php namespace Modules\Menu\Repositories\Eloquent;
 
+use Illuminate\Support\Facades\DB;
 use Modules\Core\Internationalisation\Helper;
 use Modules\Core\Repositories\Eloquent\EloquentBaseRepository;
 use Modules\Menu\Entities\Menuitem;
@@ -37,5 +38,29 @@ class EloquentMenuItemRepository extends EloquentBaseRepository implements MenuI
     public function roots()
     {
         return $this->model->roots()->orderBy('position')->get();
+    }
+
+    /**
+     * Get Items to build routes
+     *
+     * @return Array
+     */
+    public function getForRoutes()
+    {
+        $menuitems = DB::table('menuitems')
+            ->select('menuitems.id', 'menuitems.parent_id', 'uri', 'locale', 'module_name')
+            ->join('menuitem_translations', 'menuitems.id', '=', 'menuitem_translations.menuitem_id')
+            ->where('uri', '!=', '')
+            ->where('module_name', '!=', '')
+            ->where('status', '=', 1)
+            ->orderBy('module_name')
+            ->get();
+
+        $menuitemsArray = [];
+        foreach ($menuitems as $menuitem) {
+            $menuitemsArray[$menuitem->module_name][$menuitem->locale] = $menuitem->locale . '/' .$menuitem->uri;
+        }
+
+        return $menuitemsArray;
     }
 }
