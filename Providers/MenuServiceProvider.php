@@ -6,7 +6,6 @@ use Modules\Menu\Repositories\Eloquent\EloquentMenuRepository;
 
 class MenuServiceProvider extends ServiceProvider
 {
-
     /**
      * Indicates if loading of the provider is deferred.
      *
@@ -21,9 +20,7 @@ class MenuServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->app->booted(function () {
-            $this->registerBindings();
-        });
+        $this->registerBindings();
     }
 
     /**
