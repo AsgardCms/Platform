@@ -2,8 +2,6 @@
 
 use Illuminate\Support\ServiceProvider;
 use Modules\Menu\Entities\Menu;
-use Modules\Menu\Entities\Menuitem;
-use Modules\Menu\Repositories\Eloquent\EloquentMenuItemRepository;
 use Modules\Menu\Repositories\Eloquent\EloquentMenuRepository;
 
 class MenuServiceProvider extends ServiceProvider
@@ -47,12 +45,6 @@ class MenuServiceProvider extends ServiceProvider
             'Modules\Menu\Repositories\MenuRepository',
             function() {
                 return new EloquentMenuRepository(new Menu);
-            }
-        );
-        $this->app->bind(
-            'Modules\Menu\Repositories\MenuItemRepository',
-            function() {
-                return new EloquentMenuItemRepository(new Menuitem);
             }
         );
     }
