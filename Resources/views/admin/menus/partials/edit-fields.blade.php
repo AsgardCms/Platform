@@ -3,3 +3,14 @@
     {!! Form::text('name', Input::old('name', $menu->name), ['class' => 'form-control', 'placeholder' => trans('menu::menu.form.name')]) !!}
     {!! $errors->first('Name', '<span class="help-block">:message</span>') !!}
 </div>
+<div class="checkbox">
+    <label for="primary">
+        <input id="primary"
+                name="primary"
+                type="checkbox"
+                class="flat-blue"
+                {{ ((bool)$menu->primary) ? 'checked' : '' }}
+                value="1" />
+        {{ trans('menu::menu.form.primary') }}
+    </label>
+</div>

@@ -27,6 +27,7 @@ return [
         'title' => 'Titre',
         'name' => 'Nom',
         'status' => 'En ligne',
-        'uri' => 'URI'
+        'uri' => 'URI',
+        'primary' => 'Menu principal (utiliser pour le routage front-end)',
     ]
 ];

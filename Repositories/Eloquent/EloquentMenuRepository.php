@@ -11,8 +11,8 @@ class EloquentMenuRepository extends EloquentBaseRepository implements MenuRepos
     {
         $menu = new Menu;
         $menu->name = $data['name'];
+        $menu->primary = $data['primary'];
 
-        unset($data['name']);
         $translatableData = Helper::separateLanguages($data);
         Helper::updateTranslated($menu, $translatableData);
 
@@ -21,6 +21,8 @@ class EloquentMenuRepository extends EloquentBaseRepository implements MenuRepos
 
     public function update($menu, $data)
     {
+        $menu->name = $data['name'];
+        $menu->primary = $data['primary'];
         $translatableData = Helper::separateLanguages($data);
 
         Helper::updateTranslated($menu, $translatableData);

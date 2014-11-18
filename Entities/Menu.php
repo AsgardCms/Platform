@@ -9,9 +9,9 @@ class Menu extends Model
 
     protected $fillable = [
         'name',
-        'class',
         'title',
         'status',
+        'primary',
     ];
     public $translatedAttributes = ['title', 'status'];
 
