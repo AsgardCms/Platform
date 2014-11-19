@@ -17,8 +17,7 @@ class EloquentFileRepository extends EloquentBaseRepository implements FileRepos
      */
     public function update($file, $data)
     {
-        $translatableData = Helper::separateLanguages($data);
-        Helper::updateTranslated($file, $translatableData);
+        $file->update($data);
 
         return $file;
     }

@@ -16,26 +16,13 @@
 <div class="row">
     <div class="col-md-8">
         <div class="nav-tabs-custom">
-            <ul class="nav nav-tabs">
-                <?php $i = 0; ?>
-                <?php foreach(LaravelLocalization::getSupportedLocales() as $locale => $language): ?>
-                    <?php $i++; ?>
-                    <li class="{{ App::getLocale() == $locale ? 'active' : '' }}">
-                        <a href="#tab_{{ $i }}" data-toggle="tab">{{ trans('core::core.tab.'. strtolower($language['name'])) }}</a>
-                    </li>
-                <?php endforeach; ?>
-            </ul>
+            @include('core::partials.form-tab-headers')
             <div class="tab-content">
-                <div class="row">
-                    @include('flash::message')
-                </div>
                 <?php $i = 0; ?>
                 <?php foreach(LaravelLocalization::getSupportedLocales() as $locale => $language): ?>
                     <?php $i++; ?>
                     <div class="tab-pane {{ App::getLocale() == $locale ? 'active' : '' }}" id="tab_{{ $i }}">
-                        @include('media::admin.partials.edit-fields', [
-                            'lang' => $locale
-                        ])
+                        @include('media::admin.partials.edit-fields', ['lang' => $locale])
                     </div>
                 <?php endforeach; ?>
                 <div class="box-footer">
@@ -46,7 +33,7 @@
         </div> {{-- end nav-tabs-custom --}}
     </div>
     <div class="col-md-4">
-        <img src="{{ $file->path }}" alt="{{ $file->translate()->alt_attribute }}" style="width: 100%;"/>
+        <img src="{{ $file->path }}" alt="" style="width: 100%;"/>
     </div>
 </div>
 
