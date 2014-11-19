@@ -10,27 +10,12 @@ class EloquentMenuItemRepository extends EloquentBaseRepository implements MenuI
 {
     public function create($data)
     {
-        $menuItem = new Menuitem;
-        $menuItem->menu_id = $data['menu_id'];
-        $menuItem->page_id = $data['page_id'];
-        $menuItem->target = $data['target'];
-        $menuItem->module_name = $data['module'];
-
-        $translatableData = Helper::separateLanguages($data);
-        Helper::updateTranslated($menuItem, $translatableData);
-
-        return $menuItem;
+        return $this->model->create($data);
     }
 
     public function update($menuItem, $data)
     {
-        $menuItem->menu_id = $data['menu_id'];
-        $menuItem->page_id = $data['page_id'];
-        $menuItem->target = $data['target'];
-        $menuItem->module_name = $data['module'];
-
-        $translatableData = Helper::separateLanguages($data);
-        Helper::updateTranslated($menuItem, $translatableData);
+        $menuItem->update($data);
 
         return $menuItem;
     }

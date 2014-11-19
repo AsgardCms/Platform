@@ -1,20 +1,20 @@
-<div class='form-group{{ $errors->has("title[{$lang}]") ? ' has-error' : '' }}'>
-    {!! Form::label("title[{$lang}]", trans('menu::menu.form.title')) !!}
-    {!! Form::text("title[{$lang}]", Input::old("title[{$lang}]"), ['class' => 'form-control', 'placeholder' => trans('menu::menu.form.title')]) !!}
-    {!! $errors->first("title[{$lang}]", '<span class="help-block">:message</span>') !!}
+<div class='form-group{{ $errors->has("{$lang}[title]") ? ' has-error' : '' }}'>
+    {!! Form::label("{$lang}[title]", trans('menu::menu.form.title')) !!}
+    {!! Form::text("{$lang}[title]", Input::old("{$lang}[title]"), ['class' => 'form-control', 'placeholder' => trans('menu::menu.form.title')]) !!}
+    {!! $errors->first("{$lang}[title]", '<span class="help-block">:message</span>') !!}
 </div>
 <div class="form-group">
-    {!! Form::label("uri[{$lang}]", trans('menu::menu.form.uri')) !!}
-    <div class='input-group{{ $errors->has("uri[{$lang}]") ? ' has-error' : '' }}'>
+    {!! Form::label("{$lang}[uri]", trans('menu::menu.form.uri')) !!}
+    <div class='input-group{{ $errors->has("{$lang}[uri]") ? ' has-error' : '' }}'>
         <span class="input-group-addon">/{{ $lang }}/</span>
-        {!! Form::text("uri[{$lang}]", Input::old("uri[{$lang}]"), ['class' => 'form-control', 'placeholder' => trans('menu::menu.form.uri')]) !!}
-        {!! $errors->first("uri[{$lang}]", '<span class="help-block">:message</span>') !!}
+        {!! Form::text("{$lang}[uri]", Input::old("{$lang}[uri]"), ['class' => 'form-control', 'placeholder' => trans('menu::menu.form.uri')]) !!}
+        {!! $errors->first("{$lang}[uri]", '<span class="help-block">:message</span>') !!}
     </div>
 </div>
 <div class="checkbox">
-    <label for="status[{{$lang}}]">
-        <input id="status[{{$lang}}]"
-                name="status[{{$lang}}]"
+    <label for="{{$lang}}[status]">
+        <input id="{{$lang}}[status]"
+                name="{{$lang}}[status]"
                 type="checkbox"
                 class="flat-blue"
                 value="1" />
