@@ -8,7 +8,7 @@ interface MenuItemRepository extends BaseRepository
      * Get all root elements
      * @return mixed
      */
-    public function roots();
+    public function rootsForMenu($menuId);
 
     /**
      * Get the menu items ready for routes

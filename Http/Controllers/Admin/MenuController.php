@@ -65,7 +65,7 @@ class MenuController extends AdminBaseController
 
     public function edit(Menu $menu)
     {
-        $menuItems = $this->menuItem->roots();
+        $menuItems = $this->menuItem->rootsForMenu($menu->id);
 
         $menuStructure = $this->menuRenderer->renderForMenu($menu->id, $menuItems);
 
