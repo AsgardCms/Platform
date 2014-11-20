@@ -1,7 +1,7 @@
 <?php namespace Modules\Media\Image;
 
 use Illuminate\Contracts\Config\Repository;
-use Pingpong\Modules\Module;
+use Pingpong\Modules\Repository as Module;
 
 class ThumbnailsManager
 {
