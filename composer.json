@@ -1,11 +1,13 @@
 {
-  "name": "nwidart/platform",
-  "description": "The core platform hosting the main nwidart-modules.",
+  "name": "asgardcms/platform",
+  "description": "The core platform hosting the AsgardCMS modules.",
   "keywords": [
     "framework",
     "laravel",
     "platform",
-    "nwidart"
+    "nwidart",
+    "asgard",
+    "asgardcms"
   ],
   "license": "MIT",
   "authors": [
