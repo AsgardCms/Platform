@@ -12,8 +12,8 @@
 @stop
 
 @section('styles')
-<link href="{!! Module::asset('core', 'css/vendor/iCheck/flat/blue.css') !!}" rel="stylesheet" type="text/css" />
-<link href="{!! Module::asset('menu', 'css/nestable.css') !!}" rel="stylesheet" type="text/css" />
+<link href="{!! Module::asset('core:css/vendor/iCheck/flat/blue.css') !!}" rel="stylesheet" type="text/css" />
+<link href="{!! Module::asset('menu:css/nestable.css') !!}" rel="stylesheet" type="text/css" />
 @stop
 
 @section('content')
@@ -97,7 +97,7 @@ $( document ).ready(function() {
     });
 });
 </script>
-<script src="{!! Module::asset('menu', 'js/jquery.nestable.js') !!}"></script>
+<script src="{!! Module::asset('menu:js/jquery.nestable.js') !!}"></script>
 <script>
 $( document ).ready(function() {
     $('.dd').nestable();
