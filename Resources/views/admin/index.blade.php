@@ -11,7 +11,7 @@
 @stop
 
 @section('styles')
-<link href="{!! Module::asset('media', 'css/dropzone.css') !!}" rel="stylesheet" type="text/css" />
+<link href="{!! Module::asset('media:css/dropzone.css') !!}" rel="stylesheet" type="text/css" />
 <style>
 .dropzone {
     border: 1px dashed #CCC;
@@ -109,7 +109,7 @@
 @stop
 
 @section('scripts')
-<script src="{!! Module::asset('media', 'js/dropzone.js') !!}"></script>
+<script src="{!! Module::asset('media:js/dropzone.js') !!}"></script>
 <script>
 $( document ).ready(function() {
     Dropzone.autoDiscover = false;
@@ -147,7 +147,7 @@ $( document ).ready(function() {
             "bInfo": true,
             "bAutoWidth": true,
             "oLanguage": {
-                "sUrl": '<?php echo Module::asset('core', "js/vendor/datatables/{$locale}.json") ?>'
+                "sUrl": '<?php echo Module::asset("core:js/vendor/datatables/{$locale}.json") ?>'
             },
             "aoColumns": [
                 null,

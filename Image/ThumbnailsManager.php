@@ -1,7 +1,6 @@
 <?php namespace Modules\Media\Image;
 
 use Illuminate\Contracts\Config\Repository;
-use Pingpong\Modules\Repository as Module;
 
 class ThumbnailsManager
 {
@@ -16,11 +15,10 @@ class ThumbnailsManager
 
     /**
      * @param Repository $config
-     * @param Module $module
      */
-    public function __construct(Repository $config, Module $module)
+    public function __construct(Repository $config)
     {
-        $this->module = $module;
+        $this->module = app('modules');
         $this->config = $config;
     }
 
@@ -32,7 +30,7 @@ class ThumbnailsManager
     {
         $thumbnails = [];
         foreach ($this->module->enabled() as $enabledModule) {
-            $configuration = $this->config->get(strtolower($enabledModule) . '::thumbnails');
+            $configuration = $this->config->get(strtolower($enabledModule->getName()) . '::thumbnails');
             $thumbnails = array_merge($thumbnails, $configuration);
         }
 
