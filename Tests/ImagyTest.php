@@ -32,7 +32,7 @@ class ImagyTest extends BaseTestCase
     {
         parent::setUp();
         $this->config = App::make('Illuminate\Contracts\Config\Repository');
-        $module = App::make('Pingpong\Modules\Module');
+        $module = App::make('modules');
         $this->finder = App::make('Illuminate\Filesystem\Filesystem');
         $this->imagy = new Imagy(new InterventionFactory, new ThumbnailsManager($this->config, $module), $this->config);
 
