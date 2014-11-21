@@ -139,8 +139,8 @@ class EloquentSettingRepository extends EloquentBaseRepository implements Settin
 
         $modulesWithSettings = [];
         foreach ($modules as $module) {
-            if ($moduleSettings = Config::get(strtolower($module) . "::settings")) {
-                $modulesWithSettings[$module] = $moduleSettings;
+            if ($moduleSettings = Config::get(strtolower($module->getName()) . "::settings")) {
+                $modulesWithSettings[$module->getName()] = $moduleSettings;
             }
         }
 
