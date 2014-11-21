@@ -12,7 +12,7 @@
 @stop
 
 @section('styles')
-<link href="{!! Module::asset('core', 'css/vendor/iCheck/flat/blue.css') !!}" rel="stylesheet" type="text/css" />
+<link href="{!! Module::asset('core:css/vendor/iCheck/flat/blue.css') !!}" rel="stylesheet" type="text/css" />
 @stop
 
 @section('content')
@@ -49,15 +49,7 @@
             <?php if ($translatableSettings): ?>
             <div class="box-body">
                 <div class="nav-tabs-custom">
-                    <ul class="nav nav-tabs">
-                        <?php $i = 0; ?>
-                        <?php foreach(LaravelLocalization::getSupportedLocales() as $locale => $language): ?>
-                            <?php $i++; ?>
-                            <li class="{{ App::getLocale() == $locale ? 'active' : '' }}">
-                                <a href="#tab_{{ $i }}" data-toggle="tab">{{ trans('core::core.tab.'. strtolower($language['name'])) }}</a>
-                            </li>
-                        <?php endforeach; ?>
-                    </ul>
+                    @include('core::partials.form-tab-headers')
                     <div class="tab-content">
                         <?php $i = 0; ?>
                         <?php foreach(LaravelLocalization::getSupportedLocales() as $locale => $language): ?>
