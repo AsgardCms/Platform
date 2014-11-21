@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\View;
 use Laracasts\Flash\Flash;
+use Modules\Core\Contracts\Authentication;
 use Modules\Core\Permissions\PermissionManager;
 use Modules\User\Http\Requests\CreateUserRequest;
 use Modules\User\Http\Requests\UpdateUserRequest;
@@ -19,14 +20,23 @@ class UserController extends BaseUserModuleController
      * @var RoleRepository
      */
     private $role;
+    /**
+     * @var Authentication
+     */
+    private $auth;
 
-    public function __construct(PermissionManager $permissions, UserRepository $user, RoleRepository $role)
-    {
+    public function __construct(
+        PermissionManager $permissions,
+        UserRepository $user,
+        RoleRepository $role,
+        Authentication $auth
+    ) {
         parent::__construct();
 
         $this->permissions = $permissions;
         $this->user = $user;
         $this->role = $role;
+        $this->auth = $auth;
     }
 
     /**
@@ -38,7 +48,9 @@ class UserController extends BaseUserModuleController
     {
         $users = $this->user->all();
 
-        return View::make('user::admin.users.index', compact('users'));
+        $currentUser = $this->auth->check();
+
+        return View::make('user::admin.users.index', compact('users', 'currentUser'));
     }
 
     /**

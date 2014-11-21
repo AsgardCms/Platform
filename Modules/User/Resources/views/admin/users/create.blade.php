@@ -12,7 +12,7 @@
 @stop
 
 @section('styles')
-<link href="{{{ Module::asset('core', 'css/vendor/iCheck/flat/blue.css') }}}" rel="stylesheet" type="text/css" />
+<link href="{{{ Module::asset('core:css/vendor/iCheck/flat/blue.css') }}}" rel="stylesheet" type="text/css" />
 @stop
 
 @section('content')
