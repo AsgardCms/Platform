@@ -40,6 +40,7 @@ class ModulesController extends AdminBaseController
                 unset($modules[$module]);
             }
         }
+
         $this->moduleManager->disableModules($enabledModules);
         $this->moduleManager->enableModules($modules);
 

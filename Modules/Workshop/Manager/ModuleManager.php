@@ -1,7 +1,6 @@
 <?php namespace Modules\Workshop\Manager;
 
 use Illuminate\Config\Repository as Config;
-use Pingpong\Modules\Module;
 
 class ModuleManager
 {
@@ -15,12 +14,11 @@ class ModuleManager
     private $config;
 
     /**
-     * @param Module $module
      * @param Config $config
      */
-    public function __construct(Module $module, Config $config)
+    public function __construct(Config $config)
     {
-        $this->module = $module;
+        $this->module = app('modules');
         $this->config = $config;
     }
 
@@ -61,9 +59,12 @@ class ModuleManager
     public function getFlippedEnabledModules()
     {
         $enabledModules = $this->module->enabled();
-        $enabledModules = array_flip($enabledModules);
 
-        return $enabledModules;
+        $enabledModules = array_map(function($module) {
+            return $module->getName();
+        }, $enabledModules);
+
+        return array_flip($enabledModules);
     }
 
     /**
