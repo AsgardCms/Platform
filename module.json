@@ -12,5 +12,8 @@
         "dimsav/laravel-translatable": "dev-laravel-5",
         "mcamara/laravel-localization": "dev-Laravel5Support"
     },
-    "active": 1
+    "active": 1,
+    "providers": [
+        "Modules\\Core\\Providers\\RoutingServiceProvider"
+    ]
 }

@@ -1,7 +1,6 @@
 <?php namespace Modules\Core\Permissions;
 
 use Illuminate\Support\Facades\Config;
-use Pingpong\Modules\Module;
 
 class PermissionManager
 {
@@ -11,11 +10,10 @@ class PermissionManager
     private $module;
 
     /**
-     * @param Module $module
      */
-    public function __construct(Module $module)
+    public function __construct()
     {
-        $this->module = $module;
+        $this->module = app('modules');
     }
 
     /**
@@ -26,9 +24,9 @@ class PermissionManager
     {
         $permissions = [];
         foreach ($this->module->enabled() as $enabledModule) {
-            $configuration = Config::get(strtolower($enabledModule) . '::permissions');
+            $configuration = Config::get(strtolower($enabledModule->getName()) . '::permissions');
             if ($configuration) {
-                $permissions[$enabledModule] = $configuration;
+                $permissions[$enabledModule->getName()] = $configuration;
             }
         }
         return $permissions;

@@ -5,7 +5,8 @@
 jQuery.fn.slug = function (options) {
     var settings = {
         slug: 'slug', // Class used for slug destination input and span. The span is created on $(document).ready()
-        hide: true	 // Boolean - By default the slug input field is hidden, set to false to show the input field and hide the span.
+        hide: true,	 // Boolean - By default the slug input field is hidden, set to false to show the input field and hide the span.
+        override: false
     };
 
     if (options) {
