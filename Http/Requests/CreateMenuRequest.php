@@ -6,7 +6,10 @@ class CreateMenuRequest extends FormRequest
 {
     public function rules()
     {
-        return [];
+        return [
+            'name' => 'required',
+            'primary' => 'unique:menus',
+        ];
     }
 
     public function authorize()
@@ -16,6 +19,9 @@ class CreateMenuRequest extends FormRequest
 
     public function messages()
     {
-        return [];
+        return [
+            'name.required' => trans('menu::validation.name is required'),
+            'primary.unique' => trans('menu::validation.only one primary menu'),
+        ];
     }
 }
