@@ -1,6 +1,5 @@
 <?php namespace Modules\Media\Repositories\Eloquent;
 
-use Modules\Core\Internationalisation\Helper;
 use Modules\Core\Repositories\Eloquent\EloquentBaseRepository;
 use Modules\Media\Entities\File;
 use Modules\Media\Helpers\FileHelper;
