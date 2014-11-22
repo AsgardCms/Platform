@@ -20,7 +20,8 @@ class UpdateMenuRequest extends FormRequest
     public function messages()
     {
         return [
-            'primary.unique' => 'Only one menu can be primary at a time.'
+            'name.required' => trans('menu::validation.name is required'),
+            'primary.unique' => trans('menu::validation.only one primary menu'),
         ];
     }
 }
