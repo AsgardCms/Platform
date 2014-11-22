@@ -6,7 +6,10 @@ class UpdateMenuRequest extends FormRequest
 {
     public function rules()
     {
-        return [];
+        return [
+            'name' => 'required',
+            'primary' => 'unique:menus',
+        ];
     }
 
     public function authorize()
@@ -16,6 +19,8 @@ class UpdateMenuRequest extends FormRequest
 
     public function messages()
     {
-        return [];
+        return [
+            'primary.unique' => 'Only one menu can be primary at a time.'
+        ];
     }
 }
