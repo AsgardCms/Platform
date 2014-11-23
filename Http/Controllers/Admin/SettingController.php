@@ -1,5 +1,6 @@
 <?php namespace Modules\Setting\Http\Controllers\Admin;
 
+use Illuminate\Session\Store;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\View;
 use Laracasts\Flash\Flash;
@@ -17,13 +18,18 @@ class SettingController extends AdminBaseController
      * @var Module
      */
     private $module;
+    /**
+     * @var Store
+     */
+    private $session;
 
-    public function __construct(SettingRepository $setting)
+    public function __construct(SettingRepository $setting, Store $session)
     {
         parent::__construct();
 
         $this->setting = $setting;
         $this->module = app('modules');
+        $this->session = $session;
     }
 
     public function index()
@@ -36,11 +42,12 @@ class SettingController extends AdminBaseController
         $this->setting->createOrUpdate($request->all());
 
         Flash::success('Settings saved!');
-        return Redirect::route('dashboard.setting.index');
+        return Redirect::route('dashboard.module.settings', [$this->session->get('module', 'Core')]);
     }
 
     public function getModuleSettings($currentModule)
     {
+        $this->session->set('module', $currentModule);
         $modulesWithSettings = $this->setting->moduleSettings($this->module->enabled());
 
         $translatableSettings = $this->setting->translatableModuleSettings($currentModule);
