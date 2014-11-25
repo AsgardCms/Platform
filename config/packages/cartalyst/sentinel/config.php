@@ -52,7 +52,7 @@ return [
 
 	'users' => [
 
-		'model' => 'Modules\User\Entities\User',
+		'model' => 'Modules\User\Entities\SentinelUser',
 
 	],
 
