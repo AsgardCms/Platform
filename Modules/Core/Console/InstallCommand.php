@@ -149,6 +149,8 @@ class InstallCommand extends Command
     private function publishAssets()
     {
         $this->call('module:publish', ['module' => 'Core']);
+        $this->call('module:publish', ['module' => 'Media']);
+        $this->call('module:publish', ['module' => 'Menu']);
     }
 
     /**
