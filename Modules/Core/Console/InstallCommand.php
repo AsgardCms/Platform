@@ -120,6 +120,8 @@ class InstallCommand extends Command
     private function runMigrations()
     {
         $this->call('module:migrate', ['module' => 'Setting']);
+        $this->call('module:migrate', ['module' => 'Menu']);
+        $this->call('module:migrate', ['module' => 'Media']);
 
         $this->info('Application migrated!');
     }
