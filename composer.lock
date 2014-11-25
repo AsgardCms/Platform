@@ -4,7 +4,7 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "fe6621a57bc55563b16f08255fe3216d",
+    "hash": "1727924618338a071de9e04751e3e9e0",
     "packages": [
         {
             "name": "baum/baum",
@@ -1664,82 +1664,32 @@
             "time": "2014-11-10 16:16:54"
         },
         {
-            "name": "pingpong/generators",
-            "version": "1.0.1",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/pingpong-labs/generators.git",
-                "reference": "259eea8deacd83fdbf784c10cf7bb17f2a2ff47a"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/pingpong-labs/generators/zipball/259eea8deacd83fdbf784c10cf7bb17f2a2ff47a",
-                "reference": "259eea8deacd83fdbf784c10cf7bb17f2a2ff47a",
-                "shasum": ""
-            },
-            "require": {
-                "illuminate/filesystem": "4.*|5.0.*",
-                "illuminate/support": "4.*|5.0.*",
-                "php": ">=5.4.0"
-            },
-            "require-dev": {
-                "mockery/mockery": "~0.9",
-                "phpunit/phpunit": "~4"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-0": {
-                    "Pingpong\\Generators": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "BSD-3-Clause"
-            ],
-            "authors": [
-                {
-                    "name": "Pingpong Labs",
-                    "email": "pingpong.labs@gmail.com"
-                }
-            ],
-            "description": "Laravel Generators",
-            "keywords": [
-                "generators",
-                "laravel",
-                "pingpong"
-            ],
-            "time": "2014-11-13 08:03:31"
-        },
-        {
             "name": "pingpong/modules",
-            "version": "dev-develop",
+            "version": "1.1.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/pingpong-labs/modules.git",
-                "reference": "aaf7bb8b8290636fd6bef3d9f358d8fd3d2a0e6f"
+                "reference": "4843bfbf7516b5ee2bf2629d05c8eb311f20d42f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/pingpong-labs/modules/zipball/aaf7bb8b8290636fd6bef3d9f358d8fd3d2a0e6f",
-                "reference": "aaf7bb8b8290636fd6bef3d9f358d8fd3d2a0e6f",
+                "url": "https://api.github.com/repos/pingpong-labs/modules/zipball/4843bfbf7516b5ee2bf2629d05c8eb311f20d42f",
+                "reference": "4843bfbf7516b5ee2bf2629d05c8eb311f20d42f",
                 "shasum": ""
             },
             "require": {
-                "illuminate/config": "~4|~5",
-                "illuminate/events": "~4|~5",
-                "illuminate/filesystem": "~4|~5",
-                "illuminate/html": "~4|~5",
-                "illuminate/routing": "~4|~5",
-                "illuminate/support": "~4|~5",
-                "illuminate/translation": "~4|~5",
-                "illuminate/view": "~4|~5",
-                "php": ">=5.4.0",
-                "pingpong/generators": "1.*"
+                "illuminate/config": ">=4.0.0",
+                "illuminate/filesystem": ">=4.0.0",
+                "illuminate/html": ">=4.0.0",
+                "illuminate/routing": ">=4.0.0",
+                "illuminate/support": ">=4.0.0",
+                "illuminate/translation": ">=4.0.0",
+                "illuminate/view": ">=4.0.0",
+                "php": ">=5.4.0"
             },
             "require-dev": {
-                "mockery/mockery": "~0.9",
-                "phpunit/phpunit": "~4",
-                "pingpong/testing": "1.*"
+                "mockery/mockery": "0.9.*",
+                "phpunit/phpunit": "4.1.*"
             },
             "type": "library",
             "extra": {
@@ -1755,7 +1705,7 @@
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
-                "BSD-3-Clause"
+                "MIT"
             ],
             "authors": [
                 {
@@ -1763,7 +1713,7 @@
                     "email": "pingpong.labs@gmail.com"
                 }
             ],
-            "description": "Laravel Modules",
+            "description": "Laravel 4 - Simple Modules",
             "keywords": [
                 "hmvc",
                 "laravel",
@@ -1771,7 +1721,7 @@
                 "modules",
                 "pingpong"
             ],
-            "time": "2014-11-18 04:34:05"
+            "time": "2014-09-25 16:29:51"
         },
         {
             "name": "predis/predis",
@@ -3179,6 +3129,53 @@
                 "xunit"
             ],
             "time": "2014-10-04 10:04:20"
+        },
+        {
+            "name": "pingpong/generators",
+            "version": "1.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/pingpong-labs/generators.git",
+                "reference": "259eea8deacd83fdbf784c10cf7bb17f2a2ff47a"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/pingpong-labs/generators/zipball/259eea8deacd83fdbf784c10cf7bb17f2a2ff47a",
+                "reference": "259eea8deacd83fdbf784c10cf7bb17f2a2ff47a",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/filesystem": "4.*|5.0.*",
+                "illuminate/support": "4.*|5.0.*",
+                "php": ">=5.4.0"
+            },
+            "require-dev": {
+                "mockery/mockery": "~0.9",
+                "phpunit/phpunit": "~4"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "Pingpong\\Generators": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Pingpong Labs",
+                    "email": "pingpong.labs@gmail.com"
+                }
+            ],
+            "description": "Laravel Generators",
+            "keywords": [
+                "generators",
+                "laravel",
+                "pingpong"
+            ],
+            "time": "2014-11-13 08:03:31"
         },
         {
             "name": "sebastian/comparator",
