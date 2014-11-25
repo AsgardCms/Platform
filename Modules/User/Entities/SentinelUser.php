@@ -1,9 +1,9 @@
 <?php namespace Modules\User\Entities;
 
-use Cartalyst\Sentinel\Users\EloquentUser as SentryUser;
+use Cartalyst\Sentinel\Users\EloquentUser;
 use Laracasts\Presenter\PresentableTrait;
 
-class User extends SentryUser
+class SentinelUser extends EloquentUser
 {
     use PresentableTrait;
 

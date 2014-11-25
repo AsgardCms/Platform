@@ -44,12 +44,12 @@ interface UserRepository
 
     /**
      * Update a user and sync its roles
-     * @param $user
+     * @param int $userId
      * @param $data
      * @param $roles
      * @return mixed
      */
-    public function updateAndSyncRoles($user, $data, $roles);
+    public function updateAndSyncRoles($userId, $data, $roles);
 
     /**
      * Deletes a user
