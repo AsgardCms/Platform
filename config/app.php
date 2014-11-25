@@ -105,14 +105,6 @@ return [
 		'App\Providers\LogServiceProvider',
 		'App\Providers\RouteServiceProvider',
 
-		'Illuminate\Html\HtmlServiceProvider',
-		'Pingpong\Modules\ModulesServiceProvider',
-		'Cartalyst\Sentinel\Laravel\SentinelServiceProvider',
-		'Laracasts\Commander\CommanderServiceProvider',
-		'Laracasts\Flash\FlashServiceProvider',
-		'Mcamara\LaravelLocalization\LaravelLocalizationServiceProvider',
-
-		'Modules\Core\Providers\CoreServiceProvider',
 		/*
 		 * Laravel Framework Service Providers...
 		 */
@@ -136,7 +128,16 @@ return [
 		'Illuminate\Translation\TranslationServiceProvider',
 		'Illuminate\Validation\ValidationServiceProvider',
 		'Illuminate\View\ViewServiceProvider',
-
+		/* Packages */
+		'Illuminate\Html\HtmlServiceProvider',
+		'Pingpong\Modules\ModulesServiceProvider',
+		'Cartalyst\Sentinel\Laravel\SentinelServiceProvider',
+		'Laracasts\Commander\CommanderServiceProvider',
+		'Laracasts\Flash\FlashServiceProvider',
+		'Mcamara\LaravelLocalization\LaravelLocalizationServiceProvider',
+		'Dimsav\Translatable\TranslatableServiceProvider',
+		/* Modules */
+		'Modules\Core\Providers\CoreServiceProvider',
 	],
 
 	/*
