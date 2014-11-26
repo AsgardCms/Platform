@@ -1,9 +1,10 @@
-<?php namespace Modules\User\Entities;
+<?php namespace Modules\User\Entities\Sentinel;
 
-use Cartalyst\Sentry\Users\Eloquent\User;
+use Cartalyst\Sentinel\Users\EloquentUser;
 use Laracasts\Presenter\PresentableTrait;
+use Modules\User\Entities\UserInterface;
 
-class SentryUser extends User
+class User extends EloquentUser implements UserInterface
 {
     use PresentableTrait;
 
@@ -17,8 +18,8 @@ class SentryUser extends User
 
     protected $presenter = 'Modules\User\Presenters\UserPresenter';
 
-    public function groups()
+    public function hasRole($roleId)
     {
-        return $this->belongsToMany(static::$groupModel, static::$userGroupsPivot, 'user_id');
+        return $this->roles()->whereId($roleId)->count() >= 1;
     }
 }

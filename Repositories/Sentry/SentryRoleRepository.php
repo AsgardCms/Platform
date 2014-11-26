@@ -20,6 +20,7 @@ class SentryRoleRepository implements RoleRepository
      */
     public function create($data)
     {
+        unset($data['slug']);
         Sentry::createGroup($data);
     }
 
@@ -41,11 +42,10 @@ class SentryRoleRepository implements RoleRepository
      */
     public function update($id, $data)
     {
+        unset($data['slug']);
         $role = Sentry::findGroupById($id);
 
-        $role->permissions($data);
-
-        $role->save();
+        $role->update($data);
     }
 
     /**

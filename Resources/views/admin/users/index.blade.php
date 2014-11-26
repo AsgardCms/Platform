@@ -36,7 +36,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                    <?php if ($users->count() > 0): ?>
+                    <?php if (isset($users)): ?>
                         <?php foreach($users as $user): ?>
                             <tr>
                                 <td>
@@ -89,7 +89,7 @@
 </div>
 </div>
 
-<?php if ($users->count() > 0): ?>
+<?php if (isset($users)): ?>
     <?php foreach($users as $user): ?>
     <!-- Modal -->
     <div class="modal fade" id="confirmation-{{ $user->id }}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">

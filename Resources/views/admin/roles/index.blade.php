@@ -34,7 +34,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                    <?php if ($roles->count() > 0): ?>
+                    <?php if (isset($roles)): ?>
                         <?php foreach($roles as $role): ?>
                             <tr>
                                 <td>
@@ -73,7 +73,7 @@
 </div>
 </div>
 
-<?php if ($roles->count() > 0): ?>
+<?php if (isset($roles)): ?>
     <?php foreach($roles as $role): ?>
     <!-- Modal -->
     <div class="modal fade" id="confirmation-{{ $role->id }}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
