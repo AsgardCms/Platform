@@ -2,6 +2,7 @@
 
 use Dotenv;
 use Illuminate\Console\Command;
+use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Filesystem\Filesystem;
 use Illuminate\Support\Facades\Hash;
 use Modules\User\Repositories\UserRepository;
@@ -31,19 +32,24 @@ class InstallCommand extends Command
      * @var Filesystem
      */
     private $finder;
+    /**
+     * @var Application
+     */
+    private $app;
 
     /**
      * Create a new command instance.
      *
      * @param UserRepository $user
      * @param Filesystem $finder
-     * @return \Modules\Core\Console\InstallCommand
+     * @param Application $app
      */
-    public function __construct($user, Filesystem $finder)
+    public function __construct($user, Filesystem $finder, Application $app)
     {
         parent::__construct();
         $this->user = $user;
         $this->finder = $finder;
+        $this->app = $app;
     }
 
     /**
@@ -57,9 +63,9 @@ class InstallCommand extends Command
 
         $this->configureDatabase();
 
-		if ($this->confirm('Do you wish to init sentinel and create its first user? [yes|no]')) {
-			$this->runUserCommands();
-		}
+        $userDriver = $this->choice('Which user driver do you wish to use?', ['Sentinel', 'Sentry'], 'Sentry');
+        $userDriver = "run{$userDriver}UserCommands";
+        $this->$userDriver();
 
         $this->runMigrations();
 
@@ -74,10 +80,22 @@ class InstallCommand extends Command
 	/**
 	 *
 	 */
-	private function runUserCommands()
+	private function runSentinelUserCommands()
 	{
 		$this->runSentinelMigrations();
-		$this->runUserSeeds();
+
+        $this->call('db:seed', ['--class' => 'Modules\User\Database\Seeders\SentinelGroupSeedTableSeeder']);
+
+        $this->replaceUserRepositoryBindings('Sentinel'); # optional for sentinel
+        $this->bindUserRepositoryOnTheFly('Sentinel');
+
+        $this->call('publish:config', ['package' => 'cartalyst/sentinel']);
+        $this->replaceCartalystUserModelConfiguration('Cartalyst\Sentinel\Users\EloquentUser', 'Sentinel');
+
+        dd('Config changed');
+
+        // Search and replace SP and Alias in config/app.php
+
 		$this->createFirstUser();
 
 		$this->info('User commands done.');
@@ -125,11 +143,6 @@ class InstallCommand extends Command
 
         $this->info('Application migrated!');
     }
-
-	private function runUserSeeds()
-	{
-		$this->call('module:seed', ['module' => 'User']);
-	}
 
     /**
      * Symfony style block messages
@@ -214,6 +227,55 @@ class InstallCommand extends Command
         $this->laravel['config']['database.connections.mysql.database'] = $databaseName;
         $this->laravel['config']['database.connections.mysql.username'] = $databaseUsername;
         $this->laravel['config']['database.connections.mysql.password'] = $databasePassword;
+    }
+
+    /**
+     * Find and replace the correct repository bindings with the given driver
+     * @param string $driver
+     * @throws \Illuminate\Filesystem\FileNotFoundException
+     */
+    private function replaceUserRepositoryBindings($driver)
+    {
+        $path = 'Modules/User/Providers/UserServiceProvider.php';
+        $userServiceProvider = $this->finder->get($path);
+        $userServiceProvider = str_replace('Sentinel', $driver, $userServiceProvider);
+        $this->finder->put($path, $userServiceProvider);
+    }
+
+    /**
+     * Set the correct repository binding on the fly for the current request
+     * @param $driver
+     */
+    private function bindUserRepositoryOnTheFly($driver)
+    {
+        $this->app->bind(
+            'Modules\User\Repositories\UserRepository',
+            "Modules\\User\\Repositories\\$driver\\{$driver}UserRepository"
+        );
+        $this->app->bind(
+            'Modules\User\Repositories\RoleRepository',
+            "Modules\\User\\Repositories\\$driver\\{$driver}RoleRepository"
+        );
+        $this->app->bind(
+            'Modules\Core\Contracts\Authentication',
+            "Modules\\User\\Repositories\\$driver\\{$driver}Authentication"
+        );
+    }
+
+    /**
+     * Replaced the model in the cartalyst configuration file
+     * @param string $search
+     * @param string $Driver
+     * @throws \Illuminate\Filesystem\FileNotFoundException
+     */
+    private function replaceCartalystUserModelConfiguration($search, $Driver)
+    {
+        $driver = strtolower($Driver);
+        $path = "config/packages/cartalyst/{$driver}/config.php";
+
+        $config = $this->finder->get($path);
+        $config = str_replace($search, "Modules\\User\\Entities\\{$Driver}User", $config);
+        $this->finder->put($path, $config);
     }
 
 }
