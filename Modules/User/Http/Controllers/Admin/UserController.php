@@ -75,7 +75,7 @@ class UserController extends BaseUserModuleController
     {
         $data = $this->mergeRequestWithPermissions($request);
 
-        $this->user->createWithRoles($data, $request->roles);
+        $this->user->createWithRoles($data, $request->roles, true);
 
         Flash::success('User created.');
         return Redirect::route('dashboard.user.index');
