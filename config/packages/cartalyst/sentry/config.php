@@ -120,7 +120,7 @@ return array(
 		|
 		*/
 
-		'model' => 'Modules\User\Entities\SentryUser',
+		'model' => 'Modules\User\Entities\Sentry\User',
 
 		/*
 		|--------------------------------------------------------------------------
