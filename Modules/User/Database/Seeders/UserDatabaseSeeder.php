@@ -14,7 +14,7 @@ class UserDatabaseSeeder extends Seeder
     {
         Model::unguard();
 
-        $this->call("Modules\\User\\Database\\Seeders\\SentryGroupSeedTableSeeder");
+        $this->call("Modules\\User\\Database\\Seeders\\SentinelGroupSeedTableSeeder");
     }
 
 }

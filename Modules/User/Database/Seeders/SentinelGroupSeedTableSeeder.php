@@ -4,7 +4,7 @@ use Cartalyst\Sentinel\Laravel\Facades\Sentinel;
 use Illuminate\Database\Seeder;
 use Illuminate\Database\Eloquent\Model;
 
-class SentryGroupSeedTableSeeder extends Seeder
+class SentinelGroupSeedTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
