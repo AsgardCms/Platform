@@ -28,11 +28,11 @@ class SentryUserRepository implements UserRepository
      * Create a user and assign roles to it
      * @param array $data
      * @param array $roles
-     * @return void
+     * @param bool $activated
      */
-    public function createWithRoles($data, $roles)
+    public function createWithRoles($data, $roles, $activated = false)
     {
-        $user = Sentry::createUser(array_merge($data, ['activated' => true]));
+        $user = Sentry::createUser(array_merge($data, ['activated' => $activated]));
         if (!empty($roles)) {
             foreach ($roles as $roleId) {
                 $group = Sentry::findGroupById($roleId);
