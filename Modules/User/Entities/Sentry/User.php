@@ -1,9 +1,9 @@
-<?php namespace Modules\User\Entities;
+<?php namespace Modules\User\Entities\Sentry;
 
-use Cartalyst\Sentry\Users\Eloquent\User;
+use Cartalyst\Sentry\Users\Eloquent\User as SentryModel;
 use Laracasts\Presenter\PresentableTrait;
 
-class SentryUser extends User
+class User extends SentryModel
 {
     use PresentableTrait;
 
