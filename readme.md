@@ -33,6 +33,14 @@ This install command will perform the following actions:
 - Publishing assets
 - Create a first admin account
 
+## While in beta:
+
+While AsgardCMS is in its beta period the above installation won't be available.
+
+You have to clone this repository manually, run `composer install` and lastly `php artisan asgard:install` to start the installation process.
+
+
+
 ### Enjoy
 
 You can now login on `/backend` with your email and password asked during the install command.
