@@ -5,6 +5,7 @@ use Illuminate\Console\Command;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Filesystem\Filesystem;
 use Illuminate\Support\Facades\Hash;
+use Modules\Core\Services\Composer;
 use Modules\User\Repositories\UserRepository;
 
 class InstallCommand extends Command
@@ -36,6 +37,10 @@ class InstallCommand extends Command
      * @var Application
      */
     private $app;
+    /**
+     * @var Composer
+     */
+    private $composer;
 
     /**
      * Create a new command instance.
@@ -43,13 +48,15 @@ class InstallCommand extends Command
      * @param UserRepository $user
      * @param Filesystem $finder
      * @param Application $app
+     * @param Composer $composer
      */
-    public function __construct($user, Filesystem $finder, Application $app)
+    public function __construct($user, Filesystem $finder, Application $app, Composer $composer)
     {
         parent::__construct();
         $this->user = $user;
         $this->finder = $finder;
         $this->app = $app;
+        $this->composer = $composer;
     }
 
     /**
