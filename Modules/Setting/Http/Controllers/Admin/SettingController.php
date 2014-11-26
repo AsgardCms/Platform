@@ -48,6 +48,7 @@ class SettingController extends AdminBaseController
     public function getModuleSettings($currentModule)
     {
         $this->session->set('module', $currentModule);
+
         $modulesWithSettings = $this->setting->moduleSettings($this->module->enabled());
 
         $translatableSettings = $this->setting->translatableModuleSettings($currentModule);

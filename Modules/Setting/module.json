@@ -9,5 +9,8 @@
     "providers": [
         "Modules\\Setting\\Providers\\SettingServiceProvider",
         "Modules\\Setting\\Providers\\RouteServiceProvider"
+    ],
+    "files": [
+        "start.php"
     ]
 }
