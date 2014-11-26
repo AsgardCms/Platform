@@ -70,7 +70,7 @@ class InstallCommand extends Command
 
         $this->configureDatabase();
 
-        $userDriver = $this->choice('Which user driver do you wish to use?', ['Sentinel', 'Sentry'], 'Sentry');
+        $userDriver = $this->choice('Which user driver do you wish to use?', ['Sentinel', 'Sentry'], 1);
         $userDriver = "run{$userDriver}UserCommands";
         $this->$userDriver();
 
@@ -97,6 +97,7 @@ class InstallCommand extends Command
         $this->info('Running Sentinel migrations...');
 		$this->runSentinelMigrations();
 
+        $this->info('Running Sentinel seed...');
         $this->call('db:seed', ['--class' => 'Modules\User\Database\Seeders\SentinelGroupSeedTableSeeder']);
 
         $this->replaceUserRepositoryBindings('Sentinel');
@@ -109,6 +110,22 @@ class InstallCommand extends Command
 
 		$this->info('User commands done.');
 	}
+
+    private function runSentryUserCommands()
+    {
+        $this->info('Running Sentry migrations...');
+        $this->call('migrate', ['--package' => 'cartalyst/sentry']);
+
+        $this->info('Running Sentry seed...');
+        $this->call('db:seed', ['--class' => 'Modules\User\Database\Seeders\SentryGroupSeedTableSeeder']);
+
+        $this->call('publish:config', ['package' => 'cartalyst/sentry']);
+        $this->replaceCartalystUserModelConfiguration('Cartalyst\Sentry\Users\Eloquent\User', 'Sentry');
+
+        $this->createFirstUser();
+
+        $this->info('User commands done.');
+    }
 
     /**
      * Create the first user that'll have admin access
@@ -129,7 +146,7 @@ class InstallCommand extends Command
             'password' => Hash::make($password),
         ];
         $user = app('Modules\User\Repositories\UserRepository');
-        $user->createWithRoles($userInfo, [1]);
+        $user->createWithRoles($userInfo, [1], true);
 
         $this->info('Admin account created!');
     }
