@@ -104,7 +104,7 @@ class InstallCommand extends Command
         $this->call('publish:config', ['package' => 'cartalyst/sentinel']);
         $this->replaceCartalystUserModelConfiguration('Cartalyst\Sentinel\Users\EloquentUser', 'Sentinel');
 
-        $this->createFirstUser();
+        $this->createFirstUser('sentinel');
 
 		$this->info('User commands done.');
 	}
@@ -123,7 +123,7 @@ class InstallCommand extends Command
         $this->call('publish:config', ['package' => 'cartalyst/sentry']);
         $this->replaceCartalystUserModelConfiguration('Cartalyst\Sentry\Users\Eloquent\User', 'Sentry');
 
-        $this->createFirstUser();
+        $this->createFirstUser('sentry');
 
         $this->info('User commands done.');
     }
@@ -131,7 +131,7 @@ class InstallCommand extends Command
     /**
      * Create the first user that'll have admin access
      */
-    private function createFirstUser()
+    private function createFirstUser($driver)
     {
         $this->line('Creating an Admin user account...');
 
@@ -144,8 +144,14 @@ class InstallCommand extends Command
             'first_name' => $firstname,
             'last_name' => $lastname,
             'email' => $email,
-            'password' => Hash::make($password),
         ];
+
+        if ($driver == 'sentinel') {
+            $userInfo = array_merge($userInfo, ['password' => Hash::make($password)]);
+        } else {
+            $userInfo = array_merge($userInfo, ['password' => $password]);
+        }
+
         $user = app('Modules\User\Repositories\UserRepository');
         $user->createWithRoles($userInfo, [1], true);
 
