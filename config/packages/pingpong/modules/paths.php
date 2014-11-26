@@ -46,19 +46,19 @@ return [
     */
 
     'generator' => [
-        'assets' => 'Assets',
-        'config' => 'Config',
-        'command' => 'Console',
-        'migration' => 'Database/Migrations',
-        'model' => 'Entities',
-        'repository' => 'Repositories',
-        'seeder' => 'Database/Seeders',
-        'controller' => 'Http/Controllers',
-        'filter' => 'Http/Filters',
-        'request' => 'Http/Requests',
-        'provider' => 'Providers',
-        'lang' => 'Resources/lang',
-        'views' => 'Resources/views',
-        'test' => 'Tests',
+        'assets' => '/Assets',
+        'config' => '/Config',
+        'command' => '/Console',
+        'migration' => '/Database/Migrations',
+        'model' => '/Entities',
+        'repository' => '/Repositories',
+        'seeder' => '/Database/Seeders',
+        'controller' => '/Http/Controllers',
+        'filter' => '/Http/Filters',
+        'request' => '/Http/Requests',
+        'provider' => '/Providers',
+        'lang' => '/Resources/lang',
+        'views' => '/Resources/views',
+        'test' => '/Tests',
     ]
 ];
