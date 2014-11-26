@@ -131,7 +131,8 @@ return [
 		/* Packages */
 		'Illuminate\Html\HtmlServiceProvider',
 		'Pingpong\Modules\ModulesServiceProvider',
-		'Cartalyst\Sentinel\Laravel\SentinelServiceProvider',
+		#'Cartalyst\Sentinel\Laravel\SentinelServiceProvider',
+		'Cartalyst\Sentry\SentryServiceProvider',
 		'Laracasts\Commander\CommanderServiceProvider',
 		'Laracasts\Flash\FlashServiceProvider',
 		'Mcamara\LaravelLocalization\LaravelLocalizationServiceProvider',
@@ -199,9 +200,10 @@ return [
 		/* Packages */
 		'Form' => 'Illuminate\Html\FormFacade',
 		'Module' => 'Pingpong\Modules\Facades\Module',
-		'Activation' => 'Cartalyst\Sentinel\Laravel\Facades\Activation',
-		'Reminder' => 'Cartalyst\Sentinel\Laravel\Facades\Reminder',
-		'Sentinel' => 'Cartalyst\Sentinel\Laravel\Facades\Sentinel',
+		#'Activation' => 'Cartalyst\Sentinel\Laravel\Facades\Activation',
+		#'Reminder' => 'Cartalyst\Sentinel\Laravel\Facades\Reminder',
+		#'Sentinel' => 'Cartalyst\Sentinel\Laravel\Facades\Sentinel',
+		'Sentry' => 'Cartalyst\Sentry\Facades\Laravel\Sentry',
 		'Flash' => 'Laracasts\Flash\Flash',
 		'LaravelLocalization' => 'Mcamara\LaravelLocalization\Facades\LaravelLocalization',
 	],

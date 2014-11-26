@@ -4,7 +4,7 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "12c14ee37ad269cb628df3d00c3db59a",
+    "hash": "40c9b5a9ac9f563fc890e6f0ed30df6e",
     "packages": [
         {
             "name": "baum/baum",
@@ -60,70 +60,71 @@
             "time": "2014-09-30 17:04:36"
         },
         {
-            "name": "cartalyst/sentinel",
-            "version": "dev-master",
+            "name": "cartalyst/sentry",
+            "version": "2.1.x-dev",
             "source": {
                 "type": "git",
-                "url": "git@github.com:cartalyst/sentinel.git",
-                "reference": "3193410d3c0e980d8c0faa69d018775bf7df1277"
+                "url": "https://github.com/cartalyst/sentry.git",
+                "reference": "57eb4ec33b342d621d8e7e499492f797443c0428"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/cartalyst/sentinel/zipball/3193410d3c0e980d8c0faa69d018775bf7df1277",
-                "reference": "3193410d3c0e980d8c0faa69d018775bf7df1277",
+                "url": "https://api.github.com/repos/cartalyst/sentry/zipball/57eb4ec33b342d621d8e7e499492f797443c0428",
+                "reference": "57eb4ec33b342d621d8e7e499492f797443c0428",
                 "shasum": ""
             },
             "require": {
-                "cartalyst/support": "~1.0",
-                "illuminate/support": "~4.1|5.0.*",
-                "php": ">=5.4.0"
+                "php": ">=5.3.3"
             },
             "require-dev": {
-                "illuminate/cookie": "~4.1|5.0.*",
-                "illuminate/database": "~4.1|5.0.*",
-                "illuminate/http": "~4.1|5.0.*",
-                "illuminate/session": "~4.1|5.0.*",
-                "ircmaxell/password-compat": "~1.0",
-                "mockery/mockery": "~0.9",
-                "phpunit/phpunit": "~4.0"
+                "illuminate/cookie": ">=4.0.9,<4.2",
+                "illuminate/database": ">=4.0.9,<4.2",
+                "illuminate/http": ">=4.0.9,<4.2",
+                "illuminate/session": ">=4.0.9,<4.2",
+                "ircmaxell/password-compat": "1.0.*",
+                "mockery/mockery": "0.7.2"
             },
             "suggest": {
-                "illuminate/database": "By default, Sentinel utilizes the powerful Illuminate database layer.",
-                "illuminate/events": "To hook into various events across Sentinel, we recommend using Illuminate's event dispatcher.",
+                "happydemon/txt": "Required Text helpers when using the Kohana implementation",
+                "illuminate/database": "Default sentry user, group and throttling implementations.",
                 "ircmaxell/password-compat": "Default hashing uses PHP 5.5 password_* functions, with forward-compatible support."
             },
             "type": "library",
             "extra": {
                 "component": "package",
+                "frameworks": [
+                    "Laravel 3",
+                    "Laravel 4",
+                    "CodeIgniter 3",
+                    "FuelPHP 1",
+                    "Kohana"
+                ],
+                "versions": {
+                    "1": "1.1/master",
+                    "2": "master"
+                },
                 "branch-alias": {
-                    "dev-master": "1.1.x-dev"
+                    "dev-master": "2.0-dev"
                 }
             },
             "autoload": {
                 "classmap": [
+                    "src/Cartalyst/Sentry/Groups/Exceptions.php",
+                    "src/Cartalyst/Sentry/Throttling/Exceptions.php",
+                    "src/Cartalyst/Sentry/Users/Exceptions.php",
                     "src/migrations"
                 ],
-                "psr-4": {
-                    "Cartalyst\\Sentinel\\": "src/"
+                "psr-0": {
+                    "Cartalyst\\Sentry": "src/"
                 }
             },
             "license": [
-                "proprietary"
+                "BSD-3-Clause"
             ],
             "authors": [
                 {
                     "name": "Cartalyst LLC",
                     "email": "help@cartalyst.com"
-                },
-                {
-                    "name": "Ben Corlett",
-                    "email": "ben.corlett@cartalyst.com",
-                    "role": "Developer"
-                },
-                {
-                    "name": "Bruno Gaspar",
-                    "email": "bruno.gaspar@cartalyst.com",
-                    "role": "Developer"
                 },
                 {
                     "name": "Dan Syme",
@@ -131,98 +132,35 @@
                     "role": "Creator & Designer"
                 },
                 {
-                    "name": "Suhayb Wardany",
-                    "email": "su.wardany@cartalyst.com",
+                    "name": "Ben Corlett",
+                    "email": "ben.corlett@cartalyst.com",
                     "role": "Developer"
-                }
-            ],
-            "description": "PHP 5.4+ Fully-featured Authentication & Authorization System",
-            "keywords": [
-                "auth",
-                "cartalyst",
-                "codeigniter",
-                "fuelphp",
-                "laravel",
-                "php",
-                "security"
-            ],
-            "support": {
-                "source": "https://github.com/cartalyst/sentinel/tree/master",
-                "issues": "https://github.com/cartalyst/sentinel/issues"
-            },
-            "time": "2014-10-28 23:54:12"
-        },
-        {
-            "name": "cartalyst/support",
-            "version": "dev-master",
-            "source": {
-                "type": "git",
-                "url": "git@github.com:cartalyst/support.git",
-                "reference": "a2d8a6a9fea2813ac160088930ad8ce51522b7ec"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/cartalyst/support/zipball/a2d8a6a9fea2813ac160088930ad8ce51522b7ec",
-                "reference": "a2d8a6a9fea2813ac160088930ad8ce51522b7ec",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.4.0"
-            },
-            "require-dev": {
-                "illuminate/mail": "~4.1|~5.0",
-                "illuminate/validation": "~4.1|~5.0",
-                "mockery/mockery": "~0.9",
-                "phpunit/phpunit": "~4.0"
-            },
-            "type": "library",
-            "extra": {
-                "component": "package",
-                "branch-alias": {
-                    "dev-master": "1.1.x-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Cartalyst\\Support\\": "src/"
-                }
-            },
-            "license": [
-                "proprietary"
-            ],
-            "authors": [
+                },
                 {
-                    "name": "Cartalyst LLC",
-                    "email": "help@cartalyst.com"
+                    "name": "Daniel Petrie",
+                    "email": "dan.petrie@cartalyst.com",
+                    "role": "Developer"
                 },
                 {
                     "name": "Bruno Gaspar",
                     "email": "bruno.gaspar@cartalyst.com",
                     "role": "Developer"
-                },
-                {
-                    "name": "Dan Syme",
-                    "email": "dan.syme@cartalyst.com",
-                    "role": "Project Lead"
-                },
-                {
-                    "name": "Suhayb Wardany",
-                    "email": "su.wardany@cartalyst.com",
-                    "role": "Developer"
                 }
             ],
-            "description": "Support helpers.",
+            "description": "PHP 5.3+ Fully-featured Authentication & Authorization System",
             "keywords": [
-                "cartalyst",
-                "helper",
+                "auth",
+                "codeigniter",
+                "fuelphp",
+                "kohana",
                 "laravel",
-                "support"
+                "security"
             ],
             "support": {
-                "source": "https://github.com/cartalyst/support/tree/master",
-                "issues": "https://github.com/cartalyst/support/issues"
+                "source": "https://github.com/cartalyst/sentry/tree/2.1",
+                "issues": "https://github.com/cartalyst/sentry/issues"
             },
-            "time": "2014-11-05 22:59:50"
+            "time": "2014-08-28 12:03:39"
         },
         {
             "name": "classpreloader/classpreloader",
@@ -2640,6 +2578,78 @@
         }
     ],
     "packages-dev": [
+        {
+            "name": "cartalyst/support",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "git@github.com:cartalyst/support.git",
+                "reference": "a2d8a6a9fea2813ac160088930ad8ce51522b7ec"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/cartalyst/support/zipball/a2d8a6a9fea2813ac160088930ad8ce51522b7ec",
+                "reference": "a2d8a6a9fea2813ac160088930ad8ce51522b7ec",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.4.0"
+            },
+            "require-dev": {
+                "illuminate/mail": "~4.1|~5.0",
+                "illuminate/validation": "~4.1|~5.0",
+                "mockery/mockery": "~0.9",
+                "phpunit/phpunit": "~4.0"
+            },
+            "type": "library",
+            "extra": {
+                "component": "package",
+                "branch-alias": {
+                    "dev-master": "1.1.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Cartalyst\\Support\\": "src/"
+                }
+            },
+            "license": [
+                "proprietary"
+            ],
+            "authors": [
+                {
+                    "name": "Cartalyst LLC",
+                    "email": "help@cartalyst.com"
+                },
+                {
+                    "name": "Bruno Gaspar",
+                    "email": "bruno.gaspar@cartalyst.com",
+                    "role": "Developer"
+                },
+                {
+                    "name": "Dan Syme",
+                    "email": "dan.syme@cartalyst.com",
+                    "role": "Project Lead"
+                },
+                {
+                    "name": "Suhayb Wardany",
+                    "email": "su.wardany@cartalyst.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Support helpers.",
+            "keywords": [
+                "cartalyst",
+                "helper",
+                "laravel",
+                "support"
+            ],
+            "support": {
+                "source": "https://github.com/cartalyst/support/tree/master",
+                "issues": "https://github.com/cartalyst/support/issues"
+            },
+            "time": "2014-11-05 22:59:50"
+        },
         {
             "name": "doctrine/instantiator",
             "version": "dev-master",
