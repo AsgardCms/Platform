@@ -12,5 +12,8 @@
     "Modules\\Media\\Providers\\MediaServiceProvider",
     "Modules\\Media\\Providers\\RouteServiceProvider",
     "Modules\\Media\\Image\\ImageServiceProvider"
+  ],
+  "files": [
+    "start.php"
   ]
 }
