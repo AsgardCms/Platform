@@ -78,6 +78,8 @@ class InstallCommand extends Command
 
         $this->publishAssets();
 
+        $this->publishConfigurations();
+
         $this->blockMessage(
             'Success!',
             'Platform ready! You can now login with your username and password at /backend'
@@ -150,6 +152,13 @@ class InstallCommand extends Command
         $this->call('module:migrate', ['module' => 'Media']);
 
         $this->info('Application migrated!');
+    }
+
+    private function publishConfigurations()
+    {
+        $this->call('publish:config', ['package' => 'dimsav/laravel-translatable']);
+        $this->call('publish:config', ['package' => 'mcamara/laravel-localization']);
+        $this->call('publish:config', ['package' => 'pingpong/modules']);
     }
 
     /**
