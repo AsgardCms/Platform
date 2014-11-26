@@ -40,7 +40,6 @@ class CoreServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->loadModuleProviders();
         $this->registerMenuRoutes();
         $this->registerFilters($this->app['router']);
         $this->registerCommands();
@@ -54,24 +53,6 @@ class CoreServiceProvider extends ServiceProvider
     public function provides()
     {
         return array();
-    }
-
-    /**
-     * Load the Service Providers for all enabled modules
-     */
-    private function loadModuleProviders()
-    {
-        $this->app->booted(function ($app)
-        {
-            $modules = $app['modules']->enabled();
-            foreach ($modules as $module) {
-                if ($providers = $app['modules']->prop("{$module}::providers")) {
-                    foreach ($providers as $provider) {
-                        $app->register($provider);
-                    }
-                }
-            }
-        });
     }
 
     /**
