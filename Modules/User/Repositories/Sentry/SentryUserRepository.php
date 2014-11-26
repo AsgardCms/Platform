@@ -75,10 +75,26 @@ class SentryUserRepository implements UserRepository
     {
         $user = Sentry::findUserById($userId);
         $user->update($data);
+
         if (!empty($roles)) {
+            // Get the user roles
+            $userRoles = $user->groups()->get()->toArray();
+            $cleanedRoles = [];
+            foreach ($userRoles as $role) {
+                $cleanedRoles[$role['id']] = $role;
+            }
+            // Set the new roles
             foreach ($roles as $roleId) {
+                if (isset($cleanedRoles[$roleId])) {
+                    unset($cleanedRoles[$roleId]);
+                }
                 $group = Sentry::findGroupById($roleId);
                 $user->addGroup($group);
+            }
+            // Unset the unchecked roles
+            foreach ($cleanedRoles as $roleId => $role) {
+                $group = Sentry::findGroupById($roleId);
+                $user->removeGroup($group);
             }
         }
     }
