@@ -8,5 +8,8 @@
   "providers": [
     "Modules\\Menu\\Providers\\RouteServiceProvider",
     "Modules\\Menu\\Providers\\MenuServiceProvider"
+  ],
+  "files": [
+    "start.php"
   ]
 }
