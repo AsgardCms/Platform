@@ -76,15 +76,15 @@ class UserServiceProvider extends ServiceProvider
 	{
 		$this->app->bind(
 			'Modules\User\Repositories\UserRepository',
-			'Modules\User\Repositories\Sentinel\SentinelUserRepository'
+			'Modules\User\Repositories\Sentry\SentryUserRepository'
 		);
 		$this->app->bind(
 			'Modules\User\Repositories\RoleRepository',
-			'Modules\User\Repositories\Sentinel\SentinelRoleRepository'
+			'Modules\User\Repositories\Sentry\SentryRoleRepository'
 		);
         $this->app->bind(
             'Modules\Core\Contracts\Authentication',
-            'Modules\User\Repositories\Sentinel\SentinelAuthentication'
+            'Modules\User\Repositories\Sentry\SentryAuthentication'
         );
 	}
 
