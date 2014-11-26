@@ -5,6 +5,7 @@ use Illuminate\Console\Command;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Filesystem\Filesystem;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Schema;
 use Modules\Core\Services\Composer;
 
 class InstallCommand extends Command
@@ -356,11 +357,7 @@ class InstallCommand extends Command
      */
     private function checkIfInstalled()
     {
-        $users = $this->app['db']->table('users')->get();
-        if ($users) {
-            return true;
-        }
-        return false;
+        return Schema::hasTable('users');
     }
 
 }
