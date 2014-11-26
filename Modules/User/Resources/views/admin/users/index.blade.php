@@ -100,7 +100,7 @@
                     <h4 class="modal-title" id="myModalLabel">{{ trans('core::core.modal.title') }}</h4>
                 </div>
                 <div class="modal-body">
-                    {{ trans('user::users.modal.confirmation-message') }}
+                    {{ trans('core::core.modal.confirmation-message') }}
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">{{ trans('core::core.button.cancel') }}</button>
