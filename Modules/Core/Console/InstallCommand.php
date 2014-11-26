@@ -60,6 +60,11 @@ class InstallCommand extends Command
     {
         $this->info('Starting the installation process...');
 
+        if ($this->checkIfInstalled()) {
+            $this->error('Asgard has already been installed. You can already log into your administration.');
+            return;
+        }
+
         $this->configureDatabase();
 
         $userDriver = $this->choice('Which user driver do you wish to use?', ['Sentinel', 'Sentry'], 1);
@@ -338,6 +343,18 @@ class InstallCommand extends Command
         $this->finder->put('config/app.php', $appConfig);
 
         $this->composer->remove('cartalyst/sentry');
+    }
+
+    /**
+     * Check if Asgard CMS already has been installed
+     */
+    private function checkIfInstalled()
+    {
+        $users = $this->app['db']->table('users')->get();
+        if ($users) {
+            return true;
+        }
+        return false;
     }
 
 }
