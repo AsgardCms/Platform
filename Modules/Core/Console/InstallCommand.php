@@ -84,7 +84,7 @@ class InstallCommand extends Command
     }
 
 	/**
-	 *
+	 * Run the required commands to use Sentinel
 	 */
 	private function runSentinelUserCommands()
 	{
@@ -108,6 +108,9 @@ class InstallCommand extends Command
 		$this->info('User commands done.');
 	}
 
+    /**
+     * Run the required commands to use Sentry
+     */
     private function runSentryUserCommands()
     {
         $this->info('Running Sentry migrations...');
@@ -168,6 +171,9 @@ class InstallCommand extends Command
         $this->info('Application migrated!');
     }
 
+    /**
+     *
+     */
     private function publishConfigurations()
     {
         $this->call('publish:config', ['package' => 'dimsav/laravel-translatable']);
