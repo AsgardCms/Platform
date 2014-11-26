@@ -17,6 +17,8 @@ While AsgardCMS is in its beta period the above installation won't be available.
 
 You have to clone this repository manually, run `composer install` and lastly `php artisan asgard:install` to start the installation process.
 
+Please note that the current state of the CMS doesn't have the front-end yet. What you can test though, is the complete backend interface.
+
 ### Install Platform
 
 ```
