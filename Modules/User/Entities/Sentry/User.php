@@ -2,8 +2,9 @@
 
 use Cartalyst\Sentry\Users\Eloquent\User as SentryModel;
 use Laracasts\Presenter\PresentableTrait;
+use Modules\User\Entities\UserInterface;
 
-class User extends SentryModel
+class User extends SentryModel implements UserInterface
 {
     use PresentableTrait;
 
@@ -20,5 +21,14 @@ class User extends SentryModel
     public function groups()
     {
         return $this->belongsToMany(static::$groupModel, static::$userGroupsPivot, 'user_id');
+    }
+
+    /**
+     * Checks if a user belongs to the given Role ID
+     * @param int $roleId
+     * @return bool
+     */
+    public function hasRole($roleId)
+    {
     }
 }

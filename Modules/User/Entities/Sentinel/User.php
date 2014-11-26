@@ -2,8 +2,9 @@
 
 use Cartalyst\Sentinel\Users\EloquentUser;
 use Laracasts\Presenter\PresentableTrait;
+use Modules\User\Entities\UserInterface;
 
-class User extends EloquentUser
+class User extends EloquentUser implements UserInterface
 {
     use PresentableTrait;
 
@@ -16,4 +17,9 @@ class User extends EloquentUser
     ];
 
     protected $presenter = 'Modules\User\Presenters\UserPresenter';
+
+    public function hasRole($roleId)
+    {
+        return $this->roles()->whereId($roleId)->count() >= 1;
+    }
 }

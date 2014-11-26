@@ -60,7 +60,7 @@
                                 <label>{{ trans('user::users.tabs.roles') }}</label>
                                 <select multiple="" class="form-control" name="roles[]">
                                     <?php foreach($roles as $role): ?>
-                                        <option value="{{ $role->id }}" <?php echo $user->roles()->whereId($role->id)->count() >= 1 ? 'selected' : '' ?>>{{ $role->name }}</option>
+                                        <option value="{{ $role->id }}" <?php echo $user->hasRole($role->id) ? 'selected' : '' ?>>{{ $role->name }}</option>
                                     <?php endforeach; ?>
                                 </select>
                             </div>
