@@ -6,5 +6,8 @@
     "active": 1,
     "providers": [
         "Modules\\Dashboard\\Providers\\RouteServiceProvider"
+    ],
+    "files": [
+        "start.php"
     ]
 }
