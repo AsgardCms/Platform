@@ -22,7 +22,7 @@
     "laravel/framework": "dev-master#ba916851321b9233cb56a0fb1deb41043b7df5fb",
     "laravel/elixir": "~1.0",
     "illuminate/html": "~5.0",
-    "pingpong/modules": "1.1.6",
+    "pingpong/modules": "1.1.8",
     "cartalyst/sentinel": "~1.0",
     "laracasts/commander": "dev-master",
     "laracasts/flash": "~1.0",
