@@ -1,5 +1,7 @@
 <?php namespace Modules\Core\Services;
 
+use Symfony\Component\Process\Process;
+
 class Composer extends \Illuminate\Foundation\Composer
 {
     protected $outputHandler = null;
@@ -8,12 +10,18 @@ class Composer extends \Illuminate\Foundation\Composer
     /**
      * Enable real time output of all commands.
      *
-     * @param $handler
+     * @param $command
      * @return void
      */
-    public function enableOutput($handler)
+    public function enableOutput($command)
     {
-        $this->output = $handler;
+        $this->output = function ($type, $buffer) use ($command) {
+            if (Process::ERR === $type) {
+                $command->info(trim('[ERR] > '.$buffer));
+            } else {
+                $command->info(trim('> '.$buffer));
+            }
+        };
     }
 
     /**
@@ -55,6 +63,16 @@ class Composer extends \Illuminate\Foundation\Composer
         }
         $process = $this->getProcess();
         $process->setCommandLine(trim($this->findComposer() . ' require ' . $package));
+        $process->run($this->output);
+    }
+
+    public function remove($package)
+    {
+        if (!is_null($package)) {
+            $package = '"' . $package . '"';
+        }
+        $process = $this->getProcess();
+        $process->setCommandLine(trim($this->findComposer() . ' remove ' . $package));
         $process->run($this->output);
     }
 }
