@@ -1,12 +1,5 @@
 <?php namespace Modules\User\Repositories\Sentry;
 
-use Cartalyst\Sentry\Throttling\UserBannedException;
-use Cartalyst\Sentry\Throttling\UserSuspendedException;
-use Cartalyst\Sentry\Users\LoginRequiredException;
-use Cartalyst\Sentry\Users\PasswordRequiredException;
-use Cartalyst\Sentry\Users\UserNotActivatedException;
-use Cartalyst\Sentry\Users\UserNotFoundException;
-use Cartalyst\Sentry\Users\WrongPasswordException;
 use Modules\Core\Contracts\Authentication;
 use Cartalyst\Sentry\Facades\Laravel\Sentry;
 
@@ -20,40 +13,9 @@ class SentryAuthentication implements Authentication
      */
     public function login(array $credentials, $remember = false)
     {
-        try
-        {
-            Sentry::authenticate($credentials, $remember);
+        if (Sentry::authenticate($credentials, $remember)) {
             return false;
         }
-        catch (LoginRequiredException $e)
-        {
-            return 'Login field is required.';
-        }
-        catch (PasswordRequiredException $e)
-        {
-            return 'Password field is required.';
-        }
-        catch (WrongPasswordException $e)
-        {
-            return 'Wrong password, try again.';
-        }
-        catch (UserNotFoundException $e)
-        {
-            return 'User was not found.';
-        }
-        catch (UserNotActivatedException $e)
-        {
-            return 'User is not activated.';
-        }
-        catch (UserSuspendedException $e)
-        {
-            return 'User is suspended.';
-        }
-        catch (UserBannedException $e)
-        {
-            return 'User is banned.';
-        }
-
         return 'Invalid login or password.';
     }
 
@@ -148,9 +110,6 @@ class SentryAuthentication implements Authentication
      */
     public function check()
     {
-        if (Sentry::check()) {
-            return Sentry::getUser();
-        }
-        return false;
+        return Sentry::check();
     }
 }

@@ -16,9 +16,4 @@ class SentryUser extends User
     ];
 
     protected $presenter = 'Modules\User\Presenters\UserPresenter';
-
-    public function groups()
-    {
-        return $this->belongsToMany(static::$groupModel, static::$userGroupsPivot, 'user_id');
-    }
 }
