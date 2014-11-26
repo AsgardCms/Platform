@@ -6,7 +6,6 @@ use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Filesystem\Filesystem;
 use Illuminate\Support\Facades\Hash;
 use Modules\Core\Services\Composer;
-use Modules\User\Repositories\UserRepository;
 
 class InstallCommand extends Command
 {
@@ -25,11 +24,6 @@ class InstallCommand extends Command
     protected $description = 'Install Asgard CMS';
 
     /**
-     * @var UserRepository
-     */
-    private $user;
-
-    /**
      * @var Filesystem
      */
     private $finder;
@@ -45,15 +39,13 @@ class InstallCommand extends Command
     /**
      * Create a new command instance.
      *
-     * @param UserRepository $user
      * @param Filesystem $finder
      * @param Application $app
      * @param Composer $composer
      */
-    public function __construct($user, Filesystem $finder, Application $app, Composer $composer)
+    public function __construct(Filesystem $finder, Application $app, Composer $composer)
     {
         parent::__construct();
-        $this->user = $user;
         $this->finder = $finder;
         $this->app = $app;
         $this->composer = $composer;

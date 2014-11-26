@@ -88,7 +88,6 @@ class CoreServiceProvider extends ServiceProvider
     {
         $this->app->bindShared('command.asgard.install', function($app) {
             return new InstallCommand(
-                $app['Modules\User\Repositories\UserRepository'],
                 $app['files'],
                 $app,
                 new Composer($app['files'])
