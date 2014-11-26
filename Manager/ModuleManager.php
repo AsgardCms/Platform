@@ -79,7 +79,8 @@ class ModuleManager
             if (isset($coreModules[$moduleToDisable])) {
                 continue;
             }
-            $this->module->disable($moduleToDisable);
+            $module = $this->module->get($moduleToDisable);
+            $module->disable();
         }
     }
 
@@ -90,7 +91,8 @@ class ModuleManager
     public function enableModules($modules)
     {
         foreach ($modules as $moduleToEnable => $value) {
-            $this->module->enable($moduleToEnable);
+            $module = $this->module->get($moduleToEnable);
+            $module->enable();
         }
     }
 }
