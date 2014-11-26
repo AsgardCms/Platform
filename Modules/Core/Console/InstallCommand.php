@@ -89,21 +89,21 @@ class InstallCommand extends Command
 	 */
 	private function runSentinelUserCommands()
 	{
+        $this->info('Requiring Sentinel package, this may take some time...');
+        $this->handleComposerForSentinel();
+
+        $this->info('Running Sentinel migrations...');
 		$this->runSentinelMigrations();
 
         $this->call('db:seed', ['--class' => 'Modules\User\Database\Seeders\SentinelGroupSeedTableSeeder']);
 
-        $this->replaceUserRepositoryBindings('Sentinel'); # optional for sentinel
+        $this->replaceUserRepositoryBindings('Sentinel');
         $this->bindUserRepositoryOnTheFly('Sentinel');
 
         $this->call('publish:config', ['package' => 'cartalyst/sentinel']);
         $this->replaceCartalystUserModelConfiguration('Cartalyst\Sentinel\Users\EloquentUser', 'Sentinel');
 
-        dd('Config changed');
-
-        // Search and replace SP and Alias in config/app.php
-
-		$this->createFirstUser();
+        $this->createFirstUser();
 
 		$this->info('User commands done.');
 	}
@@ -126,7 +126,8 @@ class InstallCommand extends Command
             'email' => $email,
             'password' => Hash::make($password),
         ];
-        $this->user->createWithRoles($userInfo, [1]);
+        $user = app('Modules\User\Repositories\UserRepository');
+        $user->createWithRoles($userInfo, [1]);
 
         $this->info('Admin account created!');
     }
@@ -245,7 +246,7 @@ class InstallCommand extends Command
     {
         $path = 'Modules/User/Providers/UserServiceProvider.php';
         $userServiceProvider = $this->finder->get($path);
-        $userServiceProvider = str_replace('Sentinel', $driver, $userServiceProvider);
+        $userServiceProvider = str_replace('Sentry', $driver, $userServiceProvider);
         $this->finder->put($path, $userServiceProvider);
     }
 
@@ -283,6 +284,42 @@ class InstallCommand extends Command
         $config = $this->finder->get($path);
         $config = str_replace($search, "Modules\\User\\Entities\\{$Driver}User", $config);
         $this->finder->put($path, $config);
+    }
+
+    /**
+     * Install sentinel and remove sentry
+     * Set the required Service Providers and Aliases in config/app.php
+     * @throws \Illuminate\Filesystem\FileNotFoundException
+     */
+    private function handleComposerForSentinel()
+    {
+        $this->composer->enableOutput($this);
+        $this->composer->install('cartalyst/sentinel:~1.0');
+
+        // Search and replace SP and Alias in config/app.php
+        $appConfig = $this->finder->get('config/app.php');
+        $appConfig = str_replace(
+            [
+                "#'Cartalyst\\Sentinel\\Laravel\\SentinelServiceProvider',",
+                "'Cartalyst\\Sentry\\SentryServiceProvider',",
+                "#'Activation' => 'Cartalyst\\Sentinel\\Laravel\\Facades\\Activation',",
+                "#'Reminder' => 'Cartalyst\\Sentinel\\Laravel\\Facades\\Reminder',",
+                "#'Sentinel' => 'Cartalyst\\Sentinel\\Laravel\\Facades\\Sentinel',",
+                "'Sentry' => 'Cartalyst\\Sentry\\Facades\\Laravel\\Sentry',"
+            ],
+            [
+                "'Cartalyst\\Sentinel\\Laravel\\SentinelServiceProvider',",
+                "#'Cartalyst\\Sentry\\SentryServiceProvider',",
+                "'Activation' => 'Cartalyst\\Sentinel\\Laravel\\Facades\\Activation',",
+                "'Reminder' => 'Cartalyst\\Sentinel\\Laravel\\Facades\\Reminder',",
+                "'Sentinel' => 'Cartalyst\\Sentinel\\Laravel\\Facades\\Sentinel',",
+                "#'Sentry' => 'Cartalyst\\Sentry\\Facades\\Laravel\\Sentry',"
+            ],
+            $appConfig
+        );
+        $this->finder->put('config/app.php', $appConfig);
+
+        $this->composer->remove('cartalyst/sentry');
     }
 
 }
