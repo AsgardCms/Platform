@@ -2,9 +2,11 @@
 
 use Dotenv;
 use Illuminate\Console\Command;
+use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Filesystem\Filesystem;
 use Illuminate\Support\Facades\Hash;
-use Modules\User\Repositories\UserRepository;
+use Illuminate\Support\Facades\Schema;
+use Modules\Core\Services\Composer;
 
 class InstallCommand extends Command
 {
@@ -23,27 +25,31 @@ class InstallCommand extends Command
     protected $description = 'Install Asgard CMS';
 
     /**
-     * @var UserRepository
-     */
-    private $user;
-
-    /**
      * @var Filesystem
      */
     private $finder;
+    /**
+     * @var Application
+     */
+    private $app;
+    /**
+     * @var Composer
+     */
+    private $composer;
 
     /**
      * Create a new command instance.
      *
-     * @param UserRepository $user
      * @param Filesystem $finder
-     * @return \Modules\Core\Console\InstallCommand
+     * @param Application $app
+     * @param Composer $composer
      */
-    public function __construct($user, Filesystem $finder)
+    public function __construct(Filesystem $finder, Application $app, Composer $composer)
     {
         parent::__construct();
-        $this->user = $user;
         $this->finder = $finder;
+        $this->app = $app;
+        $this->composer = $composer;
     }
 
     /**
@@ -55,15 +61,22 @@ class InstallCommand extends Command
     {
         $this->info('Starting the installation process...');
 
+        if ($this->checkIfInstalled()) {
+            $this->error('Asgard has already been installed. You can already log into your administration.');
+            return;
+        }
+
         $this->configureDatabase();
 
-		if ($this->confirm('Do you wish to init sentinel and create its first user? [yes|no]')) {
-			$this->runUserCommands();
-		}
+        $userDriver = $this->choice('Which user driver do you wish to use?', ['Sentinel', 'Sentry'], 1);
+        $userDriver = "run{$userDriver}UserCommands";
+        $this->$userDriver();
 
         $this->runMigrations();
 
         $this->publishAssets();
+
+        $this->publishConfigurations();
 
         $this->blockMessage(
             'Success!',
@@ -72,21 +85,53 @@ class InstallCommand extends Command
     }
 
 	/**
-	 *
+	 * Run the required commands to use Sentinel
 	 */
-	private function runUserCommands()
+	private function runSentinelUserCommands()
 	{
+        $this->info('Requiring Sentinel package, this may take some time...');
+        $this->handleComposerForSentinel();
+
+        $this->info('Running Sentinel migrations...');
 		$this->runSentinelMigrations();
-		$this->runUserSeeds();
-		$this->createFirstUser();
+
+        $this->info('Running Sentinel seed...');
+        $this->call('db:seed', ['--class' => 'Modules\User\Database\Seeders\SentinelGroupSeedTableSeeder']);
+
+        $this->replaceUserRepositoryBindings('Sentinel');
+        $this->bindUserRepositoryOnTheFly('Sentinel');
+
+        $this->call('publish:config', ['package' => 'cartalyst/sentinel']);
+        $this->replaceCartalystUserModelConfiguration('Cartalyst\Sentinel\Users\EloquentUser', 'Sentinel');
+
+        $this->createFirstUser('sentinel');
 
 		$this->info('User commands done.');
 	}
 
     /**
+     * Run the required commands to use Sentry
+     */
+    private function runSentryUserCommands()
+    {
+        $this->info('Running Sentry migrations...');
+        $this->call('migrate', ['--package' => 'cartalyst/sentry']);
+
+        $this->info('Running Sentry seed...');
+        $this->call('db:seed', ['--class' => 'Modules\User\Database\Seeders\SentryGroupSeedTableSeeder']);
+
+        $this->call('publish:config', ['package' => 'cartalyst/sentry']);
+        $this->replaceCartalystUserModelConfiguration('Cartalyst\Sentry\Users\Eloquent\User', 'Sentry');
+
+        $this->createFirstUser('sentry');
+
+        $this->info('User commands done.');
+    }
+
+    /**
      * Create the first user that'll have admin access
      */
-    private function createFirstUser()
+    private function createFirstUser($driver)
     {
         $this->line('Creating an Admin user account...');
 
@@ -99,9 +144,16 @@ class InstallCommand extends Command
             'first_name' => $firstname,
             'last_name' => $lastname,
             'email' => $email,
-            'password' => Hash::make($password),
         ];
-        $this->user->createWithRoles($userInfo, ['admin']);
+
+        if ($driver == 'sentinel') {
+            $userInfo = array_merge($userInfo, ['password' => Hash::make($password)]);
+        } else {
+            $userInfo = array_merge($userInfo, ['password' => $password]);
+        }
+
+        $user = app('Modules\User\Repositories\UserRepository');
+        $user->createWithRoles($userInfo, [1], true);
 
         $this->info('Admin account created!');
     }
@@ -126,10 +178,28 @@ class InstallCommand extends Command
         $this->info('Application migrated!');
     }
 
-	private function runUserSeeds()
-	{
-		$this->call('module:seed', ['module' => 'User']);
-	}
+    /**
+     *
+     */
+    private function publishConfigurations()
+    {
+        $this->call('publish:config', ['package' => 'dimsav/laravel-translatable']);
+        $this->call('publish:config', ['package' => 'mcamara/laravel-localization']);
+        $this->call('publish:config', ['package' => 'pingpong/modules']);
+        $this->call('publish:config', ['package' => 'mpedrera/themify']);
+        $this->adaptThemifyConfiguration();
+    }
+
+    /**
+     * Configure the mpedrera/themify configuration
+     * @throws \Illuminate\Filesystem\FileNotFoundException
+     */
+    private function adaptThemifyConfiguration()
+    {
+        $themifyConfig = $this->finder->get('config/packages/mpedrera/themify/config.php');
+        $themifyConfig = str_replace('app_path()', 'base_path()', $themifyConfig);
+        $this->finder->put('config/packages/mpedrera/themify/config.php', $themifyConfig);
+    }
 
     /**
      * Symfony style block messages
@@ -214,6 +284,99 @@ class InstallCommand extends Command
         $this->laravel['config']['database.connections.mysql.database'] = $databaseName;
         $this->laravel['config']['database.connections.mysql.username'] = $databaseUsername;
         $this->laravel['config']['database.connections.mysql.password'] = $databasePassword;
+    }
+
+    /**
+     * Find and replace the correct repository bindings with the given driver
+     * @param string $driver
+     * @throws \Illuminate\Filesystem\FileNotFoundException
+     */
+    private function replaceUserRepositoryBindings($driver)
+    {
+        $path = 'Modules/User/Providers/UserServiceProvider.php';
+        $userServiceProvider = $this->finder->get($path);
+        $userServiceProvider = str_replace('Sentry', $driver, $userServiceProvider);
+        $this->finder->put($path, $userServiceProvider);
+    }
+
+    /**
+     * Set the correct repository binding on the fly for the current request
+     * @param $driver
+     */
+    private function bindUserRepositoryOnTheFly($driver)
+    {
+        $this->app->bind(
+            'Modules\User\Repositories\UserRepository',
+            "Modules\\User\\Repositories\\$driver\\{$driver}UserRepository"
+        );
+        $this->app->bind(
+            'Modules\User\Repositories\RoleRepository',
+            "Modules\\User\\Repositories\\$driver\\{$driver}RoleRepository"
+        );
+        $this->app->bind(
+            'Modules\Core\Contracts\Authentication',
+            "Modules\\User\\Repositories\\$driver\\{$driver}Authentication"
+        );
+    }
+
+    /**
+     * Replaced the model in the cartalyst configuration file
+     * @param string $search
+     * @param string $Driver
+     * @throws \Illuminate\Filesystem\FileNotFoundException
+     */
+    private function replaceCartalystUserModelConfiguration($search, $Driver)
+    {
+        $driver = strtolower($Driver);
+        $path = "config/packages/cartalyst/{$driver}/config.php";
+
+        $config = $this->finder->get($path);
+        $config = str_replace($search, "Modules\\User\\Entities\\{$Driver}User", $config);
+        $this->finder->put($path, $config);
+    }
+
+    /**
+     * Install sentinel and remove sentry
+     * Set the required Service Providers and Aliases in config/app.php
+     * @throws \Illuminate\Filesystem\FileNotFoundException
+     */
+    private function handleComposerForSentinel()
+    {
+        $this->composer->enableOutput($this);
+        $this->composer->install('cartalyst/sentinel:~1.0');
+
+        // Search and replace SP and Alias in config/app.php
+        $appConfig = $this->finder->get('config/app.php');
+        $appConfig = str_replace(
+            [
+                "#'Cartalyst\\Sentinel\\Laravel\\SentinelServiceProvider',",
+                "'Cartalyst\\Sentry\\SentryServiceProvider',",
+                "#'Activation' => 'Cartalyst\\Sentinel\\Laravel\\Facades\\Activation',",
+                "#'Reminder' => 'Cartalyst\\Sentinel\\Laravel\\Facades\\Reminder',",
+                "#'Sentinel' => 'Cartalyst\\Sentinel\\Laravel\\Facades\\Sentinel',",
+                "'Sentry' => 'Cartalyst\\Sentry\\Facades\\Laravel\\Sentry',"
+            ],
+            [
+                "'Cartalyst\\Sentinel\\Laravel\\SentinelServiceProvider',",
+                "#'Cartalyst\\Sentry\\SentryServiceProvider',",
+                "'Activation' => 'Cartalyst\\Sentinel\\Laravel\\Facades\\Activation',",
+                "'Reminder' => 'Cartalyst\\Sentinel\\Laravel\\Facades\\Reminder',",
+                "'Sentinel' => 'Cartalyst\\Sentinel\\Laravel\\Facades\\Sentinel',",
+                "#'Sentry' => 'Cartalyst\\Sentry\\Facades\\Laravel\\Sentry',"
+            ],
+            $appConfig
+        );
+        $this->finder->put('config/app.php', $appConfig);
+
+        $this->composer->remove('cartalyst/sentry');
+    }
+
+    /**
+     * Check if Asgard CMS already has been installed
+     */
+    private function checkIfInstalled()
+    {
+        return Schema::hasTable('users');
     }
 
 }

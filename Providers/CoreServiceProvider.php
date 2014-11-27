@@ -4,6 +4,7 @@ use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Routing\Router;
 use Illuminate\Support\ServiceProvider;
 use Modules\Core\Console\InstallCommand;
+use Modules\Core\Services\Composer;
 use Modules\Menu\Entities\Menuitem;
 use Modules\Menu\Repositories\Eloquent\EloquentMenuItemRepository;
 
@@ -87,8 +88,9 @@ class CoreServiceProvider extends ServiceProvider
     {
         $this->app->bindShared('command.asgard.install', function($app) {
             return new InstallCommand(
-                $app['Modules\User\Repositories\UserRepository'],
-                $app['files']
+                $app['files'],
+                $app,
+                new Composer($app['files'])
             );
         });
 
