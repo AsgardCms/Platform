@@ -75,8 +75,6 @@ class InstallCommand extends Command
 
         $this->publishAssets();
 
-        $this->publishConfigurations();
-
         $this->blockMessage(
             'Success!',
             'Platform ready! You can now login with your username and password at /backend'
@@ -175,29 +173,6 @@ class InstallCommand extends Command
         $this->call('module:migrate', ['module' => 'Media']);
 
         $this->info('Application migrated!');
-    }
-
-    /**
-     *
-     */
-    private function publishConfigurations()
-    {
-        $this->call('publish:config', ['package' => 'dimsav/laravel-translatable']);
-        $this->call('publish:config', ['package' => 'mcamara/laravel-localization']);
-        $this->call('publish:config', ['package' => 'pingpong/modules']);
-        $this->call('publish:config', ['package' => 'mpedrera/themify']);
-        $this->adaptThemifyConfiguration();
-    }
-
-    /**
-     * Configure the mpedrera/themify configuration
-     * @throws \Illuminate\Filesystem\FileNotFoundException
-     */
-    private function adaptThemifyConfiguration()
-    {
-        $themifyConfig = $this->finder->get('config/packages/mpedrera/themify/config.php');
-        $themifyConfig = str_replace('app_path()', 'base_path()', $themifyConfig);
-        $this->finder->put('config/packages/mpedrera/themify/config.php', $themifyConfig);
     }
 
     /**
