@@ -7,7 +7,14 @@ This is the core repository for the Asgard CMS. The admin is fully translatable 
 ## Requirements
 
 * PHP 5.4+
-* Access to [Cartalyst Sentinel](https://cartalyst.com/manual/sentinel) package
+
+During the installation process you'll be prompted to either install [Cartalyst Sentinel](https://cartalyst.com/manual/sentinel/1.0?utm_source=asgard-cms&utm_medium=readme&utm_campaign=asgard-cms) or [Cartalyst Sentry](https://cartalyst.com/manual/sentry/2.1?utm_source=asgard-cms&utm_medium=readme&utm_campaign=asgard-cms).
+
+If you choose to use Sentinel, you have to have access to Cartalyst's Arsenal. If you want to subscribe to Sentinel please check out their [Pricing plans](https://cartalyst.com/pricing?utm_source=asgard-cms&utm_medium=readme&utm_campaign=asgard-cms).
+
+Since Cartalyst Sentinel isn't free, you can't use it for all projects, check out their [license page](https://cartalyst.com/license?utm_source=asgard-cms&utm_medium=readme&utm_campaign=asgard-cms) to know exactly what's permitted.
+
+After the installation process you can also implement other User/Role drivers if needed. Refere to the documentation to know how.
 
 ## Getting started
 
