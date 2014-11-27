@@ -375,7 +375,7 @@ class InstallCommand extends Command
      */
     private function checkIfInstalled()
     {
-        return getenv('DB_USERNAME') ? true : false;
+        return $this->finder->isFile('.env');
     }
 
 }
