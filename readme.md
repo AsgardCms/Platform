@@ -14,7 +14,7 @@ If you choose to use Sentinel, you have to have access to Cartalyst's Arsenal. I
 
 Since Cartalyst Sentinel isn't free, you can't use it for all projects, check out their [license page](https://cartalyst.com/license?utm_source=asgard-cms&utm_medium=readme&utm_campaign=asgard-cms) to know exactly what's permitted.
 
-After the installation process you can also implement other User/Role drivers if needed. Refere to the documentation to know how.
+After the installation process you can also implement other User/Role drivers if needed. Refer to the documentation to know how.
 
 ## Getting started
 
