@@ -93,12 +93,12 @@ class InstallCommand extends Command
 		$this->runSentinelMigrations();
 
         $this->info('Running Sentinel seed...');
-        $this->call('db:seed', ['--class' => 'Modules\User\Database\Seeders\SentinelGroupSeedTableSeeder', '--no-interaction']);
+        $this->call('db:seed', ['--class' => 'Modules\User\Database\Seeders\SentinelGroupSeedTableSeeder', '--no-interaction' => '']);
 
         $this->replaceUserRepositoryBindings('Sentinel');
         $this->bindUserRepositoryOnTheFly('Sentinel');
 
-        $this->call('publish:config', ['package' => 'cartalyst/sentinel', '--no-interaction']);
+        $this->call('publish:config', ['package' => 'cartalyst/sentinel', '--no-interaction' => '']);
         $this->replaceCartalystUserModelConfiguration('Cartalyst\Sentinel\Users\EloquentUser', 'Sentinel');
 
         $this->createFirstUser('sentinel');
@@ -112,12 +112,12 @@ class InstallCommand extends Command
     private function runSentryUserCommands()
     {
         $this->info('Running Sentry migrations...');
-        $this->call('migrate', ['--package' => 'cartalyst/sentry', '--no-interaction']);
+        $this->call('migrate', ['--package' => 'cartalyst/sentry', '--no-interaction' => '']);
 
         $this->info('Running Sentry seed...');
-        $this->call('db:seed', ['--class' => 'Modules\User\Database\Seeders\SentryGroupSeedTableSeeder', '--no-interaction']);
+        $this->call('db:seed', ['--class' => 'Modules\User\Database\Seeders\SentryGroupSeedTableSeeder', '--no-interaction' => '']);
 
-        $this->call('publish:config', ['package' => 'cartalyst/sentry', '--no-interaction']);
+        $this->call('publish:config', ['package' => 'cartalyst/sentry', '--no-interaction' => '']);
         $this->replaceCartalystUserModelConfiguration('Cartalyst\Sentry\Users\Eloquent\User', 'Sentry');
 
         $this->createFirstUser('sentry');
@@ -160,7 +160,7 @@ class InstallCommand extends Command
      */
 	private function runSentinelMigrations()
 	{
-		$this->call('migrate', ['--package' => 'cartalyst/sentinel', '--no-interaction']);
+		$this->call('migrate', ['--package' => 'cartalyst/sentinel', '--no-interaction' => '']);
 	}
 
     /**
@@ -168,9 +168,9 @@ class InstallCommand extends Command
      */
     private function runMigrations()
     {
-        $this->call('module:migrate', ['module' => 'Setting', '--no-interaction']);
-        $this->call('module:migrate', ['module' => 'Menu', '--no-interaction']);
-        $this->call('module:migrate', ['module' => 'Media', '--no-interaction']);
+        $this->call('module:migrate', ['module' => 'Setting', '--no-interaction' => '']);
+        $this->call('module:migrate', ['module' => 'Menu', '--no-interaction' => '']);
+        $this->call('module:migrate', ['module' => 'Media', '--no-interaction' => '']);
 
         $this->info('Application migrated!');
     }
@@ -194,9 +194,9 @@ class InstallCommand extends Command
      */
     private function publishAssets()
     {
-        $this->call('module:publish', ['module' => 'Core', '--no-interaction']);
-        $this->call('module:publish', ['module' => 'Media', '--no-interaction']);
-        $this->call('module:publish', ['module' => 'Menu', '--no-interaction']);
+        $this->call('module:publish', ['module' => 'Core', '--no-interaction' => '']);
+        $this->call('module:publish', ['module' => 'Media', '--no-interaction' => '']);
+        $this->call('module:publish', ['module' => 'Menu', '--no-interaction' => '']);
     }
 
     /**
