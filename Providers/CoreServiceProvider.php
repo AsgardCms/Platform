@@ -4,6 +4,7 @@ use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Routing\Router;
 use Illuminate\Support\ServiceProvider;
 use Modules\Core\Console\InstallCommand;
+use Modules\Core\Console\PublishThemeAssetsCommand;
 use Modules\Core\Services\Composer;
 use Modules\Menu\Entities\Menuitem;
 use Modules\Menu\Repositories\Eloquent\EloquentMenuItemRepository;
@@ -79,6 +80,12 @@ class CoreServiceProvider extends ServiceProvider
     private function registerCommands()
     {
         $this->registerInstallCommand();
+        $this->registerThemeCommand();
+
+        $this->commands([
+            'command.asgard.install',
+            'command.asgard.publish.theme',
+        ]);
     }
 
     /**
@@ -93,10 +100,13 @@ class CoreServiceProvider extends ServiceProvider
                 new Composer($app['files'])
             );
         });
+    }
 
-        $this->commands(
-            'command.asgard.install'
-        );
+    private function registerThemeCommand()
+    {
+        $this->app->bindShared('command.asgard.publish.theme', function() {
+            return new PublishThemeAssetsCommand;
+        });
     }
 
     private function registerMenuRoutes()

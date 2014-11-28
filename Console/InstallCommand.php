@@ -5,7 +5,6 @@ use Illuminate\Console\Command;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Filesystem\Filesystem;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Schema;
 use Modules\Core\Services\Composer;
 
 class InstallCommand extends Command
@@ -76,8 +75,6 @@ class InstallCommand extends Command
 
         $this->publishAssets();
 
-        $this->publishConfigurations();
-
         $this->blockMessage(
             'Success!',
             'Platform ready! You can now login with your username and password at /backend'
@@ -96,12 +93,12 @@ class InstallCommand extends Command
 		$this->runSentinelMigrations();
 
         $this->info('Running Sentinel seed...');
-        $this->call('db:seed', ['--class' => 'Modules\User\Database\Seeders\SentinelGroupSeedTableSeeder']);
+        $this->call('db:seed', ['--class' => 'Modules\User\Database\Seeders\SentinelGroupSeedTableSeeder', '--no-interaction' => '']);
 
         $this->replaceUserRepositoryBindings('Sentinel');
         $this->bindUserRepositoryOnTheFly('Sentinel');
 
-        $this->call('publish:config', ['package' => 'cartalyst/sentinel']);
+        $this->call('publish:config', ['package' => 'cartalyst/sentinel', '--no-interaction' => '']);
         $this->replaceCartalystUserModelConfiguration('Cartalyst\Sentinel\Users\EloquentUser', 'Sentinel');
 
         $this->createFirstUser('sentinel');
@@ -115,12 +112,12 @@ class InstallCommand extends Command
     private function runSentryUserCommands()
     {
         $this->info('Running Sentry migrations...');
-        $this->call('migrate', ['--package' => 'cartalyst/sentry']);
+        $this->call('migrate', ['--package' => 'cartalyst/sentry', '--no-interaction' => '']);
 
         $this->info('Running Sentry seed...');
-        $this->call('db:seed', ['--class' => 'Modules\User\Database\Seeders\SentryGroupSeedTableSeeder']);
+        $this->call('db:seed', ['--class' => 'Modules\User\Database\Seeders\SentryGroupSeedTableSeeder', '--no-interaction' => '']);
 
-        $this->call('publish:config', ['package' => 'cartalyst/sentry']);
+        $this->call('publish:config', ['package' => 'cartalyst/sentry', '--no-interaction' => '']);
         $this->replaceCartalystUserModelConfiguration('Cartalyst\Sentry\Users\Eloquent\User', 'Sentry');
 
         $this->createFirstUser('sentry');
@@ -135,10 +132,25 @@ class InstallCommand extends Command
     {
         $this->line('Creating an Admin user account...');
 
-        $firstname = $this->ask('Enter your first name');
-        $lastname = $this->ask('Enter your last name');
-        $email = $this->ask('Enter your email address');
-        $password = $this->secret('Enter a password');
+        do {
+            $firstname = $this->ask('Enter your first name');
+            if ($firstname == '') $this->error('First name is required');
+        } while(!$firstname);
+
+        do {
+            $lastname = $this->ask('Enter your last name');
+            if ($lastname == '') $this->error('Last name is required');
+        } while(!$lastname);
+
+        do {
+            $email = $this->ask('Enter your email address');
+            if ($email == '') $this->error('Email is required');
+        } while(!$email);
+
+        do {
+            $password = $this->secret('Enter a password');
+            if ($password == '') $this->error('Password is required');
+        } while(!$password);
 
         $userInfo = [
             'first_name' => $firstname,
@@ -163,7 +175,7 @@ class InstallCommand extends Command
      */
 	private function runSentinelMigrations()
 	{
-		$this->call('migrate', ['--package' => 'cartalyst/sentinel']);
+		$this->call('migrate', ['--package' => 'cartalyst/sentinel', '--no-interaction' => '']);
 	}
 
     /**
@@ -171,34 +183,11 @@ class InstallCommand extends Command
      */
     private function runMigrations()
     {
-        $this->call('module:migrate', ['module' => 'Setting']);
-        $this->call('module:migrate', ['module' => 'Menu']);
-        $this->call('module:migrate', ['module' => 'Media']);
+        $this->call('module:migrate', ['module' => 'Setting', '--no-interaction' => '']);
+        $this->call('module:migrate', ['module' => 'Menu', '--no-interaction' => '']);
+        $this->call('module:migrate', ['module' => 'Media', '--no-interaction' => '']);
 
         $this->info('Application migrated!');
-    }
-
-    /**
-     *
-     */
-    private function publishConfigurations()
-    {
-        $this->call('publish:config', ['package' => 'dimsav/laravel-translatable']);
-        $this->call('publish:config', ['package' => 'mcamara/laravel-localization']);
-        $this->call('publish:config', ['package' => 'pingpong/modules']);
-        $this->call('publish:config', ['package' => 'mpedrera/themify']);
-        $this->adaptThemifyConfiguration();
-    }
-
-    /**
-     * Configure the mpedrera/themify configuration
-     * @throws \Illuminate\Filesystem\FileNotFoundException
-     */
-    private function adaptThemifyConfiguration()
-    {
-        $themifyConfig = $this->finder->get('config/packages/mpedrera/themify/config.php');
-        $themifyConfig = str_replace('app_path()', 'base_path()', $themifyConfig);
-        $this->finder->put('config/packages/mpedrera/themify/config.php', $themifyConfig);
     }
 
     /**
@@ -220,9 +209,9 @@ class InstallCommand extends Command
      */
     private function publishAssets()
     {
-        $this->call('module:publish', ['module' => 'Core']);
-        $this->call('module:publish', ['module' => 'Media']);
-        $this->call('module:publish', ['module' => 'Menu']);
+        $this->call('module:publish', ['module' => 'Core', '--no-interaction' => '']);
+        $this->call('module:publish', ['module' => 'Media', '--no-interaction' => '']);
+        $this->call('module:publish', ['module' => 'Menu', '--no-interaction' => '']);
     }
 
     /**
@@ -230,10 +219,18 @@ class InstallCommand extends Command
      */
     private function configureDatabase()
     {
-        // Ask for credentials
-        $databaseName = $this->ask('Enter your database name');
-        $databaseUsername = $this->ask('Enter your database username');
-        $databasePassword = $this->secret('Enter your database password');
+        do {
+            $databaseName = $this->ask('Enter your database name');
+            if ($databaseName == '') $this->error('Database name is required');
+        } while(!$databaseName);
+        do {
+            $databaseUsername = $this->ask('Enter your database username');
+            if ($databaseUsername == '') $this->error('Database username is required');
+        } while(!$databaseUsername);
+        do {
+            $databasePassword = $this->secret('Enter your database password');
+            if ($databasePassword == '') $this->error('Database password is required');
+        } while(!$databasePassword);
 
         $this->setLaravelConfiguration($databaseName, $databaseUsername, $databasePassword);
         $this->configureEnvironmentFile($databaseName, $databaseUsername, $databasePassword);
@@ -331,7 +328,7 @@ class InstallCommand extends Command
         $path = "config/packages/cartalyst/{$driver}/config.php";
 
         $config = $this->finder->get($path);
-        $config = str_replace($search, "Modules\\User\\Entities\\{$Driver}User", $config);
+        $config = str_replace($search, "Modules\\User\\Entities\\{$Driver}\\User", $config);
         $this->finder->put($path, $config);
     }
 
@@ -376,7 +373,7 @@ class InstallCommand extends Command
      */
     private function checkIfInstalled()
     {
-        return Schema::hasTable('users');
+        return $this->finder->isFile('.env');
     }
 
 }
