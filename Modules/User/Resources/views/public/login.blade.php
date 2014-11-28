@@ -25,7 +25,7 @@ Login | @parent
         </div>
     </div>
     <div class="footer">
-        <button type="submit" class="btn bg-olive btn-block">Sign me in</button>
+        <button type="submit" class="btn btn-info btn-block">Sign me in</button>
         <p><a href="{{URL::route('reset')}}">I forgot my password</a></p>
         <a href="{{URL::route('register')}}" class="text-center">Register a new membership</a>
     </div>

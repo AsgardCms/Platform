@@ -56,7 +56,7 @@ class RolesController extends BaseUserModuleController
 
         $this->role->create($data);
 
-        Flash::success('Role created');
+        Flash::success(trans('user::messages.role created'));
         return Redirect::route('dashboard.role.index');
     }
 
@@ -69,6 +69,7 @@ class RolesController extends BaseUserModuleController
     public function edit($id)
     {
         if (!$role = $this->role->find($id)) {
+            Flash::error(trans('user::messages.role not found'));
             return Redirect::to('user::admin.roles.index');
         }
 
@@ -88,7 +89,7 @@ class RolesController extends BaseUserModuleController
 
         $this->role->update($id, $data);
 
-        Flash::success('Role updated!');
+        Flash::success(trans('user::messages.role updated'));
         return Redirect::route('dashboard.role.index');
     }
 
@@ -102,7 +103,7 @@ class RolesController extends BaseUserModuleController
     {
         $this->role->delete($id);
 
-        Flash::success('Role deleted!');
+        Flash::success(trans('user::messages.role deleted'));
         return Redirect::route('dashboard.role.index');
     }
 

@@ -77,7 +77,7 @@ class UserController extends BaseUserModuleController
 
         $this->user->createWithRoles($data, $request->roles, true);
 
-        Flash::success('User created.');
+        Flash::success(trans('user::messages.user created'));
         return Redirect::route('dashboard.user.index');
     }
 
@@ -90,7 +90,7 @@ class UserController extends BaseUserModuleController
     public function edit($id)
     {
         if (!$user = $this->user->find($id)) {
-            Flash::error('User not found');
+            Flash::error(trans('user::messages.user not found'));
             return Redirect::route('dashboard.user.index');
         }
         $roles = $this->role->all();
@@ -111,7 +111,7 @@ class UserController extends BaseUserModuleController
 
         $this->user->updateAndSyncRoles($id, $data, $request->roles);
 
-        Flash::success('User updated.');
+        Flash::success(trans('user::messages.user updated'));
         return Redirect::route('dashboard.user.index');
     }
 
@@ -125,7 +125,7 @@ class UserController extends BaseUserModuleController
     {
         $this->user->delete($id);
 
-        Flash::success('User deleted');
+        Flash::success(trans('user::messages.user deleted'));
         return Redirect::route('dashboard.user.index');
     }
 

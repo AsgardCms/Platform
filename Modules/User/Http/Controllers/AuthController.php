@@ -41,7 +41,7 @@ class AuthController
 
         $error = $this->auth->login($credentials, $remember);
         if (!$error) {
-            Flash::success('Successfully logged in.');
+            Flash::success(trans('user::messages.successfully logged in'));
             return Redirect::intended('/');
         }
 
@@ -58,7 +58,7 @@ class AuthController
     {
         $this->execute('Modules\User\Commands\RegisterNewUserCommand', $request->all());
 
-        Flash::success('Account created. Please check your email to activate your account.');
+        Flash::success(trans('user::messages.account created check email for activation'));
 
         return Redirect::route('register');
     }
@@ -73,10 +73,10 @@ class AuthController
     public function getActivate($userId, $code)
     {
         if ($this->auth->activate($userId, $code)) {
-            Flash::success('Account activated. You can now login.');
+            Flash::success(trans('user::messages.account activated you can now login'));
             return Redirect::route('login');
         }
-        Flash::error('There was an error with the activation.');
+        Flash::error(lang('user::messages.there was an error with the activation'));
         return Redirect::route('register');
     }
 
@@ -90,13 +90,12 @@ class AuthController
         try {
             $this->execute('Modules\User\Commands\BeginResetProcessCommand', $request->all());
         } catch (UserNotFoundException $e) {
-            Flash::error('No user with that email address belongs in our system.');
+            Flash::error(trans('user::messages.no user found'));
 
             return Redirect::back()->withInput();
         }
 
-        Flash::success('Check your email to reset your password.');
-
+        Flash::success(trans('user::messages.check email to reset password'));
         return Redirect::route('reset');
     }
 
@@ -113,14 +112,14 @@ class AuthController
                 array_merge($request->all(), ['userId' => $userId, 'code' => $code])
             );
         } catch (UserNotFoundException $e) {
-            Flash::error('The user no longer exists.');
+            Flash::error(trans('user::messages.user no longer exists'));
             return Redirect::back()->withInput();
         } catch (InvalidOrExpiredResetCode $e) {
-            Flash::error('Invalid or expired reset code.');
+            Flash::error(trans('user::messages.invalid reset code'));
             return Redirect::back()->withInput();
         }
 
-        Flash::success('Password has been reset. You can now login with your new password.');
+        Flash::success(trans('user::messages.password reset'));
         return Redirect::route('login');
     }
 }

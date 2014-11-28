@@ -100,19 +100,24 @@
 @stop
 
 @section('scripts')
+<?php $locale = App::getLocale(); ?>
 <script type="text/javascript">
     $(function () {
         $('.data-table').dataTable({
-            "bPaginate": true,
-            "bLengthChange": true,
-            "bFilter": true,
-            "bSort": true,
-            "bInfo": true,
-            "bAutoWidth": true,
-            "aoColumns": [
+            "paginate": true,
+            "lengthChange": true,
+            "filter": true,
+            "sort": true,
+            "info": true,
+            "autoWidth": true,
+            "order": [[ 0, "desc" ]],
+            "language": {
+                "url": '<?php echo Module::asset("core:js/vendor/datatables/{$locale}.json") ?>'
+            },
+            "columns": [
                 null,
                 null,
-                { "bSortable": false }
+                { "sortable": false }
             ]
         });
     });
