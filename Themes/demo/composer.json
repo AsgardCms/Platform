@@ -1,8 +1,10 @@
 {
-  "name": "asgard/demo-theme",
+  "name": "asgardcms/demo-theme",
   "type": "asgard-theme",
-  "description": "Testing asgard theme",
-  "keywords": [],
+  "description": "An Asgard CMS demo theme",
+  "keywords": [
+    "asgard-cms"
+  ],
   "license": "MIT",
   "authors": [
     {

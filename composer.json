@@ -34,7 +34,7 @@
     "baum/baum": "~1.0",
     "mpedrera/themify": "dev-laravel5",
     "cartalyst/sentry": "~2.1",
-    "asgard/demo-theme": "dev-master"
+    "asgardcms/demo-theme": "dev-master"
   },
   "require-dev": {
     "phpunit/phpunit": "~4.0"

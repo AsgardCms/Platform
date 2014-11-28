@@ -4,20 +4,20 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "03c1071f897c045cf97a323cd68d27c5",
+    "hash": "da917a75713b71eb41c39de75aad9415",
     "packages": [
         {
-            "name": "asgard/demo-theme",
+            "name": "asgardcms/demo-theme",
             "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "https://github.com/nWidart/demo-theme.git",
-                "reference": "fa50fb9141714f36186b72ffdf5d3af802a0240b"
+                "reference": "79d6633b17a859baaa07bdc3b237332372bc1a7e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nWidart/demo-theme/zipball/fa50fb9141714f36186b72ffdf5d3af802a0240b",
-                "reference": "fa50fb9141714f36186b72ffdf5d3af802a0240b",
+                "url": "https://api.github.com/repos/nWidart/demo-theme/zipball/79d6633b17a859baaa07bdc3b237332372bc1a7e",
+                "reference": "79d6633b17a859baaa07bdc3b237332372bc1a7e",
                 "shasum": ""
             },
             "require": {
@@ -36,8 +36,11 @@
                     "role": "Developer"
                 }
             ],
-            "description": "Testing asgard theme",
-            "time": "2014-11-28 09:35:27"
+            "description": "An Asgard CMS demo theme",
+            "keywords": [
+                "asgard-cms"
+            ],
+            "time": "2014-11-28 16:06:08"
         },
         {
             "name": "baum/baum",
@@ -3612,7 +3615,7 @@
         "mcamara/laravel-localization": 20,
         "dimsav/laravel-translatable": 20,
         "mpedrera/themify": 20,
-        "asgard/demo-theme": 20
+        "asgardcms/demo-theme": 20
     },
     "prefer-stable": false,
     "platform": [],
