@@ -4,6 +4,7 @@ use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Routing\Router;
 use Illuminate\Support\ServiceProvider;
 use Modules\Core\Console\InstallCommand;
+use Modules\Core\Console\PublishModuleAssetsCommand;
 use Modules\Core\Console\PublishThemeAssetsCommand;
 use Modules\Core\Foundation\Theme\ThemeManager;
 use Modules\Core\Services\Composer;
@@ -83,10 +84,12 @@ class CoreServiceProvider extends ServiceProvider
     {
         $this->registerInstallCommand();
         $this->registerThemeCommand();
+        $this->registerPublishModuleAssetsCommand();
 
         $this->commands([
             'command.asgard.install',
             'command.asgard.publish.theme',
+            'command.asgard.publish.module.assets',
         ]);
     }
 
@@ -108,6 +111,13 @@ class CoreServiceProvider extends ServiceProvider
     {
         $this->app->bindShared('command.asgard.publish.theme', function($app) {
             return new PublishThemeAssetsCommand(new ThemeManager($app, $app['config']->get('themify::themes_path')));
+        });
+    }
+
+    private function registerPublishModuleAssetsCommand()
+    {
+        $this->app->bindShared('command.asgard.publish.module.assets', function() {
+            return new PublishModuleAssetsCommand;
         });
     }
 
