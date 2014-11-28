@@ -35,7 +35,7 @@ class MenuItemController
     {
         $this->menuItem->create($this->addMenuId($menu, $request));
 
-        Flash::success('Menu item created!');
+        Flash::success(trans('menu::messages.menuitem created'));
         return $this->redirector->route('dashboard.menu.edit', [$menu->id]);
     }
 
@@ -48,7 +48,7 @@ class MenuItemController
     {
         $this->menuItem->update($menuItem, $this->addMenuId($menu, $request));
 
-        Flash::success('Menu item updated!');
+        Flash::success(trans('menu::messages.menuitem updated'));
         return $this->redirector->route('dashboard.menu.edit', [$menu->id]);
     }
 
