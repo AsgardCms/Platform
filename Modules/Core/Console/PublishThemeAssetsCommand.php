@@ -39,8 +39,8 @@ class PublishThemeAssetsCommand extends Command
 
     protected function getArguments()
     {
-        return array(
-            array('theme', InputArgument::REQUIRED, 'The theme name')
-        );
+        return [
+            ['theme', InputArgument::REQUIRED, 'The theme name']
+        ];
     }
 }
