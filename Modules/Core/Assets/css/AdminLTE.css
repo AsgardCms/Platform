@@ -2255,7 +2255,7 @@ Component: timeline
   margin-top: 30px;
   text-align: center;
 }
-/* 
+/*
     Page: register and login
 */
 .form-box {
@@ -2275,7 +2275,7 @@ Component: timeline
   border-top-right-radius: 4px;
   border-bottom-right-radius: 0;
   border-bottom-left-radius: 0;
-  background: #3d9970;
+  background: #00c0ef;
   box-shadow: inset 0px -3px 0px rgba(0, 0, 0, 0.2);
   padding: 20px 10px;
   text-align: center;
