@@ -84,7 +84,7 @@
                     <h4 class="modal-title" id="myModalLabel">{{ trans('core::core.modal.title') }}</h4>
                 </div>
                 <div class="modal-body">
-                    {{ trans('user::users.modal.confirmation-message') }}
+                    {{ trans('core::core.modal.confirmation-message') }}
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">{{ trans('core::core.button.cancel') }}</button>
@@ -100,19 +100,24 @@
 @stop
 
 @section('scripts')
+<?php $locale = App::getLocale(); ?>
 <script type="text/javascript">
     $(function () {
         $('.data-table').dataTable({
-            "bPaginate": true,
-            "bLengthChange": true,
-            "bFilter": true,
-            "bSort": true,
-            "bInfo": true,
-            "bAutoWidth": true,
-            "aoColumns": [
+            "paginate": true,
+            "lengthChange": true,
+            "filter": true,
+            "sort": true,
+            "info": true,
+            "autoWidth": true,
+            "order": [[ 0, "desc" ]],
+            "language": {
+                "url": '<?php echo Module::asset("core:js/vendor/datatables/{$locale}.json") ?>'
+            },
+            "columns": [
                 null,
                 null,
-                { "bSortable": false }
+                { "sortable": false }
             ]
         });
     });

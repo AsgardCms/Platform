@@ -1,5 +1,6 @@
 <?php namespace Modules\User\Entities\Sentry;
 
+use Cartalyst\Sentry\Facades\Laravel\Sentry;
 use Cartalyst\Sentry\Users\Eloquent\User as SentryModel;
 use Laracasts\Presenter\PresentableTrait;
 use Modules\User\Entities\UserInterface;
@@ -30,5 +31,8 @@ class User extends SentryModel implements UserInterface
      */
     public function hasRole($roleId)
     {
+        $role = Sentry::findGroupById($roleId);
+
+        return $this->inGroup($role);
     }
 }

@@ -74,12 +74,28 @@ class SentryUserRepository implements UserRepository
     public function updateAndSyncRoles($userId, $data, $roles)
     {
         $user = Sentry::findUserById($userId);
-        $user = $user->update($data);
-        $user->save();
+        $user->update($data);
+
         if (!empty($roles)) {
-            $adminGroup = Sentry::findGroupByName($roles);
-            $user->removeGroup();
-            $user->addGroup($adminGroup);
+            // Get the user roles
+            $userRoles = $user->groups()->get()->toArray();
+            $cleanedRoles = [];
+            foreach ($userRoles as $role) {
+                $cleanedRoles[$role['id']] = $role;
+            }
+            // Set the new roles
+            foreach ($roles as $roleId) {
+                if (isset($cleanedRoles[$roleId])) {
+                    unset($cleanedRoles[$roleId]);
+                }
+                $group = Sentry::findGroupById($roleId);
+                $user->addGroup($group);
+            }
+            // Unset the unchecked roles
+            foreach ($cleanedRoles as $roleId => $role) {
+                $group = Sentry::findGroupById($roleId);
+                $user->removeGroup($group);
+            }
         }
     }
 

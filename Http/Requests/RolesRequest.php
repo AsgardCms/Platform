@@ -8,7 +8,6 @@ class RolesRequest extends FormRequest
     {
         return [
             'name' => 'required',
-            'slug' => 'required',
         ];
     }
 
