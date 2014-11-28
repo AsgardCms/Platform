@@ -13,9 +13,9 @@ abstract class BasePublicController
      */
     private $setting;
 
-    public function __construct(Setting $setting)
+    public function __construct()
     {
-        $this->setting = $setting;
+        $this->setting = app('setting.settings');
         $this->theme = $this->setting->get('core::template');
     }
 }
