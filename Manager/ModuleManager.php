@@ -1,6 +1,7 @@
 <?php namespace Modules\Workshop\Manager;
 
 use Illuminate\Config\Repository as Config;
+use Pingpong\Modules\Module;
 
 class ModuleManager
 {
@@ -60,7 +61,7 @@ class ModuleManager
     {
         $enabledModules = $this->module->enabled();
 
-        $enabledModules = array_map(function($module) {
+        $enabledModules = array_map(function(Module $module) {
             return $module->getName();
         }, $enabledModules);
 
