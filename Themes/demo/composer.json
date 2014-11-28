@@ -1,0 +1,19 @@
+{
+  "name": "asgard/demo-theme",
+  "type": "asgard-theme",
+  "description": "Testing asgard theme",
+  "keywords": [],
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Nicolas Widart",
+      "email": "info@asgardcms.com",
+      "role": "Developer"
+    }
+  ],
+  "require": {
+    "php": ">=5.4",
+    "composer/installers": "dev-master"
+  },
+  "minimum-stability": "dev"
+}
