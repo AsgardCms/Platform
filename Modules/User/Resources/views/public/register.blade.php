@@ -25,7 +25,7 @@ Register | @parent
         </div>
     </div>
     <div class="footer">
-        <button type="submit" class="btn bg-olive btn-block">Sign me up</button>
+        <button type="submit" class="btn btn-info btn-block">Sign me up</button>
         <a href="{{ URL::route('login') }}" class="text-center">I already have a membership</a>
     </div>
 {!! Form::close() !!}
