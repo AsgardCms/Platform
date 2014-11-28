@@ -5,6 +5,7 @@ use Illuminate\Routing\Router;
 use Illuminate\Support\ServiceProvider;
 use Modules\Core\Console\InstallCommand;
 use Modules\Core\Console\PublishThemeAssetsCommand;
+use Modules\Core\Foundation\Theme\ThemeManager;
 use Modules\Core\Services\Composer;
 use Modules\Menu\Entities\Menuitem;
 use Modules\Menu\Repositories\Eloquent\EloquentMenuItemRepository;
@@ -45,6 +46,7 @@ class CoreServiceProvider extends ServiceProvider
         $this->registerMenuRoutes();
         $this->registerFilters($this->app['router']);
         $this->registerCommands();
+        $this->registerServices();
     }
 
     /**
@@ -104,8 +106,8 @@ class CoreServiceProvider extends ServiceProvider
 
     private function registerThemeCommand()
     {
-        $this->app->bindShared('command.asgard.publish.theme', function() {
-            return new PublishThemeAssetsCommand;
+        $this->app->bindShared('command.asgard.publish.theme', function($app) {
+            return new PublishThemeAssetsCommand(new ThemeManager($app, $app['config']->get('themify::themes_path')));
         });
     }
 
@@ -119,6 +121,14 @@ class CoreServiceProvider extends ServiceProvider
         );
         $this->app->singleton('Asgard.routes', function (Application $app) {
             return $app->make('Modules\Menu\Repositories\MenuItemRepository')->getForRoutes();
+        });
+    }
+
+    private function registerServices()
+    {
+        $this->app->bindShared('asgard.themes', function ($app) {
+            $path = $app['config']->get('themify::themes_path');
+            return new ThemeManager($app, $path);
         });
     }
 }
