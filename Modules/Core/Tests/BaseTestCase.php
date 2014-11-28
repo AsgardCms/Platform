@@ -4,6 +4,13 @@ use TestCase;
 
 abstract class BaseTestCase extends TestCase
 {
+    protected $app;
+
+    public function setUp()
+    {
+        parent::setUp();
+    }
+
     protected function checkResponseIsOkAndContains($request, $filter)
     {
         $crawler = $this->client->request($request[0], $request[1]);
