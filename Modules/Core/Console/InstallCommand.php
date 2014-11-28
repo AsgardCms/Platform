@@ -132,10 +132,25 @@ class InstallCommand extends Command
     {
         $this->line('Creating an Admin user account...');
 
-        $firstname = $this->ask('Enter your first name');
-        $lastname = $this->ask('Enter your last name');
-        $email = $this->ask('Enter your email address');
-        $password = $this->secret('Enter a password');
+        do {
+            $firstname = $this->ask('Enter your first name');
+            if ($firstname == '') $this->error('First name is required');
+        } while(!$firstname);
+
+        do {
+            $lastname = $this->ask('Enter your last name');
+            if ($lastname == '') $this->error('Last name is required');
+        } while(!$lastname);
+
+        do {
+            $email = $this->ask('Enter your email address');
+            if ($email == '') $this->error('Email is required');
+        } while(!$email);
+
+        do {
+            $password = $this->secret('Enter a password');
+            if ($password == '') $this->error('Password is required');
+        } while(!$password);
 
         $userInfo = [
             'first_name' => $firstname,
@@ -204,10 +219,18 @@ class InstallCommand extends Command
      */
     private function configureDatabase()
     {
-        // Ask for credentials
-        $databaseName = $this->ask('Enter your database name');
-        $databaseUsername = $this->ask('Enter your database username');
-        $databasePassword = $this->secret('Enter your database password');
+        do {
+            $databaseName = $this->ask('Enter your database name');
+            if ($databaseName == '') $this->error('Database name is required');
+        } while(!$databaseName);
+        do {
+            $databaseUsername = $this->ask('Enter your database username');
+            if ($databaseUsername == '') $this->error('Database username is required');
+        } while(!$databaseUsername);
+        do {
+            $databasePassword = $this->secret('Enter your database password');
+            if ($databasePassword == '') $this->error('Database password is required');
+        } while(!$databasePassword);
 
         $this->setLaravelConfiguration($databaseName, $databaseUsername, $databasePassword);
         $this->configureEnvironmentFile($databaseName, $databaseUsername, $databasePassword);
