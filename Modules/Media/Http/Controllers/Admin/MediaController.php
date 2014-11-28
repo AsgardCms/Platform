@@ -95,7 +95,7 @@ class MediaController extends AdminBaseController
     {
         $this->file->update($file, $request->all());
 
-        Flash::success('File updated');
+        Flash::success(trans('media::messages.file updated'));
         return Redirect::route('dashboard.media.index');
     }
 
@@ -111,7 +111,7 @@ class MediaController extends AdminBaseController
         $this->imagy->deleteAllFor($file);
         $this->file->destroy($file);
 
-        Flash::success('File deleted');
+        Flash::success(trans('media::messages.file deleted'));
         return Redirect::route('dashboard.media.index');
     }
 }
