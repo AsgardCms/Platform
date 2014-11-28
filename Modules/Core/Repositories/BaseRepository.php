@@ -39,4 +39,18 @@ interface BaseRepository
      * @return mixed
      */
     public function destroy($model);
+
+    /**
+     * Return resources translated in the given language
+     * @param $lang
+     * @return object
+     */
+    public function allTranslatedIn($lang);
+
+    /**
+     * Find a resource by the given slug
+     * @param int $slug
+     * @return object
+     */
+    public function findBySlug($slug);
 }
