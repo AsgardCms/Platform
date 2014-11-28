@@ -33,7 +33,8 @@
     "intervention/image": "~2.0",
     "filp/whoops": "~1.0",
     "baum/baum": "~1.0",
-    "cartalyst/sentry": "~2.1"
+    "cartalyst/sentry": "~2.1",
+    "asgard/demo-theme": "dev-master"
   },
   "require-dev": {
     "phpunit/phpunit": "~4.0"

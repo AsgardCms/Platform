@@ -4,8 +4,41 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "7230a44f32f5371f9484176c30dcddc3",
+    "hash": "c699e052db18532dbefd24af27eb154d",
     "packages": [
+        {
+            "name": "asgard/demo-theme",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/nWidart/demo-theme.git",
+                "reference": "fa50fb9141714f36186b72ffdf5d3af802a0240b"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/nWidart/demo-theme/zipball/fa50fb9141714f36186b72ffdf5d3af802a0240b",
+                "reference": "fa50fb9141714f36186b72ffdf5d3af802a0240b",
+                "shasum": ""
+            },
+            "require": {
+                "composer/installers": "dev-master",
+                "php": ">=5.4"
+            },
+            "type": "asgard-theme",
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Nicolas Widart",
+                    "email": "info@asgardcms.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Testing asgard theme",
+            "time": "2014-11-28 09:35:27"
+        },
         {
             "name": "baum/baum",
             "version": "1.0.13",
@@ -208,6 +241,99 @@
                 "preload"
             ],
             "time": "2014-03-12 00:05:31"
+        },
+        {
+            "name": "composer/installers",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/composer/installers.git",
+                "reference": "22208fc1360014587cfbc95d78d7aab8f25a6889"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/composer/installers/zipball/22208fc1360014587cfbc95d78d7aab8f25a6889",
+                "reference": "22208fc1360014587cfbc95d78d7aab8f25a6889",
+                "shasum": ""
+            },
+            "replace": {
+                "roundcube/plugin-installer": "*",
+                "shama/baton": "*"
+            },
+            "require-dev": {
+                "composer/composer": "1.0.*@dev",
+                "phpunit/phpunit": "4.1.*"
+            },
+            "type": "composer-installer",
+            "extra": {
+                "class": "Composer\\Installers\\Installer",
+                "branch-alias": {
+                    "dev-master": "1.0-dev"
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "Composer\\Installers\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Kyle Robinson Young",
+                    "email": "kyle@dontkry.com",
+                    "homepage": "https://github.com/shama"
+                }
+            ],
+            "description": "A multi-framework Composer library installer",
+            "homepage": "http://composer.github.com/installers/",
+            "keywords": [
+                "Craft",
+                "Dolibarr",
+                "Hurad",
+                "MODX Evo",
+                "OXID",
+                "Thelia",
+                "WolfCMS",
+                "agl",
+                "annotatecms",
+                "bitrix",
+                "cakephp",
+                "chef",
+                "codeigniter",
+                "concrete5",
+                "croogo",
+                "dokuwiki",
+                "drupal",
+                "elgg",
+                "fuelphp",
+                "grav",
+                "installer",
+                "joomla",
+                "kohana",
+                "laravel",
+                "lithium",
+                "magento",
+                "mako",
+                "mediawiki",
+                "modulework",
+                "moodle",
+                "phpbb",
+                "piwik",
+                "ppi",
+                "puppet",
+                "roundcube",
+                "shopware",
+                "silverstripe",
+                "symfony",
+                "typo3",
+                "wordpress",
+                "zend",
+                "zikula"
+            ],
+            "time": "2014-11-27 19:24:51"
         },
         {
             "name": "d11wtq/boris",
@@ -3482,7 +3608,8 @@
         "laravel/framework": 20,
         "laracasts/commander": 20,
         "mcamara/laravel-localization": 20,
-        "dimsav/laravel-translatable": 20
+        "dimsav/laravel-translatable": 20,
+        "asgard/demo-theme": 20
     },
     "prefer-stable": false,
     "platform": [],
