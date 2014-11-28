@@ -29,10 +29,10 @@
     "guzzlehttp/guzzle": "~5.0",
     "mcamara/laravel-localization": "dev-Laravel5Support",
     "dimsav/laravel-translatable": "~5.0@dev",
-    "mpedrera/themify": "*",
     "intervention/image": "~2.0",
     "filp/whoops": "~1.0",
     "baum/baum": "~1.0",
+    "mpedrera/themify": "dev-laravel5",
     "cartalyst/sentry": "~2.1",
     "asgard/demo-theme": "dev-master"
   },
@@ -47,6 +47,10 @@
     {
       "type": "vcs",
       "url": "https://github.com/nWidart/laravel-localization"
+    },
+    {
+      "type": "vcs",
+      "url": "https://github.com/nWidart/themify"
     }
   ],
   "autoload": {

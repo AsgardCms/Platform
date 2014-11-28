@@ -4,7 +4,7 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "c699e052db18532dbefd24af27eb154d",
+    "hash": "03c1071f897c045cf97a323cd68d27c5",
     "packages": [
         {
             "name": "asgard/demo-theme",
@@ -1455,16 +1455,16 @@
         },
         {
             "name": "mpedrera/themify",
-            "version": "dev-master",
+            "version": "dev-laravel5",
             "source": {
                 "type": "git",
-                "url": "https://github.com/mpedrera/themify.git",
-                "reference": "6b019493da34b8fb3e26238e23a9cc788024924e"
+                "url": "https://github.com/nWidart/themify.git",
+                "reference": "fd03ad3fd3520a449f70f3152b525342e0751089"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/mpedrera/themify/zipball/6b019493da34b8fb3e26238e23a9cc788024924e",
-                "reference": "6b019493da34b8fb3e26238e23a9cc788024924e",
+                "url": "https://api.github.com/repos/nWidart/themify/zipball/fd03ad3fd3520a449f70f3152b525342e0751089",
+                "reference": "fd03ad3fd3520a449f70f3152b525342e0751089",
                 "shasum": ""
             },
             "require": {
@@ -1484,7 +1484,6 @@
                     "src/helpers.php"
                 ]
             },
-            "notification-url": "https://packagist.org/downloads/",
             "authors": [
                 {
                     "name": "Manuel Pedrera Jiménez",
@@ -1492,7 +1491,10 @@
                 }
             ],
             "description": "Add basic theme functionality to a Laravel 4 application.",
-            "time": "2013-12-24 04:26:01"
+            "support": {
+                "source": "https://github.com/nWidart/themify/tree/laravel5"
+            },
+            "time": "2014-11-28 14:51:39"
         },
         {
             "name": "mtdowling/cron-expression",
@@ -3609,6 +3611,7 @@
         "laracasts/commander": 20,
         "mcamara/laravel-localization": 20,
         "dimsav/laravel-translatable": 20,
+        "mpedrera/themify": 20,
         "asgard/demo-theme": 20
     },
     "prefer-stable": false,
