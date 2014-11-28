@@ -2,25 +2,22 @@
 
 use Illuminate\Routing\Controller;
 
-class HomeController extends Controller {
+class HomeController extends Controller
+{
 
-	/*
-	|--------------------------------------------------------------------------
-	| Home Controller
-	|--------------------------------------------------------------------------
-	|
-	| Controller methods are called when a request enters the application
-	| with their assigned URI. The URI a method responds to may be set
-	| via simple annotations. Here is an example to get you started!
-	|
-	*/
+    public $theme;
 
-	/**
-	 * @Get("/")
-	 */
-	public function index()
-	{
-		return view('hello');
-	}
+    public function __construct()
+    {
+        $this->theme = 'demo';
+    }
+
+    /**
+     * @Get("/")
+     */
+    public function index()
+    {
+        return view('index');
+    }
 
 }
