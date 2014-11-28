@@ -129,6 +129,8 @@ return [
 		'Illuminate\Validation\ValidationServiceProvider',
 		'Illuminate\View\ViewServiceProvider',
 		/* Packages */
+		'Mpedrera\Themify\ThemifyServiceProvider',
+		'Baum\BaumServiceProvider',
 		'Illuminate\Html\HtmlServiceProvider',
 		'Pingpong\Modules\ModulesServiceProvider',
 		#'Cartalyst\Sentinel\Laravel\SentinelServiceProvider',
@@ -136,6 +138,7 @@ return [
 		'Laracasts\Commander\CommanderServiceProvider',
 		'Laracasts\Flash\FlashServiceProvider',
 		'Mcamara\LaravelLocalization\LaravelLocalizationServiceProvider',
+		'Intervention\Image\ImageServiceProvider',
 		'Dimsav\Translatable\TranslatableServiceProvider',
 		/* Modules */
 		'Modules\Core\Providers\CoreServiceProvider',
