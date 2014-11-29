@@ -378,12 +378,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/dimsav/laravel-translatable.git",
-                "reference": "7bee5193804156f05915b13ea9761604df982905"
+                "reference": "197cd80829c7617fd69a7ac97ae5e239af79ea7f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/dimsav/laravel-translatable/zipball/7bee5193804156f05915b13ea9761604df982905",
-                "reference": "7bee5193804156f05915b13ea9761604df982905",
+                "url": "https://api.github.com/repos/dimsav/laravel-translatable/zipball/197cd80829c7617fd69a7ac97ae5e239af79ea7f",
+                "reference": "197cd80829c7617fd69a7ac97ae5e239af79ea7f",
                 "shasum": ""
             },
             "require": {
@@ -426,7 +426,7 @@
                 "laravel",
                 "translation"
             ],
-            "time": "2014-11-26 09:05:17"
+            "time": "2014-11-28 20:45:31"
         },
         {
             "name": "doctrine/annotations",
