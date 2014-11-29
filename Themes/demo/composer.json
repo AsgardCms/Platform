@@ -1,7 +1,7 @@
 {
   "name": "asgardcms/demo-theme",
   "type": "asgard-theme",
-  "description": "An Asgard CMS demo theme",
+  "description": "An AsgardCMS demo theme",
   "keywords": [
     "asgard-cms"
   ],
@@ -15,7 +15,7 @@
   ],
   "require": {
     "php": ">=5.4",
-    "composer/installers": "dev-master"
+    "composer/installers": "~1.0"
   },
   "minimum-stability": "dev"
 }

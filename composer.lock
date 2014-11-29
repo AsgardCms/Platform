@@ -12,16 +12,16 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/nWidart/demo-theme.git",
-                "reference": "79d6633b17a859baaa07bdc3b237332372bc1a7e"
+                "reference": "a4b4c3b9d806b8863026b2ba8f9e28a61b1a3731"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nWidart/demo-theme/zipball/79d6633b17a859baaa07bdc3b237332372bc1a7e",
-                "reference": "79d6633b17a859baaa07bdc3b237332372bc1a7e",
+                "url": "https://api.github.com/repos/nWidart/demo-theme/zipball/a4b4c3b9d806b8863026b2ba8f9e28a61b1a3731",
+                "reference": "a4b4c3b9d806b8863026b2ba8f9e28a61b1a3731",
                 "shasum": ""
             },
             "require": {
-                "composer/installers": "dev-master",
+                "composer/installers": "~1.0",
                 "php": ">=5.4"
             },
             "type": "asgard-theme",
@@ -36,11 +36,11 @@
                     "role": "Developer"
                 }
             ],
-            "description": "An Asgard CMS demo theme",
+            "description": "An AsgardCMS demo theme",
             "keywords": [
                 "asgard-cms"
             ],
-            "time": "2014-11-28 16:06:08"
+            "time": "2014-11-29 17:12:20"
         },
         {
             "name": "baum/baum",
@@ -251,12 +251,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/composer/installers.git",
-                "reference": "22208fc1360014587cfbc95d78d7aab8f25a6889"
+                "reference": "89d77bfbee79e16653f7162c86e602cc188471db"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/composer/installers/zipball/22208fc1360014587cfbc95d78d7aab8f25a6889",
-                "reference": "22208fc1360014587cfbc95d78d7aab8f25a6889",
+                "url": "https://api.github.com/repos/composer/installers/zipball/89d77bfbee79e16653f7162c86e602cc188471db",
+                "reference": "89d77bfbee79e16653f7162c86e602cc188471db",
                 "shasum": ""
             },
             "replace": {
@@ -336,7 +336,7 @@
                 "zend",
                 "zikula"
             ],
-            "time": "2014-11-27 19:24:51"
+            "time": "2014-11-29 01:29:17"
         },
         {
             "name": "d11wtq/boris",
