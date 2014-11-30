@@ -36,7 +36,6 @@ composer create-project asgard/platform your-project-name --prefer-dist --stabil
 
 Run the usual `composer install` to get the dependencies.
 
-**Note: There is an issue with pingpong/modules which loads the routes file. Untill it is fixed, comment out line 193 in file vendor/pingpong/modules/src/pingpong/Module.php**
 
 ## Run the install command
 
