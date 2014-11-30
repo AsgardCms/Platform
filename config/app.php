@@ -209,6 +209,10 @@ return [
 		'Sentry' => 'Cartalyst\Sentry\Facades\Laravel\Sentry',
 		'Flash' => 'Laracasts\Flash\Flash',
 		'LaravelLocalization' => 'Mcamara\LaravelLocalization\Facades\LaravelLocalization',
+		'Themify' => 'Mpedrera\Themify\Facades\Themify',
+		'Image' => 'Intervention\Image\Facades\Image',
+		'Imagy' => 'Modules\Media\Image\Facade\Imagy',
+		'Setting' => 'Modules\Setting\Facades\Settings'
 	],
 
 ];
