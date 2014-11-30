@@ -26,6 +26,13 @@ You have to clone this repository manually, run `composer install` and lastly `p
 
 Please note that the current state of the CMS doesn't have the front-end yet. What you can test though, is the complete backend interface.
 
+#### Feedback, ideas, etc.
+If you have **feedback** to give, **ideas** you would like implemented, by all means share them on the [dedicated uservoice page](http://asgardcms.uservoice.com/). Do not hesitate to share!
+
+For **issues/bugs** your having, you can use the Github Issues to post those. Each module has its own repository on the [AsgardCMS](https://github.com/AsgardCms) organisation, find the one that gives you problems, and sumbit an issue.
+
+Thank you for your participation!
+
 ### Install Platform
 
 ```
