@@ -1,6 +1,6 @@
 <?php namespace Modules\Setting\Support;
 
-use Illuminate\Contracts\Cache\Repository;
+use Illuminate\Cache\CacheManager;
 use Modules\Core\Contracts\Setting;
 use Modules\Setting\Repositories\SettingRepository;
 
@@ -17,9 +17,9 @@ class Settings implements Setting
 
     /**
      * @param SettingRepository $setting
-     * @param Repository $cache
+     * @param CacheManager $cache
      */
-    public function __construct(SettingRepository $setting, Repository $cache)
+    public function __construct(SettingRepository $setting, CacheManager $cache)
     {
         $this->setting = $setting;
         $this->cache = $cache;
