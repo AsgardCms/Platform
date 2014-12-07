@@ -1,0 +1,27 @@
+{
+  "name": "asgardcms/setting-module",
+  "type": "asgard-module",
+  "description": "Setting module for AsgardCMS. Handles all the site settings.",
+  "keywords": [
+    "asgardcms",
+    "settings"
+  ],
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Nicolas Widart",
+      "email": "info@asgardcms.com",
+      "role": "Developer"
+    }
+  ],
+  "support": {
+    "email": "support@asgardcms.com",
+    "issues": "https://github.com/AsgardCms/Setting/issues",
+    "source": "https://github.com/AsgardCms/Setting"
+  },
+  "require": {
+    "php": ">=5.4",
+    "composer/installers": "~1.0"
+  },
+  "minimum-stability": "dev"
+}

@@ -36,19 +36,19 @@ class Settings implements Setting
     {
         if (!$this->cache->has("setting.$name")) {
             $setting = $this->setting->get($name);
-            $this->cache->put("setting.$name", $setting, '3600');
-        }
-        $setting = $this->cache->get("setting.$name");
-
-        if ($setting) {
-            if ($setting->isTranslatable) {
-                return $setting->translate($locale)->value;
+            if ($setting) {
+                if ($setting->isTranslatable) {
+                    $this->cache->put("setting.$name", $setting->translate($locale)->value, '3600');
+                } else {
+                    $this->cache->put("setting.$name", $setting->plainValue, '3600');
+                }
+            } else {
+                $default = is_null($default) ? '' : $default;
+                $this->cache->put("setting.$name", $default, '3600');
             }
-
-            return $setting->plainValue;
         }
 
-        return $default;
+        return $this->cache->get("setting.$name");
     }
 
     /**
