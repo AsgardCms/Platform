@@ -4,27 +4,27 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "da917a75713b71eb41c39de75aad9415",
+    "hash": "181f2a691903d8fca8e466af37602f90",
     "packages": [
         {
-            "name": "asgardcms/demo-theme",
+            "name": "asgardcms/page-module",
             "version": "dev-master",
             "source": {
                 "type": "git",
-                "url": "https://github.com/nWidart/demo-theme.git",
-                "reference": "a4b4c3b9d806b8863026b2ba8f9e28a61b1a3731"
+                "url": "https://github.com/AsgardCms/Page.git",
+                "reference": "620e784e2fc25948d11cbca1938d079f0b5d6d66"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nWidart/demo-theme/zipball/a4b4c3b9d806b8863026b2ba8f9e28a61b1a3731",
-                "reference": "a4b4c3b9d806b8863026b2ba8f9e28a61b1a3731",
+                "url": "https://api.github.com/repos/AsgardCms/Page/zipball/620e784e2fc25948d11cbca1938d079f0b5d6d66",
+                "reference": "620e784e2fc25948d11cbca1938d079f0b5d6d66",
                 "shasum": ""
             },
             "require": {
                 "composer/installers": "~1.0",
                 "php": ">=5.4"
             },
-            "type": "asgard-theme",
+            "type": "asgard-module",
             "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
@@ -36,11 +36,12 @@
                     "role": "Developer"
                 }
             ],
-            "description": "An AsgardCMS demo theme",
+            "description": "Page module for AsgardCMS. Page management.",
             "keywords": [
-                "asgard-cms"
+                "asgardcms",
+                "pages"
             ],
-            "time": "2014-11-29 17:12:20"
+            "time": "2014-12-07 19:22:59"
         },
         {
             "name": "baum/baum",
@@ -3615,7 +3616,7 @@
         "mcamara/laravel-localization": 20,
         "dimsav/laravel-translatable": 20,
         "mpedrera/themify": 20,
-        "asgardcms/demo-theme": 20
+        "asgardcms/page-module": 20
     },
     "prefer-stable": false,
     "platform": [],
