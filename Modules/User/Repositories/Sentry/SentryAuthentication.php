@@ -53,8 +53,6 @@ class SentryAuthentication implements Authentication
         {
             return 'User is banned.';
         }
-
-        return 'Invalid login or password.';
     }
 
     /**
