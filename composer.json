@@ -1,0 +1,28 @@
+{
+  "name": "asgardcms/workshop-module",
+  "type": "asgard-module",
+  "description": "Workshop module for AsgardCMS. Handles the activation of modules.",
+  "keywords": [
+    "asgardcms",
+    "workshop",
+    "modules"
+  ],
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Nicolas Widart",
+      "email": "info@asgardcms.com",
+      "role": "Developer"
+    }
+  ],
+  "support": {
+    "email": "support@asgardcms.com",
+    "issues": "https://github.com/AsgardCms/Workshop/issues",
+    "source": "https://github.com/AsgardCms/Workshop"
+  },
+  "require": {
+    "php": ">=5.4",
+    "composer/installers": "~1.0"
+  },
+  "minimum-stability": "dev"
+}
