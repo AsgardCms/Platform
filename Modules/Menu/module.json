@@ -5,6 +5,7 @@
   "keywords": [
   ],
   "active": 1,
+  "priority": 2,
   "providers": [
     "Modules\\Menu\\Providers\\RouteServiceProvider",
     "Modules\\Menu\\Providers\\MenuServiceProvider"

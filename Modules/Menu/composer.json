@@ -1,0 +1,29 @@
+{
+  "name": "asgardcms/menu-module",
+  "type": "asgard-module",
+  "description": "Menu module for AsgardCMS. Handles all the menus.",
+  "keywords": [
+    "asgardcms",
+    "menu",
+    "tree",
+    "nested sets"
+  ],
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Nicolas Widart",
+      "email": "info@asgardcms.com",
+      "role": "Developer"
+    }
+  ],
+  "support": {
+    "email": "support@asgardcms.com",
+    "issues": "https://github.com/AsgardCms/Menu/issues",
+    "source": "https://github.com/AsgardCms/Menu"
+  },
+  "require": {
+    "php": ">=5.4",
+    "composer/installers": "~1.0"
+  },
+  "minimum-stability": "dev"
+}
