@@ -4,8 +4,44 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "181f2a691903d8fca8e466af37602f90",
+    "hash": "e71de4eaba2f5e4b75f1d161cb8351f1",
     "packages": [
+        {
+            "name": "asgardcms/demo-theme",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/nWidart/demo-theme.git",
+                "reference": "92db04b8edb1c543bf26c5cc08ca567d251dc4ba"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/nWidart/demo-theme/zipball/92db04b8edb1c543bf26c5cc08ca567d251dc4ba",
+                "reference": "92db04b8edb1c543bf26c5cc08ca567d251dc4ba",
+                "shasum": ""
+            },
+            "require": {
+                "composer/installers": "~1.0",
+                "php": ">=5.4"
+            },
+            "type": "asgard-theme",
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Nicolas Widart",
+                    "email": "info@asgardcms.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "An AsgardCMS demo theme",
+            "keywords": [
+                "asgard-cms"
+            ],
+            "time": "2014-12-07 19:16:51"
+        },
         {
             "name": "asgardcms/page-module",
             "version": "dev-master",
@@ -3616,7 +3652,8 @@
         "mcamara/laravel-localization": 20,
         "dimsav/laravel-translatable": 20,
         "mpedrera/themify": 20,
-        "asgardcms/page-module": 20
+        "asgardcms/page-module": 20,
+        "asgardcms/demo-theme": 20
     },
     "prefer-stable": false,
     "platform": [],
