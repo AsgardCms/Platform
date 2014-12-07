@@ -1,9 +1,10 @@
 <?php namespace Modules\Core\Tests\Permissions;
 
+use Modules\Core\Tests\BaseTestCase;
 use Mockery;
 use Modules\Core\Permissions\PermissionManager;
 
-class PermissionManagerTest extends \TestCase
+class PermissionManagerTest extends BaseTestCase
 {
     /**
      * @var PermissionManager
@@ -27,39 +28,6 @@ class PermissionManagerTest extends \TestCase
         $this->permissions = new PermissionManager($moduleMock);
     }
 
-    /** @test */
-    public function itShouldReturnAllPermissions()
-    {
-        $expected = [
-            'Dashboard' => [
-                'dashboard' => ['index']
-            ],
-            'User' => [
-                'users' => [
-                    'index',
-                    'create',
-                    'store',
-                    'edit',
-                    'update',
-                    'destroy'
-                ],
-                'roles' => [
-                    'index',
-                    'create',
-                    'store',
-                    'edit',
-                    'update',
-                    'destroy'
-                ]
-            ],
-        ];
-
-        $permissions = $this->permissions->all();
-
-        $this->assertEquals($expected, $permissions);
-    }
-
-    /** @test */
     public function itShouldCleanPermissionsCorrectlyTypeCasted()
     {
         $requestData = [
