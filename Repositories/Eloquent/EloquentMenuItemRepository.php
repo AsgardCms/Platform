@@ -50,7 +50,7 @@ class EloquentMenuItemRepository extends EloquentBaseRepository implements MenuI
 
         $menuitemsArray = [];
         foreach ($menuitems as $menuitem) {
-            $menuitemsArray[$menuitem->module_name][$menuitem->locale] = $menuitem->locale . '/' . $menuitem->uri;
+            $menuitemsArray[$menuitem->module_name][$menuitem->locale] = $menuitem->uri;
         }
 
         return $menuitemsArray;

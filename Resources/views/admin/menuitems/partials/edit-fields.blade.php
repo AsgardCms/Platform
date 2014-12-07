@@ -2,6 +2,11 @@
     <label for="page">{{ trans('menu::menu-items.form.page') }}</label>
     <select class="form-control" name="page_id" id="page">
         <option value=""></option>
+        <?php foreach($pages as $page): ?>
+            <option value="{{ $page->id }}" {{ $menuItem->page_id == $page->id ? 'selected' : '' }}>
+                {{ $page->title }}
+            </option>
+        <?php endforeach; ?>
     </select>
 </div>
 

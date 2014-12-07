@@ -8,6 +8,7 @@ use Modules\Menu\Entities\Menuitem;
 use Modules\Menu\Http\Requests\CreateMenuItemRequest;
 use Modules\Menu\Http\Requests\UpdateMenuItemRequest;
 use Modules\Menu\Repositories\MenuItemRepository;
+use Modules\Page\Repositories\PageRepository;
 
 class MenuItemController
 {
@@ -19,16 +20,23 @@ class MenuItemController
      * @var Redirector
      */
     private $redirector;
+    /**
+     * @var PageRepository
+     */
+    private $page;
 
-    public function __construct(MenuItemRepository $menuItem, Redirector $redirector)
+    public function __construct(MenuItemRepository $menuItem, Redirector $redirector, PageRepository $page)
     {
         $this->menuItem = $menuItem;
         $this->redirector = $redirector;
+        $this->page = $page;
     }
 
     public function create(Menu $menu)
     {
-        return view('menu::admin.menuitems.create', compact('menu'));
+        $pages = $this->page->all();
+
+        return view('menu::admin.menuitems.create', compact('menu', 'pages'));
     }
 
     public function store(Menu $menu, CreateMenuItemRequest $request)
@@ -41,7 +49,9 @@ class MenuItemController
 
     public function edit(Menu $menu, Menuitem $menuItem)
     {
-        return view('menu::admin.menuitems.edit', compact('menu', 'menuItem'));
+        $pages = $this->page->all();
+
+        return view('menu::admin.menuitems.edit', compact('menu', 'menuItem', 'pages'));
     }
 
     public function update(Menu $menu, Menuitem $menuItem, UpdateMenuItemRequest $request)

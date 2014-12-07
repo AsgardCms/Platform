@@ -6,9 +6,10 @@ class UpdateMenuRequest extends FormRequest
 {
     public function rules()
     {
+        $menu = $this->route()->getParameter('menus');
         return [
             'name' => 'required',
-            'primary' => 'unique:menus',
+            'primary' => "unique:menus,primary,{$menu->id}",
         ];
     }
 
