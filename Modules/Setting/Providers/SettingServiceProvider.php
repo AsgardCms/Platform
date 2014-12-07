@@ -34,7 +34,7 @@ class SettingServiceProvider extends ServiceProvider {
 		$this->app->booting(function()
 		{
 			$loader = AliasLoader::getInstance();
-			$loader->alias('Modules\Setting\Facades\Settings', 'Settings');
+			$loader->alias('Settings', 'Modules\Setting\Facades\Settings');
 		});
 	}
 
