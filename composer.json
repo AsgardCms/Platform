@@ -35,7 +35,8 @@
     "mpedrera/themify": "dev-laravel5",
     "cartalyst/sentry": "~2.1",
     "asgardcms/page-module": "dev-master",
-    "asgardcms/demo-theme": "dev-master"
+    "asgardcms/demo-theme": "dev-master",
+    "asgardcms/workshop-module": "dev-master"
   },
   "require-dev": {
     "phpunit/phpunit": "~4.0"
