@@ -39,7 +39,8 @@
     "asgardcms/user-module": "dev-master",
     "asgardcms/setting-module": "dev-master",
     "asgardcms/menu-module": "dev-master",
-    "asgardcms/media-module": "dev-master"
+    "asgardcms/media-module": "dev-master",
+    "asgardcms/dashboard-module": "dev-master"
   },
   "require-dev": {
     "phpunit/phpunit": "~4.0"
