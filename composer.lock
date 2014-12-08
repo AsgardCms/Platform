@@ -4,8 +4,45 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "615c3df0b3e259792f14d945c87d6143",
+    "hash": "8d51eb72a981d10e778e29e52bff6347",
     "packages": [
+        {
+            "name": "asgardcms/dashboard-module",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/AsgardCms/Dashboard.git",
+                "reference": "47503d9fcc29d3a7c72b4beae99b985d83799198"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/AsgardCms/Dashboard/zipball/47503d9fcc29d3a7c72b4beae99b985d83799198",
+                "reference": "47503d9fcc29d3a7c72b4beae99b985d83799198",
+                "shasum": ""
+            },
+            "require": {
+                "composer/installers": "~1.0",
+                "php": ">=5.4"
+            },
+            "type": "asgard-module",
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Nicolas Widart",
+                    "email": "info@asgardcms.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Dashboard module for AsgardCMS. Handles the display of the dashboard.",
+            "keywords": [
+                "asgardcms",
+                "dashboard"
+            ],
+            "time": "2014-11-30 09:49:34"
+        },
         {
             "name": "asgardcms/demo-theme",
             "version": "dev-master",
@@ -3855,7 +3892,8 @@
         "asgardcms/user-module": 20,
         "asgardcms/setting-module": 20,
         "asgardcms/menu-module": 20,
-        "asgardcms/media-module": 20
+        "asgardcms/media-module": 20,
+        "asgardcms/dashboard-module": 20
     },
     "prefer-stable": false,
     "platform": [],
