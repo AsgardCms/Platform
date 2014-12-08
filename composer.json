@@ -41,14 +41,6 @@
     {
       "type": "composer",
       "url": "http://packages.cartalyst.com"
-    },
-    {
-      "type": "vcs",
-      "url": "https://github.com/nWidart/laravel-localization"
-    },
-    {
-      "type": "vcs",
-      "url": "https://github.com/nWidart/themify"
     }
   ],
   "autoload": {

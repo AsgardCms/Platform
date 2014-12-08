@@ -4,7 +4,7 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "e760183ccc540a38b8509f1121b54cb4",
+    "hash": "59f8500890db8914378ec430907cfecd",
     "packages": [
         {
             "name": "asgardcms/core-module",
@@ -12,12 +12,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/AsgardCms/Core.git",
-                "reference": "714d62d95d90fc0bf722d16f11041268b4137631"
+                "reference": "50b2c62eba0f28436ff72bdbbdca51f43bdd7b5d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/AsgardCms/Core/zipball/714d62d95d90fc0bf722d16f11041268b4137631",
-                "reference": "714d62d95d90fc0bf722d16f11041268b4137631",
+                "url": "https://api.github.com/repos/AsgardCms/Core/zipball/50b2c62eba0f28436ff72bdbbdca51f43bdd7b5d",
+                "reference": "50b2c62eba0f28436ff72bdbbdca51f43bdd7b5d",
                 "shasum": ""
             },
             "require": {
@@ -30,7 +30,7 @@
                 "laracasts/presenter": "~0.2",
                 "laravel/framework": "dev-master#ba916851321b9233cb56a0fb1deb41043b7df5fb",
                 "mcamara/laravel-localization": "dev-Laravel5Support",
-                "mpedrera/themify": "*",
+                "mpedrera/themify": "dev-laravel5",
                 "php": ">=5.4"
             },
             "require-dev": {
@@ -53,7 +53,7 @@
                 "asgardcms",
                 "core"
             ],
-            "time": "2014-12-07 20:11:44"
+            "time": "2014-12-08 19:25:01"
         },
         {
             "name": "asgardcms/dashboard-module",
@@ -3931,7 +3931,6 @@
     "minimum-stability": "dev",
     "stability-flags": {
         "laravel/framework": 20,
-        "mpedrera/themify": 20,
         "asgardcms/page-module": 20,
         "asgardcms/demo-theme": 20,
         "asgardcms/workshop-module": 20,
