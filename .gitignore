@@ -5,4 +5,6 @@
 Thumbs.db
 composer.phar
 Themes/
+!Themes/.gitkeep
 Modules/
+!Modules/.gitkeep
