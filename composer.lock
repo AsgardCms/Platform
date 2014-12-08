@@ -4,7 +4,7 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "47895fcaf96c61d32e588de4fb418605",
+    "hash": "56f1a33bc5d434b221907e6664d95772",
     "packages": [
         {
             "name": "asgardcms/demo-theme",
@@ -41,6 +41,46 @@
                 "asgard-cms"
             ],
             "time": "2014-12-07 19:16:51"
+        },
+        {
+            "name": "asgardcms/menu-module",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/AsgardCms/Menu.git",
+                "reference": "295d338f8d29f6f1643333a2c6723a62abea5706"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/AsgardCms/Menu/zipball/295d338f8d29f6f1643333a2c6723a62abea5706",
+                "reference": "295d338f8d29f6f1643333a2c6723a62abea5706",
+                "shasum": ""
+            },
+            "require": {
+                "baum/baum": "~1.0",
+                "composer/installers": "~1.0",
+                "php": ">=5.4"
+            },
+            "type": "asgard-module",
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Nicolas Widart",
+                    "email": "info@asgardcms.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Menu module for AsgardCMS. Handles all the menus.",
+            "keywords": [
+                "asgardcms",
+                "menu",
+                "nested sets",
+                "tree"
+            ],
+            "time": "2014-12-07 19:47:01"
         },
         {
             "name": "asgardcms/page-module",
@@ -3771,7 +3811,8 @@
         "asgardcms/demo-theme": 20,
         "asgardcms/workshop-module": 20,
         "asgardcms/user-module": 20,
-        "asgardcms/setting-module": 20
+        "asgardcms/setting-module": 20,
+        "asgardcms/menu-module": 20
     },
     "prefer-stable": false,
     "platform": [],
