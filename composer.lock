@@ -4,7 +4,7 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "00e6999f37dfff9d00d0b0b636c121e3",
+    "hash": "ce259660a32247623f80e85b594b5b20",
     "packages": [
         {
             "name": "asgardcms/demo-theme",
@@ -78,6 +78,45 @@
                 "pages"
             ],
             "time": "2014-12-07 19:22:59"
+        },
+        {
+            "name": "asgardcms/user-module",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/AsgardCms/User.git",
+                "reference": "1153d096e260723b7abf08be3182f690c361cd02"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/AsgardCms/User/zipball/1153d096e260723b7abf08be3182f690c361cd02",
+                "reference": "1153d096e260723b7abf08be3182f690c361cd02",
+                "shasum": ""
+            },
+            "require": {
+                "composer/installers": "~1.0",
+                "php": ">=5.4"
+            },
+            "type": "asgard-module",
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Nicolas Widart",
+                    "email": "info@asgardcms.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "User module for AsgardCMS. Handles the authentication and authorisation as well as the user management.",
+            "keywords": [
+                "Authentication",
+                "asgardcms",
+                "authorisation",
+                "user"
+            ],
+            "time": "2014-12-01 19:24:27"
         },
         {
             "name": "asgardcms/workshop-module",
@@ -3692,7 +3731,8 @@
         "mpedrera/themify": 20,
         "asgardcms/page-module": 20,
         "asgardcms/demo-theme": 20,
-        "asgardcms/workshop-module": 20
+        "asgardcms/workshop-module": 20,
+        "asgardcms/user-module": 20
     },
     "prefer-stable": false,
     "platform": [],
