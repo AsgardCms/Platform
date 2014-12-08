@@ -4,7 +4,7 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "59f8500890db8914378ec430907cfecd",
+    "hash": "756aeceb31617a13f389194e5fb871d1",
     "packages": [
         {
             "name": "asgardcms/core-module",
@@ -253,16 +253,15 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/AsgardCms/Setting.git",
-                "reference": "9b5c122b67d63f80b6585986c7a30a23130f0e3b"
+                "reference": "ebf6853c39ca068490db74eb7a9f5d2cf453b749"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/AsgardCms/Setting/zipball/9b5c122b67d63f80b6585986c7a30a23130f0e3b",
-                "reference": "9b5c122b67d63f80b6585986c7a30a23130f0e3b",
+                "url": "https://api.github.com/repos/AsgardCms/Setting/zipball/ebf6853c39ca068490db74eb7a9f5d2cf453b749",
+                "reference": "ebf6853c39ca068490db74eb7a9f5d2cf453b749",
                 "shasum": ""
             },
             "require": {
-                "baum/baum": "~1.0",
                 "composer/installers": "~1.0",
                 "php": ">=5.4"
             },
@@ -283,7 +282,7 @@
                 "Settings",
                 "asgardcms"
             ],
-            "time": "2014-12-08 19:06:20"
+            "time": "2014-12-08 19:10:44"
         },
         {
             "name": "asgardcms/user-module",
