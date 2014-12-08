@@ -4,7 +4,7 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "f6cd3dad13f110a18b5f0d2da64c6c84",
+    "hash": "e760183ccc540a38b8509f1121b54cb4",
     "packages": [
         {
             "name": "asgardcms/core-module",
@@ -2101,16 +2101,16 @@
         },
         {
             "name": "pingpong/modules",
-            "version": "1.1.8",
+            "version": "1.1.10",
             "source": {
                 "type": "git",
                 "url": "https://github.com/pingpong-labs/modules.git",
-                "reference": "7d2623b80d7ebd9857afd4fbb77a17ebab6478ea"
+                "reference": "7abf84266b26eea7ec070f89d405b7c98bf4afb4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/pingpong-labs/modules/zipball/7d2623b80d7ebd9857afd4fbb77a17ebab6478ea",
-                "reference": "7d2623b80d7ebd9857afd4fbb77a17ebab6478ea",
+                "url": "https://api.github.com/repos/pingpong-labs/modules/zipball/7abf84266b26eea7ec070f89d405b7c98bf4afb4",
+                "reference": "7abf84266b26eea7ec070f89d405b7c98bf4afb4",
                 "shasum": ""
             },
             "require": {
@@ -2153,7 +2153,7 @@
                 "modules",
                 "pingpong"
             ],
-            "time": "2014-11-26 08:52:28"
+            "time": "2014-11-28 02:48:19"
         },
         {
             "name": "predis/predis",
@@ -3931,9 +3931,6 @@
     "minimum-stability": "dev",
     "stability-flags": {
         "laravel/framework": 20,
-        "laracasts/commander": 20,
-        "mcamara/laravel-localization": 20,
-        "dimsav/laravel-translatable": 20,
         "mpedrera/themify": 20,
         "asgardcms/page-module": 20,
         "asgardcms/demo-theme": 20,
