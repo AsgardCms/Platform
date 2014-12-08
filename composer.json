@@ -31,13 +31,13 @@
     "dimsav/laravel-translatable": "~5.0@dev",
     "intervention/image": "~2.0",
     "filp/whoops": "~1.0",
-    "baum/baum": "~1.0",
     "mpedrera/themify": "dev-laravel5",
     "cartalyst/sentry": "~2.1",
     "asgardcms/page-module": "dev-master",
     "asgardcms/demo-theme": "dev-master",
     "asgardcms/workshop-module": "dev-master",
-    "asgardcms/user-module": "dev-master"
+    "asgardcms/user-module": "dev-master",
+    "asgardcms/setting-module": "dev-master"
   },
   "require-dev": {
     "phpunit/phpunit": "~4.0"

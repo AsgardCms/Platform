@@ -4,7 +4,7 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "ce259660a32247623f80e85b594b5b20",
+    "hash": "47895fcaf96c61d32e588de4fb418605",
     "packages": [
         {
             "name": "asgardcms/demo-theme",
@@ -78,6 +78,44 @@
                 "pages"
             ],
             "time": "2014-12-07 19:22:59"
+        },
+        {
+            "name": "asgardcms/setting-module",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/AsgardCms/Setting.git",
+                "reference": "9b5c122b67d63f80b6585986c7a30a23130f0e3b"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/AsgardCms/Setting/zipball/9b5c122b67d63f80b6585986c7a30a23130f0e3b",
+                "reference": "9b5c122b67d63f80b6585986c7a30a23130f0e3b",
+                "shasum": ""
+            },
+            "require": {
+                "baum/baum": "~1.0",
+                "composer/installers": "~1.0",
+                "php": ">=5.4"
+            },
+            "type": "asgard-module",
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Nicolas Widart",
+                    "email": "info@asgardcms.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Setting module for AsgardCMS. Handles all the site settings.",
+            "keywords": [
+                "Settings",
+                "asgardcms"
+            ],
+            "time": "2014-12-08 19:06:20"
         },
         {
             "name": "asgardcms/user-module",
@@ -3732,7 +3770,8 @@
         "asgardcms/page-module": 20,
         "asgardcms/demo-theme": 20,
         "asgardcms/workshop-module": 20,
-        "asgardcms/user-module": 20
+        "asgardcms/user-module": 20,
+        "asgardcms/setting-module": 20
     },
     "prefer-stable": false,
     "platform": [],
