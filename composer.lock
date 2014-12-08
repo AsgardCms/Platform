@@ -4,7 +4,7 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "756aeceb31617a13f389194e5fb871d1",
+    "hash": "2aeaaf322c68a689fcf0fa13427a443d",
     "packages": [
         {
             "name": "asgardcms/core-module",
@@ -12,12 +12,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/AsgardCms/Core.git",
-                "reference": "50b2c62eba0f28436ff72bdbbdca51f43bdd7b5d"
+                "reference": "035d8fd7e789618c65ca218a0c9e64f3976fa0cd"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/AsgardCms/Core/zipball/50b2c62eba0f28436ff72bdbbdca51f43bdd7b5d",
-                "reference": "50b2c62eba0f28436ff72bdbbdca51f43bdd7b5d",
+                "url": "https://api.github.com/repos/AsgardCms/Core/zipball/035d8fd7e789618c65ca218a0c9e64f3976fa0cd",
+                "reference": "035d8fd7e789618c65ca218a0c9e64f3976fa0cd",
                 "shasum": ""
             },
             "require": {
@@ -53,7 +53,7 @@
                 "asgardcms",
                 "core"
             ],
-            "time": "2014-12-08 19:25:01"
+            "time": "2014-12-08 19:41:11"
         },
         {
             "name": "asgardcms/dashboard-module",
@@ -3930,15 +3930,15 @@
     "minimum-stability": "dev",
     "stability-flags": {
         "laravel/framework": 20,
-        "asgardcms/page-module": 20,
-        "asgardcms/demo-theme": 20,
-        "asgardcms/workshop-module": 20,
+        "asgardcms/core-module": 20,
+        "asgardcms/dashboard-module": 20,
         "asgardcms/user-module": 20,
         "asgardcms/setting-module": 20,
-        "asgardcms/menu-module": 20,
         "asgardcms/media-module": 20,
-        "asgardcms/dashboard-module": 20,
-        "asgardcms/core-module": 20
+        "asgardcms/page-module": 20,
+        "asgardcms/menu-module": 20,
+        "asgardcms/workshop-module": 20,
+        "asgardcms/demo-theme": 20
     },
     "prefer-stable": false,
     "platform": [],
