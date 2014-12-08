@@ -4,7 +4,7 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "56f1a33bc5d434b221907e6664d95772",
+    "hash": "615c3df0b3e259792f14d945c87d6143",
     "packages": [
         {
             "name": "asgardcms/demo-theme",
@@ -41,6 +41,48 @@
                 "asgard-cms"
             ],
             "time": "2014-12-07 19:16:51"
+        },
+        {
+            "name": "asgardcms/media-module",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/AsgardCms/Media.git",
+                "reference": "f46a71b25bd8418431d80a24313e98fd65328432"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/AsgardCms/Media/zipball/f46a71b25bd8418431d80a24313e98fd65328432",
+                "reference": "f46a71b25bd8418431d80a24313e98fd65328432",
+                "shasum": ""
+            },
+            "require": {
+                "composer/installers": "~1.0",
+                "intervention/image": "~2.0",
+                "php": ">=5.4"
+            },
+            "type": "asgard-module",
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Nicolas Widart",
+                    "email": "info@asgardcms.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Media module for AsgardCMS. Handles the media library.",
+            "keywords": [
+                "Thumbnails",
+                "asgardcms",
+                "files",
+                "filters",
+                "library",
+                "media"
+            ],
+            "time": "2014-12-07 20:14:50"
         },
         {
             "name": "asgardcms/menu-module",
@@ -3812,7 +3854,8 @@
         "asgardcms/workshop-module": 20,
         "asgardcms/user-module": 20,
         "asgardcms/setting-module": 20,
-        "asgardcms/menu-module": 20
+        "asgardcms/menu-module": 20,
+        "asgardcms/media-module": 20
     },
     "prefer-stable": false,
     "platform": [],
