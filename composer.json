@@ -23,7 +23,6 @@
     "laravel/elixir": "~1.0",
     "pingpong/modules": "1.1.10",
     "filp/whoops": "~1.0",
-    "mpedrera/themify": "dev-laravel5",
     "cartalyst/sentry": "~2.1",
     "asgardcms/page-module": "dev-master",
     "asgardcms/demo-theme": "dev-master",
