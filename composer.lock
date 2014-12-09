@@ -12,12 +12,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/AsgardCms/Core.git",
-                "reference": "cf02c3c9012efe5bc1d3671cf91228bd056e9dbb"
+                "reference": "5ef2d971ec58577348e32560aab85d57f6625ba5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/AsgardCms/Core/zipball/cf02c3c9012efe5bc1d3671cf91228bd056e9dbb",
-                "reference": "cf02c3c9012efe5bc1d3671cf91228bd056e9dbb",
+                "url": "https://api.github.com/repos/AsgardCms/Core/zipball/5ef2d971ec58577348e32560aab85d57f6625ba5",
+                "reference": "5ef2d971ec58577348e32560aab85d57f6625ba5",
                 "shasum": ""
             },
             "require": {
@@ -53,7 +53,7 @@
                 "asgardcms",
                 "core"
             ],
-            "time": "2014-12-09 18:39:51"
+            "time": "2014-12-09 19:21:30"
         },
         {
             "name": "asgardcms/dashboard-module",
@@ -216,12 +216,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/AsgardCms/Page.git",
-                "reference": "0668eb6a7d5c170a09168152690aefa4f52789c4"
+                "reference": "09162fba9dab7eca89624d68fbf53f15ea6f7aa0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/AsgardCms/Page/zipball/0668eb6a7d5c170a09168152690aefa4f52789c4",
-                "reference": "0668eb6a7d5c170a09168152690aefa4f52789c4",
+                "url": "https://api.github.com/repos/AsgardCms/Page/zipball/09162fba9dab7eca89624d68fbf53f15ea6f7aa0",
+                "reference": "09162fba9dab7eca89624d68fbf53f15ea6f7aa0",
                 "shasum": ""
             },
             "require": {
@@ -245,7 +245,7 @@
                 "asgardcms",
                 "pages"
             ],
-            "time": "2014-12-08 20:31:43"
+            "time": "2014-12-09 19:25:13"
         },
         {
             "name": "asgardcms/setting-module",
