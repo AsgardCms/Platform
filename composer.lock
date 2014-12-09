@@ -216,12 +216,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/AsgardCms/Page.git",
-                "reference": "09162fba9dab7eca89624d68fbf53f15ea6f7aa0"
+                "reference": "3d0e5fc8517a930479b8ffa8689dd3a91ec61cf7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/AsgardCms/Page/zipball/09162fba9dab7eca89624d68fbf53f15ea6f7aa0",
-                "reference": "09162fba9dab7eca89624d68fbf53f15ea6f7aa0",
+                "url": "https://api.github.com/repos/AsgardCms/Page/zipball/3d0e5fc8517a930479b8ffa8689dd3a91ec61cf7",
+                "reference": "3d0e5fc8517a930479b8ffa8689dd3a91ec61cf7",
                 "shasum": ""
             },
             "require": {
@@ -245,7 +245,7 @@
                 "asgardcms",
                 "pages"
             ],
-            "time": "2014-12-09 19:25:13"
+            "time": "2014-12-09 19:27:06"
         },
         {
             "name": "asgardcms/setting-module",
