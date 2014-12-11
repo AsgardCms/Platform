@@ -36,7 +36,7 @@ Thank you for your participation!
 ### Install Platform
 
 ```
-composer create-project asgard/platform your-project-name --prefer-dist --stability=dev
+composer create-project asgardcms/platform your-project-name --prefer-dist --stability=dev
 ```
 
 ### Run composer install
