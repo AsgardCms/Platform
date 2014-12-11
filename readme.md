@@ -1,6 +1,6 @@
 # Asgard/Platform
 
-This is the core repository for the Asgard CMS. The admin is fully translatable in English and French by default.
+This is the core repository for the Asgard CMS. The admin is fully translated in English and French by default.
 
 ![](https://i.cloudup.com/WcLe-ORql4.thumb.png)
 
