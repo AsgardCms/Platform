@@ -1,5 +1,5 @@
 <?php
 
 return [
-	'driver' => 'array',
+    'driver' => 'array',
 ];
