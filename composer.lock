@@ -329,12 +329,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/AsgardCms/Workshop.git",
-                "reference": "98f839e0e58a36b2ff37292e6f0444a70c07280e"
+                "reference": "ec631f84426b865df60b45432f472e9067a359e0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/AsgardCms/Workshop/zipball/98f839e0e58a36b2ff37292e6f0444a70c07280e",
-                "reference": "98f839e0e58a36b2ff37292e6f0444a70c07280e",
+                "url": "https://api.github.com/repos/AsgardCms/Workshop/zipball/ec631f84426b865df60b45432f472e9067a359e0",
+                "reference": "ec631f84426b865df60b45432f472e9067a359e0",
                 "shasum": ""
             },
             "require": {
@@ -359,7 +359,7 @@
                 "modules",
                 "workshop"
             ],
-            "time": "2014-11-30 09:56:39"
+            "time": "2014-12-12 20:35:46"
         },
         {
             "name": "baum/baum",
