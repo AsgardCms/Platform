@@ -35,7 +35,10 @@
     "asgardcms/demo-theme": "dev-master"
   },
   "require-dev": {
-    "phpunit/phpunit": "~4.0"
+    "phpunit/phpunit": "~4.0",
+    "mockery/mockery": "dev-master",
+    "symfony/browser-kit": "~2.6",
+    "barryvdh/laravel-debugbar": "dev-master"
   },
   "repositories": [
     {
