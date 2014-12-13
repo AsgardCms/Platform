@@ -43,6 +43,13 @@ composer create-project asgardcms/platform your-project-name --prefer-dist --sta
 
 Run the usual `composer install` to get the dependencies.
 
+### Run npm install
+
+Get the front end dependencies ([laravel/elixir](https://github.com/laravel/elixir)) by running: 
+```
+npm install --global gulp
+npm install
+```
 
 ## Run the install command
 
