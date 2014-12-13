@@ -9,6 +9,7 @@
     "asgard",
     "asgardcms"
   ],
+  "type": "project",
   "license": "MIT",
   "authors": [
     {
@@ -17,7 +18,11 @@
       "role": "Developer"
     }
   ],
-  "type": "project",
+  "support": {
+    "email": "support@asgardcms.com",
+    "issues": "https://github.com/AsgardCms/Platform/issues",
+    "source": "https://github.com/AsgardCms/Platform"
+  },
   "require": {
     "laravel/framework": "dev-master#ba916851321b9233cb56a0fb1deb41043b7df5fb",
     "pingpong/modules": "1.1.10",
