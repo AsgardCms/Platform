@@ -25,8 +25,18 @@
   },
   "require": {
     "laravel/framework": "dev-master#ba916851321b9233cb56a0fb1deb41043b7df5fb",
+    "illuminate/html": "~5.0",
     "pingpong/modules": "1.1.10",
-    "filp/whoops": "~1.1",
+    "pingpong/menus": "dev-laravel-5",
+    "laracasts/flash": "~1.0",
+    "laracasts/presenter": "~0.2",
+    "guzzlehttp/guzzle": "~5.0",
+    "dimsav/laravel-translatable": "~5.0@dev",
+    "mcamara/laravel-localization": "dev-Laravel5Support",
+    "mpedrera/themify": "dev-laravel5",
+    "intervention/image": "~2.0",
+    "filp/whoops": "~1.0",
+    "baum/baum": "~1.0",
     "cartalyst/sentry": "~2.1",
     "asgardcms/core-module": "dev-master",
     "asgardcms/dashboard-module": "dev-master",
@@ -48,6 +58,10 @@
     {
       "type": "composer",
       "url": "http://packages.cartalyst.com"
+    },
+    {
+      "type": "vcs",
+      "url": "https://github.com/nWidart/menus"
     }
   ],
   "autoload": {
