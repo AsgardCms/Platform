@@ -176,12 +176,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/AsgardCms/Menu.git",
-                "reference": "905730075a535bd8ee5a651081b96b1cdca64404"
+                "reference": "630615cd972b6709306c92ec752aca30db226a49"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/AsgardCms/Menu/zipball/905730075a535bd8ee5a651081b96b1cdca64404",
-                "reference": "905730075a535bd8ee5a651081b96b1cdca64404",
+                "url": "https://api.github.com/repos/AsgardCms/Menu/zipball/630615cd972b6709306c92ec752aca30db226a49",
+                "reference": "630615cd972b6709306c92ec752aca30db226a49",
                 "shasum": ""
             },
             "require": {
@@ -209,7 +209,7 @@
                 "nested sets",
                 "tree"
             ],
-            "time": "2014-12-19 20:15:47"
+            "time": "2014-12-20 15:05:38"
         },
         {
             "name": "asgardcms/page-module",
@@ -2366,12 +2366,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/Console.git",
-                "reference": "f420bd675b60586de18a1d62c4830d2e9c84a395"
+                "reference": "4240553bedec413ac2453fdb4cd4c3095809e821"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/Console/zipball/f420bd675b60586de18a1d62c4830d2e9c84a395",
-                "reference": "f420bd675b60586de18a1d62c4830d2e9c84a395",
+                "url": "https://api.github.com/repos/symfony/Console/zipball/4240553bedec413ac2453fdb4cd4c3095809e821",
+                "reference": "4240553bedec413ac2453fdb4cd4c3095809e821",
                 "shasum": ""
             },
             "require": {
@@ -2414,7 +2414,7 @@
             ],
             "description": "Symfony Console Component",
             "homepage": "http://symfony.com",
-            "time": "2014-12-12 16:21:40"
+            "time": "2014-12-20 16:02:27"
         },
         {
             "name": "symfony/debug",
@@ -2423,12 +2423,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/Debug.git",
-                "reference": "345dc81e701f1a8d15606b931453316414c3235c"
+                "reference": "b92c90f0286fffdf9cc5807fc94881202461b9d6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/Debug/zipball/345dc81e701f1a8d15606b931453316414c3235c",
-                "reference": "345dc81e701f1a8d15606b931453316414c3235c",
+                "url": "https://api.github.com/repos/symfony/Debug/zipball/b92c90f0286fffdf9cc5807fc94881202461b9d6",
+                "reference": "b92c90f0286fffdf9cc5807fc94881202461b9d6",
                 "shasum": ""
             },
             "require": {
@@ -2470,7 +2470,7 @@
             ],
             "description": "Symfony Debug Component",
             "homepage": "http://symfony.com",
-            "time": "2014-12-16 15:44:55"
+            "time": "2014-12-20 16:02:27"
         },
         {
             "name": "symfony/event-dispatcher",
@@ -2631,12 +2631,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/HttpFoundation.git",
-                "reference": "b35ab116c5965cbf66070486414934f361ff01d6"
+                "reference": "de3417053084145f472db53e747bc6a600b88c94"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/HttpFoundation/zipball/b35ab116c5965cbf66070486414934f361ff01d6",
-                "reference": "b35ab116c5965cbf66070486414934f361ff01d6",
+                "url": "https://api.github.com/repos/symfony/HttpFoundation/zipball/de3417053084145f472db53e747bc6a600b88c94",
+                "reference": "de3417053084145f472db53e747bc6a600b88c94",
                 "shasum": ""
             },
             "require": {
@@ -2675,7 +2675,7 @@
             ],
             "description": "Symfony HttpFoundation Component",
             "homepage": "http://symfony.com",
-            "time": "2014-12-13 08:38:45"
+            "time": "2014-12-20 16:02:27"
         },
         {
             "name": "symfony/http-kernel",
