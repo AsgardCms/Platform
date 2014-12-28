@@ -98,12 +98,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/nWidart/demo-theme.git",
-                "reference": "83c983d8f97fc5ae045894761b0e18150e899f23"
+                "reference": "d365b6957d211a34c5866b5a44c33172cde27353"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nWidart/demo-theme/zipball/83c983d8f97fc5ae045894761b0e18150e899f23",
-                "reference": "83c983d8f97fc5ae045894761b0e18150e899f23",
+                "url": "https://api.github.com/repos/nWidart/demo-theme/zipball/d365b6957d211a34c5866b5a44c33172cde27353",
+                "reference": "d365b6957d211a34c5866b5a44c33172cde27353",
                 "shasum": ""
             },
             "require": {
@@ -126,7 +126,7 @@
             "keywords": [
                 "asgard-cms"
             ],
-            "time": "2014-12-19 20:02:44"
+            "time": "2014-12-23 19:28:54"
         },
         {
             "name": "asgardcms/media-module",
