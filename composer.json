@@ -52,7 +52,8 @@
     "phpunit/phpunit": "~4.0",
     "mockery/mockery": "~0.9",
     "symfony/browser-kit": "~2.6",
-    "barryvdh/laravel-debugbar": "~1.8"
+    "barryvdh/laravel-debugbar": "~1.8",
+    "fzaninotto/faker": "~1.4"
   },
   "repositories": [
     {
