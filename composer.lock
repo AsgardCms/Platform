@@ -4,7 +4,7 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "9cfa0340a40c902131c5a6c6aa1a4c17",
+    "hash": "a9199304773a9bf4b629d463d2a4e0d7",
     "packages": [
         {
             "name": "asgardcms/core-module",
@@ -176,19 +176,19 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/AsgardCms/Menu.git",
-                "reference": "a2e2619c107c42bef2dfd239c267f241a6ebcb3e"
+                "reference": "5b1a823842a1250245d70789463aaf54aff020b7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/AsgardCms/Menu/zipball/a2e2619c107c42bef2dfd239c267f241a6ebcb3e",
-                "reference": "a2e2619c107c42bef2dfd239c267f241a6ebcb3e",
+                "url": "https://api.github.com/repos/AsgardCms/Menu/zipball/5b1a823842a1250245d70789463aaf54aff020b7",
+                "reference": "5b1a823842a1250245d70789463aaf54aff020b7",
                 "shasum": ""
             },
             "require": {
                 "baum/baum": "1.0.13",
                 "composer/installers": "~1.0",
                 "php": ">=5.4",
-                "pingpong/menus": "dev-laravel-5"
+                "pingpong/menus": "2.*@dev"
             },
             "type": "asgard-module",
             "notification-url": "https://packagist.org/downloads/",
@@ -209,7 +209,7 @@
                 "nested sets",
                 "tree"
             ],
-            "time": "2014-12-28 11:29:57"
+            "time": "2014-12-29 18:31:43"
         },
         {
             "name": "asgardcms/page-module",
@@ -2057,23 +2057,23 @@
         },
         {
             "name": "pingpong/menus",
-            "version": "dev-laravel-5",
+            "version": "2.x-dev",
             "source": {
                 "type": "git",
-                "url": "https://github.com/nWidart/menus.git",
-                "reference": "83ad3f4bf7acd67a3fa854ba8c1e136e778fdbde"
+                "url": "https://github.com/pingpong-labs/menus.git",
+                "reference": "a4eff069b4de83ba93baf0cc2235187080ea6a2f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nWidart/menus/zipball/83ad3f4bf7acd67a3fa854ba8c1e136e778fdbde",
-                "reference": "83ad3f4bf7acd67a3fa854ba8c1e136e778fdbde",
+                "url": "https://api.github.com/repos/pingpong-labs/menus/zipball/a4eff069b4de83ba93baf0cc2235187080ea6a2f",
+                "reference": "a4eff069b4de83ba93baf0cc2235187080ea6a2f",
                 "shasum": ""
             },
             "require": {
-                "illuminate/config": "~5.0",
-                "illuminate/html": "~5.0",
-                "illuminate/support": "~5.0",
-                "illuminate/view": "~5.0",
+                "illuminate/config": "~5",
+                "illuminate/html": "~5",
+                "illuminate/support": "~5",
+                "illuminate/view": "~5",
                 "php": ">=5.3.0"
             },
             "require-dev": {
@@ -2086,6 +2086,7 @@
                     "Pingpong\\Menus": "src/"
                 }
             },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "BSD-3-Clause"
             ],
@@ -2104,10 +2105,7 @@
                 "navigation",
                 "pingpong"
             ],
-            "support": {
-                "source": "https://github.com/nWidart/menus/tree/laravel-5"
-            },
-            "time": "2014-12-19 19:20:52"
+            "time": "2014-12-26 03:05:49"
         },
         {
             "name": "pingpong/modules",

@@ -27,7 +27,7 @@
     "laravel/framework": "dev-master#ba916851321b9233cb56a0fb1deb41043b7df5fb",
     "illuminate/html": "~5.0",
     "pingpong/modules": "1.1.10",
-    "pingpong/menus": "dev-laravel-5",
+    "pingpong/menus": "2.*@dev",
     "laracasts/flash": "~1.0",
     "laracasts/presenter": "~0.2",
     "guzzlehttp/guzzle": "~5.0",
@@ -59,10 +59,6 @@
     {
       "type": "composer",
       "url": "http://packages.cartalyst.com"
-    },
-    {
-      "type": "vcs",
-      "url": "https://github.com/nWidart/menus"
     }
   ],
   "autoload": {
