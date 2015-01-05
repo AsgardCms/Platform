@@ -4,7 +4,7 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "0a8ee15d70e59f71e49a78ea7e969f85",
+    "hash": "c4a9739d72830bf98170a3e6bae6d140",
     "packages": [
         {
             "name": "asgardcms/core-module",
@@ -1279,6 +1279,52 @@
             "time": "2013-10-09 04:20:00"
         },
         {
+            "name": "kzykhys/git",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/kzykhys/PHPGit.git",
+                "reference": "8b3ee3147d58e0aee62610f0aebcd30eb076ad5d"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/kzykhys/PHPGit/zipball/8b3ee3147d58e0aee62610f0aebcd30eb076ad5d",
+                "reference": "8b3ee3147d58e0aee62610f0aebcd30eb076ad5d",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.2",
+                "symfony/options-resolver": ">=2.3",
+                "symfony/process": ">=2.3"
+            },
+            "require-dev": {
+                "symfony/filesystem": ">=2.3"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Kazuyuki Hayashi",
+                    "email": "hayashi@valnur.net"
+                }
+            ],
+            "description": "A Git wrapper for PHP5.3+",
+            "time": "2014-02-27 13:14:59"
+        },
+        {
             "name": "laracasts/commander",
             "version": "1.4.3",
             "source": {
@@ -2109,19 +2155,20 @@
         },
         {
             "name": "pingpong/modules",
-            "version": "1.1.10",
+            "version": "1.2.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/pingpong-labs/modules.git",
-                "reference": "7abf84266b26eea7ec070f89d405b7c98bf4afb4"
+                "reference": "13af93a84df338b8bfcbb27a6f1d7c5e074014df"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/pingpong-labs/modules/zipball/7abf84266b26eea7ec070f89d405b7c98bf4afb4",
-                "reference": "7abf84266b26eea7ec070f89d405b7c98bf4afb4",
+                "url": "https://api.github.com/repos/pingpong-labs/modules/zipball/13af93a84df338b8bfcbb27a6f1d7c5e074014df",
+                "reference": "13af93a84df338b8bfcbb27a6f1d7c5e074014df",
                 "shasum": ""
             },
             "require": {
+                "kzykhys/git": "*",
                 "laravel/framework": "~4|~5",
                 "php": ">=5.4.0",
                 "pingpong/generators": "1.*"
@@ -2134,8 +2181,8 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.1-dev",
-                    "dev-develop": "1.2-dev"
+                    "dev-master": "1.2-dev",
+                    "dev-develop": "1.3-dev"
                 }
             },
             "autoload": {
@@ -2161,7 +2208,7 @@
                 "modules",
                 "pingpong"
             ],
-            "time": "2014-11-28 02:48:19"
+            "time": "2014-12-24 07:31:52"
         },
         {
             "name": "predis/predis",
@@ -2751,6 +2798,58 @@
             "description": "Symfony HttpKernel Component",
             "homepage": "http://symfony.com",
             "time": "2014-12-16 18:41:39"
+        },
+        {
+            "name": "symfony/options-resolver",
+            "version": "dev-master",
+            "target-dir": "Symfony/Component/OptionsResolver",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/OptionsResolver.git",
+                "reference": "5b0fc46b1143e706a778dbae93685a29fbd9b236"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/OptionsResolver/zipball/5b0fc46b1143e706a778dbae93685a29fbd9b236",
+                "reference": "5b0fc46b1143e706a778dbae93685a29fbd9b236",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.5.9"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "3.0-dev"
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "Symfony\\Component\\OptionsResolver\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Symfony Community",
+                    "homepage": "http://symfony.com/contributors"
+                },
+                {
+                    "name": "Fabien Potencier",
+                    "email": "fabien@symfony.com"
+                }
+            ],
+            "description": "Symfony OptionsResolver Component",
+            "homepage": "http://symfony.com",
+            "keywords": [
+                "config",
+                "configuration",
+                "options"
+            ],
+            "time": "2015-01-05 18:25:47"
         },
         {
             "name": "symfony/process",
