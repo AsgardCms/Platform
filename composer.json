@@ -26,7 +26,7 @@
   "require": {
     "laravel/framework": "dev-master#ba916851321b9233cb56a0fb1deb41043b7df5fb",
     "illuminate/html": "dev-master#b04be9a",
-    "pingpong/modules": "1.1.10",
+    "pingpong/modules": "1.2.1",
     "pingpong/menus": "2.*@dev",
     "laracasts/flash": "~1.0",
     "laracasts/presenter": "~0.2",
