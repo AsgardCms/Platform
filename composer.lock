@@ -48,12 +48,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/AsgardCms/Core.git",
-                "reference": "cf982b6a37518b26b391bea8b49f9fcabf2437f5"
+                "reference": "def14ec16a4c757b21733d0ec0697c6ba6d6ba75"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/AsgardCms/Core/zipball/cf982b6a37518b26b391bea8b49f9fcabf2437f5",
-                "reference": "cf982b6a37518b26b391bea8b49f9fcabf2437f5",
+                "url": "https://api.github.com/repos/AsgardCms/Core/zipball/def14ec16a4c757b21733d0ec0697c6ba6d6ba75",
+                "reference": "def14ec16a4c757b21733d0ec0697c6ba6d6ba75",
                 "shasum": ""
             },
             "require": {
@@ -89,7 +89,7 @@
                 "asgardcms",
                 "core"
             ],
-            "time": "2015-02-15 13:01:43"
+            "time": "2015-02-15 19:17:30"
         },
         {
             "name": "asgardcms/dashboard-module",
@@ -326,12 +326,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/AsgardCms/User.git",
-                "reference": "10546c8828d14241132ee69f6c668d4d3478a897"
+                "reference": "e9b95585b9610f0af3e7a8dfd481924ff7228cf4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/AsgardCms/User/zipball/10546c8828d14241132ee69f6c668d4d3478a897",
-                "reference": "10546c8828d14241132ee69f6c668d4d3478a897",
+                "url": "https://api.github.com/repos/AsgardCms/User/zipball/e9b95585b9610f0af3e7a8dfd481924ff7228cf4",
+                "reference": "e9b95585b9610f0af3e7a8dfd481924ff7228cf4",
                 "shasum": ""
             },
             "require": {
@@ -357,7 +357,7 @@
                 "authorisation",
                 "user"
             ],
-            "time": "2015-02-15 10:16:10"
+            "time": "2015-02-15 19:32:20"
         },
         {
             "name": "asgardcms/workshop-module",
@@ -2209,12 +2209,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/bobthecow/psysh.git",
-                "reference": "d5a831954cda802c9d264ab34598301e64494edf"
+                "reference": "7fd995d8b781efb7ff2d10a7ccb1c6cd8f9d6d5f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/bobthecow/psysh/zipball/d5a831954cda802c9d264ab34598301e64494edf",
-                "reference": "d5a831954cda802c9d264ab34598301e64494edf",
+                "url": "https://api.github.com/repos/bobthecow/psysh/zipball/7fd995d8b781efb7ff2d10a7ccb1c6cd8f9d6d5f",
+                "reference": "7fd995d8b781efb7ff2d10a7ccb1c6cd8f9d6d5f",
                 "shasum": ""
             },
             "require": {
@@ -2271,7 +2271,7 @@
                 "interactive",
                 "shell"
             ],
-            "time": "2015-02-15 18:17:11"
+            "time": "2015-02-15 18:50:21"
         },
         {
             "name": "react/promise",
