@@ -48,12 +48,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/AsgardCms/Core.git",
-                "reference": "44c9b24cfcea154619b573de7a1af8bb424c90e6"
+                "reference": "b81f2914ea33a17a08dc8b1d07bd4e7f7ac62dfe"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/AsgardCms/Core/zipball/44c9b24cfcea154619b573de7a1af8bb424c90e6",
-                "reference": "44c9b24cfcea154619b573de7a1af8bb424c90e6",
+                "url": "https://api.github.com/repos/AsgardCms/Core/zipball/b81f2914ea33a17a08dc8b1d07bd4e7f7ac62dfe",
+                "reference": "b81f2914ea33a17a08dc8b1d07bd4e7f7ac62dfe",
                 "shasum": ""
             },
             "require": {
@@ -89,7 +89,7 @@
                 "asgardcms",
                 "core"
             ],
-            "time": "2015-02-15 19:45:16"
+            "time": "2015-02-15 20:09:41"
         },
         {
             "name": "asgardcms/dashboard-module",
