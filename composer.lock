@@ -48,12 +48,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/AsgardCms/Core.git",
-                "reference": "b81f2914ea33a17a08dc8b1d07bd4e7f7ac62dfe"
+                "reference": "46098c037f74de9ffc4e5230f5e359d90ca97ea6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/AsgardCms/Core/zipball/b81f2914ea33a17a08dc8b1d07bd4e7f7ac62dfe",
-                "reference": "b81f2914ea33a17a08dc8b1d07bd4e7f7ac62dfe",
+                "url": "https://api.github.com/repos/AsgardCms/Core/zipball/46098c037f74de9ffc4e5230f5e359d90ca97ea6",
+                "reference": "46098c037f74de9ffc4e5230f5e359d90ca97ea6",
                 "shasum": ""
             },
             "require": {
@@ -89,7 +89,7 @@
                 "asgardcms",
                 "core"
             ],
-            "time": "2015-02-15 20:09:41"
+            "time": "2015-02-15 21:01:41"
         },
         {
             "name": "asgardcms/dashboard-module",
@@ -868,12 +868,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/floatingpointsoftware/stylist.git",
-                "reference": "c8946a34b7c4aabd9bad481d2c46ed283036cecc"
+                "reference": "9bd3e2bbf745462ff6a426938b46936b84b87a02"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/floatingpointsoftware/stylist/zipball/c8946a34b7c4aabd9bad481d2c46ed283036cecc",
-                "reference": "c8946a34b7c4aabd9bad481d2c46ed283036cecc",
+                "url": "https://api.github.com/repos/floatingpointsoftware/stylist/zipball/9bd3e2bbf745462ff6a426938b46936b84b87a02",
+                "reference": "9bd3e2bbf745462ff6a426938b46936b84b87a02",
                 "shasum": ""
             },
             "require": {
@@ -906,7 +906,7 @@
                 }
             ],
             "description": "Laravel 5 theming package.",
-            "time": "2015-02-14 22:46:32"
+            "time": "2015-02-15 20:37:55"
         },
         {
             "name": "guzzlehttp/guzzle",
