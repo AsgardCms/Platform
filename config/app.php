@@ -145,6 +145,7 @@ return [
 		'App\Providers\EventServiceProvider',
 		'App\Providers\RouteServiceProvider',
 
+        'Cartalyst\Sentry\SentryServiceProvider',
         'Modules\Core\Providers\AsgardServiceProvider',
 	],
 
@@ -194,6 +195,7 @@ return [
 		'Validator' => 'Illuminate\Support\Facades\Validator',
 		'View'      => 'Illuminate\Support\Facades\View',
 
+        'Sentry' => 'Cartalyst\Sentry\Facades\Laravel\Sentry',
 	],
 
 ];

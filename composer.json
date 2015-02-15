@@ -10,6 +10,7 @@
   "require": {
     "laravel/framework": "5.0.*",
     "pingpong/modules": "2.0.*@dev",
+    "cartalyst/sentry": "dev-feature/laravel-5",
     "asgardcms/core-module": "dev-develop",
     "asgardcms/dashboard-module": "dev-develop",
     "asgardcms/user-module": "dev-develop",

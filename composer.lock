@@ -4,7 +4,7 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "d8e2386be7eb1bd911de3039e99180d9",
+    "hash": "8dab113a5daa037cb9756282068e04b5",
     "packages": [
         {
             "name": "asgardcms/adminlte-theme",
@@ -48,12 +48,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/AsgardCms/Core.git",
-                "reference": "451ee7a16969b9b21d9d65ef808b1824d082e8c1"
+                "reference": "cf982b6a37518b26b391bea8b49f9fcabf2437f5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/AsgardCms/Core/zipball/451ee7a16969b9b21d9d65ef808b1824d082e8c1",
-                "reference": "451ee7a16969b9b21d9d65ef808b1824d082e8c1",
+                "url": "https://api.github.com/repos/AsgardCms/Core/zipball/cf982b6a37518b26b391bea8b49f9fcabf2437f5",
+                "reference": "cf982b6a37518b26b391bea8b49f9fcabf2437f5",
                 "shasum": ""
             },
             "require": {
@@ -89,7 +89,7 @@
                 "asgardcms",
                 "core"
             ],
-            "time": "2015-02-15 09:27:33"
+            "time": "2015-02-15 13:01:43"
         },
         {
             "name": "asgardcms/dashboard-module",
@@ -289,12 +289,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/AsgardCms/Setting.git",
-                "reference": "dda4156736c9a3672a03ef0c9ac884d8d337e0b2"
+                "reference": "3f0e74de16eb4ccb5af938aebe6019e5536631b3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/AsgardCms/Setting/zipball/dda4156736c9a3672a03ef0c9ac884d8d337e0b2",
-                "reference": "dda4156736c9a3672a03ef0c9ac884d8d337e0b2",
+                "url": "https://api.github.com/repos/AsgardCms/Setting/zipball/3f0e74de16eb4ccb5af938aebe6019e5536631b3",
+                "reference": "3f0e74de16eb4ccb5af938aebe6019e5536631b3",
                 "shasum": ""
             },
             "require": {
@@ -318,7 +318,7 @@
                 "Settings",
                 "asgardcms"
             ],
-            "time": "2015-02-15 09:39:51"
+            "time": "2015-02-15 11:50:55"
         },
         {
             "name": "asgardcms/user-module",
@@ -396,6 +396,109 @@
                 "workshop"
             ],
             "time": "2015-02-14 18:26:06"
+        },
+        {
+            "name": "cartalyst/sentry",
+            "version": "dev-feature/laravel-5",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/cartalyst/sentry.git",
+                "reference": "78c4dd21d1ddd41c2b2c54301b9e5771e1e42bf4"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/cartalyst/sentry/zipball/78c4dd21d1ddd41c2b2c54301b9e5771e1e42bf4",
+                "reference": "78c4dd21d1ddd41c2b2c54301b9e5771e1e42bf4",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.3"
+            },
+            "require-dev": {
+                "illuminate/cookie": "~5.0",
+                "illuminate/database": "~5.0",
+                "illuminate/http": "~5.0",
+                "illuminate/session": "~5.0",
+                "ircmaxell/password-compat": "1.0.*",
+                "mockery/mockery": "0.7.2"
+            },
+            "suggest": {
+                "happydemon/txt": "Required Text helpers when using the Kohana implementation",
+                "illuminate/database": "Default sentry user, group and throttling implementations.",
+                "ircmaxell/password-compat": "Default hashing uses PHP 5.5 password_* functions, with forward-compatible support."
+            },
+            "type": "library",
+            "extra": {
+                "component": "package",
+                "frameworks": [
+                    "Laravel 3",
+                    "Laravel 4",
+                    "CodeIgniter 3",
+                    "FuelPHP 1",
+                    "Kohana"
+                ],
+                "versions": {
+                    "1": "1.1/master",
+                    "2": "master"
+                },
+                "branch-alias": {
+                    "dev-master": "2.0-dev"
+                }
+            },
+            "autoload": {
+                "classmap": [
+                    "src/Cartalyst/Sentry/Groups/Exceptions.php",
+                    "src/Cartalyst/Sentry/Throttling/Exceptions.php",
+                    "src/Cartalyst/Sentry/Users/Exceptions.php",
+                    "src/migrations"
+                ],
+                "psr-0": {
+                    "Cartalyst\\Sentry": "src/"
+                }
+            },
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Cartalyst LLC",
+                    "email": "help@cartalyst.com"
+                },
+                {
+                    "name": "Dan Syme",
+                    "email": "dan.syme@cartalyst.com",
+                    "role": "Creator & Designer"
+                },
+                {
+                    "name": "Ben Corlett",
+                    "email": "ben.corlett@cartalyst.com",
+                    "role": "Developer"
+                },
+                {
+                    "name": "Daniel Petrie",
+                    "email": "dan.petrie@cartalyst.com",
+                    "role": "Developer"
+                },
+                {
+                    "name": "Bruno Gaspar",
+                    "email": "bruno.gaspar@cartalyst.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "PHP 5.3+ Fully-featured Authentication & Authorization System",
+            "keywords": [
+                "auth",
+                "codeigniter",
+                "fuelphp",
+                "kohana",
+                "laravel",
+                "security"
+            ],
+            "support": {
+                "source": "https://github.com/cartalyst/sentry/tree/feature/laravel-5",
+                "issues": "https://github.com/cartalyst/sentry/issues"
+            },
+            "time": "2015-02-06 21:30:43"
         },
         {
             "name": "classpreloader/classpreloader",
@@ -1522,12 +1625,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/thephpleague/flysystem.git",
-                "reference": "5b5106345d61a12265437cb128db66b80ec6f557"
+                "reference": "853a71ad0d6c87ebf2ada3ab28e799a9640f9f91"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/thephpleague/flysystem/zipball/5b5106345d61a12265437cb128db66b80ec6f557",
-                "reference": "5b5106345d61a12265437cb128db66b80ec6f557",
+                "url": "https://api.github.com/repos/thephpleague/flysystem/zipball/853a71ad0d6c87ebf2ada3ab28e799a9640f9f91",
+                "reference": "853a71ad0d6c87ebf2ada3ab28e799a9640f9f91",
                 "shasum": ""
             },
             "require": {
@@ -1597,7 +1700,7 @@
                 "sftp",
                 "storage"
             ],
-            "time": "2015-02-13 10:05:18"
+            "time": "2015-02-15 18:02:18"
         },
         {
             "name": "maatwebsite/laravel-sidebar",
@@ -2106,12 +2209,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/bobthecow/psysh.git",
-                "reference": "01c97330157a1f0269ae794412d556efdc1fe2e0"
+                "reference": "d5a831954cda802c9d264ab34598301e64494edf"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/bobthecow/psysh/zipball/01c97330157a1f0269ae794412d556efdc1fe2e0",
-                "reference": "01c97330157a1f0269ae794412d556efdc1fe2e0",
+                "url": "https://api.github.com/repos/bobthecow/psysh/zipball/d5a831954cda802c9d264ab34598301e64494edf",
+                "reference": "d5a831954cda802c9d264ab34598301e64494edf",
                 "shasum": ""
             },
             "require": {
@@ -2168,7 +2271,7 @@
                 "interactive",
                 "shell"
             ],
-            "time": "2015-02-14 18:19:50"
+            "time": "2015-02-15 18:17:11"
         },
         {
             "name": "react/promise",
@@ -4080,6 +4183,7 @@
     "minimum-stability": "dev",
     "stability-flags": {
         "pingpong/modules": 20,
+        "cartalyst/sentry": 20,
         "asgardcms/core-module": 20,
         "asgardcms/dashboard-module": 20,
         "asgardcms/user-module": 20,
