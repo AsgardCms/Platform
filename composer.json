@@ -19,7 +19,7 @@
     "asgardcms/page-module": "dev-develop",
     "asgardcms/menu-module": "dev-develop",
     "asgardcms/workshop-module": "dev-develop",
-    "asgardcms/demo-theme": "dev-develop",
+    "asgardcms/demo-theme": "dev-master",
     "asgardcms/adminlte-theme": "dev-master"
   },
   "require-dev": {

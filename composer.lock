@@ -4,7 +4,7 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "8b58b162d2542b25f11bde2ee53814ff",
+    "hash": "fed04d473563246d75e55c538358f531",
     "packages": [
         {
             "name": "asgardcms/adminlte-theme",
@@ -130,16 +130,16 @@
         },
         {
             "name": "asgardcms/demo-theme",
-            "version": "dev-develop",
+            "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "https://github.com/nWidart/demo-theme.git",
-                "reference": "a1edd25d9bfa1bfeee07baf8ec39f8ebe57132c4"
+                "reference": "cc452d1ef58177bf9da935d7b6e672840cb4f0a6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nWidart/demo-theme/zipball/a1edd25d9bfa1bfeee07baf8ec39f8ebe57132c4",
-                "reference": "a1edd25d9bfa1bfeee07baf8ec39f8ebe57132c4",
+                "url": "https://api.github.com/repos/nWidart/demo-theme/zipball/cc452d1ef58177bf9da935d7b6e672840cb4f0a6",
+                "reference": "cc452d1ef58177bf9da935d7b6e672840cb4f0a6",
                 "shasum": ""
             },
             "require": {
@@ -162,7 +162,7 @@
             "keywords": [
                 "asgard-cms"
             ],
-            "time": "2015-02-12 15:52:06"
+            "time": "2015-02-15 20:44:49"
         },
         {
             "name": "asgardcms/media-module",
