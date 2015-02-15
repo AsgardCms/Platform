@@ -145,6 +145,7 @@ return [
 		'App\Providers\EventServiceProvider',
 		'App\Providers\RouteServiceProvider',
 
+        'Modules\Core\Providers\AsgardServiceProvider',
 	],
 
 	/*
