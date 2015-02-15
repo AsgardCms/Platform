@@ -25,6 +25,12 @@
     "phpunit/phpunit": "~4.0",
     "phpspec/phpspec": "~2.1"
   },
+  "repositories": [
+    {
+      "type": "composer",
+      "url": "https://packages.cartalyst.com"
+    }
+  ],
   "autoload": {
     "classmap": [
       "database"
