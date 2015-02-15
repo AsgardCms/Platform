@@ -4,7 +4,7 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "9f5c5f2dc53fad45ba6f09a295073a6e",
+    "hash": "e42a81e15569227d9e4fd72e92bd1be5",
     "packages": [
         {
             "name": "asgardcms/adminlte-theme",
@@ -1899,6 +1899,53 @@
             "time": "2015-01-18 11:29:59"
         },
         {
+            "name": "pingpong/generators",
+            "version": "1.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/pingpong-labs/generators.git",
+                "reference": "259eea8deacd83fdbf784c10cf7bb17f2a2ff47a"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/pingpong-labs/generators/zipball/259eea8deacd83fdbf784c10cf7bb17f2a2ff47a",
+                "reference": "259eea8deacd83fdbf784c10cf7bb17f2a2ff47a",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/filesystem": "4.*|5.0.*",
+                "illuminate/support": "4.*|5.0.*",
+                "php": ">=5.4.0"
+            },
+            "require-dev": {
+                "mockery/mockery": "~0.9",
+                "phpunit/phpunit": "~4"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "Pingpong\\Generators": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Pingpong Labs",
+                    "email": "pingpong.labs@gmail.com"
+                }
+            ],
+            "description": "Laravel Generators",
+            "keywords": [
+                "generators",
+                "laravel",
+                "pingpong"
+            ],
+            "time": "2014-11-13 08:03:31"
+        },
+        {
             "name": "pingpong/menus",
             "version": "2.x-dev",
             "source": {
@@ -1949,6 +1996,63 @@
                 "pingpong"
             ],
             "time": "2015-02-12 12:35:04"
+        },
+        {
+            "name": "pingpong/modules",
+            "version": "2.0.x-dev",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/pingpong-labs/modules.git",
+                "reference": "101eaf06d67a3f6d2a4d773a9fc7ed218ad6f0dc"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/pingpong-labs/modules/zipball/101eaf06d67a3f6d2a4d773a9fc7ed218ad6f0dc",
+                "reference": "101eaf06d67a3f6d2a4d773a9fc7ed218ad6f0dc",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/html": "5.0.*@dev",
+                "laravel/framework": "5.0.x@dev",
+                "php": ">=5.4.0",
+                "pingpong/generators": "1.*"
+            },
+            "require-dev": {
+                "mockery/mockery": "~0.9",
+                "phpunit/phpunit": "~4",
+                "pingpong/testing": "1.*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.2-dev",
+                    "dev-develop": "1.3-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Pingpong\\Modules\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Pingpong Labs",
+                    "email": "pingpong.labs@gmail.com"
+                }
+            ],
+            "description": "Laravel Modules",
+            "keywords": [
+                "hmvc",
+                "laravel",
+                "module",
+                "modules",
+                "pingpong"
+            ],
+            "time": "2015-02-13 01:23:50"
         },
         {
             "name": "psr/log",
@@ -3964,6 +4068,7 @@
     "aliases": [],
     "minimum-stability": "dev",
     "stability-flags": {
+        "pingpong/modules": 20,
         "asgardcms/core-module": 20,
         "asgardcms/dashboard-module": 20,
         "asgardcms/user-module": 20,
