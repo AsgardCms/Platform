@@ -2576,7 +2576,11 @@ footer.footer a {
   margin-right: 10px;
 }
 .skin-dark .sidebar > .sidebar-menu > li {
+  border-top: 1px solid #2D2D2D;
   border-bottom: 1px solid #181818;
+}
+.skin-dark .sidebar > .sidebar-menu > li:first-of-type {
+  border-top: none;
 }
 .skin-dark .sidebar > .sidebar-menu > li:first-of-type > a {
   border-top: 1px solid #2D2D2D;
