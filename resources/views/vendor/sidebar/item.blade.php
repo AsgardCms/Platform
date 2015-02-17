@@ -1,4 +1,4 @@
-<li class="{{ $item->state }} @if($item->hasItems()) treeview @endif">
+<li class="{{ $item->state }} @if($item->hasItems()) treeview @endif clearfix">
     <a href="{{ $item->route }}" @if($item->hasAppend())class="hasAppend"@endif>
         <i class="{{ $item->icon or 'fa fa-angle-double-right' }}"></i>
         <span>{{ $item->name }}</span>
@@ -9,7 +9,7 @@
             @endforeach
         @endif
 
-        @if($item->hasItems())<i class="fa fa-angle-left pull-right"></i>@endif
+        @if($item->hasItems())<i class="{{ $item->toggleIcon or 'fa fa-angle-left' }} pull-right"></i>@endif
     </a>
 
     @if($item->hasAppend())
