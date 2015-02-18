@@ -2575,6 +2575,15 @@ footer.footer a {
 .skin-dark .logo .icon {
   margin-right: 10px;
 }
+.skin-dark li.menu-title {
+  padding: 10px 15px;
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 1em;
+  color: #989EA9;
+  border: none !important;
+  text-shadow: 1px 1px 1px black;
+}
 .skin-dark .sidebar > .sidebar-menu > li {
   border-top: 1px solid #2D2D2D;
   border-bottom: 1px solid #181818;
