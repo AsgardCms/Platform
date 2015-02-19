@@ -170,12 +170,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/AsgardCms/Media.git",
-                "reference": "e86d6986182a71d038b41b9189e9656f92b952b3"
+                "reference": "e0e0c4bd89399bd9bae4997d3dca23b7b6d9ed05"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/AsgardCms/Media/zipball/e86d6986182a71d038b41b9189e9656f92b952b3",
-                "reference": "e86d6986182a71d038b41b9189e9656f92b952b3",
+                "url": "https://api.github.com/repos/AsgardCms/Media/zipball/e0e0c4bd89399bd9bae4997d3dca23b7b6d9ed05",
+                "reference": "e0e0c4bd89399bd9bae4997d3dca23b7b6d9ed05",
                 "shasum": ""
             },
             "require": {
@@ -204,7 +204,7 @@
                 "library",
                 "media"
             ],
-            "time": "2015-02-16 18:42:06"
+            "time": "2015-02-19 10:35:11"
         },
         {
             "name": "asgardcms/menu-module",
@@ -327,12 +327,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/AsgardCms/User.git",
-                "reference": "3a9dad5c3c2bb6045a0c86257bac25cc831e64f8"
+                "reference": "eee255bd3ddb4e8e2f778406c2bd32773f064952"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/AsgardCms/User/zipball/3a9dad5c3c2bb6045a0c86257bac25cc831e64f8",
-                "reference": "3a9dad5c3c2bb6045a0c86257bac25cc831e64f8",
+                "url": "https://api.github.com/repos/AsgardCms/User/zipball/eee255bd3ddb4e8e2f778406c2bd32773f064952",
+                "reference": "eee255bd3ddb4e8e2f778406c2bd32773f064952",
                 "shasum": ""
             },
             "require": {
@@ -358,7 +358,7 @@
                 "authorisation",
                 "user"
             ],
-            "time": "2015-02-17 18:45:52"
+            "time": "2015-02-19 09:56:47"
         },
         {
             "name": "asgardcms/workshop-module",
@@ -3166,12 +3166,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/barryvdh/laravel-debugbar.git",
-                "reference": "77b9cc071f4bbd839923269668b14d308778d8b0"
+                "reference": "7bdf8acf3b955f4fcf922e74abdfdec370369196"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/barryvdh/laravel-debugbar/zipball/77b9cc071f4bbd839923269668b14d308778d8b0",
-                "reference": "77b9cc071f4bbd839923269668b14d308778d8b0",
+                "url": "https://api.github.com/repos/barryvdh/laravel-debugbar/zipball/7bdf8acf3b955f4fcf922e74abdfdec370369196",
+                "reference": "7bdf8acf3b955f4fcf922e74abdfdec370369196",
                 "shasum": ""
             },
             "require": {
@@ -3212,7 +3212,7 @@
                 "profiler",
                 "webprofiler"
             ],
-            "time": "2015-02-15 14:11:42"
+            "time": "2015-02-19 10:26:39"
         },
         {
             "name": "doctrine/instantiator",
