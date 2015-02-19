@@ -366,12 +366,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/AsgardCms/Workshop.git",
-                "reference": "f39d6e4cc309b1601f32cb86a7821c402794bf5e"
+                "reference": "fa055d70f41e4bb1f7f238f8171d0cc3e71a334e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/AsgardCms/Workshop/zipball/f39d6e4cc309b1601f32cb86a7821c402794bf5e",
-                "reference": "f39d6e4cc309b1601f32cb86a7821c402794bf5e",
+                "url": "https://api.github.com/repos/AsgardCms/Workshop/zipball/fa055d70f41e4bb1f7f238f8171d0cc3e71a334e",
+                "reference": "fa055d70f41e4bb1f7f238f8171d0cc3e71a334e",
                 "shasum": ""
             },
             "require": {
@@ -396,7 +396,7 @@
                 "modules",
                 "workshop"
             ],
-            "time": "2015-02-19 08:42:20"
+            "time": "2015-02-19 08:49:24"
         },
         {
             "name": "cartalyst/sentry",
