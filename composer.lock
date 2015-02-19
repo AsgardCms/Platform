@@ -4,7 +4,7 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "fed04d473563246d75e55c538358f531",
+    "hash": "d159127464dd9de7bc39e5d44802b64c",
     "packages": [
         {
             "name": "asgardcms/adminlte-theme",
@@ -129,17 +129,17 @@
             "time": "2015-02-16 18:38:40"
         },
         {
-            "name": "asgardcms/demo-theme",
+            "name": "asgardcms/flatly-theme",
             "version": "dev-master",
             "source": {
                 "type": "git",
-                "url": "https://github.com/nWidart/demo-theme.git",
-                "reference": "cc452d1ef58177bf9da935d7b6e672840cb4f0a6"
+                "url": "https://github.com/AsgardCms/Flatly-theme.git",
+                "reference": "52603567ff834ebaee99a72065509d6adb7b923c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nWidart/demo-theme/zipball/cc452d1ef58177bf9da935d7b6e672840cb4f0a6",
-                "reference": "cc452d1ef58177bf9da935d7b6e672840cb4f0a6",
+                "url": "https://api.github.com/repos/AsgardCms/Flatly-theme/zipball/52603567ff834ebaee99a72065509d6adb7b923c",
+                "reference": "52603567ff834ebaee99a72065509d6adb7b923c",
                 "shasum": ""
             },
             "require": {
@@ -158,11 +158,11 @@
                     "role": "Developer"
                 }
             ],
-            "description": "An AsgardCMS demo theme",
+            "description": "An AsgardCMS Flatly bootswatch theme",
             "keywords": [
                 "asgard-cms"
             ],
-            "time": "2015-02-15 20:44:49"
+            "time": "2015-02-19 21:14:30"
         },
         {
             "name": "asgardcms/media-module",
@@ -3161,6 +3161,42 @@
     ],
     "packages-dev": [
         {
+            "name": "asgardcms/demo-theme",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/nWidart/demo-theme.git",
+                "reference": "cc452d1ef58177bf9da935d7b6e672840cb4f0a6"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/nWidart/demo-theme/zipball/cc452d1ef58177bf9da935d7b6e672840cb4f0a6",
+                "reference": "cc452d1ef58177bf9da935d7b6e672840cb4f0a6",
+                "shasum": ""
+            },
+            "require": {
+                "composer/installers": "~1.0",
+                "php": ">=5.4"
+            },
+            "type": "asgard-theme",
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Nicolas Widart",
+                    "email": "info@asgardcms.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "An AsgardCMS demo theme",
+            "keywords": [
+                "asgard-cms"
+            ],
+            "time": "2015-02-15 20:44:49"
+        },
+        {
             "name": "barryvdh/laravel-debugbar",
             "version": "dev-master",
             "source": {
@@ -4348,7 +4384,7 @@
         "asgardcms/page-module": 20,
         "asgardcms/menu-module": 20,
         "asgardcms/workshop-module": 20,
-        "asgardcms/demo-theme": 20,
+        "asgardcms/flatly-theme": 20,
         "asgardcms/adminlte-theme": 20
     },
     "prefer-stable": false,
