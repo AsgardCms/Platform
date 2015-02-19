@@ -48,12 +48,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/AsgardCms/Core.git",
-                "reference": "2bc5ef892ecfea122bfe444b211d97f06aa7cd9b"
+                "reference": "8c4ec20160d532f247c341911a7d7809ccd1a97c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/AsgardCms/Core/zipball/2bc5ef892ecfea122bfe444b211d97f06aa7cd9b",
-                "reference": "2bc5ef892ecfea122bfe444b211d97f06aa7cd9b",
+                "url": "https://api.github.com/repos/AsgardCms/Core/zipball/8c4ec20160d532f247c341911a7d7809ccd1a97c",
+                "reference": "8c4ec20160d532f247c341911a7d7809ccd1a97c",
                 "shasum": ""
             },
             "require": {
@@ -89,7 +89,7 @@
                 "asgardcms",
                 "core"
             ],
-            "time": "2015-02-18 12:51:47"
+            "time": "2015-02-18 19:53:55"
         },
         {
             "name": "asgardcms/dashboard-module",
@@ -212,18 +212,19 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/AsgardCms/Menu.git",
-                "reference": "c5bd86affaf2205e8242c38c16872a78e849af3a"
+                "reference": "ecf6f5956dac96d2b187f43527eb796c363ee3ec"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/AsgardCms/Menu/zipball/c5bd86affaf2205e8242c38c16872a78e849af3a",
-                "reference": "c5bd86affaf2205e8242c38c16872a78e849af3a",
+                "url": "https://api.github.com/repos/AsgardCms/Menu/zipball/ecf6f5956dac96d2b187f43527eb796c363ee3ec",
+                "reference": "ecf6f5956dac96d2b187f43527eb796c363ee3ec",
                 "shasum": ""
             },
             "require": {
                 "composer/installers": "~1.0",
                 "php": ">=5.4",
-                "pingpong/menus": "2.*@dev"
+                "pingpong/menus": "2.*@dev",
+                "typicms/nestablecollection": "dev-master"
             },
             "type": "asgard-module",
             "notification-url": "https://packagist.org/downloads/",
@@ -244,7 +245,7 @@
                 "nested sets",
                 "tree"
             ],
-            "time": "2015-02-17 19:14:25"
+            "time": "2015-02-19 08:20:03"
         },
         {
             "name": "asgardcms/page-module",
@@ -365,12 +366,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/AsgardCms/Workshop.git",
-                "reference": "58e867ef71a4d772162b46dee58b6148537f62b4"
+                "reference": "f39d6e4cc309b1601f32cb86a7821c402794bf5e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/AsgardCms/Workshop/zipball/58e867ef71a4d772162b46dee58b6148537f62b4",
-                "reference": "58e867ef71a4d772162b46dee58b6148537f62b4",
+                "url": "https://api.github.com/repos/AsgardCms/Workshop/zipball/f39d6e4cc309b1601f32cb86a7821c402794bf5e",
+                "reference": "f39d6e4cc309b1601f32cb86a7821c402794bf5e",
                 "shasum": ""
             },
             "require": {
@@ -395,7 +396,7 @@
                 "modules",
                 "workshop"
             ],
-            "time": "2015-02-18 20:20:07"
+            "time": "2015-02-19 08:42:20"
         },
         {
             "name": "cartalyst/sentry",
@@ -1450,12 +1451,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/framework.git",
-                "reference": "6f6350b82c3466b949036f5f8044db63e73db20a"
+                "reference": "1b205ae8ac897470f501b7d781057701eeb01ac1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/framework/zipball/6f6350b82c3466b949036f5f8044db63e73db20a",
-                "reference": "6f6350b82c3466b949036f5f8044db63e73db20a",
+                "url": "https://api.github.com/repos/laravel/framework/zipball/1b205ae8ac897470f501b7d781057701eeb01ac1",
+                "reference": "1b205ae8ac897470f501b7d781057701eeb01ac1",
                 "shasum": ""
             },
             "require": {
@@ -1567,7 +1568,7 @@
                 "framework",
                 "laravel"
             ],
-            "time": "2015-02-18 13:59:59"
+            "time": "2015-02-18 23:12:24"
         },
         {
             "name": "laravelcollective/html",
@@ -3060,6 +3061,51 @@
                 "dump"
             ],
             "time": "2015-02-17 16:54:47"
+        },
+        {
+            "name": "typicms/nestablecollection",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/TypiCMS/NestableCollection.git",
+                "reference": "8ed21890a55d1f3fa59c8bc1d3d80ceda921060f"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/TypiCMS/NestableCollection/zipball/8ed21890a55d1f3fa59c8bc1d3d80ceda921060f",
+                "reference": "8ed21890a55d1f3fa59c8bc1d3d80ceda921060f",
+                "shasum": ""
+            },
+            "require": {
+                "laravel/framework": "~4.2.0|~5.0.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "TypiCMS\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Samuel De Backer",
+                    "email": "sdebacker@gmail.com"
+                }
+            ],
+            "description": "A Laravel Package that extends Collection to handle unlimited nested items following adjacency list model.",
+            "keywords": [
+                "TypiCMS",
+                "adjacency list",
+                "collection",
+                "eloquent",
+                "laravel",
+                "nested set",
+                "tree"
+            ],
+            "time": "2015-02-18 22:38:47"
         },
         {
             "name": "vlucas/phpdotenv",
