@@ -212,12 +212,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/AsgardCms/Menu.git",
-                "reference": "ecf6f5956dac96d2b187f43527eb796c363ee3ec"
+                "reference": "f3d3e588038d1903ef0deedab7e8ff41f56bc2b9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/AsgardCms/Menu/zipball/ecf6f5956dac96d2b187f43527eb796c363ee3ec",
-                "reference": "ecf6f5956dac96d2b187f43527eb796c363ee3ec",
+                "url": "https://api.github.com/repos/AsgardCms/Menu/zipball/f3d3e588038d1903ef0deedab7e8ff41f56bc2b9",
+                "reference": "f3d3e588038d1903ef0deedab7e8ff41f56bc2b9",
                 "shasum": ""
             },
             "require": {
@@ -245,7 +245,7 @@
                 "nested sets",
                 "tree"
             ],
-            "time": "2015-02-19 08:20:03"
+            "time": "2015-02-19 15:03:15"
         },
         {
             "name": "asgardcms/page-module",
@@ -253,12 +253,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/AsgardCms/Page.git",
-                "reference": "6d7861a6031449a33260978bec3a7c7f2ffe8ee1"
+                "reference": "adc9ab23064b1a7fe3812e38942bf4b60531adc1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/AsgardCms/Page/zipball/6d7861a6031449a33260978bec3a7c7f2ffe8ee1",
-                "reference": "6d7861a6031449a33260978bec3a7c7f2ffe8ee1",
+                "url": "https://api.github.com/repos/AsgardCms/Page/zipball/adc9ab23064b1a7fe3812e38942bf4b60531adc1",
+                "reference": "adc9ab23064b1a7fe3812e38942bf4b60531adc1",
                 "shasum": ""
             },
             "require": {
@@ -282,7 +282,7 @@
                 "asgardcms",
                 "pages"
             ],
-            "time": "2015-02-18 12:28:04"
+            "time": "2015-02-19 11:20:10"
         },
         {
             "name": "asgardcms/setting-module",
@@ -290,12 +290,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/AsgardCms/Setting.git",
-                "reference": "04758155cf09f8047a8e390bc78968d0739ce53d"
+                "reference": "d1134a5cb2d1618c85cd9e12713e3e1109bb7a3c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/AsgardCms/Setting/zipball/04758155cf09f8047a8e390bc78968d0739ce53d",
-                "reference": "04758155cf09f8047a8e390bc78968d0739ce53d",
+                "url": "https://api.github.com/repos/AsgardCms/Setting/zipball/d1134a5cb2d1618c85cd9e12713e3e1109bb7a3c",
+                "reference": "d1134a5cb2d1618c85cd9e12713e3e1109bb7a3c",
                 "shasum": ""
             },
             "require": {
@@ -319,7 +319,7 @@
                 "Settings",
                 "asgardcms"
             ],
-            "time": "2015-02-18 12:54:12"
+            "time": "2015-02-19 14:51:30"
         },
         {
             "name": "asgardcms/user-module",
@@ -3068,12 +3068,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/TypiCMS/NestableCollection.git",
-                "reference": "8ed21890a55d1f3fa59c8bc1d3d80ceda921060f"
+                "reference": "81aad0a5865aedb66daabbbcadcc0bde4ff7a265"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/TypiCMS/NestableCollection/zipball/8ed21890a55d1f3fa59c8bc1d3d80ceda921060f",
-                "reference": "8ed21890a55d1f3fa59c8bc1d3d80ceda921060f",
+                "url": "https://api.github.com/repos/TypiCMS/NestableCollection/zipball/81aad0a5865aedb66daabbbcadcc0bde4ff7a265",
+                "reference": "81aad0a5865aedb66daabbbcadcc0bde4ff7a265",
                 "shasum": ""
             },
             "require": {
@@ -3105,7 +3105,7 @@
                 "nested set",
                 "tree"
             ],
-            "time": "2015-02-18 22:38:47"
+            "time": "2015-02-19 12:56:57"
         },
         {
             "name": "vlucas/phpdotenv",
