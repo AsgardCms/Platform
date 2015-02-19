@@ -134,12 +134,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/AsgardCms/Flatly-theme.git",
-                "reference": "fea2c747fca50254a6ef827442bfb880fcb17774"
+                "reference": "0cf7d209e52254b55a4d97fe58c56663a7641f4d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/AsgardCms/Flatly-theme/zipball/fea2c747fca50254a6ef827442bfb880fcb17774",
-                "reference": "fea2c747fca50254a6ef827442bfb880fcb17774",
+                "url": "https://api.github.com/repos/AsgardCms/Flatly-theme/zipball/0cf7d209e52254b55a4d97fe58c56663a7641f4d",
+                "reference": "0cf7d209e52254b55a4d97fe58c56663a7641f4d",
                 "shasum": ""
             },
             "require": {
@@ -162,7 +162,7 @@
             "keywords": [
                 "asgard-cms"
             ],
-            "time": "2015-02-19 21:24:50"
+            "time": "2015-02-19 21:56:35"
         },
         {
             "name": "asgardcms/media-module",
