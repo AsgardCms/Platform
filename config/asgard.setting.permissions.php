@@ -2,5 +2,7 @@
 return [
     'settings' => [
         'index',
+        'getModuleSettings',
+        'store',
     ],
 ];
