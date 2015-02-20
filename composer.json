@@ -8,7 +8,7 @@
   "license": "MIT",
   "type": "project",
   "require": {
-    "laravel/framework": "5.0.5",
+    "laravel/framework": "~5.0",
     "pingpong/modules": "2.0.*@dev",
     "cartalyst/sentry": "dev-feature/laravel-5",
     "asgardcms/core-module": "dev-develop",
@@ -64,5 +64,6 @@
   "config": {
     "preferred-install": "dist"
   },
-  "minimum-stability": "dev"
+  "minimum-stability": "dev",
+  "prefer-stable": true
 }
