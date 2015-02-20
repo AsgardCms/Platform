@@ -1,6 +1,6 @@
 <?php
 return [
-    'settings' => [
+    'setting.settings' => [
         'index',
         'getModuleSettings',
         'store',
