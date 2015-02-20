@@ -48,12 +48,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/AsgardCms/Core.git",
-                "reference": "bb823d26d291d55d3ba6909eff95ae9a00840747"
+                "reference": "e379d16b5050b2a25cca5e8974ac9a00cfbd0f3f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/AsgardCms/Core/zipball/bb823d26d291d55d3ba6909eff95ae9a00840747",
-                "reference": "bb823d26d291d55d3ba6909eff95ae9a00840747",
+                "url": "https://api.github.com/repos/AsgardCms/Core/zipball/e379d16b5050b2a25cca5e8974ac9a00cfbd0f3f",
+                "reference": "e379d16b5050b2a25cca5e8974ac9a00cfbd0f3f",
                 "shasum": ""
             },
             "require": {
@@ -89,7 +89,7 @@
                 "asgardcms",
                 "core"
             ],
-            "time": "2015-02-19 15:36:20"
+            "time": "2015-02-20 11:21:09"
         },
         {
             "name": "asgardcms/dashboard-module",
@@ -290,12 +290,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/AsgardCms/Setting.git",
-                "reference": "ea292d49ee72bd9a550e4ed75db569a1931bc787"
+                "reference": "63e79231158726b26c050d93f14477e3e83fe05e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/AsgardCms/Setting/zipball/ea292d49ee72bd9a550e4ed75db569a1931bc787",
-                "reference": "ea292d49ee72bd9a550e4ed75db569a1931bc787",
+                "url": "https://api.github.com/repos/AsgardCms/Setting/zipball/63e79231158726b26c050d93f14477e3e83fe05e",
+                "reference": "63e79231158726b26c050d93f14477e3e83fe05e",
                 "shasum": ""
             },
             "require": {
@@ -319,7 +319,7 @@
                 "Settings",
                 "asgardcms"
             ],
-            "time": "2015-02-19 21:22:05"
+            "time": "2015-02-20 10:34:03"
         },
         {
             "name": "asgardcms/user-module",
@@ -1626,12 +1626,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/thephpleague/flysystem.git",
-                "reference": "d3887257d8f1944525c334f19da3c2841a7a9194"
+                "reference": "515e7db7f9e4dd704f80b23c961d7c4387d0b8de"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/thephpleague/flysystem/zipball/d3887257d8f1944525c334f19da3c2841a7a9194",
-                "reference": "d3887257d8f1944525c334f19da3c2841a7a9194",
+                "url": "https://api.github.com/repos/thephpleague/flysystem/zipball/515e7db7f9e4dd704f80b23c961d7c4387d0b8de",
+                "reference": "515e7db7f9e4dd704f80b23c961d7c4387d0b8de",
                 "shasum": ""
             },
             "require": {
@@ -1701,7 +1701,7 @@
                 "sftp",
                 "storage"
             ],
-            "time": "2015-02-18 09:40:42"
+            "time": "2015-02-20 10:54:52"
         },
         {
             "name": "maatwebsite/laravel-sidebar",
