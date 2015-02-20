@@ -13,10 +13,9 @@
 
     $.extend(keypressAction.prototype, {
         bindKeyToRoute: function (key, route) {
-            $(document).keypress(function(e) {
-                if (e.which == key) {
-                    window.location = route;
-                }
+            Mousetrap.bind([key], function(e) {
+                window.location = route;
+                return false;
             });
         },
         init: function () {
