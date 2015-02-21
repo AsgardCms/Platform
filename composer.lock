@@ -48,12 +48,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/AsgardCms/Core.git",
-                "reference": "0d8dbbcbc2f3e480395109e03ae1597b80a9e283"
+                "reference": "d67a52d82feb9755643906fb912e6b1be46a5350"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/AsgardCms/Core/zipball/0d8dbbcbc2f3e480395109e03ae1597b80a9e283",
-                "reference": "0d8dbbcbc2f3e480395109e03ae1597b80a9e283",
+                "url": "https://api.github.com/repos/AsgardCms/Core/zipball/d67a52d82feb9755643906fb912e6b1be46a5350",
+                "reference": "d67a52d82feb9755643906fb912e6b1be46a5350",
                 "shasum": ""
             },
             "require": {
@@ -90,7 +90,7 @@
                 "asgardcms",
                 "core"
             ],
-            "time": "2015-02-20 19:54:02"
+            "time": "2015-02-21 08:41:04"
         },
         {
             "name": "asgardcms/dashboard-module",
@@ -171,18 +171,23 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/AsgardCms/Media.git",
-                "reference": "bb79b0a64f25339ed40bdea92d4f45762d34fba7"
+                "reference": "652aed51a68281214a73daab1c515020652d4bf1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/AsgardCms/Media/zipball/bb79b0a64f25339ed40bdea92d4f45762d34fba7",
-                "reference": "bb79b0a64f25339ed40bdea92d4f45762d34fba7",
+                "url": "https://api.github.com/repos/AsgardCms/Media/zipball/652aed51a68281214a73daab1c515020652d4bf1",
+                "reference": "652aed51a68281214a73daab1c515020652d4bf1",
                 "shasum": ""
             },
             "require": {
+                "asgardcms/core-module": "dev-develop",
                 "composer/installers": "~1.0",
                 "intervention/image": "~2.1",
                 "php": ">=5.4"
+            },
+            "require-dev": {
+                "orchestra/testbench": "~3.0",
+                "phpunit/phpunit": "~4.0"
             },
             "type": "asgard-module",
             "notification-url": "https://packagist.org/downloads/",
@@ -205,7 +210,7 @@
                 "library",
                 "media"
             ],
-            "time": "2015-02-20 20:07:17"
+            "time": "2015-02-20 21:54:50"
         },
         {
             "name": "asgardcms/menu-module",
@@ -380,16 +385,17 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/AsgardCms/Workshop.git",
-                "reference": "6450001605b4f8200fd2fcc08fc2bbf553214a5b"
+                "reference": "c03db208b535f087807107934364a03d9bc53654"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/AsgardCms/Workshop/zipball/6450001605b4f8200fd2fcc08fc2bbf553214a5b",
-                "reference": "6450001605b4f8200fd2fcc08fc2bbf553214a5b",
+                "url": "https://api.github.com/repos/AsgardCms/Workshop/zipball/c03db208b535f087807107934364a03d9bc53654",
+                "reference": "c03db208b535f087807107934364a03d9bc53654",
                 "shasum": ""
             },
             "require": {
                 "asgardcms/core-module": "dev-develop",
+                "asgardcms/menu-module": "dev-develop",
                 "composer/installers": "~1.0",
                 "php": ">=5.4",
                 "pingpong/modules": "2.0.*@dev"
@@ -416,7 +422,7 @@
                 "modules",
                 "workshop"
             ],
-            "time": "2015-02-20 20:07:57"
+            "time": "2015-02-20 21:09:36"
         },
         {
             "name": "cartalyst/sentry",
