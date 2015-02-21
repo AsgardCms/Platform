@@ -218,12 +218,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/AsgardCms/Menu.git",
-                "reference": "b52d79635b9779dbf88d6a18d6e22b5d59d44f38"
+                "reference": "87b4f0f9f7f1ff6e10bb16034f1b30bf8c12dfaf"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/AsgardCms/Menu/zipball/b52d79635b9779dbf88d6a18d6e22b5d59d44f38",
-                "reference": "b52d79635b9779dbf88d6a18d6e22b5d59d44f38",
+                "url": "https://api.github.com/repos/AsgardCms/Menu/zipball/87b4f0f9f7f1ff6e10bb16034f1b30bf8c12dfaf",
+                "reference": "87b4f0f9f7f1ff6e10bb16034f1b30bf8c12dfaf",
                 "shasum": ""
             },
             "require": {
@@ -259,7 +259,7 @@
                 "nested sets",
                 "tree"
             ],
-            "time": "2015-02-21 09:27:50"
+            "time": "2015-02-21 11:33:25"
         },
         {
             "name": "asgardcms/page-module",
