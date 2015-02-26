@@ -12,12 +12,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/AsgardCms/AdminLTE.git",
-                "reference": "ff80c8fa5a855fb4bf69a8248d373348d4c5320f"
+                "reference": "6231bfc87ca1461c5ae37655d20782fbbbacd6c7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/AsgardCms/AdminLTE/zipball/ff80c8fa5a855fb4bf69a8248d373348d4c5320f",
-                "reference": "ff80c8fa5a855fb4bf69a8248d373348d4c5320f",
+                "url": "https://api.github.com/repos/AsgardCms/AdminLTE/zipball/6231bfc87ca1461c5ae37655d20782fbbbacd6c7",
+                "reference": "6231bfc87ca1461c5ae37655d20782fbbbacd6c7",
                 "shasum": ""
             },
             "require": {
@@ -40,7 +40,7 @@
             "keywords": [
                 "asgard-cms"
             ],
-            "time": "2015-02-18 12:27:17"
+            "time": "2015-02-26 10:49:44"
         },
         {
             "name": "asgardcms/core-module",
@@ -48,12 +48,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/AsgardCms/Core.git",
-                "reference": "b486984bb54b3ecb2e35d46706d14843deb28166"
+                "reference": "4de08f89ef98026eda6bba0483b3497582dad057"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/AsgardCms/Core/zipball/b486984bb54b3ecb2e35d46706d14843deb28166",
-                "reference": "b486984bb54b3ecb2e35d46706d14843deb28166",
+                "url": "https://api.github.com/repos/AsgardCms/Core/zipball/4de08f89ef98026eda6bba0483b3497582dad057",
+                "reference": "4de08f89ef98026eda6bba0483b3497582dad057",
                 "shasum": ""
             },
             "require": {
@@ -90,7 +90,7 @@
                 "asgardcms",
                 "core"
             ],
-            "time": "2015-02-21 09:02:26"
+            "time": "2015-02-26 11:06:31"
         },
         {
             "name": "asgardcms/dashboard-module",
@@ -267,12 +267,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/AsgardCms/Page.git",
-                "reference": "6c0012f1dec34e728d1d8ce0e5a744fc55df76e3"
+                "reference": "f5f83010d410ccdf8fe28120fcf342fda0462e27"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/AsgardCms/Page/zipball/6c0012f1dec34e728d1d8ce0e5a744fc55df76e3",
-                "reference": "6c0012f1dec34e728d1d8ce0e5a744fc55df76e3",
+                "url": "https://api.github.com/repos/AsgardCms/Page/zipball/f5f83010d410ccdf8fe28120fcf342fda0462e27",
+                "reference": "f5f83010d410ccdf8fe28120fcf342fda0462e27",
                 "shasum": ""
             },
             "require": {
@@ -296,7 +296,7 @@
                 "asgardcms",
                 "pages"
             ],
-            "time": "2015-02-20 20:06:52"
+            "time": "2015-02-26 11:09:14"
         },
         {
             "name": "asgardcms/setting-module",
@@ -385,12 +385,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/AsgardCms/Workshop.git",
-                "reference": "012b5517de2d019fffa140de0c74d21b25eb36c6"
+                "reference": "2793f896630dcb09daa74715518fbf81f9fce58f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/AsgardCms/Workshop/zipball/012b5517de2d019fffa140de0c74d21b25eb36c6",
-                "reference": "012b5517de2d019fffa140de0c74d21b25eb36c6",
+                "url": "https://api.github.com/repos/AsgardCms/Workshop/zipball/2793f896630dcb09daa74715518fbf81f9fce58f",
+                "reference": "2793f896630dcb09daa74715518fbf81f9fce58f",
                 "shasum": ""
             },
             "require": {
@@ -422,32 +422,32 @@
                 "modules",
                 "workshop"
             ],
-            "time": "2015-02-22 11:03:48"
+            "time": "2015-02-22 18:51:43"
         },
         {
             "name": "cartalyst/sentry",
             "version": "dev-feature/laravel-5",
             "source": {
                 "type": "git",
-                "url": "https://github.com/cartalyst/sentry.git",
-                "reference": "78c4dd21d1ddd41c2b2c54301b9e5771e1e42bf4"
+                "url": "git@github.com:cartalyst/sentry.git",
+                "reference": "5e5e232e970903cf565cbc0eadee33ceda8492b4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/cartalyst/sentry/zipball/78c4dd21d1ddd41c2b2c54301b9e5771e1e42bf4",
-                "reference": "78c4dd21d1ddd41c2b2c54301b9e5771e1e42bf4",
+                "url": "https://api.github.com/repos/cartalyst/sentry/zipball/5e5e232e970903cf565cbc0eadee33ceda8492b4",
+                "reference": "5e5e232e970903cf565cbc0eadee33ceda8492b4",
                 "shasum": ""
             },
             "require": {
                 "php": ">=5.3.3"
             },
             "require-dev": {
-                "illuminate/cookie": "~5.0",
-                "illuminate/database": "~5.0",
-                "illuminate/http": "~5.0",
-                "illuminate/session": "~5.0",
+                "illuminate/cookie": "~4.0|~5.0",
+                "illuminate/database": "~4.0|~5.0",
+                "illuminate/http": "~4.0|~5.0",
+                "illuminate/session": "~4.0|~5.0",
                 "ircmaxell/password-compat": "1.0.*",
-                "mockery/mockery": "0.7.2"
+                "mockery/mockery": "0.9.*"
             },
             "suggest": {
                 "happydemon/txt": "Required Text helpers when using the Kohana implementation",
@@ -521,11 +521,7 @@
                 "laravel",
                 "security"
             ],
-            "support": {
-                "source": "https://github.com/cartalyst/sentry/tree/feature/laravel-5",
-                "issues": "https://github.com/cartalyst/sentry/issues"
-            },
-            "time": "2015-02-06 21:30:43"
+            "time": "2015-02-25 01:41:59"
         },
         {
             "name": "classpreloader/classpreloader",
@@ -1472,16 +1468,16 @@
         },
         {
             "name": "laravel/framework",
-            "version": "v5.0.6",
+            "version": "v5.0.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/framework.git",
-                "reference": "43637b796f1ac0b1a960984231251ff04b438006"
+                "reference": "f46adbb5bc753bd9503ee232e8ce1f4421a78b2a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/framework/zipball/43637b796f1ac0b1a960984231251ff04b438006",
-                "reference": "43637b796f1ac0b1a960984231251ff04b438006",
+                "url": "https://api.github.com/repos/laravel/framework/zipball/f46adbb5bc753bd9503ee232e8ce1f4421a78b2a",
+                "reference": "f46adbb5bc753bd9503ee232e8ce1f4421a78b2a",
                 "shasum": ""
             },
             "require": {
@@ -1498,7 +1494,7 @@
                 "mtdowling/cron-expression": "~1.0",
                 "nesbot/carbon": "~1.0",
                 "php": ">=5.4.0",
-                "psy/psysh": "0.3.*",
+                "psy/psysh": "0.4.*",
                 "swiftmailer/swiftmailer": "~5.1",
                 "symfony/console": "2.6.*",
                 "symfony/debug": "2.6.*",
@@ -1593,7 +1589,7 @@
                 "framework",
                 "laravel"
             ],
-            "time": "2015-02-20 16:22:21"
+            "time": "2015-02-25 20:23:22"
         },
         {
             "name": "laravelcollective/html",
@@ -2135,12 +2131,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/pingpong-labs/modules.git",
-                "reference": "a67ec88beeb0f50fb1879a025f2b08914e863dbd"
+                "reference": "b04933b00525d13a2dd2625dc788efb4c9c3c0bb"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/pingpong-labs/modules/zipball/a67ec88beeb0f50fb1879a025f2b08914e863dbd",
-                "reference": "a67ec88beeb0f50fb1879a025f2b08914e863dbd",
+                "url": "https://api.github.com/repos/pingpong-labs/modules/zipball/b04933b00525d13a2dd2625dc788efb4c9c3c0bb",
+                "reference": "b04933b00525d13a2dd2625dc788efb4c9c3c0bb",
                 "shasum": ""
             },
             "require": {
@@ -2184,7 +2180,7 @@
                 "modules",
                 "pingpong"
             ],
-            "time": "2015-02-16 04:53:39"
+            "time": "2015-02-24 22:32:37"
         },
         {
             "name": "psr/log",
@@ -2226,16 +2222,16 @@
         },
         {
             "name": "psy/psysh",
-            "version": "v0.3.5",
+            "version": "v0.4.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/bobthecow/psysh.git",
-                "reference": "2ce0e8f3020fd292c2ad2a496c5d83939823f642"
+                "reference": "3787f3436f4fd898e0ac1eb6f5abd2ab6b24085b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/bobthecow/psysh/zipball/2ce0e8f3020fd292c2ad2a496c5d83939823f642",
-                "reference": "2ce0e8f3020fd292c2ad2a496c5d83939823f642",
+                "url": "https://api.github.com/repos/bobthecow/psysh/zipball/3787f3436f4fd898e0ac1eb6f5abd2ab6b24085b",
+                "reference": "3787f3436f4fd898e0ac1eb6f5abd2ab6b24085b",
                 "shasum": ""
             },
             "require": {
@@ -2253,6 +2249,7 @@
             },
             "suggest": {
                 "ext-pcntl": "Enabling the PCNTL extension makes PsySH a lot happier :)",
+                "ext-pdo-sqlite": "The doc command requires SQLite to work.",
                 "ext-posix": "If you have PCNTL, you'll want the POSIX extension as well.",
                 "ext-readline": "Enables support for arrow-key history navigation, and showing and manipulating command history."
             },
@@ -2292,7 +2289,7 @@
                 "interactive",
                 "shell"
             ],
-            "time": "2015-02-12 19:35:52"
+            "time": "2015-02-25 20:35:54"
         },
         {
             "name": "react/promise",
