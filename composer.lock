@@ -12,12 +12,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/AsgardCms/AdminLTE.git",
-                "reference": "6231bfc87ca1461c5ae37655d20782fbbbacd6c7"
+                "reference": "5d8e71c2362d5c71881c9390f133d0a7bea22d6d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/AsgardCms/AdminLTE/zipball/6231bfc87ca1461c5ae37655d20782fbbbacd6c7",
-                "reference": "6231bfc87ca1461c5ae37655d20782fbbbacd6c7",
+                "url": "https://api.github.com/repos/AsgardCms/AdminLTE/zipball/5d8e71c2362d5c71881c9390f133d0a7bea22d6d",
+                "reference": "5d8e71c2362d5c71881c9390f133d0a7bea22d6d",
                 "shasum": ""
             },
             "require": {
@@ -40,7 +40,7 @@
             "keywords": [
                 "asgard-cms"
             ],
-            "time": "2015-02-26 10:49:44"
+            "time": "2015-02-27 10:11:42"
         },
         {
             "name": "asgardcms/core-module",
@@ -171,12 +171,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/AsgardCms/Media.git",
-                "reference": "652aed51a68281214a73daab1c515020652d4bf1"
+                "reference": "0a43b89acf3f9c5f38694ea189f10b14a2f1b336"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/AsgardCms/Media/zipball/652aed51a68281214a73daab1c515020652d4bf1",
-                "reference": "652aed51a68281214a73daab1c515020652d4bf1",
+                "url": "https://api.github.com/repos/AsgardCms/Media/zipball/0a43b89acf3f9c5f38694ea189f10b14a2f1b336",
+                "reference": "0a43b89acf3f9c5f38694ea189f10b14a2f1b336",
                 "shasum": ""
             },
             "require": {
@@ -210,7 +210,7 @@
                 "library",
                 "media"
             ],
-            "time": "2015-02-20 21:54:50"
+            "time": "2015-02-27 08:41:51"
         },
         {
             "name": "asgardcms/menu-module",
@@ -991,16 +991,16 @@
         },
         {
             "name": "guzzlehttp/ringphp",
-            "version": "1.0.5",
+            "version": "1.0.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/guzzle/RingPHP.git",
-                "reference": "a903f51b692427318bc813217c0e6505287e79a4"
+                "reference": "f43ab34aad69ca0ba04172cf2c3cd5c12fc0e5a4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/guzzle/RingPHP/zipball/a903f51b692427318bc813217c0e6505287e79a4",
-                "reference": "a903f51b692427318bc813217c0e6505287e79a4",
+                "url": "https://api.github.com/repos/guzzle/RingPHP/zipball/f43ab34aad69ca0ba04172cf2c3cd5c12fc0e5a4",
+                "reference": "f43ab34aad69ca0ba04172cf2c3cd5c12fc0e5a4",
                 "shasum": ""
             },
             "require": {
@@ -1037,7 +1037,8 @@
                     "homepage": "https://github.com/mtdowling"
                 }
             ],
-            "time": "2014-12-11 05:50:32"
+            "description": "Provides a simple API and specification that abstracts away the details of HTTP into a single PHP function.",
+            "time": "2015-02-26 20:43:09"
         },
         {
             "name": "guzzlehttp/streams",
@@ -1468,16 +1469,16 @@
         },
         {
             "name": "laravel/framework",
-            "version": "v5.0.7",
+            "version": "v5.0.13",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/framework.git",
-                "reference": "f46adbb5bc753bd9503ee232e8ce1f4421a78b2a"
+                "reference": "c263240daa383e6b9bd979600dc61dcb2c436d53"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/framework/zipball/f46adbb5bc753bd9503ee232e8ce1f4421a78b2a",
-                "reference": "f46adbb5bc753bd9503ee232e8ce1f4421a78b2a",
+                "url": "https://api.github.com/repos/laravel/framework/zipball/c263240daa383e6b9bd979600dc61dcb2c436d53",
+                "reference": "c263240daa383e6b9bd979600dc61dcb2c436d53",
                 "shasum": ""
             },
             "require": {
@@ -1589,20 +1590,20 @@
                 "framework",
                 "laravel"
             ],
-            "time": "2015-02-25 20:23:22"
+            "time": "2015-02-27 00:32:38"
         },
         {
             "name": "laravelcollective/html",
-            "version": "v5.0.0",
+            "version": "v5.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/LaravelCollective/html.git",
-                "reference": "a21c998f997163018bb4ee4f40e5db71b0067095"
+                "reference": "819a87d56445d3fcd2c46a57f1ecf589ee6744c6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/LaravelCollective/html/zipball/a21c998f997163018bb4ee4f40e5db71b0067095",
-                "reference": "a21c998f997163018bb4ee4f40e5db71b0067095",
+                "url": "https://api.github.com/repos/LaravelCollective/html/zipball/819a87d56445d3fcd2c46a57f1ecf589ee6744c6",
+                "reference": "819a87d56445d3fcd2c46a57f1ecf589ee6744c6",
                 "shasum": ""
             },
             "require": {
@@ -1639,7 +1640,7 @@
                     "email": "adam@laravelcollective.com"
                 }
             ],
-            "time": "2015-02-05 16:40:45"
+            "time": "2015-02-20 16:13:49"
         },
         {
             "name": "league/flysystem",
@@ -3179,16 +3180,16 @@
     "packages-dev": [
         {
             "name": "barryvdh/laravel-debugbar",
-            "version": "v2.0.1",
+            "version": "v2.0.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/barryvdh/laravel-debugbar.git",
-                "reference": "77b9cc071f4bbd839923269668b14d308778d8b0"
+                "reference": "7bdf8acf3b955f4fcf922e74abdfdec370369196"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/barryvdh/laravel-debugbar/zipball/77b9cc071f4bbd839923269668b14d308778d8b0",
-                "reference": "77b9cc071f4bbd839923269668b14d308778d8b0",
+                "url": "https://api.github.com/repos/barryvdh/laravel-debugbar/zipball/7bdf8acf3b955f4fcf922e74abdfdec370369196",
+                "reference": "7bdf8acf3b955f4fcf922e74abdfdec370369196",
                 "shasum": ""
             },
             "require": {
@@ -3229,7 +3230,7 @@
                 "profiler",
                 "webprofiler"
             ],
-            "time": "2015-02-15 14:11:42"
+            "time": "2015-02-19 10:26:39"
         },
         {
             "name": "doctrine/instantiator",
