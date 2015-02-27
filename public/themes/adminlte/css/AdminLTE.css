@@ -2057,7 +2057,7 @@ Component: timeline
   border-radius: 0;
 }
 footer.footer {
-  position: absolute;
+  position: fixed;
   bottom: 0;
   width: 100%;
   line-height: 30px;
