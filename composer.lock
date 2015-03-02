@@ -346,12 +346,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/AsgardCms/User.git",
-                "reference": "a1ac090e51b97185d02ed8b45ff9d50dcb4fc3ca"
+                "reference": "9c34afab52147184f6affdd50dd71171a458c8b7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/AsgardCms/User/zipball/a1ac090e51b97185d02ed8b45ff9d50dcb4fc3ca",
-                "reference": "a1ac090e51b97185d02ed8b45ff9d50dcb4fc3ca",
+                "url": "https://api.github.com/repos/AsgardCms/User/zipball/9c34afab52147184f6affdd50dd71171a458c8b7",
+                "reference": "9c34afab52147184f6affdd50dd71171a458c8b7",
                 "shasum": ""
             },
             "require": {
@@ -377,7 +377,7 @@
                 "authorisation",
                 "user"
             ],
-            "time": "2015-02-27 18:42:15"
+            "time": "2015-03-02 10:46:45"
         },
         {
             "name": "asgardcms/workshop-module",
