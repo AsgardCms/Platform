@@ -218,12 +218,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/AsgardCms/Menu.git",
-                "reference": "3dfca4d6060b9efb7d177a2c00ba67d865f5446d"
+                "reference": "f8087089e102574a16ae0ce9531fa5ce572e4e98"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/AsgardCms/Menu/zipball/3dfca4d6060b9efb7d177a2c00ba67d865f5446d",
-                "reference": "3dfca4d6060b9efb7d177a2c00ba67d865f5446d",
+                "url": "https://api.github.com/repos/AsgardCms/Menu/zipball/f8087089e102574a16ae0ce9531fa5ce572e4e98",
+                "reference": "f8087089e102574a16ae0ce9531fa5ce572e4e98",
                 "shasum": ""
             },
             "require": {
@@ -259,7 +259,7 @@
                 "nested sets",
                 "tree"
             ],
-            "time": "2015-03-03 12:00:47"
+            "time": "2015-03-03 12:04:11"
         },
         {
             "name": "asgardcms/page-module",
@@ -3086,12 +3086,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/TypiCMS/NestableCollection.git",
-                "reference": "977f0ef2dda8988455ac16fce0d0e1fcec4af5f7"
+                "reference": "3641d518295c2ded19210c46751d6d7d6a147b3d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/TypiCMS/NestableCollection/zipball/977f0ef2dda8988455ac16fce0d0e1fcec4af5f7",
-                "reference": "977f0ef2dda8988455ac16fce0d0e1fcec4af5f7",
+                "url": "https://api.github.com/repos/TypiCMS/NestableCollection/zipball/3641d518295c2ded19210c46751d6d7d6a147b3d",
+                "reference": "3641d518295c2ded19210c46751d6d7d6a147b3d",
                 "shasum": ""
             },
             "require": {
@@ -3123,7 +3123,7 @@
                 "nested set",
                 "tree"
             ],
-            "time": "2015-03-02 20:03:32"
+            "time": "2015-03-03 15:15:19"
         },
         {
             "name": "vlucas/phpdotenv",
