@@ -171,12 +171,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/AsgardCms/Media.git",
-                "reference": "4ef14eab5514b3076b4bf87c751706edb38ed61e"
+                "reference": "28b68d61471def255609d986a5baecc2088a7dbc"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/AsgardCms/Media/zipball/4ef14eab5514b3076b4bf87c751706edb38ed61e",
-                "reference": "4ef14eab5514b3076b4bf87c751706edb38ed61e",
+                "url": "https://api.github.com/repos/AsgardCms/Media/zipball/28b68d61471def255609d986a5baecc2088a7dbc",
+                "reference": "28b68d61471def255609d986a5baecc2088a7dbc",
                 "shasum": ""
             },
             "require": {
@@ -210,7 +210,7 @@
                 "library",
                 "media"
             ],
-            "time": "2015-02-28 08:03:40"
+            "time": "2015-03-03 18:15:12"
         },
         {
             "name": "asgardcms/menu-module",
@@ -218,12 +218,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/AsgardCms/Menu.git",
-                "reference": "f8087089e102574a16ae0ce9531fa5ce572e4e98"
+                "reference": "33977f60fea1c3e0cf8a54dd304ce2d66f3bd630"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/AsgardCms/Menu/zipball/f8087089e102574a16ae0ce9531fa5ce572e4e98",
-                "reference": "f8087089e102574a16ae0ce9531fa5ce572e4e98",
+                "url": "https://api.github.com/repos/AsgardCms/Menu/zipball/33977f60fea1c3e0cf8a54dd304ce2d66f3bd630",
+                "reference": "33977f60fea1c3e0cf8a54dd304ce2d66f3bd630",
                 "shasum": ""
             },
             "require": {
@@ -232,7 +232,7 @@
                 "dimsav/laravel-translatable": "~5.0",
                 "php": ">=5.4",
                 "pingpong/menus": "2.*@dev",
-                "typicms/nestablecollection": "dev-master"
+                "typicms/nestablecollection": "~1.0.2"
             },
             "require-dev": {
                 "doctrine/dbal": "2.5.*@dev",
@@ -259,7 +259,7 @@
                 "nested sets",
                 "tree"
             ],
-            "time": "2015-03-03 12:04:11"
+            "time": "2015-03-03 18:18:49"
         },
         {
             "name": "asgardcms/page-module",
@@ -267,12 +267,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/AsgardCms/Page.git",
-                "reference": "f5f83010d410ccdf8fe28120fcf342fda0462e27"
+                "reference": "9cad82d2c06e4f23ec9359f304c54e0cb7a455f0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/AsgardCms/Page/zipball/f5f83010d410ccdf8fe28120fcf342fda0462e27",
-                "reference": "f5f83010d410ccdf8fe28120fcf342fda0462e27",
+                "url": "https://api.github.com/repos/AsgardCms/Page/zipball/9cad82d2c06e4f23ec9359f304c54e0cb7a455f0",
+                "reference": "9cad82d2c06e4f23ec9359f304c54e0cb7a455f0",
                 "shasum": ""
             },
             "require": {
@@ -296,7 +296,7 @@
                 "asgardcms",
                 "pages"
             ],
-            "time": "2015-02-26 11:09:14"
+            "time": "2015-02-26 15:23:10"
         },
         {
             "name": "asgardcms/setting-module",
@@ -3082,7 +3082,7 @@
         },
         {
             "name": "typicms/nestablecollection",
-            "version": "dev-master",
+            "version": "v1.0.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/TypiCMS/NestableCollection.git",
