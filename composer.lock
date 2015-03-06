@@ -12,12 +12,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/AsgardCms/AdminLTE.git",
-                "reference": "5d8e71c2362d5c71881c9390f133d0a7bea22d6d"
+                "reference": "daf31f5f8d6ac91e7d87ba2dc0f7deead9381975"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/AsgardCms/AdminLTE/zipball/5d8e71c2362d5c71881c9390f133d0a7bea22d6d",
-                "reference": "5d8e71c2362d5c71881c9390f133d0a7bea22d6d",
+                "url": "https://api.github.com/repos/AsgardCms/AdminLTE/zipball/daf31f5f8d6ac91e7d87ba2dc0f7deead9381975",
+                "reference": "daf31f5f8d6ac91e7d87ba2dc0f7deead9381975",
                 "shasum": ""
             },
             "require": {
@@ -40,7 +40,7 @@
             "keywords": [
                 "asgard-cms"
             ],
-            "time": "2015-02-27 10:11:42"
+            "time": "2015-03-06 07:29:12"
         },
         {
             "name": "asgardcms/core-module",
@@ -48,12 +48,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/AsgardCms/Core.git",
-                "reference": "4deedbd45383f693154a512a2cfb8c731775111f"
+                "reference": "a01c8e7d7297e6d0c364bfeb4e90544425ca3d75"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/AsgardCms/Core/zipball/4deedbd45383f693154a512a2cfb8c731775111f",
-                "reference": "4deedbd45383f693154a512a2cfb8c731775111f",
+                "url": "https://api.github.com/repos/AsgardCms/Core/zipball/a01c8e7d7297e6d0c364bfeb4e90544425ca3d75",
+                "reference": "a01c8e7d7297e6d0c364bfeb4e90544425ca3d75",
                 "shasum": ""
             },
             "require": {
@@ -90,7 +90,7 @@
                 "asgardcms",
                 "core"
             ],
-            "time": "2015-03-01 09:10:38"
+            "time": "2015-03-06 07:28:41"
         },
         {
             "name": "asgardcms/dashboard-module",
@@ -135,12 +135,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/AsgardCms/Flatly-theme.git",
-                "reference": "0cf7d209e52254b55a4d97fe58c56663a7641f4d"
+                "reference": "5da7493a89d85bbb678b1f158ca3811fc7101a24"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/AsgardCms/Flatly-theme/zipball/0cf7d209e52254b55a4d97fe58c56663a7641f4d",
-                "reference": "0cf7d209e52254b55a4d97fe58c56663a7641f4d",
+                "url": "https://api.github.com/repos/AsgardCms/Flatly-theme/zipball/5da7493a89d85bbb678b1f158ca3811fc7101a24",
+                "reference": "5da7493a89d85bbb678b1f158ca3811fc7101a24",
                 "shasum": ""
             },
             "require": {
@@ -163,7 +163,7 @@
             "keywords": [
                 "asgard-cms"
             ],
-            "time": "2015-02-19 21:56:35"
+            "time": "2015-03-06 07:28:21"
         },
         {
             "name": "asgardcms/media-module",
@@ -1822,16 +1822,16 @@
         },
         {
             "name": "monolog/monolog",
-            "version": "1.12.0",
+            "version": "1.13.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Seldaek/monolog.git",
-                "reference": "1fbe8c2641f2b163addf49cc5e18f144bec6b19f"
+                "reference": "c41c218e239b50446fd883acb1ecfd4b770caeae"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Seldaek/monolog/zipball/1fbe8c2641f2b163addf49cc5e18f144bec6b19f",
-                "reference": "1fbe8c2641f2b163addf49cc5e18f144bec6b19f",
+                "url": "https://api.github.com/repos/Seldaek/monolog/zipball/c41c218e239b50446fd883acb1ecfd4b770caeae",
+                "reference": "c41c218e239b50446fd883acb1ecfd4b770caeae",
                 "shasum": ""
             },
             "require": {
@@ -1848,6 +1848,7 @@
                 "phpunit/phpunit": "~4.0",
                 "raven/raven": "~0.5",
                 "ruflin/elastica": "0.90.*",
+                "swiftmailer/swiftmailer": "~5.3",
                 "videlalvaro/php-amqplib": "~2.4"
             },
             "suggest": {
@@ -1864,7 +1865,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.12.x-dev"
+                    "dev-master": "1.13.x-dev"
                 }
             },
             "autoload": {
@@ -1890,7 +1891,7 @@
                 "logging",
                 "psr-3"
             ],
-            "time": "2014-12-29 21:29:35"
+            "time": "2015-03-05 01:12:12"
         },
         {
             "name": "mtdowling/cron-expression",
@@ -1938,16 +1939,16 @@
         },
         {
             "name": "nesbot/carbon",
-            "version": "1.15.0",
+            "version": "1.16.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/briannesbitt/Carbon.git",
-                "reference": "48cb9ae6d9436e156316a59d198cb1ca797f8cd8"
+                "reference": "9b7665041754eaa9bb2622349bc9adbc1cf61cb8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/briannesbitt/Carbon/zipball/48cb9ae6d9436e156316a59d198cb1ca797f8cd8",
-                "reference": "48cb9ae6d9436e156316a59d198cb1ca797f8cd8",
+                "url": "https://api.github.com/repos/briannesbitt/Carbon/zipball/9b7665041754eaa9bb2622349bc9adbc1cf61cb8",
+                "reference": "9b7665041754eaa9bb2622349bc9adbc1cf61cb8",
                 "shasum": ""
             },
             "require": {
@@ -1980,7 +1981,7 @@
                 "datetime",
                 "time"
             ],
-            "time": "2015-03-03 03:24:43"
+            "time": "2015-03-04 04:50:11"
         },
         {
             "name": "nikic/php-parser",
