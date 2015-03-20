@@ -147,7 +147,7 @@ return [
 
         'Cartalyst\Sentry\SentryServiceProvider',
         'Barryvdh\Debugbar\ServiceProvider',
-        'Modules\Core\Providers\AsgardServiceProvider',
+		'Modules\Core\Providers\AsgardServiceProvider',
 	],
 
 	/*
