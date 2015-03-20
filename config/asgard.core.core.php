@@ -21,4 +21,66 @@ return [
     |--------------------------------------------------------------------------
     */
     'admin-theme' => 'AdminLTE',
+
+   /*
+   |--------------------------------------------------------------------------
+   | Define which assets will be available through the asset manager
+   |--------------------------------------------------------------------------
+   | These assets are registered on the asset manager
+   */
+    'admin-assets' => [
+        // Css
+        'bootstrap.css' => ['theme' => 'vendor/bootstrap/dist/css/bootstrap.min.css'],
+        'font-awesome.css' => ['theme' => 'vendor/font-awesome/css/font-awesome.min.css'],
+        'alertify.core.css' => ['theme' => 'css/vendor/alertify/alertify.core.css'],
+        'alertify.default.css' => ['theme' => 'css/vendor/alertify/alertify.default.css'],
+        'dataTables.bootstrap.css' => ['theme' => 'css/vendor/datatables/dataTables.bootstrap.css'],
+        'icheck.blue.css' => ['theme' => 'vendor/iCheck/skins/flat/blue.css'],
+        'AdminLTE.css' => ['theme' => 'vendor/admin-lte/dist/css/AdminLTE.css'],
+        'AdminLTE.all.skins.css' => ['theme' => 'vendor/admin-lte/dist/css/skins/_all-skins.min.css'],
+        'asgard.css' => ['theme' => 'css/asgard.css'],
+        // Javascript
+        'jquery.js' => ['theme' => 'vendor/jquery/dist/jquery.min.js'],
+        'bootstrap.js' => ['theme' => 'vendor/bootstrap/dist/js/bootstrap.min.js'],
+        'mousetrap.js' => ['theme' => 'js/vendor/mousetrap.min.js'],
+        'alertify.js' => ['theme' => 'js/vendor/alertify/alertify.js'],
+        'icheck.js' => ['theme' => 'vendor/iCheck/icheck.min.js'],
+        'jquery.dataTables.js' => ['theme' => 'js/vendor/datatables/jquery.dataTables.js'],
+        'dataTables.bootstrap.js' => ['theme' => 'js/vendor/datatables/dataTables.bootstrap.js'],
+        'jquery.slug.js' => ['theme' => 'js/vendor/jquery.slug.js'],
+        'app.js' => ['theme' => 'vendor/admin-lte/dist/js/app.js'],
+        'keypressAction.js' => ['module' => 'core:js/keypressAction.js'],
+        'ckeditor.js' => ['theme' => 'js/vendor/ckeditor/ckeditor.js'],
+    ],
+
+   /*
+   |--------------------------------------------------------------------------
+   | Define which default assets will always be included in your pages
+   | through the asset pipeline
+   |--------------------------------------------------------------------------
+   */
+   'admin-required-assets' => [
+       'css' => [
+           'bootstrap.css',
+           'font-awesome.css',
+           'alertify.core.css',
+           'alertify.default.css',
+           'dataTables.bootstrap.css',
+           'AdminLTE.css',
+           'AdminLTE.all.skins.css',
+           'asgard.css',
+       ],
+       'js' => [
+           'jquery.js',
+           'bootstrap.js',
+           'mousetrap.js',
+           'alertify.js',
+           'icheck.js',
+           'jquery.dataTables.js',
+           'dataTables.bootstrap.js',
+           'jquery.slug.js',
+           'keypressAction.js',
+           'app.js',
+       ],
+   ],
 ];
