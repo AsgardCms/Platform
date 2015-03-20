@@ -1,0 +1,21 @@
+footer.main-footer a {
+  cursor: pointer;
+}
+footer.main-footer p.text-muted {
+  margin-bottom: 0;
+}
+.main-sidebar {
+  background: #202227 !important;
+}
+.skin-blue .sidebar-menu > li.header {
+  color: #93AFBB;
+  background: #25272d;
+}
+.sidebar-menu .append {
+  margin-top: -30px;
+}
+.skin-blue .main-header .logo {
+  border-bottom: 1px solid #202227;
+}
+
+/*# sourceMappingURL=asgard.css.map */
