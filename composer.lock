@@ -12,12 +12,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/AsgardCms/AdminLTE.git",
-                "reference": "d60f6239e01a50fa507c98030b3a10b5a7cdb435"
+                "reference": "5e84b59a35d3eff60bdefef83dc1deaa6fa98bee"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/AsgardCms/AdminLTE/zipball/d60f6239e01a50fa507c98030b3a10b5a7cdb435",
-                "reference": "d60f6239e01a50fa507c98030b3a10b5a7cdb435",
+                "url": "https://api.github.com/repos/AsgardCms/AdminLTE/zipball/5e84b59a35d3eff60bdefef83dc1deaa6fa98bee",
+                "reference": "5e84b59a35d3eff60bdefef83dc1deaa6fa98bee",
                 "shasum": ""
             },
             "require": {
@@ -40,7 +40,7 @@
             "keywords": [
                 "asgard-cms"
             ],
-            "time": "2015-03-19 18:17:02"
+            "time": "2015-03-21 19:28:56"
         },
         {
             "name": "asgardcms/core-module",
@@ -48,12 +48,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/AsgardCms/Core.git",
-                "reference": "d13e798ff3dcd232b17e60bfb3d33619086d6b2c"
+                "reference": "cdbaa54f11dd1f7c299bea4d0e3d8a6caca0696e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/AsgardCms/Core/zipball/d13e798ff3dcd232b17e60bfb3d33619086d6b2c",
-                "reference": "d13e798ff3dcd232b17e60bfb3d33619086d6b2c",
+                "url": "https://api.github.com/repos/AsgardCms/Core/zipball/cdbaa54f11dd1f7c299bea4d0e3d8a6caca0696e",
+                "reference": "cdbaa54f11dd1f7c299bea4d0e3d8a6caca0696e",
                 "shasum": ""
             },
             "require": {
@@ -90,7 +90,7 @@
                 "asgardcms",
                 "core"
             ],
-            "time": "2015-03-23 10:03:41"
+            "time": "2015-03-23 18:12:32"
         },
         {
             "name": "asgardcms/dashboard-module",
@@ -346,12 +346,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/AsgardCms/User.git",
-                "reference": "2fec5c6b935d09f755b1c0b85cdcd6bab49729b0"
+                "reference": "2cbf1ab57f6218e9f963d39949d75b8bfe6b2b0a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/AsgardCms/User/zipball/2fec5c6b935d09f755b1c0b85cdcd6bab49729b0",
-                "reference": "2fec5c6b935d09f755b1c0b85cdcd6bab49729b0",
+                "url": "https://api.github.com/repos/AsgardCms/User/zipball/2cbf1ab57f6218e9f963d39949d75b8bfe6b2b0a",
+                "reference": "2cbf1ab57f6218e9f963d39949d75b8bfe6b2b0a",
                 "shasum": ""
             },
             "require": {
@@ -377,7 +377,7 @@
                 "authorisation",
                 "user"
             ],
-            "time": "2015-03-23 10:05:44"
+            "time": "2015-03-23 12:57:09"
         },
         {
             "name": "asgardcms/workshop-module",
@@ -1138,16 +1138,16 @@
         },
         {
             "name": "intervention/image",
-            "version": "2.1.2",
+            "version": "2.1.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Intervention/image.git",
-                "reference": "572806fd083b622dd430d76c34564459596fef2a"
+                "reference": "8f3761154b4c1f5128365dfc32cbf757f27d97b6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Intervention/image/zipball/572806fd083b622dd430d76c34564459596fef2a",
-                "reference": "572806fd083b622dd430d76c34564459596fef2a",
+                "url": "https://api.github.com/repos/Intervention/image/zipball/8f3761154b4c1f5128365dfc32cbf757f27d97b6",
+                "reference": "8f3761154b4c1f5128365dfc32cbf757f27d97b6",
                 "shasum": ""
             },
             "require": {
@@ -1190,7 +1190,7 @@
                 "thumbnail",
                 "watermark"
             ],
-            "time": "2015-03-09 13:03:15"
+            "time": "2015-03-18 17:41:04"
         },
         {
             "name": "ircmaxell/password-compat",
