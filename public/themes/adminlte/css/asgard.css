@@ -4,8 +4,10 @@ footer.main-footer a {
 footer.main-footer p.text-muted {
   margin-bottom: 0;
 }
-.main-sidebar {
-  background: #202227 !important;
+.skin-blue .wrapper,
+.skin-blue .main-sidebar,
+.skin-blue .left-side {
+  background: #202227;
 }
 .skin-blue .sidebar-menu > li.header {
   color: #93AFBB;
@@ -17,5 +19,3 @@ footer.main-footer p.text-muted {
 .skin-blue .main-header .logo {
   border-bottom: 1px solid #202227;
 }
-
-/*# sourceMappingURL=asgard.css.map */
