@@ -48,12 +48,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/AsgardCms/Core.git",
-                "reference": "6616d708d0d2e451dd29fa980bccd5630b6db0d7"
+                "reference": "402f1e2ddb8eb170935cb924df276ba1d382e365"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/AsgardCms/Core/zipball/6616d708d0d2e451dd29fa980bccd5630b6db0d7",
-                "reference": "6616d708d0d2e451dd29fa980bccd5630b6db0d7",
+                "url": "https://api.github.com/repos/AsgardCms/Core/zipball/402f1e2ddb8eb170935cb924df276ba1d382e365",
+                "reference": "402f1e2ddb8eb170935cb924df276ba1d382e365",
                 "shasum": ""
             },
             "require": {
@@ -90,7 +90,7 @@
                 "asgardcms",
                 "core"
             ],
-            "time": "2015-03-23 19:22:19"
+            "time": "2015-03-24 07:28:30"
         },
         {
             "name": "asgardcms/dashboard-module",
@@ -171,12 +171,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/AsgardCms/Media.git",
-                "reference": "0f33aca901169ab629e1b83074334f62ce263bd2"
+                "reference": "df558879ddfaa65746fb9b47ae8fc3e06fdce04e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/AsgardCms/Media/zipball/0f33aca901169ab629e1b83074334f62ce263bd2",
-                "reference": "0f33aca901169ab629e1b83074334f62ce263bd2",
+                "url": "https://api.github.com/repos/AsgardCms/Media/zipball/df558879ddfaa65746fb9b47ae8fc3e06fdce04e",
+                "reference": "df558879ddfaa65746fb9b47ae8fc3e06fdce04e",
                 "shasum": ""
             },
             "require": {
@@ -210,7 +210,7 @@
                 "library",
                 "media"
             ],
-            "time": "2015-03-23 19:22:19"
+            "time": "2015-03-24 13:21:44"
         },
         {
             "name": "asgardcms/menu-module",
@@ -218,12 +218,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/AsgardCms/Menu.git",
-                "reference": "8e4dc6a65355addc33ef5d00f1b2dea9348a358c"
+                "reference": "dead6b88fc393dcd18bb22d37991d1989972505b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/AsgardCms/Menu/zipball/8e4dc6a65355addc33ef5d00f1b2dea9348a358c",
-                "reference": "8e4dc6a65355addc33ef5d00f1b2dea9348a358c",
+                "url": "https://api.github.com/repos/AsgardCms/Menu/zipball/dead6b88fc393dcd18bb22d37991d1989972505b",
+                "reference": "dead6b88fc393dcd18bb22d37991d1989972505b",
                 "shasum": ""
             },
             "require": {
@@ -232,7 +232,7 @@
                 "dimsav/laravel-translatable": "~5.0",
                 "php": ">=5.4",
                 "pingpong/menus": "2.*@dev",
-                "typicms/nestablecollection": "~1.0.2"
+                "typicms/nestablecollection": "~1.1.0"
             },
             "require-dev": {
                 "doctrine/dbal": "2.5.*@dev",
@@ -259,7 +259,7 @@
                 "nested sets",
                 "tree"
             ],
-            "time": "2015-03-23 19:22:19"
+            "time": "2015-03-24 11:33:45"
         },
         {
             "name": "asgardcms/page-module",
@@ -385,12 +385,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/AsgardCms/Workshop.git",
-                "reference": "77b562f1a47cb740bbc314cc078aa34cc6ff24ec"
+                "reference": "ba1bda0b472e40ed4dea3aa42defa447b05b09c9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/AsgardCms/Workshop/zipball/77b562f1a47cb740bbc314cc078aa34cc6ff24ec",
-                "reference": "77b562f1a47cb740bbc314cc078aa34cc6ff24ec",
+                "url": "https://api.github.com/repos/AsgardCms/Workshop/zipball/ba1bda0b472e40ed4dea3aa42defa447b05b09c9",
+                "reference": "ba1bda0b472e40ed4dea3aa42defa447b05b09c9",
                 "shasum": ""
             },
             "require": {
@@ -422,7 +422,7 @@
                 "modules",
                 "workshop"
             ],
-            "time": "2015-03-23 19:25:56"
+            "time": "2015-03-24 08:03:50"
         },
         {
             "name": "cartalyst/sentry",
@@ -1469,16 +1469,16 @@
         },
         {
             "name": "laravel/framework",
-            "version": "v5.0.18",
+            "version": "v5.0.19",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/framework.git",
-                "reference": "b21be29a1fb12c84ab4e0b723e9c11492d0b25fe"
+                "reference": "8dcf3fe5232ac13502e335465e6ac64367bbbbe7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/framework/zipball/b21be29a1fb12c84ab4e0b723e9c11492d0b25fe",
-                "reference": "b21be29a1fb12c84ab4e0b723e9c11492d0b25fe",
+                "url": "https://api.github.com/repos/laravel/framework/zipball/8dcf3fe5232ac13502e335465e6ac64367bbbbe7",
+                "reference": "8dcf3fe5232ac13502e335465e6ac64367bbbbe7",
                 "shasum": ""
             },
             "require": {
@@ -1591,7 +1591,7 @@
                 "framework",
                 "laravel"
             ],
-            "time": "2015-03-21 16:10:01"
+            "time": "2015-03-24 13:05:26"
         },
         {
             "name": "laravelcollective/html",
@@ -3104,16 +3104,16 @@
         },
         {
             "name": "typicms/nestablecollection",
-            "version": "v1.0.2",
+            "version": "v1.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/TypiCMS/NestableCollection.git",
-                "reference": "3641d518295c2ded19210c46751d6d7d6a147b3d"
+                "reference": "5c0fcf0ee3a06c40c363c4b5531874ccd4f3b93a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/TypiCMS/NestableCollection/zipball/3641d518295c2ded19210c46751d6d7d6a147b3d",
-                "reference": "3641d518295c2ded19210c46751d6d7d6a147b3d",
+                "url": "https://api.github.com/repos/TypiCMS/NestableCollection/zipball/5c0fcf0ee3a06c40c363c4b5531874ccd4f3b93a",
+                "reference": "5c0fcf0ee3a06c40c363c4b5531874ccd4f3b93a",
                 "shasum": ""
             },
             "require": {
@@ -3145,7 +3145,7 @@
                 "nested set",
                 "tree"
             ],
-            "time": "2015-03-03 15:15:19"
+            "time": "2015-03-24 10:05:37"
         },
         {
             "name": "vlucas/phpdotenv",
