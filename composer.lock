@@ -346,12 +346,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/AsgardCms/User.git",
-                "reference": "dd54a05dd4f12b2f659616ee1998f070f6c7c961"
+                "reference": "d17230750b7605206c6476cd424055f4fad0f6c5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/AsgardCms/User/zipball/dd54a05dd4f12b2f659616ee1998f070f6c7c961",
-                "reference": "dd54a05dd4f12b2f659616ee1998f070f6c7c961",
+                "url": "https://api.github.com/repos/AsgardCms/User/zipball/d17230750b7605206c6476cd424055f4fad0f6c5",
+                "reference": "d17230750b7605206c6476cd424055f4fad0f6c5",
                 "shasum": ""
             },
             "require": {
@@ -377,7 +377,7 @@
                 "authorisation",
                 "user"
             ],
-            "time": "2015-03-25 18:13:05"
+            "time": "2015-03-25 20:14:41"
         },
         {
             "name": "asgardcms/workshop-module",
@@ -385,12 +385,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/AsgardCms/Workshop.git",
-                "reference": "ba1bda0b472e40ed4dea3aa42defa447b05b09c9"
+                "reference": "c45f250654555c65e8a14e60eb66011cef527279"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/AsgardCms/Workshop/zipball/ba1bda0b472e40ed4dea3aa42defa447b05b09c9",
-                "reference": "ba1bda0b472e40ed4dea3aa42defa447b05b09c9",
+                "url": "https://api.github.com/repos/AsgardCms/Workshop/zipball/c45f250654555c65e8a14e60eb66011cef527279",
+                "reference": "c45f250654555c65e8a14e60eb66011cef527279",
                 "shasum": ""
             },
             "require": {
@@ -422,7 +422,7 @@
                 "modules",
                 "workshop"
             ],
-            "time": "2015-03-24 08:03:50"
+            "time": "2015-03-25 19:58:18"
         },
         {
             "name": "cartalyst/sentry",
