@@ -48,12 +48,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/AsgardCms/Core.git",
-                "reference": "402f1e2ddb8eb170935cb924df276ba1d382e365"
+                "reference": "3537aa1b883d30c62ad6bfeec1044120f5523b98"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/AsgardCms/Core/zipball/402f1e2ddb8eb170935cb924df276ba1d382e365",
-                "reference": "402f1e2ddb8eb170935cb924df276ba1d382e365",
+                "url": "https://api.github.com/repos/AsgardCms/Core/zipball/3537aa1b883d30c62ad6bfeec1044120f5523b98",
+                "reference": "3537aa1b883d30c62ad6bfeec1044120f5523b98",
                 "shasum": ""
             },
             "require": {
@@ -90,7 +90,7 @@
                 "asgardcms",
                 "core"
             ],
-            "time": "2015-03-24 07:28:30"
+            "time": "2015-03-25 11:03:44"
         },
         {
             "name": "asgardcms/dashboard-module",
@@ -267,12 +267,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/AsgardCms/Page.git",
-                "reference": "ef770232db95e57c29eb80da102666ceb968ee89"
+                "reference": "1d1a1be2964633297cbdbf90688adf36866ae93d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/AsgardCms/Page/zipball/ef770232db95e57c29eb80da102666ceb968ee89",
-                "reference": "ef770232db95e57c29eb80da102666ceb968ee89",
+                "url": "https://api.github.com/repos/AsgardCms/Page/zipball/1d1a1be2964633297cbdbf90688adf36866ae93d",
+                "reference": "1d1a1be2964633297cbdbf90688adf36866ae93d",
                 "shasum": ""
             },
             "require": {
@@ -296,7 +296,7 @@
                 "asgardcms",
                 "pages"
             ],
-            "time": "2015-03-23 19:22:19"
+            "time": "2015-03-25 11:42:22"
         },
         {
             "name": "asgardcms/setting-module",
@@ -1469,16 +1469,16 @@
         },
         {
             "name": "laravel/framework",
-            "version": "v5.0.19",
+            "version": "v5.0.20",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/framework.git",
-                "reference": "8dcf3fe5232ac13502e335465e6ac64367bbbbe7"
+                "reference": "419d3f485ce7946cace4325ef19a30e1d5543951"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/framework/zipball/8dcf3fe5232ac13502e335465e6ac64367bbbbe7",
-                "reference": "8dcf3fe5232ac13502e335465e6ac64367bbbbe7",
+                "url": "https://api.github.com/repos/laravel/framework/zipball/419d3f485ce7946cace4325ef19a30e1d5543951",
+                "reference": "419d3f485ce7946cace4325ef19a30e1d5543951",
                 "shasum": ""
             },
             "require": {
@@ -1591,7 +1591,7 @@
                 "framework",
                 "laravel"
             ],
-            "time": "2015-03-24 13:05:26"
+            "time": "2015-03-24 13:36:37"
         },
         {
             "name": "laravelcollective/html",
@@ -1986,16 +1986,16 @@
         },
         {
             "name": "nikic/php-parser",
-            "version": "v1.2.0",
+            "version": "v1.2.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/nikic/PHP-Parser.git",
-                "reference": "edbf162e4cf116102d95eb635608b7d310cc01c6"
+                "reference": "dba7524b3724f25b947cd26a580787c55c8a6f9b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nikic/PHP-Parser/zipball/edbf162e4cf116102d95eb635608b7d310cc01c6",
-                "reference": "edbf162e4cf116102d95eb635608b7d310cc01c6",
+                "url": "https://api.github.com/repos/nikic/PHP-Parser/zipball/dba7524b3724f25b947cd26a580787c55c8a6f9b",
+                "reference": "dba7524b3724f25b947cd26a580787c55c8a6f9b",
                 "shasum": ""
             },
             "require": {
@@ -2027,7 +2027,7 @@
                 "parser",
                 "php"
             ],
-            "time": "2015-03-22 16:17:25"
+            "time": "2015-03-24 19:10:28"
         },
         {
             "name": "pingpong/generators",
