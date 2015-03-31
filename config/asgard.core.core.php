@@ -39,6 +39,8 @@ return [
         'AdminLTE.css' => ['theme' => 'vendor/admin-lte/dist/css/AdminLTE.css'],
         'AdminLTE.all.skins.css' => ['theme' => 'vendor/admin-lte/dist/css/skins/_all-skins.min.css'],
         'asgard.css' => ['theme' => 'css/asgard.css'],
+        //'gridstack.css' => ['module' => 'dashboard:vendor/gridstack/dist/gridstack.min.css'],
+        'gridstack.css' => ['module' => 'dashboard:gridstack/gridstack.min.css'],
         // Javascript
         'jquery.js' => ['theme' => 'vendor/jquery/dist/jquery.min.js'],
         'bootstrap.js' => ['theme' => 'vendor/bootstrap/dist/js/bootstrap.min.js'],
@@ -51,6 +53,14 @@ return [
         'app.js' => ['theme' => 'vendor/admin-lte/dist/js/app.js'],
         'keypressAction.js' => ['module' => 'core:js/keypressAction.js'],
         'ckeditor.js' => ['theme' => 'js/vendor/ckeditor/ckeditor.js'],
+        'lodash.js' => ['module' => 'dashboard:vendor/lodash/lodash.min.js'],
+        'jquery-ui-core.js' => ['module' => 'dashboard:vendor/jquery-ui/ui/minified/core.min.js'],
+        'jquery-ui-widget.js' => ['module' => 'dashboard:vendor/jquery-ui/ui/minified/widget.min.js'],
+        'jquery-ui-mouse.js' => ['module' => 'dashboard:vendor/jquery-ui/ui/minified/mouse.min.js'],
+        'jquery-ui-draggable.js' => ['module' => 'dashboard:vendor/jquery-ui/ui/minified/draggable.min.js'],
+        'jquery-ui-resizable.js' => ['module' => 'dashboard:vendor/jquery-ui/ui/minified/resizable.min.js'],
+        //'gridstack.js' => ['module' => 'dashboard:vendor/gridstack/dist/gridstack.min.js'],
+        'gridstack.js' => ['module' => 'dashboard:gridstack/gridstack.min.js'],
     ],
 
    /*
