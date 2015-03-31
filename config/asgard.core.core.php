@@ -1,11 +1,11 @@
 <?php
 
 return [
-   /*
-   |--------------------------------------------------------------------------
-   | The prefix that'll be used for the administration
-   |--------------------------------------------------------------------------
-   */
+    /*
+    |--------------------------------------------------------------------------
+    | The prefix that'll be used for the administration
+    |--------------------------------------------------------------------------
+    */
     'admin-prefix' => 'backend',
 
     /*
@@ -22,12 +22,12 @@ return [
     */
     'admin-theme' => 'AdminLTE',
 
-   /*
-   |--------------------------------------------------------------------------
-   | Define which assets will be available through the asset manager
-   |--------------------------------------------------------------------------
-   | These assets are registered on the asset manager
-   */
+    /*
+    |--------------------------------------------------------------------------
+    | Define which assets will be available through the asset manager
+    |--------------------------------------------------------------------------
+    | These assets are registered on the asset manager
+    */
     'admin-assets' => [
         // Css
         'bootstrap.css' => ['theme' => 'vendor/bootstrap/dist/css/bootstrap.min.css'],
@@ -42,7 +42,6 @@ return [
         //'gridstack.css' => ['module' => 'dashboard:vendor/gridstack/dist/gridstack.min.css'],
         'gridstack.css' => ['module' => 'dashboard:gridstack/gridstack.min.css'],
         'daterangepicker.css' => ['theme' => 'vendor/admin-lte/plugins/daterangepicker/daterangepicker-bs3.css'],
-
         // Javascript
         'jquery.js' => ['theme' => 'vendor/jquery/dist/jquery.min.js'],
         'bootstrap.js' => ['theme' => 'vendor/bootstrap/dist/js/bootstrap.min.js'],
@@ -66,34 +65,34 @@ return [
         'daterangepicker.js' => ['theme' => 'vendor/admin-lte/plugins/daterangepicker/daterangepicker.js'],
     ],
 
-   /*
-   |--------------------------------------------------------------------------
-   | Define which default assets will always be included in your pages
-   | through the asset pipeline
-   |--------------------------------------------------------------------------
-   */
-   'admin-required-assets' => [
-       'css' => [
-           'bootstrap.css',
-           'font-awesome.css',
-           'alertify.core.css',
-           'alertify.default.css',
-           'dataTables.bootstrap.css',
-           'AdminLTE.css',
-           'AdminLTE.all.skins.css',
-           'asgard.css',
-       ],
-       'js' => [
-           'jquery.js',
-           'bootstrap.js',
-           'mousetrap.js',
-           'alertify.js',
-           'icheck.js',
-           'jquery.dataTables.js',
-           'dataTables.bootstrap.js',
-           'jquery.slug.js',
-           'keypressAction.js',
-           'app.js',
-       ],
-   ],
+    /*
+    |--------------------------------------------------------------------------
+    | Define which default assets will always be included in your pages
+    | through the asset pipeline
+    |--------------------------------------------------------------------------
+    */
+    'admin-required-assets' => [
+        'css' => [
+            'bootstrap.css',
+            'font-awesome.css',
+            'alertify.core.css',
+            'alertify.default.css',
+            'dataTables.bootstrap.css',
+            'AdminLTE.css',
+            'AdminLTE.all.skins.css',
+            'asgard.css',
+        ],
+        'js' => [
+            'jquery.js',
+            'bootstrap.js',
+            'mousetrap.js',
+            'alertify.js',
+            'icheck.js',
+            'jquery.dataTables.js',
+            'dataTables.bootstrap.js',
+            'jquery.slug.js',
+            'keypressAction.js',
+            'app.js',
+        ],
+    ],
 ];
