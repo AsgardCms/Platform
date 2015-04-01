@@ -51,11 +51,15 @@
     "post-install-cmd": [
       "php artisan clear-compiled",
       "php artisan stylist:publish",
+      "php artisan module:publish",
+      "php artisan module:migrate",
       "php artisan optimize"
     ],
     "post-update-cmd": [
       "php artisan clear-compiled",
       "php artisan stylist:publish",
+      "php artisan module:publish",
+      "php artisan module:migrate",
       "php artisan optimize"
     ],
     "post-create-project-cmd": [
