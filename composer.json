@@ -50,10 +50,12 @@
   "scripts": {
     "post-install-cmd": [
       "php artisan clear-compiled",
+      "php artisan stylist:publish",
       "php artisan optimize"
     ],
     "post-update-cmd": [
       "php artisan clear-compiled",
+      "php artisan stylist:publish",
       "php artisan optimize"
     ],
     "post-create-project-cmd": [
