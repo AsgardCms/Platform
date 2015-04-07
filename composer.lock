@@ -304,12 +304,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/AsgardCms/Setting.git",
-                "reference": "0885427f3b7a7d86e8838bbf355c9f8fa2153732"
+                "reference": "19907ddcde6217ad830cf180741850d38cff1ac0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/AsgardCms/Setting/zipball/0885427f3b7a7d86e8838bbf355c9f8fa2153732",
-                "reference": "0885427f3b7a7d86e8838bbf355c9f8fa2153732",
+                "url": "https://api.github.com/repos/AsgardCms/Setting/zipball/19907ddcde6217ad830cf180741850d38cff1ac0",
+                "reference": "19907ddcde6217ad830cf180741850d38cff1ac0",
                 "shasum": ""
             },
             "require": {
@@ -338,7 +338,7 @@
                 "Settings",
                 "asgardcms"
             ],
-            "time": "2015-04-01 12:18:11"
+            "time": "2015-04-06 08:33:40"
         },
         {
             "name": "asgardcms/user-module",
@@ -346,12 +346,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/AsgardCms/User.git",
-                "reference": "d8ce293a0e3b43af804e4d9d610bb6faee429222"
+                "reference": "da6c78e76055f01da8def7d50cb605f121a1d52b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/AsgardCms/User/zipball/d8ce293a0e3b43af804e4d9d610bb6faee429222",
-                "reference": "d8ce293a0e3b43af804e4d9d610bb6faee429222",
+                "url": "https://api.github.com/repos/AsgardCms/User/zipball/da6c78e76055f01da8def7d50cb605f121a1d52b",
+                "reference": "da6c78e76055f01da8def7d50cb605f121a1d52b",
                 "shasum": ""
             },
             "require": {
@@ -377,7 +377,7 @@
                 "authorisation",
                 "user"
             ],
-            "time": "2015-04-04 18:45:30"
+            "time": "2015-04-05 11:08:09"
         },
         {
             "name": "asgardcms/workshop-module",
