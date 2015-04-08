@@ -346,12 +346,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/AsgardCms/User.git",
-                "reference": "2a5e0d4339fac4bb83c608571775388017f6efb6"
+                "reference": "a5c88898548ade5d8a22e4fbe1893558e7996b33"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/AsgardCms/User/zipball/2a5e0d4339fac4bb83c608571775388017f6efb6",
-                "reference": "2a5e0d4339fac4bb83c608571775388017f6efb6",
+                "url": "https://api.github.com/repos/AsgardCms/User/zipball/a5c88898548ade5d8a22e4fbe1893558e7996b33",
+                "reference": "a5c88898548ade5d8a22e4fbe1893558e7996b33",
                 "shasum": ""
             },
             "require": {
@@ -377,7 +377,7 @@
                 "authorisation",
                 "user"
             ],
-            "time": "2015-04-07 12:40:12"
+            "time": "2015-04-07 14:24:26"
         },
         {
             "name": "asgardcms/workshop-module",
@@ -3783,16 +3783,16 @@
         },
         {
             "name": "phpunit/php-token-stream",
-            "version": "1.4.0",
+            "version": "1.4.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/php-token-stream.git",
-                "reference": "db32c18eba00b121c145575fcbcd4d4d24e6db74"
+                "reference": "eab81d02569310739373308137284e0158424330"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/php-token-stream/zipball/db32c18eba00b121c145575fcbcd4d4d24e6db74",
-                "reference": "db32c18eba00b121c145575fcbcd4d4d24e6db74",
+                "url": "https://api.github.com/repos/sebastianbergmann/php-token-stream/zipball/eab81d02569310739373308137284e0158424330",
+                "reference": "eab81d02569310739373308137284e0158424330",
                 "shasum": ""
             },
             "require": {
@@ -3828,7 +3828,7 @@
             "keywords": [
                 "tokenizer"
             ],
-            "time": "2015-01-17 09:51:32"
+            "time": "2015-04-08 04:46:07"
         },
         {
             "name": "phpunit/phpunit",
