@@ -12,12 +12,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/AsgardCms/AdminLTE.git",
-                "reference": "fa0b3e37624ac21a5ae3cb2b5200eb052c6ca39b"
+                "reference": "0a65f3589664c8ab9422de1e492b2d55c97a0000"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/AsgardCms/AdminLTE/zipball/fa0b3e37624ac21a5ae3cb2b5200eb052c6ca39b",
-                "reference": "fa0b3e37624ac21a5ae3cb2b5200eb052c6ca39b",
+                "url": "https://api.github.com/repos/AsgardCms/AdminLTE/zipball/0a65f3589664c8ab9422de1e492b2d55c97a0000",
+                "reference": "0a65f3589664c8ab9422de1e492b2d55c97a0000",
                 "shasum": ""
             },
             "require": {
@@ -40,7 +40,7 @@
             "keywords": [
                 "asgard-cms"
             ],
-            "time": "2015-03-31 07:37:48"
+            "time": "2015-04-09 15:39:52"
         },
         {
             "name": "asgardcms/core-module",
@@ -267,12 +267,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/AsgardCms/Page.git",
-                "reference": "336392700d55c10cffa8c92b849a5c34862f02e7"
+                "reference": "d8bb48b0fc2ebb6414934b9dcc83f01b69db2bea"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/AsgardCms/Page/zipball/336392700d55c10cffa8c92b849a5c34862f02e7",
-                "reference": "336392700d55c10cffa8c92b849a5c34862f02e7",
+                "url": "https://api.github.com/repos/AsgardCms/Page/zipball/d8bb48b0fc2ebb6414934b9dcc83f01b69db2bea",
+                "reference": "d8bb48b0fc2ebb6414934b9dcc83f01b69db2bea",
                 "shasum": ""
             },
             "require": {
@@ -296,7 +296,7 @@
                 "asgardcms",
                 "pages"
             ],
-            "time": "2015-04-01 12:41:15"
+            "time": "2015-04-09 15:48:39"
         },
         {
             "name": "asgardcms/setting-module",
