@@ -304,12 +304,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/AsgardCms/Setting.git",
-                "reference": "19907ddcde6217ad830cf180741850d38cff1ac0"
+                "reference": "452ce00595728e4c82d2f633f2028737bdd34eaf"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/AsgardCms/Setting/zipball/19907ddcde6217ad830cf180741850d38cff1ac0",
-                "reference": "19907ddcde6217ad830cf180741850d38cff1ac0",
+                "url": "https://api.github.com/repos/AsgardCms/Setting/zipball/452ce00595728e4c82d2f633f2028737bdd34eaf",
+                "reference": "452ce00595728e4c82d2f633f2028737bdd34eaf",
                 "shasum": ""
             },
             "require": {
@@ -338,7 +338,7 @@
                 "Settings",
                 "asgardcms"
             ],
-            "time": "2015-04-06 08:33:40"
+            "time": "2015-04-08 07:57:10"
         },
         {
             "name": "asgardcms/user-module",
@@ -346,12 +346,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/AsgardCms/User.git",
-                "reference": "a5c88898548ade5d8a22e4fbe1893558e7996b33"
+                "reference": "dfe2eab4d1a1dcf8e6b7452ae7502f83e437104a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/AsgardCms/User/zipball/a5c88898548ade5d8a22e4fbe1893558e7996b33",
-                "reference": "a5c88898548ade5d8a22e4fbe1893558e7996b33",
+                "url": "https://api.github.com/repos/AsgardCms/User/zipball/dfe2eab4d1a1dcf8e6b7452ae7502f83e437104a",
+                "reference": "dfe2eab4d1a1dcf8e6b7452ae7502f83e437104a",
                 "shasum": ""
             },
             "require": {
@@ -377,7 +377,7 @@
                 "authorisation",
                 "user"
             ],
-            "time": "2015-04-07 14:24:26"
+            "time": "2015-04-08 06:34:29"
         },
         {
             "name": "asgardcms/workshop-module",
@@ -2135,12 +2135,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/pingpong-labs/modules.git",
-                "reference": "5a1176df068c24f4d730ac2d9969afc357b2f112"
+                "reference": "b6f4b45d51f6d99a1f14b1c4b43759517b9560fc"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/pingpong-labs/modules/zipball/5a1176df068c24f4d730ac2d9969afc357b2f112",
-                "reference": "5a1176df068c24f4d730ac2d9969afc357b2f112",
+                "url": "https://api.github.com/repos/pingpong-labs/modules/zipball/b6f4b45d51f6d99a1f14b1c4b43759517b9560fc",
+                "reference": "b6f4b45d51f6d99a1f14b1c4b43759517b9560fc",
                 "shasum": ""
             },
             "require": {
@@ -2184,7 +2184,7 @@
                 "modules",
                 "pingpong"
             ],
-            "time": "2015-04-01 17:17:26"
+            "time": "2015-04-03 11:02:02"
         },
         {
             "name": "psr/log",
