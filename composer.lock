@@ -4,7 +4,7 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "c3f99cd4c36330a998977ece1e0b5f66",
+    "hash": "7e7a0ca93f9d801ea2018bb36a696614",
     "packages": [
         {
             "name": "asgardcms/adminlte-theme",
@@ -218,12 +218,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/AsgardCms/Menu.git",
-                "reference": "12786f4c43c58505865fc200841056a3b41bced8"
+                "reference": "662d122af999b557d1188e147a93c71c01cc58e8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/AsgardCms/Menu/zipball/12786f4c43c58505865fc200841056a3b41bced8",
-                "reference": "12786f4c43c58505865fc200841056a3b41bced8",
+                "url": "https://api.github.com/repos/AsgardCms/Menu/zipball/662d122af999b557d1188e147a93c71c01cc58e8",
+                "reference": "662d122af999b557d1188e147a93c71c01cc58e8",
                 "shasum": ""
             },
             "require": {
@@ -259,7 +259,7 @@
                 "nested sets",
                 "tree"
             ],
-            "time": "2015-04-10 06:48:11"
+            "time": "2015-04-10 12:37:05"
         },
         {
             "name": "asgardcms/page-module",
