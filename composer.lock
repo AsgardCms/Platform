@@ -48,12 +48,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/AsgardCms/Core.git",
-                "reference": "72cb51176190ab879802ffd39be52bf08d402e0f"
+                "reference": "a17d6ca3550ee67e78428df5d8e824269268e63e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/AsgardCms/Core/zipball/72cb51176190ab879802ffd39be52bf08d402e0f",
-                "reference": "72cb51176190ab879802ffd39be52bf08d402e0f",
+                "url": "https://api.github.com/repos/AsgardCms/Core/zipball/a17d6ca3550ee67e78428df5d8e824269268e63e",
+                "reference": "a17d6ca3550ee67e78428df5d8e824269268e63e",
                 "shasum": ""
             },
             "require": {
@@ -90,7 +90,7 @@
                 "asgardcms",
                 "core"
             ],
-            "time": "2015-04-11 19:27:30"
+            "time": "2015-04-11 20:10:45"
         },
         {
             "name": "asgardcms/dashboard-module",
@@ -304,12 +304,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/AsgardCms/Setting.git",
-                "reference": "097496a8cb467130f1f7e3e05e2ea7746c290c9f"
+                "reference": "c4b508b8619b9ce78038cc96868435c3405d77c9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/AsgardCms/Setting/zipball/097496a8cb467130f1f7e3e05e2ea7746c290c9f",
-                "reference": "097496a8cb467130f1f7e3e05e2ea7746c290c9f",
+                "url": "https://api.github.com/repos/AsgardCms/Setting/zipball/c4b508b8619b9ce78038cc96868435c3405d77c9",
+                "reference": "c4b508b8619b9ce78038cc96868435c3405d77c9",
                 "shasum": ""
             },
             "require": {
@@ -338,7 +338,7 @@
                 "Settings",
                 "asgardcms"
             ],
-            "time": "2015-04-11 11:25:18"
+            "time": "2015-04-11 20:05:15"
         },
         {
             "name": "asgardcms/user-module",
