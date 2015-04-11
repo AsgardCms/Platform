@@ -48,12 +48,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/AsgardCms/Core.git",
-                "reference": "a17d6ca3550ee67e78428df5d8e824269268e63e"
+                "reference": "24d3b51fc68941408e7c78ec136a69b1fd33746c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/AsgardCms/Core/zipball/a17d6ca3550ee67e78428df5d8e824269268e63e",
-                "reference": "a17d6ca3550ee67e78428df5d8e824269268e63e",
+                "url": "https://api.github.com/repos/AsgardCms/Core/zipball/24d3b51fc68941408e7c78ec136a69b1fd33746c",
+                "reference": "24d3b51fc68941408e7c78ec136a69b1fd33746c",
                 "shasum": ""
             },
             "require": {
@@ -90,7 +90,7 @@
                 "asgardcms",
                 "core"
             ],
-            "time": "2015-04-11 20:10:45"
+            "time": "2015-04-11 20:16:44"
         },
         {
             "name": "asgardcms/dashboard-module",
@@ -267,12 +267,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/AsgardCms/Page.git",
-                "reference": "f2f12fa592accda61d775b7dd3f59d44fbfb114d"
+                "reference": "04cdee43cbbcfa7cddaf517e407807dee19f0666"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/AsgardCms/Page/zipball/f2f12fa592accda61d775b7dd3f59d44fbfb114d",
-                "reference": "f2f12fa592accda61d775b7dd3f59d44fbfb114d",
+                "url": "https://api.github.com/repos/AsgardCms/Page/zipball/04cdee43cbbcfa7cddaf517e407807dee19f0666",
+                "reference": "04cdee43cbbcfa7cddaf517e407807dee19f0666",
                 "shasum": ""
             },
             "require": {
@@ -296,7 +296,7 @@
                 "asgardcms",
                 "pages"
             ],
-            "time": "2015-04-09 17:12:29"
+            "time": "2015-04-11 20:34:36"
         },
         {
             "name": "asgardcms/setting-module",
@@ -304,12 +304,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/AsgardCms/Setting.git",
-                "reference": "c4b508b8619b9ce78038cc96868435c3405d77c9"
+                "reference": "3197fc6b457ea3b7206c860f3e671d61402ba72c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/AsgardCms/Setting/zipball/c4b508b8619b9ce78038cc96868435c3405d77c9",
-                "reference": "c4b508b8619b9ce78038cc96868435c3405d77c9",
+                "url": "https://api.github.com/repos/AsgardCms/Setting/zipball/3197fc6b457ea3b7206c860f3e671d61402ba72c",
+                "reference": "3197fc6b457ea3b7206c860f3e671d61402ba72c",
                 "shasum": ""
             },
             "require": {
@@ -338,7 +338,7 @@
                 "Settings",
                 "asgardcms"
             ],
-            "time": "2015-04-11 20:05:15"
+            "time": "2015-04-11 20:32:07"
         },
         {
             "name": "asgardcms/user-module",
@@ -385,12 +385,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/AsgardCms/Workshop.git",
-                "reference": "a6acdd368827b3da37d2374de5a86222b98dbd74"
+                "reference": "55c88c8d9a3239902a0084e6a9bf9d8c362be34b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/AsgardCms/Workshop/zipball/a6acdd368827b3da37d2374de5a86222b98dbd74",
-                "reference": "a6acdd368827b3da37d2374de5a86222b98dbd74",
+                "url": "https://api.github.com/repos/AsgardCms/Workshop/zipball/55c88c8d9a3239902a0084e6a9bf9d8c362be34b",
+                "reference": "55c88c8d9a3239902a0084e6a9bf9d8c362be34b",
                 "shasum": ""
             },
             "require": {
@@ -422,7 +422,7 @@
                 "modules",
                 "workshop"
             ],
-            "time": "2015-04-01 13:24:44"
+            "time": "2015-04-11 20:16:44"
         },
         {
             "name": "cartalyst/sentry",
