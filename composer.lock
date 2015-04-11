@@ -48,12 +48,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/AsgardCms/Core.git",
-                "reference": "96d99ef17e047d76d25f31e631ec63376ae7b348"
+                "reference": "72cb51176190ab879802ffd39be52bf08d402e0f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/AsgardCms/Core/zipball/96d99ef17e047d76d25f31e631ec63376ae7b348",
-                "reference": "96d99ef17e047d76d25f31e631ec63376ae7b348",
+                "url": "https://api.github.com/repos/AsgardCms/Core/zipball/72cb51176190ab879802ffd39be52bf08d402e0f",
+                "reference": "72cb51176190ab879802ffd39be52bf08d402e0f",
                 "shasum": ""
             },
             "require": {
@@ -90,7 +90,7 @@
                 "asgardcms",
                 "core"
             ],
-            "time": "2015-04-09 15:11:15"
+            "time": "2015-04-11 19:27:30"
         },
         {
             "name": "asgardcms/dashboard-module",
@@ -218,12 +218,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/AsgardCms/Menu.git",
-                "reference": "662d122af999b557d1188e147a93c71c01cc58e8"
+                "reference": "2befe5a23e2c5d65197b0835d80ff1d57ffc10be"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/AsgardCms/Menu/zipball/662d122af999b557d1188e147a93c71c01cc58e8",
-                "reference": "662d122af999b557d1188e147a93c71c01cc58e8",
+                "url": "https://api.github.com/repos/AsgardCms/Menu/zipball/2befe5a23e2c5d65197b0835d80ff1d57ffc10be",
+                "reference": "2befe5a23e2c5d65197b0835d80ff1d57ffc10be",
                 "shasum": ""
             },
             "require": {
@@ -259,7 +259,7 @@
                 "nested sets",
                 "tree"
             ],
-            "time": "2015-04-10 12:37:05"
+            "time": "2015-04-11 19:51:49"
         },
         {
             "name": "asgardcms/page-module",
@@ -304,12 +304,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/AsgardCms/Setting.git",
-                "reference": "452ce00595728e4c82d2f633f2028737bdd34eaf"
+                "reference": "097496a8cb467130f1f7e3e05e2ea7746c290c9f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/AsgardCms/Setting/zipball/452ce00595728e4c82d2f633f2028737bdd34eaf",
-                "reference": "452ce00595728e4c82d2f633f2028737bdd34eaf",
+                "url": "https://api.github.com/repos/AsgardCms/Setting/zipball/097496a8cb467130f1f7e3e05e2ea7746c290c9f",
+                "reference": "097496a8cb467130f1f7e3e05e2ea7746c290c9f",
                 "shasum": ""
             },
             "require": {
@@ -338,7 +338,7 @@
                 "Settings",
                 "asgardcms"
             ],
-            "time": "2015-04-08 07:57:10"
+            "time": "2015-04-11 11:25:18"
         },
         {
             "name": "asgardcms/user-module",
@@ -3586,16 +3586,16 @@
         },
         {
             "name": "phpunit/php-code-coverage",
-            "version": "2.0.15",
+            "version": "2.0.16",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/php-code-coverage.git",
-                "reference": "34cc484af1ca149188d0d9e91412191e398e0b67"
+                "reference": "934fd03eb6840508231a7f73eb8940cf32c3b66c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/php-code-coverage/zipball/34cc484af1ca149188d0d9e91412191e398e0b67",
-                "reference": "34cc484af1ca149188d0d9e91412191e398e0b67",
+                "url": "https://api.github.com/repos/sebastianbergmann/php-code-coverage/zipball/934fd03eb6840508231a7f73eb8940cf32c3b66c",
+                "reference": "934fd03eb6840508231a7f73eb8940cf32c3b66c",
                 "shasum": ""
             },
             "require": {
@@ -3644,7 +3644,7 @@
                 "testing",
                 "xunit"
             ],
-            "time": "2015-01-24 10:06:35"
+            "time": "2015-04-11 04:35:00"
         },
         {
             "name": "phpunit/php-file-iterator",
@@ -3832,16 +3832,16 @@
         },
         {
             "name": "phpunit/phpunit",
-            "version": "4.6.2",
+            "version": "4.6.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/phpunit.git",
-                "reference": "6c773fda0bdb5ea891d9e4430dcc26c990b9130b"
+                "reference": "163232991e652e6efed2f8470326fffa61e848e2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/6c773fda0bdb5ea891d9e4430dcc26c990b9130b",
-                "reference": "6c773fda0bdb5ea891d9e4430dcc26c990b9130b",
+                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/163232991e652e6efed2f8470326fffa61e848e2",
+                "reference": "163232991e652e6efed2f8470326fffa61e848e2",
                 "shasum": ""
             },
             "require": {
@@ -3900,7 +3900,7 @@
                 "testing",
                 "xunit"
             ],
-            "time": "2015-04-07 09:16:49"
+            "time": "2015-04-11 05:23:21"
         },
         {
             "name": "phpunit/phpunit-mock-objects",
