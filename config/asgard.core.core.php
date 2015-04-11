@@ -42,6 +42,8 @@ return [
         //'gridstack.css' => ['module' => 'dashboard:vendor/gridstack/dist/gridstack.min.css'],
         'gridstack.css' => ['module' => 'dashboard:gridstack/gridstack.min.css'],
         'daterangepicker.css' => ['theme' => 'vendor/admin-lte/plugins/daterangepicker/daterangepicker-bs3.css'],
+        'selectize.css' => ['module' => 'core:vendor/selectize/dist/css/selectize.css'],
+        'selectize-default.css' => ['module' => 'core:vendor/selectize/dist/css/selectize.default.css'],
         // Javascript
         'jquery.js' => ['theme' => 'vendor/jquery/dist/jquery.min.js'],
         'bootstrap.js' => ['theme' => 'vendor/bootstrap/dist/js/bootstrap.min.js'],
@@ -63,6 +65,7 @@ return [
         //'gridstack.js' => ['module' => 'dashboard:vendor/gridstack/dist/gridstack.min.js'],
         'gridstack.js' => ['module' => 'dashboard:gridstack/gridstack.min.js'],
         'daterangepicker.js' => ['theme' => 'vendor/admin-lte/plugins/daterangepicker/daterangepicker.js'],
+        'selectize.js' => ['module' => 'core:vendor/selectize/dist/js/standalone/selectize.min.js'],
     ],
 
     /*
