@@ -17,7 +17,7 @@ Join the conversation on Slack [![Slack](http://slack.asgardcms.com/badge.svg)](
 
 ## Code Quality
 
-Code quality is very important for AsgardCms. I want to make sure everything is clean and appropriate. This is a recup of the quality scores on various services.
+Code quality is very important for AsgardCms. I want to make sure everything is clean and appropriate. This is a recap of the quality scores on various services.
 
 | Module (master) | Scrutinizer-ci | Sensiolabs Insights | Code Climate |
 | --------------- | -------------- | ------------------- | ------------ |
