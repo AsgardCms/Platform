@@ -13,6 +13,7 @@ Join the conversation on Slack [![Slack](http://slack.asgardcms.com/badge.svg)](
 | Menu  | [![Build Status](https://travis-ci.org/AsgardCms/Menu.svg?branch=master)](https://travis-ci.org/AsgardCms/Menu) | [![Build Status](https://travis-ci.org/AsgardCms/Menu.svg?branch=develop)](https://travis-ci.org/AsgardCms/Menu)
 | Workshop  | [![Build Status](https://travis-ci.org/AsgardCms/Workshop.svg?branch=master)](https://travis-ci.org/AsgardCms/Workshop) | [![Build Status](https://travis-ci.org/AsgardCms/Workshop.svg?branch=develop)](https://travis-ci.org/AsgardCms/Workshop)
 | Media  | [![Build Status](https://travis-ci.org/AsgardCms/Media.svg?branch=master)](https://travis-ci.org/AsgardCms/Media) | [![Build Status](https://travis-ci.org/AsgardCms/Media.svg?branch=develop)](https://travis-ci.org/AsgardCms/Media)
+| Block | [![Build Status](https://travis-ci.org/AsgardCms/Block.svg?branch=master)](https://travis-ci.org/AsgardCms/Block) | [![Build Status](https://travis-ci.org/AsgardCms/Block.svg?branch=develop)](https://travis-ci.org/AsgardCms/Block)
 
 ## Code Quality
 
