@@ -2,6 +2,7 @@
 
 View the documentation at [AsgardCMS.com/docs](http://asgardcms.com/docs/).
 
+Join the conversation on Slack [![Slack](http://slack.asgardcms.com/badge.svg)](http://slack.asgardcms.com/)
 
 ## Builds
 
