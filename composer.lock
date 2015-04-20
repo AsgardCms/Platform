@@ -2538,16 +2538,16 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/pingpong-labs/modules.git",
-                "reference": "8134aebfdfbec9382cd48304e8d2f06657f54291"
+                "reference": "06ae28dc997bfef488aff3a3187a2ec78ed17fd8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/pingpong-labs/modules/zipball/8134aebfdfbec9382cd48304e8d2f06657f54291",
-                "reference": "8134aebfdfbec9382cd48304e8d2f06657f54291",
+                "url": "https://api.github.com/repos/pingpong-labs/modules/zipball/06ae28dc997bfef488aff3a3187a2ec78ed17fd8",
+                "reference": "06ae28dc997bfef488aff3a3187a2ec78ed17fd8",
                 "shasum": ""
             },
             "require": {
-                "laravel/framework": "5.0.x@dev",
+                "laravel/framework": "5.0.*",
                 "laravelcollective/html": "~5.0",
                 "php": ">=5.4.0",
                 "pingpong/generators": "2.0.*@dev"
@@ -2587,7 +2587,7 @@
                 "modules",
                 "pingpong"
             ],
-            "time": "2015-04-19 17:43:24"
+            "time": "2015-04-20 01:57:28"
         },
         {
             "name": "psr/log",
