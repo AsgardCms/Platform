@@ -12,12 +12,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/AsgardCms/AdminLTE.git",
-                "reference": "0a65f3589664c8ab9422de1e492b2d55c97a0000"
+                "reference": "f4923d4cf0ebbe5ddba388a9e36ca18bc34d5981"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/AsgardCms/AdminLTE/zipball/0a65f3589664c8ab9422de1e492b2d55c97a0000",
-                "reference": "0a65f3589664c8ab9422de1e492b2d55c97a0000",
+                "url": "https://api.github.com/repos/AsgardCms/AdminLTE/zipball/f4923d4cf0ebbe5ddba388a9e36ca18bc34d5981",
+                "reference": "f4923d4cf0ebbe5ddba388a9e36ca18bc34d5981",
                 "shasum": ""
             },
             "require": {
@@ -40,7 +40,7 @@
             "keywords": [
                 "asgard-cms"
             ],
-            "time": "2015-04-09 15:39:52"
+            "time": "2015-04-20 07:59:11"
         },
         {
             "name": "asgardcms/core-module",
@@ -48,12 +48,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/AsgardCms/Core.git",
-                "reference": "b602315b04f15d6207771d4f3a807a7867add792"
+                "reference": "d8646ed7a88e99980e4c2f42803b6531a32dd50f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/AsgardCms/Core/zipball/b602315b04f15d6207771d4f3a807a7867add792",
-                "reference": "b602315b04f15d6207771d4f3a807a7867add792",
+                "url": "https://api.github.com/repos/AsgardCms/Core/zipball/d8646ed7a88e99980e4c2f42803b6531a32dd50f",
+                "reference": "d8646ed7a88e99980e4c2f42803b6531a32dd50f",
                 "shasum": ""
             },
             "require": {
@@ -90,7 +90,7 @@
                 "asgardcms",
                 "core"
             ],
-            "time": "2015-04-17 18:23:45"
+            "time": "2015-04-20 11:18:40"
         },
         {
             "name": "asgardcms/dashboard-module",
@@ -385,12 +385,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/AsgardCms/Workshop.git",
-                "reference": "8da40786622ee8f9ca699a15967500c7e3d7639f"
+                "reference": "2e03e87ff537f2411931c6ccdd4b84b6921121fb"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/AsgardCms/Workshop/zipball/8da40786622ee8f9ca699a15967500c7e3d7639f",
-                "reference": "8da40786622ee8f9ca699a15967500c7e3d7639f",
+                "url": "https://api.github.com/repos/AsgardCms/Workshop/zipball/2e03e87ff537f2411931c6ccdd4b84b6921121fb",
+                "reference": "2e03e87ff537f2411931c6ccdd4b84b6921121fb",
                 "shasum": ""
             },
             "require": {
@@ -422,7 +422,7 @@
                 "modules",
                 "workshop"
             ],
-            "time": "2015-04-17 18:34:08"
+            "time": "2015-04-20 11:03:35"
         },
         {
             "name": "cartalyst/sentry",
@@ -430,12 +430,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/cartalyst/sentry.git",
-                "reference": "5e5e232e970903cf565cbc0eadee33ceda8492b4"
+                "reference": "092192e969520bb287b402fbe77ab070d4267910"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/cartalyst/sentry/zipball/5e5e232e970903cf565cbc0eadee33ceda8492b4",
-                "reference": "5e5e232e970903cf565cbc0eadee33ceda8492b4",
+                "url": "https://api.github.com/repos/cartalyst/sentry/zipball/092192e969520bb287b402fbe77ab070d4267910",
+                "reference": "092192e969520bb287b402fbe77ab070d4267910",
                 "shasum": ""
             },
             "require": {
@@ -469,7 +469,7 @@
                     "2": "master"
                 },
                 "branch-alias": {
-                    "dev-master": "2.0-dev"
+                    "dev-master": "2.2.x-dev"
                 }
             },
             "autoload": {
@@ -525,7 +525,7 @@
                 "source": "https://github.com/cartalyst/sentry/tree/feature/laravel-5",
                 "issues": "https://github.com/cartalyst/sentry/issues"
             },
-            "time": "2015-02-25 01:41:59"
+            "time": "2015-04-20 12:47:58"
         },
         {
             "name": "classpreloader/classpreloader",
