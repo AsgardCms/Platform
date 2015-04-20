@@ -218,12 +218,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/AsgardCms/Menu.git",
-                "reference": "2b0a5ee98a2fadda880ce8ce5bc4125a88595627"
+                "reference": "fbfb7fc93e56e24e0ef8e019a0916148bcfc5555"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/AsgardCms/Menu/zipball/2b0a5ee98a2fadda880ce8ce5bc4125a88595627",
-                "reference": "2b0a5ee98a2fadda880ce8ce5bc4125a88595627",
+                "url": "https://api.github.com/repos/AsgardCms/Menu/zipball/fbfb7fc93e56e24e0ef8e019a0916148bcfc5555",
+                "reference": "fbfb7fc93e56e24e0ef8e019a0916148bcfc5555",
                 "shasum": ""
             },
             "require": {
@@ -259,7 +259,7 @@
                 "nested sets",
                 "tree"
             ],
-            "time": "2015-04-17 18:16:11"
+            "time": "2015-04-20 07:05:58"
         },
         {
             "name": "asgardcms/page-module",
@@ -429,7 +429,7 @@
             "version": "dev-feature/laravel-5",
             "source": {
                 "type": "git",
-                "url": "git@github.com:cartalyst/sentry.git",
+                "url": "https://github.com/cartalyst/sentry.git",
                 "reference": "5e5e232e970903cf565cbc0eadee33ceda8492b4"
             },
             "dist": {
@@ -521,6 +521,10 @@
                 "laravel",
                 "security"
             ],
+            "support": {
+                "source": "https://github.com/cartalyst/sentry/tree/feature/laravel-5",
+                "issues": "https://github.com/cartalyst/sentry/issues"
+            },
             "time": "2015-02-25 01:41:59"
         },
         {
@@ -2482,33 +2486,33 @@
         },
         {
             "name": "pingpong/menus",
-            "version": "2.x-dev",
+            "version": "2.0.x-dev",
             "source": {
                 "type": "git",
                 "url": "https://github.com/pingpong-labs/menus.git",
-                "reference": "13ecd363a61d324783c3ce4fcbae8bfbf6f0fff7"
+                "reference": "b86fbd2165d58bfd215f2ba129922d61adc59f48"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/pingpong-labs/menus/zipball/13ecd363a61d324783c3ce4fcbae8bfbf6f0fff7",
-                "reference": "13ecd363a61d324783c3ce4fcbae8bfbf6f0fff7",
+                "url": "https://api.github.com/repos/pingpong-labs/menus/zipball/b86fbd2165d58bfd215f2ba129922d61adc59f48",
+                "reference": "b86fbd2165d58bfd215f2ba129922d61adc59f48",
                 "shasum": ""
             },
             "require": {
-                "illuminate/config": "~5",
-                "illuminate/html": "~5",
-                "illuminate/support": "~5",
-                "illuminate/view": "~5",
-                "php": ">=5.4.0"
+                "illuminate/config": "5.0.*",
+                "illuminate/html": "5.0.*",
+                "illuminate/support": "5.0.*",
+                "illuminate/view": "5.0.*",
+                "php": ">=5.3.0"
             },
             "require-dev": {
-                "mockery/mockery": "0.9.*",
+                "mockery/mockery": "~0.9",
                 "phpunit/phpunit": "~4"
             },
             "type": "library",
             "autoload": {
-                "psr-0": {
-                    "Pingpong\\Menus": "src/"
+                "psr-4": {
+                    "Pingpong\\Menus\\": ""
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -2530,7 +2534,7 @@
                 "navigation",
                 "pingpong"
             ],
-            "time": "2015-02-12 12:35:04"
+            "time": "2015-04-08 11:20:04"
         },
         {
             "name": "pingpong/modules",
