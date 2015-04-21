@@ -31,3 +31,7 @@ footer.main-footer p.text-muted {
 .checkbox label {
   padding-left: 0;
 }
+.checkbox label div {
+  margin-right: 5px;
+  margin-top: -2px;
+}
