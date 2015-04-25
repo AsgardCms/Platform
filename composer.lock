@@ -385,12 +385,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/AsgardCms/Workshop.git",
-                "reference": "2e03e87ff537f2411931c6ccdd4b84b6921121fb"
+                "reference": "35da4dfacf204b39736a69ca650b88378a917588"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/AsgardCms/Workshop/zipball/2e03e87ff537f2411931c6ccdd4b84b6921121fb",
-                "reference": "2e03e87ff537f2411931c6ccdd4b84b6921121fb",
+                "url": "https://api.github.com/repos/AsgardCms/Workshop/zipball/35da4dfacf204b39736a69ca650b88378a917588",
+                "reference": "35da4dfacf204b39736a69ca650b88378a917588",
                 "shasum": ""
             },
             "require": {
@@ -422,7 +422,7 @@
                 "modules",
                 "workshop"
             ],
-            "time": "2015-04-20 11:03:35"
+            "time": "2015-04-24 14:39:00"
         },
         {
             "name": "cartalyst/sentry",
@@ -1544,16 +1544,16 @@
         },
         {
             "name": "intervention/image",
-            "version": "2.1.3",
+            "version": "2.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Intervention/image.git",
-                "reference": "8f3761154b4c1f5128365dfc32cbf757f27d97b6"
+                "reference": "6626d7624ac0895137a38c123943afedd0827efc"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Intervention/image/zipball/8f3761154b4c1f5128365dfc32cbf757f27d97b6",
-                "reference": "8f3761154b4c1f5128365dfc32cbf757f27d97b6",
+                "url": "https://api.github.com/repos/Intervention/image/zipball/6626d7624ac0895137a38c123943afedd0827efc",
+                "reference": "6626d7624ac0895137a38c123943afedd0827efc",
                 "shasum": ""
             },
             "require": {
@@ -1596,7 +1596,7 @@
                 "thumbnail",
                 "watermark"
             ],
-            "time": "2015-03-18 17:41:04"
+            "time": "2015-04-24 14:50:48"
         },
         {
             "name": "ircmaxell/password-compat",
@@ -2442,12 +2442,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/pingpong-labs/generators.git",
-                "reference": "65982b61bd0c90bdf702434ba996ee179342a156"
+                "reference": "a83891791994de5f687f2b7dabd4688610a14ab6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/pingpong-labs/generators/zipball/65982b61bd0c90bdf702434ba996ee179342a156",
-                "reference": "65982b61bd0c90bdf702434ba996ee179342a156",
+                "url": "https://api.github.com/repos/pingpong-labs/generators/zipball/a83891791994de5f687f2b7dabd4688610a14ab6",
+                "reference": "a83891791994de5f687f2b7dabd4688610a14ab6",
                 "shasum": ""
             },
             "require": {
@@ -2482,7 +2482,7 @@
                 "laravel",
                 "pingpong"
             ],
-            "time": "2015-04-19 16:49:03"
+            "time": "2015-04-23 19:40:53"
         },
         {
             "name": "pingpong/menus",
@@ -2490,19 +2490,19 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/pingpong-labs/menus.git",
-                "reference": "b86fbd2165d58bfd215f2ba129922d61adc59f48"
+                "reference": "07dac814cd95e9445b937c57c5c5e68eefd1fc19"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/pingpong-labs/menus/zipball/b86fbd2165d58bfd215f2ba129922d61adc59f48",
-                "reference": "b86fbd2165d58bfd215f2ba129922d61adc59f48",
+                "url": "https://api.github.com/repos/pingpong-labs/menus/zipball/07dac814cd95e9445b937c57c5c5e68eefd1fc19",
+                "reference": "07dac814cd95e9445b937c57c5c5e68eefd1fc19",
                 "shasum": ""
             },
             "require": {
                 "illuminate/config": "5.0.*",
-                "illuminate/html": "5.0.*",
                 "illuminate/support": "5.0.*",
                 "illuminate/view": "5.0.*",
+                "laravelcollective/html": "~5.0",
                 "php": ">=5.3.0"
             },
             "require-dev": {
@@ -2534,7 +2534,7 @@
                 "navigation",
                 "pingpong"
             ],
-            "time": "2015-04-08 11:20:04"
+            "time": "2015-04-24 09:23:50"
         },
         {
             "name": "pingpong/modules",
