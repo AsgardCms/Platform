@@ -218,12 +218,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/AsgardCms/Menu.git",
-                "reference": "fbfb7fc93e56e24e0ef8e019a0916148bcfc5555"
+                "reference": "ca625d50dfb61837815dabb2c2177b8d78a5629d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/AsgardCms/Menu/zipball/fbfb7fc93e56e24e0ef8e019a0916148bcfc5555",
-                "reference": "fbfb7fc93e56e24e0ef8e019a0916148bcfc5555",
+                "url": "https://api.github.com/repos/AsgardCms/Menu/zipball/ca625d50dfb61837815dabb2c2177b8d78a5629d",
+                "reference": "ca625d50dfb61837815dabb2c2177b8d78a5629d",
                 "shasum": ""
             },
             "require": {
@@ -259,7 +259,7 @@
                 "nested sets",
                 "tree"
             ],
-            "time": "2015-04-20 07:05:58"
+            "time": "2015-04-25 19:44:28"
         },
         {
             "name": "asgardcms/page-module",
@@ -346,12 +346,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/AsgardCms/User.git",
-                "reference": "97d09a1e53da7f88f91f4dc0568c9a6290dcc5e3"
+                "reference": "35ffb00e372bd472049a93af94eadba5f37f5a40"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/AsgardCms/User/zipball/97d09a1e53da7f88f91f4dc0568c9a6290dcc5e3",
-                "reference": "97d09a1e53da7f88f91f4dc0568c9a6290dcc5e3",
+                "url": "https://api.github.com/repos/AsgardCms/User/zipball/35ffb00e372bd472049a93af94eadba5f37f5a40",
+                "reference": "35ffb00e372bd472049a93af94eadba5f37f5a40",
                 "shasum": ""
             },
             "require": {
@@ -377,7 +377,7 @@
                 "authorisation",
                 "user"
             ],
-            "time": "2015-04-22 08:38:31"
+            "time": "2015-04-27 10:04:46"
         },
         {
             "name": "asgardcms/workshop-module",
@@ -2490,12 +2490,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/pingpong-labs/menus.git",
-                "reference": "07dac814cd95e9445b937c57c5c5e68eefd1fc19"
+                "reference": "b02fd740d6882e90c1fd4979bd391b470e269f7f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/pingpong-labs/menus/zipball/07dac814cd95e9445b937c57c5c5e68eefd1fc19",
-                "reference": "07dac814cd95e9445b937c57c5c5e68eefd1fc19",
+                "url": "https://api.github.com/repos/pingpong-labs/menus/zipball/b02fd740d6882e90c1fd4979bd391b470e269f7f",
+                "reference": "b02fd740d6882e90c1fd4979bd391b470e269f7f",
                 "shasum": ""
             },
             "require": {
@@ -2534,7 +2534,7 @@
                 "navigation",
                 "pingpong"
             ],
-            "time": "2015-04-24 09:23:50"
+            "time": "2015-04-25 15:31:24"
         },
         {
             "name": "pingpong/modules",
