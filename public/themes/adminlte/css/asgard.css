@@ -20,7 +20,7 @@ footer.main-footer p.text-muted {
   margin-top: -30px;
 }
 .skin-blue .sidebar-menu .append:hover,
-.skin-blue .sidebar-menu > li.active > a:last-child {
+.skin-blue .sidebar-menu > li.active > a.append {
   color: #fff;
   background: none;
   border: 0;
