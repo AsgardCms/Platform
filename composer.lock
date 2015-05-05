@@ -48,12 +48,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/AsgardCms/Core.git",
-                "reference": "286e94777fa0bcd28d4e1292e082379ed24a5800"
+                "reference": "632b6f8121754c9cfedae833b7874cd6e4bf94c8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/AsgardCms/Core/zipball/286e94777fa0bcd28d4e1292e082379ed24a5800",
-                "reference": "286e94777fa0bcd28d4e1292e082379ed24a5800",
+                "url": "https://api.github.com/repos/AsgardCms/Core/zipball/632b6f8121754c9cfedae833b7874cd6e4bf94c8",
+                "reference": "632b6f8121754c9cfedae833b7874cd6e4bf94c8",
                 "shasum": ""
             },
             "require": {
@@ -90,7 +90,7 @@
                 "asgardcms",
                 "core"
             ],
-            "time": "2015-04-30 08:16:28"
+            "time": "2015-05-04 15:55:53"
         },
         {
             "name": "asgardcms/dashboard-module",
@@ -98,12 +98,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/AsgardCms/Dashboard.git",
-                "reference": "4eb5e2cba1500fd721664b186b45ad50d1a68f09"
+                "reference": "cf3506066477d8dfee6901b645554718268e0aa6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/AsgardCms/Dashboard/zipball/4eb5e2cba1500fd721664b186b45ad50d1a68f09",
-                "reference": "4eb5e2cba1500fd721664b186b45ad50d1a68f09",
+                "url": "https://api.github.com/repos/AsgardCms/Dashboard/zipball/cf3506066477d8dfee6901b645554718268e0aa6",
+                "reference": "cf3506066477d8dfee6901b645554718268e0aa6",
                 "shasum": ""
             },
             "require": {
@@ -127,7 +127,7 @@
                 "asgardcms",
                 "dashboard"
             ],
-            "time": "2015-04-17 18:16:12"
+            "time": "2015-05-04 15:55:53"
         },
         {
             "name": "asgardcms/flatly-theme",
@@ -346,12 +346,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/AsgardCms/User.git",
-                "reference": "a96ca77c326e0d2f51e9bd0fbf4349259f77117a"
+                "reference": "b4cdb8e8b50368b446ae810974363672ecfcea27"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/AsgardCms/User/zipball/a96ca77c326e0d2f51e9bd0fbf4349259f77117a",
-                "reference": "a96ca77c326e0d2f51e9bd0fbf4349259f77117a",
+                "url": "https://api.github.com/repos/AsgardCms/User/zipball/b4cdb8e8b50368b446ae810974363672ecfcea27",
+                "reference": "b4cdb8e8b50368b446ae810974363672ecfcea27",
                 "shasum": ""
             },
             "require": {
@@ -377,7 +377,7 @@
                 "authorisation",
                 "user"
             ],
-            "time": "2015-05-04 10:17:39"
+            "time": "2015-05-05 09:18:04"
         },
         {
             "name": "asgardcms/workshop-module",
