@@ -66,6 +66,9 @@ return [
         'gridstack.js' => ['module' => 'dashboard:gridstack/gridstack.min.js'],
         'daterangepicker.js' => ['theme' => 'vendor/admin-lte/plugins/daterangepicker/daterangepicker.js'],
         'selectize.js' => ['module' => 'core:vendor/selectize/dist/js/standalone/selectize.min.js'],
+        'sisyphus.js' => ['theme' => 'vendor/sisyphus/sisyphus.min.js'],
+        'main.js' => ['theme' => 'js/main.js'],
+        'chart.js' => ['theme' => 'vendor/admin-lte/plugins/chartjs/Chart.js'],
     ],
 
     /*
