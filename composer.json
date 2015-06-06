@@ -9,7 +9,7 @@
   "type": "project",
   "require": {
     "laravel/framework": "~5.0",
-    "pingpong/modules": "2.0.*@dev",
+    "pingpong/modules": "dev-master",
     "cartalyst/sentry": "dev-feature/laravel-5",
     "asgardcms/core-module": "dev-develop",
     "asgardcms/dashboard-module": "dev-develop",
@@ -31,6 +31,10 @@
     {
       "type": "composer",
       "url": "https://packages.cartalyst.com"
+    },
+    {
+      "type": "vcs",
+      "url": "https://github.com/nWidart/modules"
     }
   ],
   "autoload": {
