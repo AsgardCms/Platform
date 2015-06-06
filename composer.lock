@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "746fcdcb5ee9fe28a896462a9b612387",
+    "hash": "55f5fc1545f480b9e1a31fe82527b918",
     "packages": [
         {
             "name": "asgardcms/adminlte-theme",
@@ -48,12 +48,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/AsgardCms/Core.git",
-                "reference": "657bbd6d6ffef857a845f4393be66ff2a4fa4822"
+                "reference": "11cb29ea8639bf53afce10866d11590371d3d269"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/AsgardCms/Core/zipball/657bbd6d6ffef857a845f4393be66ff2a4fa4822",
-                "reference": "657bbd6d6ffef857a845f4393be66ff2a4fa4822",
+                "url": "https://api.github.com/repos/AsgardCms/Core/zipball/11cb29ea8639bf53afce10866d11590371d3d269",
+                "reference": "11cb29ea8639bf53afce10866d11590371d3d269",
                 "shasum": ""
             },
             "require": {
@@ -67,7 +67,7 @@
                 "maatwebsite/laravel-sidebar": "~1.0",
                 "mcamara/laravel-localization": "~1.0",
                 "php": ">=5.4",
-                "pingpong/modules": "dev-master"
+                "pingpong/modules": "dev-hotfix/migrations"
             },
             "require-dev": {
                 "orchestra/testbench": "~3.0",
@@ -90,7 +90,7 @@
                 "asgardcms",
                 "core"
             ],
-            "time": "2015-06-06 08:59:13"
+            "time": "2015-06-06 09:13:10"
         },
         {
             "name": "asgardcms/dashboard-module",
@@ -385,12 +385,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/AsgardCms/Workshop.git",
-                "reference": "ce364dcc8081e5855b99adf572127847df4cdeb9"
+                "reference": "38569a42d373d9abee0dd1d75b7ffd6c96c214ad"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/AsgardCms/Workshop/zipball/ce364dcc8081e5855b99adf572127847df4cdeb9",
-                "reference": "ce364dcc8081e5855b99adf572127847df4cdeb9",
+                "url": "https://api.github.com/repos/AsgardCms/Workshop/zipball/38569a42d373d9abee0dd1d75b7ffd6c96c214ad",
+                "reference": "38569a42d373d9abee0dd1d75b7ffd6c96c214ad",
                 "shasum": ""
             },
             "require": {
@@ -398,7 +398,7 @@
                 "asgardcms/menu-module": "dev-develop",
                 "composer/installers": "~1.0",
                 "php": ">=5.4",
-                "pingpong/modules": "dev-master"
+                "pingpong/modules": "dev-hotfix/migrations"
             },
             "require-dev": {
                 "orchestra/testbench": "~3.0",
@@ -422,7 +422,7 @@
                 "modules",
                 "workshop"
             ],
-            "time": "2015-06-06 08:59:13"
+            "time": "2015-06-06 09:13:10"
         },
         {
             "name": "cartalyst/sentry",
@@ -2621,20 +2621,20 @@
         },
         {
             "name": "pingpong/modules",
-            "version": "dev-master",
+            "version": "dev-hotfix/migrations",
             "source": {
                 "type": "git",
                 "url": "https://github.com/nWidart/modules.git",
-                "reference": "40b39f01a427a6349028f7ec69a80c6b4545c403"
+                "reference": "c3e5540c97094085f9f20ecba3a0eeb245cccb76"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nWidart/modules/zipball/1ddc421905f5e031e2db16f3b9d96b193cdb96a9",
-                "reference": "40b39f01a427a6349028f7ec69a80c6b4545c403",
+                "url": "https://api.github.com/repos/nWidart/modules/zipball/c3e5540c97094085f9f20ecba3a0eeb245cccb76",
+                "reference": "c3e5540c97094085f9f20ecba3a0eeb245cccb76",
                 "shasum": ""
             },
             "require": {
-                "laravel/framework": "5.0.*",
+                "laravel/framework": "^5.0",
                 "laravelcollective/html": "~5.0",
                 "php": ">=5.4.0",
                 "pingpong/generators": "~2.0",
@@ -2650,7 +2650,6 @@
                     "Pingpong\\Modules\\": ""
                 }
             },
-            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "BSD-3-Clause"
             ],
@@ -2668,7 +2667,10 @@
                 "modules",
                 "pingpong"
             ],
-            "time": "2015-06-06 02:46:58"
+            "support": {
+                "source": "https://github.com/nWidart/modules/tree/hotfix/migrations"
+            },
+            "time": "2015-06-06 09:17:31"
         },
         {
             "name": "pingpong/support",

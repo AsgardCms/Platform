@@ -9,7 +9,7 @@
   "type": "project",
   "require": {
     "laravel/framework": "~5.0",
-    "pingpong/modules": "dev-master",
+    "pingpong/modules": "dev-hotfix/migrations",
     "cartalyst/sentry": "dev-feature/laravel-5",
     "asgardcms/core-module": "dev-develop",
     "asgardcms/dashboard-module": "dev-develop",
