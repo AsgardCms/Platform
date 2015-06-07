@@ -146,7 +146,6 @@ return [
 		'App\Providers\RouteServiceProvider',
 
         'Cartalyst\Sentry\SentryServiceProvider',
-        'Barryvdh\Debugbar\ServiceProvider',
 		'Modules\Core\Providers\AsgardServiceProvider',
 	],
 
