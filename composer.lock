@@ -48,12 +48,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/AsgardCms/Core.git",
-                "reference": "d5631e1f3536b08110b870b7dea25d36578daffe"
+                "reference": "b8d2f46f4b5958fb6a7e4078b6dff784f9db9c77"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/AsgardCms/Core/zipball/d5631e1f3536b08110b870b7dea25d36578daffe",
-                "reference": "d5631e1f3536b08110b870b7dea25d36578daffe",
+                "url": "https://api.github.com/repos/AsgardCms/Core/zipball/b8d2f46f4b5958fb6a7e4078b6dff784f9db9c77",
+                "reference": "b8d2f46f4b5958fb6a7e4078b6dff784f9db9c77",
                 "shasum": ""
             },
             "require": {
@@ -90,7 +90,7 @@
                 "asgardcms",
                 "core"
             ],
-            "time": "2015-06-06 10:03:03"
+            "time": "2015-06-06 19:58:11"
         },
         {
             "name": "asgardcms/dashboard-module",
@@ -304,12 +304,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/AsgardCms/Setting.git",
-                "reference": "9416049d174105ca2b060b671865f32cc086819f"
+                "reference": "9fcfbf1ad0a99c0b95c421093c1bff4787734656"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/AsgardCms/Setting/zipball/9416049d174105ca2b060b671865f32cc086819f",
-                "reference": "9416049d174105ca2b060b671865f32cc086819f",
+                "url": "https://api.github.com/repos/AsgardCms/Setting/zipball/9fcfbf1ad0a99c0b95c421093c1bff4787734656",
+                "reference": "9fcfbf1ad0a99c0b95c421093c1bff4787734656",
                 "shasum": ""
             },
             "require": {
@@ -338,7 +338,7 @@
                 "Settings",
                 "asgardcms"
             ],
-            "time": "2015-06-05 15:12:28"
+            "time": "2015-06-06 18:16:23"
         },
         {
             "name": "asgardcms/user-module",
@@ -2625,12 +2625,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/nWidart/modules.git",
-                "reference": "c3e5540c97094085f9f20ecba3a0eeb245cccb76"
+                "reference": "886aa2e5fe8021e95306da0c9d5e75707bbd0e8b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nWidart/modules/zipball/c3e5540c97094085f9f20ecba3a0eeb245cccb76",
-                "reference": "c3e5540c97094085f9f20ecba3a0eeb245cccb76",
+                "url": "https://api.github.com/repos/nWidart/modules/zipball/886aa2e5fe8021e95306da0c9d5e75707bbd0e8b",
+                "reference": "886aa2e5fe8021e95306da0c9d5e75707bbd0e8b",
                 "shasum": ""
             },
             "require": {
@@ -2670,7 +2670,7 @@
             "support": {
                 "source": "https://github.com/nWidart/modules/tree/hotfix/migrations"
             },
-            "time": "2015-06-06 09:17:31"
+            "time": "2015-06-07 06:13:45"
         },
         {
             "name": "pingpong/support",
@@ -2869,23 +2869,23 @@
         },
         {
             "name": "swiftmailer/swiftmailer",
-            "version": "v5.4.0",
+            "version": "v5.4.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/swiftmailer/swiftmailer.git",
-                "reference": "31454f258f10329ae7c48763eb898a75c39e0a9f"
+                "reference": "0697e6aa65c83edf97bb0f23d8763f94e3f11421"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/swiftmailer/swiftmailer/zipball/31454f258f10329ae7c48763eb898a75c39e0a9f",
-                "reference": "31454f258f10329ae7c48763eb898a75c39e0a9f",
+                "url": "https://api.github.com/repos/swiftmailer/swiftmailer/zipball/0697e6aa65c83edf97bb0f23d8763f94e3f11421",
+                "reference": "0697e6aa65c83edf97bb0f23d8763f94e3f11421",
                 "shasum": ""
             },
             "require": {
                 "php": ">=5.3.3"
             },
             "require-dev": {
-                "mockery/mockery": "~0.9.1"
+                "mockery/mockery": "~0.9.1,<0.9.4"
             },
             "type": "library",
             "extra": {
@@ -2914,10 +2914,11 @@
             "description": "Swiftmailer, free feature-rich PHP mailer",
             "homepage": "http://swiftmailer.org",
             "keywords": [
+                "email",
                 "mail",
                 "mailer"
             ],
-            "time": "2015-03-14 06:06:39"
+            "time": "2015-06-06 14:19:39"
         },
         {
             "name": "symfony/console",
