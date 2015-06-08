@@ -17,7 +17,7 @@ $( document ).ready(function() {
         }
     });
     myDropzone.on("error", function(file, errorMessage) {
-        var html = '<div class="alert alert-danger" role="alert">' + errorMessage.error + '</div>';
+        var html = '<div class="alert alert-danger" role="alert">' + errorMessage.file[0] + '</div>';
         $('.col-md-12').first().prepend(html);
         setTimeout(function() {
             myDropzone.removeFile(file);

@@ -48,12 +48,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/AsgardCms/Core.git",
-                "reference": "b8d2f46f4b5958fb6a7e4078b6dff784f9db9c77"
+                "reference": "245e2e4702c195f0b310b1722ad0aeeb1a276b48"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/AsgardCms/Core/zipball/b8d2f46f4b5958fb6a7e4078b6dff784f9db9c77",
-                "reference": "b8d2f46f4b5958fb6a7e4078b6dff784f9db9c77",
+                "url": "https://api.github.com/repos/AsgardCms/Core/zipball/245e2e4702c195f0b310b1722ad0aeeb1a276b48",
+                "reference": "245e2e4702c195f0b310b1722ad0aeeb1a276b48",
                 "shasum": ""
             },
             "require": {
@@ -90,7 +90,7 @@
                 "asgardcms",
                 "core"
             ],
-            "time": "2015-06-06 19:58:11"
+            "time": "2015-06-07 15:35:06"
         },
         {
             "name": "asgardcms/dashboard-module",
@@ -171,12 +171,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/AsgardCms/Media.git",
-                "reference": "f4901d195b178502d0d1ab029ab61f87c1d5cacc"
+                "reference": "e7bc401a9721f5b09d53008c99f2aa0637eb1006"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/AsgardCms/Media/zipball/f4901d195b178502d0d1ab029ab61f87c1d5cacc",
-                "reference": "f4901d195b178502d0d1ab029ab61f87c1d5cacc",
+                "url": "https://api.github.com/repos/AsgardCms/Media/zipball/e7bc401a9721f5b09d53008c99f2aa0637eb1006",
+                "reference": "e7bc401a9721f5b09d53008c99f2aa0637eb1006",
                 "shasum": ""
             },
             "require": {
@@ -210,7 +210,7 @@
                 "library",
                 "media"
             ],
-            "time": "2015-06-05 15:04:36"
+            "time": "2015-06-08 06:28:11"
         },
         {
             "name": "asgardcms/menu-module",
@@ -2134,19 +2134,20 @@
         },
         {
             "name": "league/flysystem",
-            "version": "1.0.3",
+            "version": "1.0.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/thephpleague/flysystem.git",
-                "reference": "3c2400a99ccc3be6884d40361890010449c6b447"
+                "reference": "56862959b45131ad33e5a7727a25db19f2cf090b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/thephpleague/flysystem/zipball/3c2400a99ccc3be6884d40361890010449c6b447",
-                "reference": "3c2400a99ccc3be6884d40361890010449c6b447",
+                "url": "https://api.github.com/repos/thephpleague/flysystem/zipball/56862959b45131ad33e5a7727a25db19f2cf090b",
+                "reference": "56862959b45131ad33e5a7727a25db19f2cf090b",
                 "shasum": ""
             },
             "require": {
+                "ext-mbstring": "*",
                 "php": ">=5.4.0"
             },
             "require-dev": {
@@ -2213,7 +2214,7 @@
                 "sftp",
                 "storage"
             ],
-            "time": "2015-03-29 14:01:43"
+            "time": "2015-06-07 21:27:37"
         },
         {
             "name": "maatwebsite/laravel-sidebar",
@@ -2625,12 +2626,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/nWidart/modules.git",
-                "reference": "886aa2e5fe8021e95306da0c9d5e75707bbd0e8b"
+                "reference": "5524c2900a1162faf97b6e9d5d45f240d2ad5905"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nWidart/modules/zipball/886aa2e5fe8021e95306da0c9d5e75707bbd0e8b",
-                "reference": "886aa2e5fe8021e95306da0c9d5e75707bbd0e8b",
+                "url": "https://api.github.com/repos/nWidart/modules/zipball/5524c2900a1162faf97b6e9d5d45f240d2ad5905",
+                "reference": "5524c2900a1162faf97b6e9d5d45f240d2ad5905",
                 "shasum": ""
             },
             "require": {
@@ -2670,7 +2671,7 @@
             "support": {
                 "source": "https://github.com/nWidart/modules/tree/hotfix/migrations"
             },
-            "time": "2015-06-07 06:13:45"
+            "time": "2015-06-07 12:26:08"
         },
         {
             "name": "pingpong/support",
