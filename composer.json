@@ -1,9 +1,9 @@
 {
-  "name": "laravel/laravel",
-  "description": "The Laravel Framework.",
+  "name": "asgardcms/platform",
+  "description": "The AsgardCms application",
   "keywords": [
-    "framework",
-    "laravel"
+    "cms",
+    "asgardcms"
   ],
   "license": "MIT",
   "type": "project",
