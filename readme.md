@@ -1,3 +1,8 @@
+[![Latest Stable Version](https://poser.pugx.org/asgardcms/platform/version.svg)](https://packagist.org/packages/asgardcms/platform)
+[![Total Downloads](https://poser.pugx.org/asgardcms/platform/downloads.svg)](https://packagist.org/packages/asgardcms/platform)
+[![Latest Unstable Version](https://poser.pugx.org/asgardcms/platform/v/unstable.svg)](//packagist.org/packages/asgardcms/platform)
+[![License](https://poser.pugx.org/asgardcms/platform/license.svg)](https://packagist.org/packages/asgardcms/platform)
+
 ## AsgardCMS Platform
 
 View the documentation at [AsgardCMS.com/docs](http://asgardcms.com/docs/).
