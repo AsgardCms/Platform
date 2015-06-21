@@ -145,7 +145,6 @@ return [
 		'App\Providers\EventServiceProvider',
 		'App\Providers\RouteServiceProvider',
 
-        'Cartalyst\Sentry\SentryServiceProvider',
 		'Modules\Core\Providers\AsgardServiceProvider',
 	],
 
