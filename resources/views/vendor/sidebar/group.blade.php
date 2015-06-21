@@ -1,7 +1,7 @@
 @if($group->shouldShowHeading())
-    <li class="header">{{ $group->name }}</li>
+    <li class="menu-title">{{ $group->getName() }}</li>
 @endif
 
-@foreach($group->getItems() as $item)
-    {!! $item->render() !!}
+@foreach($items as $item)
+    {!! $item !!}
 @endforeach

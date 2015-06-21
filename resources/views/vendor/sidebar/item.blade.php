@@ -1,27 +1,23 @@
-<li class="{{ $item->state }} @if($item->hasItems()) treeview @endif clearfix">
-    <a href="{{ $item->route }}" @if($item->hasAppend())class="hasAppend"@endif>
-        <i class="{{ $item->icon or 'fa fa-angle-double-right' }}"></i>
-        <span>{{ $item->name }}</span>
+<li class="@if($active)active @endif @if($item->hasItems()) treeview @endif clearfix">
+    <a href="{{ $item->getUrl() }}" @if(count($appends) > 0)class="hasAppend"@endif>
+        <i class="{{ $item->getIcon() }}"></i>
+        <span>{{ $item->getName() }}</span>
 
-        @if($item->hasBadge())
-            @foreach($item->badges as $badge)
-                {!! $badge->render() !!}
-            @endforeach
-        @endif
+        @foreach($badges as $badge)
+            {!! $badge !!}
+        @endforeach
 
-        @if($item->hasItems())<i class="{{ $item->toggleIcon or 'fa fa-angle-left' }} pull-right"></i>@endif
+        @if($item->hasItems())<i class="{{ $item->getToggleIcon() }} pull-right"></i>@endif
     </a>
 
-    @if($item->hasAppend())
-        @foreach($item->appends as $append)
-            {!! $append->render() !!}
-        @endforeach
-    @endif
+    @foreach($appends as $append)
+        {!! $append !!}
+    @endforeach
 
-    @if($item->hasItems())
+    @if(count($items) > 0)
         <ul class="treeview-menu">
-            @foreach($item->getItems() as $item)
-                @include('sidebar::item')
+            @foreach($items as $item)
+                {!! $item !!}
             @endforeach
         </ul>
     @endif

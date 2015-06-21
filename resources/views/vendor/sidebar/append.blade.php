@@ -1,3 +1,3 @@
-<a class="append pull-right" href="{{ $append->route }}">
-    <i class="{{ $append->icon or 'fa fa-plus' }}"></i>
+<a title="{{ $append->getName() }}" class="append pull-right" href="{{ $append->getUrl() }}">
+    <i class="{{ $append->getIcon() }}"></i>
 </a>

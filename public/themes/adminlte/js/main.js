@@ -1,3 +1,3 @@
 $(document).ready(function () {
-    $("form").sisyphus();
+    $("form").sisyphus({locationBased: true});
 });
