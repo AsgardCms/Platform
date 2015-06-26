@@ -2,6 +2,6 @@
 
 return [
 
-    'driver' => 'Sentry',
+    'driver' => 'Sentinel',
 
 ];
