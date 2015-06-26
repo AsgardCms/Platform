@@ -11,7 +11,7 @@
   "require": {
     "laravel/framework": "~5.1",
     "pingpong/modules": "dev-feature/5.1",
-    "cartalyst/sentry": "dev-feature/laravel-5",
+    "cartalyst/sentinel": "~2.0",
     "asgardcms/core-module": "~1.0",
     "asgardcms/dashboard-module": "~1.0",
     "asgardcms/user-module": "~1.0",
@@ -29,10 +29,6 @@
     "barryvdh/laravel-debugbar": "~2.0"
   },
   "repositories": [
-    {
-      "type": "composer",
-      "url": "https://packages.cartalyst.com"
-    },
     {
       "type": "vcs",
       "url": "https://github.com/nWidart/modules"
