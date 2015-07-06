@@ -3,16 +3,16 @@
 return [
     'namespace' => 'Modules',
     'stubs' => [
-        'enabled'   => false,
-        'path'      => base_path().'/vendor/pingpong/modules/src/Pingpong/Modules/Commands/stubs',
-        'files'     => [
-            'start'         => 'start.php',
-            'routes'        => 'Http/routes.php',
-            'json'          => 'module.json',
-            'views/index'   => 'Resources/views/index.blade.php',
-            'views/master'  => 'Resources/views/layouts/master.blade.php',
+        'enabled' => false,
+        'path' => base_path() . '/vendor/pingpong/modules/src/Pingpong/Modules/Commands/stubs',
+        'files' => [
+            'start' => 'start.php',
+            'routes' => 'Http/routes.php',
+            'json' => 'module.json',
+            'views/index' => 'Resources/views/index.blade.php',
+            'views/master' => 'Resources/views/layouts/master.blade.php',
             'scaffold/config' => 'Config/config.php',
-            'composer'      => 'composer.json',
+            'composer' => 'composer.json',
         ],
         'replacements' => [
             'start' => ['LOWER_NAME'],
@@ -31,7 +31,6 @@ return [
             ],
         ],
     ],
-
     'paths' => [
         /*
         |--------------------------------------------------------------------------
@@ -83,13 +82,13 @@ return [
             'repository' => 'Repositories',
             'seeder' => 'Database/Seeders',
             'controller' => 'Http/Controllers',
-            'filter' => 'Http/Filters',
+            'filter' => 'Http/Middleware',
             'request' => 'Http/Requests',
             'provider' => 'Providers',
             'lang' => 'Resources/lang',
             'views' => 'Resources/views',
             'test' => 'Tests',
-        ]
+        ],
     ],
     /*
     |--------------------------------------------------------------------------
