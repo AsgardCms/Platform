@@ -1,11 +1,11 @@
 <?php
 
 return [
-    /*
-    |--------------------------------------------------------------------------
-    | The prefix that'll be used for the administration
-    |--------------------------------------------------------------------------
-    */
+   /*
+   |--------------------------------------------------------------------------
+   | The prefix that'll be used for the administration
+   |--------------------------------------------------------------------------
+   */
     'admin-prefix' => 'backend',
 
     /*
@@ -22,12 +22,12 @@ return [
     */
     'admin-theme' => 'AdminLTE',
 
-    /*
-    |--------------------------------------------------------------------------
-    | Define which assets will be available through the asset manager
-    |--------------------------------------------------------------------------
-    | These assets are registered on the asset manager
-    */
+   /*
+   |--------------------------------------------------------------------------
+   | Define which assets will be available through the asset manager
+   |--------------------------------------------------------------------------
+   | These assets are registered on the asset manager
+   */
     'admin-assets' => [
         // Css
         'bootstrap.css' => ['theme' => 'vendor/bootstrap/dist/css/bootstrap.min.css'],
@@ -71,34 +71,36 @@ return [
         'chart.js' => ['theme' => 'vendor/admin-lte/plugins/chartjs/Chart.js'],
     ],
 
-    /*
-    |--------------------------------------------------------------------------
-    | Define which default assets will always be included in your pages
-    | through the asset pipeline
-    |--------------------------------------------------------------------------
-    */
-    'admin-required-assets' => [
-        'css' => [
-            'bootstrap.css',
-            'font-awesome.css',
-            'alertify.core.css',
-            'alertify.default.css',
-            'dataTables.bootstrap.css',
-            'AdminLTE.css',
-            'AdminLTE.all.skins.css',
-            'asgard.css',
-        ],
-        'js' => [
-            'jquery.js',
-            'bootstrap.js',
-            'mousetrap.js',
-            'alertify.js',
-            'icheck.js',
-            'jquery.dataTables.js',
-            'dataTables.bootstrap.js',
-            'jquery.slug.js',
-            'keypressAction.js',
-            'app.js',
-        ],
-    ],
+   /*
+   |--------------------------------------------------------------------------
+   | Define which default assets will always be included in your pages
+   | through the asset pipeline
+   |--------------------------------------------------------------------------
+   */
+   'admin-required-assets' => [
+       'css' => [
+           'bootstrap.css',
+           'font-awesome.css',
+           'alertify.core.css',
+           'alertify.default.css',
+           'dataTables.bootstrap.css',
+           'AdminLTE.css',
+           'AdminLTE.all.skins.css',
+           'asgard.css',
+       ],
+       'js' => [
+           'jquery.js',
+           'bootstrap.js',
+           'mousetrap.js',
+           'alertify.js',
+           'icheck.js',
+           'jquery.dataTables.js',
+           'dataTables.bootstrap.js',
+           'jquery.slug.js',
+           'keypressAction.js',
+           'app.js',
+           'main.js',
+           'sisyphus.js',
+       ],
+   ],
 ];

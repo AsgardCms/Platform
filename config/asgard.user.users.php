@@ -23,12 +23,13 @@ return [
     | only supported by the Sentinel user driver
     */
     'login-columns' => ['email'],
+
     /*
-   |--------------------------------------------------------------------------
-   | Fillable user fields
-   |--------------------------------------------------------------------------
-   | Set the fillable user fields, those fields will be mass assigned
-   */
+    |--------------------------------------------------------------------------
+    | Fillable user fields
+    |--------------------------------------------------------------------------
+    | Set the fillable user fields, those fields will be mass assigned
+    */
     'fillable' => [
         'email',
         'password',

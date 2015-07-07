@@ -8,4 +8,8 @@ return [
         'update',
         'destroy',
     ],
+    'media.media-grid' => [
+        'index',
+        'ckIndex',
+    ]
 ];
