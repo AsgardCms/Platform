@@ -30,7 +30,7 @@ return [
    | colors are available for you to use: skin-blue, skin-green,
    | skin-black, skin-purple, skin-red and skin-yellow.
    */
-   'skin' => 'skin-red',
+   'skin' => 'skin-blue',
 
    /*
    |--------------------------------------------------------------------------
