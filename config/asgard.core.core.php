@@ -24,6 +24,16 @@ return [
 
    /*
    |--------------------------------------------------------------------------
+   | AdminLTE skin
+   |--------------------------------------------------------------------------
+   | You can customize the AdminLTE colors with this setting. The following
+   | colors are available for you to use: skin-blue, skin-green,
+   | skin-black, skin-purple, skin-red and skin-yellow.
+   */
+   'skin' => 'skin-red',
+
+   /*
+   |--------------------------------------------------------------------------
    | Define which assets will be available through the asset manager
    |--------------------------------------------------------------------------
    | These assets are registered on the asset manager
