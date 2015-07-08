@@ -1,6 +1,5 @@
 [![Latest Version](https://img.shields.io/github/release/asgardcms/platform.svg?style=flat-square)](https://github.com/asgardcms/platform/releases)
 [![Software License](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)](LICENSE.md)
-[![Quality Score](https://img.shields.io/scrutinizer/g/asgardcms/platform.svg?style=flat-square)](https://scrutinizer-ci.com/g/asgardcms/platform)
 [![Total Downloads](https://img.shields.io/packagist/dd/asgardcms/platform.svg?style=flat-square)](https://packagist.org/packages/asgardcms/platform)
 [![Total Downloads](https://img.shields.io/packagist/dm/asgardcms/platform.svg?style=flat-square)](https://packagist.org/packages/asgardcms/platform)
 [![Total Downloads](https://img.shields.io/packagist/dt/asgardcms/platform.svg?style=flat-square)](https://packagist.org/packages/asgardcms/platform)
