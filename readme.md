@@ -1,7 +1,9 @@
-[![Latest Stable Version](https://poser.pugx.org/asgardcms/platform/version.svg)](https://packagist.org/packages/asgardcms/platform)
-[![Total Downloads](https://poser.pugx.org/asgardcms/platform/downloads.svg)](https://packagist.org/packages/asgardcms/platform)
-[![Latest Unstable Version](https://poser.pugx.org/asgardcms/platform/v/unstable.svg)](//packagist.org/packages/asgardcms/platform)
-[![License](https://poser.pugx.org/asgardcms/platform/license.svg)](https://packagist.org/packages/asgardcms/platform)
+[![Latest Version](https://img.shields.io/github/release/asgardcms/platform.svg?style=flat-square)](https://github.com/asgardcms/platform/releases)
+[![Software License](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)](LICENSE.md)
+[![Quality Score](https://img.shields.io/scrutinizer/g/asgardcms/platform.svg?style=flat-square)](https://scrutinizer-ci.com/g/asgardcms/platform)
+[![Total Downloads](https://img.shields.io/packagist/dd/asgardcms/platform.svg?style=flat-square)](https://packagist.org/packages/asgardcms/platform)
+[![Total Downloads](https://img.shields.io/packagist/dm/asgardcms/platform.svg?style=flat-square)](https://packagist.org/packages/asgardcms/platform)
+[![Total Downloads](https://img.shields.io/packagist/dt/asgardcms/platform.svg?style=flat-square)](https://packagist.org/packages/asgardcms/platform)
 
 ## AsgardCMS Platform
 
