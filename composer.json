@@ -6,7 +6,7 @@
     "asgardcms"
   ],
   "license": "MIT",
-  "version": "1.2.2",
+  "version": "1.3.0",
   "type": "project",
   "require": {
     "laravel/framework": "~5.1",
