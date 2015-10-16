@@ -16,3 +16,5 @@ public/modules/blog/js/selectize.min.js
 public/modules/Core/js/vendor/datatables/es.json
 
 public/media
+
+public/modules/Gallery/js/jquery.nestable.js
