@@ -1,0 +1,23 @@
+{
+  "sEmptyTable":     "无可用数据",
+  "sInfo":           "显示 _START_ to _END_ of _TOTAL_ 条目",
+  "sInfoEmpty":      "显示 0 to 0 of 0 条目",
+  "sInfoFiltered":   "(过滤自 _MAX_ total 条目)",
+  "sInfoPostFix":    "",
+  "sInfoThousands":  ",",
+  "sLengthMenu":     "显示 _MENU_ 条目",
+  "sLoadingRecords": "载入中...",
+  "sProcessing":     "处理中...",
+  "sSearch":         "搜索:",
+  "sZeroRecords":    "没有匹配的记录",
+  "oPaginate": {
+    "sFirst":    "首页",
+    "sLast":     "末页",
+    "sNext":     "下一条",
+    "sPrevious": "上一条"
+  },
+  "oAria": {
+    "sSortAscending":  ": 按升序排序",
+    "sSortDescending": ": 按降序排序"
+  }
+}

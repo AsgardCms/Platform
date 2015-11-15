@@ -6,3 +6,6 @@
 Thumbs.db
 composer.phar
 composer.lock
+
+public/modules
+public/media
