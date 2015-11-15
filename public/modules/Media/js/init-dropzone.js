@@ -6,7 +6,7 @@ $( document ).ready(function() {
         maxFilesize: maxFilesize,
         acceptedFiles : acceptedFiles
     });
-    myDropzone.on("success", function(file, http) {
+    myDropzone.on("queuecomplete", function(file, http) {
         window.setTimeout(function(){
             location.reload();
         }, 1000);
