@@ -3,10 +3,13 @@
   "description": "The AsgardCms application",
   "keywords": [
     "cms",
-    "asgardcms"
+    "asgardcms",
+    "multilingual",
+    "laravel",
+    "laravel5"
   ],
   "license": "MIT",
-  "version": "1.3.0",
+  "version": "1.4.0",
   "type": "project",
   "require": {
     "laravel/framework": "~5.1",
