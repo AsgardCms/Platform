@@ -1,35 +1,43 @@
 //
-//	jQuery Slug Generation Plugin by Perry Trinier (perrytrinier@gmail.com)
+//  jQuery Slug Generation Plugin by Perry Trinier (perrytrinier@gmail.com)
+//  Modified November 2015 by Micheal Mand for AsgardCMS (micheal@kmdwebdesigns.com)
 //  Licensed under the GPL: http://www.gnu.org/copyleft/gpl.html
 
 jQuery.fn.slug = function (options) {
     var settings = {
         slug: 'slug', // Class used for slug destination input and span. The span is created on $(document).ready()
-        hide: true,	 // Boolean - By default the slug input field is hidden, set to false to show the input field and hide the span.
+        hide: false, // Boolean - By default the slug input field is shown, set to false to hide the input field and show the span.
         override: false
     };
 
+    $this = jQuery(this);
+
     if (options) {
         jQuery.extend(settings, options);
+    } else {
+        if (typeof $this.data('target') !== "undefined") {
+            settings.slug = $this.data('target');
+        }
     }
-
-    $this = jQuery(this);
 
     jQuery(document).ready(function () {
         if (settings.hide) {
-            jQuery('input.' + settings.slug).after("<span class=" + settings.slug + "></span>");
-            jQuery('input.' + settings.slug).hide();
+            $this.closest('input.' + settings.slug).after("<span class=" + settings.slug + "></span>");
+            $this.closest('input.' + settings.slug).hide();
         }
     });
 
-    makeSlug = function () {
-        var slugcontent = $this.val();
-        var slugcontent_hyphens = slugcontent.replace(/\s/g, '-');
-        var slug_no_accents = normalize(slugcontent_hyphens);
-        var finishedslug = slug_no_accents.replace(/[^a-zA-Z0-9\-]/g, '');
-        jQuery('input.' + settings.slug).val(finishedslug.toLowerCase());
-        jQuery('span.' + settings.slug).text(finishedslug.toLowerCase());
-    }
+    makeSlug = function (event) {
+        var $theUnSlug = jQuery(event.target),
+            $slugParent = $theUnSlug.closest('.form-group').next(),
+            slugContent = $theUnSlug.val(),
+            slugContentHyphens = slugContent.replace(/\s+/g, '-'),
+            slugNoAccents = normalize(slugContentHyphens),
+            finishedSlug = slugNoAccents.replace(/[^a-zA-Z0-9\-]/g, '');
+
+        $slugParent.find('input.' + settings.slug).val(finishedSlug.toLowerCase());
+        $slugParent.find('span.' + settings.slug).text(finishedSlug.toLowerCase());
+    };
 
     normalize = function(string) {
         var defaultDiacriticsRemovalMap = [
@@ -123,9 +131,9 @@ jQuery.fn.slug = function (options) {
             string = string.replace(defaultDiacriticsRemovalMap[i].letters, defaultDiacriticsRemovalMap[i].base);
         }
         return string;
-    }
+    };
 
-    jQuery(this).keyup(makeSlug);
+    $this.keyup(makeSlug);
 
     return $this;
 };
