@@ -1,16 +1,18 @@
 //
 //  jQuery Slug Generation Plugin by Perry Trinier (perrytrinier@gmail.com)
 //  Modified November 2015 by Micheal Mand for AsgardCMS (micheal@kmdwebdesigns.com)
+//  Modified November 2015 by Simon Funk for AsgardCMS (simon.funk@treestones.ch)
 //  Licensed under the GPL: http://www.gnu.org/copyleft/gpl.html
 
 jQuery.fn.slug = function (options) {
     var settings = {
         slug: 'slug', // Class used for slug destination input and span. The span is created on $(document).ready()
-        hide: false, // Boolean - By default the slug input field is shown, set to false to hide the input field and show the span.
         override: false
     };
 
     $this = jQuery(this);
+
+    var slugContainer = $this.closest('.box-body').find('[data-slug="target"]');
 
     if (options) {
         jQuery.extend(settings, options);
@@ -20,23 +22,13 @@ jQuery.fn.slug = function (options) {
         }
     }
 
-    jQuery(document).ready(function () {
-        if (settings.hide) {
-            $this.closest('input.' + settings.slug).after("<span class=" + settings.slug + "></span>");
-            $this.closest('input.' + settings.slug).hide();
-        }
-    });
-
     makeSlug = function (event) {
         var $theUnSlug = jQuery(event.target),
-            $slugParent = $theUnSlug.closest('.form-group').next(),
             slugContent = $theUnSlug.val(),
             slugContentHyphens = slugContent.replace(/\s+/g, '-'),
             slugNoAccents = normalize(slugContentHyphens),
             finishedSlug = slugNoAccents.replace(/[^a-zA-Z0-9\-]/g, '');
-
-        $slugParent.find('input.' + settings.slug).val(finishedSlug.toLowerCase());
-        $slugParent.find('span.' + settings.slug).text(finishedSlug.toLowerCase());
+        slugContainer.val(finishedSlug.toLowerCase());
     };
 
     normalize = function(string) {
