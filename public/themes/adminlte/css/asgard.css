@@ -1,3 +1,27 @@
+ul.notifications-list li {
+  -webkit-animation-duration: .5s;
+  animation-duration: .5s;
+}
+.notificationsCounter {
+  -webkit-animation-duration: .5s;
+  animation-duration: .5s;
+}
+.notificationIcon {
+  font-size: 30px;
+}
+.removeNotification {
+  z-index: 999;
+  font-size: 12px !important;
+  position: absolute;
+  top: -35px;
+  right: 0px;
+}
+.navbar-nav > .messages-menu > .dropdown-menu > li .menu > li > a > h4 > small {
+  position: absolute;
+  bottom: -30px;
+  right: 0px;
+  top: auto;
+}
 footer.main-footer a {
   cursor: pointer;
 }

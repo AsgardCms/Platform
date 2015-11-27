@@ -1,5 +1,5 @@
 /*
- * Core: Genral Layout Style
+ * Core: General Layout Style
  * -------------------------
  */
 html,
@@ -10,7 +10,7 @@ body {
   }
 }
 
-body {  
+body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   font-family: 'Source Sans Pro', 'Helvetica Neue', Helvetica, Arial, sans-serif;
@@ -23,37 +23,39 @@ body {
 .wrapper {
   .clearfix();
   min-height: 100%;
-  position: static;
+  position: relative;
   overflow: hidden;
   .layout-boxed & {
     max-width: 1250px;
     margin: 0 auto;
     min-height: 100%;
-    box-shadow: 0 0 8px rgba(0,0,0,0.5);
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.5);
     position: relative;
   }
 }
 
 .layout-boxed {
-  background: url('../img/boxed-bg.jpg') repeat fixed;
+  background: url('@{boxed-layout-bg-image-path}') repeat fixed;
 }
 
 /*
- * Content Wrapper - contins main content
+ * Content Wrapper - contains the main content
  * ```.right-side has been deprecated as of v2.0.0 in favor of .content-wrapper  ```
  */
-.content-wrapper, 
+.content-wrapper,
 .right-side,
-.main-footer {    
-  .transition-transform(@transition-speed @transition-fn);
-  .transition(margin-left @transition-speed @transition-fn);
+.main-footer {
+  //Using disposable variable to join statements with a comma
+  @transition-rule: @transition-speed @transition-fn,
+  margin @transition-speed @transition-fn;
+  .transition-transform(@transition-rule);
   margin-left: @sidebar-width;
   z-index: 820;
   //Top nav layout
   .layout-top-nav & {
     margin-left: 0;
   }
-  @media (max-width: @screen-xs-max) {    
+  @media (max-width: @screen-xs-max) {
     margin-left: 0;
   }
   //When opening the sidebar on large screens
@@ -70,17 +72,18 @@ body {
   }
 }
 
-.content-wrapper, 
+.content-wrapper,
 .right-side {
   min-height: 100%;
   background-color: @body-bg;
-  z-index: 800;  
+  z-index: 800;
 }
+
 .main-footer {
   background: #fff;
   padding: 15px;
   color: #444;
-  border-top: 1px solid #eee;
+  border-top: 1px solid @gray;
 }
 
 /* Fixed layout */
@@ -109,6 +112,19 @@ body {
   }
 }
 
+body.hold-transition {
+  .content-wrapper,
+  .right-side,
+  .main-footer,
+  .main-sidebar,
+  .left-side,
+  .main-header > .navbar,
+  .main-header .logo {
+    /* Fix for IE */
+    .transition(none);
+  }
+}
+
 /* Content */
 .content {
   min-height: 250px;
@@ -131,10 +147,12 @@ h6,
 .h6 {
   font-family: 'Source Sans Pro', sans-serif;
 }
+
 /* General Links */
 a {
   color: @link-color;
 }
+
 a:hover,
 a:active,
 a:focus {
