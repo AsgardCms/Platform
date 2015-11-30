@@ -11,10 +11,6 @@
 </ol>
 @stop
 
-@section('styles')
-    {!! Theme::style('css/vendor/iCheck/flat/blue.css') !!}
-@stop
-
 @section('content')
 {!! Form::open(['route' => ['admin.user.role.update', $role->id], 'method' => 'put']) !!}
 <div class="row">
@@ -32,14 +28,14 @@
                             <div class="col-sm-6">
                                 <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
                                     {!! Form::label('name', trans('user::roles.form.name')) !!}
-                                    {!! Form::text('name', Input::old('name', $role->name), ['class' => 'form-control slugify', 'placeholder' => trans('user::roles.form.name')]) !!}
+                                    {!! Form::text('name', Input::old('name', $role->name), ['class' => 'form-control', 'data-slug' => 'source', 'placeholder' => trans('user::roles.form.name')]) !!}
                                     {!! $errors->first('name', '<span class="help-block">:message</span>') !!}
                                 </div>
                             </div>
                             <div class="col-sm-6">
                                 <div class="form-group{{ $errors->has('slug') ? ' has-error' : '' }}">
                                     {!! Form::label('slug', trans('user::roles.form.slug')) !!}
-                                    {!! Form::text('slug', Input::old('slug', $role->slug), ['class' => 'form-control slug', 'placeholder' => trans('user::roles.form.slug')]) !!}
+                                    {!! Form::text('slug', Input::old('slug', $role->slug), ['class' => 'form-control slug', 'data-slug' => 'target', 'placeholder' => trans('user::roles.form.slug')]) !!}
                                     {!! $errors->first('slug', '<span class="help-block">:message</span>') !!}
                                 </div>
                             </div>

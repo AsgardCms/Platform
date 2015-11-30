@@ -11,10 +11,6 @@
 </ol>
 @stop
 
-@section('styles')
-    {!! Theme::style('css/vendor/iCheck/flat/blue.css') !!}
-@stop
-
 @section('content')
 {!! Form::open(['route' => ['admin.user.user.update', $user->id], 'method' => 'put']) !!}
 <div class="row">
@@ -65,7 +61,7 @@
                                                {{ $user->id === $currentUser->id ? 'disabled' : '' }}
                                                {{ Input::old('activated', $oldValue) }}
                                                value="1" />
-                                        {{ trans('user::users.form.status') }}
+                                        {{ trans('user::users.form.is_activated') }}
                                         {!! $errors->first('activated', '<span class="help-block">:message</span>') !!}
                                     </label>
                                 </div>

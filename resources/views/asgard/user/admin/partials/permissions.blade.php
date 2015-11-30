@@ -28,7 +28,7 @@
                                     <div class="checkbox">
                                         <label for="<?php echo "$subPermissionTitle.$permissionAction" ?>">
                                             <input name="permissions[<?php echo "$subPermissionTitle.$permissionAction" ?>]" type="hidden" value="false" />
-                                            <input id="<?php echo "$subPermissionTitle.$permissionAction" ?>" name="permissions[<?php echo "$subPermissionTitle.$permissionAction" ?>]" type="checkbox" class="flat-blue" <?php echo $model->hasAccess("$subPermissionTitle.$permissionAction") ? 'checked' : '' ?> value="true" /> {{ ucfirst($permissionAction) }}
+                                            <input id="<?php echo "$subPermissionTitle.$permissionAction" ?>" name="permissions[<?php echo "$subPermissionTitle.$permissionAction" ?>]" type="checkbox" class="flat-blue" <?php echo array_get($model->permissions, "$subPermissionTitle.$permissionAction", false) === true ? 'checked' : '' ?> value="true" /> {{ ucfirst($permissionAction) }}
                                         </label>
                                     </div>
                                 <?php endforeach; ?>
