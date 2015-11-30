@@ -23,6 +23,7 @@
     "asgardcms/page-module": "~1.0",
     "asgardcms/menu-module": "~1.0",
     "asgardcms/workshop-module": "~1.0",
+    "asgardcms/translation-module": "~1.0",
     "asgardcms/flatly-theme": "~1.0",
     "asgardcms/adminlte-theme": "~1.0"
   },
