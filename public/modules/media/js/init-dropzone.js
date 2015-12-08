@@ -1,7 +1,7 @@
 $( document ).ready(function() {
     Dropzone.autoDiscover = false;
     var myDropzone = new Dropzone(".dropzone", {
-        url: '/api/file',
+        url: Asgard.dropzonePostUrl,
         autoProcessQueue: true,
         maxFilesize: maxFilesize,
         acceptedFiles : acceptedFiles
@@ -17,7 +17,7 @@ $( document ).ready(function() {
         }
     });
     myDropzone.on("error", function(file, errorMessage) {
-        var html = '<div class="alert alert-danger" role="alert">' + errorMessage.file[0] + '</div>';
+        var html = '<div class="alert alert-danger" role="alert">' + errorMessage + '</div>';
         $('.col-md-12').first().prepend(html);
         setTimeout(function() {
             myDropzone.removeFile(file);
