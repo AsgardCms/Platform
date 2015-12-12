@@ -46,6 +46,16 @@ return [
 		'local' => [
 			'driver' => 'local',
 			'root'   => base_path(),
+			'permissions' => [
+				'file' => [
+					'public' => 0777,
+					'private' => 700,
+				],
+				'dir' => [
+					'public' => 0777,
+					'private' => 700,
+				]
+			],
 		],
 
 		's3' => [
