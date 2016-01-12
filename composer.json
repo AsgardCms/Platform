@@ -9,7 +9,7 @@
     "laravel5"
   ],
   "license": "MIT",
-  "version": "1.13.0",
+  "version": "1.14.0",
   "type": "project",
   "require": {
     "laravel/framework": "~5.1",
