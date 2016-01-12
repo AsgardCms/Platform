@@ -35,6 +35,6 @@ CKEDITOR.editorConfig = function( config ) {
 
 	// Make dialogs simpler.
 	config.removeDialogTabs = 'image:advanced;link:advanced';
-
-	config.filebrowserBrowseUrl =  Asgard.mediaGridCkEditor
+	config.allowedContent = true;
+	config.filebrowserBrowseUrl =  Asgard.mediaGridCkEditor;
 };
