@@ -70,7 +70,7 @@ return [
         'asgard.css' => ['theme' => 'css/asgard.css'],
         //'gridstack.css' => ['module' => 'dashboard:vendor/gridstack/dist/gridstack.min.css'],
         'gridstack.css' => ['module' => 'dashboard:gridstack/gridstack.min.css'],
-        'daterangepicker.css' => ['theme' => 'vendor/admin-lte/plugins/daterangepicker/daterangepicker-bs3.css'],
+        'daterangepicker.css' => ['theme' => 'vendor/admin-lte/plugins/daterangepicker/daterangepicker.css'],
         'selectize.css' => ['module' => 'core:vendor/selectize/dist/css/selectize.css'],
         'selectize-default.css' => ['module' => 'core:vendor/selectize/dist/css/selectize.default.css'],
         'animate.css' => ['theme' => 'vendor/animate.css/animate.min.css'],
