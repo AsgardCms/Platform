@@ -11,7 +11,8 @@ $( document ).ready(function() {
             location.reload();
         }, 1000);
     });
-    myDropzone.on("sending", function(file, fromData) {
+    myDropzone.on("sending", function(file, xhr, fromData) {
+        xhr.setRequestHeader("Authorization", AuthorizationHeaderValue);
         if ($('.alert-danger').length > 0) {
             $('.alert-danger').remove();
         }

@@ -33,9 +33,11 @@ footer.main-footer p.text-muted {
 .skin-blue .left-side {
   background: #202227;
 }
-.skin-blue .sidebar-menu > li.header {
+.skin-blue .sidebar-menu > li.menu-title {
   color: #93AFBB;
   background: #25272d;
+  padding: 10px 25px 10px 15px;
+  font-size: 12px;
 }
 .sidebar-menu .append {
   margin-top: -44px;
@@ -49,8 +51,9 @@ footer.main-footer p.text-muted {
   background: none;
   border: 0;
 }
-.skin-blue .main-header .logo {
-  border-bottom: 1px solid #202227;
+.sidebar-mini.sidebar-collapse .sidebar-menu a.append,
+.sidebar-mini.sidebar-collapse .sidebar-menu li.menu-title {
+  display: none;
 }
 .checkbox label {
   padding-left: 0;
