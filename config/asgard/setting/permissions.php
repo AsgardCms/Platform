@@ -1,7 +1,8 @@
 <?php
+
 return [
     'setting.settings' => [
-        'index',
-        'edit',
+        'index' => 'setting::settings.list resource',
+        'edit' => 'setting::settings.edit resource',
     ],
 ];

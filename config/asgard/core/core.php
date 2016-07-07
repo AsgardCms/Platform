@@ -34,6 +34,16 @@ return [
 
     /*
     |--------------------------------------------------------------------------
+    | Custom CKeditor configuration file
+    |--------------------------------------------------------------------------
+    | Define a custom CKeditor configuration file to instead of the one
+    | provided by default. This is useful if you wish to customise
+    | the toolbar and other possible options.
+    */
+    'ckeditor-config-file-path' => '/assets/config_custom.js',
+
+    /*
+    |--------------------------------------------------------------------------
     | Middleware
     |--------------------------------------------------------------------------
     | You can customise the Middleware that should be loaded.
@@ -95,7 +105,6 @@ return [
         'gridstack.js' => ['module' => 'dashboard:gridstack/gridstack.min.js'],
         'daterangepicker.js' => ['theme' => 'vendor/admin-lte/plugins/daterangepicker/daterangepicker.js'],
         'selectize.js' => ['module' => 'core:vendor/selectize/dist/js/standalone/selectize.min.js'],
-        'sisyphus.js' => ['theme' => 'vendor/sisyphus/sisyphus.min.js'],
         'main.js' => ['theme' => 'js/main.js'],
         'chart.js' => ['theme' => 'vendor/admin-lte/plugins/chartjs/Chart.js'],
         'pace.js' => ['theme' => 'vendor/admin-lte/plugins/pace/pace.min.js'],
@@ -135,7 +144,6 @@ return [
            'app.js',
            'pace.js',
            'main.js',
-           'sisyphus.js',
        ],
    ],
 ];
