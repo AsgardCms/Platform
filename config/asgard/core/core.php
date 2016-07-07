@@ -40,7 +40,7 @@ return [
     | provided by default. This is useful if you wish to customise
     | the toolbar and other possible options.
     */
-    'ckeditor-config-file-path' => '/assets/config_custom.js',
+    'ckeditor-config-file-path' => '',
 
     /*
     |--------------------------------------------------------------------------
