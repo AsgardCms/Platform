@@ -25,6 +25,7 @@
         "asgardcms/menu-module": "~2.0",
         "asgardcms/workshop-module": "~2.0",
         "asgardcms/translation-module": "~2.0",
+        "asgardcms/tag-module": "^1.0@dev",
         "asgardcms/flatly-theme": "~2.0",
         "asgardcms/adminlte-theme": "~2.0"
     },
