@@ -130,6 +130,7 @@ return [
            'AdminLTE.all.skins.css',
            'animate.css',
            'pace.css',
+           'selectize-default.css',
            'asgard.css',
        ],
        'js' => [
@@ -143,6 +144,7 @@ return [
            'keypressAction.js',
            'app.js',
            'pace.js',
+           'selectize.js',
            'main.js',
        ],
    ],
