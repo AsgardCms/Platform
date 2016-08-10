@@ -16,6 +16,13 @@ return [
     'redirect_route_after_login' => 'homepage',
     /*
     |--------------------------------------------------------------------------
+    | Define which route the user should be redirected to after accessing
+    | a resource that requires to be logged in
+    |--------------------------------------------------------------------------
+    */
+    'redirect_route_not_logged_in' => 'auth/login',
+    /*
+    |--------------------------------------------------------------------------
     | Login column(s)
     |--------------------------------------------------------------------------
     | Define which column(s) you'd like to use to login with, currently
@@ -41,4 +48,14 @@ return [
         'first_name',
         'last_name',
     ],
+
+    /*
+    |--------------------------------------------------------------------------
+    | Custom Sidebar Class
+    |--------------------------------------------------------------------------
+    | If you want to customise the admin sidebar ordering or grouping
+    | You can define your own sidebar class for this module.
+    | No custom sidebar: null
+    */
+    'custom-sidebar' => null,
 ];

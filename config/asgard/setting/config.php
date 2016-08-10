@@ -3,14 +3,6 @@
 return [
     /*
     |--------------------------------------------------------------------------
-    | Revision History Limit
-    |--------------------------------------------------------------------------
-    | How many revisions need to be kept in database before removing the old ones
-    */
-    'revision-history-limit' => 100,
-
-    /*
-    |--------------------------------------------------------------------------
     | Custom Sidebar Class
     |--------------------------------------------------------------------------
     | If you want to customise the admin sidebar ordering or grouping

@@ -3,14 +3,6 @@
 return [
     /*
     |--------------------------------------------------------------------------
-    | Revision History Limit
-    |--------------------------------------------------------------------------
-    | How many revisions need to be kept in database before removing the old ones
-    */
-    'revision-history-limit' => 100,
-
-    /*
-    |--------------------------------------------------------------------------
     | Custom Sidebar Class
     |--------------------------------------------------------------------------
     | If you want to customise the admin sidebar ordering or grouping
@@ -18,4 +10,13 @@ return [
     | No custom sidebar: null
     */
     'custom-sidebar' => null,
+
+    /*
+    | Default Menu Presenter
+    |--------------------------------------------------------------------------
+    |--------------------------------------------------------------------------
+    | Configure which Menu presenter will be used by default without
+    | having to send it via the views
+    */
+    'default_menu_presenter' => \Modules\Menu\Presenters\MenuPresenter::class,
 ];
