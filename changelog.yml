@@ -1,0 +1,20 @@
+url: https://github.com/AsgardCms/Flatly-theme
+versions:
+    "2.0@unreleased":
+        added:
+            - Manual notifications partial, to remove laracasts/flash
+        changed:
+            - Set a fixed version for laravel-elixir
+            - Update gulpfile for laravel-elixir 5.0
+    "1.2.0":
+        changed:
+            - New master account layout for updated AdminLTE theme
+    "1.1.1":
+        changed:
+            - Google analytics code not escaped anymore
+    "1.1.0":
+        added:
+            - Changelog file
+    "1.0.0":
+        changed:
+            - Initial release
