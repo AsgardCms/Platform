@@ -1,0 +1,195 @@
+url: https://github.com/AsgardCms/Core
+versions:
+    "2.0@unreleased":
+        added:
+            - Laravel 5.2 compatibility
+            - <code>CanPublishConfiguration</code> helper trait
+            - <code>CanRequireAssets</code> helper trait
+            - added new <code>auth->user()</code> method to get the current user.
+            - run the user module migrations on installation
+            - user installer creates a first api token
+            - Adding minimised sitename setting viewed via minimised sidebar
+            - Added ability for modules to define a custom sidebar class for every module
+            - Adding configuration to set a custom ckeditor config file
+        changed:
+            - Using new more flexible way of handle permissions via middleware
+            - Public configuration files in a subfolder of config/ folder
+            - <code>auth->check</code> now returns a boolean.
+            - Don't load the application version on frontend theme (+ performance)
+            - Rename <code>MasterViewComposer</code> to <code>SiteNameViewComposer</code> to match its intent
+            - Loading the currently logged in user on every view
+            - Form Macros - Use HtmlString to allow users to use normal Blade "echo" braces
+        removed:
+            - Removing laracasts/flash dependency
+            - Removed depenency of unmaintained pingpong/modules in favor of nwidart/laravel-modules
+            - <code>Authentication</code> contract has been moved to the User module
+            - <code>Setting</code> contract has been moved to the Setting module
+            - Removed sisyphus usage
+    "1.24.3":
+        changed:
+            - Using <code>::class</code> notation in base controllers
+    "1.24.2":
+        changed:
+            - Default values of normal inputs and textareas changed to <code>null</code>, allowing usage in form model binding
+    "1.24.1":
+        changed:
+            - Use user creation form install command without triggering event and sending email
+    "1.24.0":
+        added:
+            - Macro select i18 & normal
+        changed:
+            - Add support for camelcase module name in AdminSidebar
+    "1.23.2":
+        changed:
+            - Added supprt for custom <code>.env</code> files
+    "1.23.1":
+        changed:
+            - Fixed the <code>onBackend</code> method
+    "1.23.0":
+        added:
+            - <code>composer.lock</code> should now be removed in install command
+        changed:
+            - AdminSidebar is now only loaded on backend
+    "1.22.0":
+        added:
+            - Adding an <code>Authorization</code> middlware to check permissions via route middleware
+        changed:
+            - Removing menu module from core modules, and add media to it
+    "1.21.0":
+        added:
+            - <code>moment.js</code> has been added to the available scripts to include
+        changed:
+            - Typehint the eloquent model
+            - Set the database default values to the homestead values on install command
+    "1.20.0":
+        changed:
+            - Removed language files, they are now in the translation module
+    "1.19.0":
+        added:
+            - Adding a <code>getByAttributes</code> method on the base repository
+        changed:
+            - CoreServiceProvider cleanup
+    "1.18.1":
+        changed:
+            - Running the migrations for the translation module on install
+    "1.18.0":
+        added:
+            - Requiring Pace.js script
+    "1.17.0":
+        added:
+            - Registering the Translation module Service provider before the Core loads
+    "1.16.1":
+        changed:
+            - Adding missing asset path on <code>AssetNotFoundException</code>
+    "1.16.0":
+        changed:
+            - Extracting a generic delete modal
+    "1.15.0":
+        changed:
+            - Registering of module namespaces (views, config, languages) are now done in correct module order
+            - Updating bower dependencies
+    "1.14.0":
+        changed:
+            - Fixing centralised translations and slight refactoring
+    "1.13.0":
+        changes:
+            - Moving the <code>PermissionManager</code> to the User module
+    "1.12.1":
+        changed:
+            - Fixed getting translations logic from Translation module
+    "1.12.0":
+        changed:
+            - Added check for correct database configuration on <code>asgard:install</code>
+    "1.11.2":
+        changed:
+            - Undoing breaking change for StudlyCase module names
+    "1.11.1":
+        changed:
+            - Allow modules to be StudlyCase
+    "1.11.0":
+        added:
+            - Adding a view composer to get the currently logged in user
+            - Adding animate.css to loaded stylesheets
+            - Adding helper function to check if given module is active
+        changed:
+            - Binding current user view composer to <code>layouts.master</code> template for the backend
+    "1.10.0":
+        added:
+            - Added Polish translations
+            - Added Russian translations
+        changed:
+            - Improving german translations
+    "1.9.0":
+        added:
+            - Chinese (simplified) language
+            - <code>clearCache</code> method in the repository
+        changed:
+            - <code>findByAttributes</code> method on the base repository returns the first result instead of collection
+    "1.8.0":
+        added:
+            - Adding top-nav translation
+    "1.7.0":
+        added:
+            - Spanish translations
+    "1.6.0":
+        added:
+            - Allowing searching by multiple IDs in repositories using <code>findByMany()</code>
+    "1.5.0":
+        added:
+            - Ability to customise middleware on a route group basis
+    "1.4.0":
+        changed:
+            - Making the BaseRepository not rely on a translated object
+    "1.3.0":
+        added:
+            - Customizable AdminLTE skin type, view the <code>config/asgard.core.core.php</code> file
+    "1.2.0":
+        added:
+            - Adding update and go back translation
+        changed:
+            - Using <code>::class</code> notation in <code>composers.php</code>
+    "1.1.0":
+        changed:
+            - Setting the app.locale setting from first language in settings
+    "1.0.13":
+        changed:
+            - Adapting AdminSidebar to new Laravel-Sidebar package
+    "1.0.12":
+        changed:
+            - Adapting to changed Cartalyst/Sentinel behaviour, do not hash password ourselves
+    "1.0.11":
+        changed:
+            - Adding missing property on BasePublicController
+            - Removing Sentry as default option
+    "1.0.10":
+        changed:
+            - Adding a dynamic application version in admin footer
+    "1.0.9":
+        changed:
+            - Auth property on the BasePublicController has ben made protected
+        removed:
+            - BaseSidebarViewComposer was removed
+    "1.0.8":
+        added:
+            - Using new sidebar extender class
+        changed:
+            - Fixing textarea input macro
+        removed:
+            - Old SidebarViewComposer
+    "1.0.7":
+        added:
+            - Adding an <code>id</code> method on the Authentication contract
+            - Adding a <code>currentUser</code> variable to every public view
+    "1.0.6":
+        changed:
+            - Add ability to overwrite module translation files by adding them to <code>resources/lang/{moduleName}/en/{file}.php</code>
+    "1.0.5":
+        changed:
+            - Using stable version on mcamara/laravel-localization
+    "1.0.4":
+        changed:
+            - New changelog file structure
+    "1.0.3":
+        changed:
+            - Working around laravel bug of empty database password not being possible
+            - Cleaning up the questions

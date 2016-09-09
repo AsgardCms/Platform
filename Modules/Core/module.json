@@ -1,0 +1,31 @@
+{
+    "name": "Core",
+    "alias": "core",
+    "description": "The core module with all base classes and logic.",
+    "keywords": [],
+    "require": {},
+    "version": "2.0.0",
+    "active": 1,
+    "order": 0,
+    "providers": [
+        "Modules\\Core\\Providers\\CoreServiceProvider",
+        "Modules\\Core\\Providers\\SidebarServiceProvider",
+        "Modules\\Core\\Providers\\AssetServiceProvider",
+        "Collective\\Html\\HtmlServiceProvider",
+        "Dimsav\\Translatable\\TranslatableServiceProvider",
+        "Mcamara\\LaravelLocalization\\LaravelLocalizationServiceProvider",
+        "FloatingPoint\\Stylist\\StylistServiceProvider",
+        "Maatwebsite\\Sidebar\\SidebarServiceProvider"
+    ],
+    "aliases": {
+        "Form": "Collective\\Html\\FormFacade",
+        "Flash": "Laracasts\\Flash\\Flash",
+        "LaravelLocalization": "Mcamara\\LaravelLocalization\\Facades\\LaravelLocalization"
+    },
+    "files": [
+        "start.php",
+        "helpers.php",
+        "macros.php",
+        "collectionMacros.php"
+    ]
+}
