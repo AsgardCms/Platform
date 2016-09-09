@@ -1,0 +1,14 @@
+{
+  "name": "gridstack",
+  "homepage": "https://github.com/troolee/gridstack.js",
+  "version": "0.2.2",
+  "_release": "0.2.2",
+  "_resolution": {
+    "type": "version",
+    "tag": "v0.2.2",
+    "commit": "5c7340018cad0012b731af356b910cd755b4cc24"
+  },
+  "_source": "git://github.com/troolee/gridstack.js.git",
+  "_target": "~0.2.2",
+  "_originalSource": "gridstack"
+}
