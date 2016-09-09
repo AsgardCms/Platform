@@ -1,0 +1,25 @@
+{
+    "name": "Setting",
+    "alias": "setting",
+    "description": "Module for handling all site settings.",
+    "keywords": [
+        "asgardcms",
+        "settings"
+    ],
+    "version": "2.0.0",
+    "active": 1,
+    "order": 1,
+    "providers": [
+        "Modules\\Setting\\Providers\\SettingServiceProvider",
+        "Modules\\Setting\\Providers\\ThemeServiceProvider",
+        "Modules\\Setting\\Providers\\RouteServiceProvider",
+        "Modules\\Setting\\Providers\\EventServiceProvider"
+    ],
+    "aliases": {
+        "Setting": "Modules\\Setting\\Facades\\Settings",
+        "SettingDirective": "Modules\\Setting\\Blade\\Facades\\SettingDirective"
+    },
+    "files": [
+        "helpers.php"
+    ]
+}
