@@ -1,0 +1,40 @@
+<?php
+
+namespace Modules\$MODULE_NAME$\Entities;
+
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * @ORM\Entity
+ * @ORM\Table(name="$LOWERCASE_CLASS_NAME$_translations")
+ */
+class $CLASS_NAME$Translation
+{
+    /** @ORM\Id
+     * @ORM\Column(type="integer")
+     * @ORM\GeneratedValue
+     */
+    private $id;
+
+    /** @ORM\ManyToOne(targetEntity="Modules\$MODULE_NAME$\Entities\$CLASS_NAME$", inversedBy="translation") */
+    private $$LOWERCASE_CLASS_NAME$;
+
+    /** @ORM\Column(length=2) */
+    private $locale;
+
+    public function __construct()
+    {
+        $this->$LOWERCASE_CLASS_NAME$ = new ArrayCollection();
+    }
+
+    public function __get($name)
+    {
+        return $this->$name;
+    }
+
+    public function __set($key, $value)
+    {
+        $this->$key = $value;
+    }
+}

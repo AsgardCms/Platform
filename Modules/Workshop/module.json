@@ -1,0 +1,17 @@
+{
+  "name": "Workshop",
+  "alias": "workshop",
+  "description": "Module used to handle the create of new modules.",
+  "keywords": [
+  ],
+  "version": "2.0.0",
+  "active": 1,
+  "order": 1,
+  "providers": [
+      "Modules\\Workshop\\Providers\\RouteServiceProvider",
+      "Modules\\Workshop\\Providers\\WorkshopServiceProvider"
+  ],
+  "files": [
+    "composers.php"
+  ]
+}

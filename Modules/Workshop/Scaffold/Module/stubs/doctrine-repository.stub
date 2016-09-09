@@ -1,0 +1,10 @@
+<?php
+
+namespace Modules\$MODULE_NAME$\Repositories\Doctrine;
+
+use Modules\$MODULE_NAME$\Repositories\$CLASS_NAME$Repository;
+use Modules\Core\Repositories\Doctrine\DoctrineBaseRepository;
+
+class Doctrine$CLASS_NAME$Repository extends DoctrineBaseRepository implements $CLASS_NAME$Repository
+{
+}

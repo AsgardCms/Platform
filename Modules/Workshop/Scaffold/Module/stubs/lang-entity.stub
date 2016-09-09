@@ -1,0 +1,24 @@
+<?php
+
+return [
+    'list resource' => 'List $PLURAL_LOWERCASE_CLASS_NAME$',
+    'create resource' => 'Create $PLURAL_LOWERCASE_CLASS_NAME$',
+    'edit resource' => 'Edit $PLURAL_LOWERCASE_CLASS_NAME$',
+    'destroy resource' => 'Destroy $PLURAL_LOWERCASE_CLASS_NAME$',
+    'title' => [
+        '$PLURAL_LOWERCASE_CLASS_NAME$' => '$CLASS_NAME$',
+        'create $LOWERCASE_CLASS_NAME$' => 'Create a $LOWERCASE_CLASS_NAME$',
+        'edit $LOWERCASE_CLASS_NAME$' => 'Edit a $LOWERCASE_CLASS_NAME$',
+    ],
+    'button' => [
+        'create $LOWERCASE_CLASS_NAME$' => 'Create a $LOWERCASE_CLASS_NAME$',
+    ],
+    'table' => [
+    ],
+    'form' => [
+    ],
+    'messages' => [
+    ],
+    'validation' => [
+    ],
+];

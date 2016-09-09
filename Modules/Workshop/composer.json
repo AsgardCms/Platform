@@ -1,0 +1,49 @@
+{
+  "name": "asgardcms/workshop-module",
+  "type": "asgard-module",
+  "description": "Workshop module for AsgardCMS. Handles the activation of modules.",
+  "keywords": [
+    "asgardcms",
+    "workshop",
+    "modules"
+  ],
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Nicolas Widart",
+      "email": "info@asgardcms.com",
+      "role": "Developer"
+    }
+  ],
+  "support": {
+    "email": "support@asgardcms.com",
+    "issues": "https://github.com/AsgardCms/Platform/issues",
+    "source": "https://github.com/AsgardCms/Workshop"
+  },
+  "require": {
+    "php": ">=5.6",
+    "composer/installers": "~1.0",
+    "asgardcms/core-module": "~2.0",
+    "nwidart/laravel-modules": "~0.1",
+    "symfony/yaml": "^3.0"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "~4.0",
+    "orchestra/testbench": "3.3.*",
+    "phpro/grumphp": "^0.9.1",
+    "friendsofphp/php-cs-fixer": "^1.11"
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Modules\\Workshop\\": ".",
+      "Modules\\": "Modules/"
+    }
+  },
+  "extra": {
+    "branch-alias": {
+      "dev-2.0": "2.0.x-dev"
+    }
+  },
+  "minimum-stability": "dev",
+  "prefer-stable": true
+}

@@ -1,0 +1,32 @@
+<?php
+
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Database\Migrations\Migration;
+
+class Create$MODULE_NAME$$PLURAL_CLASS_NAME$Table extends Migration
+{
+	/**
+	 * Run the migrations.
+	 *
+	 * @return void
+	 */
+	public function up()
+	{
+		Schema::create('$LOWERCASE_MODULE_NAME$__$PLURAL_LOWERCASE_CLASS_NAME$', function(Blueprint $table) {
+			$table->engine = 'InnoDB';
+            $table->increments('id');
+            // Your fields
+            $table->timestamps();
+		});
+	}
+
+	/**
+	 * Reverse the migrations.
+	 *
+	 * @return void
+	 */
+	public function down()
+	{
+		Schema::drop('$LOWERCASE_MODULE_NAME$__$PLURAL_LOWERCASE_CLASS_NAME$');
+	}
+}

@@ -1,0 +1,134 @@
+url: https://github.com/AsgardCms/Workshop
+versions:
+    "2.0@unreleased":
+        added:
+            - Laravel 5.2 compatibility
+            - Ability to add unreleased items in module changelog, by suffixing version with <code>@unreleased</code>
+            - Protecting api routes with api admin middleware
+        changed:
+            - Using new more flexible way of handle permissions via middleware
+            - Module names can have a dash in them, for instance <code>module-name</code>
+            - Adding the scaffolded module name to the .gitignore file so that it can be committed
+            - Adding the scaffolded theme name to .gitignore file so that it can be committed
+        removed:
+            - Remove laracasts/flash dependency from controller stub
+    "1.16.0":
+        changed:
+            - Use <code>$router</code> variable in routes file
+            - Use <code>$router</code> variable in routes stub file for module scaffolding
+    "1.15.1":
+        changed:
+            - Use singular class name for model bindings in routes scaffolding
+    "1.15.0":
+        added:
+            - Adding symfony/yaml dependency
+        changed:
+            - Use new middleware for permissions on module resource route scaffold stub
+    "1.14.0":
+        changed:
+            - Remove unneeded icheck toggles for hidden input on view stubs
+            - Removed 'More Coming Soon' message
+            - Removed the inclusing of old iCheck styles
+    "1.13.1":
+        changed:
+            - Renaming the basic generated view to default
+    "1.13.0":
+        added:
+            - Reset button on the create and edit view stubs
+    "1.12.0":
+        changed:
+            - Removed language files, they are now in the translation module
+    "1.11.0":
+        changed:
+            - Using the new index template in scaffold
+            - Using manual routes over the resource helper in scaffold
+    "1.10.0":
+        changed:
+            - Removed Menu module as a dependency
+    "1.9.0":
+        added:
+            - Added Russian translations
+        changed:
+            - Fixing case sensitive issue
+    "1.8.0":
+        added:
+            - Chinese Simplified language
+    "1.7.0":
+        added:
+            - Dutch and Portuguese language
+    "1.6.1":
+        changed:
+            - Update eloquent-entity-translation.stub, fixing the translations table name in model
+    "1.6.0":
+        changed:
+            - Using the core messages rather than generating for every module
+    "1.5.0":
+        changed:
+            - Added sidebar title as translatable text in generated modules
+            - Remove facade usage in generated modules
+    "1.4.2":
+        changed:
+            - Use the <code>anticipate()</code> method instead of <code>choice()</code>
+    "1.4.1":
+        changed:
+            - Hardcoded the entity type to Eloquent. Due to broken Question class from Symfony
+    "1.4.0":
+        added:
+            - Theme can now be managed from UI
+            - Theme assets can be be published from UI
+    "1.3.0":
+        changed:
+            - Set module order to 1 in <code>module.json</code>
+            - Refactor to only read & write <code>module.json</code> once
+    "1.2.1":
+        changed:
+            - Return empty menu instance on generation of module with no entities
+    "1.2.0":
+        changed:
+            - Remove the v from the version column to sort properly
+    "1.1.0":
+        changed:
+            - Generated migrations now have the table engine specified
+    "1.0.11":
+        changed:
+            - Fixed case sensitive issue
+    "1.0.10":
+        added:
+            - Adding a theme scaffold command, you can use it with <code>php artisan asgard:theme:scaffold</code>
+        changed:
+            - Added protection on the module scaffold command for the vendor/name structure
+    "1.0.9":
+        changed:
+            - Use the new Laravel-Sidebar api on the generated modules
+    "1.0.8":
+        added:
+            - Using new sidebar extender class
+        changed:
+            - Updating the module generator to generate a SidebarExtender class
+        removed:
+            - Old SidebarViewComposer
+    "1.0.7":
+        changed:
+            - Use cleaner version getter in module show view
+            - Check if changelog isn't an empty array on the module show view
+    "1.0.6":
+        changed:
+            - Fixing alignements in composer.json file
+            - Fixing alignements in module.json file
+            - Module scaffold now requires stable version of core module
+            - Module scaffold now requires version 3.1 of orchestra/testbench
+    "1.0.5":
+        changed:
+            - Add the module version in a separate column so that it can be ordered & filtered
+            - Use the <code>route</code> function helpers
+    "1.0.4":
+        changed:
+            - No escaping on the changelog lines to display code blocks
+    "1.0.3":
+        changed:
+            - Limit the amount of versions displayed to 5 last versions
+    "1.0.2":
+        changed:
+            - Worked around the empty value not being alowed in Laravel 5.1
+            - Fixing the bug of migration files having the same timestamp
+            - Cleaning up the questions display in CLI based on new Command class in Laravel 5.1
