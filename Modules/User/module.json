@@ -1,0 +1,24 @@
+{
+  "name": "User",
+  "alias": "user",
+  "description": "The user module is responsible for managing users and permissions.",
+  "keywords": [],
+  "version": "2.0.0",
+  "active": 1,
+  "order": 1,
+  "providers": [
+    "Modules\\User\\Providers\\UserServiceProvider",
+    "Modules\\User\\Providers\\EventServiceProvider",
+    "Modules\\User\\Providers\\RouteServiceProvider"
+  ],
+  "aliases": {
+    "Sentinel": "Cartalyst\\Sentinel\\Laravel\\Facades\\Sentinel",
+    "Sentry": "Cartalyst\\Sentry\\Facades\\Laravel\\Sentry",
+    "Activation": "Cartalyst\\Sentinel\\Laravel\\Facades\\Activation",
+    "Reminder": "Cartalyst\\Sentinel\\Laravel\\Facades\\Reminder"
+  },
+  "files": [
+    "composers.php",
+    "helpers.php"
+  ]
+}
