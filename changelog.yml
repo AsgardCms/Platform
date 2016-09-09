@@ -1,0 +1,144 @@
+url: https://github.com/AsgardCms/User
+versions:
+    "2.0@unreleased":
+        added:
+            - Laravel 5.2 compatibility
+            - Added api keys management per user. With API middleware to protect internal APIs and public APIs.
+            - <code>Authentication</code> contract has been moved to the User module (from Core Module)
+            - Adding hasAccess method on UserInterface to check for given permission(s)
+            - Adding a token can middleware to validate API routes for permissions
+            - Completely revamped user / role permission UI to allow easy inheritance from role
+            - Permissions have a nice label displayed
+        removed:
+            - Removing Sentry and Usher user providers
+            - Removing laracasts/flash dependency
+        changed:
+            - Using new more flexible way of handle permissions via middleware
+            - Refactor and restructure the permissions to allow inheritance via GUI
+            - Rename the users.php file to config.php
+            - Use Mailable classes from laravel 5.3
+    "1.18.0":
+        changed:
+            - User reset process is now handled by a service class
+            - Using the <code>$router</code> variable over the route helpers
+    "1.17.0":
+        added:
+            - Adding ability to send a reset password email to user
+    "1.16.1":
+        added:
+            - Adding method to create a role without triggering the event
+    "1.16.0":
+        changed:
+            - Fire event on manual user creation
+    "1.15.1":
+        changed:
+            - Config vars ineffective when instantiating with attributes
+    "1.15.0":
+        added:
+            - Adding config option to disable the user registration routes
+        changed:
+            - Adding autofocus on the first fields of authentication views
+    "1.14.0":
+        changed:
+            - Removed language files, they are now in the translation module
+        added:
+            - Adding a wysiwyg settings field.
+    "1.13.1":
+        changed:
+            - Fixed yaml structure
+    "1.13.0":
+        changed:
+            - Seeding the Translation module permissions on init
+    "1.12.0":
+        changed:
+            - New and updated authentication views. <strong>Important If you published the auth views, they need to be re-published</strong>
+    "1.11.0":
+        changed:
+            - Manual inclusing of iCheck css file has been removed
+            - Use the new datatables way of marking column not sortable
+    "1.10.1":
+        changed:
+            - Adding the permissions for the Themes part of the workshop Module on initial seed
+    "1.10.0":
+        changed:
+            - The <code>PermissionManager</code> class has been moved to the User Module
+            - Fixing issue with basic permissions
+    "1.9.0":
+        changed:
+            - Fixing user manual activation via backend
+            - Removing deprecated code usage
+            - Minor consistency changes
+    "1.8.0":
+        added:
+            - Added Russian translations
+        changed:
+            - Improving german translations
+    "1.7.0":
+        added:
+            - Chinese Simplified language
+            - Added a <code>UserHasActivatedAccount</code> event
+    "1.6.0":
+        added:
+            - Dutch and Portuguese language
+    "1.5.0":
+        added:
+            - Spanish translations
+    "1.4.0":
+        changed:
+            - Default fallback user provider set to Sentinel
+    "1.3.1":
+        changed:
+            - Fixing user update for sentinel
+    "1.3.0":
+        changed:
+            - Use helper functions in controllers
+            - Use manual route definition over the route resource shortcut
+    "1.2.0":
+        added:
+            - Set the user fillable fields dynamically from the user configuration file
+    "1.1.0":
+        added:
+            - Adding the loginNames property on the Sentinel User entity
+            - Adding configuration to setup which login column names to use
+        changed:
+            - Cleaning up <code>composers.php</code> file
+    "1.0.11":
+        added:
+            - Added a UserWasUpdated event
+            - Added a RoleWasUpdated event
+            - Flushing sidebar cache when user or role was updated
+    "1.0.10":
+        changed:
+            - Fixing datatable
+    "1.0.9":
+        changed:
+            - Changing index views ordering of columns
+    "1.0.8":
+        changed:
+            - Sentinel - checking if user is logged in before checking for permissions
+    "1.0.7":
+        changed:
+            - Remove the Authentication contract injection from the AuthController
+    "1.0.6":
+        changed:
+            - Make the UsernameViewComposer independent
+    "1.0.5":
+        changed:
+            - Fix the hasAccess method on the sentry implementation
+    "1.0.4":
+        added:
+            - Using new sidebar extender class
+        removed:
+            - Old SidebarViewComposer
+    "1.0.3":
+        added:
+            - Implementing the new <code>id</code> method on Sentry and Sentinel Authentication implementations
+    "1.0.2":
+        changed:
+            - Adding changelog file
+    "1.0.1":
+        changed:
+            - Using tagged versions of modules
+    "1.0.0":
+        changed:
+            - Initial release
