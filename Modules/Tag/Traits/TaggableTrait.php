@@ -143,7 +143,7 @@ trait TaggableTrait
         if ($tag === null) {
             $tag = new Tag([
                 'namespace' => $this->getEntityClassName(),
-                locale() => [
+                app()->getLocale() => [
                     'slug' => $this->generateTagSlug($name),
                     'name' => $name,
                 ],
