@@ -27,7 +27,7 @@
     "php": ">=5.5",
     "composer/installers": "~1.0",
     "intervention/image": "^2.3",
-    "asgardcms/core-module": "~2.0",
+    "idavoll/core-module": "~2.0",
     "asgardcms/tag-module": "^1.0@dev",
     "guzzlehttp/psr7": "^1.3"
   },
