@@ -1,0 +1,43 @@
+{
+  "name": "asgardcms/translation-module",
+  "description": "Module containing all AsgardCms translations",
+  "type": "asgard-module",
+  "license": "MIT",
+  "require": {
+    "php": ">=5.6.4",
+    "composer/installers": "~1.0",
+    "asgardcms/core-module": "~2.0",
+    "league/csv": "~7.2.0",
+    "venturecraft/revisionable": "~1.0"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "~4.0",
+    "orchestra/testbench": "3.3.*",
+    "phpro/grumphp": "^0.9.1",
+    "friendsofphp/php-cs-fixer": "^1.11"
+  },
+  "autoload": {
+    "psr-4": {
+      "Modules\\Translation\\": ""
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Modules\\Translation\\": ".",
+      "Modules\\": "Modules/"
+    }
+  },
+  "authors": [
+    {
+      "name": "Nicolas Widart",
+      "email": "n.widart@gmail.com"
+    }
+  ],
+  "extra": {
+    "branch-alias": {
+      "dev-2.0": "2.0.x-dev"
+    }
+  },
+  "minimum-stability": "dev",
+  "prefer-stable": true
+}

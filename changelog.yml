@@ -1,0 +1,91 @@
+url: https://github.com/AsgardCms/Translation
+versions:
+    "2.0@unreleased":
+        added:
+            - Laravel 5.2 compatibility
+        changed:
+            - Using new more flexible way of handle permissions via middleware
+            - Protecting api routes with api admin middleware
+        removed:
+            - Removing laracasts/flash dependency
+    "1.13.0":
+        changed:
+            - Use <code>$router</code> variable in routes file
+    "1.12.0":
+        added:
+            - Adding translation for reset email sent notification
+            - Add a check to avoid errors on some systems
+    "1.11.1":
+        changed:
+            - Using the correct configuration file & key to hide sidebar
+            - Updating French translations
+    "1.11.0":
+        added:
+            - Spanish translations
+    "1.10.1":
+        changed:
+            - Fixed the Cache Decorator using null in the Cache Key
+    "1.10.0":
+        added:
+          - French translations
+    "1.9.1":
+        changed:
+            - Fixed variable name in cache decorator
+    "1.9.0":
+        added:
+            - Translation keys for the new menu types coming soon
+        changed:
+            - Making sure the translation cache key doesnt contain spaces
+            - Only use the cache decorator if this is enabled in environment file
+    "1.8.0":
+        added:
+            - Adding swedish language tab translation
+        changed:
+            - Converting translation files that were in latin1 to utf8 encoding
+    "1.7.0":
+        added:
+            - Notification <code>messages.view all</code> translation key
+            - Adding Turkish language
+            - Added Dutch translations.
+    "1.6.1":
+        changed:
+            - Fixing <code>key</code> index name in down method
+    "1.6.0":
+        added:
+            - Translations revisions now also record the created event
+            - Adding new event column on revisions modal
+        changed:
+            - Making the history limit amount configurable
+            - Reversing the history array, to show the most up to date revision first
+    "1.5.1":
+        changed:
+            - Adding a case if there are no revisions yet
+    "1.5.0":
+        changed:
+            - Adding an index on the key column of the translations table
+    "1.4.1":
+        changed:
+            - Check that asgard is installed before registering the custom translator
+    "1.4.0":
+        added:
+            - Revisions on the static translations
+    "1.3.0":
+        changed:
+            - Updating the file implementation to read the locations of translations directly from laravel's loader
+            - Moved the <code>TranslationServiceProvider</code> definition to the Core module
+            - Defined a custom <code>TranslationLoader</code> class
+    "1.2.1":
+        added:
+            - Adding the venturecraft/revisionable package
+            - Added Macedonina locale for Core module
+            - Added Turkish language
+    "1.2.0":
+        added:
+            - Edit translations via a web GUI
+    "1.1.0":
+        added:
+            - Adding translation file for the Translation module itself
+            - Added tab translations to de/en for portuguese and arabic
+    "1.0.0":
+        changed:
+            - Initial release
