@@ -1,0 +1,5 @@
+url: https://github.com/AsgardCms/Tag
+versions:
+    "1.0@unreleased":
+        added:
+            - Initial Release

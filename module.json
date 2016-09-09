@@ -1,0 +1,20 @@
+{
+    "name": "Tag",
+    "alias": "tag",
+    "description": "Tag management in AsgardCMS",
+    "keywords": [
+        "Tag",
+        "AsgardCMS",
+        "taggable"
+    ],
+    "active": 1,
+    "order": 1,
+    "providers": [
+        "Modules\\Tag\\Providers\\TagServiceProvider",
+        "Modules\\Tag\\Providers\\RouteServiceProvider"
+    ],
+    "aliases":{
+        "TagWidget": "Modules\\Tag\\Blade\\Facades\\TagWidget"
+    },
+    "files": []
+}
