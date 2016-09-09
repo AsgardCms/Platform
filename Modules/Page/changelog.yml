@@ -1,0 +1,103 @@
+url: https://github.com/AsgardCms/Page
+versions:
+    "2.0@unreleased":
+        added:
+            - Laravel 5.2 compatibility
+            - Tags, pages can now own tags.
+        changed:
+            - Using new more flexible way of handle permissions via middleware
+        removed:
+            - Removing laracasts/flash dependency
+    "1.15.1":
+        changed:
+            - Fixing issue where saving the homepage would remove the is_home status on it
+    "1.15.0":
+        added:
+            - Ability to add middleware on the front end routes
+        changed:
+            - Use <code>$router</code> variable in routes file
+    "1.14.0":
+        changed:
+            - Fix ability to uncheck is_home checkbox
+            - Is home checkbox unique rule has been removed, instead other homepage will now be unchecked
+    "1.13.1":
+        changed:
+            - Load ckeditor using the assetPipeline
+    "1.13.0":
+        changed:
+            - Resolved path problem for different locales
+    "1.12.1":
+        added:
+            - Adding dynamic relations on the Page entity
+    "1.12.0":
+        added:
+            - Adding ability to add additional fields to the pages module
+            - Individual config publishing for the page module
+    "1.11.0":
+        changed:
+            - Removed language files, they are now in the translation module
+    "1.10.0":
+        changed:
+            - Using the delete modal partial
+            - Using font awesome icons on index
+    "1.9.0":
+        changed:
+            - Using the new data attribute to disable sorting from datatables
+            - Removing the duplicate confirm delete modal
+            - Requiring iCheck from the asset pipeline
+            - Missing slug class was added on the slug input for automatic slug generation
+    "1.8.1":
+        changed:
+            - Fixed issue with updating pages and triggering event
+    "1.8.0":
+        changed:
+            - Added data attributes for automatic slug creation
+    "1.7.0":
+        changed:
+            - Fix template selector if its name is not defined in the file.
+    "1.6.0":
+        added:
+            - Added naming templates feature
+            - Added Polish translations
+            - Added Russian translations
+    "1.5.0":
+        added:
+            - Dutch and Portuguese language
+        added:
+            - Making the template selection a dropdown instead of an input
+    "1.4.0":
+        added:
+            - Spanish translations
+    "1.3.0":
+        added:
+            - Added Brazilian Portuguese translations
+    "1.2.1":
+       changed:
+           - Rename the route parameter
+           - Use the manual model binding
+    "1.2.0":
+       changed:
+           - Use the helper functions in controller
+           - Typehint the page entity in admin controller
+           - Use manual route definition over the route resource shortcut
+    "1.1.1":
+       removed:
+           - Removed unused loaded files
+    "1.1.0":
+       changed:
+           - Adding table engine into migrations
+    "1.0.4":
+        changed:
+            - Fixing datatable
+    "1.0.3":
+        added:
+            - Changing index view columns order
+    "1.0.2":
+        added:
+            - Using new sidebar extender class
+        removed:
+            - Old SidebarViewComposer
+    "1.0.1":
+        changed:
+            - Fixes AsgardCms/Platform#46 - Old input is kept in all fields
+            - Using the <code>old()</code> method helper

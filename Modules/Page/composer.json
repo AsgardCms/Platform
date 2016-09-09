@@ -1,0 +1,47 @@
+{
+  "name": "asgardcms/page-module",
+  "type": "asgard-module",
+  "description": "Page module for AsgardCMS. Page management.",
+  "keywords": [
+    "asgardcms",
+    "pages"
+  ],
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Nicolas Widart",
+      "email": "info@asgardcms.com",
+      "role": "Developer"
+    }
+  ],
+  "support": {
+    "email": "support@asgardcms.com",
+    "issues": "https://github.com/AsgardCms/Page/issues",
+    "source": "https://github.com/AsgardCms/Page"
+  },
+  "require": {
+    "php": ">=5.6",
+    "composer/installers": "~1.0",
+    "asgardcms/core-module": "~2.0",
+    "asgardcms/tag-module": "^1.0@dev"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "~4.0",
+    "orchestra/testbench": "3.3.*",
+    "phpro/grumphp": "^0.9.1",
+    "friendsofphp/php-cs-fixer": "^1.11"
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Modules\\Page\\": ".",
+      "Modules\\": "Modules/"
+    }
+  },
+  "extra": {
+    "branch-alias": {
+      "dev-2.0": "2.0.x-dev"
+    }
+  },
+  "minimum-stability": "dev",
+  "prefer-stable": true
+}
