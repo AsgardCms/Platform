@@ -1,0 +1,30 @@
+{
+  "name": "admin-lte-theme",
+  "version": "1.6.0",
+  "description": "Admin LTE theme",
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "/resources/vendor",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "font-awesome": ">=4.6",
+    "admin-lte": "~2.3",
+    "iCheck": "~1.0.2",
+    "bootstrap": "~3.3.4",
+    "gridstack": ">=0.2.2",
+    "sisyphus": "~1.1",
+    "animate.css": ">=3.4",
+    "datatables.net": "~1.10.10",
+    "datatables.net-bs": "~1.10.10",
+    "simplemde": "~1.9.0",
+    "clipboard": "~1.5.10"
+  },
+  "resolutions": {
+    "jquery": "~1.9.1"
+  }
+}

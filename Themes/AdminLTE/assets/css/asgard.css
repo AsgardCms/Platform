@@ -1,0 +1,97 @@
+ul.notifications-list li {
+  animation-duration: .5s;
+}
+.notificationsCounter {
+  animation-duration: .5s;
+}
+.notificationIcon {
+  font-size: 30px;
+}
+.removeNotification {
+  z-index: 999;
+  font-size: 12px !important;
+  position: absolute;
+  top: -35px;
+  right: 0px;
+}
+.navbar-nav > .messages-menu > .dropdown-menu > li .menu > li > a > h4 > small {
+  position: absolute;
+  bottom: -30px;
+  right: 0px;
+  top: auto;
+}
+.btn-upload {
+  margin-bottom: 12px;
+}
+.jsThumbnailImageWrapper {
+  padding-top: 8px;
+  overflow-y: auto;
+}
+.jsThumbnailImageWrapper figure {
+  position: relative;
+  display: inline-block;
+  margin-right: 20px;
+  margin-bottom: 20px;
+  background-color: #fff;
+  border: 1px solid #eee;
+  padding: 3px;
+  border-radius: 3px;
+  vertical-align: bottom;
+}
+.jsThumbnailImageWrapper i.removeIcon {
+  position: absolute;
+  top: -10px;
+  right: -10px;
+  color: #f56954;
+  font-size: 2em;
+  background: white;
+  border-radius: 20px;
+  height: 25px;
+}
+figure.ui-state-highlight {
+  border: none;
+  width: 100px;
+  height: 0;
+}
+footer.main-footer a {
+  cursor: pointer;
+}
+footer.main-footer p.text-muted {
+  margin-bottom: 0;
+}
+.skin-blue .wrapper,
+.skin-blue .main-sidebar,
+.skin-blue .left-side {
+  background: #202227;
+}
+.skin-blue .sidebar-menu > li.menu-title {
+  color: #93AFBB;
+  background: #25272d;
+  padding: 10px 25px 10px 15px;
+  font-size: 12px;
+}
+.sidebar-menu .append {
+  margin-top: -44px;
+}
+.sidebar-menu .treeview-menu .append {
+  margin-top: -30px;
+}
+.skin-blue .sidebar-menu .append:hover,
+.skin-blue .sidebar-menu > li.active > a.append {
+  color: #fff;
+  background: none;
+  border: 0;
+}
+.sidebar-mini.sidebar-collapse .sidebar-menu a.append,
+.sidebar-mini.sidebar-collapse .sidebar-menu li.menu-title {
+  display: none;
+}
+.checkbox label {
+  padding-left: 0;
+}
+.checkbox label div {
+  margin-right: 5px;
+  margin-top: -2px;
+}
+
+/*# sourceMappingURL=asgard.css.map */
