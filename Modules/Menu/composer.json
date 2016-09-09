@@ -1,5 +1,5 @@
 {
-  "name": "asgardcms/menu-module",
+  "name": "idavoll/menu-module",
   "type": "asgard-module",
   "description": "Menu module for AsgardCMS. Handles all the menus.",
   "keywords": [

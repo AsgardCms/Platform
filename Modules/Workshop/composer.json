@@ -1,5 +1,5 @@
 {
-  "name": "asgardcms/workshop-module",
+  "name": "idavoll/workshop-module",
   "type": "asgard-module",
   "description": "Workshop module for AsgardCMS. Handles the activation of modules.",
   "keywords": [

@@ -1,5 +1,5 @@
 {
-  "name": "asgardcms/translation-module",
+  "name": "idavoll/translation-module",
   "description": "Module containing all AsgardCms translations",
   "type": "asgard-module",
   "license": "MIT",

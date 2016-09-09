@@ -1,5 +1,5 @@
 {
-  "name": "asgardcms/setting-module",
+  "name": "idavoll/setting-module",
   "type": "asgard-module",
   "description": "Setting module for AsgardCMS. Handles all the site settings.",
   "keywords": [

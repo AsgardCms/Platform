@@ -1,5 +1,5 @@
 {
-  "name": "asgardcms/media-module",
+  "name": "idavoll/media-module",
   "type": "asgard-module",
   "description": "Media module for AsgardCMS. Handles the media library.",
   "keywords": [

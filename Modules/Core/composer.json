@@ -1,5 +1,5 @@
 {
-  "name": "asgardcms/core-module",
+  "name": "idavoll/core-module",
   "type": "asgard-module",
   "description": "The core module for AsgardCMS. This is required for every install.",
   "keywords": [

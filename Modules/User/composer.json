@@ -1,5 +1,5 @@
 {
-  "name": "asgardcms/user-module",
+  "name": "idavoll/user-module",
   "type": "asgard-module",
   "description": "User module for AsgardCMS. Handles the authentication and authorisation as well as the user management.",
   "keywords": [

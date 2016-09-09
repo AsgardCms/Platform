@@ -1,5 +1,5 @@
 {
-  "name": "asgardcms/dashboard-module",
+  "name": "idavoll/dashboard-module",
   "type": "asgard-module",
   "description": "Dashboard module for AsgardCMS. Handles the display of the dashboard.",
   "keywords": [
