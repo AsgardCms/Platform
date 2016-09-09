@@ -28,7 +28,7 @@
     "composer/installers": "~1.0",
     "intervention/image": "^2.3",
     "idavoll/core-module": "~2.0",
-    "asgardcms/tag-module": "^1.0@dev",
+    "idavoll/tag-module": "~2.0",
     "guzzlehttp/psr7": "^1.3"
   },
   "require-dev": {

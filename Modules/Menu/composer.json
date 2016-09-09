@@ -33,7 +33,7 @@
     "orchestra/testbench": "3.3.*",
     "fzaninotto/faker": "1.4.0",
     "doctrine/dbal": "~2.5",
-    "asgardcms/page-module": "~2.0"
+    "idavoll/page-module": "~2.0"
   },
   "autoload-dev": {
     "psr-4": {
