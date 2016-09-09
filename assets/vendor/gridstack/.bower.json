@@ -1,0 +1,45 @@
+{
+  "name": "gridstack",
+  "version": "0.2.3",
+  "homepage": "https://github.com/troolee/gridstack.js",
+  "authors": [
+    "Pavel Reznikov <pashka.reznikov@gmail.com>"
+  ],
+  "description": "gridstack.js is a jQuery plugin for widget layout",
+  "main": [
+    "dist/gridstack.js",
+    "dist/gridstack.css"
+  ],
+  "moduleType": [
+    "amd"
+  ],
+  "dependencies": {
+    "lodash": ">= 3.5.0",
+    "jquery": ">= 1.11.0",
+    "jquery-ui": ">= 1.11.0"
+  },
+  "keywords": [
+    "gridstack",
+    "grid",
+    "gridster",
+    "layout",
+    "jquery"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "_release": "0.2.3",
+  "_resolution": {
+    "type": "version",
+    "tag": "v0.2.3",
+    "commit": "b5b6ff441088704dd7a4905da06eeae3d8a885c7"
+  },
+  "_source": "git://github.com/troolee/gridstack.js.git",
+  "_target": ">=0.2.2",
+  "_originalSource": "gridstack"
+}

@@ -1,0 +1,110 @@
+/* skin-dark sidebar */
+.skin-dark {
+  .logo {
+    margin-top: -50px;
+    float: left;
+    height: 50px;
+    font-size: 20px;
+    line-height: 50px;
+    text-align: center;
+    padding: 0 10px;
+    width: @left-side-width;
+    font-family: 'Kaushan Script', cursive;
+    font-weight: 500;
+    height: 50px;
+    display: block;
+    //For logo imgs or icons
+    .icon {
+      margin-right: 10px;
+    }
+  }
+  // the menu
+  li.menu-title {
+    padding: 10px 15px;
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 1em;
+    color: #989EA9;
+    border: none !important;
+    text-shadow: 1px 1px 1px black;
+  }
+  .sidebar > .sidebar-menu > li {
+    border-top: 1px solid #2D2D2D;
+    border-bottom: 1px solid @sidebar-light-border;
+
+    &:first-of-type {
+      border-top: none;
+      > a {
+        border-top: 1px solid #2D2D2D;
+      }
+    }
+    > a {
+      transition: all .2s ease-in-out;
+      margin-right: 1px;
+      color: @sidebar-inactive-color;
+    }
+    //Hover and active states
+    > a:hover, &.active > a {
+      color: white;
+      background: @sidebar-light-hover-bg;
+    }
+
+    > .treeview-menu {
+      margin: 0 1px;
+      background: @sidebar-light-hover-bg;
+    }
+  }
+
+  // Sidebar color (Both .wrapper and .left-side are responsible for sidebar bg color)
+  .left-side {
+    background: @sidebar-light-bg;
+    -webkit-box-shadow: inset -3px 0px 8px -4px rgba(0, 0, 0, 0.1);
+    -moz-box-shadow: inset -3px 0px 8px -4px rgba(0, 0, 0, 0.1);
+    box-shadow: inset -3px 0px 8px -4px rgba(0, 0, 0, 0.07);
+  }
+
+  .sidebar a {
+    &:hover {
+      text-decoration: none;
+    }
+  }
+  // skin blue treeview-menu
+  .treeview-menu {
+    > li {
+      > a {color: @sidebar-inactive-color;}
+      &.active {
+      }
+      &.active > a, > a:hover {
+        color: white;
+      }
+    }
+  }
+
+  .sidebar-form {
+    .border-radius(2px);
+    border: 1px solid @sidebar-light-border;
+    margin: 10px 10px;
+    input[type="text"], .btn {
+      box-shadow: none;
+      background-color: #fafafa;
+      border: 1px solid #fafafa;
+      height: 35px;
+
+    }
+    input[type="text"]{
+      color: #666;
+      .border-radius(2px, 0, 2px, 0)!important;
+      &:focus, &:focus + .input-group-btn .btn {
+        background-color: #fff;
+        color: #666;
+      }
+      &:focus + .input-group-btn .btn {
+        border-left-color: #fff;
+      }
+    }
+    .btn {
+      color: #999;
+      .border-radius(0, 2px, 0, 2px)!important;
+    }
+  }
+}
