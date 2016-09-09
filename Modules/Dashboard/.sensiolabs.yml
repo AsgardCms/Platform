@@ -1,0 +1,3 @@
+rules:
+  php.interface_has_no_interface_suffix:
+    enabled: false
