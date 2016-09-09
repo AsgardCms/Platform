@@ -1,0 +1,25 @@
+{
+    "name": "Media",
+    "alias": "media",
+    "description": "A media library, used throughout the CMS.",
+    "keywords": [],
+    "version": "2.0.0",
+    "active": 1,
+    "order": 1,
+    "providers": [
+        "Modules\\Media\\Providers\\MediaServiceProvider",
+        "Modules\\Media\\Providers\\RouteServiceProvider",
+        "Modules\\Media\\Image\\ImageServiceProvider",
+        "Intervention\\Image\\ImageServiceProvider"
+    ],
+    "aliases": {
+        "Image": "Intervention\\Image\\Facades\\Image",
+        "Imagy": "Modules\\Media\\Image\\Facade\\Imagy",
+        "FileHelper": "Modules\\Media\\Helpers\\FileHelper",
+        "MediaSingleDirective": "Modules\\Media\\Blade\\Facades\\MediaSingleDirective",
+        "MediaMultipleDirective": "Modules\\Media\\Blade\\Facades\\MediaMultipleDirective"
+    },
+    "files": [
+        "composers.php"
+    ]
+}
