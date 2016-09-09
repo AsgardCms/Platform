@@ -1,0 +1,102 @@
+url: https://github.com/AsgardCms/Setting
+versions:
+    "2.0@unreleased":
+        added:
+            - Laravel 5.2 compatibility
+            - Add ability to set a plain setting value via <code>Modules\Setting\Support\Settings</code>
+            - new <code>@setting()</code> blade directive
+        changed:
+            - Using new more flexible way of handle permissions via middleware
+        removed:
+            - Removing laracasts/flash dependency
+            - <code>Setting</code> contract has been moved to the Setting module
+    "1.14.0":
+        changed:
+            - Use <code>$router</code> variable in routes file
+    "1.13.1":
+        changed:
+            - Use the findByName method to find a setting
+    "1.13.0":
+        changed:
+            - Removed language files, they are now in the translation module
+        added:
+            - Adding a wysiwyg settings field.
+    "1.12.1":
+        changed:
+            - Manual inclusing of iCheck css file has been removed
+    "1.12.0":
+        changed:
+            - Make setting name unique in database
+    "1.11.0":
+        added:
+            - Added Russian translations
+        changed:
+            - Improving german translations
+    "1.10.0":
+        added:
+            - Chinese Simplified language
+    "1.9.0":
+        added:
+            - Dutch and Portuguese language
+    "1.8.0":
+        added:
+            - Spanish translations
+    "1.7.0":
+        added:
+            - Added portuguese translations
+    "1.6.0":
+        added:
+            - Adding a <code>CacheSettingDecorator</code> class which handles the caching correctly
+    "1.5.0":
+       changed:
+           - Set default theme location
+           - Use the global <code>isInstalled</code> method
+    "1.4.0":
+       changed:
+           - Use the helper functions in controller
+           - Use manual route definition over the route resource shortcut
+    "1.3.0":
+       added:
+           - Adding a setting helper function, <code>setting()</code>
+    "1.2.1":
+       changed:
+           - Do not cache the theme directories
+    "1.2.0":
+       changed:
+           - Clearing the settings cache on create / update
+    "1.1.1":
+       changed:
+           - Removing unused <code>start.php</code> file
+    "1.1.0":
+       changed:
+           - Adding table engine into migrations
+    "1.0.9":
+        changed:
+            - Require stable version of Doctrine/Dbal
+    "1.0.8":
+    "1.0.7":
+        added:
+            - Using new sidebar extender class
+        removed:
+            - Old SidebarViewComposer
+    "1.0.6":
+        changed:
+            - Get a default value from settings configuration file if setting is empty or not set
+    "1.0.5":
+        changed:
+            - Fixing radio and checkbox field settings not being defined at first use
+    "1.0.4":
+        changed:
+            - Changing the settings value fields to TEXT type, using doctrine/dbal to make it work in all db drivers
+    "1.0.3":
+        changed:
+            - Changing the settings value fields to TEXT type
+    "1.0.2":
+        changed:
+            - Adding changelog file
+    "1.0.1":
+        changed:
+            - Using tagged versions of modules
+    "1.0.0":
+        changed:
+            - Initial release
