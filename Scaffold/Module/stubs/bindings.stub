@@ -1,0 +1,13 @@
+        $this->app->bind(
+            'Modules\$MODULE_NAME$\Repositories\$CLASS_NAME$Repository',
+            function () {
+                $repository = new \Modules\$MODULE_NAME$\Repositories\$ENTITY_TYPE$\$ENTITY_TYPE$$CLASS_NAME$Repository(new \Modules\$MODULE_NAME$\Entities\$CLASS_NAME$());
+
+                if (! config('app.cache')) {
+                    return $repository;
+                }
+
+                return new \Modules\$MODULE_NAME$\Repositories\Cache\Cache$CLASS_NAME$Decorator($repository);
+            }
+        );
+// add bindings

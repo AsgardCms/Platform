@@ -1,0 +1,15 @@
+<?php
+
+namespace Modules\$MODULE_NAME$\Entities;
+
+use Dimsav\Translatable\Translatable;
+use Illuminate\Database\Eloquent\Model;
+
+class $CLASS_NAME$ extends Model
+{
+    use Translatable;
+
+    protected $table = '$LOWERCASE_MODULE_NAME$__$PLURAL_LOWERCASE_CLASS_NAME$';
+    public $translatedAttributes = [];
+    protected $fillable = [];
+}

@@ -1,0 +1,10 @@
+                $item->item(trans('$LOWERCASE_MODULE_NAME$::$PLURAL_LOWERCASE_CLASS_NAME$.title.$PLURAL_LOWERCASE_CLASS_NAME$'), function (Item $item) {
+                    $item->icon('fa fa-copy');
+                    $item->weight(0);
+                    $item->append('admin.$LOWERCASE_MODULE_NAME$.$LOWERCASE_CLASS_NAME$.create');
+                    $item->route('admin.$LOWERCASE_MODULE_NAME$.$LOWERCASE_CLASS_NAME$.index');
+                    $item->authorize(
+                        $this->auth->hasAccess('$LOWERCASE_MODULE_NAME$.$PLURAL_LOWERCASE_CLASS_NAME$.index')
+                    );
+                });
+// append

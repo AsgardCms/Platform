@@ -1,0 +1,7 @@
+    '$LOWERCASE_MODULE_NAME$.$PLURAL_LOWERCASE_CLASS_NAME$' => [
+        'index' => '$LOWERCASE_MODULE_NAME$::$PLURAL_LOWERCASE_CLASS_NAME$.list resource',
+        'create' => '$LOWERCASE_MODULE_NAME$::$PLURAL_LOWERCASE_CLASS_NAME$.create resource',
+        'edit' => '$LOWERCASE_MODULE_NAME$::$PLURAL_LOWERCASE_CLASS_NAME$.edit resource',
+        'destroy' => '$LOWERCASE_MODULE_NAME$::$PLURAL_LOWERCASE_CLASS_NAME$.destroy resource',
+    ],
+// append

@@ -1,0 +1,22 @@
+{
+  "name": "{{vendor}}/{{theme-name}}-theme",
+  "type": "asgard-theme",
+  "description": "",
+  "keywords": [
+    "asgard-cms"
+  ],
+  "license": "MIT",
+  "require": {
+    "php": ">=5.5",
+    "composer/installers": "~1.0"
+  },
+  "scripts": {
+    "post-install-cmd": [
+      "php artisan stylist:publish"
+    ],
+    "post-update-cmd": [
+      "php artisan stylist:publish"
+    ]
+  },
+  "minimum-stability": "dev"
+}

@@ -1,0 +1,99 @@
+<?php
+
+namespace Modules\$MODULE_NAME$\Http\Controllers\Admin;
+
+use Illuminate\Http\Request;
+use Modules\$MODULE_NAME$\Entities\$CLASS_NAME$;
+use Modules\$MODULE_NAME$\Repositories\$CLASS_NAME$Repository;
+use Modules\Core\Http\Controllers\Admin\AdminBaseController;
+
+class $CLASS_NAME$Controller extends AdminBaseController
+{
+    /**
+     * @var $CLASS_NAME$Repository
+     */
+    private $$LOWERCASE_CLASS_NAME$;
+
+    public function __construct($CLASS_NAME$Repository $$LOWERCASE_CLASS_NAME$)
+    {
+        parent::__construct();
+
+        $this->$LOWERCASE_CLASS_NAME$ = $$LOWERCASE_CLASS_NAME$;
+    }
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return Response
+     */
+    public function index()
+    {
+        //$$PLURAL_LOWERCASE_CLASS_NAME$ = $this->$LOWERCASE_CLASS_NAME$->all();
+
+        return view('$LOWERCASE_MODULE_NAME$::admin.$PLURAL_LOWERCASE_CLASS_NAME$.index', compact(''));
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return Response
+     */
+    public function create()
+    {
+        return view('$LOWERCASE_MODULE_NAME$::admin.$PLURAL_LOWERCASE_CLASS_NAME$.create');
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  Request $request
+     * @return Response
+     */
+    public function store(Request $request)
+    {
+        $this->$LOWERCASE_CLASS_NAME$->create($request->all());
+
+        return redirect()->route('admin.$LOWERCASE_MODULE_NAME$.$LOWERCASE_CLASS_NAME$.index')
+            ->withSuccess(trans('core::core.messages.resource created', ['name' => trans('$LOWERCASE_MODULE_NAME$::$PLURAL_LOWERCASE_CLASS_NAME$.title.$PLURAL_LOWERCASE_CLASS_NAME$')]));
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  $CLASS_NAME$ $$LOWERCASE_CLASS_NAME$
+     * @return Response
+     */
+    public function edit($CLASS_NAME$ $$LOWERCASE_CLASS_NAME$)
+    {
+        return view('$LOWERCASE_MODULE_NAME$::admin.$PLURAL_LOWERCASE_CLASS_NAME$.edit', compact('$LOWERCASE_CLASS_NAME$'));
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  $CLASS_NAME$ $$LOWERCASE_CLASS_NAME$
+     * @param  Request $request
+     * @return Response
+     */
+    public function update($CLASS_NAME$ $$LOWERCASE_CLASS_NAME$, Request $request)
+    {
+        $this->$LOWERCASE_CLASS_NAME$->update($$LOWERCASE_CLASS_NAME$, $request->all());
+
+        return redirect()->route('admin.$LOWERCASE_MODULE_NAME$.$LOWERCASE_CLASS_NAME$.index')
+            ->withSuccess(trans('core::core.messages.resource updated', ['name' => trans('$LOWERCASE_MODULE_NAME$::$PLURAL_LOWERCASE_CLASS_NAME$.title.$PLURAL_LOWERCASE_CLASS_NAME$')]));
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  $CLASS_NAME$ $$LOWERCASE_CLASS_NAME$
+     * @return Response
+     */
+    public function destroy($CLASS_NAME$ $$LOWERCASE_CLASS_NAME$)
+    {
+        $this->$LOWERCASE_CLASS_NAME$->destroy($$LOWERCASE_CLASS_NAME$);
+
+        return redirect()->route('admin.$LOWERCASE_MODULE_NAME$.$LOWERCASE_CLASS_NAME$.index')
+            ->withSuccess(trans('core::core.messages.resource deleted', ['name' => trans('$LOWERCASE_MODULE_NAME$::$PLURAL_LOWERCASE_CLASS_NAME$.title.$PLURAL_LOWERCASE_CLASS_NAME$')]));
+    }
+}
