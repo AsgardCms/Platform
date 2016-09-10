@@ -50,9 +50,10 @@ class ModuleScaffoldTest extends BaseTestCase
      */
     private function cleanUp()
     {
-        if (file_exists($this->testModulePath)) {
-            self::delTree($this->testModulePath);
+        if (file_exists(__DIR__ . '/../Modules/')) {
+            self::delTree(__DIR__ . '/../Modules/');
         }
+        mkdir(__DIR__ . '/../Modules/', 0777);
     }
 
     /**
@@ -94,7 +95,9 @@ class ModuleScaffoldTest extends BaseTestCase
 
     public function tearDown()
     {
-        $this->cleanUp();
+        if (file_exists(__DIR__ . '/../Modules/')) {
+            self::delTree(__DIR__ . '/../Modules/');
+        }
     }
 
     /** @test */
