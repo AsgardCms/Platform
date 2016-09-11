@@ -1,0 +1,5 @@
+{
+  "name": "{{theme-name}}",
+  "description": "",
+  "type": "{{type}}"
+}

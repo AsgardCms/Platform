@@ -1,0 +1,20 @@
+{
+  "name": "demo-theme",
+  "version": "1.0.0",
+  "description": "Demo Theme",
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "/resources/vendor",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": ">= 1.9.1",
+    "bootstrap": "~3.3.2",
+    "font-awesome": "~4.3.0",
+    "prism": "~1.5"
+  }
+}

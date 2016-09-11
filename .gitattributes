@@ -1,1 +1,5 @@
 * text=auto
+*.css linguist-vendored
+*.scss linguist-vendored
+.github export-ignore
+.travis.yml export-ignore

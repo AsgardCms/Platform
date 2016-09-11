@@ -1,0 +1,6 @@
+{
+  "name": "Core Module",
+  "dependencies": {
+    "selectize": ">=0.12.0"
+  }
+}

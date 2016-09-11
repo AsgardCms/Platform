@@ -1,0 +1,5 @@
+.idea/
+/node_modules
+/resources/vendor
+/vendor
+composer.lock

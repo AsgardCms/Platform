@@ -1,0 +1,35 @@
+{
+  "name": "idavoll/adminlte-theme",
+  "type": "asgard-theme",
+  "description": "An AsgardCMS administration theme",
+  "keywords": [
+    "asgard-cms"
+  ],
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Nicolas Widart",
+      "email": "info@asgardcms.com",
+      "role": "Developer"
+    }
+  ],
+  "require": {
+    "php": ">=5.4",
+    "composer/installers": "~1.0"
+  },
+  "scripts": {
+    "post-install-cmd": [
+      "php artisan stylist:publish"
+    ],
+    "post-update-cmd": [
+      "php artisan stylist:publish"
+    ]
+  },
+  "extra": {
+    "branch-alias": {
+      "dev-2.0": "2.0.x-dev"
+    }
+  },
+  "minimum-stability": "dev",
+  "prefer-stable": true
+}

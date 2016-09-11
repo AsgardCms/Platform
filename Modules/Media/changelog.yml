@@ -1,0 +1,163 @@
+url: https://github.com/AsgardCms/Media
+versions:
+    "2.0@unreleased":
+        added:
+            - Laravel 5.2 compatibility
+            - New way to define thumbnails, no more via a config file but via a class.
+            - Adding a new resize canvas image manipulation
+        changed:
+            - Using new more flexible way of handle permissions via middleware
+            - Protecting api routes with api admin middleware
+            - Allow usage of multiple media partials on create views
+            - Cleaned up file partials, both create and edit views use the event system
+            - Allow <code>Imagy->getThumbnail()</code> to get the File entity directly
+        deleted:
+            - Removing laracasts/flash dependency
+    "1.25.1":
+        changed:
+            - Fixing setting default to empty array of getting the files of the form
+    "1.25.0":
+        changed:
+            - Use <code>$router</code> variable in routes file
+    "1.24.0":
+        changed:
+            - Add thumbnail helper into File model
+    "1.23.1":
+        changed:
+            - Set default argument to handle method on event handlers
+    "1.23.0":
+        changed:
+            - Removing the need of adding the events in <code>events.php</code>
+    "1.22.1":
+        changed:
+            - Fix thumbnail include
+            - Hide thumbnail dropdown on include partial if it's not via wysiwyg
+    "1.22.0":
+        added:
+            - Way to handle media on create views (multiple images and single image)
+            - FTP media file adapter
+        changed:
+            - Fixed bug in filename slug when file extension is uppercase
+    "1.21.0":
+        changed:
+            - Using the validator::extend instead of resolve.
+            - Renamed the <code>$thumbnail</code> variable in partial view of linking media
+            - Include data file attribute to non image files
+    "1.20.1":
+        changed:
+            - Re-releasing
+    "1.20.0":
+        added:
+            - Drag & drop on the multi file relation file
+        changed:
+            - A <code>thumbnail</code> option can be sent to the file partials to decide which thumbnail to use on display
+            - Added file path data attribute on the media grid popup
+    "1.19.0":
+        changed:
+            - Adding the publishing of the media main config file in the media module
+    "1.18.1":
+        changed:
+            - Fixing instantiation of the <code>RefreshThumbnailCommand</code>
+    "1.18.0":
+        changed:
+            - Queue closures in the <code>FileService</code> has ben extracted to a queued job
+            - The refresh thumbnail command now uses a queued job
+    "1.17.2":
+        added:
+            - Method to get the file path as a string using <code>$file->path_string</code>
+    "1.17.1":
+        changed:
+            - Fixed extension guessing
+            - Fixed file location for non images files
+    "1.17.0":
+        changed:
+            - Hiding the thumbnail display if file is not an image
+            - Fixing the filename property on the edit view
+            - Removed language files, they are now in the translation module
+    "1.16.0":
+        added:
+            - Adding the timesteamps on the morph files relation
+            - Adding support for local and s3 file storage!
+        changed:
+            - If file with already present filename, new unique filename will be generated instead of throwing error
+    "1.15.1":
+        changed:
+            - Including the Asgard js global definition
+    "1.15.0":
+        changed:
+            - Read the dropzone post URL from the Asgard global object
+    "1.14.2":
+        changed:
+            - Fixing the display of the max file size error message
+    "1.14.1":
+        changed:
+            - Fixed the include media pop up link to assets
+    "1.14.0":
+        changed:
+            - Use the new datatables way of marking column not sortable
+            - Use the single removal modal setup
+    "1.13.0":
+        changed:
+            - Allow multiple upload from media library fields on one page
+            - Allow media zone names to have multiple words separated with underscore
+    "1.12.0":
+        changed:
+            - The clic event on the <code>x</code> to unlink an image has been bound to a container to allow removal after dom generation
+    "1.11.0":
+        changed:
+            - Getting the correct field for the description input
+            - Naming the CkEditor route
+    "1.10.0":
+        added:
+            - Added Russian translations
+    "1.9.0":
+        added:
+            - Chinese Simplified language
+        changed:
+            - Setting default folder id to 0
+            - Fixed bug where thumbnails for images with uppercase extension wouldn't get created
+    "1.8.0":
+        added:
+            - Dutch and Portuguese language
+    "1.7.0":
+        added:
+            - Spanish translations
+    "1.6.0":
+        added:
+            - Added Brazilian Portuguese translations
+    "1.5.0":
+        changed:
+            - Added <code>$attributes</code> to validator resolver
+    "1.4.0":
+        changed:
+            - Use the manual route binding
+    "1.3.1":
+        changed:
+            - Fixing alt atribute display error
+    "1.3.0":
+        changed:
+            - Use the helper functions in controller
+            - Use manual route definition over the route resource shortcut
+    "1.2.0":
+        changed:
+            - Remove the <code>du</code> function usage for non *nix systems
+    "1.1.0":
+        changed:
+            - Adding table engine into migrations
+    "1.0.4":
+        changed:
+            - Change column ordering on index view
+    "1.0.3":
+        added:
+            - Using new sidebar extender class
+        removed:
+            - Old SidebarViewComposer
+    "1.0.2":
+        changed:
+            - Adding a changelog file
+    "1.0.1":
+        changed:
+            - Using tagged version of modules
+    "1.0.0":
+        changed:
+            - Initial release

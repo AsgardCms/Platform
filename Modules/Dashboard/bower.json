@@ -1,0 +1,19 @@
+{
+  "name": "Dashboard Module",
+  "version": "1.0.0",
+  "description": "Dashboard module",
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "/assets/vendor",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "lodash": "~3.6.0",
+    "gridstack": "~0.2.2",
+    "jquery-ui": "~1.11.4"
+  }
+}

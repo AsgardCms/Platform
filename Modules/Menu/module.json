@@ -1,0 +1,21 @@
+{
+  "name": "Menu",
+  "alias": "menu",
+  "description": "Managing menus.",
+  "keywords": [
+  ],
+  "version": "2.0.0",
+  "active": 1,
+  "order": 1,
+  "providers": [
+    "Modules\\Menu\\Providers\\RouteServiceProvider",
+    "Modules\\Menu\\Providers\\MenuServiceProvider",
+    "Modules\\Menu\\Providers\\EventServiceProvider",
+    "Nwidart\\Menus\\MenusServiceProvider"
+  ],
+  "aliases": {
+    "Menu": "Nwidart\\Menus\\Facades\\Menu",
+    "MenuDirective": "Modules\\Menu\\Blade\\Facades\\MenuDirective"
+  },
+  "files": []
+}

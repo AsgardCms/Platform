@@ -1,0 +1,25 @@
+language: php
+
+php:
+  - 7
+  - 5.6
+
+env:
+  - LARAVEL_VERSION="~5.2" TESTBENCH_VERSION="~3.2"
+
+script:
+  - phpunit --coverage-text --coverage-clover=coverage.clover
+
+before_script:
+  - travis_retry composer self-update
+  - travis_retry composer install --no-interaction --prefer-source
+
+after_script:
+  - wget https://scrutinizer-ci.com/ocular.phar
+  - php ocular.phar code-coverage:upload --format=php-clover coverage.clover
+
+sudo: false
+
+notifications:
+  email:
+    - n.widart@gmail.com

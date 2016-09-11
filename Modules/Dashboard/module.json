@@ -1,0 +1,15 @@
+{
+    "name": "Dashboard",
+    "alias": "dashboard",
+    "description": "The module responsible for the admin dashboard page.",
+    "keywords": [],
+    "version": "2.0.0",
+    "active": 1,
+    "order": 1,
+    "providers": [
+        "Modules\\Dashboard\\Providers\\DashboardServiceProvider",
+        "Modules\\Dashboard\\Providers\\RouteServiceProvider",
+        "Modules\\Dashboard\\Providers\\WidgetServiceProvider"
+    ],
+    "files": []
+}

@@ -1,0 +1,6 @@
+rules:
+  php.interface_has_no_interface_suffix:
+    enabled: false
+global_exclude_dirs:
+    - vendor
+    - Tests

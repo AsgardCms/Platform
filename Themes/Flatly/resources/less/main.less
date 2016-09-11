@@ -1,0 +1,106 @@
+@import url("//fonts.googleapis.com/css?family=Lato:400,700,400italic");
+
+@import "../vendor/bootstrap/less/bootstrap.less";
+@import "../vendor/font-awesome/less/font-awesome.less";
+@import (inline) "../vendor/prism/themes/prism.css";
+@import "variables.less";
+@import "bootswatch";
+
+/* Homepage */
+body {
+  line-height: 2em;
+  margin: 0 0 22px;
+  font-size: 1.5em;
+}
+.rounded {
+  border-radius: 100px;
+}
+
+img.pull-top {
+  margin-top: 40px;
+}
+
+.jumbotron {
+  background: #ffffff;
+  padding: 20px 30px;
+}
+
+ul.no-padding {
+  padding-left: 0px;
+}
+
+/* Posts page */
+ul {
+  list-style: none;
+  li {
+    .date {
+      float: left;
+      margin-right: 1rem;
+      line-height: 3rem;
+      color: @gray-light;
+      width: 10rem;
+      text-align: right;
+    }
+  }
+}
+.date {
+  color: @gray-light;
+  font-size: 0.9em;
+}
+ul.bullet {
+  li {
+    list-style: disc;
+  }
+}
+
+.container pre[class*='language-'] > code[data-language] {
+  overflow: auto;
+}
+
+.container p {
+  line-height: 2em;
+  margin: 0 0 22px;
+  font-size: 1.3em;
+}
+
+
+blockquote {
+  font-style: italic;
+  border-left: 2px solid @brand-primary;
+}
+
+/* Projects page */
+.timeAgo {
+  display: block;
+  color: @gray-light;
+  font-size: .8em;
+}
+.activity {
+  padding-left: 0;
+  .actorAvatar {
+    margin-right: 10px;
+  }
+  li {
+    line-height: 20px;
+    margin-bottom: 15px;
+    font-size: 1.3rem;
+  }
+}
+
+/* Book library */
+
+.book-list {
+  padding-left: 0px;
+  .author {
+    color: @gray-light;
+    font-size: 1.1rem;
+  }
+}
+.book-cover {
+  width: 101px;
+  margin-right: 15px;
+}
+
+p.small {
+  font-size: 1.1em;
+}

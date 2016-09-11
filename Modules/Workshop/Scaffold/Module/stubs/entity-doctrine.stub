@@ -1,0 +1,35 @@
+<?php
+
+namespace Modules\$MODULE_NAME$\Entities;
+
+use Doctrine\ORM\Mapping AS ORM;
+use Modules\Blog\Traits\Translatable;
+use Mitch\LaravelDoctrine\Traits\Timestamps;
+use Doctrine\Common\Collections\ArrayCollection;
+
+/**
+ * @ORM\Entity
+ * @ORM\Table(name="$PLURAL_LOWERCASE_CLASS_NAME$")
+ * @ORM\HasLifecycleCallbacks()
+ */
+class $CLASS_NAME$
+{
+    use Timestamps, Translatable;
+
+     /**
+      * @ORM\Id
+      * @ORM\GeneratedValue
+      * @ORM\Column(type="integer")
+      */
+     private $id;
+
+     /**
+      * @ORM\OneToMany(targetEntity="Modules\$MODULE_NAME$\Entities\$CLASS_NAME$Translation", mappedBy="$LOWERCASE_CLASS_NAME$", cascade={"persist", "remove"})
+      */
+     private $translation;
+
+    public function __construct()
+    {
+        // Implement stub method
+    }
+}
