@@ -7,3 +7,5 @@ git reset HEAD Modules > /dev/null 2>&1
 git reset HEAD Themes > /dev/null 2>&1
 git checkout -- Modules > /dev/null 2>&1
 git checkout -- Themes > /dev/null 2>&1
+
+composer dump-autoload
