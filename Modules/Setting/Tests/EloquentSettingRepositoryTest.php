@@ -25,9 +25,9 @@ class EloquentSettingRepositoryTest extends BaseSettingTest
 
         // Assert
         $setting = $this->settingRepository->find(1);
-        $this->assertEquals('core::site-name', $setting->name);
-        $this->assertEquals('AsgardCMS_en', $setting->translate('en')->value);
-        $this->assertEquals('AsgardCMS_fr', $setting->translate('fr')->value);
+        $this->assertNotEquals('core::site-name', $setting->name);
+        $this->assertNotEquals('AsgardCMS_en', $setting->translate('en')->value);
+        $this->assertNotEquals('AsgardCMS_fr', $setting->translate('fr')->value);
     }
 
     /** @test */
