@@ -36,6 +36,11 @@ class ModuleScaffoldTest extends BaseTestCase
     }
 
 
+    /**
+     * Recursively remove the given directory
+     * @param string $dir
+     * @return bool
+     */
     public static function delTree($dir)
     {
         $files = array_diff(scandir($dir), array('.','..'));
