@@ -9,8 +9,35 @@
          processIsolation="false"
          stopOnFailure="false">
     <testsuites>
-        <testsuite name="Modules">
-            <directory>./Modules/*/Tests/</directory>
+        <testsuite name="Core">
+            <directory>./Modules/Core/Tests/</directory>
+        </testsuite>
+        <testsuite name="Dashboard">
+            <directory>./Modules/Dashboard/Tests/</directory>
+        </testsuite>
+        <testsuite name="Media">
+            <directory>./Modules/Media/Tests/</directory>
+        </testsuite>
+        <testsuite name="Menu">
+            <directory>./Modules/Menu/Tests/</directory>
+        </testsuite>
+        <testsuite name="Page">
+            <directory>./Modules/Page/Tests/</directory>
+        </testsuite>
+        <testsuite name="Setting">
+            <directory>./Modules/Setting/Tests/</directory>
+        </testsuite>
+        <testsuite name="Tag">
+            <directory>./Modules/Tag/Tests/</directory>
+        </testsuite>
+        <testsuite name="Translation">
+            <directory>./Modules/Translation/Tests/</directory>
+        </testsuite>
+        <testsuite name="User">
+            <directory>./Modules/User/Tests/</directory>
+        </testsuite>
+        <testsuite name="Workshop">
+            <directory>./Modules/Workshop/Tests/</directory>
         </testsuite>
     </testsuites>
     <filter>
