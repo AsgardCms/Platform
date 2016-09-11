@@ -107,8 +107,6 @@ class ModuleScaffold
 
         $this->entityGenerator->forModule($this->getName())->type($this->entityType)->generate($this->entities);
         $this->valueObjectGenerator->forModule($this->getName())->type($this->entityType)->generate($this->valueObjects);
-
-        $this->addModuleToIgnoredExceptions();
     }
 
     /**
