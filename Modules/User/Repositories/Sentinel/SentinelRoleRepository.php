@@ -33,7 +33,7 @@ class SentinelRoleRepository implements RoleRepository
      */
     public function create($data)
     {
-        $this->role->create($data);
+        return $this->role->create($data);
     }
 
     /**
@@ -61,6 +61,8 @@ class SentinelRoleRepository implements RoleRepository
         $role->save();
 
         event(new RoleWasUpdated($role));
+
+        return $role;
     }
 
     /**
