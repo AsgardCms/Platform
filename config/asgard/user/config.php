@@ -37,6 +37,13 @@ return [
     'allow_user_registration' => true,
     /*
     |--------------------------------------------------------------------------
+    | The default role for new user registrations
+    | Default: User
+    |--------------------------------------------------------------------------
+    */
+    'default_role' => 'User',
+    /*
+    |--------------------------------------------------------------------------
     | Fillable user fields
     |--------------------------------------------------------------------------
     | Set the fillable user fields, those fields will be mass assigned
@@ -48,7 +55,17 @@ return [
         'first_name',
         'last_name',
     ],
-
+    /*
+     |--------------------------------------------------------------------------
+     | Dynamic relations
+     |--------------------------------------------------------------------------
+     | Add relations that will be dynamically added to the User entity
+     */
+    'relations' => [
+//        'extension' => function ($self) {
+//            return $self->belongsTo(UserExtension::class, 'user_id', 'id')->first();
+//        }
+    ],
     /*
     |--------------------------------------------------------------------------
     | Custom Sidebar Class
