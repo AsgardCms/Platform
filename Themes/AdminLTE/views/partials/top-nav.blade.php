@@ -59,9 +59,16 @@
                     </li>
                     <!-- Menu Footer-->
                     <li class="user-footer">
-                        <a href="{{ URL::route('logout')  }}" class="btn btn-default btn-flat">
-                            {{trans('core::core.general.sign out')}}
-                        </a>
+                        <div class="pull-left">
+                            <a href="{{ route('admin.account.profile.edit') }}" class="btn btn-default btn-flat">
+                                {{ trans('core::core.general.profile') }}
+                            </a>
+                        </div>
+                        <div class="pull-right">
+                            <a href="{{ route('logout') }}" class="btn btn-danger btn-flat">
+                                {{ trans('core::core.general.sign out') }}
+                            </a>
+                        </div>
                     </li>
                 </ul>
             </li>

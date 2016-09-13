@@ -73,6 +73,14 @@ $router->group(['prefix' => '/user'], function (Router $router) {
 });
 
 $router->group(['prefix' => '/account'], function (Router $router) {
+    $router->get('profile', [
+        'as' => 'admin.account.profile.edit',
+        'uses' => 'Account\ProfileController@edit',
+    ]);
+    $router->put('profile', [
+        'as' => 'admin.account.profile.update',
+        'uses' => 'Account\ProfileController@update',
+    ]);
     $router->bind('userTokenId', function ($id) {
         return app(\Modules\User\Repositories\UserTokenRepository::class)->find($id);
     });
