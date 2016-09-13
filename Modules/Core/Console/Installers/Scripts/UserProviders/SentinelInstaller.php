@@ -47,11 +47,7 @@ class SentinelInstaller extends ProviderInstaller implements SetupScript
      */
     public function migrate()
     {
-        if ($this->command->option('verbose')) {
-            return $this->command->call('migrate');
-        }
-
-        return $this->command->callSilent('migrate');
+        return;
     }
 
     /**
