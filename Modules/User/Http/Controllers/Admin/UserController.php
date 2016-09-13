@@ -2,6 +2,7 @@
 
 namespace Modules\User\Http\Controllers\Admin;
 
+use Illuminate\Http\Response;
 use Modules\User\Contracts\Authentication;
 use Modules\User\Events\UserHasBegunResetProcess;
 use Modules\User\Http\Requests\CreateUserRequest;
@@ -119,7 +120,12 @@ class UserController extends BaseUserModuleController
 
         $this->user->updateAndSyncRoles($id, $data, $request->roles);
 
-        return redirect()->route('admin.user.user.index')
+        if ($request->get('button') === 'index') {
+            return redirect()->route('admin.user.user.index')
+                ->withSuccess(trans('user::messages.user updated'));
+        }
+
+        return redirect()->back()
             ->withSuccess(trans('user::messages.user updated'));
     }
 
