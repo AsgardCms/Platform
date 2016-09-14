@@ -91,9 +91,7 @@
                     </div>
                 </div>
                 <div class="tab-pane" id="tab_3-3">
-                    <div class="box-body">
-                        @include('user::admin.partials.permissions-create')
-                    </div>
+                    @include('user::admin.partials.permissions-create')
                 </div>
                 <div class="box-footer">
                     <button type="submit" class="btn btn-primary btn-flat">{{ trans('user::button.create') }}</button>

@@ -84,9 +84,7 @@
                     </div>
                 </div>
                 <div class="tab-pane" id="tab_3-3">
-                    <div class="box-body">
-                        @include('user::admin.partials.permissions', ['model' => $user])
-                    </div>
+                    @include('user::admin.partials.permissions', ['model' => $user])
                 </div>
                 <div class="tab-pane" id="password_tab">
                     <div class="box-body">
