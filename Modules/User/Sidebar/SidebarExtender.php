@@ -34,14 +34,14 @@ class SidebarExtender implements \Maatwebsite\Sidebar\SidebarExtender
         $menu->group(trans('workshop::workshop.title'), function (Group $group) {
             $group->item(trans('user::users.title.users'), function (Item $item) {
                 $item->weight(0);
-                $item->icon('fa fa-user');
+                $item->icon('fa fa-users');
                 $item->authorize(
                     $this->auth->hasAccess('user.users.index') or $this->auth->hasAccess('user.roles.index')
                 );
 
                 $item->item(trans('user::users.title.users'), function (Item $item) {
                     $item->weight(0);
-                    $item->icon('fa fa-user');
+                    $item->icon('fa fa-users');
                     $item->route('admin.user.user.index');
                     $item->authorize(
                         $this->auth->hasAccess('user.users.index')
