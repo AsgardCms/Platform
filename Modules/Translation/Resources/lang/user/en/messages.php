@@ -21,4 +21,6 @@ return [
     'role not found' => 'Role not found.',
     'role updated' => 'Role successfully updated.',
     'role deleted' => 'Role successfully deleted.',
+    /* Profile management */
+    'profile updated' => 'Profile successfully updated.',
 ];

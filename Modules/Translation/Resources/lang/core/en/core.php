@@ -46,6 +46,7 @@ return [
         'available keyboard shortcuts' => 'Available keyboard shortcuts on this page',
         'view website' => 'View Website',
         'complete your profile' => 'Complete your profile',
+        'profile' => 'Profile',
         'sign out' => 'Sign out',
     ],
     'messages' => [
