@@ -75,8 +75,8 @@ abstract class ProviderInstaller implements SetupScript
         $this->publish();
         $this->configure();
         $this->migrate();
-        $this->seed();
         $this->migrateUserModule($command);
+        $this->seed();
 
         $this->createFirstUser();
 
