@@ -7,6 +7,7 @@ use Cartalyst\Sentinel\Laravel\Facades\Sentinel;
 use Illuminate\Support\Facades\Hash;
 use Modules\User\Entities\Sentinel\User;
 use Modules\User\Events\UserHasRegistered;
+use Modules\User\Events\UserIsUpdating;
 use Modules\User\Events\UserWasCreated;
 use Modules\User\Events\UserWasUpdated;
 use Modules\User\Exceptions\UserNotFoundException;
@@ -120,7 +121,11 @@ class SentinelUserRepository implements UserRepository
      */
     public function update($user, $data)
     {
-        $user->update($data);
+        $user->fill($data);
+
+        event(new UserIsUpdating($user));
+
+        $user->save();
 
         event(new UserWasUpdated($user));
 
@@ -143,6 +148,9 @@ class SentinelUserRepository implements UserRepository
         $this->checkForManualActivation($user, $data);
 
         $user = $user->fill($data);
+
+        event(new UserIsUpdating($user));
+
         $user->save();
 
         event(new UserWasUpdated($user));
