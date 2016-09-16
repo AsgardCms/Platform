@@ -7,6 +7,7 @@ use Cartalyst\Sentinel\Laravel\Facades\Sentinel;
 use Illuminate\Support\Facades\Hash;
 use Modules\User\Entities\Sentinel\User;
 use Modules\User\Events\UserHasRegistered;
+use Modules\User\Events\UserWasCreated;
 use Modules\User\Events\UserWasUpdated;
 use Modules\User\Exceptions\UserNotFoundException;
 use Modules\User\Repositories\UserRepository;
@@ -39,14 +40,20 @@ class SentinelUserRepository implements UserRepository
 
     /**
      * Create a user resource
-     * @param $data
+     * @param  array $data
+     * @param  bool $activated
      * @return mixed
      */
-    public function create(array $data)
+    public function create(array $data, $activated = false)
     {
         $user = $this->user->create((array) $data);
 
-        event(new UserHasRegistered($user));
+        if ($activated) {
+            $this->activateUser($user);
+            event(new UserWasCreated($user));
+        } else {
+            event(new UserHasRegistered($user));
+        }
 
         return $user;
     }
@@ -67,8 +74,7 @@ class SentinelUserRepository implements UserRepository
         }
 
         if ($activated) {
-            $activation = Activation::create($user);
-            Activation::complete($user, $activation->code);
+            $this->activateUser($user);
         }
     }
 
@@ -90,8 +96,7 @@ class SentinelUserRepository implements UserRepository
         }
 
         if ($activated) {
-            $activation = Activation::create($user);
-            Activation::complete($user, $activation->code);
+            $this->activateUser($user);
         }
 
         return $user;
@@ -213,5 +218,16 @@ class SentinelUserRepository implements UserRepository
 
             return Activation::complete($user, $activation->code);
         }
+    }
+
+    /**
+     * Activate a user automatically
+     *
+     * @param $user
+     */
+    private function activateUser($user)
+    {
+        $activation = Activation::create($user);
+        Activation::complete($user, $activation->code);
     }
 }
