@@ -3,3 +3,4 @@
 *.scss linguist-vendored
 .github export-ignore
 .travis.yml export-ignore
+.php_cs export-ignore
