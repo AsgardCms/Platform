@@ -7,6 +7,8 @@ use Cartalyst\Sentinel\Laravel\Facades\Sentinel;
 use Illuminate\Support\Facades\Hash;
 use Modules\User\Entities\Sentinel\User;
 use Modules\User\Events\UserHasRegistered;
+use Modules\User\Events\UserIsUpdating;
+use Modules\User\Events\UserWasCreated;
 use Modules\User\Events\UserWasUpdated;
 use Modules\User\Exceptions\UserNotFoundException;
 use Modules\User\Repositories\UserRepository;
@@ -39,14 +41,20 @@ class SentinelUserRepository implements UserRepository
 
     /**
      * Create a user resource
-     * @param $data
+     * @param  array $data
+     * @param  bool $activated
      * @return mixed
      */
-    public function create(array $data)
+    public function create(array $data, $activated = false)
     {
         $user = $this->user->create((array) $data);
 
-        event(new UserHasRegistered($user));
+        if ($activated) {
+            $this->activateUser($user);
+            event(new UserWasCreated($user));
+        } else {
+            event(new UserHasRegistered($user));
+        }
 
         return $user;
     }
@@ -60,15 +68,10 @@ class SentinelUserRepository implements UserRepository
     public function createWithRoles($data, $roles, $activated = false)
     {
         $this->hashPassword($data);
-        $user = $this->create((array) $data);
+        $user = $this->create((array) $data, $activated);
 
         if (!empty($roles)) {
             $user->roles()->attach($roles);
-        }
-
-        if ($activated) {
-            $activation = Activation::create($user);
-            Activation::complete($user, $activation->code);
         }
     }
 
@@ -83,15 +86,10 @@ class SentinelUserRepository implements UserRepository
     public function createWithRolesFromCli($data, $roles, $activated = false)
     {
         $this->hashPassword($data);
-        $user = $this->user->create((array) $data);
+        $user = $this->user->create((array) $data, $activated);
 
         if (!empty($roles)) {
             $user->roles()->attach($roles);
-        }
-
-        if ($activated) {
-            $activation = Activation::create($user);
-            Activation::complete($user, $activation->code);
         }
 
         return $user;
@@ -115,7 +113,11 @@ class SentinelUserRepository implements UserRepository
      */
     public function update($user, $data)
     {
-        $user = $user->update($data);
+        $user->fill($data);
+
+        event(new UserIsUpdating($user));
+
+        $user->save();
 
         event(new UserWasUpdated($user));
 
@@ -138,6 +140,9 @@ class SentinelUserRepository implements UserRepository
         $this->checkForManualActivation($user, $data);
 
         $user = $user->fill($data);
+
+        event(new UserIsUpdating($user));
+
         $user->save();
 
         event(new UserWasUpdated($user));
@@ -213,5 +218,16 @@ class SentinelUserRepository implements UserRepository
 
             return Activation::complete($user, $activation->code);
         }
+    }
+
+    /**
+     * Activate a user automatically
+     *
+     * @param $user
+     */
+    private function activateUser($user)
+    {
+        $activation = Activation::create($user);
+        Activation::complete($user, $activation->code);
     }
 }
