@@ -30,10 +30,11 @@ return [
     */
     'login-columns' => ['email'],
     /*
-     |--------------------------------------------------------------------------
-     | Define a class that will handle User presentation
-     |--------------------------------------------------------------------------
-     */
+    |--------------------------------------------------------------------------
+    | Define a class that will handle User presentation
+    |--------------------------------------------------------------------------
+    | Default: \Modules\User\Presenters\UserPresenter::class
+    */
     'presenter' => \Modules\User\Presenters\UserPresenter::class,
     /*
     |--------------------------------------------------------------------------
@@ -44,8 +45,8 @@ return [
     /*
     |--------------------------------------------------------------------------
     | The default role for new user registrations
-    | Default: User
     |--------------------------------------------------------------------------
+    | Default: User
     */
     'default_role' => 'User',
     /*
