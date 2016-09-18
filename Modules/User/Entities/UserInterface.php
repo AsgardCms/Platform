@@ -12,6 +12,13 @@ interface UserInterface
     public function hasRoleId($roleId);
 
     /**
+     * Checks if a user belongs to the given Role Slug
+     * @param  string $slug
+     * @return bool
+     */
+    public function hasRoleSlug($slug);
+
+    /**
      * Checks if a user belongs to the given Role Name
      * @param  string $name
      * @return bool
