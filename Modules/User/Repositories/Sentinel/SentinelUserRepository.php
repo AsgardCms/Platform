@@ -86,10 +86,14 @@ class SentinelUserRepository implements UserRepository
     public function createWithRolesFromCli($data, $roles, $activated = false)
     {
         $this->hashPassword($data);
-        $user = $this->user->create((array) $data, $activated);
+        $user = $this->user->create((array) $data);
 
         if (!empty($roles)) {
             $user->roles()->attach($roles);
+        }
+
+        if ($activated) {
+            $this->activateUser($user);
         }
 
         return $user;
