@@ -64,6 +64,7 @@ class SentinelUserRepository implements UserRepository
      * @param  array $data
      * @param  array $roles
      * @param bool $activated
+     * @return User
      */
     public function createWithRoles($data, $roles, $activated = false)
     {
@@ -73,6 +74,8 @@ class SentinelUserRepository implements UserRepository
         if (!empty($roles)) {
             $user->roles()->attach($roles);
         }
+
+        return $user;
     }
 
     /**
