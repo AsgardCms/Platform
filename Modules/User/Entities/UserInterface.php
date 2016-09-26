@@ -5,11 +5,25 @@ namespace Modules\User\Entities;
 interface UserInterface
 {
     /**
+     * Checks if the user is in the given role.
+     * @param  mixed $role
+     * @return bool
+     */
+    public function inRole($role);
+
+    /**
      * Checks if a user belongs to the given Role ID
      * @param  int $roleId
      * @return bool
      */
     public function hasRoleId($roleId);
+
+    /**
+     * Checks if a user belongs to the given Role Slug
+     * @param  string $slug
+     * @return bool
+     */
+    public function hasRoleSlug($slug);
 
     /**
      * Checks if a user belongs to the given Role Name
