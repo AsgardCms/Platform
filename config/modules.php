@@ -24,7 +24,7 @@ return [
 
     'stubs' => [
         'enabled' => false,
-        'path' => base_path().'/vendor/nwidart/laravel-modules/src/Commands/stubs',
+        'path' => base_path() . '/vendor/nwidart/laravel-modules/src/Commands/stubs',
         'files' => [
             'start' => 'start.php',
             'routes' => 'Http/routes.php',
@@ -97,6 +97,8 @@ return [
             'assets' => 'Assets',
             'config' => 'Config',
             'command' => 'Console',
+            'event' => 'Events',
+            'listener' => 'Events/Handlers',
             'migration' => 'Database/Migrations',
             'model' => 'Entities',
             'repository' => 'Repositories',
@@ -108,6 +110,8 @@ return [
             'lang' => 'Resources/lang',
             'views' => 'Resources/views',
             'test' => 'Tests',
+            'jobs' => 'Jobs',
+            'mail' => 'Mail',
         ],
     ],
     /*
@@ -155,7 +159,13 @@ return [
         'key' => 'laravel-modules',
         'lifetime' => 60,
     ],
-
+    /*
+    |--------------------------------------------------------------------------
+    | Choose what laravel-modules will register as custom namespaces.
+    | Setting one to false will require to register that part
+    | in your own Service Provider class.
+    |--------------------------------------------------------------------------
+    */
     'register' => [
         'translations' => false,
     ],

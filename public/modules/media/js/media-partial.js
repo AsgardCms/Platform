@@ -31,11 +31,11 @@ $( document ).ready(function() {
 			var html = '<figure data-id="'+ mediaId +'">' + mediaPlaceholder +
 				'<a class="jsRemoveSimpleLink" href="#" data-id="' + mediaId + '">' +
 				'<i class="fa fa-times-circle removeIcon"></i></a>' +
-				'<input type="hidden" name="medias_single['+ window.mediaZone +']" value="' + mediaId + '">' +
 				'</figure>';
 			window.zoneWrapper.append(html).fadeIn('slow', function() {
 				toggleButton($(this));
 			});
+                        window.zoneWrapper.children('input').val(mediaId);
 		};
 	}
 
@@ -116,7 +116,8 @@ $( document ).ready(function() {
 		e.preventDefault();
 		$(e.delegateTarget).fadeOut('slow', function() {
 			toggleButton($(this));
-		}).html('');
+		}).children('figure').remove();
+		$(e.delegateTarget).children('input').val('');
 	});
 
 	function toggleButton(el) {
