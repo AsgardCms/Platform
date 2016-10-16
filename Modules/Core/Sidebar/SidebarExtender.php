@@ -1,6 +1,6 @@
 <?php
 
-namespace Modules\Page\Sidebar;
+namespace Modules\Core\Sidebar;
 
 use Maatwebsite\Sidebar\Badge;
 use Maatwebsite\Sidebar\Group;
