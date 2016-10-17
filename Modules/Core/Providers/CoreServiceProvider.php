@@ -52,6 +52,7 @@ class CoreServiceProvider extends ServiceProvider
         $this->publishConfig('core', 'config');
         $this->publishConfig('core', 'core');
         $this->publishConfig('core', 'settings');
+        $this->publishConfig('core', 'permissions');
 
         $this->bladeDirectives();
     }
