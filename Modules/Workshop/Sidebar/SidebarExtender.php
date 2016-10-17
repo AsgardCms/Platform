@@ -33,6 +33,9 @@ class SidebarExtender implements \Maatwebsite\Sidebar\SidebarExtender
     {
         $menu->group(trans('workshop::workshop.title'), function (Group $group) {
             $group->weight(100);
+            $group->authorize(
+                $this->auth->hasAccess('workshop.sidebar.group')
+            );
             $group->item(trans('workshop::workshop.modules'), function (Item $item) {
                 $item->icon('fa fa-cogs');
                 $item->weight(100);
@@ -49,10 +52,6 @@ class SidebarExtender implements \Maatwebsite\Sidebar\SidebarExtender
                     $this->auth->hasAccess('workshop.themes.index')
                 );
             });
-
-            $group->authorize(
-                $this->auth->hasAccess('workshop.*') or $this->auth->hasAccess('user.*') or $this->auth->hasAccess('setting.*')
-            );
         });
 
         return $menu;
