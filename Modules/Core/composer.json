@@ -22,7 +22,7 @@
   "require": {
     "php": ">=5.6",
     "composer/installers": "~1.0",
-    "nwidart/laravel-modules": "~0.11",
+    "nwidart/laravel-modules": "~1.0",
     "laravelcollective/html": "~5.3.0",
     "laracasts/presenter": "~0.2",
     "dimsav/laravel-translatable": "~6.0",
