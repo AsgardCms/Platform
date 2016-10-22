@@ -20,6 +20,6 @@ return [
         'generate new module' => '生成新模块',
         'install new module' => '安装新模块',
         'migrate' => '迁移',
-        'seed' => '种子',
+        'seed' => '种子数据',
     ],
 ];

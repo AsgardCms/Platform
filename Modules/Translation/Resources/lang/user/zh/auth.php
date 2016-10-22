@@ -18,4 +18,6 @@ return [
     'additional confirm email message' => '我们通过Email发送重要的信息，因而需要准确的Email地址.',
     'confirm email button' => '确认 Email 地址',
     'end greeting' => ' ',
+    'sign in welcome message' => '登入以启动你的会话进程',
+    'reset password email was sent' => '重设密码 Email 已发送',
 ];

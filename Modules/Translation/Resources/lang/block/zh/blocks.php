@@ -25,4 +25,8 @@ return [
     'online' => '在线',
     'name' => '名称',
     'body' => '内容',
+    'list resource' => '块元素列表',
+    'create resource' => '创建块元素',
+    'edit resource' => '编辑块元素',
+    'destroy resource' => '删除块元素',
 ];

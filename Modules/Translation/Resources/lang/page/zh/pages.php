@@ -39,4 +39,8 @@ return [
     'navigation' => [
         'back to index' => '返回到页面列表',
     ],
+    'list resource' => '页面列表',
+    'create resource' => '创建页面',
+    'edit resource' => '编辑页面',
+    'destroy resource' => '删除页面',
 ];
