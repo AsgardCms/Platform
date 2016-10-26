@@ -17,6 +17,7 @@ before_script:
   - travis_retry composer update ${COMPOSER_FLAGS} --no-interaction --prefer-dist
   - chmod +x travis.sh
   - ./travis.sh
+  - php artisan clear-compiled
 
 script: phpunit
 
