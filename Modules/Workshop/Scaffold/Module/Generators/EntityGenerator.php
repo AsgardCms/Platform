@@ -228,11 +228,9 @@ class EntityGenerator extends Generator
     private function generateSidebarExtender($entities)
     {
         if (count($entities) > 0) {
-            $firstModuleName = $entities[0];
-
             return $this->writeFile(
                 $this->getModulesPath('Sidebar/SidebarExtender'),
-                $this->getContentForStub('sidebar-extender.stub', $firstModuleName)
+                $this->getContentForStub('sidebar-extender.stub', 'abc')
             );
         }
 
