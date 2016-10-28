@@ -169,7 +169,7 @@ class SentinelUserRepository implements UserRepository
     {
         if ($user = $this->user->find($id)) {
             return $user->delete();
-        };
+        }
 
         throw new UserNotFoundException();
     }

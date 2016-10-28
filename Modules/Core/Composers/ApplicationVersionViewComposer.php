@@ -63,7 +63,9 @@ class ApplicationVersionViewComposer
      */
     private function getComposerFile()
     {
-        $composerFile = $this->cache->remember('app.version', 1440, function () {
+        $appName = str_slug(config('app.name'));
+
+        $composerFile = $this->cache->remember("app.version.$appName", 1440, function () {
             return $this->filesystem->get('composer.json');
         });
 

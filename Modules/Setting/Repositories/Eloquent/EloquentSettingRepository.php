@@ -111,7 +111,7 @@ class EloquentSettingRepository extends EloquentBaseRepository implements Settin
         } else {
             $oldValues = $setting->plainValue;
             $setting->plainValue = $this->getSettingPlainValue($settingValues);
-            event(new SettingWasUpdated($name, true, $settingValues, $oldValues));
+            event(new SettingWasUpdated($name, false, $settingValues, $oldValues));
         }
 
         return $setting->save();
