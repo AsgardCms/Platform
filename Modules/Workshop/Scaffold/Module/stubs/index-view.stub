@@ -59,8 +59,8 @@
                             </tr>
                             </tfoot>
                         </table>
+                        <!-- /.box-body -->
                     </div>
-                    <!-- /.box-body -->
                 </div>
                 <!-- /.box -->
             </div>
