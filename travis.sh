@@ -10,8 +10,4 @@ git checkout -- Themes > /dev/null 2>&1
 
 cp Themes/AdminLTE/theme.json Themes/Adminlte/theme.json
 
-ls -al Themes
-ls -al Themes/AdminLTE
-ls -al Themes/Adminlte
-
 composer dump-autoload
