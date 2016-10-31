@@ -65,4 +65,7 @@ return [
     'error 404' => '404',
     'error 404 title' => 'Oops! This page was not found.',
     'error 404 description' => 'The page you are looking for was not found.',
+    'error 500' => '500',
+    'error 500 title' => 'Oops! Something went wrong',
+    'error 500 description' => 'An administrator was notified.',
 ];

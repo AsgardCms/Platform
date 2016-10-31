@@ -62,5 +62,7 @@ class Handler extends ExceptionHandler
         if ($e instanceof NotFoundHttpException) {
             return response()->view('errors.404', [], 404);
         }
+
+        return response()->view('errors.500', [], 500);
     }
 }
