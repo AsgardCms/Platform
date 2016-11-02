@@ -6,9 +6,11 @@ use Exception;
 use Illuminate\Validation\ValidationException;
 use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
+use Modules\User\Contracts\Authentication;
 use Symfony\Component\HttpKernel\Exception\HttpException;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
+use Illuminate\Contracts\Container\Container;
 
 class Handler extends ExceptionHandler
 {
@@ -23,6 +25,17 @@ class Handler extends ExceptionHandler
         ModelNotFoundException::class,
         ValidationException::class,
     ];
+
+    /**
+     * @var Authentication
+     */
+    private $auth;
+
+    public function __construct(Container $container, Authentication $auth)
+    {
+        parent::__construct($container);
+        $this->auth = $auth;
+    }
 
     /**
      * Report or log an exception.
@@ -56,10 +69,16 @@ class Handler extends ExceptionHandler
     private function handleExceptions($e)
     {
         if ($e instanceof ModelNotFoundException) {
+            if ($this->auth->check() === false) {
+                return redirect()->route('login');
+            }
             return response()->view('errors.404', [], 404);
         }
 
         if ($e instanceof NotFoundHttpException) {
+            if ($this->auth->check() === false) {
+                return redirect()->route('login');
+            }
             return response()->view('errors.404', [], 404);
         }
 
