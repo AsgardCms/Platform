@@ -120,6 +120,8 @@ class SentinelUserRepository implements UserRepository
      */
     public function update($user, $data)
     {
+        $this->checkForNewPassword($data);
+
         $user->fill($data);
 
         event(new UserIsUpdating($user));
