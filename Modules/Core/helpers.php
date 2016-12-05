@@ -26,3 +26,10 @@ if (! function_exists('is_module_enabled')) {
         return array_key_exists($module, app('modules')->enabled());
     }
 }
+
+if (! function_exists('is_core_module')) {
+    function is_core_module($module)
+    {
+        return in_array(strtolower($module), app('asgard.ModulesList'));
+    }
+}

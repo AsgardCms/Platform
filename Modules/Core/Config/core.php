@@ -112,40 +112,47 @@ return [
         'clipboard.js' => ['theme' => 'vendor/clipboard/dist/clipboard.min.js'],
     ],
 
-   /*
-   |--------------------------------------------------------------------------
-   | Define which default assets will always be included in your pages
-   | through the asset pipeline
-   |--------------------------------------------------------------------------
-   */
-   'admin-required-assets' => [
-       'css' => [
-           'bootstrap.css',
-           'font-awesome.css',
-           'alertify.core.css',
-           'alertify.default.css',
-           'dataTables.bootstrap.css',
-           'icheck.blue.css',
-           'AdminLTE.css',
-           'AdminLTE.all.skins.css',
-           'animate.css',
-           'pace.css',
-           'selectize-default.css',
-           'asgard.css',
-       ],
-       'js' => [
-           'bootstrap.js',
-           'mousetrap.js',
-           'alertify.js',
-           'icheck.js',
-           'jquery.dataTables.js',
-           'dataTables.bootstrap.js',
-           'jquery.slug.js',
-           'keypressAction.js',
-           'app.js',
-           'pace.js',
-           'selectize.js',
-           'main.js',
-       ],
-   ],
+    /*
+    |--------------------------------------------------------------------------
+    | Define which default assets will always be included in your pages
+    | through the asset pipeline
+    |--------------------------------------------------------------------------
+    */
+    'admin-required-assets' => [
+        'css' => [
+            'bootstrap.css',
+            'font-awesome.css',
+            'alertify.core.css',
+            'alertify.default.css',
+            'dataTables.bootstrap.css',
+            'icheck.blue.css',
+            'AdminLTE.css',
+            'AdminLTE.all.skins.css',
+            'animate.css',
+            'pace.css',
+            'selectize-default.css',
+            'asgard.css',
+        ],
+        'js' => [
+            'bootstrap.js',
+            'mousetrap.js',
+            'alertify.js',
+            'icheck.js',
+            'jquery.dataTables.js',
+            'dataTables.bootstrap.js',
+            'jquery.slug.js',
+            'keypressAction.js',
+            'app.js',
+            'pace.js',
+            'selectize.js',
+            'main.js',
+        ],
+    ],
+
+    /*
+    |--------------------------------------------------------------------------
+    | Enable module view overrides at theme locations
+    |--------------------------------------------------------------------------
+    */
+    'enable-theme-overrides' => false,
 ];

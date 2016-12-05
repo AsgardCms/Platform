@@ -24,11 +24,6 @@ class CoreServiceProvider extends ServiceProvider
     protected $defer = false;
 
     /**
-     * @var string
-     */
-    protected $prefix = 'asgard';
-
-    /**
      * The filters base class name.
      *
      * @var array
@@ -45,14 +40,14 @@ class CoreServiceProvider extends ServiceProvider
 
     public function boot()
     {
-        $this->registerMiddleware($this->app['router']);
-        $this->registerModuleResourceNamespaces();
-
         $this->publishConfig('core', 'available-locales');
         $this->publishConfig('core', 'config');
         $this->publishConfig('core', 'core');
         $this->publishConfig('core', 'settings');
         $this->publishConfig('core', 'permissions');
+
+        $this->registerMiddleware($this->app['router']);
+        $this->registerModuleResourceNamespaces();
 
         $this->bladeDirectives();
     }
@@ -119,6 +114,24 @@ class CoreServiceProvider extends ServiceProvider
 
             return new ThemeManager($app, $path);
         });
+
+        $this->app->singleton('asgard.ModulesList', function () {
+            return [
+                'block',
+                'blog',
+                'core',
+                'dashboard',
+                'media',
+                'menu',
+                'notification',
+                'page',
+                'setting',
+                'tag',
+                'translation',
+                'user',
+                'workshop',
+            ];
+        });
     }
 
     /**
@@ -126,8 +139,20 @@ class CoreServiceProvider extends ServiceProvider
      */
     private function registerModuleResourceNamespaces()
     {
+        $themes = [];
+
+        // Saves about 20ms-30ms at loading
+        if ($this->app['config']->get('asgard.core.core.enable-theme-overrides') === true) {
+            $themeManager = app(ThemeManager::class);
+
+            $themes = [
+                'backend' => $themeManager->find(config('asgard.core.core.admin-theme'))->getPath(),
+                'frontend' => $themeManager->find(setting('core::template', null, 'Flatly'))->getPath(),
+            ];
+        }
+
         foreach ($this->app['modules']->getOrdered() as $module) {
-            $this->registerViewNamespace($module);
+            $this->registerViewNamespace($module, $themes);
             $this->registerLanguageNamespace($module);
         }
     }
@@ -135,16 +160,36 @@ class CoreServiceProvider extends ServiceProvider
     /**
      * Register the view namespaces for the modules
      * @param Module $module
+     * @param array $themes
      */
-    protected function registerViewNamespace(Module $module)
+    protected function registerViewNamespace(Module $module, array $themes)
     {
-        if ($module->getLowerName() == 'user') {
-            return;
+        $hints = [];
+        $moduleName = $module->getLowerName();
+
+        if (is_core_module($moduleName)) {
+            $configFile = 'config';
+            $configKey = 'asgard.' . $moduleName . '.' . $configFile;
+
+            $this->mergeConfigFrom($module->getExtraPath('Config' . DIRECTORY_SEPARATOR . $configFile . '.php'), $configKey);
+            $moduleConfig = $this->app['config']->get($configKey . '.useViewNamespaces');
+
+            if (count($themes) > 0) {
+                if ($themes['backend'] !== null && array_get($moduleConfig, 'backend-theme') === true) {
+                    $hints[] = $themes['backend'] . '/views/modules/asgard/' . $moduleName;
+                }
+                if ($themes['frontend'] !== null && array_get($moduleConfig, 'frontend-theme') === true) {
+                    $hints[] = $themes['frontend'] . '/views/modules/asgard/' . $moduleName;
+                }
+            }
+            if (array_get($moduleConfig, 'resources') === true) {
+                $hints[] = base_path('resources/views/asgard/' . $moduleName);
+            }
         }
-        $this->app['view']->addNamespace(
-            $module->getLowerName(),
-            $module->getPath() . '/Resources/views'
-        );
+
+        $hints[] = $module->getPath() . '/Resources/views';
+
+        $this->app['view']->addNamespace($moduleName, $hints);
     }
 
     /**
