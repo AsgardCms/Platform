@@ -67,8 +67,6 @@ class UserServiceProvider extends ServiceProvider
         $this->publishes([
             __DIR__ . '/../Resources/views' => base_path('resources/views/asgard/user'),
         ]);
-        $this->loadViewsFrom(base_path('resources/views/asgard/user'), 'user');
-        $this->loadViewsFrom(__DIR__ . '/../Resources/views', 'user');
 
         $this->publishConfig('user', 'permissions');
         $this->publishConfig('user', 'config');

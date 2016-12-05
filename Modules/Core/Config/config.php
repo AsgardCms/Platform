@@ -22,8 +22,6 @@ return [
     | You can specify place from which you would like to use module views.
     | You can use any combination, but generally it's advisable to add only one,
     | extra view namespace.
-    | Available places are: from within your current backend theme, from within
-    | your current frontend theme and from resources folder.
     | By default every extra namespace will be set to false.
     */
     'useViewNamespaces' => [

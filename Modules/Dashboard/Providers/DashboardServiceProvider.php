@@ -46,10 +46,6 @@ class DashboardServiceProvider extends ServiceProvider
 
         $this->app['view']->prependNamespace(
             'dashboard',
-            base_path('resources/views/asgard/dashboard')
-        );
-        $this->app['view']->prependNamespace(
-            'dashboard',
             $theme->find(config('asgard.core.core.admin-theme'))->getPath() . '/views/modules/dashboard'
         );
 
