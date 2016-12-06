@@ -202,7 +202,11 @@ class SentinelUserRepository implements UserRepository
      */
     private function checkForNewPassword(array &$data)
     {
-        if (array_key_exists('password', $data) && ($data['password'] === '' || $data['password'] === null)) {
+        if (array_key_exists('password', $data) === false) {
+            return;
+        }
+
+        if ($data['password'] === '' || $data['password'] === null) {
             unset($data['password']);
 
             return;
