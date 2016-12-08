@@ -62,6 +62,7 @@ return [
     'create resource' => 'Create :name',
     'edit resource' => 'Edit :name',
     'destroy resource' => 'Delete :name',
+    'error token mismatch' => 'Your session timed out, please submit the form again.',
     'error 404' => '404',
     'error 404 title' => 'Oops! This page was not found.',
     'error 404 description' => 'The page you are looking for was not found.',
