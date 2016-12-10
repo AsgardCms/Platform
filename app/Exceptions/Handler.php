@@ -3,6 +3,7 @@
 namespace App\Exceptions;
 
 use Exception;
+use Illuminate\Session\TokenMismatchException;
 use Illuminate\Validation\ValidationException;
 use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
@@ -23,6 +24,7 @@ class Handler extends ExceptionHandler
         AuthorizationException::class,
         HttpException::class,
         ModelNotFoundException::class,
+        TokenMismatchException::class,
         ValidationException::class,
     ];
 
@@ -61,6 +63,12 @@ class Handler extends ExceptionHandler
     {
         if (config('app.debug') === false) {
             return $this->handleExceptions($e);
+        }
+
+        if ($e instanceof TokenMismatchException) {
+            return redirect()->back()
+                ->withInput($request->except('password'))
+                ->withErrors(trans('core::core.error token mismatch'));
         }
 
         return parent::render($request, $e);
