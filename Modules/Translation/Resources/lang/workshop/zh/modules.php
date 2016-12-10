@@ -31,4 +31,9 @@ return [
     'added' => '已添加',
     'changed' => '已更改',
     'removed' => '已移除',
+    'list resource' => '模块列表',
+    'show resource' => '查看模块',
+    'update resource' => '更新模块',
+    'disable resource' => '禁用模块',
+    'enable resource' => '启用模块',
 ];

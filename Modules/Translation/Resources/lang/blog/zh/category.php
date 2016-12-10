@@ -21,4 +21,8 @@ return [
     'navigation' => [
         'back to index' => '返回到分类列表',
     ],
+    'list resource' => '分类列表',
+    'create resource' => '创建分类',
+    'edit resource' => '编辑分类',
+    'destroy resource' => '删除分类',
 ];

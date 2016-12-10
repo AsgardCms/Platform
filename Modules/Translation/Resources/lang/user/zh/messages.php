@@ -21,4 +21,6 @@ return [
     'role not found' => '未找到该角色.',
     'role updated' => '角色已更新.',
     'role deleted' => '角色已删除.',
+    /* Profile management */
+    'profile updated' => '资料益成功更新.',
 ];
