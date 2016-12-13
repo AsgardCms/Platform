@@ -2,6 +2,8 @@
 
 namespace Modules\Media\Blade;
 
+use Modules\Media\Composers\Backend\PartialAssetComposer;
+
 class MediaSingleDirective
 {
     /**
@@ -22,6 +24,8 @@ class MediaSingleDirective
         $this->extractArguments($arguments);
 
         $view = $this->view ?: 'media::admin.fields.new-file-link-single';
+        view()->composer($view, PartialAssetComposer::class);
+
         $zone = $this->zone;
 
         if ($this->entity !== null) {

@@ -2,6 +2,8 @@
 
 namespace Modules\Media\Blade;
 
+use Modules\Media\Composers\Backend\PartialAssetComposer;
+
 class MediaMultipleDirective
 {
     /**
@@ -22,6 +24,8 @@ class MediaMultipleDirective
         $this->extractArguments($arguments);
 
         $view = $this->view ?: 'media::admin.fields.new-file-link-multiple';
+        view()->composer($view, PartialAssetComposer::class);
+
         $zone = $this->zone;
 
         if ($this->entity !== null) {
