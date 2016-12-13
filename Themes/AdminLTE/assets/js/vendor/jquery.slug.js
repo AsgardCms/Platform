@@ -6,21 +6,21 @@
 
 jQuery.fn.slug = function (options) {
     var settings = {
-        slug: 'slug', // Class used for slug destination input and span. The span is created on $(document).ready()
+        slug: '[data-slug="target"]', // Element used for slug's target
         override: false
     };
 
-    $this = jQuery(this);
-
-    var slugContainer = $this.closest('.box-body').find('[data-slug="target"]');
-
     if (options) {
         jQuery.extend(settings, options);
-    } else {
-        if (typeof $this.data('target') !== "undefined") {
-            settings.slug = $this.data('target');
-        }
     }
+
+    $this = jQuery(this);
+
+    if (typeof $this.data('target') !== "undefined") {
+        settings.slug = $this.data('target');
+    }
+
+    var slugContainer = $this.closest('.box-body').find(settings.slug);
 
     makeSlug = function (event) {
         var $theUnSlug = jQuery(event.target),
