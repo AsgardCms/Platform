@@ -79,15 +79,12 @@ return [
     'casts' => [
     ],
     /*
-     |--------------------------------------------------------------------------
-     | Dynamic relations
-     |--------------------------------------------------------------------------
-     | Add relations that will be dynamically added to the User entity
-     */
-    'relations' => [
-//        'extension' => function ($self) {
-//            return $self->belongsTo(UserExtension::class, 'user_id', 'id')->first();
-//        }
+    |--------------------------------------------------------------------------
+    | Custom with fields
+    |--------------------------------------------------------------------------
+    | Set the relationships that will be automatically loaded with the User
+    */
+    'with' => [
     ],
     /*
     |--------------------------------------------------------------------------

@@ -2,15 +2,21 @@
 
 namespace Modules\User\Entities\Sentinel;
 
+use BadMethodCallException;
 use Cartalyst\Sentinel\Laravel\Facades\Activation;
 use Cartalyst\Sentinel\Users\EloquentUser;
+use Illuminate\Support\Traits\Macroable;
+use Laracasts\Presenter\Contracts\PresentableInterface;
 use Laracasts\Presenter\PresentableTrait;
 use Modules\User\Entities\UserInterface;
 use Modules\User\Entities\UserToken;
 use Modules\User\Presenters\UserPresenter;
 
-class User extends EloquentUser implements UserInterface
+class User extends EloquentUser implements UserInterface, PresentableInterface
 {
+    use Macroable {
+        Macroable::__call as macroCall;
+    }
     use PresentableTrait;
 
     protected $fillable = [
@@ -22,7 +28,9 @@ class User extends EloquentUser implements UserInterface
     ];
 
     /**
-     * {@inheritDoc}
+     * Array of login column names.
+     *
+     * @var array
      */
     protected $loginNames = ['email'];
 
@@ -40,6 +48,9 @@ class User extends EloquentUser implements UserInterface
         }
         if (config()->has('asgard.user.config.casts')) {
             $this->casts = config('asgard.user.config.casts', []);
+        }
+        if (config()->has('asgard.user.config.with')) {
+            $this->with = config('asgard.user.config.with', []);
         }
 
         parent::__construct($attributes);
@@ -105,14 +116,11 @@ class User extends EloquentUser implements UserInterface
 
     public function __call($method, $parameters)
     {
-        #i: Convert array to dot notation
-        $config = implode('.', ['asgard.user.config.relations', $method]);
-
         #i: Relation method resolver
-        if (config()->has($config)) {
-            $function = config()->get($config);
-
-            return $function($this);
+        try {
+            return $this->macroCall($method, $parameters);
+        } catch (BadMethodCallException $e) {
+            #i: No Relationship, do nothing.
         }
 
         #i: No relation found, return the call to parent (Eloquent) to handle it.
