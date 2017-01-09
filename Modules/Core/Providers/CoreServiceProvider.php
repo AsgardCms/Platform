@@ -176,10 +176,10 @@ class CoreServiceProvider extends ServiceProvider
 
             if (count($themes) > 0) {
                 if ($themes['backend'] !== null && array_get($moduleConfig, 'backend-theme') === true) {
-                    $hints[] = $themes['backend'] . '/views/modules/asgard/' . $moduleName;
+                    $hints[] = $themes['backend'] . '/views/modules/' . $moduleName;
                 }
                 if ($themes['frontend'] !== null && array_get($moduleConfig, 'frontend-theme') === true) {
-                    $hints[] = $themes['frontend'] . '/views/modules/asgard/' . $moduleName;
+                    $hints[] = $themes['frontend'] . '/views/modules/' . $moduleName;
                 }
             }
             if (array_get($moduleConfig, 'resources') === true) {
