@@ -29,17 +29,6 @@ class Handler extends ExceptionHandler
     ];
 
     /**
-     * @var Authentication
-     */
-    private $auth;
-
-    public function __construct(Container $container, Authentication $auth)
-    {
-        parent::__construct($container);
-        $this->auth = $auth;
-    }
-
-    /**
      * Report or log an exception.
      *
      * This is a great spot to send exceptions to Sentry, Bugsnag, etc.
@@ -77,16 +66,10 @@ class Handler extends ExceptionHandler
     private function handleExceptions($e)
     {
         if ($e instanceof ModelNotFoundException) {
-            if ($this->auth->check() === false) {
-                return redirect()->route('login');
-            }
             return response()->view('errors.404', [], 404);
         }
 
         if ($e instanceof NotFoundHttpException) {
-            if ($this->auth->check() === false) {
-                return redirect()->route('login');
-            }
             return response()->view('errors.404', [], 404);
         }
 
