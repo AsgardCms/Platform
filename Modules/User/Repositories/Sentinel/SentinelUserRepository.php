@@ -47,6 +47,7 @@ class SentinelUserRepository implements UserRepository
      */
     public function create(array $data, $activated = false)
     {
+        $this->hashPassword($data);
         $user = $this->user->create((array) $data);
 
         if ($activated) {
