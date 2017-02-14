@@ -16,11 +16,11 @@ class ResetPasswordEmail extends Mailable implements ShouldQueue
      * @var UserInterface
      */
     public $user;
+
     /**
      * @var
      */
     public $code;
-    protected $subject = 'Reset your account password.';
 
     public function __construct(UserInterface $user, $code)
     {
@@ -35,6 +35,7 @@ class ResetPasswordEmail extends Mailable implements ShouldQueue
      */
     public function build()
     {
-        return $this->view('user::emails.reminder');
+        return $this->view('user::emails.reminder')
+            ->subject(trans('reset password'));
     }
 }
