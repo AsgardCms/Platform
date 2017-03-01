@@ -11,6 +11,9 @@ return [
     'user no longer exists' => 'The user no longer exists.',
     'invalid reset code' => 'Invalid or expired reset code.',
     'password reset' => 'Password has been reset. You can now login with your new password.',
+    /* Email subjects */
+    'welcome' => 'Welcome.',
+    'reset password' => 'Reset your account password.',
     /* User management */
     'user created' => 'User successfully created.',
     'user not found' => 'User not found.',
