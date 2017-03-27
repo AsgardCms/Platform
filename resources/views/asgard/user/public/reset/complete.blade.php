@@ -14,7 +14,7 @@
 
         {!! Form::open() !!}
         <div class="form-group has-feedback {{ $errors->has('password') ? ' has-error' : '' }}">
-            <input type="password" class="form-control"
+            <input type="password" class="form-control" autofocus
                    name="password" placeholder="{{ trans('user::auth.password') }}">
             <span class="glyphicon glyphicon-lock form-control-feedback"></span>
             {!! $errors->first('password', '<span class="help-block">:message</span>') !!}

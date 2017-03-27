@@ -15,14 +15,14 @@
 
         {!! Form::open(['route' => 'login.post']) !!}
             <div class="form-group has-feedback {{ $errors->has('email') ? ' has-error' : '' }}">
-                <input type="email" class="form-control"
+                <input type="email" class="form-control" autofocus
                        name="email" placeholder="{{ trans('user::auth.email') }}" value="{{ old('email')}}">
                 <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
                 {!! $errors->first('email', '<span class="help-block">:message</span>') !!}
             </div>
             <div class="form-group has-feedback {{ $errors->has('password') ? ' has-error' : '' }}">
                 <input type="password" class="form-control"
-                       name="password" placeholder="Password" value="{{ old('password')}}">
+                       name="password" placeholder="{{ trans('user::auth.password') }}" value="{{ old('password')}}">
                 <span class="glyphicon glyphicon-lock form-control-feedback"></span>
                 {!! $errors->first('password', '<span class="help-block">:message</span>') !!}
             </div>
@@ -43,6 +43,8 @@
         </form>
 
         <a href="{{ route('reset')}}">{{ trans('user::auth.forgot password') }}</a><br>
-        <a href="{{ route('register')}}" class="text-center">{{ trans('user::auth.register')}}</a>
+        @if (config('asgard.user.users.allow_user_registration'))
+            <a href="{{ route('register')}}" class="text-center">{{ trans('user::auth.register')}}</a>
+        @endif
     </div>
 @stop

@@ -13,7 +13,7 @@
 
         {!! Form::open(['route' => 'register.post']) !!}
             <div class="form-group has-feedback {{ $errors->has('email') ? ' has-error has-feedback' : '' }}">
-                <input type="email" name="email" class="form-control"
+                <input type="email" name="email" class="form-control" autofocus
                        placeholder="{{ trans('user::auth.email') }}" value="{{ old('email') }}">
                 <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
                 {!! $errors->first('email', '<span class="help-block">:message</span>') !!}
