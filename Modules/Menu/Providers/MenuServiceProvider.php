@@ -102,11 +102,11 @@ class MenuServiceProvider extends ServiceProvider
     {
         if ($this->hasChildren($item)) {
             $this->addChildrenToMenu(
-                $item->title, 
-                $item->items, 
-                $menu, 
+                $item->title,
+                $item->items,
+                $menu,
                 [
-                    'icon' => $item->icon, 
+                    'icon' => $item->icon,
                     'target' => $item->target,
                     'class' => $item->class,
                 ]
