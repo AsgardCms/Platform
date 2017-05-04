@@ -101,7 +101,16 @@ class MenuServiceProvider extends ServiceProvider
     public function addItemToMenu(Menuitem $item, Builder $menu)
     {
         if ($this->hasChildren($item)) {
-            $this->addChildrenToMenu($item->title, $item->items, $menu, ['icon' => $item->icon, 'target' => $item->target]);
+            $this->addChildrenToMenu(
+                $item->title, 
+                $item->items, 
+                $menu, 
+                [
+                    'icon' => $item->icon, 
+                    'target' => $item->target,
+                    'class' => $item->class,
+                ]
+            );
         } else {
             $target = $item->link_type != 'external' ? $item->locale . '/' . $item->uri : $item->url;
             $menu->url(
