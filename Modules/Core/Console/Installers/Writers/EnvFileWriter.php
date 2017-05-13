@@ -15,6 +15,8 @@ class EnvFileWriter
      * @var array
      */
     protected $search = [
+        "DB_CONNECTION=mysql",
+        "DB_PORT=3306",
         "DB_HOST=localhost",
         "DB_DATABASE=homestead",
         "DB_USERNAME=homestead",
@@ -40,17 +42,22 @@ class EnvFileWriter
     }
 
     /**
+     * @param $driver
+     * @param $host
+     * @param $port
      * @param $name
      * @param $username
      * @param $password
      * @throws \Illuminate\Contracts\Filesystem\FileNotFoundException
      */
-    public function write($name, $username, $password, $host)
+    public function write($driver, $host, $port, $name, $username, $password)
     {
         $environmentFile = $this->finder->get($this->template);
 
         $replace = [
+            "DB_CONNECTION=$driver",
             "DB_HOST=$host",
+            "DB_PORT=$port"
             "DB_DATABASE=$name",
             "DB_USERNAME=$username",
             "DB_PASSWORD=$password",
