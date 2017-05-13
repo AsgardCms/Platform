@@ -55,7 +55,7 @@ class ConfigureDatabase implements SetupScript
             $password = $this->askDatabasePassword();
 
             $this->setLaravelConfiguration($driver, $host, $port, $name, $user, $password);
-            
+
             if ($this->databaseConnectionIsValid()) {
                 $connected = true;
             } else {
