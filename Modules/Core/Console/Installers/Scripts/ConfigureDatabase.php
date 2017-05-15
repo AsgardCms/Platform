@@ -47,15 +47,14 @@ class ConfigureDatabase implements SetupScript
         $connected = false;
 
         while (! $connected) {
+            $driver = $this->askDatabaseDriver();
             $host = $this->askDatabaseHost();
-
+            $port = $this->askDatabasePort($driver);
             $name = $this->askDatabaseName();
-
             $user = $this->askDatabaseUsername();
-
             $password = $this->askDatabasePassword();
 
-            $this->setLaravelConfiguration($name, $user, $password, $host);
+            $this->setLaravelConfiguration($driver, $host, $port, $name, $user, $password);
 
             if ($this->databaseConnectionIsValid()) {
                 $connected = true;
@@ -64,7 +63,7 @@ class ConfigureDatabase implements SetupScript
             }
         }
 
-        $this->env->write($name, $user, $password, $host);
+        $this->env->write($driver, $host, $port,$name, $user, $password);
 
         $command->info('Database successfully configured');
     }
@@ -72,13 +71,30 @@ class ConfigureDatabase implements SetupScript
     /**
      * @return string
      */
+    protected function askDatabaseDriver()
+    {
+        $driver = $this->command->ask('Enter your database driver (e.g. mysql, pgsql)', 'mysql');
+        return $driver;
+    }
+    
+    /**
+     * @return string
+     */
     protected function askDatabaseHost()
     {
         $host = $this->command->ask('Enter your database host', 'localhost');
-
         return $host;
     }
 
+    /**
+     * @return string
+     */
+    protected function askDatabasePort($driver)
+    {
+        $port = $this->command->ask('Enter your database port', $this->config['database.connections.'.$driver.'.port']);
+        return $port;
+    }    
+    
     /**
      * @return string
      */
@@ -122,16 +138,20 @@ class ConfigureDatabase implements SetupScript
     }
 
     /**
+     * @param $driver
      * @param $name
+     * @param $port
      * @param $user
      * @param $password
      */
-    protected function setLaravelConfiguration($name, $user, $password, $host)
+    protected function setLaravelConfiguration($driver, $host, $port, $name, $user, $password)
     {
-        $this->config['database.connections.mysql.host'] = $host;
-        $this->config['database.connections.mysql.database'] = $name;
-        $this->config['database.connections.mysql.username'] = $user;
-        $this->config['database.connections.mysql.password'] = $password;
+        $this->config['database.default'] = $driver;
+        $this->config['database.connections.'.$driver.'.host'] = $host;
+        $this->config['database.connections.'.$driver.'.port'] = $port;
+        $this->config['database.connections.'.$driver.'.database'] = $name;
+        $this->config['database.connections.'.$driver.'.username'] = $user;
+        $this->config['database.connections.'.$driver.'.password'] = $password;
     }
 
     /**
