@@ -109,6 +109,7 @@
 {!! Theme::script('vendor/bootstrap/dist/js/bootstrap.min.js') !!}
 {!! Theme::script('vendor/datatables.net/js/jquery.dataTables.min.js') !!}
 {!! Theme::script('vendor/datatables.net-bs/js/dataTables.bootstrap.min.js') !!}
+<script src="{!! Module::asset('media:js/resumable.js') !!}"></script>
 <script src="{!! Module::asset('media:js/dropzone.js') !!}"></script>
 <?php $config = config('asgard.media.config'); ?>
 <script>
