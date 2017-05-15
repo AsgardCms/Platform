@@ -57,7 +57,7 @@ class EnvFileWriter
         $replace = [
             "DB_CONNECTION=$driver",
             "DB_HOST=$host",
-            "DB_PORT=$port"
+            "DB_PORT=$port",
             "DB_DATABASE=$name",
             "DB_USERNAME=$username",
             "DB_PASSWORD=$password",
