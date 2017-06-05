@@ -5,14 +5,13 @@ namespace Modules\Workshop\Http\Controllers\Api;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Artisan;
 use InvalidArgumentException;
-use Nwidart\Modules\Module;
 
 class ModulesController extends Controller
 {
-    public function publishAssets(Module $module)
+    public function publishAssets($moduleName)
     {
         try {
-            Artisan::call('module:publish', ['module' => $module->getName()]);
+            Artisan::call('module:publish', ['module' => $moduleName]);
         } catch (InvalidArgumentException $e) {
         }
     }
