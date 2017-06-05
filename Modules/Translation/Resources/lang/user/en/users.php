@@ -57,6 +57,7 @@ return [
     'you have no api keys' => 'You have no API keys.',
     'generate one' => 'Generate one.',
     'token generated' => 'API token was successfully generated',
+    'token deleted' => 'API token was successfully deleted',
     'list user' => 'List users',
     'create user' => 'Create users',
     'edit user' => 'Edit users',
