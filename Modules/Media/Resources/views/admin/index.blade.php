@@ -92,7 +92,6 @@
 @stop
 
 @section('scripts')
-<script src="{!! Module::asset('media:js/resumable.js') !!}"></script>
 <script src="{!! Module::asset('media:js/dropzone.js') !!}"></script>
 <?php $config = config('asgard.media.config'); ?>
 <script>

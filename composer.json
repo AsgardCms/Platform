@@ -27,8 +27,7 @@
         "idavoll/translation-module": "~2.0",
         "idavoll/tag-module": "~2.0",
         "idavoll/flatly-theme": "~2.0",
-        "idavoll/adminlte-theme": "~2.0",
-        "pion/laravel-chunk-upload": "^1.0"
+        "idavoll/adminlte-theme": "~2.0"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",
