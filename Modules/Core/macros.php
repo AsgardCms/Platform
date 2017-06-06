@@ -107,10 +107,11 @@ Form::macro('i18nTextarea', function ($name, $title, ViewErrorBag $errors, $lang
  * @param object $errors The laravel errors object
  * @param string $lang the language of the field
  * @param null|object $object The entity of the field
+ * @param boolean $checked Checked HTML attribute
  *
  * @return HtmlString
  */
-Form::macro('i18nCheckbox', function ($name, $title, ViewErrorBag $errors, $lang, $object = null) {
+Form::macro('i18nCheckbox', function ($name, $title, ViewErrorBag $errors, $lang, $object = null, $checked = false) {
     $string = "<div class='checkbox" . ($errors->has($lang . '.' . $name) ? ' has-error' : '') . "'>";
     $string .= "<label for='{$lang}[{$name}]'>";
     $string .= "<input id='{$lang}[{$name}]' name='{$lang}[{$name}]' type='checkbox' class='flat-blue'";
@@ -121,8 +122,15 @@ Form::macro('i18nCheckbox', function ($name, $title, ViewErrorBag $errors, $lang
         $currentData = false;
     }
 
-    $oldInput = old("{$lang}.$name", $currentData) ? 'checked' : '';
-    $string .= "value='1' {$oldInput}>";
+    // checked attribute
+    $checked_attr = '';
+    if (empty(old()) && $checked == true) {
+        $checked_attr = 'checked';
+    } else {
+        $checked_attr = old("{$lang}.$name", $currentData) ? 'checked' : '';
+    }
+
+    $string .= "value='1' {$checked_attr}>";
     $string .= $title;
     $string .= $errors->first($name, '<span class="help-block">:message</span>');
     $string .= '</label>';
@@ -277,10 +285,11 @@ Form::macro('normalTextarea', function ($name, $title, ViewErrorBag $errors, $ob
  * @param string $title The field title
  * @param object $errors The laravel errors object
  * @param null|object $object The entity of the field
+ * @param boolean $checked Checked HTML attribute
  *
  * @return HtmlString
  */
-Form::macro('normalCheckbox', function ($name, $title, ViewErrorBag $errors, $object = null) {
+Form::macro('normalCheckbox', function ($name, $title, ViewErrorBag $errors, $object = null, $checked = false) {
     $string = "<div class='checkbox" . ($errors->has($name) ? ' has-error' : '') . "'>";
     $string .= "<input type='hidden' value='0' name='{$name}'/>";
     $string .= "<label for='$name'>";
@@ -292,8 +301,15 @@ Form::macro('normalCheckbox', function ($name, $title, ViewErrorBag $errors, $ob
         $currentData = false;
     }
 
-    $oldInput = old($name, $currentData) ? 'checked' : '';
-    $string .= "value='1' {$oldInput}>";
+    // checked attribute
+    $checked_attr = '';
+    if (empty(old()) && $checked == true) {
+        $checked_attr = 'checked';
+    } else {
+        $checked_attr = old($name, $currentData) ? 'checked' : '';
+    }
+
+    $string .= "value='1' {$checked_attr}>";
     $string .= $title;
     $string .= $errors->first($name, '<span class="help-block">:message</span>');
     $string .= '</label>';
