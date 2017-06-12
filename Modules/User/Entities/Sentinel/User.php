@@ -32,15 +32,21 @@ class User extends EloquentUser implements UserInterface
     {
         $this->loginNames = config('asgard.user.config.login-columns');
         $this->fillable = config('asgard.user.config.fillable');
-        $this->presenter = config('asgard.user.config.presenter');
+        if (config()->has('asgard.user.config.presenter')) {
+            $this->presenter = config('asgard.user.config.presenter', UserPresenter::class);
+        }
+        if (config()->has('asgard.user.config.dates')) {
+            $this->dates = config('asgard.user.config.dates', []);
+        }
+        if (config()->has('asgard.user.config.casts')) {
+            $this->casts = config('asgard.user.config.casts', []);
+        }
 
         parent::__construct($attributes);
     }
 
     /**
-     * Checks if a user belongs to the given Role ID
-     * @param  int $roleId
-     * @return bool
+     * @inheritdoc
      */
     public function hasRoleId($roleId)
     {
@@ -48,9 +54,15 @@ class User extends EloquentUser implements UserInterface
     }
 
     /**
-     * Checks if a user belongs to the given Role Name
-     * @param  string $name
-     * @return bool
+     * @inheritdoc
+     */
+    public function hasRoleSlug($slug)
+    {
+        return $this->roles()->whereSlug($slug)->count() >= 1;
+    }
+
+    /**
+     * @inheritdoc
      */
     public function hasRoleName($name)
     {
@@ -58,8 +70,7 @@ class User extends EloquentUser implements UserInterface
     }
 
     /**
-     * Check if the current user is activated
-     * @return bool
+     * @inheritdoc
      */
     public function isActivated()
     {
@@ -79,8 +90,7 @@ class User extends EloquentUser implements UserInterface
     }
 
     /**
-     * Get the first available api key
-     * @return string
+     * @inheritdoc
      */
     public function getFirstApiKey()
     {
@@ -110,9 +120,7 @@ class User extends EloquentUser implements UserInterface
     }
 
     /**
-     * Check if the user has access to the given permission name
-     * @param string $permission
-     * @return boolean
+     * @inheritdoc
      */
     public function hasAccess($permission)
     {

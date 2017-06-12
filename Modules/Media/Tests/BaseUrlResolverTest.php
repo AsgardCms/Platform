@@ -27,6 +27,6 @@ class BaseUrlResolverTest extends MediaTestCase
         $resolver = new BaseUrlResolver();
         $resolvedPath = $resolver->resolve('/assets/media/my_image.png');
 
-        $this->assertEquals('https://s3-eu-west-1.amazonaws.com/testing-bucket/assets/media/my_image.png', $resolvedPath);
+        $this->assertEquals('https://testing-bucket.s3-eu-west-1.amazonaws.com/assets/media/my_image.png', $resolvedPath);
     }
 }

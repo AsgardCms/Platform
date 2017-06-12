@@ -42,6 +42,7 @@ return [
         'available keyboard shortcuts' => '此页面可用的键盘快捷键',
         'view website' => '查看站点',
         'complete your profile' => '完善个人资料',
+        'profile' => '资料',
         'sign out' => '登出',
     ],
     'messages' => [
@@ -53,4 +54,8 @@ return [
     'back' => 'Back',
     'back to index' => '返回到 :name 列表',
     'permission denied' => '无此权限. (需要权限: ":permission")',
+    'list resource' => ':name列表',
+    'create resource' => '创建:name',
+    'edit resource' => '编辑:name',
+    'destroy resource' => 'Delete :name',
 ];

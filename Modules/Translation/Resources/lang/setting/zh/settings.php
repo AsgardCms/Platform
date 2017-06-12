@@ -11,4 +11,6 @@ return [
         'settings' => '设置',
         'module settings' => ':module 模块设置',
     ],
+    'list resource' => '设置列表',
+    'edit resource' => '编辑设置',
 ];

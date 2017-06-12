@@ -21,5 +21,9 @@ return [
     'navigation' => [
         'back to index' => '返回到日志列表',
     ],
-    'latest posts' => '最近日志',
+    'latest posts' => '最新日志',
+    'list resource' => '日志列表',
+    'create resource' => '创建日志',
+    'edit resource' => '编辑日志',
+    'destroy resource' => '删除日志',
 ];

@@ -8,4 +8,6 @@ git reset HEAD Themes > /dev/null 2>&1
 git checkout -- Modules > /dev/null 2>&1
 git checkout -- Themes > /dev/null 2>&1
 
+cp Themes/AdminLTE/theme.json Themes/Adminlte/theme.json
+
 composer dump-autoload

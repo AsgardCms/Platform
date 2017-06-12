@@ -10,4 +10,5 @@ return [
     'type' => 'Type',
     'list resource' => 'List themes',
     'show resource' => 'View themes',
+    'publish assets' => 'Publish assets',
 ];

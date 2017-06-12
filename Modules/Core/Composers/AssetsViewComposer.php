@@ -41,6 +41,13 @@ class AssetsViewComposer
             return;
         }
 
+        foreach (config('asgard.core.core.admin-assets') as $assetName => $path) {
+            $path = $this->assetFactory->make($path)->url();
+            $this->assetManager->addAsset($assetName, $path);
+        }
+        $this->assetPipeline->requireCss(config('asgard.core.core.admin-required-assets.css'));
+        $this->assetPipeline->requireJs(config('asgard.core.core.admin-required-assets.js'));
+
         $view->with('cssFiles', $this->assetPipeline->allCss());
         $view->with('jsFiles', $this->assetPipeline->allJs());
     }

@@ -32,4 +32,8 @@ return [
     'insert' => '插入文件',
     'file picker' => '文件选择器',
     'Browse' => '浏览 ...',
+    'list resource' => '媒体文件列表',
+    'create resource' => '创建媒体文件',
+    'edit resource' => '编辑媒体文件',
+    'destroy resource' => '删除媒体文件',
 ];

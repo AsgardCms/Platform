@@ -20,6 +20,5 @@
         "MediaMultipleDirective": "Modules\\Media\\Blade\\Facades\\MediaMultipleDirective"
     },
     "files": [
-        "composers.php"
     ]
 }

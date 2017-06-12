@@ -16,12 +16,11 @@ class WelcomeEmail extends Mailable implements ShouldQueue
      * @var UserInterface
      */
     public $user;
+
     /**
      * @var
      */
     public $activationCode;
-
-    protected $subject = 'Welcome.';
 
     public function __construct(UserInterface $user, $activationCode)
     {
@@ -36,6 +35,7 @@ class WelcomeEmail extends Mailable implements ShouldQueue
      */
     public function build()
     {
-        return $this->view('user::emails.welcome');
+        return $this->view('user::emails.welcome')
+            ->subject(trans('user::messages.welcome'));
     }
 }

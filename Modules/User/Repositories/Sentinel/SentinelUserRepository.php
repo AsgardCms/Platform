@@ -64,6 +64,7 @@ class SentinelUserRepository implements UserRepository
      * @param  array $data
      * @param  array $roles
      * @param bool $activated
+     * @return User
      */
     public function createWithRoles($data, $roles, $activated = false)
     {
@@ -73,6 +74,8 @@ class SentinelUserRepository implements UserRepository
         if (!empty($roles)) {
             $user->roles()->attach($roles);
         }
+
+        return $user;
     }
 
     /**
@@ -117,6 +120,8 @@ class SentinelUserRepository implements UserRepository
      */
     public function update($user, $data)
     {
+        $this->checkForNewPassword($data);
+
         $user->fill($data);
 
         event(new UserIsUpdating($user));
@@ -166,7 +171,7 @@ class SentinelUserRepository implements UserRepository
     {
         if ($user = $this->user->find($id)) {
             return $user->delete();
-        };
+        }
 
         throw new UserNotFoundException();
     }
@@ -197,7 +202,11 @@ class SentinelUserRepository implements UserRepository
      */
     private function checkForNewPassword(array &$data)
     {
-        if (! $data['password']) {
+        if (array_key_exists('password', $data) === false) {
+            return;
+        }
+
+        if ($data['password'] === '' || $data['password'] === null) {
             unset($data['password']);
 
             return;

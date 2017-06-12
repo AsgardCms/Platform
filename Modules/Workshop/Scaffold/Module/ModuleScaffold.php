@@ -305,7 +305,7 @@ JSON;
     "require": {
         "php": ">=5.6",
         "composer/installers": "~1.0",
-        "asgardcms/core-module": "~2.0"
+        "idavoll/core-module": "~2.0"
     },
     "require-dev": {
         "phpunit/phpunit": "~4.0",

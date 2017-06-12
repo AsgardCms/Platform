@@ -63,7 +63,6 @@
                 </div>
                 <div class="box-footer">
                     <button type="submit" class="btn btn-primary btn-flat">{{ trans('user::button.update') }}</button>
-                    <button class="btn btn-default btn-flat" name="button" type="reset">{{ trans('core::core.button.reset') }}</button>
                     <a class="btn btn-danger pull-right btn-flat" href="{{ URL::route('admin.user.role.index')}}"><i class="fa fa-times"></i> {{ trans('user::button.cancel') }}</a>
                 </div>
             </div><!-- /.tab-content -->
