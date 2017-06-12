@@ -6,3 +6,4 @@ Homestead.json
 .env
 composer.lock
 .php_cs.cache
+.idea
