@@ -25,8 +25,8 @@
 {!! Theme::script('js/all.js') !!}
 @yield('scripts')
 
-<?php if (Setting::has('core::analytics-script')): ?>
+@if (Setting::has('core::analytics-script'))
     {!! Setting::get('core::analytics-script') !!}
-<?php endif; ?>
+@endif
 </body>
 </html>
