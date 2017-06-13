@@ -114,7 +114,7 @@ class UserServiceProvider extends ServiceProvider
     private function registerMiddleware()
     {
         foreach ($this->middleware as $name => $class) {
-            $this->app['router']->middleware($name, $class);
+            $this->app['router']->aliasMiddleware($name, $class);
         }
     }
 

@@ -90,7 +90,7 @@ class CoreServiceProvider extends ServiceProvider
             foreach ($middlewares as $name => $middleware) {
                 $class = "Modules\\{$module}\\Http\\Middleware\\{$middleware}";
 
-                $router->middleware($name, $class);
+                $router->aliasMiddleware($name, $class);
             }
         }
     }
