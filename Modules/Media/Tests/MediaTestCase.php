@@ -62,5 +62,8 @@ abstract class MediaTestCase extends TestCase
             'prefix' => '',
         ));
         $app['config']->set('translatable.locales', ['en', 'fr']);
+        $app['config']->set('app.url', 'http://localhost');
+        $app['config']->set('filesystems.disks.local.url', 'http://localhost');
+        $app['config']->set('filesystems.disks.local.visibility', 'public');
     }
 }
