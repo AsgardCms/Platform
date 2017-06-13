@@ -19,7 +19,7 @@ before_script:
   - ./travis.sh
   - php artisan clear-compiled
 
-script: phpunit
+script: vendor/bin/phpunit
 
 sudo: false
 
