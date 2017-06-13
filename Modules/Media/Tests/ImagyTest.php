@@ -38,7 +38,7 @@ class ImagyTest extends MediaTestCase
         $this->finder = App::make('Illuminate\Filesystem\Filesystem');
         $this->imagy = new Imagy(new InterventionFactory(), app(ThumbnailManager::class), $this->config);
 
-        $this->testbenchPublicPath = __DIR__ . '/../../../vendor/orchestra/testbench/fixture/public/';
+        $this->testbenchPublicPath = __DIR__ . '/../../../vendor/orchestra/testbench-core/fixture/public/';
         $this->mediaPath = __DIR__ . '/Fixtures/';
         $this->finder->copy("{$this->mediaPath}google-map.png", "{$this->testbenchPublicPath}google-map.png");
     }
