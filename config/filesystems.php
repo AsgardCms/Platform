@@ -56,6 +56,8 @@ return [
                     'private' => 0700,
                 ]
             ],
+            'url' => env('APP_URL'),
+            'visibility' => 'public',
         ],
 
         'public' => [
