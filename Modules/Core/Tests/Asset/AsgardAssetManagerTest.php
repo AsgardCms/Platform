@@ -83,7 +83,7 @@ class AsgardAssetManagerTest extends BaseTestCase
     /** @test */
     public function it_should_throw_an_exception_if_js_asset_not_found()
     {
-        $this->setExpectedException('Modules\Core\Foundation\Asset\AssetNotFoundException');
+        $this->expectException('Modules\Core\Foundation\Asset\AssetNotFoundException');
 
         $this->assetManager->addAsset('jquery', '/path/to/jquery.js');
 
@@ -93,7 +93,7 @@ class AsgardAssetManagerTest extends BaseTestCase
     /** @test */
     public function it_should_throw_an_exception_if_css_asset_not_found()
     {
-        $this->setExpectedException('Modules\Core\Foundation\Asset\AssetNotFoundException');
+        $this->expectException('Modules\Core\Foundation\Asset\AssetNotFoundException');
 
         $this->assetManager->addAsset('main', '/path/to/main.css');
 

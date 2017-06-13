@@ -15,9 +15,9 @@ class MediaPathTest extends \PHPUnit_Framework_TestCase
     }
 
     /** @test */
-    public function it_only_acepts_a_string_as_argument()
+    public function it_only_accepts_a_string_as_argument()
     {
-        $this->setExpectedException(\InvalidArgumentException::class);
+        $this->expectException(\InvalidArgumentException::class);
 
         new MediaPath(['something']);
     }

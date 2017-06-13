@@ -23,7 +23,7 @@ class AssetFactoryTest extends BaseTestCase
     /** @test */
     public function it_throws_exception_if_asset_type_not_found()
     {
-        $this->setExpectedException(\InvalidArgumentException::class);
+        $this->expectException(\InvalidArgumentException::class);
 
         $path = ['somehting' => 'some/path.something'];
 

@@ -66,7 +66,7 @@ class ThemeScaffoldTest extends BaseTestCase
     {
         $this->scaffold->setFiles(['OneTwoThree']);
 
-        $this->setExpectedException(FileTypeNotFoundException::class);
+        $this->expectException(FileTypeNotFoundException::class);
 
         $this->generateFrontendTheme();
     }
@@ -74,7 +74,7 @@ class ThemeScaffoldTest extends BaseTestCase
     /** @test */
     public function it_throws_exception_if_theme_exists()
     {
-        $this->setExpectedException(ThemeExistsException::class);
+        $this->expectException(ThemeExistsException::class);
 
         $this->scaffold->setFiles([]);
         $this->generateFrontendTheme();
@@ -84,7 +84,8 @@ class ThemeScaffoldTest extends BaseTestCase
     /** @test */
     public function it_throws_exception_if_no_name_provided()
     {
-        $this->setExpectedException(\InvalidArgumentException::class, 'You must provide a name');
+        $this->expectException(\InvalidArgumentException::class);
+        $this->expectExceptionMessage('You must provide a name');
 
         $this->scaffold->setName('')->forType('frontend')->setVendor('asgardcms')->generate();
     }
@@ -92,7 +93,8 @@ class ThemeScaffoldTest extends BaseTestCase
     /** @test */
     public function it_throws_exception_if_no_type_provided()
     {
-        $this->setExpectedException(\InvalidArgumentException::class, 'You must provide a type');
+        $this->expectException(\InvalidArgumentException::class);
+        $this->expectExceptionMessage('You must provide a type');
 
         $this->scaffold->setName($this->testThemeName)->forType('')->setVendor('asgardcms')->generate();
     }
@@ -100,7 +102,8 @@ class ThemeScaffoldTest extends BaseTestCase
     /** @test */
     public function it_throws_exception_if_no_vendor_provided()
     {
-        $this->setExpectedException(\InvalidArgumentException::class, 'You must provide a vendor name');
+        $this->expectException(\InvalidArgumentException::class);
+        $this->expectExceptionMessage('You must provide a vendor name');
 
         $this->scaffold->setName($this->testThemeName)->forType('frontend')->setVendor('')->generate();
     }
