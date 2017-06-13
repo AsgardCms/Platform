@@ -2,7 +2,7 @@
 
 namespace Modules\Media\ValueObjects;
 
-use Modules\Media\UrlResolvers\BaseUrlResolver;
+use Illuminate\Support\Facades\Storage;
 
 class MediaPath
 {
@@ -25,7 +25,7 @@ class MediaPath
      */
     public function getUrl()
     {
-        return (new BaseUrlResolver())->resolve($this->path);
+        return Storage::url($this->path);
     }
 
     /**
