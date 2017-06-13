@@ -32,7 +32,7 @@ class SettingServiceProvider extends ServiceProvider
     {
         $this->registerBindings();
 
-        $this->app['setting.settings'] = $this->app->share(function ($app) {
+        $this->app->singleton('setting.settings', function ($app) {
             return new Settings($app[SettingRepository::class]);
         });
 
