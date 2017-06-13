@@ -17,7 +17,6 @@ class BaseUrlResolverTest extends MediaTestCase
         $this->assertEquals(config('app.url') . '/assets/media/my_image.png', $resolvedPath);
     }
 
-    /** @test */
     public function it_returns_correct_aws_s3_uri()
     {
         config()->set('asgard.media.config.filesystem', 's3');
