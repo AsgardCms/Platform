@@ -23,16 +23,16 @@
     "php": ">=5.6",
     "composer/installers": "~1.0",
     "nwidart/laravel-modules": "~1.0",
-    "laravelcollective/html": "~5.3.0",
+    "laravelcollective/html": "~5.4.0",
     "laracasts/presenter": "~0.2",
-    "dimsav/laravel-translatable": "~6.0",
+    "dimsav/laravel-translatable": "~7.0",
     "mcamara/laravel-localization": "~1.1",
-    "floatingpoint/stylist": "~0.1",
+    "floatingpoint/stylist": "~0.5",
     "maatwebsite/laravel-sidebar": "~2.1"
   },
   "require-dev": {
-    "phpunit/phpunit": "~4.0",
-    "orchestra/testbench": "3.3.*",
+    "phpunit/phpunit": "~5.7",
+    "orchestra/testbench": "3.4.*",
     "mockery/mockery": "^0.9.4",
     "phpro/grumphp": "^0.9.1",
     "friendsofphp/php-cs-fixer": "^1.11"

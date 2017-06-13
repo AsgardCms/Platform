@@ -308,8 +308,8 @@ JSON;
         "idavoll/core-module": "~2.0"
     },
     "require-dev": {
-        "phpunit/phpunit": "~4.0",
-        "orchestra/testbench": "~3.2"
+        "phpunit/phpunit": "~5.7",
+        "orchestra/testbench": "3.4.*"
     },
     "autoload-dev": {
         "psr-4": {
