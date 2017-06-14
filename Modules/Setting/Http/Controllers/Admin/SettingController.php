@@ -49,7 +49,7 @@ class SettingController extends AdminBaseController
 
     public function getModuleSettings(Module $currentModule)
     {
-        $this->session->set('module', $currentModule->getLowerName());
+        $this->session->put('module', $currentModule->getLowerName());
 
         $modulesWithSettings = $this->setting->moduleSettings($this->module->enabled());
 
