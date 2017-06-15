@@ -9,12 +9,15 @@ use Modules\Core\Traits\CanPublishConfiguration;
 use Modules\Media\Blade\MediaMultipleDirective;
 use Modules\Media\Blade\MediaSingleDirective;
 use Modules\Media\Console\RefreshThumbnailCommand;
+use Modules\Media\Contracts\DeletingMedia;
+use Modules\Media\Contracts\StoringMedia;
 use Modules\Media\Entities\File;
 use Modules\Media\Events\Handlers\HandleMediaStorage;
 use Modules\Media\Events\Handlers\RemovePolymorphicLink;
 use Modules\Media\Image\ThumbnailManager;
 use Modules\Media\Repositories\Eloquent\EloquentFileRepository;
 use Modules\Media\Repositories\FileRepository;
+use Modules\Recipe\Events\RecipeWasUpdated;
 use Modules\Tag\Repositories\TagManager;
 
 class MediaServiceProvider extends ServiceProvider
@@ -54,8 +57,8 @@ class MediaServiceProvider extends ServiceProvider
         $this->publishConfig('media', 'permissions');
         $this->publishConfig('media', 'assets');
 
-        $events->listen('*', HandleMediaStorage::class);
-        $events->listen('*', RemovePolymorphicLink::class);
+        $events->listen(StoringMedia::class, HandleMediaStorage::class);
+        $events->listen(DeletingMedia::class, RemovePolymorphicLink::class);
 
         $this->app[TagManager::class]->registerNamespace(new File());
         $this->registerThumbnails();
