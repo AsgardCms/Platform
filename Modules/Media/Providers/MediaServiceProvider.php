@@ -17,7 +17,6 @@ use Modules\Media\Events\Handlers\RemovePolymorphicLink;
 use Modules\Media\Image\ThumbnailManager;
 use Modules\Media\Repositories\Eloquent\EloquentFileRepository;
 use Modules\Media\Repositories\FileRepository;
-use Modules\Recipe\Events\RecipeWasUpdated;
 use Modules\Tag\Repositories\TagManager;
 
 class MediaServiceProvider extends ServiceProvider
