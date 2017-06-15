@@ -6,7 +6,7 @@ use Modules\Media\Contracts\StoringMedia;
 
 class HandleMediaStorage
 {
-    public function handle($event = null)
+    public function handle($event = null, $data = [])
     {
         if ($event instanceof StoringMedia) {
             $this->handleMultiMedia($event);
