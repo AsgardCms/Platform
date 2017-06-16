@@ -8,7 +8,7 @@ class UpdateMenuRequest extends FormRequest
 {
     public function rules()
     {
-        $menu = $this->route()->getParameter('menu');
+        $menu = $this->route()->parameter('menu');
 
         return [
             'name' => 'required',
