@@ -17,7 +17,7 @@ class EloquentTranslationRepository extends EloquentBaseRepository implements Tr
     {
         $locale = $locale ?: app()->getLocale();
 
-        $translation = $this->model->whereKey($key)->with('translations')->first();
+        $translation = $this->model->where('key', $key)->with('translations')->first();
         if ($translation && $translation->hasTranslation($locale)) {
             return $translation->translate($locale)->value;
         }
