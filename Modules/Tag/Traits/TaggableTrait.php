@@ -181,8 +181,7 @@ trait TaggableTrait
             ->where('namespace', $this->getEntityClassName())
             ->with('translations')
             ->whereHas('translations', function (Builder $q) use ($name) {
-                $q->orWhere('name', $this->generateTagSlug($name));
-                $q->orWhere('slug', $this->generateTagSlug($name));
+                $q->where('slug', $this->generateTagSlug($name));
             })->first();
 
         if ($tag) {
