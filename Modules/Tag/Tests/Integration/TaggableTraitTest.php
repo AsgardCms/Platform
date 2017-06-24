@@ -2,6 +2,7 @@
 
 namespace Modules\Tag\Tests\Integration;
 
+use Illuminate\Support\Facades\DB;
 use Modules\Page\Entities\Page;
 use Modules\Page\Repositories\PageRepository;
 use Modules\Tag\Repositories\TagRepository;
@@ -63,11 +64,36 @@ class TaggableTraitTest extends BaseTestCase
     {
         $this->createPage(['original tag']);
 
-        $page = $this->page->findHomepage();
+        $page = $this->page->find(1);
         $page->setTags(['my first tag']);
 
-        $page = $this->page->findHomepage();
         $this->assertCount(1, $page->tags);
+    }
+
+    /** @test */
+    public function it_can_remove_all_tags()
+    {
+        $this->createPage(['original tag', 'tag2', 'tag3', ]);
+        $page = $this->page->find(1);
+
+        $this->page->update($page, ['tags' => []]);
+
+        $page = $page->fresh();
+        $this->assertCount(0, $page->tags);
+    }
+
+    /** @test */
+    public function it_removes_all_tag_links_when_removing_entity()
+    {
+        $this->createPage(['original tag', 'tag2', 'tag3', ]);
+
+        $page = $this->page->find(1);
+        $pageId = $page->id;
+        $this->page->destroy($page);
+
+        $count = DB::table('tag__tagged')->where('taggable_id', $pageId)->get();
+
+        $this->assertCount(0, $count);
     }
 
     /** @test */
