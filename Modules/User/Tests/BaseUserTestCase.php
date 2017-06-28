@@ -38,6 +38,14 @@ abstract class BaseUserTestCase extends TestCase
         ));
         $app['config']->set('translatable.locales', ['en', 'fr']);
         $app['config']->set('modules.paths.modules', __DIR__ . '/../Modules');
+        $app['config']->set('cartalyst.sentinel.users.model', \Modules\User\Entities\Sentinel\User::class);
+        $app['config']->set('asgard.user.config.fillable', [
+            'email',
+            'password',
+            'permissions',
+            'first_name',
+            'last_name',
+        ]);
     }
 
     private function resetDatabase()
