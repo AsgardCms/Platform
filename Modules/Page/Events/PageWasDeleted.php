@@ -2,10 +2,12 @@
 
 namespace Modules\Page\Events;
 
+use Modules\Page\Entities\Page;
+
 class PageWasDeleted
 {
     /**
-     * @var object
+     * @var Page
      */
     public $page;
 
