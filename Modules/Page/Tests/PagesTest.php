@@ -2,6 +2,10 @@
 
 namespace Modules\Page\Tests;
 
+use Illuminate\Support\Facades\Event;
+use Modules\Page\Events\PageWasCreated;
+use Modules\Page\Events\PageWasUpdated;
+
 class PagesTest extends BasePageTest
 {
     /** @test */
@@ -66,5 +70,46 @@ class PagesTest extends BasePageTest
         $page = $this->page->find(1);
         $this->assertFalse($page->is_home);
         $this->assertTrue($pageOther->is_home);
+    }
+
+    /** @test */
+    public function it_triggers_event_when_page_was_created()
+    {
+        Event::fake();
+
+        $page = $this->page->create([
+            'is_home' => '1',
+            'template' => 'default',
+            'en' => [
+                'title' => 'My Other Page',
+                'slug' => 'my-other-page',
+                'body' => 'My Page Body',
+            ],
+        ]);
+
+        Event::assertDispatched(PageWasCreated::class, function ($e) use ($page) {
+            return $e->pageId === $page->id;
+        });
+    }
+
+    /** @test */
+    public function it_triggers_event_when_page_was_updated()
+    {
+        $page = $this->page->create([
+            'is_home' => '1',
+            'template' => 'default',
+            'en' => [
+                'title' => 'My Other Page',
+                'slug' => 'my-other-page',
+                'body' => 'My Page Body',
+            ],
+        ]);
+        Event::fake();
+
+        $this->page->update($page, ['en' => ['title' => 'Better!']]);
+
+        Event::assertDispatched(PageWasUpdated::class, function ($e) use ($page) {
+            return $e->pageId === $page->id;
+        });
     }
 }
