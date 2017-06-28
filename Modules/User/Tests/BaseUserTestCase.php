@@ -46,6 +46,9 @@ abstract class BaseUserTestCase extends TestCase
             'first_name',
             'last_name',
         ]);
+        $app['config']->set('asgard.user.config.login-columns', [
+            'email',
+        ]);
     }
 
     private function resetDatabase()
