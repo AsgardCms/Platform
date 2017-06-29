@@ -281,10 +281,6 @@ class CoreServiceProvider extends ServiceProvider
      */
     private function moduleHasCentralisedTranslations(Module $module)
     {
-        if (! array_has($this->app['modules']->enabled(), 'Translation')) {
-            return false;
-        }
-
         return is_dir($this->getCentralisedTranslationPath($module));
     }
 
@@ -295,7 +291,9 @@ class CoreServiceProvider extends ServiceProvider
      */
     private function getCentralisedTranslationPath(Module $module)
     {
-        return $this->app['modules']->find('Translation')->getPath() . "/Resources/lang/{$module->getLowerName()}";
+        $path = config('modules.paths.modules'). '/Translation';
+
+        return $path . "/Resources/lang/{$module->getLowerName()}";
     }
 
     /**
