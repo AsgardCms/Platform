@@ -2,7 +2,6 @@
 
 namespace Modules\Core\Providers;
 
-use Illuminate\Http\Request;
 use Illuminate\Support\ServiceProvider;
 use Maatwebsite\Sidebar\SidebarManager;
 use Modules\Core\Sidebar\AdminSidebar;
@@ -10,7 +9,6 @@ use Modules\Core\Sidebar\AdminSidebar;
 class SidebarServiceProvider extends ServiceProvider
 {
     protected $defer = true;
-    private $request;
 
     /**
      * Register the service provider.
@@ -20,21 +18,10 @@ class SidebarServiceProvider extends ServiceProvider
     {
     }
 
-    public function boot(SidebarManager $manager, Request $request)
+    public function boot(SidebarManager $manager)
     {
-        $this->request = $request;
-        if ($this->onBackend() === true) {
+        if ($this->app['asgard.onBackend'] === true) {
             $manager->register(AdminSidebar::class);
         }
-    }
-
-    private function onBackend()
-    {
-        $url = $this->request->url();
-        if (str_contains($url, config('asgard.core.core.admin-prefix'))) {
-            return true;
-        }
-
-        return false;
     }
 }

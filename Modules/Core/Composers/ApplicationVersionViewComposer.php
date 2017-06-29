@@ -31,20 +31,10 @@ class ApplicationVersionViewComposer
 
     public function compose(View $view)
     {
-        if ($this->onBackend() === false) {
+        if (app('asgard.onBackend') === false) {
             return;
         }
         $view->with('version', $this->getAppVersion());
-    }
-
-    private function onBackend()
-    {
-        $url = $this->request->url();
-        if (str_contains($url, config('asgard.core.core.admin-prefix'))) {
-            return true;
-        }
-
-        return false;
     }
 
     /**
