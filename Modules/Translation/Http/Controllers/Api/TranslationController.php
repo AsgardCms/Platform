@@ -2,13 +2,17 @@
 
 namespace Modules\Translation\Http\Controllers\Api;
 
+
+use Cartalyst\Sentinel\Laravel\Facades\Sentinel;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Modules\Translation\Repositories\TranslationRepository;
+use Modules\User\CanFindUserWithBearerToken;
 
 class TranslationController extends Controller
 {
+    use CanFindUserWithBearerToken;
     /**
      * @var TranslationRepository
      */
@@ -21,6 +25,8 @@ class TranslationController extends Controller
 
     public function update(Request $request)
     {
+        Sentinel::login($this->findUserWithBearerToken($request->header('Authorization')));
+
         $this->translation->saveTranslationForLocaleAndKey(
             $request->get('locale'),
             $request->get('key'),
@@ -65,11 +71,13 @@ class TranslationController extends Controller
         $timeAgo = $history->created_at->diffForHumans();
         $revertRoute = route('admin.translation.translation.update', [$history->revisionable_id, 'oldValue' => $history->oldValue()]);
         $edited = trans('translation::translations.edited');
+        $firstName = $history->userResponsible() ? $history->userResponsible()->first_name : '';
+        $lastName = $history->userResponsible() ? $history->userResponsible()->last_name : '';
 
         return <<<HTML
 <tr>
     <td>{$history->oldValue()}</td>
-    <td>{$history->userResponsible()->first_name} {$history->userResponsible()->last_name}</td>
+    <td>{$firstName} {$lastName}</td>
     <td>$edited</td>
     <td><a data-toggle="tooltip" title="{$history->created_at}">{$timeAgo}</a></td>
     <td><a href="{$revertRoute}"><i class="fa fa-history"></i></a></td>
@@ -81,11 +89,13 @@ HTML;
     {
         $timeAgo = $history->created_at->diffForHumans();
         $created = trans('translation::translations.created');
+        $firstName = $history->userResponsible() ? $history->userResponsible()->first_name : '';
+        $lastName = $history->userResponsible() ? $history->userResponsible()->last_name : '';
 
         return <<<HTML
 <tr>
     <td></td>
-    <td>{$history->userResponsible()->first_name} {$history->userResponsible()->last_name}</td>
+    <td>{$firstName} {$lastName}</td>
     <td>$created</td>
     <td><a data-toggle="tooltip" title="{$history->created_at}">{$timeAgo}</a></td>
     <td></td>
