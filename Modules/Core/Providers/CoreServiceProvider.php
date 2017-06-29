@@ -2,6 +2,7 @@
 
 namespace Modules\Core\Providers;
 
+use Illuminate\Http\Request;
 use Illuminate\Routing\Router;
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\Facades\DB;
@@ -61,6 +62,9 @@ class CoreServiceProvider extends ServiceProvider
     {
         $this->app->singleton('asgard.isInstalled', function () {
             return true === env('INSTALLED', false);
+        });
+        $this->app->singleton('asgard.onBackend', function () {
+            return $this->onBackend();
         });
 
         $this->registerCommands();
@@ -308,6 +312,20 @@ class CoreServiceProvider extends ServiceProvider
 
             return "<?php {$variable} = {$value}; ?>";
         });
+    }
+
+    /**
+     * Checks if the current url matches the configured backend uri
+     * @return bool
+     */
+    private function onBackend()
+    {
+        $url = app(Request::class)->url();
+        if (str_contains($url, config('asgard.core.core.admin-prefix'))) {
+            return true;
+        }
+
+        return false;
     }
 
     /**
