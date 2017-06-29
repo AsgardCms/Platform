@@ -2,9 +2,7 @@
 
 namespace Modules\Core\Sidebar;
 
-use Maatwebsite\Sidebar\Badge;
 use Maatwebsite\Sidebar\Group;
-use Maatwebsite\Sidebar\Item;
 use Maatwebsite\Sidebar\Menu;
 use Modules\User\Contracts\Authentication;
 

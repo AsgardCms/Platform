@@ -2,8 +2,8 @@
 
 namespace Modules\Core\Repositories\Eloquent;
 
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Model;
 use Modules\Core\Repositories\BaseRepository;
 
 /**

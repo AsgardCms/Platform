@@ -36,7 +36,6 @@ class ModuleScaffoldTest extends BaseTestCase
         $this->scaffold = $this->app['asgard.module.scaffold'];
     }
 
-
     /**
      * Recursively remove the given directory
      * @param string $dir
@@ -44,10 +43,11 @@ class ModuleScaffoldTest extends BaseTestCase
      */
     public static function delTree($dir)
     {
-        $files = array_diff(scandir($dir), array('.','..'));
+        $files = array_diff(scandir($dir), array('.', '..'));
         foreach ($files as $file) {
             (is_dir("$dir/$file")) ? self::delTree("$dir/$file") : unlink("$dir/$file");
         }
+
         return rmdir($dir);
     }
 

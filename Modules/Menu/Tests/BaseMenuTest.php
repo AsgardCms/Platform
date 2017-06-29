@@ -3,7 +3,6 @@
 namespace Modules\Menu\Tests;
 
 use Faker\Factory;
-use Illuminate\Contracts\Console\Kernel;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
 use Maatwebsite\Sidebar\SidebarServiceProvider;

@@ -4,8 +4,8 @@ namespace Modules\User\Events\Handlers;
 
 use Illuminate\Contracts\Mail\Mailer;
 use Modules\User\Contracts\Authentication;
-use Modules\User\Events\UserHasRegistered;
 use Modules\User\Emails\WelcomeEmail;
+use Modules\User\Events\UserHasRegistered;
 
 class SendRegistrationConfirmationEmail
 {

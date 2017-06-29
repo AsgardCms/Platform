@@ -3,8 +3,6 @@
 namespace Modules\User\Events\Handlers;
 
 use Illuminate\Contracts\Mail\Mailer;
-use Illuminate\Mail\Message;
-use Illuminate\Support\Facades\Mail;
 use Modules\User\Emails\ResetPasswordEmail;
 use Modules\User\Events\UserHasBegunResetProcess;
 

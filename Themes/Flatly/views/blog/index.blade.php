@@ -10,7 +10,7 @@
             <h1>Blog</h1>
             <?php if (isset($posts)): ?>
             <ul>
-                <?php foreach($posts as $post): ?>
+                <?php foreach ($posts as $post): ?>
                     <li>
                         <span class="date">{{ $post->created_at->format('d-m-Y') }}</span>
                         <h3><a href="{{ URL::route($currentLocale . '.blog.slug', [$post->slug]) }}">{{ $post->title }}</a></h3>

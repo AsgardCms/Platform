@@ -14,6 +14,6 @@ return [
     */
     'cache' => [
         'method'   => null,
-        'duration' => 1440
-    ]
+        'duration' => 1440,
+    ],
 ];

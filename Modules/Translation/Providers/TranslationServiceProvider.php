@@ -51,7 +51,7 @@ class TranslationServiceProvider extends ServiceProvider
             $this->registerCustomTranslator();
         }
 
-        $this->loadMigrationsFrom(__DIR__.'/../Database/Migrations');
+        $this->loadMigrationsFrom(__DIR__ . '/../Database/Migrations');
     }
 
     /**

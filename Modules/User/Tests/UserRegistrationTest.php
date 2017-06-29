@@ -2,7 +2,6 @@
 
 namespace Modules\User\Tests;
 
-use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Modules\User\Repositories\RoleRepository;
 use Modules\User\Repositories\UserRepository;
 use Modules\User\Services\UserRegistration;

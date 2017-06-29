@@ -4,7 +4,7 @@
     }
 </style>
 
-<?php $prefix = isset($prefix) ? $prefix."_" : ""; ?>
+<?php $prefix = isset($prefix) ? $prefix . "_" : ""; ?>
 
 <?php if (count(LaravelLocalization::getSupportedLocales()) > 1): ?>
 <ul class="nav nav-tabs">

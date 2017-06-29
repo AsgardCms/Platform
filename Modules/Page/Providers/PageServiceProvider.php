@@ -37,7 +37,7 @@ class PageServiceProvider extends ServiceProvider
         $this->publishConfig('page', 'permissions');
 
         $this->app[TagManager::class]->registerNamespace(new Page());
-        $this->loadMigrationsFrom(__DIR__.'/../Database/Migrations');
+        $this->loadMigrationsFrom(__DIR__ . '/../Database/Migrations');
     }
 
     /**

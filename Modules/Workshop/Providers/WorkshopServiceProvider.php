@@ -43,7 +43,7 @@ class WorkshopServiceProvider extends ServiceProvider
     {
         $this->publishConfig('workshop', 'permissions');
         $this->publishConfig('workshop', 'config');
-        $this->loadMigrationsFrom(__DIR__.'/../Database/Migrations');
+        $this->loadMigrationsFrom(__DIR__ . '/../Database/Migrations');
     }
 
     /**

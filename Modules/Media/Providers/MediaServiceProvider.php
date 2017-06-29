@@ -63,7 +63,7 @@ class MediaServiceProvider extends ServiceProvider
         $this->registerThumbnails();
         $this->registerBladeTags();
 
-        $this->loadMigrationsFrom(__DIR__.'/../Database/Migrations');
+        $this->loadMigrationsFrom(__DIR__ . '/../Database/Migrations');
     }
 
     /**

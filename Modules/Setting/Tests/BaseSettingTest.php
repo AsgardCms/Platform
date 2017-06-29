@@ -2,7 +2,6 @@
 
 namespace Modules\Setting\Tests;
 
-use Illuminate\Contracts\Console\Kernel;
 use Illuminate\Database\Eloquent\Model;
 use Maatwebsite\Sidebar\SidebarServiceProvider;
 use Modules\Setting\Providers\SettingServiceProvider;

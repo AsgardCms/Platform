@@ -51,7 +51,7 @@ class SettingServiceProvider extends ServiceProvider
         $this->publishConfig('setting', 'permissions');
         $this->publishConfig('setting', 'config');
         $this->registerBladeTags();
-        $this->loadMigrationsFrom(__DIR__.'/../Database/Migrations');
+        $this->loadMigrationsFrom(__DIR__ . '/../Database/Migrations');
     }
 
     /**

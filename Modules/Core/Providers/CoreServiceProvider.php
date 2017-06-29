@@ -291,7 +291,7 @@ class CoreServiceProvider extends ServiceProvider
      */
     private function getCentralisedTranslationPath(Module $module)
     {
-        $path = config('modules.paths.modules'). '/Translation';
+        $path = config('modules.paths.modules') . '/Translation';
 
         return $path . "/Resources/lang/{$module->getLowerName()}";
     }
