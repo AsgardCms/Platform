@@ -43,6 +43,15 @@ class DeleteModuleCommand extends Command
     {
         $module = $this->argument('module');
 
+        $extra = '';
+        if ($this->option('migrations') === true) {
+            $extra = ' and reset its tables';
+        }
+        if ($this->confirm("Are you sure you wish to delete the [$module] module{$extra}?") === false) {
+            $this->info('Nothing was deleted');
+            return;
+        }
+
         $modulePath = config('modules.paths.modules') . '/' . $module;
 
         if ($this->finder->exists($modulePath) === false) {
