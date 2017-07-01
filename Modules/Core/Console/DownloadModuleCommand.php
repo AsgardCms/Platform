@@ -40,11 +40,14 @@ class DownloadModuleCommand extends Command
         $commands = [
             $composer.' dump-autoload',
         ];
-        if ($this->option('migrations') === true) {
+        if ($this->option('migrations') === true || $this->option('demo') === true) {
             $commands[] = "php artisan module:migrate $name";
         }
-        if ($this->option('seeds') === true) {
+        if ($this->option('seeds') === true || $this->option('demo') === true) {
             $commands[] = "php artisan module:seed $name";
+        }
+        if ($this->option('assets') === true || $this->option('demo') === true) {
+            $commands[] = "php artisan module:publish $name";
         }
         $process = new Process(implode(' && ', $commands));
         if ('\\' !== DIRECTORY_SEPARATOR && file_exists('/dev/tty') && is_readable('/dev/tty')) {
@@ -78,6 +81,8 @@ class DownloadModuleCommand extends Command
         return [
             ['migrations', 'm', InputOption::VALUE_NONE, 'Run the module migrations', null],
             ['seeds', 's', InputOption::VALUE_NONE, 'Run the module seeds', null],
+            ['assets', 'a', InputOption::VALUE_NONE, 'Publish the module assets', null],
+            ['demo', 'd', InputOption::VALUE_NONE, 'Run all optional flags', null],
         ];
     }
 
