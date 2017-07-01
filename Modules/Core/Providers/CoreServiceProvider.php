@@ -7,6 +7,7 @@ use Illuminate\Routing\Router;
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\ServiceProvider;
+use Modules\Core\Console\DeleteModuleCommand;
 use Modules\Core\Console\DownloadModuleCommand;
 use Modules\Core\Console\InstallCommand;
 use Modules\Core\Console\PublishModuleAssetsCommand;
@@ -110,6 +111,7 @@ class CoreServiceProvider extends ServiceProvider
             PublishThemeAssetsCommand::class,
             PublishModuleAssetsCommand::class,
             DownloadModuleCommand::class,
+            DeleteModuleCommand::class,
         ]);
     }
 
