@@ -17,7 +17,7 @@ class MediaSingleDirective
     /**
      * @var string|null
      */
-    private $view
+    private $view;
     /**
      * @var string|null
      */
