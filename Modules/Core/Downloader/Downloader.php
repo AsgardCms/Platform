@@ -90,6 +90,7 @@ class Downloader
     /**
      * Download the temporary Zip to the given file.
      * @param  string $zipFile
+     * @param string $latestVersionUrl
      * @return $this
      */
     protected function downloadFile($zipFile, $latestVersionUrl)
