@@ -32,7 +32,12 @@ class DownloadModuleCommand extends Command
     public function fire()
     {
         $downloader = new Downloader($this->getOutput());
-        $downloader->download($this->argument('name'));
+        try {
+            $downloader->download($this->argument('name'));
+        } catch (\Exception $e) {
+            $this->output->writeln("<error>{$e->getMessage()}</error>");
+            return;
+        }
 
         $name = $this->extractPackageNameFrom($this->argument('name'));
 
