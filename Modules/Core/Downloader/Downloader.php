@@ -23,6 +23,10 @@ class Downloader
      * @var Filesystem
      */
     private $finder;
+    /**
+     * @var string
+     */
+    private $tagName;
 
     public function __construct(OutputInterface $output)
     {
@@ -37,7 +41,9 @@ class Downloader
         }
 
         $this->package = $package;
-        $this->output->writeln("<info>Downloading Module [{$this->package}]</info>");
+        $latestVersionUrl = $this->getLatestVersionUrl();
+
+        $this->output->writeln("<info>Downloading Module [{$this->package} {$this->tagName}]</info>");
 
         $directory = config('modules.paths.modules') . '/' . $this->extractPackageNameFrom($package);
 
@@ -46,7 +52,7 @@ class Downloader
             return;
         }
 
-        $this->downloadFile($zipFile = $this->makeFilename(), $this->output)
+        $this->downloadFile($zipFile = $this->makeFilename(), $latestVersionUrl)
             ->extract($zipFile, $directory)
             ->cleanUp($zipFile);
 
@@ -80,19 +86,11 @@ class Downloader
     /**
      * Download the temporary Zip to the given file.
      * @param  string $zipFile
-     * @param OutputInterface $output
      * @return $this
      */
-    protected function downloadFile($zipFile, OutputInterface $output)
+    protected function downloadFile($zipFile, $latestVersionUrl)
     {
-        $client = new Client([
-            'base_uri' => 'https://api.github.com',
-            'timeout'  => 2.0,
-        ]);
-
-        $latestVersionUrl = $this->getLatestVersionUrl($client);
-
-        $progress = new ProgressBar($output);
+        $progress = new ProgressBar($this->output);
         $progress->setFormat('[%bar%] %elapsed:6s%');
 
         $response = (new Client)->get($latestVersionUrl, [
@@ -129,11 +127,21 @@ class Downloader
         return getcwd() . '/asgardcms_' . md5(time() . uniqid()) . '.zip';
     }
 
-    private function getLatestVersionUrl(Client $client)
+    private function getLatestVersionUrl()
     {
-        $githubReleases = $client->get("repos/{$this->package}/releases/latest");
+        $client = new Client([
+            'base_uri' => 'https://api.github.com',
+            'timeout'  => 2.0,
+        ]);
 
+        $githubReleases = $client->get("repos/{$this->package}/releases/latest", ['http_errors' => false]);
+
+        if ($githubReleases->getStatusCode() === 404) {
+            throw new \Exception('No releases were found for this package.');
+        }
         $response = \GuzzleHttp\json_decode($githubReleases->getBody()->getContents());
+
+        $this->tagName = $response->tag_name;
 
         return $response->zipball_url;
     }
