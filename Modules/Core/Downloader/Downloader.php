@@ -27,6 +27,10 @@ class Downloader
      * @var string
      */
     private $tagName;
+    /**
+     * @var string
+     */
+    private $branchName;
 
     public function __construct(OutputInterface $output)
     {
@@ -43,7 +47,7 @@ class Downloader
         $this->package = $package;
         $latestVersionUrl = $this->getLatestVersionUrl();
 
-        $this->output->writeln("<info>Downloading Module [{$this->package} {$this->tagName}]</info>");
+        $this->output->writeln("<info>Downloading Module [{$this->package} {$this->tagName}{$this->branchName}]</info>");
 
         $directory = config('modules.paths.modules') . '/' . $this->extractPackageNameFrom($package);
 
@@ -129,6 +133,9 @@ class Downloader
 
     private function getLatestVersionUrl()
     {
+        if ($this->branchName !== null) {
+            return "https://github.com/{$this->package}/archive/{$this->branchName}.zip";
+        }
         $client = new Client([
             'base_uri' => 'https://api.github.com',
             'timeout'  => 2.0,
@@ -152,5 +159,12 @@ class Downloader
             throw new \Exception('You need to use vendor/name structure');
         }
         return studly_case(substr(strrchr($package, '/'), 1));
+    }
+
+    public function forBranch($branchName)
+    {
+        $this->branchName = $branchName;
+
+        return $this;
     }
 }

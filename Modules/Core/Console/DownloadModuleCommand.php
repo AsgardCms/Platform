@@ -33,6 +33,9 @@ class DownloadModuleCommand extends Command
     {
         $downloader = new Downloader($this->getOutput());
         try {
+            if ($this->hasOption('branch')) {
+                $downloader->forBranch($this->option('branch'));
+            }
             $downloader->download($this->argument('name'));
         } catch (\Exception $e) {
             $this->output->writeln("<error>{$e->getMessage()}</error>");
@@ -88,6 +91,7 @@ class DownloadModuleCommand extends Command
             ['seeds', 's', InputOption::VALUE_NONE, 'Run the module seeds', null],
             ['assets', 'a', InputOption::VALUE_NONE, 'Publish the module assets', null],
             ['demo', 'd', InputOption::VALUE_NONE, 'Run all optional flags', null],
+            ['branch', null, InputOption::VALUE_OPTIONAL, 'Download a specific branch name', null],
         ];
     }
 
