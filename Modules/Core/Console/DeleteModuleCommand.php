@@ -4,6 +4,7 @@ namespace Modules\Core\Console;
 
 use Illuminate\Console\Command;
 use Illuminate\Filesystem\Filesystem;
+use Modules\User\Permissions\PermissionsRemover;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Input\InputArgument;
 
@@ -68,8 +69,17 @@ class DeleteModuleCommand extends Command
             $this->call('module:migrate-reset', ['module' => $module]);
         }
 
+        $this->removePermissionsFor($module);
+
         $this->finder->deleteDirectory($modulePath);
         $this->info('Module successfully deleted');
+    }
+
+    private function removePermissionsFor($module)
+    {
+        (new PermissionsRemover($module))->removeAll();
+
+        $this->info("All permissions for [$module] have been removed");
     }
 
     /**
