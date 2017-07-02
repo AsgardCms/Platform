@@ -17,7 +17,11 @@ class MediaSingleDirective
     /**
      * @var string|null
      */
-    private $view;
+    private $view
+    /**
+     * @var string|null
+     */
+    private $name;
 
     public function show($arguments)
     {
@@ -27,12 +31,14 @@ class MediaSingleDirective
         view()->composer($view, PartialAssetComposer::class);
 
         $zone = $this->zone;
+        
+        $name = $this->name ?: ucwords(str_replace('_', ' ', $this->zone));
 
         if ($this->entity !== null) {
             $media = $this->entity->filesByZone($this->zone)->first();
         }
 
-        return view($view, compact('media', 'zone'));
+        return view($view, compact('media', 'zone', 'name'));
     }
 
     /**
@@ -44,5 +50,6 @@ class MediaSingleDirective
         $this->zone = array_get($arguments, 0);
         $this->entity = array_get($arguments, 1);
         $this->view = array_get($arguments, 2);
+        $this->name = array_get($arguments, 3);
     }
 }
