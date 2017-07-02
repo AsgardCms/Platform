@@ -92,8 +92,16 @@ class SentinelUserRepositoryTest extends BaseUserTestCase
             'password' => 'demo1234',
         ], ['User']);
 
+
+        $hasher = app('sentinel.hasher');
+
+        $this->assertTrue($hasher->check('demo1234', $userOne->password));
         $this->assertNotEquals('demo1234', $userOne->password);
+
+        $this->assertTrue($hasher->check('demo1234', $userTwo->password));
         $this->assertNotEquals('demo1234', $userTwo->password);
+
+        $this->assertTrue($hasher->check('demo1234', $userThree->password));
         $this->assertNotEquals('demo1234', $userThree->password);
     }
 
