@@ -4,7 +4,7 @@
 [![Total Downloads](https://img.shields.io/packagist/dm/asgardcms/platform.svg?style=flat-square)](https://packagist.org/packages/asgardcms/platform)
 [![Total Downloads](https://img.shields.io/packagist/dt/asgardcms/platform.svg?style=flat-square)](https://packagist.org/packages/asgardcms/platform)
 [![PHP7 Compatible](https://img.shields.io/badge/php-7-green.svg?style=flat-square)](https://packagist.org/packages/asgardcms/platform)
-[![Build Status](https://travis-ci.org/AsgardCms/Platform.svg?branch=2.0)](https://travis-ci.org/AsgardCms/Platform)
+[![Build Status](https://img.shields.io/travis/AsgardCms/Platform/master.svg?style=flat-square)](https://travis-ci.org/AsgardCms/Platform)
 
 ## AsgardCMS Platform
 
