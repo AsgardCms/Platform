@@ -16,18 +16,18 @@
         "laravel/framework": "5.4.*",
         "nwidart/laravel-modules": "~1.0",
         "cartalyst/sentinel": "~2.0",
-        "idavoll/core-module": "~2.0",
-        "idavoll/dashboard-module": "~2.0",
-        "idavoll/user-module": "~2.0",
-        "idavoll/setting-module": "~2.0",
-        "idavoll/media-module": "~2.0",
-        "idavoll/page-module": "~2.0",
-        "idavoll/menu-module": "~2.0",
-        "idavoll/workshop-module": "~2.0",
-        "idavoll/translation-module": "~2.0",
-        "idavoll/tag-module": "~2.0",
-        "idavoll/flatly-theme": "~2.0",
-        "idavoll/adminlte-theme": "~2.0",
+        "idavoll/core-module": "~3.0",
+        "idavoll/dashboard-module": "~3.0",
+        "idavoll/user-module": "~3.0",
+        "idavoll/setting-module": "~3.0",
+        "idavoll/media-module": "~3.0",
+        "idavoll/page-module": "~3.0",
+        "idavoll/menu-module": "~3.0",
+        "idavoll/workshop-module": "~3.0",
+        "idavoll/translation-module": "~3.0",
+        "idavoll/tag-module": "~3.0",
+        "idavoll/flatly-theme": "~3.0",
+        "idavoll/adminlte-theme": "~3.0",
         "laravel/tinker": "~1.0"
     },
     "require-dev": {
@@ -69,7 +69,7 @@
     },
     "extra": {
         "branch-alias": {
-            "dev-master": "2.1.x-dev"
+            "dev-master": "3.0.x-dev"
         }
     },
     "minimum-stability": "dev",
