@@ -1,8 +1,20 @@
-url: https://github.com/AsgardCms/User
+url: https://github.com/AsgardCms/Platform
 versions:
-    "2.0@unreleased":
+    "2.3.0":
+        changed:
+            - Avoid hashing passwords 2 times with using createWithRoles method, which calls the create() method.
+    "2.2.0":
         added:
-            - Laravel 5.2 compatibility
+            - Create a helper trait to find a user by the given Bearer token <code>CanFindUserWithBearerToken</code>
+        changed:
+            -  Loging in the user found via the bearer token. Failsafe if the user isn't set on a revision to use empty string.
+    "2.1.0":
+        added:
+            - Testing the UserRepository
+            - Testing the RoleRepository
+    "2.0.0":
+        added:
+            - Laravel 5.4 compatibility
             - Added api keys management per user. With API middleware to protect internal APIs and public APIs.
             - <code>Authentication</code> contract has been moved to the User module (from Core Module)
             - Adding hasAccess method on UserInterface to check for given permission(s)

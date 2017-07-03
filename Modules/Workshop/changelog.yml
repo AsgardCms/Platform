@@ -1,8 +1,8 @@
-url: https://github.com/AsgardCms/Workshop
+url: https://github.com/AsgardCms/Platform
 versions:
-    "2.0@unreleased":
+    "2.0.0":
         added:
-            - Laravel 5.2 compatibility
+            - Laravel 5.4 compatibility
             - Ability to add unreleased items in module changelog, by suffixing version with <code>@unreleased</code>
             - Protecting api routes with api admin middleware
         changed:

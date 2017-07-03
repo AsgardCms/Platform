@@ -1,56 +1,7 @@
-url: https://github.com/AsgardCms/Dashboard
+url: https://github.com/AsgardCms/Platform
 versions:
-    "2.0@unreleased":
+    "2.0.0":
         added:
-            - Laravel 5.2 compatibility
+            - Laravel 5.4 compatibility
         changed:
             - Using new more flexible way of handle permissions via middleware
-    "1.10.0":
-        changed:
-            - Use <code>$router</code> variable in routes file
-    "1.9.0":
-        changed:
-            - Allow customizing of views
-    "1.8.0":
-        changed:
-            - Removed language files, they are now in the translation module
-    "1.7.1":
-        changed:
-            - Injecting the parent script from partial
-    "1.7.0":
-        added:
-            - Added Russian translations
-        changed:
-            - Improving german translations
-    "1.6.0":
-        added:
-            - Chinese Simplified translation
-    "1.5.0":
-        added:
-            - Dutch and Portuguese language
-    "1.4.0":
-        added:
-            - Spanish translations
-    "1.3.0":
-        added:
-            - Added Brazilian Portuguese translations
-    "1.2.1":
-        changed:
-            - Adding correct active class on dashboard sidebar item
-    "1.2.0":
-       changed:
-           - Use route helper functions
-    "1.1.0":
-       changed:
-           - Adding table engine into migrations
-    "1.0.2":
-        added:
-            - Using new sidebar extender class
-        removed:
-            - Old SidebarViewComposer
-    "1.0.1":
-        changed:
-            - Adding changelog file
-    "1.0.0":
-        changed:
-            - Initial release
