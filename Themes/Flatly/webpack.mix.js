@@ -30,6 +30,6 @@ mix.copy(
  */
 mix.webpackConfig({
    plugins: [
-   		    	//new WebpackShellPlugin({onBuildEnd:['php ../../artisan stylist:publish ' + themeInfo.name]})
+   		    	new WebpackShellPlugin({onBuildEnd:['php ../../artisan stylist:publish ' + themeInfo.name]})
    	]
 });
