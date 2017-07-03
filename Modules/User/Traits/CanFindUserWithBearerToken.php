@@ -1,6 +1,6 @@
 <?php
 
-namespace Modules\User;
+namespace Modules\User\Traits;
 
 use Modules\User\Entities\UserInterface;
 use Modules\User\Repositories\UserTokenRepository;

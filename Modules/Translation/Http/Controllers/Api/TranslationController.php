@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Modules\Translation\Repositories\TranslationRepository;
-use Modules\User\CanFindUserWithBearerToken;
+use Modules\User\Traits\CanFindUserWithBearerToken;
 
 class TranslationController extends Controller
 {
