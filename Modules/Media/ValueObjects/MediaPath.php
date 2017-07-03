@@ -25,7 +25,9 @@ class MediaPath
      */
     public function getUrl()
     {
-        return Storage::url($this->path);
+        $path = ltrim($this->path, '/');
+
+        return Storage::disk(config('asgard.media.config.filesystem'))->url($path);
     }
 
     /**
