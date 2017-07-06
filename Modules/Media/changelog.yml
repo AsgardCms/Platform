@@ -1,5 +1,11 @@
 url: https://github.com/AsgardCms/Platform
 versions:
+    "2.4.0@unreleased":
+        added:
+            - new blade directive for thumbnails <code>@thumbnail('path', 'thumbnailName')</code>
+        changed:
+            - Ability to set the field name for media directives (single & multiple), as forth argument
+            - Fixing URL generation in case of S3, remove first <code>/</code>
     "2.0.0":
         added:
             - Laravel 5.4 compatibility
