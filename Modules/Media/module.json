@@ -17,7 +17,8 @@
         "Imagy": "Modules\\Media\\Image\\Facade\\Imagy",
         "FileHelper": "Modules\\Media\\Helpers\\FileHelper",
         "MediaSingleDirective": "Modules\\Media\\Blade\\Facades\\MediaSingleDirective",
-        "MediaMultipleDirective": "Modules\\Media\\Blade\\Facades\\MediaMultipleDirective"
+        "MediaMultipleDirective": "Modules\\Media\\Blade\\Facades\\MediaMultipleDirective",
+        "MediaThumbnailDirective": "Modules\\Media\\Blade\\Facades\\MediaThumbnailDirective"
     },
     "files": [
     ]

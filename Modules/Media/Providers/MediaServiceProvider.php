@@ -8,6 +8,7 @@ use Illuminate\Support\ServiceProvider;
 use Modules\Core\Traits\CanPublishConfiguration;
 use Modules\Media\Blade\MediaMultipleDirective;
 use Modules\Media\Blade\MediaSingleDirective;
+use Modules\Media\Blade\MediaThumbnailDirective;
 use Modules\Media\Console\RefreshThumbnailCommand;
 use Modules\Media\Contracts\DeletingMedia;
 use Modules\Media\Contracts\StoringMedia;
@@ -45,6 +46,9 @@ class MediaServiceProvider extends ServiceProvider
         });
         $this->app->bind('media.multiple.directive', function () {
             return new MediaMultipleDirective();
+        });
+        $this->app->bind('media.thumbnail.directive', function () {
+            return new MediaThumbnailDirective();
         });
     }
 
@@ -142,6 +146,9 @@ class MediaServiceProvider extends ServiceProvider
         });
         $this->app['blade.compiler']->directive('mediaMultiple', function ($value) {
             return "<?php echo MediaMultipleDirective::show([$value]); ?>";
+        });
+        $this->app['blade.compiler']->directive('thumbnail', function ($value) {
+            return "<?php echo MediaThumbnailDirective::show([$value]); ?>";
         });
     }
 }
