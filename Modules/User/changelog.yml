@@ -1,5 +1,9 @@
 url: https://github.com/AsgardCms/Platform
 versions:
+    "2.4.0@unreleased":
+        changed:
+            - Testing password hashing
+            - Moved the <code>CanFindUserWithBearerToken</code> to the <code>Trait</code> namespace
     "2.3.0":
         changed:
             - Avoid hashing passwords 2 times with using createWithRoles method, which calls the create() method.
