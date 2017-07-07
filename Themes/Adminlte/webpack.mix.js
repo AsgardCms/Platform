@@ -3,8 +3,6 @@ const WebpackShellPlugin = require('webpack-shell-plugin');
 const themeInfo = require('./theme.json');
 
 
-mix.js('resources/assets/js/app.js', 'assets/js/luxbooth.js')
-
 /**
  * Compile less
  */
