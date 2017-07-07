@@ -1,19 +1,41 @@
 {
-  "_from": "lodash@^4.14.2",
+  "_args": [
+    [
+      {
+        "raw": "lodash@^4.14.2",
+        "scope": null,
+        "escapedName": "lodash",
+        "name": "lodash",
+        "rawSpec": "^4.14.2",
+        "spec": ">=4.14.2 <5.0.0",
+        "type": "range"
+      },
+      "/Users/nicolaswidart/Sites/Asguard/Platform/Themes/Adminlte/node_modules/gridstack"
+    ]
+  ],
+  "_from": "lodash@>=4.14.2 <5.0.0",
   "_id": "lodash@4.17.4",
-  "_inBundle": false,
-  "_integrity": "sha1-eCA6TRwyiuHYbcpkYONptX9AVa4=",
+  "_inCache": true,
   "_location": "/lodash",
+  "_nodeVersion": "7.2.1",
+  "_npmOperationalInternal": {
+    "host": "packages-12-west.internal.npmjs.com",
+    "tmp": "tmp/lodash-4.17.4.tgz_1483223634314_0.5332164366263896"
+  },
+  "_npmUser": {
+    "name": "jdalton",
+    "email": "john.david.dalton@gmail.com"
+  },
+  "_npmVersion": "2.15.11",
   "_phantomChildren": {},
   "_requested": {
-    "type": "range",
-    "registry": true,
     "raw": "lodash@^4.14.2",
-    "name": "lodash",
+    "scope": null,
     "escapedName": "lodash",
+    "name": "lodash",
     "rawSpec": "^4.14.2",
-    "saveSpec": null,
-    "fetchSpec": "^4.14.2"
+    "spec": ">=4.14.2 <5.0.0",
+    "type": "range"
   },
   "_requiredBy": [
     "/async",
@@ -33,10 +55,11 @@
     "/sass-graph",
     "/webpack-merge"
   ],
-  "_resolved": "https://registry.npmjs.org/lodash/-/lodash-4.17.4.tgz",
+  "_resolved": "http://npm.spatie.be/lodash/-/lodash-4.17.4.tgz",
   "_shasum": "78203a4d1c328ae1d86dca6460e369b57f4055ae",
+  "_shrinkwrap": null,
   "_spec": "lodash@^4.14.2",
-  "_where": "/home/Platform/Themes/Adminlte/node_modules/gridstack",
+  "_where": "/Users/nicolaswidart/Sites/Asguard/Platform/Themes/Adminlte/node_modules/gridstack",
   "author": {
     "name": "John-David Dalton",
     "email": "john.david.dalton@gmail.com",
@@ -45,7 +68,6 @@
   "bugs": {
     "url": "https://github.com/lodash/lodash/issues"
   },
-  "bundleDependencies": false,
   "contributors": [
     {
       "name": "John-David Dalton",
@@ -58,8 +80,14 @@
       "url": "https://mathiasbynens.be/"
     }
   ],
-  "deprecated": false,
+  "dependencies": {},
   "description": "Lodash modular utilities.",
+  "devDependencies": {},
+  "directories": {},
+  "dist": {
+    "shasum": "78203a4d1c328ae1d86dca6460e369b57f4055ae",
+    "tarball": "https://npm.spatie.be/lodash/-/lodash-4.17.4.tgz"
+  },
   "homepage": "https://lodash.com/",
   "icon": "https://lodash.com/icon.svg",
   "keywords": [
@@ -69,7 +97,19 @@
   ],
   "license": "MIT",
   "main": "lodash.js",
+  "maintainers": [
+    {
+      "name": "jdalton",
+      "email": "john.david.dalton@gmail.com"
+    },
+    {
+      "name": "mathias",
+      "email": "mathias@qiwi.be"
+    }
+  ],
   "name": "lodash",
+  "optionalDependencies": {},
+  "readme": "ERROR: No README data found!",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/lodash/lodash.git"

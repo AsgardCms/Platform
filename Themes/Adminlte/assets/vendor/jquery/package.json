@@ -1,29 +1,52 @@
 {
-  "_from": "jquery@>=1.7",
+  "_args": [
+    [
+      {
+        "raw": "jquery@>=1.7",
+        "scope": null,
+        "escapedName": "jquery",
+        "name": "jquery",
+        "rawSpec": ">=1.7",
+        "spec": ">=1.7.0",
+        "type": "range"
+      },
+      "/Users/nicolaswidart/Sites/Asguard/Platform/Themes/Adminlte/node_modules/datatables.net"
+    ]
+  ],
+  "_from": "jquery@>=1.7.0",
   "_id": "jquery@3.2.1",
-  "_inBundle": false,
-  "_integrity": "sha1-XE2d5lKvbNCncBVKYxu6ErAVx4c=",
+  "_inCache": true,
   "_location": "/jquery",
+  "_nodeVersion": "7.7.3",
+  "_npmOperationalInternal": {
+    "host": "packages-12-west.internal.npmjs.com",
+    "tmp": "tmp/jquery-3.2.1.tgz_1490036530067_0.19497186387889087"
+  },
+  "_npmUser": {
+    "name": "timmywil",
+    "email": "4timmywil@gmail.com"
+  },
+  "_npmVersion": "4.4.4",
   "_phantomChildren": {},
   "_requested": {
-    "type": "range",
-    "registry": true,
     "raw": "jquery@>=1.7",
-    "name": "jquery",
+    "scope": null,
     "escapedName": "jquery",
+    "name": "jquery",
     "rawSpec": ">=1.7",
-    "saveSpec": null,
-    "fetchSpec": ">=1.7"
+    "spec": ">=1.7.0",
+    "type": "range"
   },
   "_requiredBy": [
     "/datatables.net",
     "/datatables.net-bs",
     "/gridstack"
   ],
-  "_resolved": "https://registry.npmjs.org/jquery/-/jquery-3.2.1.tgz",
+  "_resolved": "http://npm.spatie.be/jquery/-/jquery-3.2.1.tgz",
   "_shasum": "5c4d9de652af6cd0a770154a631bba12b015c787",
+  "_shrinkwrap": null,
   "_spec": "jquery@>=1.7",
-  "_where": "/home/Platform/Themes/Adminlte/node_modules/datatables.net",
+  "_where": "/Users/nicolaswidart/Sites/Asguard/Platform/Themes/Adminlte/node_modules/datatables.net",
   "author": {
     "name": "JS Foundation and other contributors",
     "url": "https://github.com/jquery/jquery/blob/3.2.1/AUTHORS.txt"
@@ -31,7 +54,6 @@
   "bugs": {
     "url": "https://github.com/jquery/jquery/issues"
   },
-  "bundleDependencies": false,
   "commitplease": {
     "nohook": true,
     "components": [
@@ -63,7 +85,6 @@
     "ticketPattern": "^((Closes|Fixes) ([a-zA-Z]{2,}-)[0-9]+)|^(Refs? [^#])"
   },
   "dependencies": {},
-  "deprecated": false,
   "description": "JavaScript library for DOM operations",
   "devDependencies": {
     "babel-preset-es2015": "6.6.0",
@@ -98,6 +119,12 @@
     "strip-json-comments": "2.0.1",
     "testswarm": "1.1.0"
   },
+  "directories": {},
+  "dist": {
+    "shasum": "5c4d9de652af6cd0a770154a631bba12b015c787",
+    "tarball": "https://npm.spatie.be/jquery/-/jquery-3.2.1.tgz"
+  },
+  "gitHead": "77d2a51d0520d2ee44173afdf4e40a9201f5964e",
   "homepage": "https://jquery.com",
   "keywords": [
     "jquery",
@@ -107,7 +134,27 @@
   ],
   "license": "MIT",
   "main": "dist/jquery.js",
+  "maintainers": [
+    {
+      "name": "dmethvin",
+      "email": "dave.methvin@gmail.com"
+    },
+    {
+      "name": "mgol",
+      "email": "m.goleb@gmail.com"
+    },
+    {
+      "name": "scott.gonzalez",
+      "email": "scott.gonzalez@gmail.com"
+    },
+    {
+      "name": "timmywil",
+      "email": "4timmywil@gmail.com"
+    }
+  ],
   "name": "jquery",
+  "optionalDependencies": {},
+  "readme": "ERROR: No README data found!",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/jquery/jquery.git"

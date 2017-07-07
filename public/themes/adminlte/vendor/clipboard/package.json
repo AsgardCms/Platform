@@ -1,37 +1,58 @@
 {
-  "_from": "clipboard@~1.5.10",
+  "_args": [
+    [
+      {
+        "raw": "clipboard@~1.5.10",
+        "scope": null,
+        "escapedName": "clipboard",
+        "name": "clipboard",
+        "rawSpec": "~1.5.10",
+        "spec": ">=1.5.10 <1.6.0",
+        "type": "range"
+      },
+      "/Users/nicolaswidart/Sites/Asguard/Platform/Themes/Adminlte"
+    ]
+  ],
+  "_from": "clipboard@>=1.5.10 <1.6.0",
   "_id": "clipboard@1.5.16",
-  "_inBundle": false,
-  "_integrity": "sha1-kW1ec5sAZL5hsLSKU1cx7K7z02c=",
+  "_inCache": true,
   "_location": "/clipboard",
+  "_nodeVersion": "6.9.1",
+  "_npmOperationalInternal": {
+    "host": "packages-12-west.internal.npmjs.com",
+    "tmp": "tmp/clipboard-1.5.16.tgz_1481551118075_0.8001045684795827"
+  },
+  "_npmUser": {
+    "name": "zenorocha",
+    "email": "zno.rocha@gmail.com"
+  },
+  "_npmVersion": "3.10.8",
   "_phantomChildren": {},
   "_requested": {
-    "type": "range",
-    "registry": true,
     "raw": "clipboard@~1.5.10",
-    "name": "clipboard",
+    "scope": null,
     "escapedName": "clipboard",
+    "name": "clipboard",
     "rawSpec": "~1.5.10",
-    "saveSpec": null,
-    "fetchSpec": "~1.5.10"
+    "spec": ">=1.5.10 <1.6.0",
+    "type": "range"
   },
   "_requiredBy": [
     "/"
   ],
-  "_resolved": "https://registry.npmjs.org/clipboard/-/clipboard-1.5.16.tgz",
+  "_resolved": "http://npm.spatie.be/clipboard/-/clipboard-1.5.16.tgz",
   "_shasum": "916d5e739b0064be61b0b48a535731ecaef3d367",
+  "_shrinkwrap": null,
   "_spec": "clipboard@~1.5.10",
-  "_where": "/home/Platform/Themes/Adminlte",
+  "_where": "/Users/nicolaswidart/Sites/Asguard/Platform/Themes/Adminlte",
   "bugs": {
     "url": "https://github.com/zenorocha/clipboard.js/issues"
   },
-  "bundleDependencies": false,
   "dependencies": {
     "good-listener": "^1.2.0",
     "select": "^1.0.6",
     "tiny-emitter": "^1.0.0"
   },
-  "deprecated": false,
   "description": "Modern copy to clipboard. No Flash. Just 2kb",
   "devDependencies": {
     "babel-cli": "^6.5.1",
@@ -55,6 +76,12 @@
     "uglify-js": "^2.4.24",
     "watchify": "^3.4.0"
   },
+  "directories": {},
+  "dist": {
+    "shasum": "916d5e739b0064be61b0b48a535731ecaef3d367",
+    "tarball": "https://npm.spatie.be/clipboard/-/clipboard-1.5.16.tgz"
+  },
+  "gitHead": "402c9ee17bed6f273bcbc7efa81874fd9a50b84c",
   "homepage": "https://github.com/zenorocha/clipboard.js#readme",
   "keywords": [
     "clipboard",
@@ -63,7 +90,15 @@
   ],
   "license": "MIT",
   "main": "lib/clipboard.js",
+  "maintainers": [
+    {
+      "name": "zenorocha",
+      "email": "zno.rocha@gmail.com"
+    }
+  ],
   "name": "clipboard",
+  "optionalDependencies": {},
+  "readme": "ERROR: No README data found!",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/zenorocha/clipboard.js.git"
