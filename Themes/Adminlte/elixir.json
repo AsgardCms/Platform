@@ -1,7 +1,0 @@
-{
-  "srcDir": "Themes/AdminLTE",
-  "assetsDir": "resources/",
-  "cssOutput": "assets/css/",
-  "jsOutput": "assets/js/",
-  "bowerDir": "assets/vendor/"
-}
