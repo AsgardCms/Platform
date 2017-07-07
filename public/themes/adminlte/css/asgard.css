@@ -1,8 +1,10 @@
 ul.notifications-list li {
-  animation-duration: .5s;
+  -webkit-animation-duration: .5s;
+          animation-duration: .5s;
 }
 .notificationsCounter {
-  animation-duration: .5s;
+  -webkit-animation-duration: .5s;
+          animation-duration: .5s;
 }
 .notificationIcon {
   font-size: 30px;
@@ -93,5 +95,3 @@ footer.main-footer p.text-muted {
   margin-right: 5px;
   margin-top: -2px;
 }
-
-/*# sourceMappingURL=asgard.css.map */

@@ -1,0 +1,61 @@
+{
+  "_from": "datatables.net-bs@~1.10.10",
+  "_id": "datatables.net-bs@1.10.15",
+  "_inBundle": false,
+  "_integrity": "sha1-ssImEAfYTKW1q/VsGO3CJ+DaGk0=",
+  "_location": "/datatables.net-bs",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "range",
+    "registry": true,
+    "raw": "datatables.net-bs@~1.10.10",
+    "name": "datatables.net-bs",
+    "escapedName": "datatables.net-bs",
+    "rawSpec": "~1.10.10",
+    "saveSpec": null,
+    "fetchSpec": "~1.10.10"
+  },
+  "_requiredBy": [
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/datatables.net-bs/-/datatables.net-bs-1.10.15.tgz",
+  "_shasum": "b2c2261007d84ca5b5abf56c18edc227e0da1a4d",
+  "_spec": "datatables.net-bs@~1.10.10",
+  "_where": "/home/Platform/Themes/Adminlte",
+  "author": {
+    "name": "SpryMedia Ltd",
+    "url": "http://datatables.net"
+  },
+  "bugs": {
+    "url": "https://datatables.net/forums"
+  },
+  "bundleDependencies": false,
+  "dependencies": {
+    "datatables.net": ">=1.10.9",
+    "jquery": ">=1.7"
+  },
+  "deprecated": false,
+  "description": "DataTables for jQuery with styling for [Bootstrap](http://getbootstrap.com/)",
+  "files": [
+    "js/dataTables.bootstrap.js",
+    "css/dataTables.bootstrap.css"
+  ],
+  "homepage": "https://datatables.net",
+  "keywords": [
+    "filter",
+    "sort",
+    "DataTables",
+    "jQuery",
+    "table",
+    "Bootstrap"
+  ],
+  "license": "MIT",
+  "main": "js/dataTables.bootstrap.js",
+  "name": "datatables.net-bs",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DataTables/Dist-DataTables-Bootstrap.git"
+  },
+  "style": "css/dataTables.bootstrap.css",
+  "version": "1.10.15"
+}
