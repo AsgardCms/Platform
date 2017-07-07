@@ -1,9 +1,30 @@
 {
   "private": true,
-  "devDependencies": {
-    "gulp": "^3.8.8"
+  "scripts": {
+    "dev": "npm run development",
+    "development": "cross-env NODE_ENV=development node_modules/webpack/bin/webpack.js --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
+    "watch": "cross-env NODE_ENV=development node_modules/webpack/bin/webpack.js --watch --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
+    "watch-poll": "npm run watch -- --watch-poll",
+    "hot": "cross-env NODE_ENV=development node_modules/webpack-dev-server/bin/webpack-dev-server.js --inline --hot --config=node_modules/laravel-mix/setup/webpack.config.js",
+    "prod": "npm run production",
+    "production": "cross-env NODE_ENV=production node_modules/webpack/bin/webpack.js --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js"
   },
   "dependencies": {
-    "laravel-elixir": "^3.0.0"
+    "admin-lte": "~2.3",
+    "animate.css": ">=3.4",
+    "bootstrap": "~3.3.4",
+    "clipboard": "~1.5.10",
+    "cross-env": "^5.0.1",
+    "datatables.net": "~1.10.10",
+    "datatables.net-bs": "~1.10.10",
+    "font-awesome": ">=4.6",
+    "gridstack": ">=0.2.2",
+    "laravel-mix": "^1.0",
+    "less": "^2.7.2",
+    "less-loader": "^4.0.4",
+    "simplemde": "~1.9.0",
+    "webpack-shell-plugin": "^0.5.0",
+    "icheck": "^1.0.2",
+    "sisyphus": "0.0.4"
   }
 }
