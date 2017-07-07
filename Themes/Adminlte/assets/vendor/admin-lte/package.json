@@ -1,32 +1,54 @@
 {
-  "_from": "admin-lte@~2.3",
+  "_args": [
+    [
+      {
+        "raw": "admin-lte@~2.3",
+        "scope": null,
+        "escapedName": "admin-lte",
+        "name": "admin-lte",
+        "rawSpec": "~2.3",
+        "spec": ">=2.3.0 <2.4.0",
+        "type": "range"
+      },
+      "/Users/nicolaswidart/Sites/Asguard/Platform/Themes/Adminlte"
+    ]
+  ],
+  "_from": "admin-lte@>=2.3.0 <2.4.0",
   "_id": "admin-lte@2.3.11",
-  "_inBundle": false,
-  "_integrity": "sha1-2lbc001C6e8a82K+FVIKBTqdQ9s=",
+  "_inCache": true,
   "_location": "/admin-lte",
+  "_nodeVersion": "4.5.0",
+  "_npmOperationalInternal": {
+    "host": "packages-12-west.internal.npmjs.com",
+    "tmp": "tmp/admin-lte-2.3.11.tgz_1484144114606_0.4135236705187708"
+  },
+  "_npmUser": {
+    "name": "almasaeed2010",
+    "email": "abdullah@almsaeedstudio.com"
+  },
+  "_npmVersion": "3.10.8",
   "_phantomChildren": {},
   "_requested": {
-    "type": "range",
-    "registry": true,
     "raw": "admin-lte@~2.3",
-    "name": "admin-lte",
+    "scope": null,
     "escapedName": "admin-lte",
+    "name": "admin-lte",
     "rawSpec": "~2.3",
-    "saveSpec": null,
-    "fetchSpec": "~2.3"
+    "spec": ">=2.3.0 <2.4.0",
+    "type": "range"
   },
   "_requiredBy": [
     "/"
   ],
-  "_resolved": "https://registry.npmjs.org/admin-lte/-/admin-lte-2.3.11.tgz",
+  "_resolved": "http://npm.spatie.be/admin-lte/-/admin-lte-2.3.11.tgz",
   "_shasum": "da56dcd34d42e9ef1af362be15520a053a9d43db",
+  "_shrinkwrap": null,
   "_spec": "admin-lte@~2.3",
-  "_where": "/home/Platform/Themes/Adminlte",
+  "_where": "/Users/nicolaswidart/Sites/Asguard/Platform/Themes/Adminlte",
   "bugs": {
     "url": "https://github.com/almasaeed2010/AdminLTE/issues"
   },
-  "bundleDependencies": false,
-  "deprecated": false,
+  "dependencies": {},
   "description": "Introduction ============",
   "devDependencies": {
     "R2": "^1.4.3",
@@ -43,13 +65,28 @@
     "grunt-image": "^1.0.5",
     "grunt-includes": "^0.4.5"
   },
+  "directories": {},
+  "dist": {
+    "shasum": "da56dcd34d42e9ef1af362be15520a053a9d43db",
+    "tarball": "https://npm.spatie.be/admin-lte/-/admin-lte-2.3.11.tgz"
+  },
+  "gitHead": "cdcf40edc0ccfe815e20d4cb3e0e5ffcc9895f0e",
   "homepage": "https://github.com/almasaeed2010/AdminLTE#readme",
   "license": "MIT",
   "main": "dist/js/app.min.js",
+  "maintainers": [
+    {
+      "name": "almasaeed2010",
+      "email": "abdullah@almsaeedstudio.com"
+    }
+  ],
   "name": "admin-lte",
+  "optionalDependencies": {},
+  "readme": "ERROR: No README data found!",
   "repository": {
     "type": "git",
     "url": "git://github.com/almasaeed2010/AdminLTE.git"
   },
+  "scripts": {},
   "version": "2.3.11"
 }
