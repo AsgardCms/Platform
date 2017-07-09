@@ -85,12 +85,9 @@ abstract class Generator
     {
         $folder = $this->config->get('asgard.workshop.config.custom-stubs-folder');
 
-        if ($folder !== null)
-        {
+        if ($folder !== null) {
             $file = base_path($folder . "/" . $filename);
-
-            if ($this->finder->exists($file))
-            {
+            if ($this->finder->exists($file)) {
                 return $file;
             }
         }
