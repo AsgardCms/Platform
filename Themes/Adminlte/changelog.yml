@@ -3,6 +3,7 @@ versions:
     "2.4.0@unreleased":
         changed:
             - Moved to using laravel.mix
+            - Dependencies are now handled by NPM instead of Bower
     "2.0.0":
         added:
             - Manual notifications partial, to remove laracasts/flash
