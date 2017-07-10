@@ -5,6 +5,7 @@ namespace Modules\User\Tests;
 use Illuminate\Support\Facades\Event;
 use Modules\User\Entities\Sentinel\User;
 use Modules\User\Events\UserHasRegistered;
+use Modules\User\Events\UserIsCreating;
 use Modules\User\Events\UserIsUpdating;
 use Modules\User\Events\UserWasCreated;
 use Modules\User\Events\UserWasUpdated;
@@ -42,6 +43,69 @@ class SentinelUserRepositoryTest extends BaseUserTestCase
 
         $this->assertInstanceOf(User::class, $user);
         $this->assertCount(1, $this->user->all());
+    }
+
+    /** @test */
+    public function it_fires_event_when_user_is_creating()
+    {
+        Event::fake();
+
+        $user = $this->user->create([
+            'email' => 'n.widart@gmail.com',
+            'password' => 'demo1234',
+        ]);
+
+        Event::assertDispatched(UserIsCreating::class, function ($e) use ($user) {
+            return $e->getAttributes()['email'] === $user->email;
+        });
+    }
+
+    /** @test */
+    public function it_can_change_data_when_it_is_creating_event()
+    {
+        Event::listen(UserIsCreating::class, function (UserIsCreating $event) {
+            $event->setAttributes(['email' => 'john@doe.com']);
+        });
+
+        $user = $this->user->create([
+            'email' => 'n.widart@gmail.com',
+            'password' => 'demo1234',
+        ]);
+
+        $this->assertEquals('john@doe.com', $user->email);
+    }
+
+    /** @test */
+    public function it_can_change_the_data_multiple_times()
+    {
+        Event::listen(UserIsCreating::class, function (UserIsCreating $event) {
+            $event->setAttributes(['email' => 'john@doe.com']);
+        });
+        Event::listen(UserIsCreating::class, function (UserIsCreating $event) {
+            $event->setAttributes(['email' => 'jane@doe.com']);
+        });
+
+        $user = $this->user->create([
+            'email' => 'n.widart@gmail.com',
+            'password' => 'demo1234',
+        ]);
+
+        $this->assertEquals('jane@doe.com', $user->email);
+    }
+
+    /** @test */
+    public function it_makes_sure_the_event_contains_original_attributes()
+    {
+        Event::fake();
+
+        $this->user->create([
+            'email' => 'n.widart@gmail.com',
+            'password' => 'demo1234',
+        ]);
+
+        Event::assertDispatched(UserIsCreating::class, function ($e) {
+            return $e->original['email'] === 'n.widart@gmail.com';
+        });
     }
 
     /** @test */
