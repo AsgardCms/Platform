@@ -1,5 +1,8 @@
 url: https://github.com/AsgardCms/Platform
 versions:
+    "2.4.0@unreleased":
+        added:
+            - Add the ability to set custom stubs folder used by generated modules
     "2.0.0":
         added:
             - Laravel 5.4 compatibility
