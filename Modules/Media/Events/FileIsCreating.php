@@ -36,7 +36,7 @@ final class FileIsCreating implements EntityIsChanging
      */
     public function setAttributes(array $attributes)
     {
-        $this->attributes = array_merge($this->attributes, $attributes);
+        $this->attributes += $attributes;
     }
 
     /**
