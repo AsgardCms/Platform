@@ -42,7 +42,7 @@ class PageIsUpdating implements EntityIsChanging
      */
     public function setAttributes(array $attributes)
     {
-        $this->attributes = array_merge($this->attributes, $attributes);
+        $this->attributes = array_replace_recursive($this->attributes, $attributes);
     }
 
     /**

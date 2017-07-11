@@ -36,7 +36,7 @@ final class FileIsCreating implements EntityIsChanging
      */
     public function setAttributes(array $attributes)
     {
-        $this->attributes += $attributes;
+        $this->attributes = array_replace_recursive($this->attributes, $attributes);
     }
 
     /**

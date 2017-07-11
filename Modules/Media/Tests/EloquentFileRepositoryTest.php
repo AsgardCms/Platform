@@ -209,6 +209,7 @@ class EloquentFileRepositoryTest extends MediaTestCase
         ]);
 
         $this->assertEquals('bettername.jpg', $file->filename);
+        $this->assertEquals('Hello World', $file->translate('en')->description);
     }
 
     private function createFile($fileName = 'random/name.jpg')
