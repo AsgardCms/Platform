@@ -5,10 +5,15 @@ namespace Modules\User\Events;
 final class UserIsCreating
 {
     /**
+     * Contains the attributes which can be changed by other listeners
      * @var array
      */
     private $attributes;
-    public $original;
+    /**
+     * Contains the original attributes which cannot be changed
+     * @var array
+     */
+    private $original;
 
     public function __construct(array $attributes)
     {
@@ -30,5 +35,13 @@ final class UserIsCreating
     public function setAttributes(array $attributes)
     {
         $this->attributes = array_merge($this->attributes, $attributes);
+    }
+
+    /**
+     * @return array
+     */
+    public function getOriginal()
+    {
+        return $this->original;
     }
 }
