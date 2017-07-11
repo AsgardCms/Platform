@@ -3,6 +3,18 @@
 return [
     /*
     |--------------------------------------------------------------------------
+    | Custom Stubs Folder
+    |--------------------------------------------------------------------------
+    | You can specify place from which you would like to use stubs.
+    | e.g. "Modules/<module-name>/Resources/views/stubs"
+    | Only the customized stubs need to be in this folder.
+    | All other stubs will be loaded from Workshop Module folder.
+    | No custom stubs folder: null
+    */
+    'custom-stubs-folder' => null,
+
+    /*
+    |--------------------------------------------------------------------------
     | Custom Sidebar Class
     |--------------------------------------------------------------------------
     | If you want to customise the admin sidebar ordering or grouping
