@@ -3,6 +3,7 @@ versions:
     "2.5.0@unreleased":
         added:
             - Adding a <code>EntityIsChanging</code> interface to use on events which are triggered before a create / update action
+            - Create an <code>AbstractEntityHook</code> containing base logic for entity hooks
         changed:
             - Adding more core modules (tag, translation and page). Preventing them to be disabled.
     "2.3.0":
