@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Event;
 use Illuminate\Support\Facades\Storage;
 use Mockery;
 use Modules\Media\Entities\File;
+use Modules\Media\Events\FileIsCreating;
 use Modules\Media\Events\FileWasCreated;
 use Modules\Media\Repositories\FileRepository;
 use Symfony\Component\Finder\SplFileInfo;
@@ -126,6 +127,30 @@ class FileRepositoryTest extends MediaTestCase
         Event::assertDispatched(FileWasCreated::class, function ($e) use ($file) {
             return $e->file->id === $file->id;
         });
+    }
+
+    /** @test */
+    public function it_triggers_event_when_file_is_creating()
+    {
+        Event::fake();
+
+        $file = $this->file->createFromFile(\Illuminate\Http\UploadedFile::fake()->image('myfile.jpg'));
+
+        Event::assertDispatched(FileIsCreating::class, function ($e) use ($file) {
+            return $e->getAttributes()['filename'] === $file->filename;
+        });
+    }
+
+    /** @test */
+    public function it_can_change_data_when_it_is_creating_event()
+    {
+        Event::listen(FileIsCreating::class, function (FileIsCreating $event) {
+            $event->setAttributes(['filename' => 'imabettername.jpg']);
+        });
+
+        $file = $this->file->createFromFile(\Illuminate\Http\UploadedFile::fake()->image('myfile.jpg'));
+
+        $this->assertEquals('imabettername.jpg', $file->filename);
     }
 
     private function createFile($fileName = 'random/name.jpg')

@@ -5,6 +5,7 @@ namespace Modules\Media\Repositories\Eloquent;
 use Illuminate\Database\Eloquent\Collection;
 use Modules\Core\Repositories\Eloquent\EloquentBaseRepository;
 use Modules\Media\Entities\File;
+use Modules\Media\Events\FileIsCreating;
 use Modules\Media\Events\FileWasCreated;
 use Modules\Media\Helpers\FileHelper;
 use Modules\Media\Repositories\FileRepository;
@@ -42,15 +43,18 @@ class EloquentFileRepository extends EloquentBaseRepository implements FileRepos
             $fileName = $this->getNewUniqueFilename($fileName);
         }
 
-        $file = $this->model->create([
+        $data = [
             'filename' => $fileName,
             'path' => config('asgard.media.config.files-path') . "{$fileName}",
             'extension' => substr(strrchr($fileName, '.'), 1),
             'mimetype' => $file->getClientMimeType(),
             'filesize' => $file->getFileInfo()->getSize(),
             'folder_id' => 0,
-        ]);
+        ];
 
+        event($event = new FileIsCreating($data));
+
+        $file = $this->model->create($event->getAttributes());
         event(new FileWasCreated($file));
 
         return $file;
