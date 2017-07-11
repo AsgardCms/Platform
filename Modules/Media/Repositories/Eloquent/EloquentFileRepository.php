@@ -7,6 +7,7 @@ use Modules\Core\Repositories\Eloquent\EloquentBaseRepository;
 use Modules\Media\Entities\File;
 use Modules\Media\Events\FileIsCreating;
 use Modules\Media\Events\FileWasCreated;
+use Modules\Media\Events\FileWasUpdated;
 use Modules\Media\Helpers\FileHelper;
 use Modules\Media\Repositories\FileRepository;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
@@ -24,6 +25,8 @@ class EloquentFileRepository extends EloquentBaseRepository implements FileRepos
         $file->update($data);
 
         $file->setTags(array_get($data, 'tags', []));
+
+        event(new FileWasUpdated($file));
 
         return $file;
     }
