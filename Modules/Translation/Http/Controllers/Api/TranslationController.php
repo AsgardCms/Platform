@@ -2,7 +2,6 @@
 
 namespace Modules\Translation\Http\Controllers\Api;
 
-
 use Cartalyst\Sentinel\Laravel\Facades\Sentinel;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Http\Request;

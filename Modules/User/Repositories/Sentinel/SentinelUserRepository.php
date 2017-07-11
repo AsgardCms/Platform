@@ -7,6 +7,7 @@ use Cartalyst\Sentinel\Laravel\Facades\Sentinel;
 use Illuminate\Support\Facades\Hash;
 use Modules\User\Entities\Sentinel\User;
 use Modules\User\Events\UserHasRegistered;
+use Modules\User\Events\UserIsCreating;
 use Modules\User\Events\UserIsUpdating;
 use Modules\User\Events\UserWasCreated;
 use Modules\User\Events\UserWasUpdated;
@@ -48,7 +49,9 @@ class SentinelUserRepository implements UserRepository
     public function create(array $data, $activated = false)
     {
         $this->hashPassword($data);
-        $user = $this->user->create((array) $data);
+
+        event($event = new UserIsCreating($data));
+        $user = $this->user->create($event->getAttributes());
 
         if ($activated) {
             $this->activateUser($user);

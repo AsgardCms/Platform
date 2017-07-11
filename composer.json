@@ -8,7 +8,7 @@
         "laravel",
         "laravel5"
     ],
-    "version": "2.3.0",
+    "version": "2.4.0",
     "license": "MIT",
     "type": "project",
     "require": {

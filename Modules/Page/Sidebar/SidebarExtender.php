@@ -2,11 +2,9 @@
 
 namespace Modules\Page\Sidebar;
 
-use Maatwebsite\Sidebar\Badge;
 use Maatwebsite\Sidebar\Group;
 use Maatwebsite\Sidebar\Item;
 use Maatwebsite\Sidebar\Menu;
-use Modules\Page\Repositories\PageRepository;
 use Modules\User\Contracts\Authentication;
 
 class SidebarExtender implements \Maatwebsite\Sidebar\SidebarExtender

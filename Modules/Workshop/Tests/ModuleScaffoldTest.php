@@ -488,6 +488,21 @@ class ModuleScaffoldTest extends BaseTestCase
         $this->cleanUp();
     }
 
+    /** @test */
+    public function it_can_overwrite_stub_files_with_custom_ones()
+    {
+        config()->set('asgard.workshop.config.custom-stubs-folder', __DIR__ . '/stubs');
+
+        $this->scaffoldModuleWithEloquent();
+
+        $path = $this->testModulePath . '/Http/backendRoutes.php';
+        $file = $this->finder->get($path);
+        $this->assertTrue($this->finder->isFile($path));
+        $this->assertContains('overwritten by custom config', $file);
+
+        $this->cleanUp();
+    }
+
     /**
      * Get the contents of composer.json file
      * @return string

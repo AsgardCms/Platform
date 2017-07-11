@@ -1,0 +1,9 @@
+<?php
+
+use Illuminate\Routing\Router;
+/** @var Router $router */
+// overwritten by custom config
+
+$router->group(['prefix' =>'/$LOWERCASE_MODULE$'], function (Router $router) {
+// append
+});

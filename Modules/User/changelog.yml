@@ -1,6 +1,8 @@
 url: https://github.com/AsgardCms/Platform
 versions:
-    "2.4.0@unreleased":
+    "2.4.0":
+        added:
+            - Trigger an event (<code>UserIsCreating</code>) before a user is created, allowing customising its data via listeners
         changed:
             - Testing password hashing
             - Moved the <code>CanFindUserWithBearerToken</code> to the <code>Trait</code> namespace

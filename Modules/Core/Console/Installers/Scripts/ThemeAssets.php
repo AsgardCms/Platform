@@ -5,7 +5,7 @@ namespace Modules\Core\Console\Installers\Scripts;
 use Illuminate\Console\Command;
 use Modules\Core\Console\Installers\SetupScript;
 
-class ThemeAssets implements  SetupScript
+class ThemeAssets implements SetupScript
 {
     /**
      * Fire the install script
