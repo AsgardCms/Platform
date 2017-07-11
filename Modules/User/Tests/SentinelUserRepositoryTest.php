@@ -104,7 +104,7 @@ class SentinelUserRepositoryTest extends BaseUserTestCase
         ]);
 
         Event::assertDispatched(UserIsCreating::class, function ($e) {
-            return $e->original['email'] === 'n.widart@gmail.com';
+            return $e->getOriginal()['email'] === 'n.widart@gmail.com';
         });
     }
 
@@ -237,8 +237,43 @@ class SentinelUserRepositoryTest extends BaseUserTestCase
             return $e->user->id === $user->id;
         });
         Event::assertDispatched(UserIsUpdating::class, function ($e) use ($user) {
-            return $e->user->id === $user->id;
+            return $e->getUser()->id === $user->id;
         });
+    }
+
+    /** @test */
+    public function it_triggers_event_when_user_is_updating()
+    {
+        $user = $this->user->create([
+            'email' => 'n.widart@gmail.com',
+            'password' => 'demo1234',
+        ]);
+
+        Event::fake();
+
+        $this->user->update($user, ['first_name' => 'John', 'last_name' => 'Doe']);
+
+        Event::assertDispatched(UserIsUpdating::class, function ($e) use ($user) {
+            return $e->getUser()->id === $user->id &&
+                    $e->getAttributes()['first_name'] === 'John';
+        });
+    }
+
+    /** @test */
+    public function it_can_change_properties_before_update()
+    {
+        Event::listen(UserIsUpdating::class, function (UserIsUpdating $event) {
+            $event->setAttributes(['first_name' => 'Jane']);
+        });
+
+        $user = $this->user->create([
+            'email' => 'n.widart@gmail.com',
+            'password' => 'demo1234',
+        ]);
+
+        $this->user->update($user, ['first_name' => 'John', 'last_name' => 'Doe']);
+
+        $this->assertEquals('Jane', $this->user->find(1)->first_name);
     }
 
     /** @test */
@@ -277,8 +312,26 @@ class SentinelUserRepositoryTest extends BaseUserTestCase
             return $e->user->id === $user->id;
         });
         Event::assertDispatched(UserIsUpdating::class, function ($e) use ($user) {
-            return $e->user->id === $user->id;
+            return $e->getUser()->id === $user->id;
         });
+    }
+
+    /** @test */
+    public function it_can_change_properties_before_update_and_sync_roles()
+    {
+        Event::listen(UserIsUpdating::class, function (UserIsUpdating $event) {
+            $event->setAttributes(['first_name' => 'Jane']);
+        });
+
+        $this->createRole('Admin');
+        $user = $this->user->createWithRoles([
+            'email' => 'n.widart@gmail.com',
+            'password' => 'demo1234',
+        ], [1]);
+
+        $this->user->updateAndSyncRoles($user->id, ['first_name' => 'John', 'last_name' => 'Doe', 'activated' => 1], [1]);
+
+        $this->assertEquals('Jane', $this->user->find(1)->first_name);
     }
 
     /** @test */
