@@ -2,9 +2,10 @@
 
 namespace Modules\User\Events;
 
+use Modules\Core\Contracts\EntityIsChanging;
 use Modules\User\Entities\UserInterface;
 
-class UserIsUpdating
+final class UserIsUpdating implements EntityIsChanging
 {
     /**
      * @var UserInterface

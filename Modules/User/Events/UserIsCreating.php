@@ -2,7 +2,9 @@
 
 namespace Modules\User\Events;
 
-final class UserIsCreating
+use Modules\Core\Contracts\EntityIsChanging;
+
+final class UserIsCreating implements EntityIsChanging
 {
     /**
      * Contains the attributes which can be changed by other listeners
