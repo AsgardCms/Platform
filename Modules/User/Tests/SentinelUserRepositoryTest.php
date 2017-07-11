@@ -56,7 +56,7 @@ class SentinelUserRepositoryTest extends BaseUserTestCase
         ]);
 
         Event::assertDispatched(UserIsCreating::class, function ($e) use ($user) {
-            return $e->getAttributes()['email'] === $user->email;
+            return $e->getAttribute('email') === $user->email;
         });
     }
 
@@ -104,7 +104,7 @@ class SentinelUserRepositoryTest extends BaseUserTestCase
         ]);
 
         Event::assertDispatched(UserIsCreating::class, function ($e) {
-            return $e->getOriginal()['email'] === 'n.widart@gmail.com';
+            return $e->getOriginal('email')=== 'n.widart@gmail.com';
         });
     }
 
@@ -255,7 +255,7 @@ class SentinelUserRepositoryTest extends BaseUserTestCase
 
         Event::assertDispatched(UserIsUpdating::class, function ($e) use ($user) {
             return $e->getUser()->id === $user->id &&
-                    $e->getAttributes()['first_name'] === 'John';
+                    $e->getAttribute('first_name') === 'John';
         });
     }
 
