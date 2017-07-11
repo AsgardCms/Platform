@@ -1,6 +1,6 @@
 url: https://github.com/AsgardCms/Platform
 versions:
-    "2.4.0@unreleased":
+    "2.4.0":
         added:
             - new blade directive for thumbnails <code>@thumbnail('path', 'thumbnailName')</code>
         changed:

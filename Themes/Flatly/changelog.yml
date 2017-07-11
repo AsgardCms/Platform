@@ -1,6 +1,6 @@
 url: https://github.com/AsgardCms/Platform
 versions:
-    "2.4.0@unreleased":
+    "2.4.0":
         added:
             - Moved to using laravel.mix
     "2.0.0":

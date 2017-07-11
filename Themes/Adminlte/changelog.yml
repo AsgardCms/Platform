@@ -1,6 +1,6 @@
 url: https://github.com/AsgardCms/Platform
 versions:
-    "2.4.0@unreleased":
+    "2.4.0":
         changed:
             - Moved to using laravel.mix
             - Dependencies are now handled by NPM instead of Bower
