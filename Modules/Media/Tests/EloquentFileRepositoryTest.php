@@ -12,7 +12,7 @@ use Modules\Media\Repositories\FileRepository;
 use Symfony\Component\Finder\SplFileInfo;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 
-class FileRepositoryTest extends MediaTestCase
+class EloquentFileRepositoryTest extends MediaTestCase
 {
     /**
      * @var FileRepository
