@@ -4,8 +4,8 @@ namespace Modules\Core\Console;
 
 use Illuminate\Console\Command;
 use Modules\Core\Downloader\Downloader;
-use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Input\InputArgument;
+use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Process\Process;
 
 class DownloadModuleCommand extends Command
@@ -39,6 +39,7 @@ class DownloadModuleCommand extends Command
             $downloader->download($this->argument('name'));
         } catch (\Exception $e) {
             $this->output->writeln("<error>{$e->getMessage()}</error>");
+
             return;
         }
 
@@ -46,7 +47,7 @@ class DownloadModuleCommand extends Command
 
         $composer = $this->findComposer();
         $commands = [
-            $composer.' dump-autoload',
+            $composer . ' dump-autoload',
         ];
         if ($this->option('migrations') === true || $this->option('demo') === true) {
             $commands[] = "php artisan module:migrate $name";
@@ -100,6 +101,7 @@ class DownloadModuleCommand extends Command
         if (str_contains($package, '/') === false) {
             throw new \Exception('You need to use vendor/name structure');
         }
+
         return studly_case(substr(strrchr($package, '/'), 1));
     }
 
@@ -110,9 +112,10 @@ class DownloadModuleCommand extends Command
      */
     protected function findComposer()
     {
-        if (file_exists(getcwd().'/composer.phar')) {
-            return '"'.PHP_BINARY.'" composer.phar';
+        if (file_exists(getcwd() . '/composer.phar')) {
+            return '"' . PHP_BINARY . '" composer.phar';
         }
+
         return 'composer';
     }
 }

@@ -31,7 +31,7 @@ class MediaSingleDirective
         view()->composer($view, PartialAssetComposer::class);
 
         $zone = $this->zone;
-        
+
         $name = $this->name ?: ucwords(str_replace('_', ' ', $this->zone));
 
         if ($this->entity !== null) {

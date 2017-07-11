@@ -53,6 +53,7 @@ class Downloader
 
         if ($this->finder->isDirectory($directory) === true) {
             $this->output->writeln("<error>The folder [Modules/{$this->extractPackageNameFrom($package)}] already exists.</error>");
+
             return;
         }
 
@@ -99,7 +100,7 @@ class Downloader
         $progress->setFormat('[%bar%] %elapsed:6s%');
 
         $response = (new Client)->get($latestVersionUrl, [
-            'progress' => function($downloadTotal, $downloadedBytes, $uploadTotal, $uploadedBytes) use ($progress) {
+            'progress' => function ($downloadTotal, $downloadedBytes, $uploadTotal, $uploadedBytes) use ($progress) {
                 $progress->advance();
             },
         ]);
@@ -159,6 +160,7 @@ class Downloader
         if (str_contains($package, '/') === false) {
             throw new \Exception('You need to use vendor/name structure');
         }
+
         return studly_case(substr(strrchr($package, '/'), 1));
     }
 

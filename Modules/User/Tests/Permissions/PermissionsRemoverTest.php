@@ -28,7 +28,7 @@ class PermissionsRemoverTest extends BaseUserTestCase
         $this->user->create([
             'email' => 'n.widart@gmail.com',
             'password' => 'demo1234',
-            'permissions' => ['dashboard.index' => true, 'user.users.index' => true, 'user.users.create' => true,]
+            'permissions' => ['dashboard.index' => true, 'user.users.index' => true, 'user.users.create' => true,],
         ]);
         $this->app->config->set('asgard.user.permissions', [
             'user.users' => [

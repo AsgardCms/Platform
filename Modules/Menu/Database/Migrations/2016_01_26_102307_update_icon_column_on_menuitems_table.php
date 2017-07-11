@@ -25,7 +25,7 @@ class UpdateIconColumnOnMenuitemsTable extends Migration
     public function down()
     {
         Schema::table('menu__menuitems', function (Blueprint $table) {
-             $table->string('icon')->default('')->nullable(false)->change();
+            $table->string('icon')->default('')->nullable(false)->change();
         });
     }
 }

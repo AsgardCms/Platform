@@ -5,8 +5,8 @@ namespace Modules\Core\Console;
 use Illuminate\Console\Command;
 use Illuminate\Filesystem\Filesystem;
 use Modules\User\Permissions\PermissionsRemover;
-use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Input\InputArgument;
+use Symfony\Component\Console\Input\InputOption;
 
 class DeleteModuleCommand extends Command
 {
@@ -50,6 +50,7 @@ class DeleteModuleCommand extends Command
         }
         if ($this->confirm("Are you sure you wish to delete the [$module] module{$extra}?") === false) {
             $this->info('Nothing was deleted');
+
             return;
         }
 
@@ -57,11 +58,13 @@ class DeleteModuleCommand extends Command
 
         if ($this->finder->exists($modulePath) === false) {
             $this->error('This module does not exist');
+
             return;
         }
 
         if (is_core_module($module) === true) {
             $this->error('You cannot remove a core module.');
+
             return;
         }
 
