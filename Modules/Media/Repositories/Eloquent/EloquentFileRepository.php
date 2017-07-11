@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Collection;
 use Modules\Core\Repositories\Eloquent\EloquentBaseRepository;
 use Modules\Media\Entities\File;
 use Modules\Media\Events\FileIsCreating;
+use Modules\Media\Events\FileIsUpdating;
 use Modules\Media\Events\FileWasCreated;
 use Modules\Media\Events\FileWasUpdated;
 use Modules\Media\Helpers\FileHelper;
@@ -22,7 +23,8 @@ class EloquentFileRepository extends EloquentBaseRepository implements FileRepos
      */
     public function update($file, $data)
     {
-        $file->update($data);
+        event($event = new FileIsUpdating($file, $data));
+        $file->update($event->getAttributes());
 
         $file->setTags(array_get($data, 'tags', []));
 

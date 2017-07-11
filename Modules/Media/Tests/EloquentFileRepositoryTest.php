@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Event;
 use Mockery;
 use Modules\Media\Entities\File;
 use Modules\Media\Events\FileIsCreating;
+use Modules\Media\Events\FileIsUpdating;
 use Modules\Media\Events\FileWasCreated;
 use Modules\Media\Events\FileWasUpdated;
 use Modules\Media\Repositories\FileRepository;
@@ -164,6 +165,50 @@ class EloquentFileRepositoryTest extends MediaTestCase
         Event::assertDispatched(FileWasUpdated::class, function ($e) use ($file) {
             return $e->file->id === $file->id;
         });
+    }
+
+    /** @test */
+    public function it_triggers_event_when_file_is_updating()
+    {
+        Event::fake();
+
+        $file = $this->file->createFromFile(\Illuminate\Http\UploadedFile::fake()->image('myfile.jpg'));
+        $this->file->update($file, [
+            'en' => [
+                'description' => 'My cool file!',
+                'alt_attribute' => 'My cool file!',
+                'keywords' => 'My cool file!',
+            ]
+        ]);
+
+        Event::assertDispatched(FileIsUpdating::class, function ($e) use ($file) {
+            return $e->getFile()->id === $file->id &&
+                $e->getAttributes()['en']['description'] === 'My cool file!';
+        });
+    }
+
+    /** @test */
+    public function it_can_change_properties_before_update()
+    {
+        Event::listen(FileIsUpdating::class, function (FileIsUpdating $event) {
+            $event->setAttributes([
+                'filename' => 'bettername.jpg',
+                'en' => [
+                    'description' => 'Hello World',
+                ]
+            ]);
+        });
+
+        $file = $this->file->createFromFile(\Illuminate\Http\UploadedFile::fake()->image('myfile.jpg'));
+        $this->file->update($file, [
+            'en' => [
+                'description' => 'My cool file!',
+                'alt_attribute' => 'My cool file!',
+                'keywords' => 'My cool file!',
+            ]
+        ]);
+
+        $this->assertEquals('bettername.jpg', $file->filename);
     }
 
     private function createFile($fileName = 'random/name.jpg')
