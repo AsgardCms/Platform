@@ -5,6 +5,7 @@ namespace Modules\Page\Entities;
 use Dimsav\Translatable\Translatable;
 use Illuminate\Database\Eloquent\Model;
 use Modules\Core\Traits\NamespacedEntity;
+use Modules\Page\Events\ContentIsRendering;
 use Modules\Tag\Contracts\TaggableInterface;
 use Modules\Tag\Traits\TaggableTrait;
 
@@ -46,6 +47,13 @@ class Page extends Model implements TaggableInterface
         'is_home' => 'boolean',
     ];
     protected static $entityNamespace = 'asgardcms/page';
+
+    public function getBodyAttribute($body)
+    {
+        event($event = new ContentIsRendering($body));
+
+        return $event->getBody();
+    }
 
     public function __call($method, $parameters)
     {
