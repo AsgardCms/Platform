@@ -1,5 +1,8 @@
 url: https://github.com/AsgardCms/Platform
 versions:
+    "2.5.0@unreleased":
+        added:
+            - Trigger an event (<code>UserIsUpdating</code>) before a user is updated
     "2.4.0":
         added:
             - Trigger an event (<code>UserIsCreating</code>) before a user is created, allowing customising its data via listeners

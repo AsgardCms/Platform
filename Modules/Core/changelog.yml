@@ -1,5 +1,10 @@
 url: https://github.com/AsgardCms/Platform
 versions:
+    "2.5.0@unreleased":
+        added:
+            - Adding a <code>EntityIsChanging</code> interface to use on events which are triggered before a create / update action
+        changed:
+            - Adding more core modules (tag, translation and page). Preventing them to be disabled.
     "2.3.0":
         added:
             - New command <code>php artisan asgard:download:module asgardcms/contact --migrations --seeds --assets</code>
