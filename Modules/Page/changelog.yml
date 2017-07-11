@@ -1,5 +1,8 @@
 url: https://github.com/AsgardCms/Platform
 versions:
+    "2.5.0@unreleased":
+        added:
+            - Trigger event before a page is created (<code>PageIsCreating</code>) allow data to be changed
     "2.2.0":
         added:
             - Testing event trigger on page deletion
