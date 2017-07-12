@@ -5,7 +5,7 @@ namespace Modules\Tag\Tests\Integration;
 use Modules\Tag\Repositories\TagRepository;
 use Modules\Tag\Tests\BaseTestCase;
 
-class TagRepositoryTest extends BaseTestCase
+class EloquentTagRepositoryTest extends BaseTestCase
 {
     /**
      * @var TagRepository
