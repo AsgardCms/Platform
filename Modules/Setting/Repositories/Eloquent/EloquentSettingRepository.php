@@ -5,6 +5,8 @@ namespace Modules\Setting\Repositories\Eloquent;
 use Illuminate\Support\Facades\Config;
 use Modules\Core\Repositories\Eloquent\EloquentBaseRepository;
 use Modules\Setting\Entities\Setting;
+use Modules\Setting\Events\SettingIsCreating;
+use Modules\Setting\Events\SettingIsUpdating;
 use Modules\Setting\Events\SettingWasCreated;
 use Modules\Setting\Events\SettingWasUpdated;
 use Modules\Setting\Repositories\SettingRepository;
@@ -82,15 +84,17 @@ class EloquentSettingRepository extends EloquentBaseRepository implements Settin
      */
     private function createForName($settingName, $settingValues)
     {
+        event($event = new SettingIsCreating($settingName, $settingValues));
+
         $setting = new $this->model();
         $setting->name = $settingName;
 
         if ($this->isTranslatableSetting($settingName)) {
             $setting->isTranslatable = true;
-            $this->setTranslatedAttributes($settingValues, $setting);
+            $this->setTranslatedAttributes($event->getSettingValues(), $setting);
         } else {
             $setting->isTranslatable = false;
-            $setting->plainValue = $this->getSettingPlainValue($settingValues);
+            $setting->plainValue = $this->getSettingPlainValue($event->getSettingValues());
         }
 
         $setting->save();
@@ -108,11 +112,12 @@ class EloquentSettingRepository extends EloquentBaseRepository implements Settin
     private function updateSetting($setting, $settingValues)
     {
         $name = $setting->name;
+        event($event = new SettingIsUpdating($setting, $name, $settingValues));
 
         if ($this->isTranslatableSetting($name)) {
-            $this->setTranslatedAttributes($settingValues, $setting);
+            $this->setTranslatedAttributes($event->getSettingValues(), $setting);
         } else {
-            $setting->plainValue = $this->getSettingPlainValue($settingValues);
+            $setting->plainValue = $this->getSettingPlainValue($event->getSettingValues());
         }
         $setting->save();
 

@@ -1,5 +1,11 @@
 url: https://github.com/AsgardCms/Platform
 versions:
+    "2.5.0@unreleased":
+        changed:
+            - Normalise the setting was created event
+            - Normalise the setting was updated event
+            - Trigger <code>SettingIsCreating</code> hook
+            - Trigger <code>SettingIsUpdating</code> hook
     "2.0.0":
         added:
             - Laravel 5.2 compatibility
