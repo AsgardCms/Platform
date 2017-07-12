@@ -32,6 +32,18 @@ return [
     */
     'skin' => 'skin-blue',
 
+   /*
+   |--------------------------------------------------------------------------
+   | WYSIWYG Backend Editor
+   |--------------------------------------------------------------------------
+   | Define which editor you would like to use for the backend wysiwygs.
+   | These classes are event handlers, listening to EditorIsRendering
+   | you can define your own handlers and use them here
+   | Options:
+   | - \Modules\Core\Events\Handlers\LoadCkEditor::class
+   | - \Modules\Core\Events\Handlers\LoadSimpleMde::class
+   */
+   'wysiwyg-handler' => \Modules\Core\Events\Handlers\LoadCkEditor::class,
     /*
     |--------------------------------------------------------------------------
     | Custom CKeditor configuration file
