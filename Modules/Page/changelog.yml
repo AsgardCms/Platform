@@ -4,6 +4,9 @@ versions:
         added:
             - Trigger event before a page is created (<code>PageIsCreating</code>) allow data to be changed
             - Trigger event before a page is updated (<code>PageIsUpdating</code>) allow data to be changed
+        changed:
+            - Requiring the editor assets via hook
+            - Making editor textarea dynamic
     "2.2.0":
         added:
             - Testing event trigger on page deletion
