@@ -4,6 +4,9 @@ versions:
         added:
             - Adding a <code>EntityIsChanging</code> interface to use on events which are triggered before a create / update action
             - Create an <code>AbstractEntityHook</code> containing base logic for entity hooks
+            - Trigger the <code>EditorIsRendering</code> event on assets view composer and send editor variable to view
+            - New configuration value <code>wysiwyg-handler</code> in <code>config/asgard/core/core.php</code> to change the editor in backend
+            - New handler <code>RenderMarkdown</code> if you want to render markdown on a <code>ContentIsRendering</code> event
         changed:
             - Adding more core modules (tag, translation and page). Preventing them to be disabled.
     "2.3.0":
