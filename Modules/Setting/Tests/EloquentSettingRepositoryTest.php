@@ -2,6 +2,9 @@
 
 namespace Modules\Setting\Tests;
 
+use Illuminate\Support\Facades\Event;
+use Modules\Setting\Events\SettingWasCreated;
+
 class EloquentSettingRepositoryTest extends BaseSettingTest
 {
     public function setUp()
@@ -110,5 +113,24 @@ class EloquentSettingRepositoryTest extends BaseSettingTest
         $setting = $this->settingRepository->find(1);
         $this->assertEquals('core::locales', $setting->name);
         $this->assertEquals('["su","bi","bs"]', $setting->plainValue);
+    }
+
+    /** @test */
+    public function it_triggers_event_when_setting_was_created()
+    {
+        Event::fake();
+
+        $data = [
+            'core::template' => 'asgard',
+            'core::site-name' => [
+                'en' => 'AsgardCMS_en',
+                'fr' => 'AsgardCMS_fr',
+            ],
+        ];
+        $this->settingRepository->createOrUpdate($data);
+
+        Event::assertDispatched(SettingWasCreated::class, function ($e) {
+            return $e->setting->name === 'core::template';
+        });
     }
 }

@@ -4,6 +4,7 @@ namespace Modules\Setting\Repositories\Eloquent;
 
 use Illuminate\Support\Facades\Config;
 use Modules\Core\Repositories\Eloquent\EloquentBaseRepository;
+use Modules\Setting\Entities\Setting;
 use Modules\Setting\Events\SettingWasCreated;
 use Modules\Setting\Events\SettingWasUpdated;
 use Modules\Setting\Repositories\SettingRepository;
@@ -77,6 +78,7 @@ class EloquentSettingRepository extends EloquentBaseRepository implements Settin
      * Create a setting with the given name
      * @param string $settingName
      * @param $settingValues
+     * @return Setting
      */
     private function createForName($settingName, $settingValues)
     {
@@ -86,14 +88,16 @@ class EloquentSettingRepository extends EloquentBaseRepository implements Settin
         if ($this->isTranslatableSetting($settingName)) {
             $setting->isTranslatable = true;
             $this->setTranslatedAttributes($settingValues, $setting);
-            event(new SettingWasCreated($settingName, true, $settingValues));
         } else {
             $setting->isTranslatable = false;
             $setting->plainValue = $this->getSettingPlainValue($settingValues);
-            event(new SettingWasCreated($settingName, false, $settingValues));
         }
 
-        return $setting->save();
+        $setting->save();
+
+        event(new SettingWasCreated($setting));
+
+        return $setting;
     }
 
     /**
