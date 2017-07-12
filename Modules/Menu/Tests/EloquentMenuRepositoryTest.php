@@ -7,7 +7,6 @@ use Modules\Menu\Events\MenuIsCreating;
 use Modules\Menu\Events\MenuIsUpdating;
 use Modules\Menu\Events\MenuWasCreated;
 use Modules\Menu\Events\MenuWasUpdated;
-use Modules\Setting\Repositories\SettingRepository;
 
 class EloquentMenuRepositoryTest extends BaseMenuTest
 {
@@ -98,9 +97,6 @@ class EloquentMenuRepositoryTest extends BaseMenuTest
     /** @test */
     public function it_should_create_root_item_when_creating_new_menu()
     {
-        app(SettingRepository::class)->createOrUpdate([
-            'core::locales' => ['en', 'fr',]
-        ]);
         $menu = $this->createMenu('main', 'Main Menu');
 
         $items = $this->menuItem->allRootsForMenu($menu->id);
