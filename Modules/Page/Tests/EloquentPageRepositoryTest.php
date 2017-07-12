@@ -9,7 +9,7 @@ use Modules\Page\Events\PageWasCreated;
 use Modules\Page\Events\PageWasDeleted;
 use Modules\Page\Events\PageWasUpdated;
 
-class PagesTest extends BasePageTest
+class EloquentPageRepositoryTest extends BasePageTest
 {
     /** @test */
     public function it_makes_page_as_homepage()
