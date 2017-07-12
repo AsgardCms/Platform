@@ -111,14 +111,14 @@ class EloquentSettingRepository extends EloquentBaseRepository implements Settin
 
         if ($this->isTranslatableSetting($name)) {
             $this->setTranslatedAttributes($settingValues, $setting);
-            event(new SettingWasUpdated($name, true, $settingValues));
         } else {
-            $oldValues = $setting->plainValue;
             $setting->plainValue = $this->getSettingPlainValue($settingValues);
-            event(new SettingWasUpdated($name, false, $settingValues, $oldValues));
         }
+        $setting->save();
 
-        return $setting->save();
+        event(new SettingWasUpdated($setting));
+
+        return $setting;
     }
 
     /**

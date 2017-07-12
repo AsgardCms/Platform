@@ -4,6 +4,7 @@ namespace Modules\Setting\Tests;
 
 use Illuminate\Support\Facades\Event;
 use Modules\Setting\Events\SettingWasCreated;
+use Modules\Setting\Events\SettingWasUpdated;
 
 class EloquentSettingRepositoryTest extends BaseSettingTest
 {
@@ -130,6 +131,26 @@ class EloquentSettingRepositoryTest extends BaseSettingTest
         $this->settingRepository->createOrUpdate($data);
 
         Event::assertDispatched(SettingWasCreated::class, function ($e) {
+            return $e->setting->name === 'core::template';
+        });
+    }
+
+    /** @test */
+    public function it_triggers_event_when_setting_was_update()
+    {
+        Event::fake();
+
+        $data = [
+            'core::template' => 'asgard',
+            'core::site-name' => [
+                'en' => 'AsgardCMS_en',
+                'fr' => 'AsgardCMS_fr',
+            ],
+        ];
+        $this->settingRepository->createOrUpdate($data);
+        $this->settingRepository->createOrUpdate(['core::template' => 'flatly']);
+
+        Event::assertDispatched(SettingWasUpdated::class, function ($e) {
             return $e->setting->name === 'core::template';
         });
     }
