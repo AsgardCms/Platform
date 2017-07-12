@@ -2,7 +2,7 @@
 
 namespace Modules\Menu\Tests;
 
-class MenuRepositoryTest extends BaseMenuTest
+class EloquentMenuRepositoryTest extends BaseMenuTest
 {
     /** @test */
     public function it_creates_menu()
