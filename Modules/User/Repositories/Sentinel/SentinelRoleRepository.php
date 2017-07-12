@@ -3,6 +3,9 @@
 namespace Modules\User\Repositories\Sentinel;
 
 use Cartalyst\Sentinel\Laravel\Facades\Sentinel;
+use Modules\User\Events\RoleIsCreating;
+use Modules\User\Events\RoleIsUpdating;
+use Modules\User\Events\RoleWasCreated;
 use Modules\User\Events\RoleWasUpdated;
 use Modules\User\Repositories\RoleRepository;
 
@@ -33,7 +36,12 @@ class SentinelRoleRepository implements RoleRepository
      */
     public function create($data)
     {
-        return $this->role->create($data);
+        event($event = new RoleIsCreating($data));
+        $role = $this->role->create($event->getAttributes());
+
+        event(new RoleWasCreated($role));
+
+        return $role;
     }
 
     /**
@@ -56,8 +64,9 @@ class SentinelRoleRepository implements RoleRepository
     {
         $role = $this->role->find($id);
 
-        $role->fill($data);
+        event($event = new RoleIsUpdating($role, $data));
 
+        $role->fill($event->getAttributes());
         $role->save();
 
         event(new RoleWasUpdated($role));
