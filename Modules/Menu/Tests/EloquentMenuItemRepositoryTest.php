@@ -53,8 +53,8 @@ class EloquentMenuItemRepositoryTest extends BaseMenuTest
         $secondaryItem2 = $this->createMenuItemForMenu($menu2->id, 1);
         $secondaryItem3 = $this->createMenuItemForMenu($menu2->id, 3);
 
-        $this->assertEquals(6, $this->menuItem->all()->count());
+        $this->assertEquals(8, $this->menuItem->all()->count());
         $this->menuItem->destroy($item2);
-        $this->assertEquals(5, $this->menuItem->all()->count());
+        $this->assertEquals(7, $this->menuItem->all()->count());
     }
 }
