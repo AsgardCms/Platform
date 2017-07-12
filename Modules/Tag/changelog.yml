@@ -1,5 +1,10 @@
 url: https://github.com/AsgardCms/Platform
 versions:
+    "2.5.0":
+        added:
+            - Create and trigger events when tags are created and updated
+            - Trigger event before a tag is created (<code>TagIsCreating</code>) allow data to be changed
+            - Trigger event before a tag is updated (<code>TagIsUpdating</code>) allow data to be changed
     "2.1.0":
         changed:
             - Fixed tags not being removed probably on update & delete

@@ -3,6 +3,8 @@
 namespace Modules\Tag\Repositories\Eloquent;
 
 use Modules\Core\Repositories\Eloquent\EloquentBaseRepository;
+use Modules\Tag\Events\TagIsCreating;
+use Modules\Tag\Events\TagIsUpdating;
 use Modules\Tag\Events\TagWasCreated;
 use Modules\Tag\Events\TagWasUpdated;
 use Modules\Tag\Repositories\TagRepository;
@@ -21,7 +23,8 @@ class EloquentTagRepository extends EloquentBaseRepository implements TagReposit
 
     public function create($data)
     {
-        $tag = $this->model->create($data);
+        event($event = new TagIsCreating($data));
+        $tag = $this->model->create($event->getAttributes());
 
         event(new TagWasCreated($tag));
 
@@ -30,7 +33,8 @@ class EloquentTagRepository extends EloquentBaseRepository implements TagReposit
 
     public function update($tag, $data)
     {
-        $tag->update($data);
+        event($event = new TagIsUpdating($tag, $data));
+        $tag->update($event->getAttributes());
 
         event(new TagWasUpdated($tag));
 
