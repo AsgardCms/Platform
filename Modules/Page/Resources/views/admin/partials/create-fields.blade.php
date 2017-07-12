@@ -12,7 +12,7 @@
         </div>
         <div class='{{ $errors->has("{$lang}.body") ? ' has-error' : '' }}'>
             {!! Form::label("{$lang}[body]", trans('page::pages.form.body')) !!}
-            <textarea class="ckeditor" name="{{$lang}}[body]" rows="10" cols="80">{{ old("{$lang}.body") }}</textarea>
+            <textarea class="{{ $editor->getEditorClass() }}" name="{{$lang}}[body]" rows="10" cols="80">{{ old("{$lang}.body") }}</textarea>
             {!! $errors->first("{$lang}.body", '<span class="help-block">:message</span>') !!}
         </div>
         <?php if (config('asgard.page.config.partials.translatable.create') !== []): ?>

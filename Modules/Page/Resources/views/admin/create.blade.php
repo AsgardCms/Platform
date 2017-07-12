@@ -102,3 +102,7 @@
         });
     </script>
 @stop
+
+@if ($editor->getEditorJsPartial() !== null)
+    @include($editor->getEditorJsPartial())
+@endif
