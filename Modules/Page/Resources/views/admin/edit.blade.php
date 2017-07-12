@@ -19,6 +19,10 @@
     </style>
 @stop
 
+@if ($editor->getEditorCssPartial() !== null)
+    @include($editor->getEditorCssPartial())
+@endif
+
 @section('content')
     {!! Form::open(['route' => ['admin.page.page.update', $page->id], 'method' => 'put']) !!}
     <div class="row">

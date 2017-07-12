@@ -12,6 +12,7 @@ class EditorIsRendering
     private $assetPipeline;
     private $editorClass;
     private $editorJsPartial;
+    private $editorCssPartial;
 
     public function __construct(AssetPipeline $assetPipeline)
     {
@@ -62,5 +63,21 @@ class EditorIsRendering
     public function setEditorJsPartial($editorJsPartial)
     {
         $this->editorJsPartial = $editorJsPartial;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getEditorCssPartial()
+    {
+        return $this->editorCssPartial;
+    }
+
+    /**
+     * @param mixed $editorCssPartial
+     */
+    public function setEditorCssPartial($editorCssPartial)
+    {
+        $this->editorCssPartial = $editorCssPartial;
     }
 }
