@@ -9,7 +9,7 @@ use Modules\Translation\Providers\TranslationServiceProvider;
 use Nwidart\Modules\LaravelModulesServiceProvider;
 use Orchestra\Testbench\TestCase;
 
-class BaseTranslationTest extends TestCase
+abstract class BaseTranslationTest extends TestCase
 {
     public function setUp()
     {
