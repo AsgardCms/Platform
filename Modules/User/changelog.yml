@@ -3,6 +3,8 @@ versions:
     "2.5.0@unreleased":
         added:
             - Trigger an event (<code>UserIsUpdating</code>) before a user is updated
+            - Trigger an event (<code>RoleIsCreating</code>) before a role is created
+            - Trigger an event (<code>RoleIsUpdating</code>) before a role is updated
     "2.4.0":
         added:
             - Trigger an event (<code>UserIsCreating</code>) before a user is created, allowing customising its data via listeners
