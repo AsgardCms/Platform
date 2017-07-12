@@ -12,6 +12,7 @@ use Modules\Core\Console\DownloadModuleCommand;
 use Modules\Core\Console\InstallCommand;
 use Modules\Core\Console\PublishModuleAssetsCommand;
 use Modules\Core\Console\PublishThemeAssetsCommand;
+use Modules\Core\Events\EditorIsRendering;
 use Modules\Core\Foundation\Theme\ThemeManager;
 use Modules\Core\Traits\CanPublishConfiguration;
 use Nwidart\Modules\Module;
@@ -53,6 +54,7 @@ class CoreServiceProvider extends ServiceProvider
         $this->registerModuleResourceNamespaces();
 
         $this->bladeDirectives();
+        $this->app['events']->listen(EditorIsRendering::class, config('asgard.core.core.wysiwyg-handler'));
     }
 
     /**
