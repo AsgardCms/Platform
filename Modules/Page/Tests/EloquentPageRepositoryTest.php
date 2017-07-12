@@ -103,7 +103,7 @@ class EloquentPageRepositoryTest extends BasePageTest
         $page = $this->createPage();
 
         Event::assertDispatched(PageIsCreating::class, function ($e) use ($page) {
-            return $e->getAttributes()['template'] === $page->template;
+            return $e->getAttribute('template') === $page->template;
         });
     }
 

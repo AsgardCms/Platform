@@ -138,7 +138,7 @@ class EloquentFileRepositoryTest extends MediaTestCase
         $file = $this->file->createFromFile(\Illuminate\Http\UploadedFile::fake()->image('myfile.jpg'));
 
         Event::assertDispatched(FileIsCreating::class, function ($e) use ($file) {
-            return $e->getAttributes()['filename'] === $file->filename;
+            return $e->getAttribute('filename') === $file->filename;
         });
     }
 
@@ -183,7 +183,7 @@ class EloquentFileRepositoryTest extends MediaTestCase
 
         Event::assertDispatched(FileIsUpdating::class, function ($e) use ($file) {
             return $e->getFile()->id === $file->id &&
-                $e->getAttributes()['en']['description'] === 'My cool file!';
+                $e->getAttribute('en.description') === 'My cool file!';
         });
     }
 
