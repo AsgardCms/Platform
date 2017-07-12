@@ -7,4 +7,4 @@ view()->composer('core::fields.select-theme', \Modules\Core\Composers\ThemeCompo
 view()->composer('core::fields.select-locales', \Modules\Core\Composers\SettingLocalesComposer::class);
 view()->composer('*', \Modules\Core\Composers\LocaleComposer::class);
 view()->composer('*', \Modules\Core\Composers\CurrentUserViewComposer::class);
-view()->composer('layouts.master', \Modules\Core\Composers\AssetsViewComposer::class);
+view()->composer('*', \Modules\Core\Composers\AssetsViewComposer::class);
