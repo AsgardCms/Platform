@@ -38,7 +38,8 @@
         "symfony/dom-crawler": "3.1.*",
         "barryvdh/laravel-debugbar": "~2.3",
         "orchestra/testbench": "^3.4",
-        "league/flysystem-aws-s3-v3": "^1.0"
+        "league/flysystem-aws-s3-v3": "^1.0",
+        "league/commonmark": "^0.15.4"
     },
     "autoload": {
         "classmap": [
