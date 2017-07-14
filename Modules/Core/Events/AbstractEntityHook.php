@@ -1,6 +1,6 @@
 <?php
 
-namespace Modules\Core\Abstracts;
+namespace Modules\Core\Events;
 
 abstract class AbstractEntityHook
 {
