@@ -10,9 +10,8 @@
             {!! Form::text("{$lang}[slug]", old("{$lang}.slug"), ['class' => 'form-control slug', 'data-slug' => 'target', 'placeholder' => trans('page::pages.form.slug')]) !!}
             {!! $errors->first("{$lang}.slug", '<span class="help-block">:message</span>') !!}
         </div>
-        @component($editor->getI18nComponentName(), compact('lang'))
-            {{ old("{$lang}.body") }}
-        @endcomponent
+
+        @editor('body', trans('page::pages.form.body'), old("{$lang}.body"), $lang)
 
         <?php if (config('asgard.page.config.partials.translatable.create') !== []): ?>
             <?php foreach (config('asgard.page.config.partials.translatable.create') as $partial): ?>

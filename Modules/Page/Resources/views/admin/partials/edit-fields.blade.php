@@ -13,10 +13,7 @@
             {!! $errors->first("{$lang}.slug", '<span class="help-block">:message</span>') !!}
         </div>
 
-        @component($editor->getI18nComponentName(), compact('lang'))
-            <?php $old = $page->hasTranslation($lang) ? $page->translate($lang)->body : '' ?>
-            {!! old("$lang.body", $old) !!}
-        @endcomponent
+        @editor('body', trans('page::pages.form.body'), old("$lang.body", $old), $lang)
 
         <?php if (config('asgard.page.config.partials.translatable.edit') !== []): ?>
             <?php foreach (config('asgard.page.config.partials.translatable.edit') as $partial): ?>
