@@ -95,12 +95,12 @@ class EditorIsRendering
         $this->editorComponents['i18n'] = $componentName;
     }
 
-    public function getNormalComponentName()
+    public function getComponentName()
     {
         return $this->editorComponents['normal'];
     }
 
-    public function setNormalComponentName($componentName)
+    public function setComponentName($componentName)
     {
         $this->editorComponents['normal'] = $componentName;
     }
