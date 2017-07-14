@@ -33,3 +33,10 @@ if (! function_exists('is_core_module')) {
         return in_array(strtolower($module), app('asgard.ModulesList'));
     }
 }
+
+if (! function_exists('asgard_i18n_editor')) {
+    function asgard_i18n_editor($fieldName, $labelName, $content, $lang)
+    {
+        return view('core::components.i18n.textarea-wrapper', compact('fieldName','labelName', 'content', 'lang'));
+    }
+}
