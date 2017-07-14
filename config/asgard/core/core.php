@@ -96,6 +96,7 @@ return [
         'selectize-default.css' => ['module' => 'core:vendor/selectize/dist/css/selectize.default.css'],
         'animate.css' => ['theme' => 'vendor/animate.css/animate.min.css'],
         'pace.css' => ['theme' => 'vendor/admin-lte/plugins/pace/pace.min.css'],
+        'simplemde.css' => ['theme' => 'vendor/simplemde/dist/simplemde.min.css'],
         // Javascript
         'bootstrap.js' => ['theme' => 'vendor/bootstrap/dist/js/bootstrap.min.js'],
         'mousetrap.js' => ['theme' => 'js/vendor/mousetrap.min.js'],
@@ -122,6 +123,7 @@ return [
         'pace.js' => ['theme' => 'vendor/admin-lte/plugins/pace/pace.min.js'],
         'moment.js' => ['theme' => 'vendor/admin-lte/plugins/daterangepicker/moment.min.js'],
         'clipboard.js' => ['theme' => 'vendor/clipboard/dist/clipboard.min.js'],
+        'simplemde.js' => ['theme' => 'vendor/simplemde/dist/simplemde.min.js'],
     ],
 
     /*
