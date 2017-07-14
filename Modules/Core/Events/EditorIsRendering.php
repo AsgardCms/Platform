@@ -13,6 +13,10 @@ class EditorIsRendering
     private $editorClass;
     private $editorJsPartial;
     private $editorCssPartial;
+    private $editorComponents = [
+        'i18n' => 'core::components.i18n.textarea',
+        'normal' => 'core::components.textarea',
+    ];
 
     public function __construct(AssetPipeline $assetPipeline)
     {
@@ -79,5 +83,25 @@ class EditorIsRendering
     public function setEditorCssPartial($editorCssPartial)
     {
         $this->editorCssPartial = $editorCssPartial;
+    }
+
+    public function getI18nComponentName()
+    {
+        return $this->editorComponents['i18n'];
+    }
+
+    public function setI18nComponentName($componentName)
+    {
+        $this->editorComponents['i18n'] = $componentName;
+    }
+
+    public function getNormalComponentName()
+    {
+        return $this->editorComponents['normal'];
+    }
+
+    public function setNormalComponentName($componentName)
+    {
+        $this->editorComponents['normal'] = $componentName;
     }
 }
