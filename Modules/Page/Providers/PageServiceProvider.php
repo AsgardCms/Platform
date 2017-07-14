@@ -4,6 +4,7 @@ namespace Modules\Page\Providers;
 
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\ServiceProvider;
+use Modules\Core\Events\CollectingAssets;
 use Modules\Core\Traits\CanPublishConfiguration;
 use Modules\Page\Entities\Page;
 use Modules\Page\Repositories\Cache\CachePageDecorator;
@@ -38,6 +39,8 @@ class PageServiceProvider extends ServiceProvider
 
         $this->app[TagManager::class]->registerNamespace(new Page());
         $this->loadMigrationsFrom(__DIR__ . '/../Database/Migrations');
+
+        $this->handleAssets();
     }
 
     /**
@@ -68,5 +71,18 @@ class PageServiceProvider extends ServiceProvider
                 return new CachePageDecorator($repository);
             }
         );
+    }
+
+    /**
+     * Require iCheck on edit and create pages
+     */
+    private function handleAssets()
+    {
+        $this->app['events']->listen(CollectingAssets::class, function (CollectingAssets $event) {
+            if ($event->onRoutes(['*page*create', '*page*edit'])) {
+                $event->requireCss('icheck.blue.css');
+                $event->requireJs('icheck.js');
+            }
+        });
     }
 }

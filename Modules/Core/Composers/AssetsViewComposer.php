@@ -4,6 +4,7 @@ namespace Modules\Core\Composers;
 
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
+use Modules\Core\Events\CollectingAssets;
 use Modules\Core\Events\EditorIsRendering;
 use Modules\Core\Foundation\Asset\Manager\AssetManager;
 use Modules\Core\Foundation\Asset\Pipeline\AssetPipeline;
@@ -50,6 +51,7 @@ class AssetsViewComposer
         $this->assetPipeline->requireJs(config('asgard.core.core.admin-required-assets.js'));
 
         event($editor = new EditorIsRendering($this->assetPipeline));
+        event(new CollectingAssets($this->assetPipeline));
 
         $view->with('cssFiles', $this->assetPipeline->allCss());
         $view->with('jsFiles', $this->assetPipeline->allJs());
