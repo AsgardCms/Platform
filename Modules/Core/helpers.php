@@ -40,3 +40,11 @@ if (! function_exists('asgard_i18n_editor')) {
         return view('core::components.i18n.textarea-wrapper', compact('fieldName','labelName', 'content', 'lang'));
     }
 }
+
+
+if (! function_exists('asgard_editor')) {
+    function asgard_editor($fieldName, $labelName, $content)
+    {
+        return view('core::components.textarea-wrapper', compact('fieldName','labelName', 'content'));
+    }
+}
