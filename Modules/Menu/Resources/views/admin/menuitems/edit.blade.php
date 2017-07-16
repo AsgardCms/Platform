@@ -11,9 +11,6 @@
 </ol>
 @stop
 
-@section('styles')
-@stop
-
 @section('content')
 {!! Form::open(['route' => ['dashboard.menuitem.update', $menu->id, $menuItem->id], 'method' => 'put']) !!}
 <div class="row">

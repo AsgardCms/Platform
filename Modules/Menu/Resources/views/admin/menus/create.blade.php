@@ -11,9 +11,6 @@
 </ol>
 @stop
 
-@section('styles')
-@stop
-
 @section('content')
 {!! Form::open(['route' => ['admin.menu.menu.store'], 'method' => 'post']) !!}
 <div class="row">

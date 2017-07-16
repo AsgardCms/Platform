@@ -12,13 +12,13 @@
     <div class="clearfix"></div>
 @stop
 
-@section('styles')
+@push('css-stack')
     <style>
         .grid-stack-item {
             padding-right: 20px !important;
         }
     </style>
-@stop
+@endpush
 
 @section('content')
 

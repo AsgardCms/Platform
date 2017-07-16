@@ -11,13 +11,13 @@
     </ol>
 @stop
 
-@section('styles')
+@push('css-stack')
     <style>
         .checkbox label {
             padding-left: 0;
         }
     </style>
-@stop
+@endpush
 
 @section('content')
     {!! Form::open(['route' => ['admin.page.page.update', $page->id], 'method' => 'put']) !!}

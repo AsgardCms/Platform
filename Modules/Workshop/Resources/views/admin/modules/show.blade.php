@@ -17,7 +17,7 @@
     </ol>
 @stop
 
-@section('styles')
+@push('css-stack')
     <style>
         .module-type {
             text-align: center;
