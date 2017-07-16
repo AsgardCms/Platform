@@ -9,6 +9,8 @@ versions:
             - Making editor textarea dynamic
             - Using the new <code>@editor</code> blade directive for the body textarea field
             - Remove the ckeditor inclusion on create/edit view stubs
+            - Using the @push js stacks over the scripts section
+            - Using the @push css stacks over the styles section
     "2.2.0":
         added:
             - Testing event trigger on page deletion

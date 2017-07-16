@@ -6,6 +6,9 @@ versions:
             - Normalise the setting was updated event
             - Trigger <code>SettingIsCreating</code> hook
             - Trigger <code>SettingIsUpdating</code> hook
+        changed:
+            - Using the @push js stacks over the scripts section
+            - Using the @push css stacks over the styles section
     "2.0.0":
         added:
             - Laravel 5.2 compatibility
