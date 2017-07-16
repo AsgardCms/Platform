@@ -3,7 +3,7 @@
     "alias": "media",
     "description": "A media library, used throughout the CMS.",
     "keywords": [],
-    "version": "2.0.0",
+    "version": "2.5.0",
     "active": 1,
     "order": 1,
     "providers": [
