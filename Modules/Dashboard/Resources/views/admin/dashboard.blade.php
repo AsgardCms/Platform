@@ -12,13 +12,13 @@
     <div class="clearfix"></div>
 @stop
 
-@section('styles')
+@push('css-stack')
     <style>
         .grid-stack-item {
             padding-right: 20px !important;
         }
     </style>
-@stop
+@endpush
 
 @section('content')
 
@@ -46,7 +46,7 @@
     </div>
 @stop
 
-@section('scripts')
+@push('js-stack')
     @parent
     <script type="text/javascript">
         $(document).ready(function () {
@@ -157,4 +157,4 @@
 
         });
     </script>
-@stop
+@endpush

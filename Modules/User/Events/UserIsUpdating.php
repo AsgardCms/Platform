@@ -2,12 +2,28 @@
 
 namespace Modules\User\Events;
 
-class UserIsUpdating
-{
-    public $user;
+use Modules\Core\Events\AbstractEntityHook;
+use Modules\Core\Contracts\EntityIsChanging;
+use Modules\User\Entities\UserInterface;
 
-    public function __construct($user)
+final class UserIsUpdating extends AbstractEntityHook implements EntityIsChanging
+{
+    /**
+     * @var UserInterface
+     */
+    private $user;
+
+    public function __construct(UserInterface $user, array $data)
     {
         $this->user = $user;
+        parent::__construct($data);
+    }
+
+    /**
+     * @return UserInterface
+     */
+    public function getUser()
+    {
+        return $this->user;
     }
 }

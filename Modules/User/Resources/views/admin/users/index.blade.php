@@ -99,7 +99,7 @@
 @include('core::partials.delete-modal')
 @stop
 
-@section('scripts')
+@push('js-stack')
 <?php $locale = App::getLocale(); ?>
 <script type="text/javascript">
     $( document ).ready(function() {
@@ -124,4 +124,4 @@
         });
     });
 </script>
-@stop
+@endpush

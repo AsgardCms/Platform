@@ -10,13 +10,13 @@
 </ol>
 @stop
 
-@section('styles')
+@push('css-stack')
     <style>
         .jsUpdateModule {
             transition: all .5s ease-in-out;
         }
     </style>
-@stop
+@endpush
 
 @section('content')
     <div class="row">
@@ -82,7 +82,7 @@
     </div>
 @stop
 
-@section('scripts')
+@push('js-stack')
     <?php $locale = locale(); ?>
     <script>
         $(function () {
@@ -137,4 +137,4 @@ $( document ).ready(function() {
     });
 });
 </script>
-@stop
+@endpush

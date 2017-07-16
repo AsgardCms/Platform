@@ -17,6 +17,7 @@
     @include('partials.asgard-globals')
     @section('styles')
     @show
+    @stack('css-stack')
 
     <script>
         $.ajaxSetup({
@@ -88,5 +89,6 @@
 <?php endif; ?>
 @section('scripts')
 @show
+@stack('js-stack')
 </body>
 </html>

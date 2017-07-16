@@ -5,14 +5,18 @@ namespace Modules\Menu\Repositories\Eloquent;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Facades\App;
 use Modules\Core\Repositories\Eloquent\EloquentBaseRepository;
+use Modules\Menu\Events\MenuIsCreating;
+use Modules\Menu\Events\MenuIsUpdating;
 use Modules\Menu\Events\MenuWasCreated;
+use Modules\Menu\Events\MenuWasUpdated;
 use Modules\Menu\Repositories\MenuRepository;
 
 class EloquentMenuRepository extends EloquentBaseRepository implements MenuRepository
 {
     public function create($data)
     {
-        $menu = $this->model->create($data);
+        event($event = new MenuIsCreating($data));
+        $menu = $this->model->create($event->getAttributes());
 
         event(new MenuWasCreated($menu));
 
@@ -21,7 +25,10 @@ class EloquentMenuRepository extends EloquentBaseRepository implements MenuRepos
 
     public function update($menu, $data)
     {
-        $menu->update($data);
+        event($event = new MenuIsUpdating($menu, $data));
+        $menu->update($event->getAttributes());
+
+        event(new MenuWasUpdated($menu));
 
         return $menu;
     }

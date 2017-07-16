@@ -12,14 +12,10 @@
             {!! Form::text("{$lang}[slug]", old("{$lang}.slug", $old), ['class' => 'form-control slug', 'data-slug' => 'target', 'placeholder' => trans('page::pages.form.slug')]) !!}
             {!! $errors->first("{$lang}.slug", '<span class="help-block">:message</span>') !!}
         </div>
-        <div class='{{ $errors->has("{$lang}.body") ? ' has-error' : '' }}'>
-            {!! Form::label("{$lang}[body]", trans('page::pages.form.body')) !!}
-            <?php $old = $page->hasTranslation($lang) ? $page->translate($lang)->body : '' ?>
-            <textarea class="ckeditor" name="{{$lang}}[body]" rows="10" cols="80">
-                {!! old("$lang.body", $old) !!}
-            </textarea>
-            {!! $errors->first("{$lang}.body", '<span class="help-block">:message</span>') !!}
-        </div>
+
+        <?php $old = $page->hasTranslation($lang) ? $page->translate($lang)->body : '' ?>
+        @editor('body', trans('page::pages.form.body'), old("$lang.body", $old), $lang)
+
         <?php if (config('asgard.page.config.partials.translatable.edit') !== []): ?>
             <?php foreach (config('asgard.page.config.partials.translatable.edit') as $partial): ?>
                 @include($partial)

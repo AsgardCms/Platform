@@ -17,7 +17,7 @@
     </ol>
 @stop
 
-@section('styles')
+@push('css-stack')
     <style>
         .module-type {
             text-align: center;
@@ -36,7 +36,7 @@
             display: inline;
         }
     </style>
-@stop
+@endpush
 
 @section('content')
     <div class="row">
@@ -95,7 +95,7 @@
     <?php endif; ?>
 @stop
 
-@section('scripts')
+@push('js-stack')
     <script>
         $( document ).ready(function() {
             $('.jsPublishAssets').on('click',function (event) {
@@ -113,4 +113,4 @@
             });
         });
     </script>
-@stop
+@endpush

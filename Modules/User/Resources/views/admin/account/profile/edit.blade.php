@@ -62,7 +62,8 @@
 @stop
 @section('shortcuts')
 @stop
-@section('scripts')
+
+@push('js-stack')
 <script>
 $( document ).ready(function() {
     $('[data-toggle="tooltip"]').tooltip();
@@ -72,4 +73,4 @@ $( document ).ready(function() {
     });
 });
 </script>
-@stop
+@endpush

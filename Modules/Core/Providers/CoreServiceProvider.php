@@ -7,11 +7,13 @@ use Illuminate\Routing\Router;
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\ServiceProvider;
+use Modules\Core\Blade\AsgardEditorDirective;
 use Modules\Core\Console\DeleteModuleCommand;
 use Modules\Core\Console\DownloadModuleCommand;
 use Modules\Core\Console\InstallCommand;
 use Modules\Core\Console\PublishModuleAssetsCommand;
 use Modules\Core\Console\PublishThemeAssetsCommand;
+use Modules\Core\Events\EditorIsRendering;
 use Modules\Core\Foundation\Theme\ThemeManager;
 use Modules\Core\Traits\CanPublishConfiguration;
 use Nwidart\Modules\Module;
@@ -53,6 +55,7 @@ class CoreServiceProvider extends ServiceProvider
         $this->registerModuleResourceNamespaces();
 
         $this->bladeDirectives();
+        $this->app['events']->listen(EditorIsRendering::class, config('asgard.core.core.wysiwyg-handler'));
     }
 
     /**
@@ -72,6 +75,10 @@ class CoreServiceProvider extends ServiceProvider
         $this->registerCommands();
         $this->registerServices();
         $this->setLocalesConfigurations();
+
+        $this->app->bind('core.asgard.editor', function () {
+            return new AsgardEditorDirective();
+        });
     }
 
     /**
@@ -305,6 +312,10 @@ class CoreServiceProvider extends ServiceProvider
      */
     public function bladeDirectives()
     {
+        if (app()->environment() === 'testing') {
+            return;
+        }
+
         /**
          * Set variable.
          * Usage: @set($variable, value)
@@ -313,6 +324,10 @@ class CoreServiceProvider extends ServiceProvider
             list($variable, $value) = $this->getArguments($expression);
 
             return "<?php {$variable} = {$value}; ?>";
+        });
+
+        $this->app['blade.compiler']->directive('editor', function ($value) {
+            return "<?php echo AsgardEditorDirective::show([$value]); ?>";
         });
     }
 

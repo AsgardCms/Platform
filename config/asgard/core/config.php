@@ -13,6 +13,9 @@ return [
         'workshop',
         'setting',
         'media',
+        'tag',
+        'page',
+        'translation',
     ],
 
     /*

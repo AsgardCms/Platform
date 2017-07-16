@@ -2,33 +2,9 @@
 
 namespace Modules\User\Events;
 
-final class UserIsCreating
+use Modules\Core\Events\AbstractEntityHook;
+use Modules\Core\Contracts\EntityIsChanging;
+
+final class UserIsCreating extends AbstractEntityHook implements EntityIsChanging
 {
-    /**
-     * @var array
-     */
-    private $attributes;
-    public $original;
-
-    public function __construct(array $attributes)
-    {
-        $this->attributes = $attributes;
-        $this->original = $attributes;
-    }
-
-    /**
-     * @return array
-     */
-    public function getAttributes()
-    {
-        return $this->attributes;
-    }
-
-    /**
-     * @param array $attributes
-     */
-    public function setAttributes(array $attributes)
-    {
-        $this->attributes = array_merge($this->attributes, $attributes);
-    }
 }

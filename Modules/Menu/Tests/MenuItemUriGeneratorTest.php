@@ -2,6 +2,7 @@
 
 namespace Modules\Menu\Tests;
 
+use Illuminate\Support\Facades\Event;
 use Modules\Menu\Services\MenuItemUriGenerator;
 use Modules\Page\Repositories\PageRepository;
 
@@ -42,6 +43,7 @@ class MenuItemUriGeneratorTest extends BaseMenuTest
     /** @test */
     public function it_generates_uri_with_the_parents_slug()
     {
+        Event::fake();
         $this->page->create([
             'is_home' => 1,
             'template' => 'default',
@@ -80,6 +82,7 @@ class MenuItemUriGeneratorTest extends BaseMenuTest
     /** @test */
     public function it_generates_uri_with_multiple_parents()
     {
+        Event::fake();
         $this->page->create([
             'is_home' => 1,
             'template' => 'default',
@@ -140,6 +143,7 @@ class MenuItemUriGeneratorTest extends BaseMenuTest
     /** @test */
     public function it_generates_a_uri_if_parent_isnt_a_page()
     {
+        Event::fake();
         $this->page->create([
             'is_home' => 0,
             'template' => 'default',

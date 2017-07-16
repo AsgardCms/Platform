@@ -2,30 +2,17 @@
 
 namespace Modules\Setting\Events;
 
+use Modules\Setting\Entities\Setting;
+
 class SettingWasUpdated
 {
     /**
-     * @var string The setting name
+     * @var Setting
      */
-    public $name;
-    /**
-     * @var string|array
-     */
-    public $values;
-    /**
-     * @var string|array Containing the old values
-     */
-    public $oldValues;
-    /**
-     * @var bool
-     */
-    public $isTranslatable;
+    public $setting;
 
-    public function __construct($name, $isTranslatable, $values, $oldValues = null)
+    public function __construct(Setting $setting)
     {
-        $this->name = $name;
-        $this->isTranslatable = $isTranslatable;
-        $this->values = $values;
-        $this->oldValues = $oldValues;
+        $this->setting = $setting;
     }
 }

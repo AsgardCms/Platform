@@ -12,7 +12,7 @@ mix.less('resources/less/main.less', 'assets/css/main.css')
  */
 mix.scripts([
   'node_modules/jquery/dist/jquery.js',
-  'node_modules/bootstrap-sass/assets/javascripts/bootstrap.min.js',
+  'node_modules/bootstrap/dist/js/bootstrap.min.js',
   'node_modules/prismjs/prism.js',
   'resources/js/bootswatch.js'
 ], 'assets/js/all.js');

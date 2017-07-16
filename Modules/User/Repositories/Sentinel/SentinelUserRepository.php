@@ -126,10 +126,9 @@ class SentinelUserRepository implements UserRepository
     {
         $this->checkForNewPassword($data);
 
-        $user->fill($data);
+        event($event = new UserIsUpdating($user, $data));
 
-        event(new UserIsUpdating($user));
-
+        $user->fill($event->getAttributes());
         $user->save();
 
         event(new UserWasUpdated($user));
@@ -152,10 +151,9 @@ class SentinelUserRepository implements UserRepository
 
         $this->checkForManualActivation($user, $data);
 
-        $user = $user->fill($data);
+        event($event = new UserIsUpdating($user, $data));
 
-        event(new UserIsUpdating($user));
-
+        $user->fill($event->getAttributes());
         $user->save();
 
         event(new UserWasUpdated($user));

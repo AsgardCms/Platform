@@ -3,6 +3,7 @@
 namespace Modules\Page\Entities;
 
 use Illuminate\Database\Eloquent\Model;
+use Modules\Page\Events\ContentIsRendering;
 
 class PageTranslation extends Model
 {
@@ -20,4 +21,11 @@ class PageTranslation extends Model
         'og_image',
         'og_type',
     ];
+
+    public function getBodyAttribute($body)
+    {
+        event($event = new ContentIsRendering($body));
+
+        return $event->getBody();
+    }
 }

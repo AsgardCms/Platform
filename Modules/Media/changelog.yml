@@ -1,5 +1,14 @@
 url: https://github.com/AsgardCms/Platform
 versions:
+    "2.5.0@unreleased":
+        added:
+            - <code>FileWasCreated</code> event
+            - <code>FileWasUpdated</code> event
+            - <code>FileIsCreating</code> hookable event
+            - <code>FileIsUpdating</code> hookable event
+        changed:
+            - Using the @push js stacks over the scripts section
+            - Using the @push css stacks over the styles section
     "2.4.0":
         added:
             - new blade directive for thumbnails <code>@thumbnail('path', 'thumbnailName')</code>

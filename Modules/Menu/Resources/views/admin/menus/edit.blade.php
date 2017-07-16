@@ -11,9 +11,9 @@
 </ol>
 @stop
 
-@section('styles')
+@push('css-stack')
     <link href="{!! Module::asset('menu:css/nestable.css') !!}" rel="stylesheet" type="text/css" />
-@stop
+@endpush
 
 @section('content')
 {!! Form::open(['route' => ['admin.menu.menu.update', $menu->id], 'method' => 'put']) !!}
@@ -89,7 +89,7 @@
     </dl>
 @stop
 
-@section('scripts')
+@push('js-stack')
 <script>
 $( document ).ready(function() {
     $(document).keypressAction({
@@ -160,4 +160,4 @@ $( document ).ready(function() {
         });
     });
 </script>
-@stop
+@endpush

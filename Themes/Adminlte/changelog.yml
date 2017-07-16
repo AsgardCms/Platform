@@ -1,5 +1,8 @@
 url: https://github.com/AsgardCms/Platform
 versions:
+    "2.5.0":
+        added:
+            - <code>js-stack</code> and <code>css-stack</code> stacks
     "2.4.0":
         changed:
             - Moved to using laravel.mix

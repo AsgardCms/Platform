@@ -10,6 +10,7 @@ $finder = PhpCsFixer\Finder::create()
         'bootstrap',
         'tests',
         'node_modules',
+        'views',
     ])
     ->notPath('server.php')
 ;

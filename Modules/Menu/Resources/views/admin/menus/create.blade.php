@@ -11,9 +11,6 @@
 </ol>
 @stop
 
-@section('styles')
-@stop
-
 @section('content')
 {!! Form::open(['route' => ['admin.menu.menu.store'], 'method' => 'post']) !!}
 <div class="row">
@@ -72,7 +69,7 @@
     </dl>
 @stop
 
-@section('scripts')
+@push('js-stack')
 <script>
 $( document ).ready(function() {
     $(document).keypressAction({
@@ -86,4 +83,4 @@ $( document ).ready(function() {
     });
 });
 </script>
-@stop
+@endpush

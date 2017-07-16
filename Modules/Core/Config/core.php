@@ -32,6 +32,18 @@ return [
     */
     'skin' => 'skin-blue',
 
+   /*
+   |--------------------------------------------------------------------------
+   | WYSIWYG Backend Editor
+   |--------------------------------------------------------------------------
+   | Define which editor you would like to use for the backend wysiwygs.
+   | These classes are event handlers, listening to EditorIsRendering
+   | you can define your own handlers and use them here
+   | Options:
+   | - \Modules\Core\Events\Handlers\LoadCkEditor::class
+   | - \Modules\Core\Events\Handlers\LoadSimpleMde::class
+   */
+   'wysiwyg-handler' => \Modules\Core\Events\Handlers\LoadCkEditor::class,
     /*
     |--------------------------------------------------------------------------
     | Custom CKeditor configuration file
@@ -84,6 +96,7 @@ return [
         'selectize-default.css' => ['module' => 'core:vendor/selectize/dist/css/selectize.default.css'],
         'animate.css' => ['theme' => 'vendor/animate.css/animate.min.css'],
         'pace.css' => ['theme' => 'vendor/admin-lte/plugins/pace/pace.min.css'],
+        'simplemde.css' => ['theme' => 'vendor/simplemde/dist/simplemde.min.css'],
         // Javascript
         'bootstrap.js' => ['theme' => 'vendor/bootstrap/dist/js/bootstrap.min.js'],
         'mousetrap.js' => ['theme' => 'js/vendor/mousetrap.min.js'],
@@ -110,6 +123,7 @@ return [
         'pace.js' => ['theme' => 'vendor/admin-lte/plugins/pace/pace.min.js'],
         'moment.js' => ['theme' => 'vendor/admin-lte/plugins/daterangepicker/moment.min.js'],
         'clipboard.js' => ['theme' => 'vendor/clipboard/dist/clipboard.min.js'],
+        'simplemde.js' => ['theme' => 'vendor/simplemde/dist/simplemde.min.js'],
     ],
 
     /*

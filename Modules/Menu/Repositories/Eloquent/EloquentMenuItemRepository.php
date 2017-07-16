@@ -6,14 +6,18 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\DB;
 use Modules\Core\Repositories\Eloquent\EloquentBaseRepository;
+use Modules\Menu\Events\MenuItemIsCreating;
+use Modules\Menu\Events\MenuItemIsUpdating;
 use Modules\Menu\Events\MenuItemWasCreated;
+use Modules\Menu\Events\MenuItemWasUpdated;
 use Modules\Menu\Repositories\MenuItemRepository;
 
 class EloquentMenuItemRepository extends EloquentBaseRepository implements MenuItemRepository
 {
     public function create($data)
     {
-        $menuItem = $this->model->create($data);
+        event($event = new MenuItemIsCreating($data));
+        $menuItem = $this->model->create($event->getAttributes());
 
         event(new MenuItemWasCreated($menuItem));
 
@@ -22,7 +26,10 @@ class EloquentMenuItemRepository extends EloquentBaseRepository implements MenuI
 
     public function update($menuItem, $data)
     {
-        $menuItem->update($data);
+        event($event = new MenuItemIsUpdating($menuItem, $data));
+        $menuItem->update($event->getAttributes());
+
+        event(new MenuItemWasUpdated($menuItem));
 
         return $menuItem;
     }

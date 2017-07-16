@@ -10,7 +10,7 @@
 </ol>
 @stop
 
-@section('styles')
+@push('css-stack')
 <link href="{!! Module::asset('media:css/dropzone.css') !!}" rel="stylesheet" type="text/css" />
 <style>
 .dropzone {
@@ -19,7 +19,7 @@
     margin-bottom: 20px;
 }
 </style>
-@stop
+@endpush
 
 @section('content')
 <div class="row">
@@ -91,7 +91,7 @@
 @include('core::partials.delete-modal')
 @stop
 
-@section('scripts')
+@push('js-stack')
 <script src="{!! Module::asset('media:js/dropzone.js') !!}"></script>
 <?php $config = config('asgard.media.config'); ?>
 <script>
@@ -117,4 +117,4 @@
         });
     });
 </script>
-@stop
+@endpush

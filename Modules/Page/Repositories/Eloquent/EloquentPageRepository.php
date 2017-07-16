@@ -4,6 +4,8 @@ namespace Modules\Page\Repositories\Eloquent;
 
 use Illuminate\Database\Eloquent\Builder;
 use Modules\Core\Repositories\Eloquent\EloquentBaseRepository;
+use Modules\Page\Events\PageIsCreating;
+use Modules\Page\Events\PageIsUpdating;
 use Modules\Page\Events\PageWasCreated;
 use Modules\Page\Events\PageWasDeleted;
 use Modules\Page\Events\PageWasUpdated;
@@ -38,7 +40,9 @@ class EloquentPageRepository extends EloquentBaseRepository implements PageRepos
         if (array_get($data, 'is_home') === '1') {
             $this->removeOtherHomepage();
         }
-        $page = $this->model->create($data);
+
+        event($event = new PageIsCreating($data));
+        $page = $this->model->create($event->getAttributes());
 
         event(new PageWasCreated($page->id, $data));
 
@@ -57,7 +61,9 @@ class EloquentPageRepository extends EloquentBaseRepository implements PageRepos
         if (array_get($data, 'is_home') === '1') {
             $this->removeOtherHomepage($model->id);
         }
-        $model->update($data);
+
+        event($event = new PageIsUpdating($model, $data));
+        $model->update($event->getAttributes());
 
         event(new PageWasUpdated($model->id, $data));
 
