@@ -9,6 +9,7 @@ use Modules\Core\Traits\CanPublishConfiguration;
 use Modules\Page\Entities\Page;
 use Modules\Page\Repositories\Cache\CachePageDecorator;
 use Modules\Page\Repositories\Eloquent\EloquentPageRepository;
+use Modules\Page\Repositories\PageRepository;
 use Modules\Page\Services\FinderService;
 use Modules\Tag\Repositories\TagManager;
 
@@ -59,18 +60,15 @@ class PageServiceProvider extends ServiceProvider
             return new FinderService();
         });
 
-        $this->app->bind(
-            'Modules\Page\Repositories\PageRepository',
-            function () {
-                $repository = new EloquentPageRepository(new Page());
+        $this->app->bind(PageRepository::class, function () {
+            $repository = new EloquentPageRepository(new Page());
 
-                if (! Config::get('app.cache')) {
-                    return $repository;
-                }
-
-                return new CachePageDecorator($repository);
+            if (! Config::get('app.cache')) {
+                return $repository;
             }
-        );
+
+            return new CachePageDecorator($repository);
+        });
     }
 
     /**
