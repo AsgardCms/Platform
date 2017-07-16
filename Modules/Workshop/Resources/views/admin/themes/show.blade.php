@@ -95,7 +95,7 @@
     <?php endif; ?>
 @stop
 
-@section('scripts')
+@push('js-stack')
     <script>
         $( document ).ready(function() {
             $('.jsPublishAssets').on('click',function (event) {
@@ -113,4 +113,4 @@
             });
         });
     </script>
-@stop
+@endpush

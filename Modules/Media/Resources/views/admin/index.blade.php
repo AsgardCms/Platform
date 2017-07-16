@@ -91,7 +91,7 @@
 @include('core::partials.delete-modal')
 @stop
 
-@section('scripts')
+@push('js-stack')
 <script src="{!! Module::asset('media:js/dropzone.js') !!}"></script>
 <?php $config = config('asgard.media.config'); ?>
 <script>
@@ -117,4 +117,4 @@
         });
     });
 </script>
-@stop
+@endpush

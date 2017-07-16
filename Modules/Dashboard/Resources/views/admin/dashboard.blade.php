@@ -46,7 +46,7 @@
     </div>
 @stop
 
-@section('scripts')
+@push('js-stack')
     @parent
     <script type="text/javascript">
         $(document).ready(function () {
@@ -157,4 +157,4 @@
 
         });
     </script>
-@stop
+@endpush

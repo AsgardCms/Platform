@@ -62,7 +62,7 @@
     @include('core::partials.delete-modal')
 @stop
 
-@section('scripts')
+@push('js-stack')
     <script>
         new Clipboard('.jsClipboardButton', {
             target: function(trigger) {
@@ -70,4 +70,4 @@
             }
         });
     </script>
-@stop
+@endpush

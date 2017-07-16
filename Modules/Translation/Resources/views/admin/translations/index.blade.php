@@ -121,7 +121,7 @@
 
 @stop
 
-@section('scripts')
+@push('js-stack')
     <?php if ($errors->has('file')): ?>
     <script>
         $( document ).ready(function() {
@@ -223,4 +223,4 @@
             });
         });
     </script>
-@stop
+@endpush

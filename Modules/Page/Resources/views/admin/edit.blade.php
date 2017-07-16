@@ -94,7 +94,7 @@
     </dl>
 @stop
 
-@section('scripts')
+@push('js-stack')
     <script>
         $( document ).ready(function() {
             $(document).keypressAction({
@@ -108,4 +108,4 @@
             });
         });
     </script>
-@stop
+@endpush

@@ -58,7 +58,7 @@
     </dl>
 @stop
 
-@section('scripts')
+@push('js-stack')
     <script type="text/javascript">
         $( document ).ready(function() {
             $('.selectize').selectize();
@@ -77,4 +77,4 @@
             });
         });
     </script>
-@stop
+@endpush

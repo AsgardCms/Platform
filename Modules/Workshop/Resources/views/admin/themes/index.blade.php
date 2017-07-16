@@ -82,7 +82,7 @@
     </div>
 @stop
 
-@section('scripts')
+@push('js-stack')
     <?php $locale = locale(); ?>
     <script>
         $(function () {
@@ -137,4 +137,4 @@ $( document ).ready(function() {
     });
 });
 </script>
-@stop
+@endpush
