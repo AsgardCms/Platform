@@ -8,6 +8,7 @@ versions:
             - Requiring the editor assets via hook
             - Making editor textarea dynamic
             - Using the new <code>@editor</code> blade directive for the body textarea field
+            - Remove the ckeditor inclusion on create/edit view stubs
     "2.2.0":
         added:
             - Testing event trigger on page deletion
