@@ -32,7 +32,7 @@
             display: inline;
         }
     </style>
-@stop
+@endpush
 
 @section('content')
     <div class="row">
