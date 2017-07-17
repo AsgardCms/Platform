@@ -11,6 +11,7 @@ versions:
             - Remove the ckeditor inclusion on create/edit view stubs
             - Using the @push js stacks over the scripts section
             - Using the @push css stacks over the styles section
+            - Sidebar is now loaded via the <code>BuildingSidebar</code> hook
     "2.2.0":
         added:
             - Testing event trigger on page deletion
