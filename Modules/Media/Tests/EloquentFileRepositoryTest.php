@@ -178,7 +178,7 @@ class EloquentFileRepositoryTest extends MediaTestCase
                 'description' => 'My cool file!',
                 'alt_attribute' => 'My cool file!',
                 'keywords' => 'My cool file!',
-            ]
+            ],
         ]);
 
         Event::assertDispatched(FileIsUpdating::class, function ($e) use ($file) {
@@ -195,7 +195,7 @@ class EloquentFileRepositoryTest extends MediaTestCase
                 'filename' => 'bettername.jpg',
                 'en' => [
                     'description' => 'Hello World',
-                ]
+                ],
             ]);
         });
 
@@ -205,7 +205,7 @@ class EloquentFileRepositoryTest extends MediaTestCase
                 'description' => 'My cool file!',
                 'alt_attribute' => 'My cool file!',
                 'keywords' => 'My cool file!',
-            ]
+            ],
         ]);
 
         $this->assertEquals('bettername.jpg', $file->filename);

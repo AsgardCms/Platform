@@ -43,7 +43,7 @@ abstract class BaseMenuTest extends TestCase
         $this->menu = app(MenuRepository::class);
         $this->menuItem = app(MenuItemRepository::class);
         app(SettingRepository::class)->createOrUpdate([
-            'core::locales' => ['en', 'fr',]
+            'core::locales' => ['en', 'fr',],
         ]);
     }
 

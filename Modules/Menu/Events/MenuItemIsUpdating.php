@@ -2,8 +2,8 @@
 
 namespace Modules\Menu\Events;
 
-use Modules\Core\Events\AbstractEntityHook;
 use Modules\Core\Contracts\EntityIsChanging;
+use Modules\Core\Events\AbstractEntityHook;
 use Modules\Menu\Entities\Menuitem;
 
 class MenuItemIsUpdating extends AbstractEntityHook implements EntityIsChanging

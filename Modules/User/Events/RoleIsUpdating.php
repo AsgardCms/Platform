@@ -3,8 +3,8 @@
 namespace Modules\User\Events;
 
 use Cartalyst\Sentinel\Roles\RoleInterface;
-use Modules\Core\Events\AbstractEntityHook;
 use Modules\Core\Contracts\EntityIsChanging;
+use Modules\Core\Events\AbstractEntityHook;
 
 class RoleIsUpdating extends AbstractEntityHook implements EntityIsChanging
 {

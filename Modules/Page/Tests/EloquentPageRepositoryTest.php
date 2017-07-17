@@ -145,7 +145,6 @@ class EloquentPageRepositoryTest extends BasePageTest
         $this->assertEquals('better-tpl', $page->template);
     }
 
-
     /** @test */
     public function it_triggers_event_when_page_was_updated()
     {

@@ -2,8 +2,8 @@
 
 namespace Modules\User\Events;
 
-use Modules\Core\Events\AbstractEntityHook;
 use Modules\Core\Contracts\EntityIsChanging;
+use Modules\Core\Events\AbstractEntityHook;
 use Modules\User\Entities\UserInterface;
 
 final class UserIsUpdating extends AbstractEntityHook implements EntityIsChanging

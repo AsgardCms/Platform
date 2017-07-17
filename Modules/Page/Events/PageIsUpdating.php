@@ -2,8 +2,8 @@
 
 namespace Modules\Page\Events;
 
-use Modules\Core\Events\AbstractEntityHook;
 use Modules\Core\Contracts\EntityIsChanging;
+use Modules\Core\Events\AbstractEntityHook;
 use Modules\Page\Entities\Page;
 
 class PageIsUpdating extends AbstractEntityHook implements EntityIsChanging

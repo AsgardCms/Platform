@@ -2,8 +2,8 @@
 
 namespace Modules\Media\Events;
 
-use Modules\Core\Events\AbstractEntityHook;
 use Modules\Core\Contracts\EntityIsChanging;
+use Modules\Core\Events\AbstractEntityHook;
 use Modules\Media\Entities\File;
 
 final class FileIsUpdating extends AbstractEntityHook implements EntityIsChanging
