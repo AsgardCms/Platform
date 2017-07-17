@@ -8,7 +8,7 @@ use Maatwebsite\Sidebar\Menu;
 use Modules\Core\Events\BuildingSidebar;
 use Modules\User\Contracts\Authentication;
 
-class AddPageSidebar implements \Maatwebsite\Sidebar\SidebarExtender
+class RegisterPageSidebar implements \Maatwebsite\Sidebar\SidebarExtender
 {
     /**
      * @var Authentication
@@ -27,9 +27,7 @@ class AddPageSidebar implements \Maatwebsite\Sidebar\SidebarExtender
 
     public function handle(BuildingSidebar $sidebar)
     {
-        $menu = $sidebar->getMenu();
-        $menu1 = $this->extendWith($menu);
-        $sidebar->add($menu1);
+        $sidebar->add($this->extendWith($sidebar->getMenu()));
     }
 
     /**

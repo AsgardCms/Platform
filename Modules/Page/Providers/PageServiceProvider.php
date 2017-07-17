@@ -9,7 +9,7 @@ use Modules\Core\Events\CollectingAssets;
 use Modules\Core\Traits\CanGetSidebarClassForModule;
 use Modules\Core\Traits\CanPublishConfiguration;
 use Modules\Page\Entities\Page;
-use Modules\Page\Events\Handlers\AddPageSidebar;
+use Modules\Page\Events\Handlers\RegisterPageSidebar;
 use Modules\Page\Repositories\Cache\CachePageDecorator;
 use Modules\Page\Repositories\Eloquent\EloquentPageRepository;
 use Modules\Page\Repositories\PageRepository;
@@ -37,8 +37,9 @@ class PageServiceProvider extends ServiceProvider
 
         $this->app['events']->listen(
             BuildingSidebar::class,
-            $this->getSidebarClassForModule('page', AddPageSidebar::class)
+            $this->getSidebarClassForModule('page', RegisterPageSidebar::class)
         );
+        $this->app['events']->listen(BuildingSidebar::class, RegisterPageSidebar::class);
     }
 
     public function boot()
