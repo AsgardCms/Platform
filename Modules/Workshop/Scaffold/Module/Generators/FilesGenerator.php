@@ -60,7 +60,7 @@ class FilesGenerator extends Generator
                 strtolower($this->name),
                 strtolower(str_plural($this->name)),
                 str_plural($this->name),
-                "Register{$this->name}Sidebar"
+                "Register{$this->name}Sidebar",
             ],
             $stub
         );
