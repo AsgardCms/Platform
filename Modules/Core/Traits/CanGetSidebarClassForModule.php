@@ -16,8 +16,10 @@ trait CanGetSidebarClassForModule
             if (class_exists($class) === false) {
                 return $default;
             }
+
             return $class;
         }
+
         return $default;
     }
 
