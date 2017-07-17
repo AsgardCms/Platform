@@ -7,6 +7,7 @@ use Maatwebsite\Sidebar\Menu;
 use Maatwebsite\Sidebar\ShouldCache;
 use Maatwebsite\Sidebar\Sidebar;
 use Maatwebsite\Sidebar\Traits\CacheableTrait;
+use Modules\Core\Events\BuildingSidebar;
 use Nwidart\Modules\Contracts\RepositoryInterface;
 
 class AdminSidebar implements Sidebar, ShouldCache
@@ -44,6 +45,8 @@ class AdminSidebar implements Sidebar, ShouldCache
      */
     public function build()
     {
+        event($event = new BuildingSidebar($this->menu));
+
         foreach ($this->modules->enabled() as $module) {
             $lowercaseModule = strtolower($module->get('name'));
             if ($this->hasCustomSidebar($lowercaseModule) === true) {
