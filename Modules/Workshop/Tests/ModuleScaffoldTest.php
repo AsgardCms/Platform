@@ -265,6 +265,27 @@ class ModuleScaffoldTest extends BaseTestCase
     }
 
     /** @test */
+    public function it_generates_service_provider_with_content()
+    {
+        $this->scaffoldModuleWithEloquent();
+
+        $file = $this->finder->get($this->testModulePath . "/Providers/{$this->testModuleName}ServiceProvider.php");
+
+        $sidebarEventListenerName = "Register{$this->testModuleName}Sidebar";
+        $this->assertTrue(str_contains(
+            $file,
+            '$this->loadMigrationsFrom(__DIR__ . \'/../Database/Migrations\');'
+        ), 'Migrations arent loaded');
+
+        $this->assertTrue(str_contains(
+            $file,
+            '$this->app[\'events\']->listen(BuildingSidebar::class, '. $sidebarEventListenerName . '::class);'
+        ), 'Sidebar event handler was not present');
+
+        $this->cleanUp();
+    }
+
+    /** @test */
     public function it_should_generate_controllers()
     {
         $this->scaffoldModuleWithEloquent(['Post', 'Category']);
@@ -291,36 +312,41 @@ class ModuleScaffoldTest extends BaseTestCase
     }
 
     /** @test */
-    public function it_should_generate_sidebar_extender_file()
+    public function it_should_generate_sidebar_event_handler()
     {
         $this->scaffoldModuleWithEloquent();
 
-        $file1 = $this->finder->isFile($this->testModulePath . '/Sidebar/SidebarExtender.php');
+        $file = $this->finder->isFile($this->testModulePath . '/Events/Handlers/RegisterTestingTestModuleSidebar.php');
 
-        $this->assertTrue($file1);
+        $this->assertTrue($file);
 
         $this->cleanUp();
     }
 
     /** @test */
-    public function it_should_generate_filled_sidebar_extender()
+    public function it_should_generate_filled_sidebar_event_handler()
     {
         $this->scaffoldModuleWithEloquent();
 
-        $viewComposer = $this->finder->get($this->testModulePath . '/Sidebar/SidebarExtender.php');
+        $file = $this->finder->get($this->testModulePath . '/Events/Handlers/RegisterTestingTestModuleSidebar.php');
 
-        $this->assertTrue(str_contains($viewComposer, '$menu->group'));
+        $this->assertTrue(str_contains($file, '$menu->group'));
+        $this->assertTrue(str_contains($file, 'class RegisterTestingTestModuleSidebar'));
+
+        $this->cleanUp();
     }
 
     /** @test */
-    public function it_should_generate_empty_sidebar_extender_if_no_entities()
+    public function it_should_generate_empty_sidebar_event_handler_if_no_entities()
     {
         $this->scaffoldModule('Eloquent', [], []);
 
-        $viewComposer = $this->finder->get($this->testModulePath . '/Sidebar/SidebarExtender.php');
+        $file = $this->finder->get($this->testModulePath . '/Events/Handlers/RegisterTestingTestModuleSidebar.php');
 
-        $this->assertFalse(str_contains($viewComposer, '$menu->group'));
-        $this->assertTrue(str_contains($viewComposer, 'return $menu'));
+        $this->assertFalse(str_contains($file, '$menu->group'));
+        $this->assertTrue(str_contains($file, 'return $menu'));
+
+        $this->cleanUp();
     }
 
     /** @test */
