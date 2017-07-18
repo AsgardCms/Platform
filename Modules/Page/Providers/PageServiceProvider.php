@@ -39,7 +39,6 @@ class PageServiceProvider extends ServiceProvider
             BuildingSidebar::class,
             $this->getSidebarClassForModule('page', RegisterPageSidebar::class)
         );
-        $this->app['events']->listen(BuildingSidebar::class, RegisterPageSidebar::class);
     }
 
     public function boot()
