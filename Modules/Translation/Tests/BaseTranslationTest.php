@@ -48,6 +48,9 @@ abstract class BaseTranslationTest extends TestCase
             'en' => [],
             'fr' => [],
         ]);
+        $app['config']->set('cache.stores.translations', [
+            'driver' => 'array',
+        ]);
     }
 
     private function resetDatabase()
