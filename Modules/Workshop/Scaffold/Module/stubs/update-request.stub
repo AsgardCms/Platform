@@ -1,0 +1,33 @@
+<?php
+
+namespace Modules\$MODULE_NAME$\Http\Requests;
+
+use Modules\Core\Internationalisation\BaseFormRequest;
+
+class Update$CLASS_NAME$Request extends BaseFormRequest
+{
+    public function rules()
+    {
+        return [];
+    }
+
+    public function translationRules()
+    {
+        return [];
+    }
+
+    public function authorize()
+    {
+        return true;
+    }
+
+    public function messages()
+    {
+        return [];
+    }
+
+    public function translationMessages()
+    {
+        return [];
+    }
+}
