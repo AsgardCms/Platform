@@ -2,6 +2,7 @@
 
 namespace Modules\Translation\Providers;
 
+use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\ServiceProvider;
 use Modules\Core\Composers\CurrentUserViewComposer;
@@ -14,8 +15,6 @@ use Modules\Translation\Repositories\File\FileTranslationRepository as FileDiskT
 use Modules\Translation\Repositories\FileTranslationRepository;
 use Modules\Translation\Repositories\TranslationRepository;
 use Modules\Translation\Services\TranslationLoader;
-use Modules\Translation\Services\Translator;
-use Schema;
 
 class TranslationServiceProvider extends ServiceProvider
 {
@@ -111,9 +110,6 @@ class TranslationServiceProvider extends ServiceProvider
 
     protected function registerCustomTranslator()
     {
-        $this->app->offsetUnset('translation.loader');
-        $this->app->offsetUnset('translator');
-
         $this->app->singleton('translation.loader', function ($app) {
             return new TranslationLoader($app['files'], $app['path.lang']);
         });
@@ -122,7 +118,7 @@ class TranslationServiceProvider extends ServiceProvider
 
             $locale = $app['config']['app.locale'];
 
-            $trans = new Translator($loader, $locale);
+            $trans = new \Illuminate\Translation\Translator($loader, $locale);
 
             $trans->setFallback($app['config']['app.fallback_locale']);
 
