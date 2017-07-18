@@ -4,6 +4,7 @@ versions:
         changed:
             - Using the @push js stacks over the scripts section
             - Using the @push css stacks over the styles section
+            - No more 1 query per translation. Translations are group together to greatly reduce the query amount.
     "2.2.0":
         changed:
             - Optimising the checking and loading of module translations (~20% speed increase)

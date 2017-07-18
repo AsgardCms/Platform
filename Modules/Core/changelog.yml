@@ -12,6 +12,7 @@ versions:
             - Creating helper trait <code>CanGetSidebarClassForModule</code>, to get the sidebar class for a module
         changed:
             - Adding more core modules (tag, translation and page). Preventing them to be disabled.
+            - Splitting up the <code>EditorIsRendering</code> hook to its own view composer, avoiding binding the (expensive) <code>AssetsViewComposer</code> on every view & partial
     "2.3.0":
         added:
             - New command <code>php artisan asgard:download:module asgardcms/contact --migrations --seeds --assets</code>
