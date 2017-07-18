@@ -61,7 +61,7 @@ class ModuleScaffoldCommand extends Command
      */
     private function askForEntities()
     {
-        $this->entityType = $this->anticipate('Do you want to use Eloquent or Doctrine ?', ['Eloquent', 'Doctrine'], 'Eloquent');
+        $this->entityType = 'Eloquent';
 
         do {
             $entity = $this->ask('Enter entity name. Leaving option empty will continue script.', '<none>');
