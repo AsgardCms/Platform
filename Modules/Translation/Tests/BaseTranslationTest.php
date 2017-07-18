@@ -44,6 +44,10 @@ abstract class BaseTranslationTest extends TestCase
             'prefix' => '',
         ));
         $app['config']->set('translatable.locales', ['en', 'fr']);
+        $app['config']->set('laravellocalization.supportedLocales', [
+            'en' => [],
+            'fr' => [],
+        ]);
     }
 
     private function resetDatabase()
