@@ -5,10 +5,11 @@ namespace Modules\Page\Events\Handlers;
 use Maatwebsite\Sidebar\Group;
 use Maatwebsite\Sidebar\Item;
 use Maatwebsite\Sidebar\Menu;
+use Maatwebsite\Sidebar\SidebarExtender;
 use Modules\Core\Events\BuildingSidebar;
 use Modules\User\Contracts\Authentication;
 
-class RegisterPageSidebar implements \Maatwebsite\Sidebar\SidebarExtender
+class RegisterPageSidebar implements SidebarExtender
 {
     /**
      * @var Authentication
