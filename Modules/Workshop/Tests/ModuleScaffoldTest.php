@@ -300,6 +300,20 @@ class ModuleScaffoldTest extends BaseTestCase
     }
 
     /** @test */
+    public function it_should_generate_requests()
+    {
+        $this->scaffoldModuleWithEloquent(['Post']);
+
+        $file1 = $this->finder->isFile($this->testModulePath . '/Http/Requests/CreatePostRequest.php');
+        $file2 = $this->finder->isFile($this->testModulePath . '/Http/Requests/UpdatePostRequest.php');
+
+        $this->assertTrue($file1);
+        $this->assertTrue($file2);
+
+        $this->cleanUp();
+    }
+
+    /** @test */
     public function it_should_generate_routes_file()
     {
         $this->scaffoldModuleWithEloquent();
