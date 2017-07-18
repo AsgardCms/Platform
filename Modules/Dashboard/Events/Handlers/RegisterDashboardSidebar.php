@@ -1,13 +1,15 @@
 <?php
 
-namespace Modules\Dashboard\Sidebar;
+namespace Modules\Dashboard\Events\Handlers;
 
 use Maatwebsite\Sidebar\Group;
 use Maatwebsite\Sidebar\Item;
 use Maatwebsite\Sidebar\Menu;
+use Maatwebsite\Sidebar\SidebarExtender;
+use Modules\Core\Events\BuildingSidebar;
 use Modules\User\Contracts\Authentication;
 
-class SidebarExtender implements \Maatwebsite\Sidebar\SidebarExtender
+class RegisterDashboardSidebar implements SidebarExtender
 {
     /**
      * @var Authentication
@@ -24,9 +26,13 @@ class SidebarExtender implements \Maatwebsite\Sidebar\SidebarExtender
         $this->auth = $auth;
     }
 
+    public function handle(BuildingSidebar $sidebar)
+    {
+        $sidebar->add($this->extendWith($sidebar->getMenu()));
+    }
+
     /**
      * @param Menu $menu
-     *
      * @return Menu
      */
     public function extendWith(Menu $menu)
