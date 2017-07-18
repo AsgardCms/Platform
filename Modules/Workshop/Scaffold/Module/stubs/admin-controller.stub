@@ -5,6 +5,8 @@ namespace Modules\$MODULE_NAME$\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Modules\$MODULE_NAME$\Entities\$CLASS_NAME$;
+use Modules\$MODULE_NAME$\Http\Requests\Create$CLASS_NAME$Request;
+use Modules\$MODULE_NAME$\Http\Requests\Update$CLASS_NAME$Request;
 use Modules\$MODULE_NAME$\Repositories\$CLASS_NAME$Repository;
 use Modules\Core\Http\Controllers\Admin\AdminBaseController;
 
@@ -50,7 +52,7 @@ class $CLASS_NAME$Controller extends AdminBaseController
      * @param  Request $request
      * @return Response
      */
-    public function store(Request $request)
+    public function store(Create$CLASS_NAME$Request $request)
     {
         $this->$LOWERCASE_CLASS_NAME$->create($request->all());
 
@@ -76,7 +78,7 @@ class $CLASS_NAME$Controller extends AdminBaseController
      * @param  Request $request
      * @return Response
      */
-    public function update($CLASS_NAME$ $$LOWERCASE_CLASS_NAME$, Request $request)
+    public function update($CLASS_NAME$ $$LOWERCASE_CLASS_NAME$, Update$CLASS_NAME$Request $request)
     {
         $this->$LOWERCASE_CLASS_NAME$->update($$LOWERCASE_CLASS_NAME$, $request->all());
 
