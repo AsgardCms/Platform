@@ -101,4 +101,15 @@ class CacheTranslationDecorator extends BaseCacheDecorator implements Translatio
     {
         return str_replace(" ", "--", $key);
     }
+
+    public function getTranslationsForGroupAndNamespace($locale, $group, $namespace)
+    {
+        return $this->cache
+            ->tags([$this->entityName, 'global'])
+            ->rememberForever("{$this->entityName}.findByKeyAndLocale.{$locale}.{$group}.[$namespace]",
+                function () use ($locale, $group, $namespace) {
+                    return $this->repository->getTranslationsForGroupAndNamespace($locale, $group, $namespace);
+                }
+            );
+    }
 }

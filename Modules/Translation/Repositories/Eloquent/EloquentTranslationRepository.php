@@ -2,6 +2,7 @@
 
 namespace Modules\Translation\Repositories\Eloquent;
 
+use Illuminate\Database\Eloquent\Builder;
 use Modules\Core\Repositories\Eloquent\EloquentBaseRepository;
 use Modules\Translation\Entities\TranslationTranslation;
 use Modules\Translation\Repositories\TranslationRepository;
@@ -22,6 +23,23 @@ class EloquentTranslationRepository extends EloquentBaseRepository implements Tr
         }
 
         return '';
+    }
+
+    public function getTranslationsForGroupAndNamespace($locale, $group, $namespace)
+    {
+        $start = $namespace . '::' . $group;
+
+        $test = $this->model->where('key', 'LIKE', "{$start}%")->whereHas('translations', function (Builder $query) use ($locale) {
+            $query->where('locale', $locale);
+        })->get();
+
+        $translations = [];
+        foreach ($test as $item) {
+            $key = str_replace($start . '.', '', $item->key);
+            $translations[$key] = $item->translate($locale)->value;
+        }
+
+        return $translations;
     }
 
     public function allFormatted()
