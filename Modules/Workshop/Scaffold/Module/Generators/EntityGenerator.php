@@ -56,6 +56,7 @@ class EntityGenerator extends Generator
             }
             $this->generateRepositoriesFor($entity);
             $this->generateControllerFor($entity);
+            $this->generateRequestsFor($entity);
             $this->generateViewsFor($entity);
             $this->generateLanguageFilesFor($entity);
             $this->appendBindingsToServiceProviderFor($entity);
@@ -105,6 +106,27 @@ class EntityGenerator extends Generator
         $this->writeFile(
             $this->getModulesPath("Http/Controllers/Admin/{$entity}Controller"),
             $this->getContentForStub('admin-controller.stub', $entity)
+        );
+    }
+    
+    /**
+     * Generate the requests for the given entity
+     *
+     * @param string $entity
+     */
+    private function generateRequestsFor($entity)
+    {
+        $path = $this->getModulesPath('Http/Requests');
+        if (! $this->finder->isDirectory($path)) {
+            $this->finder->makeDirectory($path);
+        }
+        $this->writeFile(
+            $this->getModulesPath("Http/Requests/Create{$entity}Request"),
+            $this->getContentForStub('create-request.stub', $entity)
+        );
+        $this->writeFile(
+            $this->getModulesPath("Http/Requests/Update{$entity}Request"),
+            $this->getContentForStub('update-request.stub', $entity)
         );
     }
 
