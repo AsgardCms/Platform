@@ -49,7 +49,7 @@ class $CLASS_NAME$Controller extends AdminBaseController
     /**
      * Store a newly created resource in storage.
      *
-     * @param  Request $request
+     * @param  Create$CLASS_NAME$Request $request
      * @return Response
      */
     public function store(Create$CLASS_NAME$Request $request)
@@ -75,7 +75,7 @@ class $CLASS_NAME$Controller extends AdminBaseController
      * Update the specified resource in storage.
      *
      * @param  $CLASS_NAME$ $$LOWERCASE_CLASS_NAME$
-     * @param  Request $request
+     * @param  Update$CLASS_NAME$Request $request
      * @return Response
      */
     public function update($CLASS_NAME$ $$LOWERCASE_CLASS_NAME$, Update$CLASS_NAME$Request $request)
