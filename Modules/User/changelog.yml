@@ -5,6 +5,7 @@ versions:
             - Trigger an event (<code>UserIsUpdating</code>) before a user is updated
             - Trigger an event (<code>RoleIsCreating</code>) before a role is created
             - Trigger an event (<code>RoleIsUpdating</code>) before a role is updated
+            - Adding a sentinel guard allowing usage of the Auth:: facade and native auth related methods
         changed:
             - Using the @push js stacks over the scripts section
             - Using the @push css stacks over the styles section
