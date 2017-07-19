@@ -3,6 +3,7 @@
 namespace Modules\User\Providers;
 
 use Cartalyst\Sentinel\Laravel\SentinelServiceProvider;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\ServiceProvider;
 use Modules\Core\Traits\CanPublishConfiguration;
 use Modules\User\Contracts\Authentication;
@@ -17,6 +18,7 @@ use Modules\User\Repositories\Eloquent\EloquentUserTokenRepository;
 use Modules\User\Repositories\RoleRepository;
 use Modules\User\Repositories\UserRepository;
 use Modules\User\Repositories\UserTokenRepository;
+use Modules\User\Guards\Sentinel;
 
 class UserServiceProvider extends ServiceProvider
 {
@@ -72,6 +74,10 @@ class UserServiceProvider extends ServiceProvider
         $this->publishConfig('user', 'config');
 
         $this->loadMigrationsFrom(__DIR__ . '/../Database/Migrations');
+
+        Auth::extend('sentinel-guard', function () {
+            return new Sentinel();
+        });
     }
 
     /**
