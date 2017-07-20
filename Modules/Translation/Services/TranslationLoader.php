@@ -28,7 +28,7 @@ class TranslationLoader extends FileLoader
      *
      * @return array
      */
-    public function load($locale, $group, $namespace = null): array
+    public function load($locale, $group, $namespace = null)
     {
         $fileTranslations = parent::load($locale, $group, $namespace);
 
