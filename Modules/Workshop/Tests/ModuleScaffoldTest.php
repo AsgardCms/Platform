@@ -23,11 +23,16 @@ class ModuleScaffoldTest extends BaseTestCase
      * @var string The name of the module under test
      */
     protected $testModuleName;
+    /**
+     * @var string The sanitized name of the module under test
+     */
+    protected $testModuleSanitizedName;
 
     public function setUp()
     {
-        $this->testModuleName = 'TestingTestModule';
-        $this->testModulePath = __DIR__ . "/../Modules/{$this->testModuleName}";
+        $this->testModuleName = 'Testing_The-TestModule';
+        $this->testModuleSanitizedName = 'TestingTheTestModule';
+        $this->testModulePath = __DIR__ . "/../Modules/{$this->testModuleSanitizedName}";
         $this->cleanUp();
 
         parent::setUp();
@@ -256,7 +261,7 @@ class ModuleScaffoldTest extends BaseTestCase
         $this->scaffoldModuleWithEloquent();
 
         $file1 = $this->finder->isFile($this->testModulePath . '/Providers/RouteServiceProvider.php');
-        $file2 = $this->finder->isFile($this->testModulePath . "/Providers/{$this->testModuleName}ServiceProvider.php");
+        $file2 = $this->finder->isFile($this->testModulePath . "/Providers/{$this->testModuleSanitizedName}ServiceProvider.php");
 
         $this->assertTrue($file1);
         $this->assertTrue($file2);
@@ -269,9 +274,9 @@ class ModuleScaffoldTest extends BaseTestCase
     {
         $this->scaffoldModuleWithEloquent();
 
-        $file = $this->finder->get($this->testModulePath . "/Providers/{$this->testModuleName}ServiceProvider.php");
+        $file = $this->finder->get($this->testModulePath . "/Providers/{$this->testModuleSanitizedName}ServiceProvider.php");
 
-        $sidebarEventListenerName = "Register{$this->testModuleName}Sidebar";
+        $sidebarEventListenerName = "Register{$this->testModuleSanitizedName}Sidebar";
         $this->assertTrue(str_contains(
             $file,
             '$this->loadMigrationsFrom(__DIR__ . \'/../Database/Migrations\');'
@@ -330,7 +335,7 @@ class ModuleScaffoldTest extends BaseTestCase
     {
         $this->scaffoldModuleWithEloquent();
 
-        $file = $this->finder->isFile($this->testModulePath . '/Events/Handlers/RegisterTestingTestModuleSidebar.php');
+        $file = $this->finder->isFile($this->testModulePath . "/Events/Handlers/Register{$this->testModuleSanitizedName}Sidebar.php");
 
         $this->assertTrue($file);
 
@@ -342,10 +347,10 @@ class ModuleScaffoldTest extends BaseTestCase
     {
         $this->scaffoldModuleWithEloquent();
 
-        $file = $this->finder->get($this->testModulePath . '/Events/Handlers/RegisterTestingTestModuleSidebar.php');
+        $file = $this->finder->get($this->testModulePath . "/Events/Handlers/Register{$this->testModuleSanitizedName}Sidebar.php");
 
         $this->assertTrue(str_contains($file, '$menu->group'));
-        $this->assertTrue(str_contains($file, 'class RegisterTestingTestModuleSidebar'));
+        $this->assertTrue(str_contains($file, "class Register{$this->testModuleSanitizedName}Sidebar"));
 
         $this->cleanUp();
     }
@@ -355,7 +360,7 @@ class ModuleScaffoldTest extends BaseTestCase
     {
         $this->scaffoldModule('Eloquent', [], []);
 
-        $file = $this->finder->get($this->testModulePath . '/Events/Handlers/RegisterTestingTestModuleSidebar.php');
+        $file = $this->finder->get($this->testModulePath . "/Events/Handlers/Register{$this->testModuleSanitizedName}Sidebar.php");
 
         $this->assertFalse(str_contains($file, '$menu->group'));
         $this->assertTrue(str_contains($file, 'return $menu'));
@@ -427,7 +432,7 @@ class ModuleScaffoldTest extends BaseTestCase
 
         $composerJson = $this->getComposerFile();
 
-        $this->assertEquals('asgardcms/testingtestmodule', $composerJson->name);
+        $this->assertEquals('asgardcms/testingthetestmodule', $composerJson->name);
     }
 
     /** @test */
@@ -513,7 +518,7 @@ class ModuleScaffoldTest extends BaseTestCase
         $this->scaffoldModuleWithEloquent(['Post']);
 
         $controllerContents = $this->getAdminControllerFile('Post');
-        $lowercaseModuleName = strtolower($this->testModuleName);
+        $lowercaseModuleName = strtolower($this->testModuleSanitizedName);
 
         $matches = [
             "withSuccess(trans('core::core.messages.resource created', ['name' => trans('{$lowercaseModuleName}::posts.title.posts')]));",
