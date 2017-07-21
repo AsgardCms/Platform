@@ -5,32 +5,10 @@ namespace Modules\Dashboard\Events\Handlers;
 use Maatwebsite\Sidebar\Group;
 use Maatwebsite\Sidebar\Item;
 use Maatwebsite\Sidebar\Menu;
-use Maatwebsite\Sidebar\SidebarExtender;
-use Modules\Core\Events\BuildingSidebar;
-use Modules\User\Contracts\Authentication;
+use Modules\Core\Sidebar\AbstractAdminSidebar;
 
-class RegisterDashboardSidebar implements SidebarExtender
+class RegisterDashboardSidebar extends AbstractAdminSidebar
 {
-    /**
-     * @var Authentication
-     */
-    protected $auth;
-
-    /**
-     * @param Authentication $auth
-     *
-     * @internal param Guard $guard
-     */
-    public function __construct(Authentication $auth)
-    {
-        $this->auth = $auth;
-    }
-
-    public function handle(BuildingSidebar $sidebar)
-    {
-        $sidebar->add($this->extendWith($sidebar->getMenu()));
-    }
-
     /**
      * @param Menu $menu
      * @return Menu
