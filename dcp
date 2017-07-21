@@ -1,0 +1,35 @@
+#!/bin/bash
+
+COMPOSE="docker-compose"
+
+if [ $# -gt 0 ]; then
+    if [ "$1" == "up" ]; then
+        $COMPOSE up -d
+    elif [ "$1" == "reload" ] || [ "$1" == "restart" ] || [ "$1" == "rs" ] || [ "$1" == "rl" ]; then
+        $COMPOSE down && $COMPOSE up -d
+    elif [ "$1" == "artisan" ]; then
+        shift 1
+        EXEC_CMD="cd /var/www/html && php artisan $@"
+        $COMPOSE exec app bash -c "$EXEC_CMD"
+    elif [ "$1" == "test" ]; then
+        shift 1
+        $COMPOSE run --rm -w /var/www/html app ./vendor/bin/phpunit $@
+    elif [ "$1" == "t" ]; then
+        shift 1
+        $COMPOSE exec app bash -c "cd /var/www/html && ./vendor/bin/phpunit $@"
+    elif [ "$1" == "composer" ]; then
+        shift 1
+        EXEC_CMD="cd /var/www/html && composer $@"
+        $COMPOSE exec app bash -c "$EXEC_CMD"
+    elif [ "$1" == "yarn" ]; then
+        shift 1
+        $COMPOSE run --rm -w /var/www/html node yarn $@
+    elif [ "$1" == "npm" ]; then
+        shift 1
+        $COMPOSE run --rm -w /var/www/html node npm $@
+    else
+        $COMPOSE $@
+    fi
+else
+    $COMPOSE ps
+fi
