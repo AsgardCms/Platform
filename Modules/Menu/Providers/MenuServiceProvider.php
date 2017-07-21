@@ -45,7 +45,7 @@ class MenuServiceProvider extends ServiceProvider
 
         $this->app['events']->listen(
             BuildingSidebar::class,
-            $this->getSidebarClassForModule('media', RegisterMenuSidebar::class)
+            $this->getSidebarClassForModule('menu', RegisterMenuSidebar::class)
         );
     }
 
