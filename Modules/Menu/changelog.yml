@@ -6,6 +6,7 @@ versions:
             - Trigger event before a menu is updated (<code>MenuIsUpdating</code>) allow data to be changed
             - Trigger event before a menu item is created (<code>MenuItemIsCreating</code>) allow data to be changed
             - Trigger event before a menu item is updated (<code>MenuItemIsUpdating</code>) allow data to be changed
+            - New Sidebar event handler class replacing the old <code>SidebarExtender</code> class
         changed:
             - Using the @push js stacks over the scripts section
             - Using the @push css stacks over the styles section
