@@ -5,11 +5,11 @@ services:
       context: ./docker/app
     image: asgardcms/app:latest
     ports:
-      - 8080:80
+      - 80:80
     volumes:
       - .:/var/www/html:cached
     networks:
-      - ocnet
+      - asgard_net
   redis:
     build:
       context: ./docker/redis
@@ -17,14 +17,14 @@ services:
     volumes:
       - redisdata:/data
     networks:
-      - ocnet
+      - asgard_net
 
   mysql:
     build:
       context: ./docker/mysql
     image: asgardcms/mysql:latest
     ports:
-      - "4306:3306"
+      - 3306:3306
     environment:
       MYSQL_ROOT_PASSWORD: root
       MYSQL_DATABASE: asgardcms
@@ -33,7 +33,7 @@ services:
     volumes:
       - mysqldata:/var/lib/mysql
     networks:
-      - ocnet
+      - asgard_net
 
   node:
     build:
@@ -50,5 +50,5 @@ volumes:
     driver: local
 
 networks:
-  ocnet:
+  asgard_net:
     driver: bridge
