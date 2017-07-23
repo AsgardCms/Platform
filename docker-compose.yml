@@ -5,7 +5,7 @@ services:
       context: ./docker/app
     image: asgardcms/app:latest
     ports:
-      - 8080:80
+      - 80:80
     volumes:
       - .:/var/www/html:cached
     networks:
@@ -24,7 +24,7 @@ services:
       context: ./docker/mysql
     image: asgardcms/mysql:latest
     ports:
-      - "4306:3306"
+      - 3306:3306
     environment:
       MYSQL_ROOT_PASSWORD: root
       MYSQL_DATABASE: asgardcms
