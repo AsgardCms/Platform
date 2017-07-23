@@ -9,7 +9,7 @@ services:
     volumes:
       - .:/var/www/html:cached
     networks:
-      - ocnet
+      - asgard_net
   redis:
     build:
       context: ./docker/redis
@@ -17,7 +17,7 @@ services:
     volumes:
       - redisdata:/data
     networks:
-      - ocnet
+      - asgard_net
 
   mysql:
     build:
@@ -33,7 +33,7 @@ services:
     volumes:
       - mysqldata:/var/lib/mysql
     networks:
-      - ocnet
+      - asgard_net
 
   node:
     build:
@@ -50,5 +50,5 @@ volumes:
     driver: local
 
 networks:
-  ocnet:
+  asgard_net:
     driver: bridge
