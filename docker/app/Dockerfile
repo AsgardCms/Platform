@@ -41,7 +41,20 @@ COPY default /etc/nginx/sites-enabled/default
 COPY php-fpm.conf /etc/php/7.1/fpm/php-fpm.conf
 COPY supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 
+RUN mkdir /tmp/certgen
+WORKDIR /tmp/certgen
+RUN openssl genrsa -des3 -passout pass:x -out server.pass.key 2048 \
+    && openssl rsa -passin pass:x -in server.pass.key -out server.key \
+    && rm server.pass.key \
+    && openssl req -new -key server.key -out server.csr -subj "/CN=asgardcms.com" \
+    && openssl x509 -req -days 365 -in server.csr -signkey server.key -out server.crt \
+    && cp server.crt /etc/ssl/certs/ \
+    && cp server.key /etc/ssl/private/ \
+    && rm -rf /tmp/certgen
+
+
 
 EXPOSE 80
+EXPOSE 443
 
 CMD ["supervisord"]
