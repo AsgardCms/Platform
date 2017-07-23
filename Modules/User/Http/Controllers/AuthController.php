@@ -33,15 +33,17 @@ class AuthController extends BasePublicController
             'email' => $request->email,
             'password' => $request->password,
         ];
+
         $remember = (bool) $request->get('remember_me', false);
 
         $error = $this->auth->login($credentials, $remember);
-        if (!$error) {
-            return redirect()->intended()
-                ->withSuccess(trans('user::messages.successfully logged in'));
+
+        if ($error) {
+            return redirect()->back()->withInput()->withError($error);
         }
 
-        return redirect()->back()->withInput()->withError($error);
+        return redirect()->intended(route(config('asgard.user.config.redirect_route_after_login')))
+                ->withSuccess(trans('user::messages.successfully logged in'));
     }
 
     public function getRegister()
