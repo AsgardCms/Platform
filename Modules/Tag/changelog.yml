@@ -8,6 +8,7 @@ versions:
         changed:
             - Using the @push js stacks over the scripts section
             - Using the @push css stacks over the styles section
+            - Sidebar is now loaded via the <code>BuildingSidebar</code> hook
     "2.1.0":
         changed:
             - Fixed tags not being removed probably on update & delete
