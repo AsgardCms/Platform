@@ -6,9 +6,12 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\ServiceProvider;
 use Modules\Core\Composers\CurrentUserViewComposer;
+use Modules\Core\Events\BuildingSidebar;
+use Modules\Core\Traits\CanGetSidebarClassForModule;
 use Modules\Core\Traits\CanPublishConfiguration;
 use Modules\Translation\Console\BuildTranslationsCacheCommand;
 use Modules\Translation\Entities\Translation;
+use Modules\Translation\Events\Handlers\RegisterTranslationSidebar;
 use Modules\Translation\Repositories\Cache\CacheTranslationDecorator;
 use Modules\Translation\Repositories\Eloquent\EloquentTranslationRepository;
 use Modules\Translation\Repositories\File\FileTranslationRepository as FileDiskTranslationRepository;
@@ -18,7 +21,7 @@ use Modules\Translation\Services\TranslationLoader;
 
 class TranslationServiceProvider extends ServiceProvider
 {
-    use CanPublishConfiguration;
+    use CanPublishConfiguration, CanGetSidebarClassForModule;
     /**
      * Indicates if loading of the provider is deferred.
      *
@@ -37,6 +40,11 @@ class TranslationServiceProvider extends ServiceProvider
         $this->registerConsoleCommands();
 
         view()->composer('translation::admin.translations.index', CurrentUserViewComposer::class);
+
+        $this->app['events']->listen(
+            BuildingSidebar::class,
+            $this->getSidebarClassForModule('translation', RegisterTranslationSidebar::class)
+        );
     }
 
     public function boot()
