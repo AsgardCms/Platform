@@ -13,6 +13,7 @@ versions:
         changed:
             - Adding more core modules (tag, translation and page). Preventing them to be disabled.
             - Splitting up the <code>EditorIsRendering</code> hook to its own view composer, avoiding binding the (expensive) <code>AssetsViewComposer</code> on every view & partial
+            - Stop making DB queries on console mode
     "2.3.0":
         added:
             - New command <code>php artisan asgard:download:module asgardcms/contact --migrations --seeds --assets</code>
