@@ -5,9 +5,12 @@ namespace Modules\User\Providers;
 use Cartalyst\Sentinel\Laravel\SentinelServiceProvider;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\ServiceProvider;
+use Modules\Core\Events\BuildingSidebar;
+use Modules\Core\Traits\CanGetSidebarClassForModule;
 use Modules\Core\Traits\CanPublishConfiguration;
 use Modules\User\Contracts\Authentication;
 use Modules\User\Entities\UserToken;
+use Modules\User\Events\Handlers\RegisterUserSidebar;
 use Modules\User\Http\Middleware\AuthorisedApiToken;
 use Modules\User\Http\Middleware\AuthorisedApiTokenAdmin;
 use Modules\User\Http\Middleware\GuestMiddleware;
@@ -22,7 +25,7 @@ use Modules\User\Guards\Sentinel;
 
 class UserServiceProvider extends ServiceProvider
 {
-    use CanPublishConfiguration;
+    use CanPublishConfiguration, CanGetSidebarClassForModule;
     /**
      * Indicates if loading of the provider is deferred.
      *
@@ -58,6 +61,11 @@ class UserServiceProvider extends ServiceProvider
         $this->app->register($this->getUserPackageServiceProvider());
 
         $this->registerBindings();
+
+        $this->app['events']->listen(
+            BuildingSidebar::class,
+            $this->getSidebarClassForModule('user', RegisterUserSidebar::class)
+        );
     }
 
     /**
