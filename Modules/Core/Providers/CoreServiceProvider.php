@@ -248,7 +248,7 @@ class CoreServiceProvider extends ServiceProvider
      */
     private function setLocalesConfigurations()
     {
-        if (! $this->app['asgard.isInstalled']) {
+        if (! $this->app['asgard.isInstalled'] || $this->app->runningInConsole()) {
             return;
         }
 

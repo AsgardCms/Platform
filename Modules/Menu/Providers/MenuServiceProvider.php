@@ -176,9 +176,13 @@ class MenuServiceProvider extends ServiceProvider
      */
     private function registerMenus()
     {
-        if ($this->app['asgard.isInstalled'] === false || $this->app['asgard.onBackend'] === true) {
+        if ($this->app['asgard.isInstalled'] === false ||
+            $this->app['asgard.onBackend'] ||
+            $this->app->runningInConsole()
+        ) {
             return;
         }
+
         $menu = $this->app->make(MenuRepository::class);
         $menuItem = $this->app->make(MenuItemRepository::class);
         foreach ($menu->allOnline() as $menu) {
