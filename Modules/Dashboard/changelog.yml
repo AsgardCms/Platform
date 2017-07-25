@@ -1,6 +1,6 @@
 url: https://github.com/AsgardCms/Platform
 versions:
-    "2.5.0@unreleased":
+    "2.5.0":
         added:
             - New Sidebar event handler class replacing the old <code>SidebarExtender</code> class
         changed:

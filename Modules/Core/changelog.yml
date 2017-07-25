@@ -1,6 +1,6 @@
 url: https://github.com/AsgardCms/Platform
 versions:
-    "2.5.0@unreleased":
+    "2.5.0":
         added:
             - Adding a <code>EntityIsChanging</code> interface to use on events which are triggered before a create / update action
             - Create an <code>AbstractEntityHook</code> containing base logic for entity hooks

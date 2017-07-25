@@ -1,6 +1,6 @@
 url: https://github.com/AsgardCms/Platform
 versions:
-    "2.5.0@unreleased":
+    "2.5.0":
         added:
             - Trigger event before a menu is created (<code>MenuIsCreating</code>) allow data to be changed
             - Trigger event before a menu is updated (<code>MenuIsUpdating</code>) allow data to be changed

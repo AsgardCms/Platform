@@ -1,6 +1,6 @@
 url: https://github.com/AsgardCms/Platform
 versions:
-    "2.5.0@unreleased":
+    "2.5.0":
         added:
             - <code>js-stack</code> and <code>css-stack</code> stacks
             - New CKEditor skin to better integrate with bootstrap

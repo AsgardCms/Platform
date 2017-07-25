@@ -1,6 +1,6 @@
 url: https://github.com/AsgardCms/Platform
 versions:
-    "2.5.0@unreleased":
+    "2.5.0":
         changed:
             - Normalise the setting was created event
             - Normalise the setting was updated event

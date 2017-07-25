@@ -1,6 +1,6 @@
 url: https://github.com/AsgardCms/Platform
 versions:
-    "2.5.0@unreleased":
+    "2.5.0":
         added:
             - <code>FileWasCreated</code> event
             - <code>FileWasUpdated</code> event
