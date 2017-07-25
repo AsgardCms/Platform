@@ -9,6 +9,7 @@ versions:
             - Register module migrations by default to ease testing in service provider
             - SidebarExtender class has been removed in favor of new Sidebar event handlers
             - Register the sidebar event handler in service provider
+            - Sidebar is now loaded via the <code>BuildingSidebar</code> hook
         removed:
             - Removing ckeditor from the default scaffolded views, now included via <code>EditorIsRendering</code> hook
     "2.4.0":
