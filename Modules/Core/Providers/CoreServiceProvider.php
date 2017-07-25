@@ -13,14 +13,17 @@ use Modules\Core\Console\DownloadModuleCommand;
 use Modules\Core\Console\InstallCommand;
 use Modules\Core\Console\PublishModuleAssetsCommand;
 use Modules\Core\Console\PublishThemeAssetsCommand;
+use Modules\Core\Events\BuildingSidebar;
 use Modules\Core\Events\EditorIsRendering;
+use Modules\Core\Events\Handlers\RegisterCoreSidebar;
 use Modules\Core\Foundation\Theme\ThemeManager;
+use Modules\Core\Traits\CanGetSidebarClassForModule;
 use Modules\Core\Traits\CanPublishConfiguration;
 use Nwidart\Modules\Module;
 
 class CoreServiceProvider extends ServiceProvider
 {
-    use CanPublishConfiguration;
+    use CanPublishConfiguration, CanGetSidebarClassForModule;
     /**
      * Indicates if loading of the provider is deferred.
      *
@@ -79,6 +82,11 @@ class CoreServiceProvider extends ServiceProvider
         $this->app->bind('core.asgard.editor', function () {
             return new AsgardEditorDirective();
         });
+
+        $this->app['events']->listen(
+            BuildingSidebar::class,
+            $this->getSidebarClassForModule('core', RegisterCoreSidebar::class)
+        );
     }
 
     /**

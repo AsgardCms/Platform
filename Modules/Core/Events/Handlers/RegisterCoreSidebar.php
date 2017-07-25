@@ -1,31 +1,16 @@
 <?php
 
-namespace Modules\Core\Sidebar;
+namespace Modules\Core\Events\Handlers;
 
 use Maatwebsite\Sidebar\Group;
 use Maatwebsite\Sidebar\Menu;
-use Modules\User\Contracts\Authentication;
+use Modules\Core\Sidebar\AbstractAdminSidebar;
 
-class SidebarExtender implements \Maatwebsite\Sidebar\SidebarExtender
+class RegisterCoreSidebar extends AbstractAdminSidebar
 {
     /**
-     * @var Authentication
-     */
-    protected $auth;
-
-    /**
-     * @param Authentication $auth
-     *
-     * @internal param Guard $guard
-     */
-    public function __construct(Authentication $auth)
-    {
-        $this->auth = $auth;
-    }
-
-    /**
+     * Method used to define your sidebar menu groups and items
      * @param Menu $menu
-     *
      * @return Menu
      */
     public function extendWith(Menu $menu)
