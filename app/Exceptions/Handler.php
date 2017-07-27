@@ -50,6 +50,10 @@ class Handler extends ExceptionHandler
      */
     public function render($request, Exception $e)
     {
+        if ($e instanceof ValidationException) {
+            return parent::render($request, $e);
+        }
+
         if (config('app.debug') === false) {
             return $this->handleExceptions($e);
         }
