@@ -1,5 +1,9 @@
 url: https://github.com/AsgardCms/Platform
 versions:
+    "2.x.x@unreleased":
+        removed:
+            - Blog module translations were moved from the Translation module to the Blog module
+            - Block module translations were moved from the Translation module to the Block module
     "2.5.0":
         added:
             - New cache driver specifically for translations, making translations always cached
