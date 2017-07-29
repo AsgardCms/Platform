@@ -1,5 +1,8 @@
 url: https://github.com/AsgardCms/Platform
 versions:
+    "2.x.x@unreleased":
+        changed:
+            - Add missing <code>id</code> attribute to editor's textarea
     "2.5.0":
         added:
             - Adding a <code>EntityIsChanging</code> interface to use on events which are triggered before a create / update action
