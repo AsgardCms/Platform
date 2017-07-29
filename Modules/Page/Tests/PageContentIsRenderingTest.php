@@ -3,14 +3,14 @@
 namespace Modules\Page\Tests;
 
 use Illuminate\Support\Facades\Event;
-use Modules\Page\Events\ContentIsRendering;
+use Modules\Page\Events\PageContentIsRendering;
 
-class ContentIsRenderingTest extends BasePageTest
+class PageContentIsRenderingTest extends BasePageTest
 {
     /** @test */
     public function it_can_change_final_content()
     {
-        Event::listen(ContentIsRendering::class, function (ContentIsRendering $event) {
+        Event::listen(PageContentIsRendering::class, function (PageContentIsRendering $event) {
             $event->setBody('<strong>' . $event->getOriginal() . '</strong>');
         });
 

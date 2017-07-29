@@ -2,7 +2,7 @@
 
 namespace Modules\Page\Events;
 
-class ContentIsRendering
+class PageContentIsRendering
 {
     /**
      * @var string The body of the page to render

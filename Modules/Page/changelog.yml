@@ -1,5 +1,8 @@
 url: https://github.com/AsgardCms/Platform
 versions:
+    "2.x.x@unreleased":
+        changed:
+            - Renamed hook <code>ContentIsRendering</code> to <code>PageContentIsRendering</code> making it more specific
     "2.5.0":
         added:
             - Trigger event before a page is created (<code>PageIsCreating</code>) allow data to be changed
