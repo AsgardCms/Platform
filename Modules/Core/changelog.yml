@@ -1,6 +1,6 @@
 url: https://github.com/AsgardCms/Platform
 versions:
-    "2.x.x@unreleased":
+    "2.5.1":
         changed:
             - Add missing <code>id</code> attribute to editor's textarea
     "2.5.0":

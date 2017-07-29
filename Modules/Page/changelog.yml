@@ -1,6 +1,6 @@
 url: https://github.com/AsgardCms/Platform
 versions:
-    "2.x.x@unreleased":
+    "2.5.1":
         changed:
             - Renamed hook <code>ContentIsRendering</code> to <code>PageContentIsRendering</code> making it more specific
     "2.5.0":

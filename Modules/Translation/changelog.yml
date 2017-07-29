@@ -1,6 +1,6 @@
 url: https://github.com/AsgardCms/Platform
 versions:
-    "2.x.x@unreleased":
+    "2.5.1":
         removed:
             - Blog module translations were moved from the Translation module to the Blog module
             - Block module translations were moved from the Translation module to the Block module
