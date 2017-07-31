@@ -1,5 +1,8 @@
 url: https://github.com/AsgardCms/Platform
 versions:
+    "2.5.2":
+        changed:
+            - Fixing CLI issue not having the translation repository bound
     "2.5.1":
         changed:
             - Add missing <code>id</code> attribute to editor's textarea

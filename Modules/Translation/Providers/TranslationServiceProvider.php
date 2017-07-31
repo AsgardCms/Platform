@@ -49,6 +49,9 @@ class TranslationServiceProvider extends ServiceProvider
 
     public function boot()
     {
+        if ($this->app->runningInConsole() === true) {
+            return;
+        }
         $this->publishConfig('translation', 'config');
         $this->publishConfig('translation', 'permissions');
 
