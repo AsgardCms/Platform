@@ -49,19 +49,19 @@ class TranslationServiceProvider extends ServiceProvider
 
     public function boot()
     {
-        if ($this->app->runningInConsole() === true) {
-            return;
-        }
         $this->publishConfig('translation', 'config');
         $this->publishConfig('translation', 'permissions');
 
         $this->registerValidators();
+        $this->loadMigrationsFrom(__DIR__ . '/../Database/Migrations');
+
+        if ($this->app->runningInConsole() === true) {
+            return;
+        }
 
         if ($this->shouldRegisterCustomTranslator()) {
             $this->registerCustomTranslator();
         }
-
-        $this->loadMigrationsFrom(__DIR__ . '/../Database/Migrations');
     }
 
     /**
