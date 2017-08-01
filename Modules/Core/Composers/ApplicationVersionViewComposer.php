@@ -3,7 +3,7 @@
 namespace Modules\Core\Composers;
 
 use Illuminate\Contracts\View\View;
-use Modules\Core\AsgardCms;
+use Modules\Core\Foundation\AsgardCms;
 
 class ApplicationVersionViewComposer
 {

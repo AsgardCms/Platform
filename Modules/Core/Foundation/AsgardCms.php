@@ -1,6 +1,6 @@
 <?php
 
-namespace Modules\Core;
+namespace Modules\Core\Foundation;
 
 class AsgardCms
 {
