@@ -1,5 +1,8 @@
 url: https://github.com/AsgardCms/Platform
 versions:
+    "2.x.x@unreleased":
+        added:
+            - Added an <code>AsgardCms</code> class containing the current cms version
     "2.5.2":
         changed:
             - Fixing CLI issue not having the translation repository bound
