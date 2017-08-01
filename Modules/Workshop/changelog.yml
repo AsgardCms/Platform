@@ -1,5 +1,8 @@
 url: https://github.com/AsgardCms/Platform
 versions:
+    "2.x.x@unreleased":
+        changed:
+            - Read core module version from the AsgardCms class other modules keep same logic (<code>version</code> key in <code>module.json</code>)
     "2.5.0":
         added:
             - Module scaffold command now also generates form requests
