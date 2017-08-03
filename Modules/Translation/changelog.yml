@@ -1,5 +1,8 @@
 url: https://github.com/AsgardCms/Platform
 versions:
+    "2.x.x@unreleased":
+        changed:
+            - Refactored the Translation controller for clean code
     "2.5.1":
         removed:
             - Blog module translations were moved from the Translation module to the Blog module
