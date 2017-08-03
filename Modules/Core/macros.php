@@ -345,3 +345,11 @@ Form::macro('normalSelect', function ($name, $title, ViewErrorBag $errors, array
 
     return new HtmlString($string);
 });
+
+Response::macro('csv', function ($file, $filename, $status = 200, $headers = []) {
+    return response($file, $status, array_merge([
+        'Content-Type' => 'application/csv',
+        'Content-Disposition' => "attachment; filename={$filename}",
+        'Pragma' => 'no-cache',
+    ], $headers));
+});
