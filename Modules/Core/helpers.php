@@ -47,3 +47,35 @@ if (! function_exists('asgard_editor')) {
         return view('core::components.textarea-wrapper', compact('fieldName', 'labelName', 'content'));
     }
 }
+
+if (!function_exists('generate_datatable')){
+    function generate_datatable($headers,$datas){
+        $html = '<div class="table-responsive"><table class="data-table table table-bordered table-hover"><thead><tr>';
+
+        foreach ($headers as $key => $header){
+            $html .='<th ';
+            if($key == 'actions'){
+                $html .='data-sortable="false" ';
+            }
+            $html .='>'.$header.'</th>';
+        }
+
+        $html .='</tr></thead><tbody>';
+
+        foreach ($datas as $data){
+            $html .= '<tr>';
+            foreach ($headers as $key => $header) {
+                if(isset($data[$key])){
+                    $html .= '<td>'.$data[$key].'</td>';
+                } else {
+                    $html .= '<td></td>';
+                }
+            }
+            $html .= '</tr>';
+        }
+
+        $html .='</tbody></table></div>';
+
+        return $html;
+    }
+}
