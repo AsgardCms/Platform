@@ -63,21 +63,21 @@ class Sentinel implements LaravelGuard
     /**
      * Set the current user.
      * @param  \Illuminate\Contracts\Auth\Authenticatable $user
-     * @return void
+     * @return bool
      */
     public function setUser(Authenticatable $user)
     {
-        SentinelFacade::login($user);
+        return SentinelFacade::login($user);
     }
 
     /**
      * Alias to set the current user.
      * @param  \Illuminate\Contracts\Auth\Authenticatable $user
-     * @return void
+     * @return bool
      */
     public function login(Authenticatable $user)
     {
-        $this->setUser($user);
+        return $this->setUser($user);
     }
 
     /**
@@ -104,8 +104,8 @@ class Sentinel implements LaravelGuard
      */
     public function loginUsingId($userId)
     {
-        $impersonatedUser = app(\Modules\User\Repositories\UserRepository::class)->find($userId);
+        $user = app(\Modules\User\Repositories\UserRepository::class)->find($userId);
 
-        return $this->login($impersonatedUser);
+        return $this->login($user);
     }
 }
