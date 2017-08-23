@@ -1,5 +1,8 @@
 url: https://github.com/AsgardCms/Platform
 versions:
+    "2.x.x@unreleased":
+        added:
+            - New methods on the Sentinel Guard, <code>logout</code> and <code>loginUsingId</code>
     "2.5.0":
         added:
             - Trigger an event (<code>UserIsUpdating</code>) before a user is updated
