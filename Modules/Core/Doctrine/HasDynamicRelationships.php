@@ -43,7 +43,9 @@ trait HasDynamicRelationships
      */
     protected function setDynamicRelation($key)
     {
-        $config = "asgard.user.config.relations.{$key}";
+        $model = strtolower((new ReflectionClass($this))->getShortName());
+        
+        $config = "asgard.{$model}.config.relations.{$key}";
 
         if (config()->has($config)) {
             $closure = config()->get($config);
