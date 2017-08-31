@@ -2,6 +2,8 @@
 
 namespace Modules\Core\Doctrine;
 
+use ReflectionClass;
+
 trait HasDynamicRelationships
 {
     /**
