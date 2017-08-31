@@ -8,12 +8,14 @@ return [
     | Current default and only option : Sentinel
     */
     'driver' => 'Sentinel',
+
     /*
     |--------------------------------------------------------------------------
     | Define which route to redirect to after a successful login
     |--------------------------------------------------------------------------
     */
     'redirect_route_after_login' => 'homepage',
+
     /*
     |--------------------------------------------------------------------------
     | Define which route the user should be redirected to after accessing
@@ -21,6 +23,7 @@ return [
     |--------------------------------------------------------------------------
     */
     'redirect_route_not_logged_in' => 'auth/login',
+
     /*
     |--------------------------------------------------------------------------
     | Login column(s)
@@ -29,6 +32,7 @@ return [
     | only supported by the Sentinel user driver
     */
     'login-columns' => ['email'],
+
     /*
     |--------------------------------------------------------------------------
     | Define a class that will handle User presentation
@@ -36,12 +40,14 @@ return [
     | Default: \Modules\User\Presenters\UserPresenter::class
     */
     'presenter' => \Modules\User\Presenters\UserPresenter::class,
+
     /*
     |--------------------------------------------------------------------------
     | Allow anonymous user registration
     |--------------------------------------------------------------------------
     */
     'allow_user_registration' => true,
+
     /*
     |--------------------------------------------------------------------------
     | The default role for new user registrations
@@ -49,6 +55,7 @@ return [
     | Default: User
     */
     'default_role' => 'User',
+
     /*
     |--------------------------------------------------------------------------
     | Fillable user fields
@@ -62,6 +69,7 @@ return [
         'first_name',
         'last_name',
     ],
+
     /*
     |--------------------------------------------------------------------------
     | Custom date fields
@@ -69,7 +77,9 @@ return [
     | Set the fields that will be cast to Carbon dates
     */
     'dates' => [
+        //
     ],
+
     /*
     |--------------------------------------------------------------------------
     | Custom casted fields
@@ -77,7 +87,9 @@ return [
     | Set the fields that will be casted by Eloquent
     */
     'casts' => [
+        //
     ],
+
     /*
      |--------------------------------------------------------------------------
      | Dynamic relations
@@ -89,6 +101,7 @@ return [
 //            return $this->belongsTo(UserExtension::class, 'user_id');
 //        }
     ],
+
     /*
     |--------------------------------------------------------------------------
     | Custom Sidebar Class
