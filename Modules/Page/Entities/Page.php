@@ -7,7 +7,7 @@ use Modules\Tag\Traits\TaggableTrait;
 use Illuminate\Database\Eloquent\Model;
 use Modules\Core\Traits\NamespacedEntity;
 use Modules\Tag\Contracts\TaggableInterface;
-use Modules\Core\Doctrine\HasDynamicRelationships;
+use Modules\Core\Traits\HasDynamicRelationships;
 
 class Page extends Model implements TaggableInterface
 {

@@ -9,7 +9,7 @@ use Laracasts\Presenter\PresentableTrait;
 use Cartalyst\Sentinel\Users\EloquentUser;
 use Modules\User\Presenters\UserPresenter;
 use Cartalyst\Sentinel\Laravel\Facades\Activation;
-use Modules\Core\Doctrine\HasDynamicRelationships;
+use Modules\Core\Traits\HasDynamicRelationships;
 use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
 
 class User extends EloquentUser implements UserInterface, AuthenticatableContract

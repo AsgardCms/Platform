@@ -1,6 +1,6 @@
 <?php
 
-namespace Modules\Core\Doctrine;
+namespace Modules\Core\Traits;
 
 use ReflectionClass;
 
