@@ -113,8 +113,9 @@ class User extends EloquentUser implements UserInterface, AuthenticatableContrac
         #i: Relation method resolver
         if (config()->has($config)) {
             $function = config()->get($config);
-
-            return $function($this);
+            $bound = $function->bindTo($this);
+            
+            return $bound();
         }
 
         #i: No relation found, return the call to parent (Eloquent) to handle it.
