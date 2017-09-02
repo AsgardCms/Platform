@@ -22,7 +22,7 @@ class UpdateModuleCommand extends Command
         $this->composer = $composer;
     }
 
-    public function fire()
+    public function handle()
     {
         $packageName = $this->getModulePackageName($this->argument('module'));
 

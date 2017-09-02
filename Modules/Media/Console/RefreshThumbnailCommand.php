@@ -28,7 +28,7 @@ class RefreshThumbnailCommand extends Command
      *
      * @return mixed
      */
-    public function fire()
+    public function handle()
     {
         $this->line('Preparing to regenerate all thumbnails...');
 

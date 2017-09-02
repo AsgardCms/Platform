@@ -20,7 +20,7 @@ class ThemeScaffoldCommand extends Command
         $this->themeScaffold = $themeScaffold;
     }
 
-    public function fire()
+    public function handle()
     {
         $themeName = $this->ask('Please enter the theme name in the following format: vendor/name');
         list($vendor, $name) = $this->separateVendorAndName($themeName);

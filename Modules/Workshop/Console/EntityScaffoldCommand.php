@@ -22,7 +22,7 @@ final class EntityScaffoldCommand extends Command
         $this->entityGenerator = $entityGenerator;
     }
 
-    public function fire()
+    public function handle()
     {
         $this->entityGenerator
             ->forModule($this->argument('module'))
