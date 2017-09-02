@@ -10,7 +10,7 @@ class PublishModuleAssetsCommand extends Command
     protected $name = 'asgard:publish:module';
     protected $description = 'Publish module assets';
 
-    public function fire()
+    public function handle()
     {
         $this->call('module:publish', ['module' => $this->argument('module')]);
     }

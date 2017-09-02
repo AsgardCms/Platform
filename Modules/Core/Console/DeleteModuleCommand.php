@@ -40,7 +40,7 @@ class DeleteModuleCommand extends Command
      *
      * @return mixed
      */
-    public function fire()
+    public function handle()
     {
         $module = $this->argument('module');
 

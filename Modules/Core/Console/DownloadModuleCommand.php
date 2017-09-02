@@ -29,7 +29,7 @@ class DownloadModuleCommand extends Command
      * @return mixed
      * @throws \Symfony\Component\Process\Exception\LogicException
      */
-    public function fire()
+    public function handle()
     {
         $downloader = new Downloader($this->getOutput());
         try {

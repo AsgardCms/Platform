@@ -51,7 +51,7 @@ class InstallCommand extends Command
      *
      * @return mixed
      */
-    public function fire()
+    public function handle()
     {
         $this->blockMessage('Welcome!', 'Starting the installation process...', 'comment');
 
