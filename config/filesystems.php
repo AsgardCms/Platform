@@ -1,22 +1,17 @@
+
 <?php
-
 return [
-
     /*
     |--------------------------------------------------------------------------
     | Default Filesystem Disk
     |--------------------------------------------------------------------------
     |
     | Here you may specify the default filesystem disk that should be used
-    | by the framework. A "local" driver, as well as a variety of cloud
-    | based drivers are available for your choosing. Just store away!
-    |
-    | Supported: "local", "ftp", "s3", "rackspace"
+    | by the framework. The "local" disk, as well as a variety of cloud
+    | based disks are available to your application. Just store away!
     |
     */
-
-    'default' => 'local',
-
+    'default' => env('FILESYSTEM_DRIVER', 'local'),
     /*
     |--------------------------------------------------------------------------
     | Default Cloud Filesystem Disk
@@ -27,9 +22,7 @@ return [
     | will be bound as the Cloud disk implementation in the container.
     |
     */
-
-    'cloud' => 's3',
-
+    'cloud' => env('FILESYSTEM_CLOUD', 's3'),
     /*
     |--------------------------------------------------------------------------
     | Filesystem Disks
@@ -39,10 +32,10 @@ return [
     | may even configure multiple disks of the same driver. Defaults have
     | been setup for each driver as an example of the required options.
     |
+    | Supported Drivers: "local", "ftp", "s3", "rackspace"
+    |
     */
-
     'disks' => [
-
         'local' => [
             'driver' => 'local',
             'root'   => base_path(),
@@ -59,11 +52,16 @@ return [
             'url' => env('APP_URL'),
             'visibility' => 'public',
         ],
-
         'public' => [
             'driver' => 'local',
             'root' => storage_path('app/public'),
+            'url' => env('APP_URL').'/storage',
             'visibility' => 'public',
+        ],
+
+        'content' => [
+            'driver' => 'local',
+            'root' => resource_path('views'),
         ],
 
         's3' => [
@@ -73,7 +71,5 @@ return [
             'region' => env('AWS_REGION'),
             'bucket' => env('AWS_BUCKET'),
         ],
-
     ],
-
 ];
