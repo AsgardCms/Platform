@@ -3,6 +3,7 @@ versions:
     "2.5.0":
         added:
             - <code>js-stack</code> and <code>css-stack</code> stacks
+            - New CKEditor skin to better integrate with bootstrap
     "2.4.0":
         changed:
             - Moved to using laravel.mix

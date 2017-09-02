@@ -2,8 +2,8 @@
 
 namespace Modules\Tag\Events;
 
-use Modules\Core\Events\AbstractEntityHook;
 use Modules\Core\Contracts\EntityIsChanging;
+use Modules\Core\Events\AbstractEntityHook;
 use Modules\Tag\Entities\Tag;
 
 class TagIsUpdating extends AbstractEntityHook implements EntityIsChanging

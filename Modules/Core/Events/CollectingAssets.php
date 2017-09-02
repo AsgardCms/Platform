@@ -60,6 +60,7 @@ class CollectingAssets
                 return true;
             }
         }
+
         return false;
     }
 }

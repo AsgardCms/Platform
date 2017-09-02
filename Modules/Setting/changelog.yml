@@ -1,11 +1,12 @@
 url: https://github.com/AsgardCms/Platform
 versions:
-    "2.5.0@unreleased":
+    "2.5.0":
         changed:
             - Normalise the setting was created event
             - Normalise the setting was updated event
             - Trigger <code>SettingIsCreating</code> hook
             - Trigger <code>SettingIsUpdating</code> hook
+            - New Sidebar event handler class replacing the old <code>SidebarExtender</code> class
         changed:
             - Using the @push js stacks over the scripts section
             - Using the @push css stacks over the styles section

@@ -3,11 +3,11 @@
 namespace Modules\Core\Events\Handlers;
 
 use League\CommonMark\CommonMarkConverter;
-use Modules\Page\Events\ContentIsRendering;
+use Modules\Page\Events\PageContentIsRendering;
 
 class RenderMarkdown
 {
-    public function handle(ContentIsRendering $event)
+    public function handle(PageContentIsRendering $event)
     {
         $converter = new CommonMarkConverter();
 

@@ -3,10 +3,13 @@
 namespace Modules\Menu\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use Modules\Core\Events\BuildingSidebar;
+use Modules\Core\Traits\CanGetSidebarClassForModule;
 use Modules\Core\Traits\CanPublishConfiguration;
 use Modules\Menu\Blade\MenuDirective;
 use Modules\Menu\Entities\Menu;
 use Modules\Menu\Entities\Menuitem;
+use Modules\Menu\Events\Handlers\RegisterMenuSidebar;
 use Modules\Menu\Repositories\Cache\CacheMenuDecorator;
 use Modules\Menu\Repositories\Cache\CacheMenuItemDecorator;
 use Modules\Menu\Repositories\Eloquent\EloquentMenuItemRepository;
@@ -19,7 +22,7 @@ use Nwidart\Menus\MenuItem as PingpongMenuItem;
 
 class MenuServiceProvider extends ServiceProvider
 {
-    use CanPublishConfiguration;
+    use CanPublishConfiguration, CanGetSidebarClassForModule;
     /**
      * Indicates if loading of the provider is deferred.
      *
@@ -39,6 +42,11 @@ class MenuServiceProvider extends ServiceProvider
         $this->app->bind('menu.menu.directive', function () {
             return new MenuDirective();
         });
+
+        $this->app['events']->listen(
+            BuildingSidebar::class,
+            $this->getSidebarClassForModule('menu', RegisterMenuSidebar::class)
+        );
     }
 
     /**
@@ -168,9 +176,13 @@ class MenuServiceProvider extends ServiceProvider
      */
     private function registerMenus()
     {
-        if ($this->app['asgard.isInstalled'] === false || $this->app['asgard.onBackend'] === true) {
+        if ($this->app['asgard.isInstalled'] === false ||
+            $this->app['asgard.onBackend'] === true ||
+            $this->app->runningInConsole() === true
+        ) {
             return;
         }
+
         $menu = $this->app->make(MenuRepository::class);
         $menuItem = $this->app->make(MenuItemRepository::class);
         foreach ($menu->allOnline() as $menu) {

@@ -5,6 +5,8 @@ namespace Modules\Media\Providers;
 use Illuminate\Contracts\Events\Dispatcher as DispatcherContract;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\ServiceProvider;
+use Modules\Core\Events\BuildingSidebar;
+use Modules\Core\Traits\CanGetSidebarClassForModule;
 use Modules\Core\Traits\CanPublishConfiguration;
 use Modules\Media\Blade\MediaMultipleDirective;
 use Modules\Media\Blade\MediaSingleDirective;
@@ -14,6 +16,7 @@ use Modules\Media\Contracts\DeletingMedia;
 use Modules\Media\Contracts\StoringMedia;
 use Modules\Media\Entities\File;
 use Modules\Media\Events\Handlers\HandleMediaStorage;
+use Modules\Media\Events\Handlers\RegisterMediaSidebar;
 use Modules\Media\Events\Handlers\RemovePolymorphicLink;
 use Modules\Media\Image\ThumbnailManager;
 use Modules\Media\Repositories\Eloquent\EloquentFileRepository;
@@ -22,7 +25,7 @@ use Modules\Tag\Repositories\TagManager;
 
 class MediaServiceProvider extends ServiceProvider
 {
-    use CanPublishConfiguration;
+    use CanPublishConfiguration, CanGetSidebarClassForModule;
     /**
      * Indicates if loading of the provider is deferred.
      *
@@ -50,6 +53,11 @@ class MediaServiceProvider extends ServiceProvider
         $this->app->bind('media.thumbnail.directive', function () {
             return new MediaThumbnailDirective();
         });
+
+        $this->app['events']->listen(
+            BuildingSidebar::class,
+            $this->getSidebarClassForModule('media', RegisterMediaSidebar::class)
+        );
     }
 
     public function boot(DispatcherContract $events)

@@ -56,6 +56,8 @@ abstract class BaseTestCase extends TestCase
             'lang' => 'Resources/lang',
             'views' => 'Resources/views',
             'test' => 'Tests',
+            'event' => 'Events',
+            'listener' => 'Events/Handlers',
         ]);
         $app['config']->set('laravellocalization.supportedLocales', [
             'en' => ['name' => 'English', 'script' => 'Latn', 'native' => 'English'],

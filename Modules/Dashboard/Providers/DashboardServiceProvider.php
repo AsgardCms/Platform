@@ -3,8 +3,11 @@
 namespace Modules\Dashboard\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use Modules\Core\Events\BuildingSidebar;
+use Modules\Core\Traits\CanGetSidebarClassForModule;
 use Modules\Core\Traits\CanPublishConfiguration;
 use Modules\Dashboard\Entities\Widget;
+use Modules\Dashboard\Events\Handlers\RegisterDashboardSidebar;
 use Modules\Dashboard\Repositories\Cache\CacheWidgetDecorator;
 use Modules\Dashboard\Repositories\Eloquent\EloquentWidgetRepository;
 use Modules\Dashboard\Repositories\WidgetRepository;
@@ -12,7 +15,7 @@ use Modules\Workshop\Manager\StylistThemeManager;
 
 class DashboardServiceProvider extends ServiceProvider
 {
-    use CanPublishConfiguration;
+    use CanPublishConfiguration, CanGetSidebarClassForModule;
     /**
      * Indicates if loading of the provider is deferred.
      *
@@ -36,6 +39,11 @@ class DashboardServiceProvider extends ServiceProvider
 
             return new CacheWidgetDecorator($repository);
         });
+
+        $this->app['events']->listen(
+            BuildingSidebar::class,
+            $this->getSidebarClassForModule('dashboard', RegisterDashboardSidebar::class)
+        );
     }
 
     public function boot(StylistThemeManager $theme)

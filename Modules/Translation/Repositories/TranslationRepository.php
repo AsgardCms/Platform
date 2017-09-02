@@ -48,4 +48,6 @@ interface TranslationRepository extends BaseRepository
      * @return void
      */
     public function updateTranslationToValue(TranslationTranslation $translationTranslation, $value);
+
+    public function getTranslationsForGroupAndNamespace($locale, $group, $namespace);
 }

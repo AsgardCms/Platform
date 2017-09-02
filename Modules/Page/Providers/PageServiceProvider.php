@@ -4,9 +4,12 @@ namespace Modules\Page\Providers;
 
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\ServiceProvider;
+use Modules\Core\Events\BuildingSidebar;
 use Modules\Core\Events\CollectingAssets;
+use Modules\Core\Traits\CanGetSidebarClassForModule;
 use Modules\Core\Traits\CanPublishConfiguration;
 use Modules\Page\Entities\Page;
+use Modules\Page\Events\Handlers\RegisterPageSidebar;
 use Modules\Page\Repositories\Cache\CachePageDecorator;
 use Modules\Page\Repositories\Eloquent\EloquentPageRepository;
 use Modules\Page\Repositories\PageRepository;
@@ -15,7 +18,7 @@ use Modules\Tag\Repositories\TagManager;
 
 class PageServiceProvider extends ServiceProvider
 {
-    use CanPublishConfiguration;
+    use CanPublishConfiguration, CanGetSidebarClassForModule;
     /**
      * Indicates if loading of the provider is deferred.
      *
@@ -31,6 +34,11 @@ class PageServiceProvider extends ServiceProvider
     public function register()
     {
         $this->registerBindings();
+
+        $this->app['events']->listen(
+            BuildingSidebar::class,
+            $this->getSidebarClassForModule('page', RegisterPageSidebar::class)
+        );
     }
 
     public function boot()

@@ -3,12 +3,15 @@
 namespace Modules\Workshop\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use Modules\Core\Events\BuildingSidebar;
 use Modules\Core\Services\Composer;
+use Modules\Core\Traits\CanGetSidebarClassForModule;
 use Modules\Core\Traits\CanPublishConfiguration;
 use Modules\Workshop\Console\EntityScaffoldCommand;
 use Modules\Workshop\Console\ModuleScaffoldCommand;
 use Modules\Workshop\Console\ThemeScaffoldCommand;
 use Modules\Workshop\Console\UpdateModuleCommand;
+use Modules\Workshop\Events\Handlers\RegisterWorkshopSidebar;
 use Modules\Workshop\Manager\StylistThemeManager;
 use Modules\Workshop\Manager\ThemeManager;
 use Modules\Workshop\Scaffold\Module\Generators\EntityGenerator;
@@ -20,7 +23,7 @@ use Modules\Workshop\Scaffold\Theme\ThemeScaffold;
 
 class WorkshopServiceProvider extends ServiceProvider
 {
-    use CanPublishConfiguration;
+    use CanPublishConfiguration, CanGetSidebarClassForModule;
     /**
      * Indicates if loading of the provider is deferred.
      *
@@ -37,6 +40,11 @@ class WorkshopServiceProvider extends ServiceProvider
     {
         $this->registerCommands();
         $this->bindThemeManager();
+
+        $this->app['events']->listen(
+            BuildingSidebar::class,
+            $this->getSidebarClassForModule('workshop', RegisterWorkshopSidebar::class)
+        );
     }
 
     public function boot()

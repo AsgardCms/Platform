@@ -1,9 +1,18 @@
 url: https://github.com/AsgardCms/Platform
 versions:
-    "2.5.0@unreleased":
+    "2.x.x@unreleased":
+        changed:
+            - Read core module version from the AsgardCms class other modules keep same logic (<code>version</code> key in <code>module.json</code>)
+    "2.5.0":
+        added:
+            - Module scaffold command now also generates form requests
         changed:
             - Using the @push js stacks over the scripts section
             - Using the @push css stacks over the styles section
+            - Register module migrations by default to ease testing in service provider
+            - SidebarExtender class has been removed in favor of new Sidebar event handlers
+            - Register the sidebar event handler in service provider
+            - Sidebar is now loaded via the <code>BuildingSidebar</code> hook
         removed:
             - Removing ckeditor from the default scaffolded views, now included via <code>EditorIsRendering</code> hook
     "2.4.0":

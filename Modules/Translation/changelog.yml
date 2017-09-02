@@ -1,9 +1,20 @@
 url: https://github.com/AsgardCms/Platform
 versions:
-    "2.5.0@unreleased":
+    "2.x.x@unreleased":
+        changed:
+            - Refactored the Translation controller for clean code
+    "2.5.1":
+        removed:
+            - Blog module translations were moved from the Translation module to the Blog module
+            - Block module translations were moved from the Translation module to the Block module
+    "2.5.0":
+        added:
+            - New cache driver specifically for translations, making translations always cached
         changed:
             - Using the @push js stacks over the scripts section
             - Using the @push css stacks over the styles section
+            - No more 1 query per translation. Translations are group together to greatly reduce the query amount.
+            - Sidebar is now loaded via the <code>BuildingSidebar</code> hook
     "2.2.0":
         changed:
             - Optimising the checking and loading of module translations (~20% speed increase)

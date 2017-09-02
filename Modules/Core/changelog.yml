@@ -1,6 +1,15 @@
 url: https://github.com/AsgardCms/Platform
 versions:
-    "2.5.0@unreleased":
+    "2.x.x@unreleased":
+        added:
+            - Added an <code>AsgardCms</code> class containing the current cms version
+    "2.5.2":
+        changed:
+            - Fixing CLI issue not having the translation repository bound
+    "2.5.1":
+        changed:
+            - Add missing <code>id</code> attribute to editor's textarea
+    "2.5.0":
         added:
             - Adding a <code>EntityIsChanging</code> interface to use on events which are triggered before a create / update action
             - Create an <code>AbstractEntityHook</code> containing base logic for entity hooks
@@ -8,8 +17,13 @@ versions:
             - New configuration value <code>wysiwyg-handler</code> in <code>config/asgard/core/core.php</code> to change the editor in backend
             - New handler <code>RenderMarkdown</code> if you want to render markdown on a <code>ContentIsRendering</code> event
             - New <code>@editor('fieldname', 'fieldlabel, 'content', 'locale')</code> blade directive to include a textarea. The last <code>locale</code> parameter is optional and can be omitted for non translatable textarea.
+            - New <code>BuildingSidebar</code> hook used to add sidebar elements (backend) this will replace the <code>SidebarExtender</code> classes
+            - Creating helper trait <code>CanGetSidebarClassForModule</code>, to get the sidebar class for a module
+            - Adding Docker support. Run `./dcp up` to get started.
         changed:
             - Adding more core modules (tag, translation and page). Preventing them to be disabled.
+            - Splitting up the <code>EditorIsRendering</code> hook to its own view composer, avoiding binding the (expensive) <code>AssetsViewComposer</code> on every view & partial
+            - Stop making DB queries on console mode
     "2.3.0":
         added:
             - New command <code>php artisan asgard:download:module asgardcms/contact --migrations --seeds --assets</code>

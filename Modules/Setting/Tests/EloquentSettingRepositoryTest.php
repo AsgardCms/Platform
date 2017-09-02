@@ -165,7 +165,7 @@ class EloquentSettingRepositoryTest extends BaseSettingTest
             }
             if ($event->getSettingName() === 'core::site-name') {
                 $event->setSettingValues([
-                    'en' => 'English AsgardCMS'
+                    'en' => 'English AsgardCMS',
                 ]);
             }
         });
@@ -234,7 +234,7 @@ class EloquentSettingRepositoryTest extends BaseSettingTest
             }
             if ($event->getSettingName() === 'core::site-name') {
                 $event->setSettingValues([
-                    'en' => 'English AsgardCMS'
+                    'en' => 'English AsgardCMS',
                 ]);
             }
         });

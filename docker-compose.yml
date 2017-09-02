@@ -1,0 +1,55 @@
+version: '2.1'
+services:
+  app:
+    build:
+      context: ./docker/app
+    image: asgardcms/app:latest
+    ports:
+      - 80:80
+      - 443:443
+    volumes:
+      - .:/var/www/html:cached
+    networks:
+      - asgard_net
+  redis:
+    build:
+      context: ./docker/redis
+    image: asgardcms/redis:latest
+    volumes:
+      - redisdata:/data
+    networks:
+      - asgard_net
+
+  mysql:
+    build:
+      context: ./docker/mysql
+    image: asgardcms/mysql:latest
+    ports:
+      - 3306:3306
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: asgardcms
+      MYSQL_USER: homestead
+      MYSQL_PASSWORD: secret
+    volumes:
+      - mysqldata:/var/lib/mysql
+    networks:
+      - asgard_net
+
+  node:
+    build:
+      context: ./docker/node
+    image: asgardcms/node:latest
+    volumes:
+      - .:/var/www/html
+
+
+volumes:
+  redisdata:
+    driver: local
+  mysqldata:
+    driver: local
+
+networks:
+  asgard_net:
+    driver: bridge

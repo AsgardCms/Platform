@@ -16,6 +16,7 @@ class AsgardEditorDirective
         if ($this->lang !== null) {
             return asgard_i18n_editor($this->fieldName, $this->labelName, $this->content, $this->lang);
         }
+
         return asgard_editor($this->fieldName, $this->labelName, $this->content);
     }
 

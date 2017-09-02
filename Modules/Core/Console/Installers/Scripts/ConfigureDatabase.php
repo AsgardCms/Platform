@@ -83,7 +83,7 @@ class ConfigureDatabase implements SetupScript
      */
     protected function askDatabaseHost()
     {
-        $host = $this->command->ask('Enter your database host', 'localhost');
+        $host = $this->command->ask('Enter your database host', '127.0.0.1');
 
         return $host;
     }

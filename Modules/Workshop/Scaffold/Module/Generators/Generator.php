@@ -5,6 +5,7 @@ namespace Modules\Workshop\Scaffold\Module\Generators;
 use Illuminate\Contracts\Config\Repository;
 use Illuminate\Contracts\Filesystem\FileNotFoundException;
 use Illuminate\Filesystem\Filesystem;
+use Illuminate\Support\Str;
 
 abstract class Generator
 {
@@ -45,7 +46,7 @@ abstract class Generator
      */
     public function forModule($moduleName)
     {
-        $this->name = $moduleName;
+        $this->name = Str::studly($moduleName);
 
         return $this;
     }

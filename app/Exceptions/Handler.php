@@ -50,14 +50,18 @@ class Handler extends ExceptionHandler
      */
     public function render($request, Exception $e)
     {
-        if (config('app.debug') === false) {
-            return $this->handleExceptions($e);
+        if ($e instanceof ValidationException) {
+            return parent::render($request, $e);
         }
 
         if ($e instanceof TokenMismatchException) {
             return redirect()->back()
-                ->withInput($request->except('password'))
-                ->withErrors(trans('core::core.error token mismatch'));
+                 ->withInput($request->except('password'))
+                 ->withErrors(trans('core::core.error token mismatch'));
+        }
+
+        if (config('app.debug') === false) {
+            return $this->handleExceptions($e);
         }
 
         return parent::render($request, $e);
