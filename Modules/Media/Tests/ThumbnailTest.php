@@ -4,7 +4,7 @@ namespace Modules\Tests;
 
 use Modules\Media\Image\Thumbnail;
 
-class ThumbnailTest extends \PHPUnit_Framework_TestCase
+class ThumbnailTest extends \PHPUnit\Framework\TestCase
 {
     /** @test */
     public function it_creates_thumbnail_class()

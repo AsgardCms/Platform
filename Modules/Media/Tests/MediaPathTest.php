@@ -4,7 +4,7 @@ namespace Modules\Media\Tests;
 
 use Modules\Media\ValueObjects\MediaPath;
 
-class MediaPathTest extends \PHPUnit_Framework_TestCase
+class MediaPathTest extends \PHPUnit\Framework\TestCase
 {
     /** @test */
     public function it_can_instantiate_value_object()
