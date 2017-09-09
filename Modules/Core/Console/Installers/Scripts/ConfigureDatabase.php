@@ -4,6 +4,8 @@ namespace Modules\Core\Console\Installers\Scripts;
 
 use Illuminate\Console\Command;
 use Illuminate\Contracts\Config\Repository as Config;
+use Illuminate\Database\Connectors\ConnectionFactory;
+use Illuminate\Database\DatabaseManager;
 use Modules\Core\Console\Installers\SetupScript;
 use Modules\Core\Console\Installers\Writers\EnvFileWriter;
 use PDOException;
@@ -155,6 +157,9 @@ class ConfigureDatabase implements SetupScript
         $this->config['database.connections.' . $driver . '.database'] = $name;
         $this->config['database.connections.' . $driver . '.username'] = $user;
         $this->config['database.connections.' . $driver . '.password'] = $password;
+
+        app(DatabaseManager::class)->purge($driver);
+        app(ConnectionFactory::class)->make($this->config['database.connections.' . $driver], $driver);
     }
 
     /**
