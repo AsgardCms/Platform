@@ -16,19 +16,19 @@ RUN add-apt-repository ppa:nginx/stable \
     && apt-get update \
     && apt-get install --no-install-recommends -y \
         nginx \
-        php7.1-fpm \
-        php7.1-cli \
-        php7.1-xdebug \
-        php7.1-pdo \
-        php7.1-pdo-mysql \
-        php7.1-sqlite3 \
-        php7.1-xml \
-        php7.1-mbstring \
-        php7.1-tokenizer \
-        php7.1-zip \
-        php7.1-mcrypt \
-        php7.1-gd \
-        php7.1-curl \
+        php7.0-fpm \
+        php7.0-cli \
+        php7.0-xdebug \
+        php7.0-pdo \
+        php7.0-pdo-mysql \
+        php7.0-sqlite3 \
+        php7.0-xml \
+        php7.0-mbstring \
+        php7.0-tokenizer \
+        php7.0-zip \
+        php7.0-mcrypt \
+        php7.0-gd \
+        php7.0-curl \
         curl \
     && mkdir /run/php \
     && curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer \
@@ -38,7 +38,7 @@ RUN add-apt-repository ppa:nginx/stable \
     && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 COPY default /etc/nginx/sites-enabled/default
-COPY php-fpm.conf /etc/php/7.1/fpm/php-fpm.conf
+COPY php-fpm.conf /etc/php/7.0/fpm/php-fpm.conf
 COPY supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 
 RUN mkdir /tmp/certgen
