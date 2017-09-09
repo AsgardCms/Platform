@@ -3,7 +3,7 @@
 namespace Modules\Translation\Repositories\File;
 
 use Illuminate\Filesystem\Filesystem;
-use Illuminate\Translation\LoaderInterface;
+use Illuminate\Contracts\Translation\Loader;
 use Modules\Translation\Repositories\FileTranslationRepository as FileTranslationRepositoryInterface;
 
 class FileTranslationRepository implements FileTranslationRepositoryInterface
@@ -13,11 +13,11 @@ class FileTranslationRepository implements FileTranslationRepositoryInterface
      */
     private $finder;
     /**
-     * @var LoaderInterface
+     * @var Loader
      */
     private $loader;
 
-    public function __construct(Filesystem $finder, LoaderInterface $loader)
+    public function __construct(Filesystem $finder, Loader $loader)
     {
         $this->finder = $finder;
         $this->loader = $loader;
