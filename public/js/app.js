@@ -69060,7 +69060,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         deleteTitle: { default: "Confirmation" }
     },
     methods: {
-        deleteRow: function deleteRow() {
+        deleteRow: function deleteRow(event) {
             var _this = this;
 
             this.$confirm(this.deleteMessage, this.deleteTitle, {
@@ -69075,9 +69075,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                             type: 'success',
                             message: response.data.message
                         });
-                        setTimeout(function () {
-                            location.reload();
-                        }, 1000);
+                        $(event.path[3]).remove();
                     }
                 }).catch(function (error) {
                     $self.$message({

@@ -10,7 +10,7 @@
             deleteTitle: {default: "Confirmation"}
         },
         methods: {
-            deleteRow() {
+            deleteRow(event) {
                 this.$confirm(this.deleteMessage, this.deleteTitle, {
                     confirmButtonText: 'OK',
                     cancelButtonText: 'Cancel',
@@ -24,9 +24,7 @@
                                     type: 'success',
                                     message: response.data.message
                                 });
-                                setTimeout(function () {
-                                    location.reload();
-                                }, 1000);
+                                $(event.path[3]).remove();
                             }
                         })
                         .catch(function (error) {
