@@ -62,7 +62,10 @@
                             <td>
                                 <div class="btn-group">
                                     <a href="{{ URL::route('admin.page.page.edit', [$page->id]) }}" class="btn btn-default btn-flat"><i class="fa fa-pencil"></i></a>
-                                    <button data-toggle="modal" data-target="#modal-delete-confirmation" data-action-target="{{ route('admin.page.page.destroy', [$page->id]) }}" class="btn btn-danger btn-flat"><i class="fa fa-trash"></i></button>
+
+                                    <delete-button
+                                            delete-action="{{ route('api.page.page.destroy', [$page->id]) }}">
+                                    </delete-button>
                                 </div>
                             </td>
                         </tr>
@@ -109,7 +112,7 @@
             });
         });
         $(function () {
-            $('.data-table').dataTable({
+            var table = $('.data-table').dataTable({
                 "paginate": true,
                 "lengthChange": true,
                 "filter": true,
