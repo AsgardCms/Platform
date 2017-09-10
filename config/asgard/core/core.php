@@ -124,6 +124,7 @@ return [
         'moment.js' => ['theme' => 'vendor/admin-lte/plugins/daterangepicker/moment.min.js'],
         'clipboard.js' => ['theme' => 'vendor/clipboard/dist/clipboard.min.js'],
         'simplemde.js' => ['theme' => 'vendor/simplemde/dist/simplemde.min.js'],
+        'vue-app.js' => ['cdn' => mix('js/app.js')],
     ],
 
     /*
@@ -160,6 +161,8 @@ return [
             'pace.js',
             'selectize.js',
             'main.js',
+            // Un-comment the vue-app dependency to include VueJS
+            // 'vue-app.js',
         ],
     ],
 
