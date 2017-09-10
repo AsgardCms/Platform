@@ -37,6 +37,14 @@ if (token) {
     console.error('CSRF token not found: https://laravel.com/docs/csrf#csrf-x-csrf-token');
 }
 
+let userApiToken = document.head.querySelector('meta[name="user-api-token"]');
+
+if (token) {
+    window.axios.defaults.headers.common['Authorization'] = 'Bearer ' + userApiToken.content;
+} else {
+    console.error('User API token not found in a meta tag.');
+}
+
 /**
  * Echo exposes an expressive API for subscribing to channels and listening
  * for events that are broadcast by Laravel. Echo and event broadcasting
