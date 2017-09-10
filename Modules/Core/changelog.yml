@@ -1,5 +1,8 @@
 url: https://github.com/AsgardCms/Platform
 versions:
+    "2.6.1":
+        changed:
+            - Fixing installation having 2x port in <code>.env</code>
     "2.6.0":
         added:
             - Added an <code>AsgardCms</code> class containing the current cms version

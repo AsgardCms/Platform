@@ -8,5 +8,5 @@ class AsgardCms
      * The AsgardCms version.
      * @var string
      */
-    const VERSION = '2.6.0';
+    const VERSION = '2.6.1';
 }
