@@ -4,6 +4,7 @@ namespace Modules\Core\Repositories\Cache;
 
 use Illuminate\Cache\Repository;
 use Illuminate\Config\Repository as ConfigRepository;
+use Illuminate\Database\Eloquent\Builder;
 use Modules\Core\Repositories\BaseRepository;
 
 abstract class BaseCacheDecorator implements BaseRepository
@@ -61,6 +62,20 @@ abstract class BaseCacheDecorator implements BaseRepository
             ->remember("{$this->locale}.{$this->entityName}.all", $this->cacheTime,
                 function () {
                     return $this->repository->all();
+                }
+            );
+    }
+
+    /**
+     * @inheritdoc
+     */
+    public function allWithBuilder() : Builder
+    {
+        return $this->cache
+            ->tags([$this->entityName, 'global'])
+            ->remember("{$this->locale}.{$this->entityName}.all", $this->cacheTime,
+                function () {
+                    return $this->repository->allWithBuilder();
                 }
             );
     }
