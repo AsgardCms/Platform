@@ -38,18 +38,11 @@ class MediaController extends AdminBaseController
         $this->thumbnailsManager = $thumbnailsManager;
     }
 
-    /**
-     * Display a listing of the resource.
-     *
-     * @return Response
-     */
-    public function index()
+    public function index() : \Illuminate\View\View
     {
-        $files = $this->file->all();
-
         $config = $this->config->get('asgard.media.config');
 
-        return view('media::admin.index', compact('files', 'config'));
+        return view('media::admin.index', compact('config'));
     }
 
     /**
