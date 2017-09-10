@@ -20,11 +20,8 @@ Vue.use(ElementUI, { locale });
  */
 
 Vue.component('example', require('./components/Example.vue'));
-Vue.component('test', require('../../../Modules/Media/Assets/js/components/Example.vue'));
+Vue.component('delete-component', require('../../../Modules/Core/Assets/js/components/DeleteComponent.vue'));
 
 const app = new Vue({
     el: '#app',
-    data: function() {
-        return { visible: false }
-    }
 });

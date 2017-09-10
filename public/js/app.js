@@ -13933,13 +13933,10 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_0_element_ui___default.a, { locale: __WEBPACK_
  */
 
 Vue.component('example', __webpack_require__(106));
-Vue.component('test', __webpack_require__(109));
+Vue.component('delete-component', __webpack_require__(112));
 
 var app = new Vue({
-  el: '#app',
-  data: function data() {
-    return { visible: false };
-  }
+  el: '#app'
 });
 
 /***/ }),
@@ -13983,6 +13980,14 @@ if (token) {
   window.axios.defaults.headers.common['X-CSRF-TOKEN'] = token.content;
 } else {
   console.error('CSRF token not found: https://laravel.com/docs/csrf#csrf-x-csrf-token');
+}
+
+var userApiToken = document.head.querySelector('meta[name="user-api-token"]');
+
+if (token) {
+  window.axios.defaults.headers.common['Authorization'] = 'Bearer ' + userApiToken.content;
+} else {
+  console.error('User API token not found in a meta tag.');
 }
 
 /**
@@ -68995,15 +69000,18 @@ if (false) {
 }
 
 /***/ }),
-/* 109 */
+/* 109 */,
+/* 110 */,
+/* 111 */,
+/* 112 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var Component = __webpack_require__(31)(
   /* script */
-  __webpack_require__(110),
+  __webpack_require__(113),
   /* template */
-  __webpack_require__(111),
+  __webpack_require__(114),
   /* styles */
   null,
   /* scopeId */
@@ -69011,9 +69019,9 @@ var Component = __webpack_require__(31)(
   /* moduleIdentifier (server only) */
   null
 )
-Component.options.__file = "/Users/nicolaswidart/Sites/Asguard/Platform/Modules/Media/Assets/js/components/Example.vue"
+Component.options.__file = "/Users/nicolaswidart/Sites/Asguard/Platform/Modules/Core/Assets/js/components/DeleteComponent.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
-if (Component.options.functional) {console.error("[vue-loader] Example.vue: functional components are not supported with templates, they should use render functions.")}
+if (Component.options.functional) {console.error("[vue-loader] DeleteComponent.vue: functional components are not supported with templates, they should use render functions.")}
 
 /* hot reload */
 if (false) {(function () {
@@ -69022,9 +69030,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-35a8765c", Component.options)
+    hotAPI.createRecord("data-v-69e9cf4d", Component.options)
   } else {
-    hotAPI.reload("data-v-35a8765c", Component.options)
+    hotAPI.reload("data-v-69e9cf4d", Component.options)
   }
   module.hot.dispose(function (data) {
     disposed = true
@@ -69035,7 +69043,7 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 110 */
+/* 113 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -69044,51 +69052,68 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-    mounted: function mounted() {
-        console.log('Component mounted.');
+    props: {
+        deleteAction: { default: null },
+        deleteMessage: { default: "Are you sure you want to delete this record?" },
+        deleteTitle: { default: "Confirmation" }
+    },
+    methods: {
+        deleteRow: function deleteRow() {
+            var _this = this;
+
+            this.$confirm(this.deleteMessage, this.deleteTitle, {
+                confirmButtonText: 'OK',
+                cancelButtonText: 'Cancel',
+                type: 'warning'
+            }).then(function () {
+                var $self = _this;
+                axios.delete(_this.deleteAction).then(function (response) {
+                    if (response.data.errors === false) {
+                        $self.$message({
+                            type: 'success',
+                            message: response.data.message
+                        });
+                        setTimeout(function () {
+                            location.reload();
+                        }, 1000);
+                    }
+                }).catch(function (error) {
+                    $self.$message({
+                        type: 'error',
+                        message: response.data.message
+                    });
+                });
+            }).catch(function () {
+                _this.$message({
+                    type: 'info',
+                    message: 'Delete canceled'
+                });
+            });
+        }
     }
 });
 
 /***/ }),
-/* 111 */
+/* 114 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _vm._m(0)
-},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
-    staticClass: "container"
-  }, [_c('div', {
-    staticClass: "row"
-  }, [_c('div', {
-    staticClass: "col-md-8 col-md-offset-2"
-  }, [_c('div', {
-    staticClass: "panel panel-default"
-  }, [_c('div', {
-    staticClass: "panel-heading"
-  }, [_vm._v("Example Component")]), _vm._v(" "), _c('div', {
-    staticClass: "panel-body"
-  }, [_vm._v("\n                    I'm an example component from a module!!\n                ")])])])])])
-}]}
+  return _c('button', {
+    staticClass: "btn btn-danger btn-flat",
+    on: {
+      "click": _vm.deleteRow
+    }
+  }, [_c('i', {
+    staticClass: "fa fa-trash"
+  })])
+},staticRenderFns: []}
 module.exports.render._withStripped = true
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-     require("vue-hot-reload-api").rerender("data-v-35a8765c", module.exports)
+     require("vue-hot-reload-api").rerender("data-v-69e9cf4d", module.exports)
   }
 }
 
