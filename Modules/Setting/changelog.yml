@@ -1,5 +1,8 @@
 url: https://github.com/AsgardCms/Platform
 versions:
+    "3.0.0@unreleased":
+        changed:
+            - Fixing active class on settings module list sidebar
     "2.5.0":
         changed:
             - Normalise the setting was created event
