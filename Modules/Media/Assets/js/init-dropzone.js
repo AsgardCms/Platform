@@ -18,7 +18,12 @@ $( document ).ready(function() {
         }
     });
     myDropzone.on("error", function(file, errorMessage) {
-        var html = '<div class="alert alert-danger" role="alert">' + errorMessage + '</div>';
+        let html;
+        if (typeof(errorMessage) === 'object') {
+            html = '<div class="alert alert-danger" role="alert">' + errorMessage.errors.file.join(', ') + '</div>';
+        } else {
+            html = '<div class="alert alert-danger" role="alert">' + errorMessage + '</div>';
+        }
         $('.col-md-12').first().prepend(html);
         setTimeout(function() {
             myDropzone.removeFile(file);
