@@ -73,7 +73,7 @@ abstract class BaseCacheDecorator implements BaseRepository
     {
         return $this->cache
             ->tags([$this->entityName, 'global'])
-            ->remember("{$this->locale}.{$this->entityName}.all", $this->cacheTime,
+            ->remember("{$this->locale}.{$this->entityName}.allWithBuilder", $this->cacheTime,
                 function () {
                     return $this->repository->allWithBuilder();
                 }
