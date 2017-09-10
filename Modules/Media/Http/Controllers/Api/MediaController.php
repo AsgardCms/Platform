@@ -12,9 +12,10 @@ use Modules\Media\Events\FileWasUnlinked;
 use Modules\Media\Events\FileWasUploaded;
 use Modules\Media\Helpers\FileHelper;
 use Modules\Media\Http\Requests\UploadMediaRequest;
-use Modules\Media\Image\Imagy;
+use Modules\Media\Image\Facade\Imagy;
 use Modules\Media\Repositories\FileRepository;
 use Modules\Media\Services\FileService;
+use Yajra\DataTables\Facades\DataTables;
 
 class MediaController extends Controller
 {
@@ -42,12 +43,17 @@ class MediaController extends Controller
 
     public function all()
     {
-        $files = $this->file->all();
+        $files = $this->file->allWithBuilder();
 
-        return [
-            'count' => $files->count(),
-            'data' => $files,
-        ];
+        return Datatables::eloquent($files)
+            ->addColumn('thumbnail', function ($file) {
+                if ($file->isImage()) {
+                    return '<img src="' . Imagy::getThumbnail($file->path, 'smallThumb') . '"/>';
+                }
+                return '<i class="fa ' . FileHelper::getFaIcon($file->media_type) . '" style="font-size: 20px;"></i>';
+            })
+            ->rawColumns(['thumbnail'])
+            ->toJson();
     }
 
     /**
