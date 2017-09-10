@@ -8,6 +8,7 @@ return [
 
     'template is required' => 'De template naam is vereist.',
     'title is required' => 'De titel is vereist.',
+    'slug is required' => 'De slug is vereist.',
     'body is required' => 'De inhoud is vereist.',
     'only one homepage allowed' => 'Er kan maar één startpagina zijn',
 ];
