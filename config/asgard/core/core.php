@@ -69,6 +69,7 @@ return [
        'frontend' => [
        ],
        'api' => [
+           'api',
        ],
     ],
 
@@ -161,8 +162,7 @@ return [
             'pace.js',
             'selectize.js',
             'main.js',
-            // Un-comment the vue-app dependency to include VueJS
-            // 'vue-app.js',
+            'vue-app.js',
         ],
     ],
 
