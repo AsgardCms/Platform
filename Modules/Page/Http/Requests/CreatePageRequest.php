@@ -19,6 +19,7 @@ class CreatePageRequest extends BaseFormRequest
     {
         return [
             'title' => 'required',
+            'slug' => 'required',
             'body' => 'required',
         ];
     }
@@ -40,6 +41,7 @@ class CreatePageRequest extends BaseFormRequest
     {
         return [
             'title.required' => trans('page::messages.title is required'),
+            'slug.required' => trans('page::messages.slug is required'),
             'body.required' => trans('page::messages.body is required'),
         ];
     }

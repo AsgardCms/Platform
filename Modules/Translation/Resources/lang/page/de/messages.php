@@ -8,6 +8,7 @@ return [
 
     'template is required' => 'Der Vorlagename ist erforderlich.',
     'title is required' => 'Der Titel ist erforderlich.',
+    'slug is required' => 'Der Slug ist erforderlich.',
     'body is required' => 'Der Inhalt ist erforderlich.',
     'only one homepage allowed' => 'Es kann nur eine Startseite definiert werden',
 ];
