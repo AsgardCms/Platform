@@ -1,5 +1,8 @@
 url: https://github.com/AsgardCms/Platform
 versions:
+    "3.0.0":
+        added:
+            - <code>@route</code> directive to include all laravel routes, now accessible via javascript
     "2.5.0":
         added:
             - <code>js-stack</code> and <code>css-stack</code> stacks
