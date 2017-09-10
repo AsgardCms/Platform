@@ -7,7 +7,8 @@
         props: {
             deleteAction: {default: null},
             deleteMessage: {default: "Are you sure you want to delete this record?"},
-            deleteTitle: {default: "Confirmation"}
+            deleteTitle: {default: "Confirmation"},
+            rowId: {default: null},
         },
         methods: {
             deleteRow(event) {
@@ -24,7 +25,8 @@
                                     type: 'success',
                                     message: response.data.message
                                 });
-                                $(event.path[3]).remove();
+
+                                $('#' + $self.rowId).remove();
                             }
                         })
                         .catch(function (error) {

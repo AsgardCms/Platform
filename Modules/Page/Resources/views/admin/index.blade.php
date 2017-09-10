@@ -38,7 +38,7 @@
                         <tbody>
                         <?php if (isset($pages)): ?>
                         <?php foreach ($pages as $page): ?>
-                        <tr>
+                        <tr id="table-row-{{$page->id}}">
                             <td>
                                 <a href="{{ URL::route('admin.page.page.edit', [$page->id]) }}">
                                     {{ $page->id }}
@@ -64,7 +64,8 @@
                                     <a href="{{ URL::route('admin.page.page.edit', [$page->id]) }}" class="btn btn-default btn-flat"><i class="fa fa-pencil"></i></a>
 
                                     <delete-button
-                                            delete-action="{{ route('api.page.page.destroy', [$page->id]) }}">
+                                            delete-action="{{ route('api.page.page.destroy', [$page->id]) }}"
+                                            row-id="table-row-{{ $page->id }}">
                                     </delete-button>
                                 </div>
                             </td>

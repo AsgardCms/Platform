@@ -69057,7 +69057,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     props: {
         deleteAction: { default: null },
         deleteMessage: { default: "Are you sure you want to delete this record?" },
-        deleteTitle: { default: "Confirmation" }
+        deleteTitle: { default: "Confirmation" },
+        rowId: { default: null }
     },
     methods: {
         deleteRow: function deleteRow(event) {
@@ -69075,7 +69076,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                             type: 'success',
                             message: response.data.message
                         });
-                        $(event.path[3]).remove();
+
+                        $('#' + $self.rowId).remove();
                     }
                 }).catch(function (error) {
                     $self.$message({
