@@ -9,6 +9,7 @@
         @show
     </title>
     <meta id="token" name="token" value="{{ csrf_token() }}" />
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
     @foreach($cssFiles as $css)
         <link media="all" type="text/css" rel="stylesheet" href="{{ URL::asset($css) }}">
@@ -35,7 +36,7 @@
     @routes
 </head>
 <body class="{{ config('asgard.core.core.skin', 'skin-blue') }} sidebar-mini" style="padding-bottom: 0 !important;">
-<div class="wrapper">
+<div class="wrapper" id="app">
     <header class="main-header">
         <a href="{{ URL::route('dashboard.index') }}" class="logo">
             <span class="logo-mini">
@@ -68,6 +69,7 @@
 @foreach($jsFiles as $js)
     <script src="{{ URL::asset($js) }}" type="text/javascript"></script>
 @endforeach
+<script src="{{ mix('js/app.js') }}" type="text/javascript"></script>
 <?php if (is_module_enabled('Notification')): ?>
     <script src="https://js.pusher.com/3.0/pusher.min.js"></script>
     <script src="{{ Module::asset('notification:js/pusherNotifications.js') }}"></script>
