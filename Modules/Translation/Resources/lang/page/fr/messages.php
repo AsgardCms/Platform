@@ -8,6 +8,7 @@ return [
 
     'template is required' => 'Le nom de modèle de page est requis.',
     'title is required' => 'Le titre est requis.',
+    'slug is required' => 'Le slug est requis.',
     'body is required' => 'Le contenu est requis.',
     'only one homepage allowed' => 'Une seule page d\'accueil est permise.',
 ];
