@@ -13933,7 +13933,7 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_0_element_ui___default.a, { locale: __WEBPACK_
  */
 
 Vue.component('example', __webpack_require__(106));
-Vue.component('delete-component', __webpack_require__(112));
+Vue.component('delete-button', __webpack_require__(112));
 
 var app = new Vue({
   el: '#app'

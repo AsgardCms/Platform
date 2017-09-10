@@ -20,7 +20,7 @@ Vue.use(ElementUI, { locale });
  */
 
 Vue.component('example', require('./components/Example.vue'));
-Vue.component('delete-component', require('../../../Modules/Core/Assets/js/components/DeleteComponent.vue'));
+Vue.component('delete-button', require('../../../Modules/Core/Assets/js/components/DeleteComponent.vue'));
 
 const app = new Vue({
     el: '#app',
