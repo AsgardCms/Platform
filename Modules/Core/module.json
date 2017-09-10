@@ -15,13 +15,15 @@
         "Dimsav\\Translatable\\TranslatableServiceProvider",
         "Mcamara\\LaravelLocalization\\LaravelLocalizationServiceProvider",
         "FloatingPoint\\Stylist\\StylistServiceProvider",
-        "Maatwebsite\\Sidebar\\SidebarServiceProvider"
+        "Maatwebsite\\Sidebar\\SidebarServiceProvider",
+        "Yajra\\DataTables\\DataTablesServiceProvider"
     ],
     "aliases": {
         "Form": "Collective\\Html\\FormFacade",
         "Flash": "Laracasts\\Flash\\Flash",
         "LaravelLocalization": "Mcamara\\LaravelLocalization\\Facades\\LaravelLocalization",
-        "AsgardEditorDirective": "Modules\\Core\\Blade\\Facades\\AsgardEditorDirective"
+        "AsgardEditorDirective": "Modules\\Core\\Blade\\Facades\\AsgardEditorDirective",
+        "DataTables": "Yajra\\DataTables\\Facades\\DataTables"
     },
     "files": [
         "start.php",

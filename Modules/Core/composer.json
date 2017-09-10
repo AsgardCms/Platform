@@ -28,7 +28,8 @@
     "dimsav/laravel-translatable": "~8.0",
     "mcamara/laravel-localization": "~1.1",
     "floatingpoint/stylist": "~0.5",
-    "maatwebsite/laravel-sidebar": "~2.1"
+    "maatwebsite/laravel-sidebar": "~2.1",
+    "yajra/laravel-datatables-oracle": "~8.0"
   },
   "require-dev": {
     "phpunit/phpunit": "~6.0",
