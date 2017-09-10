@@ -62,8 +62,6 @@ class MediaServiceProvider extends ServiceProvider
 
     public function boot(DispatcherContract $events)
     {
-        $this->registerMaxFolderSizeValidator();
-
         $this->publishConfig('media', 'config');
         $this->publishConfig('media', 'permissions');
         $this->publishConfig('media', 'assets');
@@ -90,8 +88,8 @@ class MediaServiceProvider extends ServiceProvider
 
     private function registerBindings()
     {
-        $this->app->bind(FileRepository::class, function ($app) {
-            return new EloquentFileRepository(new File(), $app['filesystem.disk']);
+        $this->app->bind(FileRepository::class, function () {
+            return new EloquentFileRepository(new File());
         });
     }
 
@@ -113,11 +111,6 @@ class MediaServiceProvider extends ServiceProvider
         });
 
         $this->commands('command.media.refresh');
-    }
-
-    private function registerMaxFolderSizeValidator()
-    {
-        Validator::extend('max_size', '\Modules\Media\Validators\MaxFolderSizeValidator@validateMaxSize');
     }
 
     private function registerThumbnails()
