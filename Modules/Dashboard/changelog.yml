@@ -1,5 +1,8 @@
 url: https://github.com/AsgardCms/Platform
 versions:
+    "3.0.0@unreleased":
+        changed:
+            - Making <code>WidgetServiceProvider</code> not deferred anymore
     "2.5.0":
         added:
             - New Sidebar event handler class replacing the old <code>SidebarExtender</code> class
