@@ -56,10 +56,10 @@ abstract class EloquentBaseRepository implements BaseRepository
     public function allWithBuilder() : Builder
     {
         if (method_exists($this->model, 'translations')) {
-            return $this->model->with('translations')->orderBy('created_at', 'DESC');
+            return $this->model->with('translations');
         }
 
-        return $this->model->orderBy('created_at', 'DESC');
+        return $this->model;
     }
 
 
