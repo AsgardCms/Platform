@@ -2,10 +2,10 @@
 
 namespace Modules\Media\Http\Controllers\Api;
 
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Response;
 use Modules\Media\Entities\File;
 use Modules\Media\Events\FileWasLinked;
 use Modules\Media\Events\FileWasUnlinked;
@@ -54,29 +54,29 @@ class MediaController extends Controller
      * Store a newly created resource in storage.
      *
      * @param UploadMediaRequest $request
-     * @return Response
+     * @return \Illuminate\Http\JsonResponse
      */
-    public function store(UploadMediaRequest $request)
+    public function store(UploadMediaRequest $request) : JsonResponse
     {
         $savedFile = $this->fileService->store($request->file('file'));
 
         if (is_string($savedFile)) {
-            return Response::json([
+            return response()->json([
                 'error' => $savedFile,
             ], 409);
         }
 
         event(new FileWasUploaded($savedFile));
 
-        return Response::json($savedFile->toArray());
+        return response()->json($savedFile->toArray());
     }
 
     /**
      * Link the given entity with a media file
-     *
      * @param Request $request
+     * @return \Illuminate\Http\JsonResponse
      */
-    public function linkMedia(Request $request)
+    public function linkMedia(Request $request) : JsonResponse
     {
         $mediaId = $request->get('mediaId');
         $entityClass = $request->get('entityClass');
@@ -102,7 +102,7 @@ class MediaController extends Controller
 
         event(new FileWasLinked($file, $entity));
 
-        return Response::json([
+        return response()->json([
             'error' => false,
             'message' => 'The link has been added.',
             'result' => [
@@ -116,15 +116,15 @@ class MediaController extends Controller
 
     /**
      * Remove the record in the media__imageables table for the given id
-     *
      * @param Request $request
+     * @return \Illuminate\Http\JsonResponse
      */
-    public function unlinkMedia(Request $request)
+    public function unlinkMedia(Request $request) : JsonResponse
     {
         $imageableId = $request->get('imageableId');
         $deleted = DB::table('media__imageables')->whereId($imageableId)->delete();
         if (! $deleted) {
-            return Response::json([
+            return response()->json([
                 'error' => true,
                 'message' => 'The file was not found.',
             ]);
@@ -132,7 +132,7 @@ class MediaController extends Controller
 
         event(new FileWasUnlinked($imageableId));
 
-        return Response::json([
+        return response()->json([
             'error' => false,
             'message' => 'The link has been removed.',
         ]);
@@ -141,8 +141,9 @@ class MediaController extends Controller
     /**
      * Sort the record in the media__imageables table for the given array
      * @param Request $request
+     * @return \Illuminate\Http\JsonResponse
      */
-    public function sortMedia(Request $request)
+    public function sortMedia(Request $request) : JsonResponse
     {
         $imageableIdArray = $request->get('sortable');
 
@@ -153,7 +154,7 @@ class MediaController extends Controller
             $order++;
         }
 
-        return Response::json(['error' => false, 'message' => 'The items have been reorder.']);
+        return response()->json(['error' => false, 'message' => 'The items have been reorder.']);
     }
 
     /**
@@ -162,7 +163,7 @@ class MediaController extends Controller
      * @param File $file
      * @return string
      */
-    private function getThumbnailPathFor($mediaType, File $file)
+    private function getThumbnailPathFor($mediaType, File $file) : string
     {
         if ($mediaType === 'image') {
             return $this->imagy->getThumbnail($file->path, 'mediumThumb');
