@@ -40,39 +40,10 @@
                             <th>{{ trans('core::core.table.thumbnail') }}</th>
                             <th>{{ trans('media::media.table.filename') }}</th>
                             <th>{{ trans('core::core.table.created at') }}</th>
-                            <th data-sortable="false">{{ trans('core::core.table.actions') }}</th>
+                            <th>{{ trans('core::core.table.actions') }}</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <?php if ($files): ?>
-                            <?php foreach ($files as $file): ?>
-                                <tr>
-                                    <td>
-                                        <?php if ($file->isImage()): ?>
-                                            <img src="{{ Imagy::getThumbnail($file->path, 'smallThumb') }}" alt=""/>
-                                        <?php else: ?>
-                                            <i class="fa {{ FileHelper::getFaIcon($file->media_type) }}" style="font-size: 20px;"></i>
-                                        <?php endif; ?>
-                                    </td>
-                                    <td>
-                                        <a href="{{ route('admin.media.media.edit', [$file->id]) }}">
-                                            {{ $file->filename }}
-                                        </a>
-                                    </td>
-                                    <td>
-                                        <a href="{{ route('admin.media.media.edit', [$file->id]) }}">
-                                            {{ $file->created_at }}
-                                        </a>
-                                    </td>
-                                    <td>
-                                        <div class="btn-group">
-                                            <a href="{{ route('admin.media.media.edit', [$file->id]) }}" class="btn btn-default btn-flat"><i class="fa fa-pencil"></i></a>
-                                            <button class="btn btn-danger btn-flat" data-toggle="modal" data-target="#modal-delete-confirmation" data-action-target="{{ route('admin.media.media.destroy', [$file->id]) }}"><i class="fa fa-trash"></i></button>
-                                        </div>
-                                    </td>
-                                </tr>
-                            <?php endforeach; ?>
-                        <?php endif; ?>
                     </tbody>
                     <tfoot>
                         <tr>
@@ -104,16 +75,43 @@
 <script type="text/javascript">
     $(function () {
         $('.data-table').dataTable({
-            "paginate": true,
-            "lengthChange": true,
-            "filter": true,
-            "sort": true,
-            "info": true,
+            "processing": true,
+            "serverSide": true,
+            "ajax": '{{ route('api.media.all') }}',
             "autoWidth": true,
-            "order": [[ 0, "desc" ]],
+            "order": [[ 2, "desc" ]],
             "language": {
                 "url": '<?php echo Module::asset("core:js/vendor/datatables/{$locale}.json") ?>'
-            }
+            },
+            "columns": [
+                {
+                    data: 'thumbnail',
+                    orderable: false,
+                    searchable: false
+                },
+                {
+                    data: 'filename',
+                    render: function (data, type, full) {
+                        return '<a href="' + route('admin.media.media.edit', {media: full.id}) + '">' + data + '</a>';
+                    }
+                },
+                {
+                    data: "created_at",
+                    render: function (data, type, full) {
+                        return '<a href="' + route('admin.media.media.edit', {media: full.id}) + '">' + data + '</a>';
+                    }
+                },
+                {
+                    data: null,
+                    orderable: false,
+                    searchable: false,
+                    render: function (data, type, full) {
+                        return '<a href="' + route('admin.media.media.edit', {media: full.id}) + '" class="btn btn-default btn-flat">' +
+                            '<i class="fa fa-pencil"></i></a>' +
+                            '<button class="btn btn-danger btn-flat" data-toggle="modal" data-target="#modal-delete-confirmation" data-action-target="' + route('admin.media.media.destroy', {media: full.id}) + '"><i class="fa fa-trash"></i></button>';
+                    }
+                }
+            ],
         });
     });
 </script>
