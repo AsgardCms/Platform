@@ -8,6 +8,10 @@
 require('./bootstrap');
 
 window.Vue = require('vue');
+import ElementUI from 'element-ui'
+import 'element-ui/lib/theme-default/index.css'
+import locale from 'element-ui/lib/locale/lang/en'
+Vue.use(ElementUI, { locale });
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -16,7 +20,11 @@ window.Vue = require('vue');
  */
 
 Vue.component('example', require('./components/Example.vue'));
+Vue.component('test', require('../../../Modules/Media/Assets/js/components/Example.vue'));
 
 const app = new Vue({
-    el: '#app'
+    el: '#app',
+    data: function() {
+        return { visible: false }
+    }
 });
