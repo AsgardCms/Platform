@@ -55,7 +55,7 @@
   "directories": {},
   "dist": {
     "shasum": "06d08da3d47ae448c153b2639b86e9ad7fdf7128",
-    "tarball": "https://npm.spatie.be/icheck/-/icheck-1.0.2.tgz"
+    "tarball": "https://registry.npmjs.org/icheck/-/icheck-1.0.2.tgz"
   },
   "gitHead": "cd45d5faf4bec01b5cf0a9c214101c56d5111ed8",
   "homepage": "http://fronteed.com/iCheck/",

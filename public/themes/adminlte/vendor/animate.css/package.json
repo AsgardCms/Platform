@@ -67,7 +67,7 @@
   "directories": {},
   "dist": {
     "shasum": "91e668dc069a808e5e499514867b97aae0166c36",
-    "tarball": "https://npm.spatie.be/animate.css/-/animate.css-3.5.2.tgz"
+    "tarball": "https://registry.npmjs.org/animate.css/-/animate.css-3.5.2.tgz"
   },
   "gitHead": "535a9dd499763b2bdc9b53e13019112651d05d30",
   "homepage": "http://daneden.me/animate",

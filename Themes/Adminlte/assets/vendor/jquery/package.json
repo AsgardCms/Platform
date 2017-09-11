@@ -122,7 +122,7 @@
   "directories": {},
   "dist": {
     "shasum": "5c4d9de652af6cd0a770154a631bba12b015c787",
-    "tarball": "https://npm.spatie.be/jquery/-/jquery-3.2.1.tgz"
+    "tarball": "https://registry.npmjs.org/jquery/-/jquery-3.2.1.tgz"
   },
   "gitHead": "77d2a51d0520d2ee44173afdf4e40a9201f5964e",
   "homepage": "https://jquery.com",

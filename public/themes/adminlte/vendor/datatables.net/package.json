@@ -14,16 +14,16 @@
     ]
   ],
   "_from": "datatables.net@>=1.10.10 <1.11.0",
-  "_id": "datatables.net@1.10.15",
+  "_id": "datatables.net@1.10.16",
   "_inCache": true,
   "_location": "/datatables.net",
   "_npmOperationalInternal": {
-    "host": "packages-12-west.internal.npmjs.com",
-    "tmp": "tmp/datatables.net-1.10.15.tgz_1492503926912_0.7814477488864213"
+    "host": "s3://npm-registry-packages",
+    "tmp": "tmp/datatables.net-1.10.16.tgz_1504260068801_0.7875912024173886"
   },
   "_npmUser": {
     "name": "datatables",
-    "email": "allan@datatables.net"
+    "email": "npm@datatables.net"
   },
   "_npmVersion": "1.3.6",
   "_phantomChildren": {},
@@ -40,8 +40,8 @@
     "/",
     "/datatables.net-bs"
   ],
-  "_resolved": "http://npm.spatie.be/datatables.net/-/datatables.net-1.10.15.tgz",
-  "_shasum": "c789077bbfe385e75ff5a233fa5f23251a72df68",
+  "_resolved": "https://registry.npmjs.org/datatables.net/-/datatables.net-1.10.16.tgz",
+  "_shasum": "4b052d1082824261b68eed9d22741b711d3d2469",
   "_shrinkwrap": null,
   "_spec": "datatables.net@~1.10.10",
   "_where": "/Users/nicolaswidart/Sites/Asguard/Platform/Themes/Adminlte",
@@ -59,8 +59,8 @@
   "devDependencies": {},
   "directories": {},
   "dist": {
-    "shasum": "c789077bbfe385e75ff5a233fa5f23251a72df68",
-    "tarball": "https://npm.spatie.be/datatables.net/-/datatables.net-1.10.15.tgz"
+    "shasum": "4b052d1082824261b68eed9d22741b711d3d2469",
+    "tarball": "https://registry.npmjs.org/datatables.net/-/datatables.net-1.10.16.tgz"
   },
   "files": [
     "js/jquery.dataTables.js"
@@ -89,5 +89,5 @@
     "type": "git",
     "url": "git+https://github.com/DataTables/Dist-DataTables.git"
   },
-  "version": "1.10.15"
+  "version": "1.10.16"
 }

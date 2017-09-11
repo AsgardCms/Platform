@@ -68,7 +68,7 @@
   "directories": {},
   "dist": {
     "shasum": "da56dcd34d42e9ef1af362be15520a053a9d43db",
-    "tarball": "https://npm.spatie.be/admin-lte/-/admin-lte-2.3.11.tgz"
+    "tarball": "https://registry.npmjs.org/admin-lte/-/admin-lte-2.3.11.tgz"
   },
   "gitHead": "cdcf40edc0ccfe815e20d4cb3e0e5ffcc9895f0e",
   "homepage": "https://github.com/almasaeed2010/AdminLTE#readme",

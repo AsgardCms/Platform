@@ -86,7 +86,7 @@
   "directories": {},
   "dist": {
     "shasum": "78203a4d1c328ae1d86dca6460e369b57f4055ae",
-    "tarball": "https://npm.spatie.be/lodash/-/lodash-4.17.4.tgz"
+    "tarball": "https://registry.npmjs.org/lodash/-/lodash-4.17.4.tgz"
   },
   "homepage": "https://lodash.com/",
   "icon": "https://lodash.com/icon.svg",

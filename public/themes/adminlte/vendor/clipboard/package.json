@@ -79,7 +79,7 @@
   "directories": {},
   "dist": {
     "shasum": "916d5e739b0064be61b0b48a535731ecaef3d367",
-    "tarball": "https://npm.spatie.be/clipboard/-/clipboard-1.5.16.tgz"
+    "tarball": "https://registry.npmjs.org/clipboard/-/clipboard-1.5.16.tgz"
   },
   "gitHead": "402c9ee17bed6f273bcbc7efa81874fd9a50b84c",
   "homepage": "https://github.com/zenorocha/clipboard.js#readme",

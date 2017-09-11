@@ -87,7 +87,7 @@
   "directories": {},
   "dist": {
     "shasum": "5a389394549f23330875a3b150656574f8a9eb71",
-    "tarball": "https://npm.spatie.be/bootstrap/-/bootstrap-3.3.7.tgz"
+    "tarball": "https://registry.npmjs.org/bootstrap/-/bootstrap-3.3.7.tgz"
   },
   "engines": {
     "node": ">=0.10.1"

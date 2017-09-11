@@ -87,7 +87,7 @@
   "directories": {},
   "dist": {
     "shasum": "be1c7891f3fbd2af60f9d60f4c7d517a30d3bb78",
-    "tarball": "https://npm.spatie.be/gridstack/-/gridstack-0.3.0.tgz"
+    "tarball": "https://registry.npmjs.org/gridstack/-/gridstack-0.3.0.tgz"
   },
   "gitHead": "8ea752ddff7973a97045849eafbe7fbd5e9c9e0d",
   "homepage": "http://troolee.github.io/gridstack.js/",

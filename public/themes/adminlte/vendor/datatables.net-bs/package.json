@@ -14,16 +14,16 @@
     ]
   ],
   "_from": "datatables.net-bs@>=1.10.10 <1.11.0",
-  "_id": "datatables.net-bs@1.10.15",
+  "_id": "datatables.net-bs@1.10.16",
   "_inCache": true,
   "_location": "/datatables.net-bs",
   "_npmOperationalInternal": {
-    "host": "packages-18-east.internal.npmjs.com",
-    "tmp": "tmp/datatables.net-bs-1.10.15.tgz_1492503998638_0.7297385323327035"
+    "host": "s3://npm-registry-packages",
+    "tmp": "tmp/datatables.net-bs-1.10.16.tgz_1504260141364_0.17552526900544763"
   },
   "_npmUser": {
     "name": "datatables",
-    "email": "allan@datatables.net"
+    "email": "npm@datatables.net"
   },
   "_npmVersion": "1.3.6",
   "_phantomChildren": {},
@@ -39,8 +39,8 @@
   "_requiredBy": [
     "/"
   ],
-  "_resolved": "http://npm.spatie.be/datatables.net-bs/-/datatables.net-bs-1.10.15.tgz",
-  "_shasum": "b2c2261007d84ca5b5abf56c18edc227e0da1a4d",
+  "_resolved": "https://registry.npmjs.org/datatables.net-bs/-/datatables.net-bs-1.10.16.tgz",
+  "_shasum": "b0854f5b374f713ae3db4156c7cea8a760c3de76",
   "_shrinkwrap": null,
   "_spec": "datatables.net-bs@~1.10.10",
   "_where": "/Users/nicolaswidart/Sites/Asguard/Platform/Themes/Adminlte",
@@ -52,15 +52,15 @@
     "url": "https://datatables.net/forums"
   },
   "dependencies": {
-    "datatables.net": ">=1.10.9",
+    "datatables.net": "1.10.16",
     "jquery": ">=1.7"
   },
-  "description": "DataTables for jQuery with styling for [Bootstrap](http://getbootstrap.com/)",
+  "description": "DataTables for jQuery with styling for [Bootstrap 3](http://getbootstrap.com/)",
   "devDependencies": {},
   "directories": {},
   "dist": {
-    "shasum": "b2c2261007d84ca5b5abf56c18edc227e0da1a4d",
-    "tarball": "https://npm.spatie.be/datatables.net-bs/-/datatables.net-bs-1.10.15.tgz"
+    "shasum": "b0854f5b374f713ae3db4156c7cea8a760c3de76",
+    "tarball": "https://registry.npmjs.org/datatables.net-bs/-/datatables.net-bs-1.10.16.tgz"
   },
   "files": [
     "js/dataTables.bootstrap.js",
@@ -91,5 +91,5 @@
     "url": "git+https://github.com/DataTables/Dist-DataTables-Bootstrap.git"
   },
   "style": "css/dataTables.bootstrap.css",
-  "version": "1.10.15"
+  "version": "1.10.16"
 }

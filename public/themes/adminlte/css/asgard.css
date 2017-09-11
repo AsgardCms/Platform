@@ -95,3 +95,6 @@ footer.main-footer p.text-muted {
   margin-right: 5px;
   margin-top: -2px;
 }
+.tool-bar .search {
+  float: right;
+}
