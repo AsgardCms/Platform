@@ -69213,7 +69213,16 @@ var _data = void 0;
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
         return {
-            data: _data
+            data: _data,
+            actionsDef: {
+                def: [{
+                    name: 'Create a page',
+                    icon: 'edit',
+                    handler: function handler() {
+                        window.location = route('admin.page.page.create');
+                    }
+                }]
+            }
         };
     },
 
@@ -69240,7 +69249,8 @@ var _data = void 0;
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('data-tables', {
     attrs: {
-      "data": _vm.data
+      "data": _vm.data,
+      "actions-def": _vm.actionsDef
     }
   }, [_c('el-table-column', {
     attrs: {

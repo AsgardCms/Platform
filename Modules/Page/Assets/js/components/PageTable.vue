@@ -1,5 +1,5 @@
 <template>
-    <data-tables :data="data">
+    <data-tables :data="data" :actions-def="actionsDef">
         <el-table-column prop="id" label="Id" width="100">
         </el-table-column>
         <el-table-column prop="title" label="Title">
@@ -27,6 +27,15 @@
         data() {
             return {
                 data,
+                actionsDef: {
+                    def: [{
+                        name: 'Create a page',
+                        icon: 'edit',
+                        handler: () => {
+                            window.location = route('admin.page.page.create');
+                        }
+                    }]
+                }
             }
         },
         methods: {
