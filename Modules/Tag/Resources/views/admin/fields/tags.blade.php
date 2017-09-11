@@ -7,6 +7,8 @@
     </select>
     {!! $errors->first('tags', '<span class="help-block">:message</span>') !!}
 </div>
+
+@push('js-stack')
 <script>
     $( document ).ready(function() {
         $('.input-tags').selectize({
@@ -22,3 +24,4 @@
         });
     });
 </script>
+@endpush
