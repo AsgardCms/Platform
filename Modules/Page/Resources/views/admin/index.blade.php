@@ -25,71 +25,12 @@
                 </div>
                 <!-- /.box-header -->
                 <div class="box-body">
-                    <table class="data-table table table-bordered table-hover">
-                        <thead>
-                        <tr>
-                            <th>Id</th>
-                            <th>{{ trans('page::pages.table.name') }}</th>
-                            <th>{{ trans('page::pages.table.slug') }}</th>
-                            <th>{{ trans('core::core.table.created at') }}</th>
-                            <th data-sortable="false">{{ trans('core::core.table.actions') }}</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <?php if (isset($pages)): ?>
-                        <?php foreach ($pages as $page): ?>
-                        <tr id="table-row-{{$page->id}}">
-                            <td>
-                                <a href="{{ URL::route('admin.page.page.edit', [$page->id]) }}">
-                                    {{ $page->id }}
-                                </a>
-                            </td>
-                            <td>
-                                <a href="{{ URL::route('admin.page.page.edit', [$page->id]) }}">
-                                    {{ $page->title }}
-                                </a>
-                            </td>
-                            <td>
-                                <a href="{{ URL::route('admin.page.page.edit', [$page->id]) }}">
-                                    {{ $page->slug }}
-                                </a>
-                            </td>
-                            <td>
-                                <a href="{{ URL::route('admin.page.page.edit', [$page->id]) }}">
-                                    {{ $page->created_at }}
-                                </a>
-                            </td>
-                            <td>
-                                <div class="btn-group">
-                                    <a href="{{ URL::route('admin.page.page.edit', [$page->id]) }}" class="btn btn-default btn-flat"><i class="fa fa-pencil"></i></a>
-
-                                    <delete-button
-                                            delete-action="{{ route('api.page.page.destroy', [$page->id]) }}"
-                                            row-id="table-row-{{ $page->id }}">
-                                    </delete-button>
-                                </div>
-                            </td>
-                        </tr>
-                        <?php endforeach; ?>
-                        <?php endif; ?>
-                        </tbody>
-                        <tfoot>
-                        <tr>
-                            <th>Id</th>
-                            <th>{{ trans('page::pages.table.name') }}</th>
-                            <th>{{ trans('page::pages.table.slug') }}</th>
-                            <th>{{ trans('core::core.table.created at') }}</th>
-                            <th>{{ trans('core::core.table.actions') }}</th>
-                        </tr>
-                        </tfoot>
-                    </table>
-                    <!-- /.box-body -->
+                    <page-table></page-table>
                 </div>
                 <!-- /.box -->
             </div>
         </div>
     </div>
-    @include('core::partials.delete-modal')
 @stop
 
 @section('footer')
