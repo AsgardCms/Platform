@@ -13983,17 +13983,25 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 var token = document.head.querySelector('meta[name="csrf-token"]');
 
 if (token) {
-  window.axios.defaults.headers.common['X-CSRF-TOKEN'] = token.content;
+    window.axios.defaults.headers.common['X-CSRF-TOKEN'] = token.content;
 } else {
-  console.error('CSRF token not found: https://laravel.com/docs/csrf#csrf-x-csrf-token');
+    console.error('CSRF token not found: https://laravel.com/docs/csrf#csrf-x-csrf-token');
 }
 
 var userApiToken = document.head.querySelector('meta[name="user-api-token"]');
 
 if (userApiToken) {
-  window.axios.defaults.headers.common['Authorization'] = 'Bearer ' + userApiToken.content;
+    window.axios.defaults.headers.common['Authorization'] = 'Bearer ' + userApiToken.content;
 } else {
-  console.error('User API token not found in a meta tag.');
+    console.error('User API token not found in a meta tag.');
+}
+
+var currentLocale = document.head.querySelector('meta[name="current-locale"]');
+
+if (currentLocale) {
+    window.currentLocale = currentLocale.content;
+} else {
+    console.error('Current locale token not found in a meta tag.');
 }
 
 /**
@@ -69216,7 +69224,7 @@ var _data = void 0;
             data: _data,
             actionsDef: {
                 def: [{
-                    name: 'Create a page',
+                    name: pageTranslations.button.createPage,
                     icon: 'edit',
                     handler: function handler() {
                         window.location = route('admin.page.page.create');
