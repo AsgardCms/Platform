@@ -8,6 +8,11 @@ $router->bind('page', function ($id) {
 });
 
 $router->group(['prefix' => '/page'], function (Router $router) {
+    $router->get('pages', [
+        'as' => 'api.page.page.index',
+        'uses' => 'PageController@index',
+        'middleware' => 'token-can:page.pages.index',
+    ]);
     $router->delete('pages/{page}', [
         'as' => 'api.page.page.destroy',
         'uses' => 'PageController@destroy',
