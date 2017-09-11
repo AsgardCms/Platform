@@ -17,20 +17,20 @@
                     cancelButtonText: 'Cancel',
                     type: 'warning'
                 }).then(() => {
-                    let $self = this;
+                    let vm = this;
                     axios.delete(this.deleteAction)
                         .then(function (response) {
                             if (response.data.errors === false) {
-                                $self.$message({
+                                vm.$message({
                                     type: 'success',
                                     message: response.data.message
                                 });
 
-                                $('#' + $self.rowId).remove();
+                                $('#' + vm.rowId).remove();
                             }
                         })
                         .catch(function (error) {
-                            $self.$message({
+                            vm.$message({
                                 type: 'error',
                                 message: response.data.message
                             });
