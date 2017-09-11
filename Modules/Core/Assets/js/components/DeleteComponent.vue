@@ -19,7 +19,7 @@
                 }).then(() => {
                     let vm = this;
                     axios.delete(this.scope.row.urls.delete_url)
-                        .then(function (response) {
+                        .then(response => {
                             if (response.data.errors === false) {
                                 vm.$message({
                                     type: 'success',
@@ -29,7 +29,7 @@
                                 vm.rows.splice(vm.scope.$index, 1);
                             }
                         })
-                        .catch(function (error) {
+                        .catch(error => {
                             vm.$message({
                                 type: 'error',
                                 message: response.data.message

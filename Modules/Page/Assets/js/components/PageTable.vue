@@ -30,16 +30,16 @@
             }
         },
         methods: {
-            fetchData: function () {
+            fetchData() {
                 let vm = this;
                 axios.get(route('api.page.page.index'))
-                    .then(function (response) {
+                    .then(response => {
                         vm.data = response.data.data;
                     })
-                    .catch(function (response) {
+                    .catch(response => {
                     });
             },
-            goToEdit: function (scope) {
+            goToEdit(scope) {
                 window.location = scope.row.urls.edit_url;
             }
         },
