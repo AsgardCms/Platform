@@ -5,6 +5,7 @@ versions:
             - New <code>MaxFolderSizeRule</code> class, using new validator classes in laravel 5.5
         changed:
             - Using return type hints in <code>MediaController</code>
+            - Optional media fields are set to allow null
     "2.5.0":
         added:
             - <code>FileWasCreated</code> event
