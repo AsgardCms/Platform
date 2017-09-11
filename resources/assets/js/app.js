@@ -9,9 +9,12 @@ require('./bootstrap');
 
 window.Vue = require('vue');
 import ElementUI from 'element-ui'
+import DataTables from 'vue-data-tables'
 import 'element-ui/lib/theme-default/index.css'
 import locale from 'element-ui/lib/locale/lang/en'
+
 Vue.use(ElementUI, { locale });
+Vue.use(DataTables, { locale });
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -20,7 +23,8 @@ Vue.use(ElementUI, { locale });
  */
 
 Vue.component('example', require('./components/Example.vue'));
-Vue.component('delete-button', require('../../../Modules/Core/Assets/js/components/DeleteComponent.vue'));
+Vue.component('DeleteButton', require('../../../Modules/Core/Assets/js/components/DeleteComponent.vue'));
+Vue.component('PageTable', require('../../../Modules/Page/Assets/js/components/PageTable.vue'));
 
 const app = new Vue({
     el: '#app',

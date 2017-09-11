@@ -69075,10 +69075,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     props: {
-        deleteAction: { default: null },
         deleteMessage: { default: "Are you sure you want to delete this record?" },
         deleteTitle: { default: "Confirmation" },
-        rowId: { default: null }
+        rows: { default: null },
+        scope: { default: null }
     },
     methods: {
         deleteRow: function deleteRow(event) {
@@ -69090,14 +69090,14 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 type: 'warning'
             }).then(function () {
                 var vm = _this;
-                axios.delete(_this.deleteAction).then(function (response) {
+                axios.delete(_this.scope.row.urls.delete_url).then(function (response) {
                     if (response.data.errors === false) {
                         vm.$message({
                             type: 'success',
                             message: response.data.message
                         });
 
-                        $('#' + vm.rowId).remove();
+                        vm.rows.splice(vm.scope.$index, 1);
                     }
                 }).catch(function (error) {
                     vm.$message({
@@ -69183,6 +69183,22 @@ module.exports = Component.exports
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios__ = __webpack_require__(37);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_axios__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -69191,42 +69207,29 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 
-var _data, titles;
 
-titles = [{
-    prop: "flow_no",
-    label: "NO."
-}, {
-    prop: "content",
-    label: "Content"
-}, {
-    prop: "flow_type",
-    label: "Type"
-}];
+var _data = void 0;
+
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
         return {
-            data: _data,
-            titles: titles
+            data: _data
         };
     },
+
+    methods: {
+        fetchData: function fetchData() {
+            var vm = this;
+            __WEBPACK_IMPORTED_MODULE_0_axios___default.a.get(route('api.page.page.index')).then(function (response) {
+                vm.data = response.data.data;
+            }).catch(function (response) {});
+        },
+        goToEdit: function goToEdit(scope) {
+            window.location = scope.row.urls.edit_url;
+        }
+    },
     mounted: function mounted() {
-        this.data = [{
-            "content": "Water flood",
-            "flow_no": "FW201601010001",
-            "flow_type": "Repair",
-            "flow_type_code": "repair"
-        }, {
-            "content": "Lock broken",
-            "flow_no": "FW201601010002",
-            "flow_type": "Repair",
-            "flow_type_code": "repair"
-        }, {
-            "content": "Help to buy some drinks",
-            "flow_no": "FW201601010003",
-            "flow_type": "Help",
-            "flow_type_code": "help"
-        }];
+        this.fetchData();
     }
 });
 
@@ -69239,16 +69242,55 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     attrs: {
       "data": _vm.data
     }
-  }, _vm._l((_vm.titles), function(title) {
-    return _c('el-table-column', {
-      key: title.label,
-      attrs: {
-        "prop": title.prop,
-        "label": title.label,
-        "sortable": "custom"
+  }, [_c('el-table-column', {
+    attrs: {
+      "prop": "id",
+      "label": "Id",
+      "width": "100"
+    }
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "prop": "title",
+      "label": "Title"
+    }
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "prop": "slug",
+      "label": "Slug"
+    }
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "prop": "created_at",
+      "label": "Created at"
+    }
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "fixed": "right",
+      "prop": "actions",
+      "label": "Actions"
+    },
+    scopedSlots: _vm._u([{
+      key: "default",
+      fn: function(scope) {
+        return [_c('a', {
+          staticClass: "btn btn-default btn-flat",
+          on: {
+            "click": function($event) {
+              $event.preventDefault();
+              _vm.goToEdit(scope)
+            }
+          }
+        }, [_c('i', {
+          staticClass: "fa fa-pencil"
+        })]), _vm._v(" "), _c('delete-button', {
+          attrs: {
+            "scope": scope,
+            "rows": _vm.data
+          }
+        })]
       }
-    })
-  }))
+    }])
+  })], 1)
 },staticRenderFns: []}
 module.exports.render._withStripped = true
 if (false) {

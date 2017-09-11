@@ -19,6 +19,7 @@
     "vue": "^2.1.10"
   },
   "dependencies": {
-    "element-ui": "^1.4.4"
+    "element-ui": "^1.4.4",
+    "vue-data-tables": "^2.0.4"
   }
 }
