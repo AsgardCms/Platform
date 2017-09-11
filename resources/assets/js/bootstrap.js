@@ -39,7 +39,7 @@ if (token) {
 
 let userApiToken = document.head.querySelector('meta[name="user-api-token"]');
 
-if (token) {
+if (userApiToken) {
     window.axios.defaults.headers.common['Authorization'] = 'Bearer ' + userApiToken.content;
 } else {
     console.error('User API token not found in a meta tag.');
