@@ -19,9 +19,9 @@ class CreateFileTranslationsTable extends Migration
                 $table->increments('id');
                 $table->integer('file_id')->unsigned();
                 $table->string('locale')->index();
-                $table->string('description');
-                $table->string('alt_attribute');
-                $table->string('keywords');
+                $table->string('description')->nullable();
+                $table->string('alt_attribute')->nullable();
+                $table->string('keywords')->nullable();
                 $table->unique(['file_id', 'locale']);
                 $table->foreign('file_id')->references('id')->on('media__files')->onDelete('cascade');
             }
