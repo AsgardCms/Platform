@@ -45,6 +45,15 @@ if (userApiToken) {
     console.error('User API token not found in a meta tag.');
 }
 
+let currentLocale = document.head.querySelector('meta[name="current-locale"]');
+
+if (currentLocale) {
+    window.currentLocale = currentLocale.content;
+} else {
+    console.error('Current locale token not found in a meta tag.');
+}
+
+
 /**
  * Echo exposes an expressive API for subscribing to channels and listening
  * for events that are broadcast by Laravel. Echo and event broadcasting
