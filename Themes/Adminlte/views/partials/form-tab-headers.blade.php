@@ -1,8 +1,10 @@
+@push('css-stack')
 <style>
     li.error {
         border-top-color: #dd4b39 !important;
     }
 </style>
+@endpush
 
 <?php $prefix = isset($prefix) ? $prefix . "_" : ""; ?>
 
