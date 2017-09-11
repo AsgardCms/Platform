@@ -24,9 +24,7 @@ class PageController extends AdminBaseController
 
     public function index()
     {
-        $pages = $this->page->all();
-
-        return view('page::admin.index', compact('pages'));
+        return view('page::admin.index');
     }
 
     /**
