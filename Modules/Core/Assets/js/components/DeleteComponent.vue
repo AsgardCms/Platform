@@ -5,10 +5,10 @@
 <script>
     export default {
         props: {
-            deleteAction: {default: null},
             deleteMessage: {default: "Are you sure you want to delete this record?"},
             deleteTitle: {default: "Confirmation"},
-            rowId: {default: null},
+            rows: {default: null},
+            scope: {default: null},
         },
         methods: {
             deleteRow(event) {
@@ -18,7 +18,7 @@
                     type: 'warning'
                 }).then(() => {
                     let vm = this;
-                    axios.delete(this.deleteAction)
+                    axios.delete(this.scope.row.urls.delete_url)
                         .then(function (response) {
                             if (response.data.errors === false) {
                                 vm.$message({
@@ -26,7 +26,7 @@
                                     message: response.data.message
                                 });
 
-                                $('#' + vm.rowId).remove();
+                                vm.rows.splice(vm.scope.$index, 1);
                             }
                         })
                         .catch(function (error) {
