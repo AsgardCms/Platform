@@ -69222,7 +69222,7 @@ var _data = void 0;
             var vm = this;
             __WEBPACK_IMPORTED_MODULE_0_axios___default.a.get(route('api.page.page.index')).then(function (response) {
                 vm.data = response.data.data;
-            }).catch(function (response) {});
+            });
         },
         goToEdit: function goToEdit(scope) {
             window.location = scope.row.urls.edit_url;

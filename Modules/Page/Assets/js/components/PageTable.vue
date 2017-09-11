@@ -35,8 +35,6 @@
                 axios.get(route('api.page.page.index'))
                     .then(response => {
                         vm.data = response.data.data;
-                    })
-                    .catch(response => {
                     });
             },
             goToEdit(scope) {
