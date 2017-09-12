@@ -69077,25 +69077,33 @@ module.exports = Component.exports
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Core_Assets_js_mixins_Translate__ = __webpack_require__(121);
 //
 //
 //
 //
 
+
 /* harmony default export */ __webpack_exports__["default"] = ({
+    mixins: [__WEBPACK_IMPORTED_MODULE_0__Core_Assets_js_mixins_Translate__["a" /* default */]],
     props: {
-        deleteMessage: { default: "Are you sure you want to delete this record?" },
-        deleteTitle: { default: "Confirmation" },
         rows: { default: null },
         scope: { default: null }
     },
+    data: function data() {
+        return {
+            deleteMessage: '',
+            deleteTitle: ''
+        };
+    },
+
     methods: {
         deleteRow: function deleteRow(event) {
             var _this = this;
 
             this.$confirm(this.deleteMessage, this.deleteTitle, {
-                confirmButtonText: 'OK',
-                cancelButtonText: 'Cancel',
+                confirmButtonText: this.translate('core', 'button.delete'),
+                cancelButtonText: this.translate('core', 'button.cancel'),
                 type: 'warning'
             }).then(function () {
                 var vm = _this;
@@ -69115,12 +69123,17 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                     });
                 });
             }).catch(function () {
+                console.log('asdasd');
                 _this.$message({
                     type: 'info',
                     message: 'Delete canceled'
                 });
             });
         }
+    },
+    mounted: function mounted() {
+        this.deleteMessage = this.translate('core', 'modal.confirmation-message');
+        this.deleteTitle = this.translate('core', 'modal.title');
     }
 });
 
@@ -69307,7 +69320,8 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         })]), _vm._v(" "), _c('delete-button', {
           attrs: {
             "scope": scope,
-            "rows": _vm.data
+            "rows": _vm.data,
+            "translations": _vm.translations
           }
         })]
       }

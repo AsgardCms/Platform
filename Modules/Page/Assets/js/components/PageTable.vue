@@ -12,7 +12,7 @@
             <template scope="scope">
                 <a class="btn btn-default btn-flat" @click.prevent="goToEdit(scope)"><i class="fa fa-pencil"></i></a>
 
-                <delete-button :scope="scope" :rows="data">
+                <delete-button :scope="scope" :rows="data" :translations="translations">
                 </delete-button>
             </template>
         </el-table-column>
