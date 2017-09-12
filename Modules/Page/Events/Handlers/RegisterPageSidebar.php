@@ -16,7 +16,7 @@ class RegisterPageSidebar extends AbstractAdminSidebar
     public function extendWith(Menu $menu)
     {
         $menu->group(trans('core::sidebar.content'), function (Group $group) {
-            $group->item(trans('page::pages.title.pages'), function (Item $item) {
+            $group->item(trans('page::pages.pages'), function (Item $item) {
                 $item->icon('fa fa-file');
                 $item->weight(1);
                 $item->route('admin.page.page.index');
