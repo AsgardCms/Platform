@@ -11,6 +11,7 @@
     <meta id="token" name="token" value="{{ csrf_token() }}" />
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta name="user-api-token" content="{{ $currentUser->getFirstApiKey() }}">
+    <meta name="current-locale" content="{{ locale() }}">
     <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
     @foreach($cssFiles as $css)
         <link media="all" type="text/css" rel="stylesheet" href="{{ URL::asset($css) }}">
@@ -20,6 +21,7 @@
     @section('styles')
     @show
     @stack('css-stack')
+    @stack('translation-stack')
 
     <script>
         $.ajaxSetup({
