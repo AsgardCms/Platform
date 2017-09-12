@@ -15,7 +15,7 @@
         <div class="col-xs-12">
             <div class="box box-primary">
                 <div class="box-body">
-                    <page-table :translations="{{ json_encode(['page' => trans('page::pages')]) }}"></page-table>
+                    <page-table :translations="{{ json_encode(['page' => trans('page::pages'), 'core' => trans('core::core')]) }}"></page-table>
                 </div>
             </div>
         </div>
