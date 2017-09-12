@@ -69123,10 +69123,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                     });
                 });
             }).catch(function () {
-                console.log('asdasd');
                 _this.$message({
                     type: 'info',
-                    message: 'Delete canceled'
+                    message: _this.translate('core', 'delete cancelled')
                 });
             });
         }
