@@ -13940,6 +13940,7 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_1_vue_data_tables___default.a, { locale: __WEB
 Vue.component('example', __webpack_require__(107));
 Vue.component('DeleteButton', __webpack_require__(110));
 Vue.component('PageTable', __webpack_require__(113));
+Vue.component('PageForm', __webpack_require__(116));
 
 var app = new Vue({
   el: '#app'
@@ -69193,6 +69194,7 @@ module.exports = Component.exports
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios__ = __webpack_require__(37);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_axios__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__Core_Assets_js_mixins_Translate__ = __webpack_require__(121);
 //
 //
 //
@@ -69214,17 +69216,19 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+
 
 
 var _data = void 0;
 
 /* harmony default export */ __webpack_exports__["default"] = ({
+    mixins: [__WEBPACK_IMPORTED_MODULE_1__Core_Assets_js_mixins_Translate__["a" /* default */]],
     data: function data() {
         return {
             data: _data,
             actionsDef: {
                 def: [{
-                    name: pageTranslations.button.createPage,
+                    name: this.translate('page', 'create page'),
                     icon: 'edit',
                     handler: function handler() {
                         window.location = route('admin.page.page.create');
@@ -69269,7 +69273,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }), _vm._v(" "), _c('el-table-column', {
     attrs: {
       "prop": "title",
-      "label": "Title"
+      "label": _vm.translate('page', 'title')
     }
   }), _vm._v(" "), _c('el-table-column', {
     attrs: {
@@ -69317,6 +69321,196 @@ if (false) {
      require("vue-hot-reload-api").rerender("data-v-5404d10a", module.exports)
   }
 }
+
+/***/ }),
+/* 116 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var Component = __webpack_require__(16)(
+  /* script */
+  __webpack_require__(117),
+  /* template */
+  __webpack_require__(118),
+  /* styles */
+  null,
+  /* scopeId */
+  null,
+  /* moduleIdentifier (server only) */
+  null
+)
+Component.options.__file = "/Users/nicolaswidart/Sites/Asguard/Platform/Modules/Page/Assets/js/components/PageForm.vue"
+if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
+if (Component.options.functional) {console.error("[vue-loader] PageForm.vue: functional components are not supported with templates, they should use render functions.")}
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-6d067f38", Component.options)
+  } else {
+    hotAPI.reload("data-v-6d067f38", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 117 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios__ = __webpack_require__(37);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_axios__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    props: {
+        locales: { default: null }
+    },
+    data: function data() {
+        return {
+            page: {
+                en: {
+                    title: 'asdasd'
+                },
+                fr: {
+                    title: ''
+                },
+                nl: {
+                    title: ''
+                }
+            }
+        };
+    },
+
+    methods: {
+        onSubmit: function onSubmit() {
+            __WEBPACK_IMPORTED_MODULE_0_axios___default.a.post(route('api.page.page.store'), this.page).then(function (response) {
+                console.log(response);
+            });
+        }
+    },
+    mounted: function mounted() {}
+});
+
+/***/ }),
+/* 118 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    staticClass: "row"
+  }, [_c('div', {
+    staticClass: "col-md-10"
+  }, [_c('div', {
+    staticClass: "box box-primary"
+  }, [_c('div', {
+    staticClass: "box-body"
+  }, [_c('el-form', {
+    ref: "form",
+    attrs: {
+      "model": _vm.page,
+      "label-width": "120px",
+      "label-position": "top"
+    }
+  }, [_c('el-tabs', {
+    attrs: {
+      "type": "card"
+    }
+  }, _vm._l((_vm.locales), function(localeArray, locale) {
+    return _c('el-tab-pane', {
+      key: localeArray.name,
+      attrs: {
+        "label": localeArray.name
+      }
+    }, [_c('el-form-item', {
+      attrs: {
+        "label": "Title"
+      }
+    }, [_c('el-input', {
+      model: {
+        value: (_vm.page[locale].title),
+        callback: function($$v) {
+          _vm.page[locale].title = $$v
+        },
+        expression: "page[locale].title"
+      }
+    })], 1), _vm._v(" "), _c('el-form-item', [_c('el-button', {
+      attrs: {
+        "type": "primary"
+      },
+      on: {
+        "click": function($event) {
+          _vm.onSubmit()
+        }
+      }
+    }, [_vm._v("Create")]), _vm._v(" "), _c('el-button', [_vm._v("Cancel")])], 1)], 1)
+  }))], 1)], 1)])])])
+},staticRenderFns: []}
+module.exports.render._withStripped = true
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+     require("vue-hot-reload-api").rerender("data-v-6d067f38", module.exports)
+  }
+}
+
+/***/ }),
+/* 119 */,
+/* 120 */,
+/* 121 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony default export */ __webpack_exports__["a"] = ({
+    props: {
+        translations: { default: null }
+    },
+    methods: {
+        translate: function translate(namespace, name) {
+            return _.get(this.translations[namespace], name);
+        }
+    }
+});
 
 /***/ })
 /******/ ]);
