@@ -69,4 +69,5 @@ return [
     'error 500' => '500',
     'error 500 title' => 'Oops! Something went wrong',
     'error 500 description' => 'An administrator was notified.',
+    'delete cancelled' => 'Delete cancelled',
 ];
