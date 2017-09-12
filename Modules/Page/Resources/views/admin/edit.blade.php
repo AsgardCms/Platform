@@ -2,12 +2,12 @@
 
 @section('content-header')
     <h1>
-        {{ trans('page::pages.title.edit page') }}
+        {{ trans('page::pages.edit page') }}
     </h1>
     <ol class="breadcrumb">
         <li><a href="{{ URL::route('dashboard.index') }}"><i class="fa fa-dashboard"></i> {{ trans('core::core.breadcrumb.home') }}</a></li>
-        <li><a href="{{ URL::route('admin.page.page.index') }}">{{ trans('page::pages.title.pages') }}</a></li>
-        <li class="active">{{ trans('page::pages.title.edit page') }}</li>
+        <li><a href="{{ URL::route('admin.page.page.index') }}">{{ trans('page::pages.pages') }}</a></li>
+        <li class="active">{{ trans('page::pages.edit page') }}</li>
     </ol>
 @stop
 
@@ -64,14 +64,14 @@
                                    class="flat-blue"
                                     {{ isset($page->is_home) && (bool)$page->is_home == true ? 'checked' : '' }}
                                    value="1" />
-                            {{ trans('page::pages.form.is homepage') }}
+                            {{ trans('page::pages.is homepage') }}
                             {!! $errors->first('is_home', '<span class="help-block">:message</span>') !!}
                         </label>
                     </div>
                     <hr/>
                     <div class='form-group{{ $errors->has("template") ? ' has-error' : '' }}'>
-                        {!! Form::label("template", trans('page::pages.form.template')) !!}
-                        {!! Form::select("template", $all_templates, old("template", $page->template), ['class' => "form-control", 'placeholder' => trans('page::pages.form.template')]) !!}
+                        {!! Form::label("template", trans('page::pages.template')) !!}
+                        {!! Form::select("template", $all_templates, old("template", $page->template), ['class' => "form-control", 'placeholder' => trans('page::pages.template')]) !!}
                         {!! $errors->first("template", '<span class="help-block">:message</span>') !!}
                     </div>
                     <hr>

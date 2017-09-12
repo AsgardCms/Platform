@@ -2,11 +2,11 @@
 
 @section('content-header')
     <h1>
-        {{ trans('page::pages.title.pages') }}
+        {{ trans('page::pages.pages') }}
     </h1>
     <ol class="breadcrumb">
         <li><a href="{{ URL::route('dashboard.index') }}"><i class="fa fa-dashboard"></i> {{ trans('core::core.breadcrumb.home') }}</a></li>
-        <li class="active">{{ trans('page::pages.title.pages') }}</li>
+        <li class="active">{{ trans('page::pages.pages') }}</li>
     </ol>
 @stop
 
@@ -15,7 +15,7 @@
         <div class="col-xs-12">
             <div class="box box-primary">
                 <div class="box-body">
-                    <page-table></page-table>
+                    <page-table :translations="{{ json_encode(['page' => trans('page::pages')]) }}"></page-table>
                 </div>
             </div>
         </div>
@@ -28,7 +28,7 @@
 @section('shortcuts')
     <dl class="dl-horizontal">
         <dt><code>c</code></dt>
-        <dd>{{ trans('page::pages.title.create page') }}</dd>
+        <dd>{{ trans('page::pages.create page') }}</dd>
     </dl>
 @stop
 
@@ -40,20 +40,6 @@
                 actions: [
                     { key: 'c', route: "<?= route('admin.page.page.create') ?>" }
                 ]
-            });
-        });
-        $(function () {
-            var table = $('.data-table').dataTable({
-                "paginate": true,
-                "lengthChange": true,
-                "filter": true,
-                "sort": true,
-                "info": true,
-                "autoWidth": true,
-                "order": [[ 0, "desc" ]],
-                "language": {
-                    "url": '<?php echo Module::asset("core:js/vendor/datatables/{$locale}.json") ?>'
-                }
             });
         });
     </script>
