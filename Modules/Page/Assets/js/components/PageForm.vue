@@ -1,12 +1,12 @@
 <template>
-    <el-form ref="form" :model="page" label-width="120px" label-position="top">
+    <el-form ref="form" :model="page" label-width="120px" label-position="top" @keydown="form.errors.clear($event.target.name);">
     <div class="row">
         <div class="col-md-10">
             <div class="box box-primary">
                 <div class="box-body">
                     <el-tabs type="card">
-                            <el-tab-pane :label="localeArray.name" v-for="(localeArray, locale) in locales" :key="localeArray.name" class="asd"
-                            :class="{'has-error' : form.errors.has(locale)}">
+                            <el-tab-pane :label="localeArray.name" v-for="(localeArray, locale) in locales" :key="localeArray.name">
+                                <span slot="label" :class="{'error' : form.errors.has(locale)}">{{ localeArray.name }}</span>
                                 <el-form-item :label="translate('page', 'title')"
                                               :class="{'el-form-item is-error': form.errors.has(locale + '.title') }">
                                     <el-input v-model="page[locale].title" @change="slugifyTitle($event, locale)"></el-input>
@@ -69,7 +69,6 @@
                                                     <el-option :label="translate('page', 'facebook-types.article')" value="article"></el-option>
                                                 </el-select>
                                             </el-form-item>
-                                            <tags-input namespace="asgardcms/page"></tags-input>
                                         </div>
                                     </div>
                                 </div>
@@ -97,6 +96,7 @@
                         </el-select>
                         <div class="el-form-item__error" v-if="form.errors.has('template')" v-text="form.errors.first('template')"></div>
                     </el-form-item>
+                    <tags-input namespace="asgardcms/page" @input="setTags"></tags-input>
                 </div>
             </div>
         </div>
@@ -139,16 +139,22 @@
                 },
                 form: new Form(),
                 loading: false,
+                tags: {},
             }
         },
         methods: {
             onSubmit() {
-                this.form = new Form(this.page);
+                this.form = new Form(_.merge(this.page, {tags: this.tags}));
                 let vm = this;
                 this.loading = true;
                 this.form.post(route('api.page.page.store'))
                     .then(response => {
                         this.loading = false;
+                        vm.$message({
+                            type: 'success',
+                            message: response.data.message
+                        });
+                        window.location = route('admin.page.page.index');
                     })
                     .catch(error => {
                         this.loading = false;
@@ -158,7 +164,7 @@
                         });
                     });
             },
-            setPageTypes() {
+            fetchTemplates() {
                 axios.get(route('api.page.page-templates.index'))
                     .then(response => {
                         this.templates = response.data;
@@ -166,10 +172,13 @@
             },
             slugifyTitle(event, locale) {
                 this.page[locale].slug = this.slugify(event);
+            },
+            setTags(tags) {
+                this.tags = tags;
             }
         },
         mounted() {
-            this.setPageTypes();
+          this.fetchTemplates();
         }
     }
 </script>
