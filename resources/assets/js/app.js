@@ -22,7 +22,6 @@ Vue.use(DataTables, { locale });
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-Vue.component('example', require('./components/Example.vue'));
 Vue.component('ckeditor', require('../../../Modules/Core/Assets/js/components/CkEditor.vue'));
 Vue.component('DeleteButton', require('../../../Modules/Core/Assets/js/components/DeleteComponent.vue'));
 Vue.component('PageTable', require('../../../Modules/Page/Assets/js/components/PageTable.vue'));

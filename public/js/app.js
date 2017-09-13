@@ -14041,7 +14041,6 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_1_vue_data_tables___default.a, { locale: __WEB
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-Vue.component('example', __webpack_require__(108));
 Vue.component('ckeditor', __webpack_require__(111));
 Vue.component('DeleteButton', __webpack_require__(118));
 Vue.component('PageTable', __webpack_require__(121));
@@ -68951,104 +68950,9 @@ exports.default = {
 };
 
 /***/ }),
-/* 108 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var disposed = false
-var Component = __webpack_require__(7)(
-  /* script */
-  __webpack_require__(109),
-  /* template */
-  __webpack_require__(110),
-  /* styles */
-  null,
-  /* scopeId */
-  null,
-  /* moduleIdentifier (server only) */
-  null
-)
-Component.options.__file = "/Users/nicolaswidart/Sites/Asguard/Platform/resources/assets/js/components/Example.vue"
-if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
-if (Component.options.functional) {console.error("[vue-loader] Example.vue: functional components are not supported with templates, they should use render functions.")}
-
-/* hot reload */
-if (false) {(function () {
-  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), false)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-dab8b15a", Component.options)
-  } else {
-    hotAPI.reload("data-v-dab8b15a", Component.options)
-  }
-  module.hot.dispose(function (data) {
-    disposed = true
-  })
-})()}
-
-module.exports = Component.exports
-
-
-/***/ }),
-/* 109 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-/* harmony default export */ __webpack_exports__["default"] = ({
-    mounted: function mounted() {
-        console.log('Component mounted.');
-    }
-});
-
-/***/ }),
-/* 110 */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _vm._m(0)
-},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
-    staticClass: "container"
-  }, [_c('div', {
-    staticClass: "row"
-  }, [_c('div', {
-    staticClass: "col-md-8 col-md-offset-2"
-  }, [_c('div', {
-    staticClass: "panel panel-default"
-  }, [_c('div', {
-    staticClass: "panel-heading"
-  }, [_vm._v("Example Component")]), _vm._v(" "), _c('div', {
-    staticClass: "panel-body"
-  }, [_vm._v("\n                    I'm an example component!\n                ")])])])])])
-}]}
-module.exports.render._withStripped = true
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-     require("vue-hot-reload-api").rerender("data-v-dab8b15a", module.exports)
-  }
-}
-
-/***/ }),
+/* 108 */,
+/* 109 */,
+/* 110 */,
 /* 111 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -69969,6 +69873,14 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -69999,33 +69911,33 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 'index': 'index',
                 'home': 'home'
             },
-            errors: ''
+            form: new __WEBPACK_IMPORTED_MODULE_3_form_backend_validation___default.a(),
+            loading: false
         };
     },
 
     methods: {
         onSubmit: function onSubmit() {
-            var vm = this;
-            var form = new __WEBPACK_IMPORTED_MODULE_3_form_backend_validation___default.a(this.page);
-            form.post(route('api.page.page.store')).then(function (response) {}).catch(function (errors) {
-                console.log(errors.response.data.errors);
-                vm.errors = errors.response.data.errors;
-            });
-
-            //                axios.post(route('api.page.page.store'), this.page)
-            //                    .then(response => {
-            //                        console.log(response);
-            //                    })
-            //                    .catch(response => {
-            //                        console.log(response.response.data);
-            //                        this.errors = response.response.data;
-            //                    })
-        },
-        setPageTypes: function setPageTypes() {
             var _this = this;
 
+            this.form = new __WEBPACK_IMPORTED_MODULE_3_form_backend_validation___default.a(this.page);
+            var vm = this;
+            this.loading = true;
+            this.form.post(route('api.page.page.store')).then(function (response) {
+                _this.loading = false;
+            }).catch(function (error) {
+                _this.loading = false;
+                vm.$notify.error({
+                    title: 'Error',
+                    message: 'There are some errors in the form.'
+                });
+            });
+        },
+        setPageTypes: function setPageTypes() {
+            var _this2 = this;
+
             __WEBPACK_IMPORTED_MODULE_0_axios___default.a.get(route('api.page.page-templates.index')).then(function (response) {
-                _this.templates = response.data;
+                _this2.templates = response.data;
             });
         },
         slugifyTitle: function slugifyTitle(event, locale) {
@@ -70092,11 +70004,17 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }, _vm._l((_vm.locales), function(localeArray, locale) {
     return _c('el-tab-pane', {
       key: localeArray.name,
+      staticClass: "asd",
+      class: {
+        'has-error': _vm.form.errors.has(locale)
+      },
       attrs: {
         "label": localeArray.name
       }
     }, [_c('el-form-item', {
-      staticClass: "el-form-item is-error",
+      class: {
+        'el-form-item is-error': _vm.form.errors.has(locale + '.title')
+      },
       attrs: {
         "label": _vm.translate('page', 'title')
       }
@@ -70113,9 +70031,15 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         },
         expression: "page[locale].title"
       }
-    }), _vm._v(" "), _c('div', {
-      staticClass: "el-form-item__error"
-    }, [_vm._v("Please input Activity name")])], 1), _vm._v(" "), _c('el-form-item', {
+    }), _vm._v(" "), (_vm.form.errors.has(locale + '.title')) ? _c('div', {
+      staticClass: "el-form-item__error",
+      domProps: {
+        "textContent": _vm._s(_vm.form.errors.first(locale + '.title'))
+      }
+    }) : _vm._e()], 1), _vm._v(" "), _c('el-form-item', {
+      class: {
+        'el-form-item is-error': _vm.form.errors.has(locale + '.slug')
+      },
       attrs: {
         "label": _vm.translate('page', 'slug')
       }
@@ -70127,7 +70051,15 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         },
         expression: "page[locale].slug"
       }
-    })], 1), _vm._v(" "), _c('el-form-item', {
+    }), _vm._v(" "), (_vm.form.errors.has(locale + '.slug')) ? _c('div', {
+      staticClass: "el-form-item__error",
+      domProps: {
+        "textContent": _vm._s(_vm.form.errors.first(locale + '.slug'))
+      }
+    }) : _vm._e()], 1), _vm._v(" "), _c('el-form-item', {
+      class: {
+        'el-form-item is-error': _vm.form.errors.has(locale + '.body')
+      },
       attrs: {
         "label": _vm.translate('page', 'body')
       }
@@ -70139,7 +70071,12 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         },
         expression: "page[locale].body"
       }
-    })], 1), _vm._v(" "), _c('div', {
+    }), _vm._v(" "), (_vm.form.errors.has(locale + '.body')) ? _c('div', {
+      staticClass: "el-form-item__error",
+      domProps: {
+        "textContent": _vm._s(_vm.form.errors.first(locale + '.body'))
+      }
+    }) : _vm._e()], 1), _vm._v(" "), _c('div', {
       staticClass: "panel box box-primary"
     }, [_c('div', {
       staticClass: "box-header"
@@ -70269,9 +70206,14 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         "label": _vm.translate('page', 'facebook-types.article'),
         "value": "article"
       }
-    })], 1)], 1)], 1)])]), _vm._v(" "), _c('el-form-item', [_c('el-button', {
+    })], 1)], 1), _vm._v(" "), _c('tags-input', {
       attrs: {
-        "type": "primary"
+        "namespace": "asgardcms/page"
+      }
+    })], 1)])]), _vm._v(" "), _c('el-form-item', [_c('el-button', {
+      attrs: {
+        "type": "primary",
+        "loading": _vm.loading
       },
       on: {
         "click": function($event) {
@@ -70310,6 +70252,9 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       expression: "page.is_home"
     }
   })], 1), _vm._v(" "), _c('el-form-item', {
+    class: {
+      'el-form-item is-error': _vm.form.errors.has('template')
+    },
     attrs: {
       "label": _vm.translate('page', 'template')
     }
@@ -70332,7 +70277,12 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         "value": key
       }
     })
-  }))], 1)], 1)])])])])
+  })), _vm._v(" "), (_vm.form.errors.has('template')) ? _c('div', {
+    staticClass: "el-form-item__error",
+    domProps: {
+      "textContent": _vm._s(_vm.form.errors.first('template'))
+    }
+  }) : _vm._e()], 1)], 1)])])])])
 },staticRenderFns: []}
 module.exports.render._withStripped = true
 if (false) {
