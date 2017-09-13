@@ -69882,6 +69882,28 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -69891,7 +69913,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony default export */ __webpack_exports__["default"] = ({
     mixins: [__WEBPACK_IMPORTED_MODULE_1__Core_Assets_js_mixins_Translate__["a" /* default */], __WEBPACK_IMPORTED_MODULE_2__Core_Assets_js_mixins_Slugify__["a" /* default */]],
     props: {
-        locales: { default: null }
+        locales: { default: null },
+        pageId: { default: null }
     },
     data: function data() {
         return {
@@ -69906,11 +69929,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                     og_description: '',
                     og_type: ''
                 }];
-            }).fromPairs().merge({ template: '', is_home: 0 }).value(),
+            }).fromPairs().merge({ template: 'default', is_home: 0 }).value(),
 
             templates: {
                 'index': 'index',
-                'home': 'home'
+                'home': 'home',
+                'default': 'default'
             },
             form: new __WEBPACK_IMPORTED_MODULE_3_form_backend_validation___default.a(),
             loading: false,
@@ -69918,6 +69942,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         };
     },
 
+    watch: {
+        tags: function tags() {
+            console.log('changed tags');
+        }
+    },
     methods: {
         onSubmit: function onSubmit() {
             var _this = this;
@@ -69952,10 +69981,23 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         },
         setTags: function setTags(tags) {
             this.tags = tags;
+        },
+        fetchPage: function fetchPage() {
+            var _this3 = this;
+
+            __WEBPACK_IMPORTED_MODULE_0_axios___default.a.post(route('api.page.page.find', { page: this.pageId })).then(function (response) {
+                // console.log(response);
+                _this3.page = response.data.data;
+                _this3.tags = response.data.data.tags;
+                console.log(response.data.data.tags);
+            }).catch(function (error) {});
         }
     },
     mounted: function mounted() {
         this.fetchTemplates();
+        if (this.pageId !== null) {
+            this.fetchPage();
+        }
     }
 });
 
@@ -70232,7 +70274,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
           _vm.onSubmit()
         }
       }
-    }, [_vm._v(_vm._s(_vm.translate('core', 'button.create')))]), _vm._v(" "), _c('el-button', {
+    }, [_vm._v("\n                                    " + _vm._s(_vm.translate('core', 'button.create')) + "\n                                ")]), _vm._v(" "), _c('el-button', {
       on: {
         "click": function($event) {
           _vm.onCancel()
@@ -70296,7 +70338,8 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   }) : _vm._e()], 1), _vm._v(" "), _c('tags-input', {
     attrs: {
-      "namespace": "asgardcms/page"
+      "namespace": "asgardcms/page",
+      "current-tags": _vm.tags
     },
     on: {
       "input": _vm.setTags
@@ -70880,7 +70923,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     props: {
-        namespace: { String: String }
+        namespace: { String: String },
+        currentTags: { default: null }
     },
     data: function data() {
         return {
@@ -70897,6 +70941,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     mounted: function mounted() {
         var _this = this;
 
+        console.log(this.currentTags);
+        if (this.currentTags !== null) {}
         __WEBPACK_IMPORTED_MODULE_0_axios___default.a.get(route('api.tag.tag.by-namespace', { namespace: this.namespace })).then(function (response) {
             _this.availableTags = response.data;
         });
