@@ -6,10 +6,10 @@
                 <div class="box-body">
                     <el-tabs type="card">
                             <el-tab-pane :label="localeArray.name" v-for="(localeArray, locale) in locales" :key="localeArray.name">
-
-                                <el-form-item :label="translate('page', 'title')"  class="el-form-item is-error">
+                                <el-form-item :label="translate('page', 'title')"
+                                              :class="{'el-form-item is-error': form.errors.has('en.title') }">
                                     <el-input v-model="page[locale].title" @change="slugifyTitle($event, locale)"></el-input>
-                                    <div class="el-form-item__error">Please input Activity name</div>
+                                    <div class="el-form-item__error" v-if="form.errors.has('en.title')" v-text="form.errors.first('en.title')"></div>
                                 </el-form-item>
                                 <el-form-item :label="translate('page', 'slug')">
                                     <el-input v-model="page[locale].slug"></el-input>
@@ -129,30 +129,13 @@
                     'index': 'index',
                     'home': 'home',
                 },
-                errors: '',
+                form: new Form(),
             }
         },
         methods: {
             onSubmit() {
-                let vm = this;
-                const form = new Form(this.page);
-                form.post(route('api.page.page.store'))
-                    .then(response => {
-                    })
-                    .catch(errors => {
-                        console.log(errors.response.data.errors);
-                        vm.errors = errors.response.data.errors;
-                    });
-
-
-//                axios.post(route('api.page.page.store'), this.page)
-//                    .then(response => {
-//                        console.log(response);
-//                    })
-//                    .catch(response => {
-//                        console.log(response.response.data);
-//                        this.errors = response.response.data;
-//                    })
+                this.form = new Form(this.page);
+                this.form.post(route('api.page.page.store'));
             },
             setPageTypes() {
                 axios.get(route('api.page.page-templates.index'))
