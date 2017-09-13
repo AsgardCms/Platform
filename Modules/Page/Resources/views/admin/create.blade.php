@@ -16,11 +16,16 @@
         .checkbox label {
             padding-left: 0;
         }
+        .error {
+            color: #dd4b39 !important;
+        }
     </style>
 @endpush
 
 @section('content')
     {!! Form::open(['route' => ['admin.page.page.store'], 'method' => 'post']) !!}
+    <page-form :locales="{{ json_encode(LaravelLocalization::getSupportedLocales()) }}"
+               :translations="{{ json_encode(['page' => trans('page::pages'), 'core' => trans('core::core')]) }}"></page-form>
     <div class="row">
         <div class="col-md-10">
             <div class="nav-tabs-custom">
