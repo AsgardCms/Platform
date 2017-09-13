@@ -5,19 +5,25 @@
             <div class="box box-primary">
                 <div class="box-body">
                     <el-tabs type="card">
-                            <el-tab-pane :label="localeArray.name" v-for="(localeArray, locale) in locales" :key="localeArray.name">
+                            <el-tab-pane :label="localeArray.name" v-for="(localeArray, locale) in locales" :key="localeArray.name" class="asd"
+                            :class="{'has-error' : form.errors.has(locale)}">
                                 <el-form-item :label="translate('page', 'title')"
-                                              :class="{'el-form-item is-error': form.errors.has('en.title') }">
+                                              :class="{'el-form-item is-error': form.errors.has(locale + '.title') }">
                                     <el-input v-model="page[locale].title" @change="slugifyTitle($event, locale)"></el-input>
-                                    <div class="el-form-item__error" v-if="form.errors.has('en.title')" v-text="form.errors.first('en.title')"></div>
-                                </el-form-item>
-                                <el-form-item :label="translate('page', 'slug')">
-                                    <el-input v-model="page[locale].slug"></el-input>
+                                    <div class="el-form-item__error" v-if="form.errors.has(locale + '.title')" v-text="form.errors.first(locale + '.title')"></div>
                                 </el-form-item>
 
-                                <el-form-item :label="translate('page', 'body')">
+                                <el-form-item :label="translate('page', 'slug')"
+                                              :class="{'el-form-item is-error': form.errors.has(locale + '.slug') }">
+                                    <el-input v-model="page[locale].slug"></el-input>
+                                    <div class="el-form-item__error" v-if="form.errors.has(locale + '.slug')" v-text="form.errors.first(locale + '.slug')"></div>
+                                </el-form-item>
+
+                                <el-form-item :label="translate('page', 'body')"
+                                              :class="{'el-form-item is-error': form.errors.has(locale + '.body') }">
                                     <ckeditor v-model="page[locale].body">
                                     </ckeditor>
+                                    <div class="el-form-item__error" v-if="form.errors.has(locale + '.body')" v-text="form.errors.first(locale + '.body')"></div>
                                 </el-form-item>
 
                                 <div class="panel box box-primary">
@@ -63,12 +69,13 @@
                                                     <el-option :label="translate('page', 'facebook-types.article')" value="article"></el-option>
                                                 </el-select>
                                             </el-form-item>
+                                            <tags-input namespace="asgardcms/page"></tags-input>
                                         </div>
                                     </div>
                                 </div>
 
                                 <el-form-item>
-                                    <el-button type="primary" @click="onSubmit()">{{ translate('core', 'button.create') }}</el-button>
+                                    <el-button type="primary" @click="onSubmit()" :loading="loading">{{ translate('core', 'button.create') }}</el-button>
                                     <el-button @click="onCancel()">{{ translate('core', 'button.cancel') }}</el-button>
                                 </el-form-item>
 
@@ -83,11 +90,12 @@
                     <el-form-item label="">
                         <el-checkbox v-model="page.is_home" :true-label="1" :false-label="0" name="is_home" :label="translate('page', 'is homepage')"></el-checkbox>
                     </el-form-item>
-                    <el-form-item :label="translate('page', 'template')">
+                    <el-form-item :label="translate('page', 'template')" :class="{'el-form-item is-error': form.errors.has('template') }">
                         <el-select v-model="page.template" filterable>
                             <el-option v-for="(template, key) in templates" :key="template"
                                     :label="template" :value="key"></el-option>
                         </el-select>
+                        <div class="el-form-item__error" v-if="form.errors.has('template')" v-text="form.errors.first('template')"></div>
                     </el-form-item>
                 </div>
             </div>
@@ -130,12 +138,25 @@
                     'home': 'home',
                 },
                 form: new Form(),
+                loading: false,
             }
         },
         methods: {
             onSubmit() {
                 this.form = new Form(this.page);
-                this.form.post(route('api.page.page.store'));
+                let vm = this;
+                this.loading = true;
+                this.form.post(route('api.page.page.store'))
+                    .then(response => {
+                        this.loading = false;
+                    })
+                    .catch(error => {
+                        this.loading = false;
+                        vm.$notify.error({
+                            title: 'Error',
+                            message: 'There are some errors in the form.'
+                        });
+                    });
             },
             setPageTypes() {
                 axios.get(route('api.page.page-templates.index'))
