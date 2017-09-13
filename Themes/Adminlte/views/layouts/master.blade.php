@@ -72,6 +72,7 @@
 @foreach($jsFiles as $js)
     <script src="{{ URL::asset($js) }}" type="text/javascript"></script>
 @endforeach
+<script src="{{ mix('js/app.js') }}"></script>
 
 <?php if (is_module_enabled('Notification')): ?>
     <script src="https://js.pusher.com/3.0/pusher.min.js"></script>
