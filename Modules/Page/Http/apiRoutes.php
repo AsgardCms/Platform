@@ -18,4 +18,10 @@ $router->group(['prefix' => '/page'], function (Router $router) {
         'uses' => 'PageController@destroy',
         'middleware' => 'token-can:page.pages.destroy',
     ]);
+    $router->post('pages', [
+        'as' => 'api.page.page.store',
+        'uses' => 'PageController@store',
+        'middleware' => 'token-can:page.pages.create',
+    ]);
+    $router->get('templates', 'PageTemplatesController')->name('api.page.page-templates.index');
 });
