@@ -1,46 +1,56 @@
 <template>
-    <el-form ref="form" :model="page" label-width="120px" label-position="top" @keydown="form.errors.clear($event.target.name);">
-    <div class="row">
-        <div class="col-md-10">
-            <div class="box box-primary">
-                <div class="box-body">
-                    <el-tabs type="card">
-                            <el-tab-pane :label="localeArray.name" v-for="(localeArray, locale) in locales" :key="localeArray.name">
-                                <span slot="label" :class="{'error' : form.errors.has(locale)}">{{ localeArray.name }}</span>
+    <el-form ref="form" :model="page" label-width="120px" label-position="top"
+             @keydown="form.errors.clear($event.target.name);">
+        <div class="row">
+            <div class="col-md-10">
+                <div class="box box-primary">
+                    <div class="box-body">
+                        <el-tabs type="card">
+                            <el-tab-pane :label="localeArray.name" v-for="(localeArray, locale) in locales"
+                                         :key="localeArray.name">
+                                <span slot="label" :class="{'error' : form.errors.has(locale)}">{{ localeArray.name
+                                    }}</span>
                                 <el-form-item :label="translate('page', 'title')"
                                               :class="{'el-form-item is-error': form.errors.has(locale + '.title') }">
-                                    <el-input v-model="page[locale].title" @change="slugifyTitle($event, locale)"></el-input>
-                                    <div class="el-form-item__error" v-if="form.errors.has(locale + '.title')" v-text="form.errors.first(locale + '.title')"></div>
+                                    <el-input v-model="page[locale].title"
+                                              @change="slugifyTitle($event, locale)"></el-input>
+                                    <div class="el-form-item__error" v-if="form.errors.has(locale + '.title')"
+                                         v-text="form.errors.first(locale + '.title')"></div>
                                 </el-form-item>
 
                                 <el-form-item :label="translate('page', 'slug')"
                                               :class="{'el-form-item is-error': form.errors.has(locale + '.slug') }">
                                     <el-input v-model="page[locale].slug"></el-input>
-                                    <div class="el-form-item__error" v-if="form.errors.has(locale + '.slug')" v-text="form.errors.first(locale + '.slug')"></div>
+                                    <div class="el-form-item__error" v-if="form.errors.has(locale + '.slug')"
+                                         v-text="form.errors.first(locale + '.slug')"></div>
                                 </el-form-item>
 
                                 <el-form-item :label="translate('page', 'body')"
                                               :class="{'el-form-item is-error': form.errors.has(locale + '.body') }">
                                     <ckeditor v-model="page[locale].body">
                                     </ckeditor>
-                                    <div class="el-form-item__error" v-if="form.errors.has(locale + '.body')" v-text="form.errors.first(locale + '.body')"></div>
+                                    <div class="el-form-item__error" v-if="form.errors.has(locale + '.body')"
+                                         v-text="form.errors.first(locale + '.body')"></div>
                                 </el-form-item>
 
                                 <div class="panel box box-primary">
                                     <div class="box-header">
                                         <h4 class="box-title">
-                                            <a class="collapsed" data-toggle="collapse" data-parent="#accordion" :href="['#collapseMeta-'] + locale">
+                                            <a class="collapsed" data-toggle="collapse" data-parent="#accordion"
+                                               :href="['#collapseMeta-'] + locale">
                                                 {{ translate('page', 'meta_data') }}
                                             </a>
                                         </h4>
                                     </div>
-                                    <div style="height: 0px;" :id="['collapseMeta-'] + locale" class="panel-collapse collapse">
+                                    <div style="height: 0px;" :id="['collapseMeta-'] + locale"
+                                         class="panel-collapse collapse">
                                         <div class="box-body">
                                             <el-form-item :label="translate('page', 'meta_title')">
                                                 <el-input v-model="page[locale].meta_title"></el-input>
                                             </el-form-item>
                                             <el-form-item :label="translate('page', 'meta_description')">
-                                                <el-input type="textarea" v-model="page[locale].meta_description"></el-input>
+                                                <el-input type="textarea"
+                                                          v-model="page[locale].meta_description"></el-input>
                                             </el-form-item>
                                         </div>
                                     </div>
@@ -49,24 +59,31 @@
                                 <div class="panel box box-primary">
                                     <div class="box-header">
                                         <h4 class="box-title">
-                                            <a class="collapsed" data-toggle="collapse" data-parent="#accordion" :href="['#collapseFacebook-'] + locale">
+                                            <a class="collapsed" data-toggle="collapse" data-parent="#accordion"
+                                               :href="['#collapseFacebook-'] + locale">
                                                 {{ translate('page', 'facebook_data') }}
                                             </a>
                                         </h4>
                                     </div>
-                                    <div style="height: 0px;" :id="['collapseFacebook-'] + locale" class="panel-collapse collapse">
+                                    <div style="height: 0px;" :id="['collapseFacebook-'] + locale"
+                                         class="panel-collapse collapse">
                                         <div class="box-body">
                                             <el-form-item :label="translate('page', 'og_title')">
                                                 <el-input v-model="page[locale].og_title"></el-input>
                                             </el-form-item>
                                             <el-form-item :label="translate('page', 'og_description')">
-                                                <el-input type="textarea" v-model="page[locale].og_description"></el-input>
+                                                <el-input type="textarea"
+                                                          v-model="page[locale].og_description"></el-input>
                                             </el-form-item>
                                             <el-form-item :label="translate('page', 'og_type')">
-                                                <el-select v-model="page[locale].og_type" :placeholder="translate('page', 'og_type')">
-                                                    <el-option :label="translate('page', 'facebook-types.website')" value="website"></el-option>
-                                                    <el-option :label="translate('page', 'facebook-types.product')" value="product"></el-option>
-                                                    <el-option :label="translate('page', 'facebook-types.article')" value="article"></el-option>
+                                                <el-select v-model="page[locale].og_type"
+                                                           :placeholder="translate('page', 'og_type')">
+                                                    <el-option :label="translate('page', 'facebook-types.website')"
+                                                               value="website"></el-option>
+                                                    <el-option :label="translate('page', 'facebook-types.product')"
+                                                               value="product"></el-option>
+                                                    <el-option :label="translate('page', 'facebook-types.article')"
+                                                               value="article"></el-option>
                                                 </el-select>
                                             </el-form-item>
                                         </div>
@@ -74,33 +91,38 @@
                                 </div>
 
                                 <el-form-item>
-                                    <el-button type="primary" @click="onSubmit()" :loading="loading">{{ translate('core', 'button.create') }}</el-button>
+                                    <el-button type="primary" @click="onSubmit()" :loading="loading">
+                                        {{ translate('core', 'button.create') }}
+                                    </el-button>
                                     <el-button @click="onCancel()">{{ translate('core', 'button.cancel') }}</el-button>
                                 </el-form-item>
 
                             </el-tab-pane>
                         </el-tabs>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-2">
+                <div class="box box-primary">
+                    <div class="box-body">
+                        <el-form-item label="">
+                            <el-checkbox v-model="page.is_home" :true-label="1" :false-label="0" name="is_home"
+                                         :label="translate('page', 'is homepage')"></el-checkbox>
+                        </el-form-item>
+                        <el-form-item :label="translate('page', 'template')"
+                                      :class="{'el-form-item is-error': form.errors.has('template') }">
+                            <el-select v-model="page.template" filterable>
+                                <el-option v-for="(template, key) in templates" :key="template"
+                                           :label="template" :value="key"></el-option>
+                            </el-select>
+                            <div class="el-form-item__error" v-if="form.errors.has('template')"
+                                 v-text="form.errors.first('template')"></div>
+                        </el-form-item>
+                        <tags-input namespace="asgardcms/page" @input="setTags" :current-tags="tags"></tags-input>
+                    </div>
                 </div>
             </div>
         </div>
-        <div class="col-md-2">
-            <div class="box box-primary">
-                <div class="box-body">
-                    <el-form-item label="">
-                        <el-checkbox v-model="page.is_home" :true-label="1" :false-label="0" name="is_home" :label="translate('page', 'is homepage')"></el-checkbox>
-                    </el-form-item>
-                    <el-form-item :label="translate('page', 'template')" :class="{'el-form-item is-error': form.errors.has('template') }">
-                        <el-select v-model="page.template" filterable>
-                            <el-option v-for="(template, key) in templates" :key="template"
-                                    :label="template" :value="key"></el-option>
-                        </el-select>
-                        <div class="el-form-item__error" v-if="form.errors.has('template')" v-text="form.errors.first('template')"></div>
-                    </el-form-item>
-                    <tags-input namespace="asgardcms/page" @input="setTags"></tags-input>
-                </div>
-            </div>
-        </div>
-    </div>
     </el-form>
 </template>
 
@@ -113,7 +135,8 @@
     export default {
         mixins: [Translate, Slugify],
         props: {
-            locales: {default: null}
+            locales: {default: null},
+            pageId: {default: null}
         },
         data() {
             return {
@@ -130,16 +153,22 @@
                         og_type: '',
                     }])
                     .fromPairs()
-                    .merge({template: '', is_home: 0})
+                    .merge({template: 'default', is_home: 0})
                     .value(),
 
                 templates: {
                     'index': 'index',
                     'home': 'home',
+                    'default': 'default',
                 },
                 form: new Form(),
                 loading: false,
                 tags: {},
+            }
+        },
+        watch: {
+            tags: function () {
+                console.log('changed tags');
             }
         },
         methods: {
@@ -175,10 +204,24 @@
             },
             setTags(tags) {
                 this.tags = tags;
-            }
+            },
+            fetchPage() {
+                axios.post(route('api.page.page.find', {page: this.pageId}))
+                    .then(response => {
+                        // console.log(response);
+                        this.page = response.data.data;
+                        this.tags = response.data.data.tags;
+                        console.log(response.data.data.tags);
+                    })
+                    .catch(error => {
+                    })
+            },
         },
         mounted() {
-          this.fetchTemplates();
+            this.fetchTemplates();
+            if (this.pageId !== null) {
+                this.fetchPage();
+            }
         }
     }
 </script>
