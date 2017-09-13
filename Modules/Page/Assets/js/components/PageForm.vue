@@ -7,8 +7,9 @@
                     <el-tabs type="card">
                             <el-tab-pane :label="localeArray.name" v-for="(localeArray, locale) in locales" :key="localeArray.name">
 
-                                <el-form-item :label="translate('page', 'title')">
-                                    <el-input v-model="page[locale].title"></el-input>
+                                <el-form-item :label="translate('page', 'title')"  class="el-form-item is-error">
+                                    <el-input v-model="page[locale].title" @change="slugifyTitle($event, locale)"></el-input>
+                                    <div class="el-form-item__error">Please input Activity name</div>
                                 </el-form-item>
                                 <el-form-item :label="translate('page', 'slug')">
                                     <el-input v-model="page[locale].slug"></el-input>
@@ -56,7 +57,7 @@
                                                 <el-input type="textarea" v-model="page[locale].og_description"></el-input>
                                             </el-form-item>
                                             <el-form-item :label="translate('page', 'og_type')">
-                                                <el-select v-model="ogType" :placeholder="translate('page', 'og_type')">
+                                                <el-select v-model="page[locale].og_type" :placeholder="translate('page', 'og_type')">
                                                     <el-option :label="translate('page', 'facebook-types.website')" value="website"></el-option>
                                                     <el-option :label="translate('page', 'facebook-types.product')" value="product"></el-option>
                                                     <el-option :label="translate('page', 'facebook-types.article')" value="article"></el-option>
@@ -83,7 +84,7 @@
                         <el-checkbox v-model="page.is_home" :true-label="1" :false-label="0" name="is_home" :label="translate('page', 'is homepage')"></el-checkbox>
                     </el-form-item>
                     <el-form-item :label="translate('page', 'template')">
-                        <el-select v-model="template" filterable>
+                        <el-select v-model="page.template" filterable>
                             <el-option v-for="(template, key) in templates" :key="template"
                                     :label="template" :value="key"></el-option>
                         </el-select>
@@ -98,43 +99,69 @@
 <script>
     import axios from 'axios'
     import Translate from '../../../../Core/Assets/js/mixins/Translate'
+    import Slugify from '../../../../Core/Assets/js/mixins/Slugify'
+    import Form from 'form-backend-validation'
 
     export default {
-        mixins: [Translate],
+        mixins: [Translate, Slugify],
         props: {
             locales: {default: null}
         },
-        watch: {
-            ogType: function () {
-                this.page.og_type = this.ogType;
-            },
-            template: function () {
-                this.page.template = this.template;
-            },
-        },
         data() {
             return {
-                page: _.fromPairs(_.keys(this.locales).map(locale => [locale, {}])),
-                ogType: '',
-                template: '',
+                page: _(this.locales)
+                    .keys()
+                    .map(locale => [locale, {
+                        title: '',
+                        slug: '',
+                        body: '',
+                        meta_title: '',
+                        meta_description: '',
+                        og_title: '',
+                        og_description: '',
+                        og_type: '',
+                    }])
+                    .fromPairs()
+                    .merge({template: '', is_home: 0})
+                    .value(),
+
                 templates: {
                     'index': 'index',
                     'home': 'home',
                 },
+                errors: '',
             }
         },
         methods: {
             onSubmit() {
-                axios.post(route('api.page.page.store'), this.page)
+                let vm = this;
+                const form = new Form(this.page);
+                form.post(route('api.page.page.store'))
                     .then(response => {
-                        console.log(response);
                     })
+                    .catch(errors => {
+                        console.log(errors.response.data.errors);
+                        vm.errors = errors.response.data.errors;
+                    });
+
+
+//                axios.post(route('api.page.page.store'), this.page)
+//                    .then(response => {
+//                        console.log(response);
+//                    })
+//                    .catch(response => {
+//                        console.log(response.response.data);
+//                        this.errors = response.response.data;
+//                    })
             },
             setPageTypes() {
                 axios.get(route('api.page.page-templates.index'))
                     .then(response => {
                         this.templates = response.data;
                     });
+            },
+            slugifyTitle(event, locale) {
+                this.page[locale].slug = this.slugify(event);
             }
         },
         mounted() {
