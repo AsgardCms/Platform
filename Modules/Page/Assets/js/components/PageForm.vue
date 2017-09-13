@@ -14,7 +14,10 @@
                                     <el-input v-model="page[locale].slug"></el-input>
                                 </el-form-item>
 
-                                // Textarea
+                                <el-form-item :label="translate('page', 'body')">
+                                    <ckeditor v-model="page[locale].body">
+                                    </ckeditor>
+                                </el-form-item>
 
                                 <div class="panel box box-primary">
                                     <div class="box-header">
@@ -77,12 +80,10 @@
             <div class="box box-primary">
                 <div class="box-body">
                     <el-form-item label="">
-                        <el-checkbox-group v-model="page.is_home">
-                            <el-checkbox :label="translate('page', 'is homepage')" name="is_home"></el-checkbox>
-                        </el-checkbox-group>
+                        <el-checkbox v-model="page.is_home" :true-label="1" :false-label="0" name="is_home" :label="translate('page', 'is homepage')"></el-checkbox>
                     </el-form-item>
                     <el-form-item :label="translate('page', 'template')">
-                        <el-select v-model="template" >
+                        <el-select v-model="template" filterable>
                             <el-option v-for="(template, key) in templates" :key="template"
                                     :label="template" :value="key"></el-option>
                         </el-select>
@@ -109,7 +110,7 @@
             },
             template: function () {
                 this.page.template = this.template;
-            }
+            },
         },
         data() {
             return {
@@ -117,8 +118,8 @@
                 ogType: '',
                 template: '',
                 templates: {
-                    'blog.index': 'blog/index',
-                    'blog.show': 'blog/show',
+                    'index': 'index',
+                    'home': 'home',
                 },
             }
         },
@@ -128,7 +129,16 @@
                     .then(response => {
                         console.log(response);
                     })
+            },
+            setPageTypes() {
+                axios.get(route('api.page.page-templates.index'))
+                    .then(response => {
+                        this.templates = response.data;
+                    });
             }
         },
+        mounted() {
+            this.setPageTypes();
+        }
     }
 </script>
