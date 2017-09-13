@@ -28,7 +28,12 @@ class PageController extends Controller
 
     public function store(CreatePageRequest $request)
     {
-        dd($request->all());
+        $this->page->create($request->all());
+
+        return response()->json([
+            'errors' => false,
+            'message' => trans('page::messages.page created'),
+        ]);
     }
 
     public function destroy(Page $page)
