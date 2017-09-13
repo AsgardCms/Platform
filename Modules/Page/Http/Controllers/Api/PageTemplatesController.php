@@ -2,6 +2,7 @@
 
 namespace Modules\Page\Http\Controllers\Api;
 
+use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Modules\Page\Services\FinderService;
 use Modules\Workshop\Manager\ThemeManager;
@@ -24,7 +25,7 @@ class PageTemplatesController extends Controller
         $this->finder = $finder;
     }
 
-    public function __invoke()
+    public function __invoke(Request $request)
     {
         return response()->json($this->getTemplates());
     }
@@ -48,7 +49,7 @@ class PageTemplatesController extends Controller
             }
         }
 
-        return $templates;
+        return collect($templates);
     }
 
     /**
