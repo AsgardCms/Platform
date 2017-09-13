@@ -23,6 +23,7 @@ Vue.use(DataTables, { locale });
  */
 
 Vue.component('example', require('./components/Example.vue'));
+Vue.component('ckeditor', require('../../../Modules/Core/Assets/js/components/CkEditor.vue'));
 Vue.component('DeleteButton', require('../../../Modules/Core/Assets/js/components/DeleteComponent.vue'));
 Vue.component('PageTable', require('../../../Modules/Page/Assets/js/components/PageTable.vue'));
 Vue.component('PageForm', require('../../../Modules/Page/Assets/js/components/PageForm.vue'));
