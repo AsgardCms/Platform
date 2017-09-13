@@ -14043,6 +14043,7 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_1_vue_data_tables___default.a, { locale: __WEB
 
 Vue.component('ckeditor', __webpack_require__(111));
 Vue.component('DeleteButton', __webpack_require__(118));
+Vue.component('TagsInput', __webpack_require__(132));
 Vue.component('PageTable', __webpack_require__(121));
 Vue.component('PageForm', __webpack_require__(124));
 
@@ -69912,7 +69913,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 'home': 'home'
             },
             form: new __WEBPACK_IMPORTED_MODULE_3_form_backend_validation___default.a(),
-            loading: false
+            loading: false,
+            tags: {}
         };
     },
 
@@ -69920,11 +69922,16 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         onSubmit: function onSubmit() {
             var _this = this;
 
-            this.form = new __WEBPACK_IMPORTED_MODULE_3_form_backend_validation___default.a(this.page);
+            this.form = new __WEBPACK_IMPORTED_MODULE_3_form_backend_validation___default.a(_.merge(this.page, { tags: this.tags }));
             var vm = this;
             this.loading = true;
             this.form.post(route('api.page.page.store')).then(function (response) {
                 _this.loading = false;
+                vm.$message({
+                    type: 'success',
+                    message: response.data.message
+                });
+                window.location = route('admin.page.page.index');
             }).catch(function (error) {
                 _this.loading = false;
                 vm.$notify.error({
@@ -69933,7 +69940,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 });
             });
         },
-        setPageTypes: function setPageTypes() {
+        fetchTemplates: function fetchTemplates() {
             var _this2 = this;
 
             __WEBPACK_IMPORTED_MODULE_0_axios___default.a.get(route('api.page.page-templates.index')).then(function (response) {
@@ -69942,10 +69949,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         },
         slugifyTitle: function slugifyTitle(event, locale) {
             this.page[locale].slug = this.slugify(event);
+        },
+        setTags: function setTags(tags) {
+            this.tags = tags;
         }
     },
     mounted: function mounted() {
-        this.setPageTypes();
+        this.fetchTemplates();
     }
 });
 
@@ -69988,6 +69998,11 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "model": _vm.page,
       "label-width": "120px",
       "label-position": "top"
+    },
+    on: {
+      "keydown": function($event) {
+        _vm.form.errors.clear($event.target.name);
+      }
     }
   }, [_c('div', {
     staticClass: "row"
@@ -70004,14 +70019,15 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }, _vm._l((_vm.locales), function(localeArray, locale) {
     return _c('el-tab-pane', {
       key: localeArray.name,
-      staticClass: "asd",
-      class: {
-        'has-error': _vm.form.errors.has(locale)
-      },
       attrs: {
         "label": localeArray.name
       }
-    }, [_c('el-form-item', {
+    }, [_c('span', {
+      class: {
+        'error': _vm.form.errors.has(locale)
+      },
+      slot: "label"
+    }, [_vm._v(_vm._s(localeArray.name))]), _vm._v(" "), _c('el-form-item', {
       class: {
         'el-form-item is-error': _vm.form.errors.has(locale + '.title')
       },
@@ -70206,11 +70222,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         "label": _vm.translate('page', 'facebook-types.article'),
         "value": "article"
       }
-    })], 1)], 1), _vm._v(" "), _c('tags-input', {
-      attrs: {
-        "namespace": "asgardcms/page"
-      }
-    })], 1)])]), _vm._v(" "), _c('el-form-item', [_c('el-button', {
+    })], 1)], 1)], 1)])]), _vm._v(" "), _c('el-form-item', [_c('el-button', {
       attrs: {
         "type": "primary",
         "loading": _vm.loading
@@ -70282,7 +70294,14 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     domProps: {
       "textContent": _vm._s(_vm.form.errors.first('template'))
     }
-  }) : _vm._e()], 1)], 1)])])])])
+  }) : _vm._e()], 1), _vm._v(" "), _c('tags-input', {
+    attrs: {
+      "namespace": "asgardcms/page"
+    },
+    on: {
+      "input": _vm.setTags
+    }
+  })], 1)])])])])
 },staticRenderFns: []}
 module.exports.render._withStripped = true
 if (false) {
@@ -70794,6 +70813,137 @@ function guardAgainstReservedFieldName(fieldName) {
     if (reservedFieldNames.indexOf(fieldName) !== -1) {
         throw new Error('Field name ' + fieldName + ' isn\'t allowed to be used in a Form or Errors instance.');
     }
+}
+
+/***/ }),
+/* 132 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var Component = __webpack_require__(7)(
+  /* script */
+  __webpack_require__(133),
+  /* template */
+  __webpack_require__(134),
+  /* styles */
+  null,
+  /* scopeId */
+  null,
+  /* moduleIdentifier (server only) */
+  null
+)
+Component.options.__file = "/Users/nicolaswidart/Sites/Asguard/Platform/Modules/Tag/Assets/js/components/TagInput.vue"
+if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
+if (Component.options.functional) {console.error("[vue-loader] TagInput.vue: functional components are not supported with templates, they should use render functions.")}
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-d16d04f8", Component.options)
+  } else {
+    hotAPI.reload("data-v-d16d04f8", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 133 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios__ = __webpack_require__(9);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_axios__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    props: {
+        namespace: { String: String }
+    },
+    data: function data() {
+        return {
+            tags: {},
+            availableTags: {}
+        };
+    },
+
+    methods: {
+        doSomething: function doSomething() {
+            this.$emit('input', this.tags);
+        }
+    },
+    mounted: function mounted() {
+        var _this = this;
+
+        __WEBPACK_IMPORTED_MODULE_0_axios___default.a.get(route('api.tag.tag.by-namespace', { namespace: this.namespace })).then(function (response) {
+            _this.availableTags = response.data;
+        });
+    }
+});
+
+/***/ }),
+/* 134 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('el-form-item', {
+    attrs: {
+      "label": "Tags"
+    }
+  }, [_c('el-select', {
+    attrs: {
+      "multiple": "",
+      "filterable": "",
+      "allow-create": ""
+    },
+    on: {
+      "change": _vm.doSomething
+    },
+    model: {
+      value: (_vm.tags),
+      callback: function($$v) {
+        _vm.tags = $$v
+      },
+      expression: "tags"
+    }
+  }, _vm._l((_vm.availableTags), function(tag) {
+    return _c('el-option', {
+      key: tag.slug,
+      attrs: {
+        "label": tag.slug,
+        "value": tag.name
+      }
+    })
+  }))], 1)
+},staticRenderFns: []}
+module.exports.render._withStripped = true
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+     require("vue-hot-reload-api").rerender("data-v-d16d04f8", module.exports)
+  }
 }
 
 /***/ })
