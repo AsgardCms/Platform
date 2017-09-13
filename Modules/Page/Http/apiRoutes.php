@@ -23,5 +23,10 @@ $router->group(['prefix' => '/page'], function (Router $router) {
         'uses' => 'PageController@store',
         'middleware' => 'token-can:page.pages.create',
     ]);
+    $router->post('pages/{page}', [
+        'as' => 'api.page.page.find',
+        'uses' => 'PageController@find',
+        'middleware' => 'token-can:page.pages.edit',
+    ]);
     $router->get('templates', 'PageTemplatesController')->name('api.page.page-templates.index');
 });

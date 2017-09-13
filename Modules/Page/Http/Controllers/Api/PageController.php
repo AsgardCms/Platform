@@ -7,6 +7,7 @@ use Illuminate\Routing\Controller;
 use Modules\Page\Entities\Page;
 use Modules\Page\Http\Requests\CreatePageRequest;
 use Modules\Page\Repositories\PageRepository;
+use Modules\Page\Transformers\FullPageTransformer;
 use Modules\Page\Transformers\PageTransformer;
 
 class PageController extends Controller
@@ -34,6 +35,11 @@ class PageController extends Controller
             'errors' => false,
             'message' => trans('page::messages.page created'),
         ]);
+    }
+
+    public function find(Page $page)
+    {
+        return new FullPageTransformer($page);
     }
 
     public function destroy(Page $page)
