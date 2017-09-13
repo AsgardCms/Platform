@@ -15,7 +15,8 @@
 
     export default {
         props: {
-            namespace: {String}
+            namespace: {String},
+            currentTags: {default : null},
         },
         data() {
             return {
@@ -29,6 +30,9 @@
             }
         },
         mounted() {
+            console.log(this.currentTags);
+            if (this.currentTags !== null) {
+            }
             axios.get(route('api.tag.tag.by-namespace', {namespace: this.namespace}))
                 .then(response => {
                     this.availableTags = response.data;
