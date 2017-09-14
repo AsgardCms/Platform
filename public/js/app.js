@@ -69310,6 +69310,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 
+// Source: https://github.com/dangvanthanh/vue-ckeditor2
 var inc = 0;
 /* harmony default export */ __webpack_exports__["default"] = ({
     name: 'vue-ckeditor',
@@ -69351,10 +69352,7 @@ var inc = 0;
     },
     watch: {
         value: function value(val) {
-            var html = this.instance.getData();
-            if (val !== html) {
-                this.instance.setData(val, null, true);
-            }
+            this.instance.setData(val, null, true);
         }
     },
     mounted: function mounted() {

@@ -46,10 +46,7 @@
         },
         watch: {
             value (val) {
-                let html = this.instance.getData()
-                if (val !== html) {
-                    this.instance.setData(val, null, true)
-                }
+                this.instance.setData(val, null, true);
             }
         },
         mounted () {
