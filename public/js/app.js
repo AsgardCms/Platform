@@ -69942,11 +69942,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         };
     },
 
-    watch: {
-        tags: function tags() {
-            console.log('changed tags');
-        }
-    },
     methods: {
         onSubmit: function onSubmit() {
             var _this = this;
@@ -69986,10 +69981,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             var _this3 = this;
 
             __WEBPACK_IMPORTED_MODULE_0_axios___default.a.post(route('api.page.page.find', { page: this.pageId })).then(function (response) {
-                // console.log(response);
                 _this3.page = response.data.data;
                 _this3.tags = response.data.data.tags;
-                console.log(response.data.data.tags);
             }).catch(function (error) {});
         }
     },
@@ -70934,15 +70927,18 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     },
 
     methods: {
-        doSomething: function doSomething() {
+        triggerEvent: function triggerEvent() {
             this.$emit('input', this.tags);
+        }
+    },
+    watch: {
+        currentTags: function currentTags() {
+            this.tags = this.currentTags;
         }
     },
     mounted: function mounted() {
         var _this = this;
 
-        console.log(this.currentTags);
-        if (this.currentTags !== null) {}
         __WEBPACK_IMPORTED_MODULE_0_axios___default.a.get(route('api.tag.tag.by-namespace', { namespace: this.namespace })).then(function (response) {
             _this.availableTags = response.data;
         });
@@ -70965,7 +70961,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "allow-create": ""
     },
     on: {
-      "change": _vm.doSomething
+      "change": _vm.triggerEvent
     },
     model: {
       value: (_vm.tags),
