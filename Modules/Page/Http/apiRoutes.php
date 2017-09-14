@@ -28,5 +28,10 @@ $router->group(['prefix' => '/page'], function (Router $router) {
         'uses' => 'PageController@find',
         'middleware' => 'token-can:page.pages.edit',
     ]);
+    $router->post('pages/{page}/edit', [
+        'as' => 'api.page.page.update',
+        'uses' => 'PageController@update',
+        'middleware' => 'token-can:page.pages.edit',
+    ]);
     $router->get('templates', 'PageTemplatesController')->name('api.page.page-templates.index');
 });
