@@ -1,6 +1,6 @@
 <template>
     <el-form-item label="Tags">
-        <el-select v-model="tags" multiple filterable allow-create @change="doSomething">
+        <el-select v-model="tags" multiple filterable allow-create @change="triggerEvent">
             <el-option v-for="tag in availableTags"
                        :key="tag.slug"
                        :label="tag.slug"
@@ -25,14 +25,16 @@
             }
         },
         methods: {
-            doSomething() {
+            triggerEvent() {
                 this.$emit('input', this.tags);
             }
         },
-        mounted() {
-            console.log(this.currentTags);
-            if (this.currentTags !== null) {
+        watch: {
+            currentTags: function () {
+                this.tags = this.currentTags;
             }
+        },
+        mounted() {
             axios.get(route('api.tag.tag.by-namespace', {namespace: this.namespace}))
                 .then(response => {
                     this.availableTags = response.data;
