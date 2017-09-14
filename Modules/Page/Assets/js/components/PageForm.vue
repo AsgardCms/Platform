@@ -92,7 +92,7 @@
 
                                 <el-form-item>
                                     <el-button type="primary" @click="onSubmit()" :loading="loading">
-                                        {{ translate('core', 'button.create') }}
+                                        {{ translate('core', 'save') }}
                                     </el-button>
                                     <el-button @click="onCancel()">{{ translate('core', 'button.cancel') }}</el-button>
                                 </el-form-item>
@@ -188,6 +188,9 @@
                             message: 'There are some errors in the form.'
                         });
                     });
+            },
+            onCancel() {
+                window.location = route('admin.page.page.index');
             },
             fetchTemplates() {
                 axios.get(route('api.page.page-templates.index'))

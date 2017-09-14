@@ -69965,6 +69965,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 });
             });
         },
+        onCancel: function onCancel() {
+            window.location = route('admin.page.page.index');
+        },
         fetchTemplates: function fetchTemplates() {
             var _this2 = this;
 
@@ -70268,7 +70271,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
           _vm.onSubmit()
         }
       }
-    }, [_vm._v("\n                                    " + _vm._s(_vm.translate('core', 'button.create')) + "\n                                ")]), _vm._v(" "), _c('el-button', {
+    }, [_vm._v("\n                                    " + _vm._s(_vm.translate('core', 'save')) + "\n                                ")]), _vm._v(" "), _c('el-button', {
       on: {
         "click": function($event) {
           _vm.onCancel()
