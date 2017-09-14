@@ -5,7 +5,7 @@
     {{ trans('workshop::workbench.title') }}
 </h1>
 <ol class="breadcrumb">
-    <li><a href="{{ URL::route('dashboard.index') }}"><i class="fa fa-dashboard"></i> {{ trans('user::users.breadcrumb.home') }}</a></li>
+    <li><a href="{{ route('dashboard.index') }}"><i class="fa fa-dashboard"></i> {{ trans('user::users.breadcrumb.home') }}</a></li>
     <li class="active">{{ trans('workshop::workbench.title') }}</li>
 </ol>
 @stop

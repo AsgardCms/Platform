@@ -5,7 +5,7 @@
     {{ trans('menu::menu.titles.menu') }}
 </h1>
 <ol class="breadcrumb">
-    <li><a href="{{ URL::route('dashboard.index') }}"><i class="fa fa-dashboard"></i> {{ trans('core::core.breadcrumb.home') }}</a></li>
+    <li><a href="{{ route('dashboard.index') }}"><i class="fa fa-dashboard"></i> {{ trans('core::core.breadcrumb.home') }}</a></li>
     <li class="active">{{ trans('menu::menu.breadcrumb.menu') }}</li>
 </ol>
 @stop
@@ -15,7 +15,7 @@
     <div class="col-md-12">
         <div class="row">
             <div class="btn-group pull-right" style="margin: 0 15px 15px 0;">
-                <a href="{{ URL::route('admin.menu.menu.create') }}" class="btn btn-primary btn-flat">
+                <a href="{{ route('admin.menu.menu.create') }}" class="btn btn-primary btn-flat">
                     <i class="fa fa-pencil"></i> {{ trans('menu::menu.button.create menu') }}
                 </a>
             </div>
@@ -38,18 +38,18 @@
                         <?php foreach ($menus as $menu): ?>
                             <tr>
                                 <td>
-                                    <a href="{{ URL::route('admin.menu.menu.edit', [$menu->id]) }}">
+                                    <a href="{{ route('admin.menu.menu.edit', [$menu->id]) }}">
                                         {{ $menu->name }}
                                     </a>
                                 </td>
                                 <td>
-                                    <a href="{{ URL::route('admin.menu.menu.edit', [$menu->id]) }}">
+                                    <a href="{{ route('admin.menu.menu.edit', [$menu->id]) }}">
                                         {{ $menu->title }}
                                     </a>
                                 </td>
                                 <td>
                                     <div class="btn-group">
-                                        <a href="{{ URL::route('admin.menu.menu.edit', [$menu->id]) }}" class="btn btn-default btn-flat"><i class="glyphicon glyphicon-pencil"></i></a>
+                                        <a href="{{ route('admin.menu.menu.edit', [$menu->id]) }}" class="btn btn-default btn-flat"><i class="glyphicon glyphicon-pencil"></i></a>
                                         <button class="btn btn-danger btn-flat" data-toggle="modal" data-target="#confirmation-{{ $menu->id }}"><i class="glyphicon glyphicon-trash"></i></button>
                                     </div>
                                 </td>

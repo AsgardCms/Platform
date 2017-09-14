@@ -5,8 +5,8 @@
     {{ trans('user::users.title.edit-user') }} <small>{{ $user->present()->fullname() }}</small>
 </h1>
 <ol class="breadcrumb">
-    <li><a href="{{ URL::route('dashboard.index') }}"><i class="fa fa-dashboard"></i> {{ trans('core::core.breadcrumb.home') }}</a></li>
-    <li class=""><a href="{{ URL::route('admin.user.user.index') }}">{{ trans('user::users.breadcrumb.users') }}</a></li>
+    <li><a href="{{ route('dashboard.index') }}"><i class="fa fa-dashboard"></i> {{ trans('core::core.breadcrumb.home') }}</a></li>
+    <li class=""><a href="{{ route('admin.user.user.index') }}">{{ trans('user::users.breadcrumb.users') }}</a></li>
     <li class="active">{{ trans('user::users.breadcrumb.edit-user') }}</li>
 </ol>
 @stop

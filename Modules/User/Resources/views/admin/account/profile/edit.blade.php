@@ -5,7 +5,7 @@
     {{ trans('user::users.title.edit-profile') }}
 </h1>
 <ol class="breadcrumb">
-    <li><a href="{{ URL::route('dashboard.index') }}"><i class="fa fa-dashboard"></i> {{ trans('core::core.breadcrumb.home') }}</a></li>
+    <li><a href="{{ route('dashboard.index') }}"><i class="fa fa-dashboard"></i> {{ trans('core::core.breadcrumb.home') }}</a></li>
     <li class="active">{{ trans('user::users.breadcrumb.edit-profile') }}</li>
 </ol>
 @stop

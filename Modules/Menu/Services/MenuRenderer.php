@@ -2,8 +2,6 @@
 
 namespace Modules\Menu\Services;
 
-use Illuminate\Support\Facades\URL;
-
 class MenuRenderer
 {
     /**
@@ -48,7 +46,7 @@ class MenuRenderer
         $this->menu .= '<ol class="dd-list">';
         foreach ($items as $item) {
             $this->menu .= "<li class=\"dd-item\" data-id=\"{$item->id}\">";
-            $editLink = URL::route('dashboard.menuitem.edit', [$this->menuId, $item->id]);
+            $editLink = route('dashboard.menuitem.edit', [$this->menuId, $item->id]);
             $style = $item->isRoot() ? 'none' : 'inline';
             $this->menu .= <<<HTML
 <div class="btn-group" role="group" aria-label="Action buttons" style="display: {$style}">

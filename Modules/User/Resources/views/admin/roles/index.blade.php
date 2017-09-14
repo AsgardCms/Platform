@@ -5,7 +5,7 @@
     {{ trans('user::roles.title.roles') }}
 </h1>
 <ol class="breadcrumb">
-    <li><a href="{{ URL::route('dashboard.index') }}"><i class="fa fa-dashboard"></i> {{ trans('core::core.breadcrumb.home') }}</a></li>
+    <li><a href="{{ route('dashboard.index') }}"><i class="fa fa-dashboard"></i> {{ trans('core::core.breadcrumb.home') }}</a></li>
     <li class="active">{{ trans('user::roles.breadcrumb.roles') }}</li>
 </ol>
 @stop
@@ -15,7 +15,7 @@
     <div class="col-xs-12">
         <div class="row">
             <div class="btn-group pull-right" style="margin: 0 15px 15px 0;">
-                <a href="{{ URL::route('admin.user.role.create') }}" class="btn btn-primary btn-flat" style="padding: 4px 10px;">
+                <a href="{{ route('admin.user.role.create') }}" class="btn btn-primary btn-flat" style="padding: 4px 10px;">
                     <i class="fa fa-pencil"></i> {{ trans('user::roles.button.new-role') }}
                 </a>
             </div>
@@ -39,17 +39,17 @@
                         <?php foreach ($roles as $role): ?>
                             <tr>
                                 <td>
-                                    <a href="{{ URL::route('admin.user.role.edit', [$role->id]) }}">
+                                    <a href="{{ route('admin.user.role.edit', [$role->id]) }}">
                                         {{ $role->id }}
                                     </a>
                                 </td>
                                 <td>
-                                    <a href="{{ URL::route('admin.user.role.edit', [$role->id]) }}">
+                                    <a href="{{ route('admin.user.role.edit', [$role->id]) }}">
                                         {{ $role->name }}
                                     </a>
                                 </td>
                                 <td>
-                                    <a href="{{ URL::route('admin.user.role.edit', [$role->id]) }}">
+                                    <a href="{{ route('admin.user.role.edit', [$role->id]) }}">
                                         {{ $role->created_at }}
                                     </a>
                                 </td>

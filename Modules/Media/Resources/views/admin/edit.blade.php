@@ -5,8 +5,8 @@
     {{ trans('media::media.title.edit media') }} <small>{{ $file->filename }}</small>
 </h1>
 <ol class="breadcrumb">
-    <li><a href="{{ URL::route('dashboard.index') }}"><i class="fa fa-dashboard"></i> {{ trans('core::core.breadcrumb.home') }}</a></li>
-    <li><a href="{{ URL::route('admin.media.media.index') }}">{{ trans('media::media.title.media') }}</a></li>
+    <li><a href="{{ route('dashboard.index') }}"><i class="fa fa-dashboard"></i> {{ trans('core::core.breadcrumb.home') }}</a></li>
+    <li><a href="{{ route('admin.media.media.index') }}">{{ trans('media::media.title.media') }}</a></li>
     <li class="active">{{ trans('media::media.title.edit media') }}</li>
 </ol>
 @stop
@@ -29,7 +29,7 @@
                 @tags('asgardcms/media', $file)
                 <div class="box-footer">
                     <button type="submit" class="btn btn-primary btn-flat">{{ trans('core::core.button.update') }}</button>
-                    <a class="btn btn-danger pull-right btn-flat" href="{{ URL::route('admin.media.media.index')}}"><i class="fa fa-times"></i> {{ trans('core::core.button.cancel') }}</a>
+                    <a class="btn btn-danger pull-right btn-flat" href="{{ route('admin.media.media.index')}}"><i class="fa fa-times"></i> {{ trans('core::core.button.cancel') }}</a>
                 </div>
             </div>
         </div> {{-- end nav-tabs-custom --}}

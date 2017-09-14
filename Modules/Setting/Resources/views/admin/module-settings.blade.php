@@ -6,7 +6,7 @@
 </h1>
 <ol class="breadcrumb">
     <li><a href="#"><i class="fa fa-dashboard"></i> {{ trans('core::core.breadcrumb.home') }}</a></li>
-    <li><a href="{{ URL::route('admin.setting.settings.index') }}"><i class="fa fa-cog"></i> {{ trans('setting::settings.breadcrumb.settings') }}</a></li>
+    <li><a href="{{ route('admin.setting.settings.index') }}"><i class="fa fa-cog"></i> {{ trans('setting::settings.breadcrumb.settings') }}</a></li>
     <li class="active"><i class="fa fa-cog"></i> {{ trans('setting::settings.breadcrumb.module settings', ['module' => ucfirst($currentModule)]) }}</li>
 </ol>
 @stop
@@ -28,7 +28,7 @@
     		<ul class="nav nav-list">
     		  <?php foreach ($modulesWithSettings as $module => $settings): ?>
                   <li>
-                    <a href="{{ URL::route('dashboard.module.settings', [$module]) }}"
+                    <a href="{{ route('dashboard.module.settings', [$module]) }}"
                        class="{{ $module === $currentModule->getName() ? 'active' : '' }}">
                         {{ ucfirst($module) }}
                         <small class="badge pull-right bg-blue">{{ count($settings) }}</small>
@@ -72,7 +72,7 @@
         <?php endif; ?>
         <div class="box-footer">
             <button type="submit" class="btn btn-primary btn-flat">{{ trans('core::core.button.update') }}</button>
-            <a class="btn btn-danger pull-right btn-flat" href="{{ URL::route('admin.setting.settings.index')}}"><i class="fa fa-times"></i> {{ trans('core::core.button.cancel') }}</a>
+            <a class="btn btn-danger pull-right btn-flat" href="{{ route('admin.setting.settings.index')}}"><i class="fa fa-times"></i> {{ trans('core::core.button.cancel') }}</a>
         </div>
     </div>
 </div>
