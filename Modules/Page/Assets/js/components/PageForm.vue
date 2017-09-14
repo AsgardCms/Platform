@@ -136,7 +136,8 @@
         mixins: [Translate, Slugify],
         props: {
             locales: {default: null},
-            pageId: {default: null}
+            pageId: {default: null},
+            route: {default: null},
         },
         data() {
             return {
@@ -170,7 +171,7 @@
             onSubmit() {
                 this.form = new Form(_.merge(this.page, {tags: this.tags}));
                 this.loading = true;
-                this.form.post(route('api.page.page.store'))
+                this.form.post(this.route)
                     .then(response => {
                         this.loading = false;
                         this.$message({
