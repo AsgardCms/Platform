@@ -166,11 +166,6 @@
                 tags: {},
             }
         },
-        watch: {
-            tags: function () {
-                console.log('changed tags');
-            }
-        },
         methods: {
             onSubmit() {
                 this.form = new Form(_.merge(this.page, {tags: this.tags}));
@@ -208,10 +203,8 @@
             fetchPage() {
                 axios.post(route('api.page.page.find', {page: this.pageId}))
                     .then(response => {
-                        // console.log(response);
                         this.page = response.data.data;
                         this.tags = response.data.data.tags;
-                        console.log(response.data.data.tags);
                     })
                     .catch(error => {
                     })
