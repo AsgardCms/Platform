@@ -1,6 +1,6 @@
 <template>
     <el-form-item label="Tags">
-        <el-select v-model="tags" multiple filterable allow-create @change="triggerEvent">
+        <el-select v-model="tags" multiple filterable allow-create remote @change="triggerEvent">
             <el-option v-for="tag in availableTags"
                        :key="tag.slug"
                        :label="tag.slug"

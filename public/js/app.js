@@ -70961,7 +70961,8 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     attrs: {
       "multiple": "",
       "filterable": "",
-      "allow-create": ""
+      "allow-create": "",
+      "remote": ""
     },
     on: {
       "change": _vm.triggerEvent
