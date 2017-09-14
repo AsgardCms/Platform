@@ -27,7 +27,7 @@
 
                                 <el-form-item :label="translate('page', 'body')"
                                               :class="{'el-form-item is-error': form.errors.has(locale + '.body') }">
-                                    <ckeditor v-model="page[locale].body">
+                                    <ckeditor v-model="page[locale].body" :value="page[locale].body">
                                     </ckeditor>
                                     <div class="el-form-item__error" v-if="form.errors.has(locale + '.body')"
                                          v-text="form.errors.first(locale + '.body')"></div>
