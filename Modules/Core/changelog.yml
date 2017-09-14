@@ -6,6 +6,8 @@ versions:
             - Created a vue component for CkEditor
         changed:
             - Replacing URL::route() by route() helper
+            - Updated menu ordering in Content section. Leaving spots in between for custom modules.
+            - Update menu ordering in Workshop section. Leaving spots in between for custom modules.
     "2.6.1":
         changed:
             - Fixing installation having 2x port in <code>.env</code>
