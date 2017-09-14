@@ -11,7 +11,7 @@ class FullPageTransformer extends Resource
         $pageData = [
             'id' => $this->id,
             'template' => $this->template,
-            'is_home' => $this->template,
+            'is_home' => $this->is_home,
         ];
 
         foreach ($this->translations as $pageTranslation) {
