@@ -1,9 +1,9 @@
 <?php
 
 if (! function_exists('module_version')) {
-    function module_version($module)
+    function module_version(\Nwidart\Modules\Laravel\Module $module)
     {
-        if (is_core_module($module->name) === true) {
+        if (is_core_module($module->getName()) === true) {
             return \Modules\Core\Foundation\AsgardCms::VERSION;
         }
 
