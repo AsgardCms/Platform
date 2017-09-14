@@ -16,72 +16,18 @@
         .checkbox label {
             padding-left: 0;
         }
+        .error {
+            color: #dd4b39 !important;
+        }
     </style>
 @endpush
 
 @section('content')
-    {!! Form::open(['route' => ['admin.page.page.update', $page->id], 'method' => 'put']) !!}
-    <div class="row">
-        <div class="col-md-10">
-            <div class="nav-tabs-custom">
-                @include('partials.form-tab-headers', ['fields' => ['title', 'body']])
-                <div class="tab-content">
-                    <?php $i = 0; ?>
-                    <?php foreach (LaravelLocalization::getSupportedLocales() as $locale => $language): ?>
-                    <?php ++$i; ?>
-                    <div class="tab-pane {{ App::getLocale() == $locale ? 'active' : '' }}" id="tab_{{ $i }}">
-                        @include('page::admin.partials.edit-fields', ['lang' => $locale])
-                    </div>
-                    <?php endforeach; ?>
-                    <?php if (config('asgard.page.config.partials.normal.edit') !== []): ?>
-                        <?php foreach (config('asgard.page.config.partials.normal.edit') as $partial): ?>
-                            @include($partial)
-                        <?php endforeach; ?>
-                    <?php endif; ?>
-
-                    <div class="box-footer">
-                        <button type="submit" class="btn btn-primary btn-flat" name="button" value="index" >
-                            <i class="fa fa-angle-left"></i>
-                            {{ trans('core::core.button.update and back') }}
-                        </button>
-                        <button type="submit" class="btn btn-primary btn-flat">
-                            {{ trans('core::core.button.update') }}
-                        </button>
-                        <a class="btn btn-danger pull-right btn-flat" href="{{ URL::route('admin.page.page.index')}}"><i class="fa fa-times"></i> {{ trans('core::core.button.cancel') }}</a>
-                    </div>
-                </div>
-            </div> {{-- end nav-tabs-custom --}}
-        </div>
-        <div class="col-md-2">
-            <div class="box box-primary">
-                <div class="box-body">
-                    <div class="checkbox{{ $errors->has('is_home') ? ' has-error' : '' }}">
-                        <input type="hidden" name="is_home" value="0">
-                        <label for="is_home">
-                            <input id="is_home"
-                                   name="is_home"
-                                   type="checkbox"
-                                   class="flat-blue"
-                                    {{ isset($page->is_home) && (bool)$page->is_home == true ? 'checked' : '' }}
-                                   value="1" />
-                            {{ trans('page::pages.is homepage') }}
-                            {!! $errors->first('is_home', '<span class="help-block">:message</span>') !!}
-                        </label>
-                    </div>
-                    <hr/>
-                    <div class='form-group{{ $errors->has("template") ? ' has-error' : '' }}'>
-                        {!! Form::label("template", trans('page::pages.template')) !!}
-                        {!! Form::select("template", $all_templates, old("template", $page->template), ['class' => "form-control", 'placeholder' => trans('page::pages.template')]) !!}
-                        {!! $errors->first("template", '<span class="help-block">:message</span>') !!}
-                    </div>
-                    <hr>
-                    @tags('asgardcms/page', $page)
-                </div>
-            </div>
-        </div>
-    </div>
-
-    {!! Form::close() !!}
+    <page-form :locales="{{ json_encode(LaravelLocalization::getSupportedLocales()) }}"
+               :translations="{{ json_encode(['page' => trans('page::pages'), 'core' => trans('core::core')]) }}"
+               :page-id="{{ $page->id }}"
+               route="{{ route('api.page.page.update', $page->id) }}">
+    </page-form>
 @stop
 
 @section('footer')
