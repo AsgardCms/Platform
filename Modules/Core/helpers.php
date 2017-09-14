@@ -34,6 +34,13 @@ if (! function_exists('is_core_module')) {
     }
 }
 
+if (! function_exists('is_core_theme')) {
+    function is_core_theme(string $theme)
+    {
+        return in_array($theme, ['AdminLTE', 'Flatly'], false);
+    }
+}
+
 if (! function_exists('asgard_i18n_editor')) {
     function asgard_i18n_editor($fieldName, $labelName, $content, $lang)
     {

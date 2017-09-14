@@ -51,7 +51,7 @@
                                     </td>
                                     <td>
                                         <a href="{{ route('admin.workshop.themes.show', [$theme->getName()]) }}">
-                                            {{ $theme->version }}
+                                            {{ theme_version($theme) }}
                                         </a>
                                     </td>
                                     <td>

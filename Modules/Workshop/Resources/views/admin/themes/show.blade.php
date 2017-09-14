@@ -57,7 +57,7 @@
                             <div class="module-type pull-left">
                                 <i class="fa fa-picture-o"></i>
                                 <span>
-                                    {{ $theme->version }}
+                                    {{  theme_version($theme) }}
                                 </span>
                             </div>
                             <h2>{{ ucfirst($theme->getName()) }}</h2>
