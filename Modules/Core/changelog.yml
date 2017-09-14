@@ -4,6 +4,8 @@ versions:
         added:
             - Created a vue component for the delete buttons on index pages
             - Created a vue component for CkEditor
+        changed:
+            - Replacing URL::route() by route() helper
     "2.6.1":
         changed:
             - Fixing installation having 2x port in <code>.env</code>
