@@ -61,7 +61,7 @@
                         <div class="col-sm-12 module-details">
                             <div class="module-type pull-left">
                                 <i class="fa fa-cube"></i>
-                                <span>{{ $module->version }}</span>
+                                <span>{{ module_version($module) }}</span>
                             </div>
                             <h2>{{ ucfirst($module->getName()) }}</h2>
                             <p>{{ $module->getDescription() }}</p>
