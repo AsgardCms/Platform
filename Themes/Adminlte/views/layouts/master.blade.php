@@ -12,7 +12,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta name="user-api-token" content="{{ $currentUser->getFirstApiKey() }}">
     <meta name="current-locale" content="{{ locale() }}">
-    <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, viewport-fit=cover">
     @foreach($cssFiles as $css)
         <link media="all" type="text/css" rel="stylesheet" href="{{ URL::asset($css) }}">
     @endforeach
