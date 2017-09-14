@@ -169,20 +169,20 @@
         methods: {
             onSubmit() {
                 this.form = new Form(_.merge(this.page, {tags: this.tags}));
-                let vm = this;
                 this.loading = true;
                 this.form.post(route('api.page.page.store'))
                     .then(response => {
                         this.loading = false;
-                        vm.$message({
+                        this.$message({
                             type: 'success',
-                            message: response.data.message
+                            message: response.message
                         });
                         window.location = route('admin.page.page.index');
                     })
                     .catch(error => {
+                        console.log(error);
                         this.loading = false;
-                        vm.$notify.error({
+                        this.$notify.error({
                             title: 'Error',
                             message: 'There are some errors in the form.'
                         });

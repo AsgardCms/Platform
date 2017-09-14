@@ -69947,18 +69947,18 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             var _this = this;
 
             this.form = new __WEBPACK_IMPORTED_MODULE_3_form_backend_validation___default.a(_.merge(this.page, { tags: this.tags }));
-            var vm = this;
             this.loading = true;
             this.form.post(route('api.page.page.store')).then(function (response) {
                 _this.loading = false;
-                vm.$message({
+                _this.$message({
                     type: 'success',
-                    message: response.data.message
+                    message: response.message
                 });
                 window.location = route('admin.page.page.index');
             }).catch(function (error) {
+                console.log(error);
                 _this.loading = false;
-                vm.$notify.error({
+                _this.$notify.error({
                     title: 'Error',
                     message: 'There are some errors in the form.'
                 });
