@@ -11,6 +11,7 @@ use Modules\Core\Traits\CanPublishConfiguration;
 use Modules\User\Contracts\Authentication;
 use Modules\User\Entities\UserToken;
 use Modules\User\Events\Handlers\RegisterUserSidebar;
+use Modules\User\Guards\Sentinel;
 use Modules\User\Http\Middleware\AuthorisedApiToken;
 use Modules\User\Http\Middleware\AuthorisedApiTokenAdmin;
 use Modules\User\Http\Middleware\GuestMiddleware;
@@ -21,7 +22,6 @@ use Modules\User\Repositories\Eloquent\EloquentUserTokenRepository;
 use Modules\User\Repositories\RoleRepository;
 use Modules\User\Repositories\UserRepository;
 use Modules\User\Repositories\UserTokenRepository;
-use Modules\User\Guards\Sentinel;
 
 class UserServiceProvider extends ServiceProvider
 {

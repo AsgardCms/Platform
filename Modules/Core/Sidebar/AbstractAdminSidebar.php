@@ -3,9 +3,9 @@
 namespace Modules\Core\Sidebar;
 
 use Maatwebsite\Sidebar\Menu;
+use Maatwebsite\Sidebar\SidebarExtender;
 use Modules\Core\Events\BuildingSidebar;
 use Modules\User\Contracts\Authentication;
-use Maatwebsite\Sidebar\SidebarExtender;
 
 abstract class AbstractAdminSidebar implements SidebarExtender
 {

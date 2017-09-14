@@ -2,8 +2,8 @@
 
 namespace Modules\Translation\Repositories\File;
 
-use Illuminate\Filesystem\Filesystem;
 use Illuminate\Contracts\Translation\Loader;
+use Illuminate\Filesystem\Filesystem;
 use Modules\Translation\Repositories\FileTranslationRepository as FileTranslationRepositoryInterface;
 
 class FileTranslationRepository implements FileTranslationRepositoryInterface

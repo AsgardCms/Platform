@@ -11,9 +11,9 @@ namespace Modules\Media\Tests;
 use Illuminate\Container\Container;
 use Illuminate\Filesystem\Filesystem;
 use Illuminate\Http\UploadedFile;
-use Illuminate\Validation\Factory as Validator;
 use Illuminate\Translation\FileLoader;
 use Illuminate\Translation\Translator;
+use Illuminate\Validation\Factory as Validator;
 use Modules\Media\Validators\MaxFolderSizeRule;
 
 final class MaxFolderSizeRuleTest extends MediaTestCase
@@ -50,6 +50,7 @@ final class MaxFolderSizeRuleTest extends MediaTestCase
         $validator = (new Validator($translator))->make(['file' => $directorySize], [
             'file' => ['required', new MaxFolderSizeRule()],
         ]);
+
         return $validator;
     }
 }

@@ -71,7 +71,6 @@ class EloquentTranslationRepositoryTest extends BaseTranslationTest
             ],
         ];
 
-
         $this->assertEquals($expected, $this->translation->allFormatted());
     }
 

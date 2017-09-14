@@ -108,7 +108,7 @@ class EntityGenerator extends Generator
             $this->getContentForStub('admin-controller.stub', $entity)
         );
     }
-    
+
     /**
      * Generate the requests for the given entity
      *

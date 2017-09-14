@@ -17,6 +17,7 @@ class Sentinel implements LaravelGuard
         if (SentinelFacade::check()) {
             return true;
         }
+
         return false;
     }
 
@@ -47,6 +48,7 @@ class Sentinel implements LaravelGuard
         if ($user = SentinelFacade::check()) {
             return $user->id;
         }
+
         return null;
     }
 

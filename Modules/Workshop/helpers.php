@@ -6,6 +6,7 @@ if (! function_exists('module_version')) {
         if (is_core_module($module->name) === true) {
             return \Modules\Core\Foundation\AsgardCms::VERSION;
         }
+
         return $module->version;
     }
 }

@@ -2,10 +2,10 @@
 
 namespace Modules\User\Entities\Sentinel;
 
-use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
-use Illuminate\Auth\Authenticatable;
 use Cartalyst\Sentinel\Laravel\Facades\Activation;
 use Cartalyst\Sentinel\Users\EloquentUser;
+use Illuminate\Auth\Authenticatable;
+use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
 use Laracasts\Presenter\PresentableTrait;
 use Modules\User\Entities\UserInterface;
 use Modules\User\Entities\UserToken;
@@ -114,7 +114,7 @@ class User extends EloquentUser implements UserInterface, AuthenticatableContrac
         if (config()->has($config)) {
             $function = config()->get($config);
             $bound = $function->bindTo($this);
-            
+
             return $bound();
         }
 

@@ -62,7 +62,6 @@ abstract class EloquentBaseRepository implements BaseRepository
         return $this->model;
     }
 
-
     /**
      * @inheritdoc
      */

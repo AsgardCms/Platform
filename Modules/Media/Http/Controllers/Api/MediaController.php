@@ -50,6 +50,7 @@ class MediaController extends Controller
                 if ($file->isImage()) {
                     return '<img src="' . Imagy::getThumbnail($file->path, 'smallThumb') . '"/>';
                 }
+
                 return '<i class="fa ' . FileHelper::getFaIcon($file->media_type) . '" style="font-size: 20px;"></i>';
             })
             ->rawColumns(['thumbnail'])
