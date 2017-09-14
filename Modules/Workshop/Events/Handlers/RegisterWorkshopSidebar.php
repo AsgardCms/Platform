@@ -23,7 +23,7 @@ class RegisterWorkshopSidebar extends AbstractAdminSidebar
             );
             $group->item(trans('workshop::workshop.modules'), function (Item $item) {
                 $item->icon('fa fa-cogs');
-                $item->weight(100);
+                $item->weight(30);
                 $item->route('admin.workshop.modules.index');
                 $item->authorize(
                     $this->auth->hasAccess('workshop.modules.index')
@@ -31,7 +31,7 @@ class RegisterWorkshopSidebar extends AbstractAdminSidebar
             });
             $group->item(trans('workshop::workshop.themes'), function (Item $item) {
                 $item->icon('fa fa-cogs');
-                $item->weight(101);
+                $item->weight(40);
                 $item->route('admin.workshop.themes.index');
                 $item->authorize(
                     $this->auth->hasAccess('workshop.themes.index')

@@ -18,7 +18,7 @@ class RegisterUserSidebar extends AbstractAdminSidebar
     {
         $menu->group(trans('workshop::workshop.title'), function (Group $group) {
             $group->item(trans('user::users.title.users'), function (Item $item) {
-                $item->weight(0);
+                $item->weight(10);
                 $item->icon('fa fa-users');
                 $item->authorize(
                     $this->auth->hasAccess('user.users.index') or $this->auth->hasAccess('user.roles.index')

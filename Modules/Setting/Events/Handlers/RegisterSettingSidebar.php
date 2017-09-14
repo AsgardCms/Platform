@@ -19,7 +19,7 @@ class RegisterSettingSidebar extends AbstractAdminSidebar
         $menu->group(trans('workshop::workshop.title'), function (Group $group) {
             $group->item(trans('setting::settings.title.settings'), function (Item $item) {
                 $item->icon('fa fa-cog');
-                $item->weight(50);
+                $item->weight(20);
                 $item->route('admin.setting.settings.index');
                 $item->authorize(
                     $this->auth->hasAccess('setting.settings.index')
