@@ -11,6 +11,7 @@
 </template>
 
 <script>
+    // Source: https://github.com/dangvanthanh/vue-ckeditor2
     let inc = 0
     export default {
         name: 'vue-ckeditor',
