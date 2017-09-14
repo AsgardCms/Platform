@@ -46,7 +46,11 @@
         },
         watch: {
             value (val) {
-                this.instance.setData(val, null, true);
+                //console.log(this.value, this.instance);
+                this.instance.setData(this.value)
+//                let html = this.instance.getData();
+//                if (val !== html) {
+//                }
             }
         },
         mounted () {
