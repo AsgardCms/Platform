@@ -1,5 +1,8 @@
 url: https://github.com/AsgardCms/Platform
 versions:
+    "3.0.0@unreleased":
+        added:
+            - Created a vue component for the tags input
     "2.5.0":
         added:
             - Create and trigger events when tags are created and updated
