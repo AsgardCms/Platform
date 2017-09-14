@@ -22,7 +22,7 @@ class RegisterTranslationSidebar extends AbstractAdminSidebar
         $menu->group(trans('core::sidebar.content'), function (Group $group) {
             $group->item(trans('translation::translations.title.translations'), function (Item $item) {
                 $item->icon('fa fa-globe');
-                $item->weight(10);
+                $item->weight(40);
                 $item->route('admin.translation.translation.index');
                 $item->authorize(
                     $this->auth->hasAccess('translation.translations.index')

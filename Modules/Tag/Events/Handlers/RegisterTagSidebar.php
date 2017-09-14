@@ -19,7 +19,7 @@ class RegisterTagSidebar extends AbstractAdminSidebar
         $menu->group(trans('core::sidebar.content'), function (Group $group) {
             $group->item(trans('tag::tags.tags'), function (Item $item) {
                 $item->icon('fa fa-tag');
-                $item->weight(0);
+                $item->weight(50);
                 $item->route('admin.tag.tag.index');
                 $item->authorize(
                     $this->auth->hasAccess('tag.tags.index')

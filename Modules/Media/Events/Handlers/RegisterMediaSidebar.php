@@ -13,7 +13,7 @@ class RegisterMediaSidebar extends AbstractAdminSidebar
     {
         $menu->group(trans('core::sidebar.content'), function (Group $group) {
             $group->item(trans('media::media.title.media'), function (Item $item) {
-                $item->weight(2);
+                $item->weight(20);
                 $item->icon('fa fa-camera');
                 $item->route('admin.media.media.index');
                 $item->authorize(
