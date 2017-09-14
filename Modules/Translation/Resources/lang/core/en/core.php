@@ -33,6 +33,7 @@ return [
         'reset' => 'Reset',
         'update and back' => 'Update and go back',
     ],
+    'save' => 'Save',
     'breadcrumb' => [
         'home' => 'Home',
     ],

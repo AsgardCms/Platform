@@ -33,6 +33,7 @@ return [
         'reset' => 'Réinitialiser',
         'update and back' => 'Mise à jour et retour',
     ],
+    'save' => 'Sauvegardé',
     'breadcrumb' => [
         'home' => 'Accueil',
     ],

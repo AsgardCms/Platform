@@ -32,6 +32,7 @@ return [
         'reset' => 'Herstellen',
         'update and back' => 'Wijzig en ga terug',
     ],
+    'save' => 'Opslaan',
     'breadcrumb' => [
         'home' => 'Start',
     ],
