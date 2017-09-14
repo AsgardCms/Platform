@@ -1,6 +1,9 @@
 url: https://github.com/AsgardCms/Platform
 versions:
-    "2.6.0@unreleased":
+    "3.0.0@unreleased":
+        changed:
+            - Using correct version number on module detail view
+    "2.6.0":
         changed:
             - Read core module version from the AsgardCms class other modules keep same logic (<code>version</code> key in <code>module.json</code>)
     "2.5.0":
