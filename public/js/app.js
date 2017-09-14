@@ -69914,7 +69914,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     mixins: [__WEBPACK_IMPORTED_MODULE_1__Core_Assets_js_mixins_Translate__["a" /* default */], __WEBPACK_IMPORTED_MODULE_2__Core_Assets_js_mixins_Slugify__["a" /* default */]],
     props: {
         locales: { default: null },
-        pageId: { default: null }
+        pageId: { default: null },
+        route: { default: null }
     },
     data: function data() {
         return {
@@ -69948,7 +69949,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
             this.form = new __WEBPACK_IMPORTED_MODULE_3_form_backend_validation___default.a(_.merge(this.page, { tags: this.tags }));
             this.loading = true;
-            this.form.post(route('api.page.page.store')).then(function (response) {
+            this.form.post(this.route).then(function (response) {
                 _this.loading = false;
                 _this.$message({
                     type: 'success',
@@ -70933,7 +70934,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     },
     watch: {
         currentTags: function currentTags() {
-            this.tags = this.currentTags;
+            if (this.currentTags !== null) {
+                this.tags = this.currentTags;
+            }
         }
     },
     mounted: function mounted() {

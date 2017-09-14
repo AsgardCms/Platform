@@ -31,7 +31,9 @@
         },
         watch: {
             currentTags: function () {
-                this.tags = this.currentTags;
+                if (this.currentTags !== null) {
+                    this.tags = this.currentTags;
+                }
             }
         },
         mounted() {
