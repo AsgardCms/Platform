@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\View;
 use Modules\Core\Http\Controllers\Admin\AdminBaseController;
 use Modules\Workshop\Manager\ModuleManager;
 use Nwidart\Modules\Module;
-use Nwidart\Modules\Repository;
+use Nwidart\Modules\Contracts\RepositoryInterface;
 use Symfony\Component\Console\Output\BufferedOutput;
 
 class ModulesController extends AdminBaseController
@@ -19,11 +19,11 @@ class ModulesController extends AdminBaseController
      */
     private $moduleManager;
     /**
-     * @var Repository
+     * @var RepositoryInterface
      */
     private $modules;
 
-    public function __construct(ModuleManager $moduleManager, Repository $modules)
+    public function __construct(ModuleManager $moduleManager, RepositoryInterface $modules)
     {
         parent::__construct();
 

@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Response;
 use Modules\Core\Http\Controllers\Admin\AdminBaseController;
 use Modules\Dashboard\Repositories\WidgetRepository;
 use Modules\User\Contracts\Authentication;
-use Nwidart\Modules\Repository;
+use Nwidart\Modules\Contracts\RepositoryInterface;
 
 class DashboardController extends AdminBaseController
 {
@@ -21,11 +21,11 @@ class DashboardController extends AdminBaseController
     private $auth;
 
     /**
-     * @param Repository $modules
+     * @param RepositoryInterface $modules
      * @param WidgetRepository $widget
      * @param Authentication $auth
      */
-    public function __construct(Repository $modules, WidgetRepository $widget, Authentication $auth)
+    public function __construct(RepositoryInterface $modules, WidgetRepository $widget, Authentication $auth)
     {
         parent::__construct();
         $this->bootWidgets($modules);
@@ -87,9 +87,9 @@ class DashboardController extends AdminBaseController
 
     /**
      * Boot widgets for all enabled modules
-     * @param Repository $modules
+     * @param RepositoryInterface $modules
      */
-    private function bootWidgets(Repository $modules)
+    private function bootWidgets(RepositoryInterface $modules)
     {
         foreach ($modules->enabled() as $module) {
             if (! $module->widgets) {
