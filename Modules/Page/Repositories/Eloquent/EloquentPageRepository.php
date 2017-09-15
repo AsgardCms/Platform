@@ -19,10 +19,10 @@ class EloquentPageRepository extends EloquentBaseRepository implements PageRepos
     public function paginate($perPage = 15)
     {
         if (method_exists($this->model, 'translations')) {
-            return $this->model->with('translations')->orderBy('created_at', 'DESC')->paginate($perPage);
+            return $this->model->with('translations')->paginate($perPage);
         }
 
-        return $this->model->orderBy('created_at', 'DESC')->paginate($perPage);
+        return $this->model->paginate($perPage);
     }
 
     /**
