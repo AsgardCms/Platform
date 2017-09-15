@@ -13,6 +13,10 @@ class PageTransformer extends Resource
             'title' => $this->title,
             'slug' => $this->slug,
             'created_at' => $this->created_at->format('d-m-Y'),
+            'translations' => [
+                'title' => $this->title,
+                'slug' => $this->slug,
+            ],
             'urls' => [
                 'delete_url' => route('api.page.page.destroy', $this->id),
                 'edit_url' => route('admin.page.page.edit', $this->id),
