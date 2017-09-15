@@ -10,12 +10,12 @@ class PageTransformer extends Resource
     {
         return [
             'id' => $this->id,
-            'title' => $this->title,
-            'slug' => $this->slug,
+            'is_home' => $this->is_home,
+            'template' => $this->template,
             'created_at' => $this->created_at->format('d-m-Y'),
             'translations' => [
-                'title' => $this->title,
-                'slug' => $this->slug,
+                'title' => $this->translate(locale())->title,
+                'slug' => $this->translate(locale())->slug,
             ],
             'urls' => [
                 'delete_url' => route('api.page.page.destroy', $this->id),
