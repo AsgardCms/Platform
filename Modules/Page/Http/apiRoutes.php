@@ -13,6 +13,11 @@ $router->group(['prefix' => '/page'], function (Router $router) {
         'uses' => 'PageController@index',
         'middleware' => 'token-can:page.pages.index',
     ]);
+    $router->get('pages-server-side', [
+        'as' => 'api.page.page.indexServerSide',
+        'uses' => 'PageController@indexServerSide',
+        'middleware' => 'token-can:page.pages.index',
+    ]);
     $router->delete('pages/{page}', [
         'as' => 'api.page.page.destroy',
         'uses' => 'PageController@destroy',
