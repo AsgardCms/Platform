@@ -136,8 +136,6 @@
         mixins: [Translate, Slugify],
         props: {
             locales: {default: null},
-            pageId: {default: null},
-            route: {default: null},
         },
         data() {
             return {
@@ -171,14 +169,15 @@
             onSubmit() {
                 this.form = new Form(_.merge(this.page, {tags: this.tags}));
                 this.loading = true;
-                this.form.post(this.route)
+
+                this.form.post(this.getRoute())
                     .then(response => {
                         this.loading = false;
                         this.$message({
                             type: 'success',
                             message: response.message
                         });
-                        window.location = route('admin.page.page.index');
+                        this.$router.push({name: 'admin.page.page.index'});
                     })
                     .catch(error => {
                         console.log(error);
@@ -190,7 +189,7 @@
                     });
             },
             onCancel() {
-                window.location = route('admin.page.page.index');
+                this.$router.push({name: 'admin.page.page.index'});
             },
             fetchTemplates() {
                 axios.get(route('api.page.page-templates.index'))
@@ -205,7 +204,7 @@
                 this.tags = tags;
             },
             fetchPage() {
-                axios.post(route('api.page.page.find', {page: this.pageId}))
+                axios.post(route('api.page.page.find', {page: this.$route.params.pageId}))
                     .then(response => {
                         this.page = response.data.data;
                         this.tags = response.data.data.tags;
@@ -213,10 +212,17 @@
                     .catch(error => {
                     })
             },
+            getRoute() {
+                if (this.$route.params.pageId !== undefined) {
+                    return route('api.page.page.update', {page: this.$route.params.pageId});
+                }
+                return route('api.page.page.store');
+            },
         },
         mounted() {
             this.fetchTemplates();
-            if (this.pageId !== null) {
+
+            if (this.$route.params.pageId !== null) {
                 this.fetchPage();
             }
         }
