@@ -81,7 +81,9 @@
             if (!this.destroyed) {
                 this.instance.focusManager.blur(true)
                 this.instance.removeAllListeners()
-                this.instance.destroy()
+                try {
+                    this.instance.destroy()
+                } catch (e) { }
                 this.destroyed = true
             }
         }
