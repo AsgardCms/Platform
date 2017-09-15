@@ -69895,6 +69895,22 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -69904,31 +69920,61 @@ var _data = void 0;
 /* harmony default export */ __webpack_exports__["default"] = ({
     mixins: [__WEBPACK_IMPORTED_MODULE_1__Core_Assets_js_mixins_Translate__["a" /* default */]],
     data: function data() {
-        var _this = this;
-
         return {
             data: _data,
-            actionsDef: {
-                def: [{
-                    name: this.translate('page', 'create page'),
-                    icon: 'edit',
-                    handler: function handler() {
-                        _this.$router.push({ name: 'admin.page.page.create' });
-                    }
-                }]
-            }
+            meta: {},
+            links: {}
         };
     },
 
     methods: {
         fetchData: function fetchData() {
-            var vm = this;
+            var _this = this;
+
             __WEBPACK_IMPORTED_MODULE_0_axios___default.a.get(route('api.page.page.index')).then(function (response) {
-                vm.data = response.data.data;
+                _this.data = response.data.data;
+                _this.meta = response.data.meta;
+                _this.links = response.data.links;
             });
         },
         goToEdit: function goToEdit(scope) {
             this.$router.push({ name: 'admin.page.page.edit', params: { pageId: scope.row.id } });
+        },
+        handleSizeChange: function handleSizeChange(event) {
+            var _this2 = this;
+
+            console.log('per page :' + event);
+            __WEBPACK_IMPORTED_MODULE_0_axios___default.a.get(route('api.page.page.index', { per_page: event, page: this.meta.current_page })).then(function (response) {
+                _this2.data = response.data.data;
+                _this2.meta = response.data.meta;
+                _this2.links = response.data.links;
+            });
+        },
+        handleCurrentChange: function handleCurrentChange(event) {
+            var _this3 = this;
+
+            console.log('current page :' + event);
+            __WEBPACK_IMPORTED_MODULE_0_axios___default.a.get(route('api.page.page.index', { page: event, per_page: this.meta.per_page })).then(function (response) {
+                _this3.data = response.data.data;
+                _this3.meta = response.data.meta;
+                _this3.links = response.data.links;
+            });
+        },
+        handleSortChange: function handleSortChange(event) {
+            var _this4 = this;
+
+            console.log('sorting', event);
+
+            __WEBPACK_IMPORTED_MODULE_0_axios___default.a.get(route('api.page.page.index', {
+                page: this.meta.current_page,
+                per_page: this.meta.per_page,
+                order_by: event.prop,
+                order: event.order
+            })).then(function (response) {
+                _this4.data = response.data.data;
+                _this4.meta = response.data.meta;
+                _this4.links = response.data.links;
+            });
         }
     },
     mounted: function mounted() {
@@ -69949,31 +69995,41 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "box box-primary"
   }, [_c('div', {
     staticClass: "box-body"
-  }, [_c('data-tables', {
+  }, [_c('el-table', {
+    staticStyle: {
+      "width": "100%"
+    },
     attrs: {
       "data": _vm.data,
-      "actions-def": _vm.actionsDef
+      "stripe": ""
+    },
+    on: {
+      "sort-change": _vm.handleSortChange
     }
   }, [_c('el-table-column', {
     attrs: {
       "prop": "id",
       "label": "Id",
-      "width": "100"
+      "width": "100",
+      "sortable": ""
     }
   }), _vm._v(" "), _c('el-table-column', {
     attrs: {
-      "prop": "title",
-      "label": _vm.translate('page', 'title')
+      "prop": "translations.title",
+      "label": _vm.translate('page', 'title'),
+      "sortable": ""
     }
   }), _vm._v(" "), _c('el-table-column', {
     attrs: {
-      "prop": "slug",
-      "label": "Slug"
+      "prop": "translations.slug",
+      "label": "Slug",
+      "sortable": ""
     }
   }), _vm._v(" "), _c('el-table-column', {
     attrs: {
       "prop": "created_at",
-      "label": "Created at"
+      "label": "Created at",
+      "sortable": ""
     }
   }), _vm._v(" "), _c('el-table-column', {
     attrs: {
@@ -70003,7 +70059,26 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         })]
       }
     }])
-  })], 1)], 1)])])])
+  })], 1), _vm._v(" "), _c('div', {
+    staticClass: "sc-table"
+  }, [_c('div', {
+    staticClass: "pagination-wrap"
+  }, [_c('el-pagination', {
+    attrs: {
+      "current-page": _vm.meta.current_age,
+      "page-sizes": [10, 20, 50, 100],
+      "page-size": parseInt(_vm.meta.per_page),
+      "layout": "total, sizes, prev, pager, next, jumper",
+      "total": _vm.meta.total
+    },
+    on: {
+      "size-change": _vm.handleSizeChange,
+      "current-change": _vm.handleCurrentChange,
+      "update:currentPage": function($event) {
+        _vm.meta.current_age = $event
+      }
+    }
+  })], 1)])], 1)])])])
 },staticRenderFns: []}
 module.exports.render._withStripped = true
 if (false) {
