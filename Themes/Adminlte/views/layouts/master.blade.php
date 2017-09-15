@@ -63,6 +63,7 @@
         <section class="content">
             @include('partials.notifications')
             @yield('content')
+            <router-view></router-view>
         </section><!-- /.content -->
     </aside><!-- /.right-side -->
     @include('partials.footer')
@@ -72,6 +73,12 @@
 @foreach($jsFiles as $js)
     <script src="{{ URL::asset($js) }}" type="text/javascript"></script>
 @endforeach
+<script>
+    window.translations = {!! json_encode(['page' => trans('page::pages'), 'core' => trans('core::core')]) !!};
+    window.locales = {!! json_encode(LaravelLocalization::getSupportedLocales()) !!}
+    window.currentLocale = '{{ locale() }}';
+</script>
+
 <script src="{{ mix('js/app.js') }}"></script>
 
 <?php if (is_module_enabled('Notification')): ?>
