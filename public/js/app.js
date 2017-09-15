@@ -70816,7 +70816,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       attrs: {
         "data-toggle": "collapse",
         "data-parent": "#accordion",
-        "href": ['#collapseMeta-'] + locale
+        "href": ("#collapseMeta-" + locale)
       }
     }, [_vm._v("\n                                            " + _vm._s(_vm.translate('page', 'meta_data')) + "\n                                        ")])])]), _vm._v(" "), _c('div', {
       staticClass: "panel-collapse collapse",
@@ -70824,7 +70824,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         "height": "0px"
       },
       attrs: {
-        "id": ['collapseMeta-'] + locale
+        "id": ("collapseMeta-" + locale)
       }
     }, [_c('div', {
       staticClass: "box-body"
@@ -70866,7 +70866,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       attrs: {
         "data-toggle": "collapse",
         "data-parent": "#accordion",
-        "href": ['#collapseFacebook-'] + locale
+        "href": ("#collapseFacebook-" + locale)
       }
     }, [_vm._v("\n                                            " + _vm._s(_vm.translate('page', 'facebook_data')) + "\n                                        ")])])]), _vm._v(" "), _c('div', {
       staticClass: "panel-collapse collapse",
@@ -70874,7 +70874,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         "height": "0px"
       },
       attrs: {
-        "id": ['collapseFacebook-'] + locale
+        "id": ("collapseFacebook-" + locale)
       }
     }, [_c('div', {
       staticClass: "box-body"

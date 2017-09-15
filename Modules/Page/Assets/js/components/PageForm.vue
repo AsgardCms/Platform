@@ -37,12 +37,12 @@
                                     <div class="box-header">
                                         <h4 class="box-title">
                                             <a class="collapsed" data-toggle="collapse" data-parent="#accordion"
-                                               :href="['#collapseMeta-'] + locale">
+                                               :href="`#collapseMeta-${locale}`">
                                                 {{ translate('page', 'meta_data') }}
                                             </a>
                                         </h4>
                                     </div>
-                                    <div style="height: 0px;" :id="['collapseMeta-'] + locale"
+                                    <div style="height: 0px;" :id="`collapseMeta-${locale}`"
                                          class="panel-collapse collapse">
                                         <div class="box-body">
                                             <el-form-item :label="translate('page', 'meta_title')">
@@ -60,12 +60,12 @@
                                     <div class="box-header">
                                         <h4 class="box-title">
                                             <a class="collapsed" data-toggle="collapse" data-parent="#accordion"
-                                               :href="['#collapseFacebook-'] + locale">
+                                               :href="`#collapseFacebook-${locale}`">
                                                 {{ translate('page', 'facebook_data') }}
                                             </a>
                                         </h4>
                                     </div>
-                                    <div style="height: 0px;" :id="['collapseFacebook-'] + locale"
+                                    <div style="height: 0px;" :id="`collapseFacebook-${locale}`"
                                          class="panel-collapse collapse">
                                         <div class="box-body">
                                             <el-form-item :label="translate('page', 'og_title')">
