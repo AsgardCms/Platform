@@ -8,6 +8,7 @@ use Modules\Core\Events\BuildingSidebar;
 use Modules\Core\Events\CollectingAssets;
 use Modules\Core\Traits\CanGetSidebarClassForModule;
 use Modules\Core\Traits\CanPublishConfiguration;
+use Modules\Page\Console\CreatePagesCommand;
 use Modules\Page\Entities\Page;
 use Modules\Page\Events\Handlers\RegisterPageSidebar;
 use Modules\Page\Repositories\Cache\CachePageDecorator;
@@ -50,6 +51,8 @@ class PageServiceProvider extends ServiceProvider
         $this->loadMigrationsFrom(__DIR__ . '/../Database/Migrations');
 
         $this->handleAssets();
+
+        $this->commands(CreatePagesCommand::class);
     }
 
     /**
