@@ -73126,6 +73126,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
 
 
 
@@ -73205,7 +73206,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         fetchPage: function fetchPage() {
             var _this3 = this;
 
+            this.loading = true;
             __WEBPACK_IMPORTED_MODULE_0_axios___default.a.post(route('api.page.page.find', { page: this.$route.params.pageId })).then(function (response) {
+                _this3.loading = false;
                 _this3.page = response.data.data;
                 _this3.tags = response.data.data.tags;
             }).catch(function (error) {});
@@ -73220,7 +73223,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     mounted: function mounted() {
         this.fetchTemplates();
 
-        if (this.$route.params.pageId !== null) {
+        if (this.$route.params.pageId !== undefined) {
             this.fetchPage();
         }
     }
@@ -73638,6 +73641,15 @@ function guardAgainstReservedFieldName(fieldName) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('el-form', {
+    directives: [{
+      name: "loading",
+      rawName: "v-loading.body",
+      value: (_vm.loading),
+      expression: "loading",
+      modifiers: {
+        "body": true
+      }
+    }],
     ref: "form",
     attrs: {
       "model": _vm.page,

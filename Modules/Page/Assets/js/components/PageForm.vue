@@ -1,5 +1,6 @@
 <template>
     <el-form ref="form" :model="page" label-width="120px" label-position="top"
+             v-loading.body="loading"
              @keydown="form.errors.clear($event.target.name);">
         <div class="row">
             <div class="col-md-10">
@@ -204,8 +205,10 @@
                 this.tags = tags;
             },
             fetchPage() {
+                this.loading = true;
                 axios.post(route('api.page.page.find', {page: this.$route.params.pageId}))
                     .then(response => {
+                        this.loading = false;
                         this.page = response.data.data;
                         this.tags = response.data.data.tags;
                     })
@@ -222,7 +225,7 @@
         mounted() {
             this.fetchTemplates();
 
-            if (this.$route.params.pageId !== null) {
+            if (this.$route.params.pageId !== undefined) {
                 this.fetchPage();
             }
         }
