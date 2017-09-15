@@ -1,23 +1,8 @@
-window.Vue = require('vue');
-import VueRouter from 'vue-router'
-import ElementUI from 'element-ui'
-import DataTables from 'vue-data-tables'
-import 'element-ui/lib/theme-default/index.css'
-import locale from 'element-ui/lib/locale/lang/en'
+import PageTable from './components/PageTable.vue'
+import PageForm from './components/PageForm.vue'
 
-Vue.use(ElementUI, { locale });
-Vue.use(DataTables, { locale });
-Vue.use(VueRouter);
-
-const PageTable = require('./components/PageTable.vue');
-Vue.component('PageTable', PageTable);
-
-const PageForm = require('./components/PageForm.vue');
-Vue.component('PageForm', PageForm);
-
-
-let translations = window.translations;
-let locales = window.locales;
+const translations = window.translations;
+const locales = window.locales;
 
 export default [
     {
