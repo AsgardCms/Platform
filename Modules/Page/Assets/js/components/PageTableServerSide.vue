@@ -21,13 +21,13 @@
                                 stripe
                                 style="width: 100%"
                                 @sort-change="handleSortChange">
-                            <el-table-column prop="id" label="Id" width="100" sortable>
+                            <el-table-column prop="id" label="Id" width="100" sortable="custom">
                             </el-table-column>
-                            <el-table-column prop="translations.title" :label="translate('page', 'title')" sortable>
+                            <el-table-column prop="translations.title" :label="translate('page', 'title')">
                             </el-table-column>
-                            <el-table-column prop="translations.slug" label="Slug" sortable>
+                            <el-table-column prop="translations.slug" label="Slug">
                             </el-table-column>
-                            <el-table-column prop="created_at" label="Created at" sortable>
+                            <el-table-column prop="created_at" label="Created at" sortable="custom">
                             </el-table-column>
                             <el-table-column fixed="right" prop="actions" label="Actions">
                                 <template scope="scope">
@@ -118,8 +118,8 @@
                 console.log('sorting', event);
 
                 axios.get(route('api.page.page.indexServerSide', {
-                    page: this.meta.current_page,
-                    per_page: this.meta.per_page,
+//                    page: this.meta.current_page,
+//                    per_page: this.meta.per_page,
                     order_by: event.prop,
                     order: event.order,
                 }))
