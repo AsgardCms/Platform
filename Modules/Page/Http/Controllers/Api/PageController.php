@@ -54,16 +54,24 @@ class PageController extends Controller
             if (str_contains($request->get('order_by'), '.')) {
                 $fields = explode('.', $request->get('order_by'));
 
-                $pages->join('page__page_translations as t', function ($join) {
-                    $join->on('page__pages.id', '=', 't.page_id')
-                        ->where('t.locale', locale());
+                $pages->with('translations')->join('page__page_translations as t', function ($join) {
+                    $join->on('page__pages.id', '=', 't.page_id');
                 })
+                    ->where('t.locale', locale())
                     ->groupBy('page__pages.id')->orderBy("t.{$fields[1]}", $order);
             } else {
                 $pages->orderBy($request->get('order_by'), $order);
             }
         }
+        //dd($pages->toSql());
 
+//        $pages->with('translations')->join('page__page_translations as t', function ($join) {
+//            $join->on('page__pages.id', '=', 't.page_id');
+//        })->where('t.locale', locale())
+//            ->groupBy('page__pages.id')->orderBy("t.title", 'desc');
+
+//dd($pages->take(10)->get());
+  //      return PageTransformer::collection($pages->take(10)->get());
         return PageTransformer::collection($pages->paginate($request->get('per_page', 10)));
     }
 
