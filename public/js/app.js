@@ -71988,11 +71988,10 @@ var inc = 0;
     },
     watch: {
         value: function value(val) {
-            //console.log(this.value, this.instance);
-            this.instance.setData(this.value);
-            //                let html = this.instance.getData();
-            //                if (val !== html) {
-            //                }
+            var html = this.instance.getData();
+            if (val !== html) {
+                this.instance.setData(val);
+            }
         }
     },
     mounted: function mounted() {
@@ -72683,6 +72682,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
 
 
 
@@ -72698,7 +72698,8 @@ var _data = void 0;
             meta: {},
             order_meta: {},
             links: {},
-            searchQuery: ''
+            searchQuery: '',
+            tableIsLoading: false
         };
     },
 
@@ -72706,7 +72707,9 @@ var _data = void 0;
         fetchData: function fetchData() {
             var _this = this;
 
+            this.tableIsLoading = true;
             __WEBPACK_IMPORTED_MODULE_0_axios___default.a.get(route('api.page.page.indexServerSide')).then(function (response) {
+                _this.tableIsLoading = false;
                 _this.data = response.data.data;
                 _this.meta = response.data.meta;
                 _this.links = response.data.links;
@@ -72719,12 +72722,14 @@ var _data = void 0;
             var _this2 = this;
 
             console.log('per page :' + event);
+            this.tableIsLoading = true;
             __WEBPACK_IMPORTED_MODULE_0_axios___default.a.get(route('api.page.page.indexServerSide', {
                 per_page: event,
                 page: this.meta.current_page,
                 order_by: this.order_meta.order_by,
                 order: this.order_meta.order
             })).then(function (response) {
+                _this2.tableIsLoading = false;
                 _this2.data = response.data.data;
                 _this2.meta = response.data.meta;
                 _this2.links = response.data.links;
@@ -72734,6 +72739,7 @@ var _data = void 0;
             var _this3 = this;
 
             console.log('current page :' + event);
+            this.tableIsLoading = true;
             __WEBPACK_IMPORTED_MODULE_0_axios___default.a.get(route('api.page.page.indexServerSide', {
                 page: event,
                 per_page: this.meta.per_page,
@@ -72741,6 +72747,7 @@ var _data = void 0;
                 order: this.order_meta.order,
                 search: this.searchQuery
             })).then(function (response) {
+                _this3.tableIsLoading = false;
                 _this3.data = response.data.data;
                 _this3.meta = response.data.meta;
                 _this3.links = response.data.links;
@@ -72750,7 +72757,7 @@ var _data = void 0;
             var _this4 = this;
 
             console.log('sorting', event);
-
+            this.tableIsLoading = true;
             __WEBPACK_IMPORTED_MODULE_0_axios___default.a.get(route('api.page.page.indexServerSide', {
                 page: this.meta.current_page,
                 per_page: this.meta.per_page,
@@ -72758,6 +72765,7 @@ var _data = void 0;
                 order: event.order,
                 search: this.searchQuery
             })).then(function (response) {
+                _this4.tableIsLoading = false;
                 _this4.data = response.data.data;
                 _this4.meta = response.data.meta;
                 _this4.links = response.data.links;
@@ -72770,9 +72778,11 @@ var _data = void 0;
             var _this5 = this;
 
             console.log('searching:' + query);
+            this.tableIsLoading = true;
             __WEBPACK_IMPORTED_MODULE_0_axios___default.a.get(route('api.page.page.indexServerSide', {
                 search: query
             })).then(function (response) {
+                _this5.tableIsLoading = false;
                 _this5.data = response.data.data;
                 _this5.meta = response.data.meta;
                 _this5.links = response.data.links;
@@ -72835,6 +72845,15 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       expression: "searchQuery"
     }
   })], 1)]), _vm._v(" "), _c('el-table', {
+    directives: [{
+      name: "loading",
+      rawName: "v-loading.body",
+      value: (_vm.tableIsLoading),
+      expression: "tableIsLoading",
+      modifiers: {
+        "body": true
+      }
+    }],
     staticStyle: {
       "width": "100%"
     },

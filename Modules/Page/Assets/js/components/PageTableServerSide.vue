@@ -20,6 +20,7 @@
                                 :data="data"
                                 stripe
                                 style="width: 100%"
+                                v-loading.body="tableIsLoading"
                                 @sort-change="handleSortChange">
                             <el-table-column prop="id" label="Id" width="100" sortable="custom">
                             </el-table-column>
@@ -73,12 +74,15 @@
                 order_meta: {},
                 links: {},
                 searchQuery: '',
+                tableIsLoading: false,
             }
         },
         methods: {
             fetchData() {
+                this.tableIsLoading = true;
                 axios.get(route('api.page.page.indexServerSide'))
                     .then(response => {
+                        this.tableIsLoading = false;
                         this.data = response.data.data;
                         this.meta = response.data.meta;
                         this.links = response.data.links;
@@ -89,6 +93,7 @@
             },
             handleSizeChange(event) {
                 console.log('per page :' + event);
+                this.tableIsLoading = true;
                 axios.get(route('api.page.page.indexServerSide', {
                     per_page: event,
                     page: this.meta.current_page,
@@ -96,6 +101,7 @@
                     order: this.order_meta.order,
                 }))
                     .then(response => {
+                        this.tableIsLoading = false;
                         this.data = response.data.data;
                         this.meta = response.data.meta;
                         this.links = response.data.links;
@@ -103,6 +109,7 @@
             },
             handleCurrentChange(event) {
                 console.log('current page :' + event);
+                this.tableIsLoading = true;
                 axios.get(route('api.page.page.indexServerSide', {
                     page: event,
                     per_page: this.meta.per_page,
@@ -111,6 +118,7 @@
                     search: this.searchQuery,
                 }))
                     .then(response => {
+                        this.tableIsLoading = false;
                         this.data = response.data.data;
                         this.meta = response.data.meta;
                         this.links = response.data.links;
@@ -118,7 +126,7 @@
             },
             handleSortChange(event) {
                 console.log('sorting', event);
-
+                this.tableIsLoading = true;
                 axios.get(route('api.page.page.indexServerSide', {
                     page: this.meta.current_page,
                     per_page: this.meta.per_page,
@@ -127,6 +135,7 @@
                     search: this.searchQuery,
                 }))
                     .then(response => {
+                        this.tableIsLoading = false;
                         this.data = response.data.data;
                         this.meta = response.data.meta;
                         this.links = response.data.links;
@@ -137,10 +146,12 @@
             },
             performSearch(query) {
                 console.log('searching:' + query);
+                this.tableIsLoading = true;
                 axios.get(route('api.page.page.indexServerSide', {
                     search: query,
                 }))
                     .then(response => {
+                        this.tableIsLoading = false;
                         this.data = response.data.data;
                         this.meta = response.data.meta;
                         this.links = response.data.links;
