@@ -23,9 +23,6 @@
 @endpush
 
 @section('content')
-    <page-form :locales="{{ json_encode(LaravelLocalization::getSupportedLocales()) }}"
-               :translations="{{ json_encode(['page' => trans('page::pages'), 'core' => trans('core::core')]) }}"
-               route="{{ route('api.page.page.store') }}"></page-form>
 @stop
 
 @section('footer')
@@ -45,10 +42,6 @@
                 actions: [
                     { key: 'b', route: "<?= route('admin.page.page.index') ?>" }
                 ]
-            });
-            $('input[type="checkbox"].flat-blue, input[type="radio"].flat-blue').iCheck({
-                checkboxClass: 'icheckbox_flat-blue',
-                radioClass: 'iradio_flat-blue'
             });
         });
     </script>
