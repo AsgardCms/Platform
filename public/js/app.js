@@ -14135,43 +14135,45 @@ module.exports = __webpack_require__(37);
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_router__ = __webpack_require__(132);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_element_ui__ = __webpack_require__(60);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_element_ui___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_element_ui__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_vue_data_tables__ = __webpack_require__(101);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_vue_data_tables___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_vue_data_tables__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_element_ui_lib_theme_default_index_css__ = __webpack_require__(102);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_element_ui_lib_theme_default_index_css___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_element_ui_lib_theme_default_index_css__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_element_ui_lib_locale_lang_en__ = __webpack_require__(108);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_element_ui_lib_locale_lang_en___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_element_ui_lib_locale_lang_en__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__Modules_Page_Assets_js_PageRoutes__ = __webpack_require__(136);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vue_router__ = __webpack_require__(132);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_element_ui__ = __webpack_require__(60);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_element_ui___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_element_ui__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_vue_data_tables__ = __webpack_require__(101);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_vue_data_tables___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_vue_data_tables__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_element_ui_lib_theme_default_index_css__ = __webpack_require__(102);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_element_ui_lib_theme_default_index_css___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_element_ui_lib_theme_default_index_css__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_element_ui_lib_locale_lang_en__ = __webpack_require__(108);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_element_ui_lib_locale_lang_en___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5_element_ui_lib_locale_lang_en__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__Modules_Page_Assets_js_PageRoutes__ = __webpack_require__(136);
 function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
 
 __webpack_require__(38);
 
-window.Vue = __webpack_require__(3);
 
 
 
 
 
 
-Vue.use(__WEBPACK_IMPORTED_MODULE_1_element_ui___default.a, { locale: __WEBPACK_IMPORTED_MODULE_4_element_ui_lib_locale_lang_en___default.a });
-Vue.use(__WEBPACK_IMPORTED_MODULE_2_vue_data_tables___default.a, { locale: __WEBPACK_IMPORTED_MODULE_4_element_ui_lib_locale_lang_en___default.a });
-Vue.use(__WEBPACK_IMPORTED_MODULE_0_vue_router__["a" /* default */]);
 
-Vue.component('ckeditor', __webpack_require__(109));
-Vue.component('DeleteButton', __webpack_require__(116));
-Vue.component('TagsInput', __webpack_require__(119));
+__WEBPACK_IMPORTED_MODULE_0_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_2_element_ui___default.a, { locale: __WEBPACK_IMPORTED_MODULE_5_element_ui_lib_locale_lang_en___default.a });
+__WEBPACK_IMPORTED_MODULE_0_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_3_vue_data_tables___default.a, { locale: __WEBPACK_IMPORTED_MODULE_5_element_ui_lib_locale_lang_en___default.a });
+__WEBPACK_IMPORTED_MODULE_0_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_1_vue_router__["a" /* default */]);
+
+__WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('ckeditor', __webpack_require__(109));
+__WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('DeleteButton', __webpack_require__(116));
+__WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('TagsInput', __webpack_require__(119));
 
 
-var router = new __WEBPACK_IMPORTED_MODULE_0_vue_router__["a" /* default */]({
+var router = new __WEBPACK_IMPORTED_MODULE_1_vue_router__["a" /* default */]({
     mode: 'history',
     base: currentLocale + '/backend',
-    routes: [].concat(_toConsumableArray(__WEBPACK_IMPORTED_MODULE_5__Modules_Page_Assets_js_PageRoutes__["a" /* default */]))
+    routes: [].concat(_toConsumableArray(__WEBPACK_IMPORTED_MODULE_6__Modules_Page_Assets_js_PageRoutes__["a" /* default */]))
 });
 
-var app = new Vue({
+var app = new __WEBPACK_IMPORTED_MODULE_0_vue___default.a({
     el: '#app',
     router: router
 });
@@ -73545,31 +73547,12 @@ if (inBrowser && window.Vue) {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_router__ = __webpack_require__(132);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_element_ui__ = __webpack_require__(60);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_element_ui___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_element_ui__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_vue_data_tables__ = __webpack_require__(101);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_vue_data_tables___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_vue_data_tables__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_element_ui_lib_theme_default_index_css__ = __webpack_require__(102);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_element_ui_lib_theme_default_index_css___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_element_ui_lib_theme_default_index_css__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_element_ui_lib_locale_lang_en__ = __webpack_require__(108);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_element_ui_lib_locale_lang_en___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_element_ui_lib_locale_lang_en__);
-window.Vue = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_PageTable_vue__ = __webpack_require__(122);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_PageTable_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__components_PageTable_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_PageForm_vue__ = __webpack_require__(125);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_PageForm_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__components_PageForm_vue__);
 
 
-
-
-
-
-Vue.use(__WEBPACK_IMPORTED_MODULE_1_element_ui___default.a, { locale: __WEBPACK_IMPORTED_MODULE_4_element_ui_lib_locale_lang_en___default.a });
-Vue.use(__WEBPACK_IMPORTED_MODULE_2_vue_data_tables___default.a, { locale: __WEBPACK_IMPORTED_MODULE_4_element_ui_lib_locale_lang_en___default.a });
-Vue.use(__WEBPACK_IMPORTED_MODULE_0_vue_router__["a" /* default */]);
-
-var PageTable = __webpack_require__(122);
-Vue.component('PageTable', PageTable);
-
-var PageForm = __webpack_require__(125);
-Vue.component('PageForm', PageForm);
 
 var translations = window.translations;
 var locales = window.locales;
@@ -73577,14 +73560,14 @@ var locales = window.locales;
 /* harmony default export */ __webpack_exports__["a"] = ([{
     path: '/page/pages',
     name: 'admin.page.page.index',
-    component: PageTable,
+    component: __WEBPACK_IMPORTED_MODULE_0__components_PageTable_vue___default.a,
     props: {
         translations: translations
     }
 }, {
     path: '/page/pages/create',
     name: 'admin.page.page.create',
-    component: PageForm,
+    component: __WEBPACK_IMPORTED_MODULE_1__components_PageForm_vue___default.a,
     props: {
         translations: translations,
         locales: locales
@@ -73592,7 +73575,7 @@ var locales = window.locales;
 }, {
     path: '/page/pages/:pageId/edit',
     name: 'admin.page.page.edit',
-    component: PageForm,
+    component: __WEBPACK_IMPORTED_MODULE_1__components_PageForm_vue___default.a,
     props: {
         translations: translations,
         locales: locales
