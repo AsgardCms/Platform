@@ -69894,23 +69894,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 
 
@@ -69920,61 +69903,37 @@ var _data = void 0;
 /* harmony default export */ __webpack_exports__["default"] = ({
     mixins: [__WEBPACK_IMPORTED_MODULE_1__Core_Assets_js_mixins_Translate__["a" /* default */]],
     data: function data() {
+        var _this = this;
+
         return {
             data: _data,
             meta: {},
-            links: {}
+            order_meta: {},
+            links: {},
+            actionsDef: {
+                def: [{
+                    name: this.translate('page', 'create page'),
+                    icon: 'edit',
+                    handler: function handler() {
+                        _this.$router.push({ name: 'admin.page.page.create' });
+                    }
+                }]
+            }
         };
     },
 
     methods: {
         fetchData: function fetchData() {
-            var _this = this;
-
-            __WEBPACK_IMPORTED_MODULE_0_axios___default.a.get(route('api.page.page.index')).then(function (response) {
-                _this.data = response.data.data;
-                _this.meta = response.data.meta;
-                _this.links = response.data.links;
-            });
-        },
-        goToEdit: function goToEdit(scope) {
-            this.$router.push({ name: 'admin.page.page.edit', params: { pageId: scope.row.id } });
-        },
-        handleSizeChange: function handleSizeChange(event) {
             var _this2 = this;
 
-            console.log('per page :' + event);
-            __WEBPACK_IMPORTED_MODULE_0_axios___default.a.get(route('api.page.page.index', { per_page: event, page: this.meta.current_page })).then(function (response) {
+            __WEBPACK_IMPORTED_MODULE_0_axios___default.a.get(route('api.page.page.index')).then(function (response) {
                 _this2.data = response.data.data;
                 _this2.meta = response.data.meta;
                 _this2.links = response.data.links;
             });
         },
-        handleCurrentChange: function handleCurrentChange(event) {
-            var _this3 = this;
-
-            console.log('current page :' + event);
-            __WEBPACK_IMPORTED_MODULE_0_axios___default.a.get(route('api.page.page.index', { page: event, per_page: this.meta.per_page })).then(function (response) {
-                _this3.data = response.data.data;
-                _this3.meta = response.data.meta;
-                _this3.links = response.data.links;
-            });
-        },
-        handleSortChange: function handleSortChange(event) {
-            var _this4 = this;
-
-            console.log('sorting', event);
-
-            __WEBPACK_IMPORTED_MODULE_0_axios___default.a.get(route('api.page.page.index', {
-                page: this.meta.current_page,
-                per_page: this.meta.per_page,
-                order_by: event.prop,
-                order: event.order
-            })).then(function (response) {
-                _this4.data = response.data.data;
-                _this4.meta = response.data.meta;
-                _this4.links = response.data.links;
-            });
+        goToEdit: function goToEdit(scope) {
+            this.$router.push({ name: 'admin.page.page.edit', params: { pageId: scope.row.id } });
         }
     },
     mounted: function mounted() {
@@ -69995,41 +69954,31 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "box box-primary"
   }, [_c('div', {
     staticClass: "box-body"
-  }, [_c('el-table', {
-    staticStyle: {
-      "width": "100%"
-    },
+  }, [_c('data-tables', {
     attrs: {
       "data": _vm.data,
-      "stripe": ""
-    },
-    on: {
-      "sort-change": _vm.handleSortChange
+      "actions-def": _vm.actionsDef
     }
   }, [_c('el-table-column', {
     attrs: {
       "prop": "id",
       "label": "Id",
-      "width": "100",
-      "sortable": ""
+      "width": "100"
     }
   }), _vm._v(" "), _c('el-table-column', {
     attrs: {
-      "prop": "translations.title",
-      "label": _vm.translate('page', 'title'),
-      "sortable": ""
+      "prop": "title",
+      "label": _vm.translate('page', 'title')
     }
   }), _vm._v(" "), _c('el-table-column', {
     attrs: {
-      "prop": "translations.slug",
-      "label": "Slug",
-      "sortable": ""
+      "prop": "slug",
+      "label": "Slug"
     }
   }), _vm._v(" "), _c('el-table-column', {
     attrs: {
       "prop": "created_at",
-      "label": "Created at",
-      "sortable": ""
+      "label": "Created at"
     }
   }), _vm._v(" "), _c('el-table-column', {
     attrs: {
@@ -70059,26 +70008,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         })]
       }
     }])
-  })], 1), _vm._v(" "), _c('div', {
-    staticClass: "sc-table"
-  }, [_c('div', {
-    staticClass: "pagination-wrap"
-  }, [_c('el-pagination', {
-    attrs: {
-      "current-page": _vm.meta.current_age,
-      "page-sizes": [10, 20, 50, 100],
-      "page-size": parseInt(_vm.meta.per_page),
-      "layout": "total, sizes, prev, pager, next, jumper",
-      "total": _vm.meta.total
-    },
-    on: {
-      "size-change": _vm.handleSizeChange,
-      "current-change": _vm.handleCurrentChange,
-      "update:currentPage": function($event) {
-        _vm.meta.current_age = $event
-      }
-    }
-  })], 1)])], 1)])])])
+  })], 1)], 1)])])])
 },staticRenderFns: []}
 module.exports.render._withStripped = true
 if (false) {
@@ -73624,8 +73554,11 @@ if (inBrowser && window.Vue) {
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_PageTable_vue__ = __webpack_require__(122);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_PageTable_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__components_PageTable_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_PageForm_vue__ = __webpack_require__(125);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_PageForm_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__components_PageForm_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_PageTableServerSide_vue__ = __webpack_require__(255);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_PageTableServerSide_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__components_PageTableServerSide_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_PageForm_vue__ = __webpack_require__(125);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_PageForm_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__components_PageForm_vue__);
+
 
 
 
@@ -73642,7 +73575,7 @@ var locales = window.locales;
 }, {
     path: '/page/pages/create',
     name: 'admin.page.page.create',
-    component: __WEBPACK_IMPORTED_MODULE_1__components_PageForm_vue___default.a,
+    component: __WEBPACK_IMPORTED_MODULE_2__components_PageForm_vue___default.a,
     props: {
         translations: translations,
         locales: locales
@@ -73650,12 +73583,469 @@ var locales = window.locales;
 }, {
     path: '/page/pages/:pageId/edit',
     name: 'admin.page.page.edit',
-    component: __WEBPACK_IMPORTED_MODULE_1__components_PageForm_vue___default.a,
+    component: __WEBPACK_IMPORTED_MODULE_2__components_PageForm_vue___default.a,
     props: {
         translations: translations,
         locales: locales
     }
 }]);
+
+/***/ }),
+/* 137 */,
+/* 138 */,
+/* 139 */,
+/* 140 */,
+/* 141 */,
+/* 142 */,
+/* 143 */,
+/* 144 */,
+/* 145 */,
+/* 146 */,
+/* 147 */,
+/* 148 */,
+/* 149 */,
+/* 150 */,
+/* 151 */,
+/* 152 */,
+/* 153 */,
+/* 154 */,
+/* 155 */,
+/* 156 */,
+/* 157 */,
+/* 158 */,
+/* 159 */,
+/* 160 */,
+/* 161 */,
+/* 162 */,
+/* 163 */,
+/* 164 */,
+/* 165 */,
+/* 166 */,
+/* 167 */,
+/* 168 */,
+/* 169 */,
+/* 170 */,
+/* 171 */,
+/* 172 */,
+/* 173 */,
+/* 174 */,
+/* 175 */,
+/* 176 */,
+/* 177 */,
+/* 178 */,
+/* 179 */,
+/* 180 */,
+/* 181 */,
+/* 182 */,
+/* 183 */,
+/* 184 */,
+/* 185 */,
+/* 186 */,
+/* 187 */,
+/* 188 */,
+/* 189 */,
+/* 190 */,
+/* 191 */,
+/* 192 */,
+/* 193 */,
+/* 194 */,
+/* 195 */,
+/* 196 */,
+/* 197 */,
+/* 198 */,
+/* 199 */,
+/* 200 */,
+/* 201 */,
+/* 202 */,
+/* 203 */,
+/* 204 */,
+/* 205 */,
+/* 206 */,
+/* 207 */,
+/* 208 */,
+/* 209 */,
+/* 210 */,
+/* 211 */,
+/* 212 */,
+/* 213 */,
+/* 214 */,
+/* 215 */,
+/* 216 */,
+/* 217 */,
+/* 218 */,
+/* 219 */,
+/* 220 */,
+/* 221 */,
+/* 222 */,
+/* 223 */,
+/* 224 */,
+/* 225 */,
+/* 226 */,
+/* 227 */,
+/* 228 */,
+/* 229 */,
+/* 230 */,
+/* 231 */,
+/* 232 */,
+/* 233 */,
+/* 234 */,
+/* 235 */,
+/* 236 */,
+/* 237 */,
+/* 238 */,
+/* 239 */,
+/* 240 */,
+/* 241 */,
+/* 242 */,
+/* 243 */,
+/* 244 */,
+/* 245 */,
+/* 246 */,
+/* 247 */,
+/* 248 */,
+/* 249 */,
+/* 250 */,
+/* 251 */,
+/* 252 */,
+/* 253 */,
+/* 254 */,
+/* 255 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var Component = __webpack_require__(8)(
+  /* script */
+  __webpack_require__(256),
+  /* template */
+  __webpack_require__(257),
+  /* styles */
+  null,
+  /* scopeId */
+  null,
+  /* moduleIdentifier (server only) */
+  null
+)
+Component.options.__file = "/Users/nicolaswidart/Sites/Asguard/Platform/Modules/Page/Assets/js/components/PageTableServerSide.vue"
+if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
+if (Component.options.functional) {console.error("[vue-loader] PageTableServerSide.vue: functional components are not supported with templates, they should use render functions.")}
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-8ef49e38", Component.options)
+  } else {
+    hotAPI.reload("data-v-8ef49e38", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 256 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_axios__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__Core_Assets_js_mixins_Translate__ = __webpack_require__(18);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_lodash__ = __webpack_require__(39);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_lodash___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_lodash__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+
+
+
+var _data = void 0;
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    mixins: [__WEBPACK_IMPORTED_MODULE_1__Core_Assets_js_mixins_Translate__["a" /* default */]],
+    data: function data() {
+        return {
+            data: _data,
+            meta: {},
+            order_meta: {},
+            links: {}
+        };
+    },
+
+    methods: {
+        fetchData: function fetchData() {
+            var _this = this;
+
+            __WEBPACK_IMPORTED_MODULE_0_axios___default.a.get(route('api.page.page.indexServerSide')).then(function (response) {
+                _this.data = response.data.data;
+                _this.meta = response.data.meta;
+                _this.links = response.data.links;
+            });
+        },
+        goToEdit: function goToEdit(scope) {
+            this.$router.push({ name: 'admin.page.page.edit', params: { pageId: scope.row.id } });
+        },
+        handleSizeChange: function handleSizeChange(event) {
+            var _this2 = this;
+
+            console.log('per page :' + event);
+            __WEBPACK_IMPORTED_MODULE_0_axios___default.a.get(route('api.page.page.indexServerSide', {
+                per_page: event,
+                page: this.meta.current_page,
+                order_by: this.order_meta.order_by,
+                order: this.order_meta.order
+            })).then(function (response) {
+                _this2.data = response.data.data;
+                _this2.meta = response.data.meta;
+                _this2.links = response.data.links;
+            });
+        },
+        handleCurrentChange: function handleCurrentChange(event) {
+            var _this3 = this;
+
+            console.log('current page :' + event);
+            __WEBPACK_IMPORTED_MODULE_0_axios___default.a.get(route('api.page.page.indexServerSide', {
+                page: event,
+                per_page: this.meta.per_page,
+                order_by: this.order_meta.order_by,
+                order: this.order_meta.order
+            })).then(function (response) {
+                _this3.data = response.data.data;
+                _this3.meta = response.data.meta;
+                _this3.links = response.data.links;
+            });
+        },
+        handleSortChange: function handleSortChange(event) {
+            var _this4 = this;
+
+            console.log('sorting', event);
+
+            __WEBPACK_IMPORTED_MODULE_0_axios___default.a.get(route('api.page.page.indexServerSide', {
+                page: this.meta.current_page,
+                per_page: this.meta.per_page,
+                order_by: event.prop,
+                order: event.order
+            })).then(function (response) {
+                _this4.data = response.data.data;
+                _this4.meta = response.data.meta;
+                _this4.links = response.data.links;
+
+                _this4.order_meta.order_by = event.prop;
+                _this4.order_meta.order = event.order;
+            });
+        },
+        performSearch: function performSearch(query) {
+            var _this5 = this;
+
+            console.log('searching:' + query);
+            __WEBPACK_IMPORTED_MODULE_0_axios___default.a.get(route('api.page.page.indexServerSide', {
+                'search': query
+            })).then(function (response) {
+                _this5.data = response.data.data;
+                _this5.meta = response.data.meta;
+                _this5.links = response.data.links;
+            });
+        }
+    },
+    mounted: function mounted() {
+        this.fetchData();
+    }
+});
+
+/***/ }),
+/* 257 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    staticClass: "row"
+  }, [_c('div', {
+    staticClass: "col-xs-12"
+  }, [_c('div', {
+    staticClass: "box box-primary"
+  }, [_c('div', {
+    staticClass: "box-body"
+  }, [_c('div', {
+    staticClass: "sc-table"
+  }, [_c('div', {
+    staticClass: "tool-bar el-row"
+  }, [_c('div', {
+    staticClass: "actions el-col el-col-5"
+  }, [_c('router-link', {
+    attrs: {
+      "to": {
+        name: 'admin.page.page.create'
+      }
+    }
+  }, [_c('el-button', {
+    attrs: {
+      "type": "primary"
+    }
+  }, [_c('i', {
+    staticClass: "el-icon-edit"
+  }), _vm._v(" " + _vm._s(_vm.translate('page', 'create page')))])], 1)], 1), _vm._v(" "), _c('div', {
+    staticClass: "search el-col el-col-5"
+  }, [_c('el-input', {
+    attrs: {
+      "icon": "search"
+    },
+    on: {
+      "change": _vm.performSearch
+    }
+  })], 1)]), _vm._v(" "), _c('el-table', {
+    staticStyle: {
+      "width": "100%"
+    },
+    attrs: {
+      "data": _vm.data,
+      "stripe": ""
+    },
+    on: {
+      "sort-change": _vm.handleSortChange
+    }
+  }, [_c('el-table-column', {
+    attrs: {
+      "prop": "id",
+      "label": "Id",
+      "width": "100",
+      "sortable": ""
+    }
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "prop": "translations.title",
+      "label": _vm.translate('page', 'title'),
+      "sortable": ""
+    }
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "prop": "translations.slug",
+      "label": "Slug",
+      "sortable": ""
+    }
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "prop": "created_at",
+      "label": "Created at",
+      "sortable": ""
+    }
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "fixed": "right",
+      "prop": "actions",
+      "label": "Actions"
+    },
+    scopedSlots: _vm._u([{
+      key: "default",
+      fn: function(scope) {
+        return [_c('a', {
+          staticClass: "btn btn-default btn-flat",
+          on: {
+            "click": function($event) {
+              $event.preventDefault();
+              _vm.goToEdit(scope)
+            }
+          }
+        }, [_c('i', {
+          staticClass: "fa fa-pencil"
+        })]), _vm._v(" "), _c('delete-button', {
+          attrs: {
+            "scope": scope,
+            "rows": _vm.data,
+            "translations": _vm.translations
+          }
+        })]
+      }
+    }])
+  })], 1), _vm._v(" "), _c('div', {
+    staticClass: "pagination-wrap"
+  }, [_c('el-pagination', {
+    attrs: {
+      "current-page": _vm.meta.current_page,
+      "page-sizes": [10, 20, 50, 100],
+      "page-size": parseInt(_vm.meta.per_page),
+      "layout": "total, sizes, prev, pager, next, jumper",
+      "total": _vm.meta.total
+    },
+    on: {
+      "size-change": _vm.handleSizeChange,
+      "current-change": _vm.handleCurrentChange,
+      "update:currentPage": function($event) {
+        _vm.meta.current_page = $event
+      }
+    }
+  })], 1)], 1)])])])])
+},staticRenderFns: []}
+module.exports.render._withStripped = true
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+     require("vue-hot-reload-api").rerender("data-v-8ef49e38", module.exports)
+  }
+}
 
 /***/ })
 /******/ ]);
