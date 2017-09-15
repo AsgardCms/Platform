@@ -9,7 +9,7 @@ export default [
     {
         path: '/page/pages',
         name: 'admin.page.page.index',
-        component: PageTable,
+        component: PageTableServerSide,
         props: {
             translations
         }

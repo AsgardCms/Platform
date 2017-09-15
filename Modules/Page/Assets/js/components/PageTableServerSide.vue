@@ -4,14 +4,14 @@
             <div class="box box-primary">
                 <div class="box-body">
                     <div class="sc-table">
-                        <div class="tool-bar el-row">
+                        <div class="tool-bar el-row" style="padding-bottom: 20px;">
                             <div class="actions el-col el-col-5">
                                 <router-link :to="{name: 'admin.page.page.create'}">
                                     <el-button type="primary"><i class="el-icon-edit"></i> {{ translate('page', 'create page') }}</el-button>
                                 </router-link>
                             </div>
                             <div class="search el-col el-col-5">
-                                <el-input icon="search" @change="performSearch">
+                                <el-input icon="search" @change="performSearch" v-model="searchQuery">
                                 </el-input>
                             </div>
                         </div>
@@ -39,7 +39,7 @@
                                 </template>
                             </el-table-column>
                         </el-table>
-                        <div class="pagination-wrap">
+                        <div class="pagination-wrap" style="text-align: center; padding-top: 20px;">
                             <el-pagination
                                     @size-change="handleSizeChange"
                                     @current-change="handleCurrentChange"
@@ -72,6 +72,7 @@
                 meta: {},
                 order_meta: {},
                 links: {},
+                searchQuery: '',
             }
         },
         methods: {
@@ -107,6 +108,7 @@
                     per_page: this.meta.per_page,
                     order_by: this.order_meta.order_by,
                     order: this.order_meta.order,
+                    search: this.searchQuery,
                 }))
                     .then(response => {
                         this.data = response.data.data;
@@ -118,10 +120,11 @@
                 console.log('sorting', event);
 
                 axios.get(route('api.page.page.indexServerSide', {
-//                    page: this.meta.current_page,
-//                    per_page: this.meta.per_page,
+                    page: this.meta.current_page,
+                    per_page: this.meta.per_page,
                     order_by: event.prop,
                     order: event.order,
+                    search: this.searchQuery,
                 }))
                     .then(response => {
                         this.data = response.data.data;
@@ -135,7 +138,7 @@
             performSearch(query) {
                 console.log('searching:' + query);
                 axios.get(route('api.page.page.indexServerSide', {
-                    'search': query
+                    search: query,
                 }))
                     .then(response => {
                         this.data = response.data.data;
