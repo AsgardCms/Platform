@@ -98,3 +98,19 @@ footer.main-footer p.text-muted {
 .tool-bar .search {
   float: right;
 }
+.content .content-header {
+  padding-left: 0;
+  margin-bottom: 20px;
+}
+.content .el-breadcrumb {
+  float: right;
+  background: transparent;
+  margin-top: 0;
+  margin-bottom: 0;
+  font-size: 12px;
+  padding: 7px 5px;
+  position: absolute;
+  top: 15px;
+  right: 10px;
+  border-radius: 2px;
+}
