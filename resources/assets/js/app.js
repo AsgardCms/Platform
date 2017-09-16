@@ -1,6 +1,7 @@
 require('./bootstrap');
 
 import Vue from 'vue'
+import VueI18n from 'vue-i18n'
 import VueRouter from 'vue-router'
 import ElementUI from 'element-ui'
 import DataTables from 'vue-data-tables'
@@ -9,6 +10,7 @@ import locale from 'element-ui/lib/locale/lang/en'
 
 Vue.use(ElementUI, { locale });
 Vue.use(DataTables, { locale });
+Vue.use(VueI18n);
 Vue.use(VueRouter);
 
 Vue.component('ckeditor', require('../../../Modules/Core/Assets/js/components/CkEditor.vue'));
@@ -24,7 +26,27 @@ const router = new VueRouter({
     ],
 });
 
+let messages = {
+    [currentLocale]: window.translations,
+};
+console.log(messages);
+
+const i18n = new VueI18n({
+    locale: currentLocale,
+    messages,
+});
+
 const app = new Vue({
     el: '#app',
     router,
+    i18n,
 });
+
+// window.axios.get(route('api.translation.translations.all'))
+//     .then(response => {
+//         messages = {
+//             [currentLocale]: response.data,
+//         };
+//         console.log(messages);
+//         app.$i18n.setLocaleMessage('en', messages)
+//     });
