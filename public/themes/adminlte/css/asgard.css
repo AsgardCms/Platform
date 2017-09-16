@@ -100,7 +100,9 @@ footer.main-footer p.text-muted {
 }
 .content .content-header {
   padding-left: 0;
+  padding-right: 0;
   margin-bottom: 20px;
+  margin-top: -30px;
 }
 .content .el-breadcrumb {
   float: right;
