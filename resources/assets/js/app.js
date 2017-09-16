@@ -18,6 +18,8 @@ Vue.component('DeleteButton', require('../../../Modules/Core/Assets/js/component
 Vue.component('TagsInput', require('../../../Modules/Tag/Assets/js/components/TagInput.vue'));
 import PageRoutes from '../../../Modules/Page/Assets/js/PageRoutes';
 
+const currentLocale =  window.AsgardCMS.currentLocale;
+
 const router = new VueRouter({
     mode: 'history',
     base: `${currentLocale}/backend`,

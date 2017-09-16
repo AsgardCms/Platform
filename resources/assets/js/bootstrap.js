@@ -48,7 +48,7 @@ if (userApiToken) {
 let currentLocale = document.head.querySelector('meta[name="current-locale"]');
 
 if (currentLocale) {
-    window.currentLocale = currentLocale.content;
+    window.AsgardCMS.currentLocale = currentLocale.content;
 } else {
     console.error('Current locale token not found in a meta tag.');
 }

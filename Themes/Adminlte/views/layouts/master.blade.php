@@ -75,11 +75,10 @@
 @endforeach
 <script>
     window.AsgardCMS = {
-        translations: {!! json_encode(['page' => array_dot(trans('page::pages')), 'core' => array_dot(trans('core::core'))]) !!}
+        translations: {!! json_encode(['page' => array_dot(trans('page::pages')), 'core' => array_dot(trans('core::core'))]) !!},
+        locales: {!! json_encode(LaravelLocalization::getSupportedLocales()) !!},
+        currentLocale: '{{ locale() }}',
     };
-
-    window.locales = {!! json_encode(LaravelLocalization::getSupportedLocales()) !!}
-    window.currentLocale = '{{ locale() }}';
 </script>
 
 <script src="{{ mix('js/app.js') }}"></script>
