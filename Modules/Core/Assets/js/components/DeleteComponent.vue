@@ -3,7 +3,10 @@
 </template>
 
 <script>
+    import TranslationHelper from '../../../../Core/Assets/js/mixins/TranslationHelper'
+
     export default {
+        mixins: [TranslationHelper],
         props: {
             rows: {default: null},
             scope: {default: null},
@@ -17,8 +20,8 @@
         methods: {
             deleteRow(event) {
                 this.$confirm(this.deleteMessage, this.deleteTitle, {
-                    confirmButtonText: this.$t('core.button.delete'),
-                    cancelButtonText: this.$t('core.button.cancel'),
+                    confirmButtonText: this.trans('core.button.delete'),
+                    cancelButtonText: this.trans('core.button.cancel'),
                     type: 'warning'
                 }).then(() => {
                     let vm = this;
@@ -42,14 +45,14 @@
                 }).catch(() => {
                     this.$message({
                         type: 'info',
-                        message: this.$t('core.delete-cancelled')
+                        message: this.trans('core.delete-cancelled')
                     });
                 });
             }
         },
         mounted() {
-            this.deleteMessage = this.$t('core.modal.confirmation-message');
-            this.deleteTitle = this.$t('core.modal.title');
+            this.deleteMessage = this.trans('core.modal.confirmation-message');
+            this.deleteTitle = this.trans('core.modal.title');
         }
     }
 </script>

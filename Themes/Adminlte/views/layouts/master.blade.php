@@ -75,7 +75,7 @@
 @endforeach
 <script>
     window.AsgardCMS = {
-        translations: {!! json_encode(['page' => trans('page::pages'), 'core' => trans('core::core')]) !!}
+        translations: {!! json_encode(['page' => array_dot(trans('page::pages')), 'core' => array_dot(trans('core::core'))]) !!}
     };
 
     window.locales = {!! json_encode(LaravelLocalization::getSupportedLocales()) !!}
