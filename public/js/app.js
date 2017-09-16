@@ -11127,13 +11127,19 @@ Object.defineProperty(exports, "__esModule", {
     value: true
 });
 exports.default = {
-    props: {
-        translations: { default: null }
+    data: function data() {
+        return {
+            translations: {}
+        };
     },
+
     methods: {
         translate: function translate(namespace, name) {
             return _.get(this.translations[namespace], name);
         }
+    },
+    mounted: function mounted() {
+        this.translations = window.AsgardCMS.translations;
     }
 };
 
@@ -31287,8 +31293,7 @@ var router = new _vueRouter2.default({
     routes: [].concat(_toConsumableArray(_PageRoutes2.default))
 });
 
-var messages = _defineProperty({}, currentLocale, window.translations);
-console.log(messages);
+var messages = _defineProperty({}, currentLocale, window.AsgardCMS.translations);
 
 var i18n = new _vueI18n2.default({
     locale: currentLocale,
@@ -31300,15 +31305,6 @@ var app = new _vue2.default({
     router: router,
     i18n: i18n
 });
-
-// window.axios.get(route('api.translation.translations.all'))
-//     .then(response => {
-//         messages = {
-//             [currentLocale]: response.data,
-//         };
-//         console.log(messages);
-//         app.$i18n.setLocaleMessage('en', messages)
-//     });
 
 /***/ }),
 /* 39 */
@@ -70495,33 +70491,27 @@ var _PageForm2 = _interopRequireDefault(_PageForm);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var translations = window.translations;
 var locales = window.locales;
 
 exports.default = [{
     path: '/page/pages',
     name: 'admin.page.page.index',
-    component: _PageTableServerSide2.default,
-    props: {
-        translations: translations
-    }
+    component: _PageTableServerSide2.default
 }, {
     path: '/page/pages/create',
     name: 'admin.page.page.create',
     component: _PageForm2.default,
     props: {
-        translations: translations,
         locales: locales,
-        pageTitle: 'create page'
+        pageTitle: 'create-page'
     }
 }, {
     path: '/page/pages/:pageId/edit',
     name: 'admin.page.page.edit',
     component: _PageForm2.default,
     props: {
-        translations: translations,
         locales: locales,
-        pageTitle: 'edit page'
+        pageTitle: 'edit-page'
     }
 }];
 
@@ -71850,17 +71840,13 @@ var _axios = __webpack_require__(8);
 
 var _axios2 = _interopRequireDefault(_axios);
 
-var _Translate = __webpack_require__(10);
-
-var _Translate2 = _interopRequireDefault(_Translate);
-
 var _lodash = __webpack_require__(35);
 
 var _lodash2 = _interopRequireDefault(_lodash);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var _data = void 0; //
+//
 //
 //
 //
@@ -71937,8 +71923,9 @@ var _data = void 0; //
 //
 //
 
+var _data = void 0;
+
 exports.default = {
-    mixins: [_Translate2.default],
     data: function data() {
         return {
             data: _data,
@@ -72078,7 +72065,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "div"
   }, [_c('div', {
     staticClass: "content-header"
-  }, [_c('h1', [_vm._v("\n            " + _vm._s(_vm.$t('page["pages"]')) + "\n        ")]), _vm._v(" "), _c('el-breadcrumb', {
+  }, [_c('h1', [_vm._v("\n            " + _vm._s(_vm.$t('page.pages')) + "\n        ")]), _vm._v(" "), _c('el-breadcrumb', {
     attrs: {
       "separator": "/"
     }
@@ -72092,7 +72079,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         name: 'admin.page.page.index'
       }
     }
-  }, [_vm._v(_vm._s(_vm.$t('page["pages"]')))])], 1)], 1), _vm._v(" "), _c('div', {
+  }, [_vm._v(_vm._s(_vm.$t('page.pages')))])], 1)], 1), _vm._v(" "), _c('div', {
     staticClass: "row"
   }, [_c('div', {
     staticClass: "col-xs-12"
@@ -72121,7 +72108,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   }, [_c('i', {
     staticClass: "el-icon-edit"
-  }), _vm._v("\n                                        " + _vm._s(_vm.$t('page["create page"]')) + "\n                                    ")])], 1)], 1), _vm._v(" "), _c('div', {
+  }), _vm._v("\n                                        " + _vm._s(_vm.$t('page.create-page')) + "\n                                    ")])], 1)], 1), _vm._v(" "), _c('div', {
     staticClass: "search el-col el-col-5"
   }, [_c('el-input', {
     attrs: {
@@ -72202,8 +72189,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         })]), _vm._v(" "), _c('delete-button', {
           attrs: {
             "scope": scope,
-            "rows": _vm.data,
-            "translations": _vm.translations
+            "rows": _vm.data
           }
         })]
       }
@@ -72294,10 +72280,6 @@ var _axios = __webpack_require__(8);
 
 var _axios2 = _interopRequireDefault(_axios);
 
-var _Translate = __webpack_require__(10);
-
-var _Translate2 = _interopRequireDefault(_Translate);
-
 var _Slugify = __webpack_require__(118);
 
 var _Slugify2 = _interopRequireDefault(_Slugify);
@@ -72308,157 +72290,8 @@ var _formBackendValidation2 = _interopRequireDefault(_formBackendValidation);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
 exports.default = {
-    mixins: [_Translate2.default, _Slugify2.default],
+    mixins: [_Slugify2.default],
     props: {
         locales: { default: null },
         pageTitle: { default: null, String: String }
@@ -72552,7 +72385,154 @@ exports.default = {
             this.fetchPage();
         }
     }
-};
+}; //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /***/ }),
 /* 118 */
@@ -72974,7 +72954,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "div"
   }, [_c('div', {
     staticClass: "content-header"
-  }, [_c('h1', [_vm._v("\n            " + _vm._s(_vm.translate('page', _vm.pageTitle)) + "\n        ")]), _vm._v(" "), _c('el-breadcrumb', {
+  }, [_c('h1', [_vm._v("\n            " + _vm._s(_vm.$t(("page." + _vm.pageTitle))) + "\n        ")]), _vm._v(" "), _c('el-breadcrumb', {
     attrs: {
       "separator": "/"
     }
@@ -72988,13 +72968,13 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         name: 'admin.page.page.index'
       }
     }
-  }, [_vm._v(_vm._s(_vm.translate('page', 'pages')) + "\n            ")]), _vm._v(" "), _c('el-breadcrumb-item', {
+  }, [_vm._v(_vm._s(_vm.$t('page.pages')) + "\n            ")]), _vm._v(" "), _c('el-breadcrumb-item', {
     attrs: {
       "to": {
         name: 'admin.page.page.create'
       }
     }
-  }, [_vm._v(_vm._s(_vm.translate('page', _vm.pageTitle)) + "\n            ")])], 1)], 1), _vm._v(" "), _c('el-form', {
+  }, [_vm._v(_vm._s(_vm.$t(("page." + _vm.pageTitle))) + "\n            ")])], 1)], 1), _vm._v(" "), _c('el-form', {
     directives: [{
       name: "loading",
       rawName: "v-loading.body",
@@ -73043,7 +73023,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         'el-form-item is-error': _vm.form.errors.has(locale + '.title')
       },
       attrs: {
-        "label": _vm.translate('page', 'title')
+        "label": _vm.$t('page.title')
       }
     }, [_c('el-input', {
       model: {
@@ -73063,7 +73043,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         'el-form-item is-error': _vm.form.errors.has(locale + '.slug')
       },
       attrs: {
-        "label": _vm.translate('page', 'slug')
+        "label": _vm.$t('page.slug')
       }
     }, [_c('el-input', {
       model: {
@@ -73090,7 +73070,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         'el-form-item is-error': _vm.form.errors.has(locale + '.body')
       },
       attrs: {
-        "label": _vm.translate('page', 'body')
+        "label": _vm.$t('page.body')
       }
     }, [_c('ckeditor', {
       attrs: {
@@ -73121,7 +73101,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         "data-parent": "#accordion",
         "href": ("#collapseMeta-" + locale)
       }
-    }, [_vm._v("\n                                                " + _vm._s(_vm.translate('page', 'meta_data')) + "\n                                            ")])])]), _vm._v(" "), _c('div', {
+    }, [_vm._v("\n                                                " + _vm._s(_vm.$t('page.meta_data')) + "\n                                            ")])])]), _vm._v(" "), _c('div', {
       staticClass: "panel-collapse collapse",
       staticStyle: {
         "height": "0px"
@@ -73133,7 +73113,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       staticClass: "box-body"
     }, [_c('el-form-item', {
       attrs: {
-        "label": _vm.translate('page', 'meta_title')
+        "label": _vm.$t('page.meta_title')
       }
     }, [_c('el-input', {
       model: {
@@ -73145,7 +73125,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       }
     })], 1), _vm._v(" "), _c('el-form-item', {
       attrs: {
-        "label": _vm.translate('page', 'meta_description')
+        "label": _vm.$t('page.meta_description')
       }
     }, [_c('el-input', {
       attrs: {
@@ -73171,7 +73151,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         "data-parent": "#accordion",
         "href": ("#collapseFacebook-" + locale)
       }
-    }, [_vm._v("\n                                                " + _vm._s(_vm.translate('page', 'facebook_data')) + "\n                                            ")])])]), _vm._v(" "), _c('div', {
+    }, [_vm._v("\n                                                " + _vm._s(_vm.$t('page.facebook_data')) + "\n                                            ")])])]), _vm._v(" "), _c('div', {
       staticClass: "panel-collapse collapse",
       staticStyle: {
         "height": "0px"
@@ -73183,7 +73163,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       staticClass: "box-body"
     }, [_c('el-form-item', {
       attrs: {
-        "label": _vm.translate('page', 'og_title')
+        "label": _vm.$t('page.og_title')
       }
     }, [_c('el-input', {
       model: {
@@ -73195,7 +73175,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       }
     })], 1), _vm._v(" "), _c('el-form-item', {
       attrs: {
-        "label": _vm.translate('page', 'og_description')
+        "label": _vm.$t('page.og_description')
       }
     }, [_c('el-input', {
       attrs: {
@@ -73210,11 +73190,11 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       }
     })], 1), _vm._v(" "), _c('el-form-item', {
       attrs: {
-        "label": _vm.translate('page', 'og_type')
+        "label": _vm.$t('page.og_type')
       }
     }, [_c('el-select', {
       attrs: {
-        "placeholder": _vm.translate('page', 'og_type')
+        "placeholder": _vm.$t('page.og_type')
       },
       model: {
         value: (_vm.page[locale].og_type),
@@ -73225,17 +73205,17 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       }
     }, [_c('el-option', {
       attrs: {
-        "label": _vm.translate('page', 'facebook-types.website'),
+        "label": _vm.$t('page.facebook-types.website'),
         "value": "website"
       }
     }), _vm._v(" "), _c('el-option', {
       attrs: {
-        "label": _vm.translate('page', 'facebook-types.product'),
+        "label": _vm.$t('page.facebook-types.product'),
         "value": "product"
       }
     }), _vm._v(" "), _c('el-option', {
       attrs: {
-        "label": _vm.translate('page', 'facebook-types.article'),
+        "label": _vm.$t('page.facebook-types.article'),
         "value": "article"
       }
     })], 1)], 1)], 1)])]), _vm._v(" "), _c('el-form-item', [_c('el-button', {
@@ -73248,13 +73228,13 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
           _vm.onSubmit()
         }
       }
-    }, [_vm._v("\n                                        " + _vm._s(_vm.translate('core', 'save')) + "\n                                    ")]), _vm._v(" "), _c('el-button', {
+    }, [_vm._v("\n                                        " + _vm._s(_vm.$t('core.save')) + "\n                                    ")]), _vm._v(" "), _c('el-button', {
       on: {
         "click": function($event) {
           _vm.onCancel()
         }
       }
-    }, [_vm._v(_vm._s(_vm.translate('core', 'button.cancel')) + "\n                                    ")])], 1)], 1)
+    }, [_vm._v(_vm._s(_vm.$t('core.button.cancel')) + "\n                                    ")])], 1)], 1)
   }))], 1)])]), _vm._v(" "), _c('div', {
     staticClass: "col-md-2"
   }, [_c('div', {
@@ -73270,7 +73250,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "true-label": 1,
       "false-label": 0,
       "name": "is_home",
-      "label": _vm.translate('page', 'is homepage')
+      "label": _vm.$t('page.is_homepage')
     },
     model: {
       value: (_vm.page.is_home),
@@ -73284,7 +73264,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       'el-form-item is-error': _vm.form.errors.has('template')
     },
     attrs: {
-      "label": _vm.translate('page', 'template')
+      "label": _vm.$t('page.template')
     }
   }, [_c('el-select', {
     attrs: {
@@ -73928,15 +73908,12 @@ module.exports = Component.exports
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
-
-var _Translate = __webpack_require__(10);
-
-var _Translate2 = _interopRequireDefault(_Translate);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+//
+//
+//
+//
 
 exports.default = {
-    mixins: [_Translate2.default],
     props: {
         rows: { default: null },
         scope: { default: null }
@@ -73953,8 +73930,8 @@ exports.default = {
             var _this = this;
 
             this.$confirm(this.deleteMessage, this.deleteTitle, {
-                confirmButtonText: this.translate('core', 'button.delete'),
-                cancelButtonText: this.translate('core', 'button.cancel'),
+                confirmButtonText: this.$t('core.button.delete'),
+                cancelButtonText: this.$t('core.button.cancel'),
                 type: 'warning'
             }).then(function () {
                 var vm = _this;
@@ -73976,19 +73953,16 @@ exports.default = {
             }).catch(function () {
                 _this.$message({
                     type: 'info',
-                    message: _this.translate('core', 'delete cancelled')
+                    message: _this.$t('core.delete-cancelled')
                 });
             });
         }
     },
     mounted: function mounted() {
-        this.deleteMessage = this.translate('core', 'modal.confirmation-message');
-        this.deleteTitle = this.translate('core', 'modal.title');
+        this.deleteMessage = this.$t('core.modal.confirmation-message');
+        this.deleteTitle = this.$t('core.modal.title');
     }
-}; //
-//
-//
-//
+};
 
 /***/ }),
 /* 133 */

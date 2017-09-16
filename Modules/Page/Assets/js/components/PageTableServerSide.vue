@@ -2,13 +2,13 @@
     <div class="div">
         <div class="content-header">
             <h1>
-                {{ translate('page', 'pages') }}
+                {{ $t('page.pages') }}
             </h1>
             <el-breadcrumb separator="/">
                 <el-breadcrumb-item>
                     <a href="/backend">Home</a>
                 </el-breadcrumb-item>
-                <el-breadcrumb-item :to="{name: 'admin.page.page.index'}">{{ translate('page', 'pages') }}</el-breadcrumb-item>
+                <el-breadcrumb-item :to="{name: 'admin.page.page.index'}">{{ $t('page.pages') }}</el-breadcrumb-item>
             </el-breadcrumb>
         </div>
 
@@ -21,7 +21,7 @@
                                 <div class="actions el-col el-col-5">
                                     <router-link :to="{name: 'admin.page.page.create'}">
                                         <el-button type="primary"><i class="el-icon-edit"></i>
-                                            {{ translate('page', 'create page') }}
+                                            {{ $t('page.create-page') }}
                                         </el-button>
                                     </router-link>
                                 </div>
@@ -39,18 +39,18 @@
                                     @sort-change="handleSortChange">
                                 <el-table-column prop="id" label="Id" width="100" sortable="custom">
                                 </el-table-column>
-                                <el-table-column prop="translations.title" :label="translate('page', 'title')">
+                                <el-table-column prop="translations.title" :label="$t('page.title')">
                                 </el-table-column>
-                                <el-table-column prop="translations.slug" label="Slug">
+                                <el-table-column prop="translations.slug" :label="$t('page.slug')">
                                 </el-table-column>
-                                <el-table-column prop="created_at" label="Created at" sortable="custom">
+                                <el-table-column prop="created_at" :label="$t('core.created_at')" sortable="custom">
                                 </el-table-column>
-                                <el-table-column fixed="right" prop="actions" label="Actions">
+                                <el-table-column fixed="right" prop="actions" :label="$t('core.actions')">
                                     <template scope="scope">
                                         <a class="btn btn-default btn-flat" @click.prevent="goToEdit(scope)"><i
                                                 class="fa fa-pencil"></i></a>
 
-                                        <delete-button :scope="scope" :rows="data" :translations="translations">
+                                        <delete-button :scope="scope" :rows="data">
                                         </delete-button>
                                     </template>
                                 </el-table-column>
@@ -76,13 +76,11 @@
 
 <script>
     import axios from 'axios'
-    import Translate from '../../../../Core/Assets/js/mixins/Translate'
     import _ from "lodash";
 
     let data;
 
     export default {
-        mixins: [Translate],
         data() {
             return {
                 data,

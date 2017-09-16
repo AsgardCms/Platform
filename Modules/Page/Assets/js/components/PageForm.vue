@@ -2,15 +2,15 @@
     <div class="div">
         <div class="content-header">
             <h1>
-                {{ translate('page', pageTitle) }}
+                {{ $t(`page.${pageTitle}`) }}
             </h1>
             <el-breadcrumb separator="/">
                 <el-breadcrumb-item>
                     <a href="/backend">Home</a>
                 </el-breadcrumb-item>
-                <el-breadcrumb-item :to="{name: 'admin.page.page.index'}">{{ translate('page', 'pages') }}
+                <el-breadcrumb-item :to="{name: 'admin.page.page.index'}">{{ $t('page.pages') }}
                 </el-breadcrumb-item>
-                <el-breadcrumb-item :to="{name: 'admin.page.page.create'}">{{ translate('page', pageTitle) }}
+                <el-breadcrumb-item :to="{name: 'admin.page.page.create'}">{{ $t(`page.${pageTitle}`) }}
                 </el-breadcrumb-item>
             </el-breadcrumb>
         </div>
@@ -27,14 +27,14 @@
                                              :key="localeArray.name">
                                 <span slot="label" :class="{'error' : form.errors.has(locale)}">{{ localeArray.name
                                     }}</span>
-                                    <el-form-item :label="translate('page', 'title')"
+                                    <el-form-item :label="$t('page.title')"
                                                   :class="{'el-form-item is-error': form.errors.has(locale + '.title') }">
                                         <el-input v-model="page[locale].title"></el-input>
                                         <div class="el-form-item__error" v-if="form.errors.has(locale + '.title')"
                                              v-text="form.errors.first(locale + '.title')"></div>
                                     </el-form-item>
 
-                                    <el-form-item :label="translate('page', 'slug')"
+                                    <el-form-item :label="$t('page.slug')"
                                                   :class="{'el-form-item is-error': form.errors.has(locale + '.slug') }">
                                         <el-input v-model="page[locale].slug">
                                             <el-button slot="prepend" @click="generateSlug($event, locale)">Generate</el-button>
@@ -43,7 +43,7 @@
                                              v-text="form.errors.first(locale + '.slug')"></div>
                                     </el-form-item>
 
-                                    <el-form-item :label="translate('page', 'body')"
+                                    <el-form-item :label="$t('page.body')"
                                                   :class="{'el-form-item is-error': form.errors.has(locale + '.body') }">
                                         <ckeditor v-model="page[locale].body" :value="page[locale].body">
                                         </ckeditor>
@@ -56,17 +56,17 @@
                                             <h4 class="box-title">
                                                 <a class="collapsed" data-toggle="collapse" data-parent="#accordion"
                                                    :href="`#collapseMeta-${locale}`">
-                                                    {{ translate('page', 'meta_data') }}
+                                                    {{ $t('page.meta_data') }}
                                                 </a>
                                             </h4>
                                         </div>
                                         <div style="height: 0px;" :id="`collapseMeta-${locale}`"
                                              class="panel-collapse collapse">
                                             <div class="box-body">
-                                                <el-form-item :label="translate('page', 'meta_title')">
+                                                <el-form-item :label="$t('page.meta_title')">
                                                     <el-input v-model="page[locale].meta_title"></el-input>
                                                 </el-form-item>
-                                                <el-form-item :label="translate('page', 'meta_description')">
+                                                <el-form-item :label="$t('page.meta_description')">
                                                     <el-input type="textarea"
                                                               v-model="page[locale].meta_description"></el-input>
                                                 </el-form-item>
@@ -79,28 +79,28 @@
                                             <h4 class="box-title">
                                                 <a class="collapsed" data-toggle="collapse" data-parent="#accordion"
                                                    :href="`#collapseFacebook-${locale}`">
-                                                    {{ translate('page', 'facebook_data') }}
+                                                    {{ $t('page.facebook_data') }}
                                                 </a>
                                             </h4>
                                         </div>
                                         <div style="height: 0px;" :id="`collapseFacebook-${locale}`"
                                              class="panel-collapse collapse">
                                             <div class="box-body">
-                                                <el-form-item :label="translate('page', 'og_title')">
+                                                <el-form-item :label="$t('page.og_title')">
                                                     <el-input v-model="page[locale].og_title"></el-input>
                                                 </el-form-item>
-                                                <el-form-item :label="translate('page', 'og_description')">
+                                                <el-form-item :label="$t('page.og_description')">
                                                     <el-input type="textarea"
                                                               v-model="page[locale].og_description"></el-input>
                                                 </el-form-item>
-                                                <el-form-item :label="translate('page', 'og_type')">
+                                                <el-form-item :label="$t('page.og_type')">
                                                     <el-select v-model="page[locale].og_type"
-                                                               :placeholder="translate('page', 'og_type')">
-                                                        <el-option :label="translate('page', 'facebook-types.website')"
+                                                               :placeholder="$t('page.og_type')">
+                                                        <el-option :label="$t('page.facebook-types.website')"
                                                                    value="website"></el-option>
-                                                        <el-option :label="translate('page', 'facebook-types.product')"
+                                                        <el-option :label="$t('page.facebook-types.product')"
                                                                    value="product"></el-option>
-                                                        <el-option :label="translate('page', 'facebook-types.article')"
+                                                        <el-option :label="$t('page.facebook-types.article')"
                                                                    value="article"></el-option>
                                                     </el-select>
                                                 </el-form-item>
@@ -110,9 +110,9 @@
 
                                     <el-form-item>
                                         <el-button type="primary" @click="onSubmit()" :loading="loading">
-                                            {{ translate('core', 'save') }}
+                                            {{ $t('core.save') }}
                                         </el-button>
-                                        <el-button @click="onCancel()">{{ translate('core', 'button.cancel') }}
+                                        <el-button @click="onCancel()">{{ $t('core.button.cancel') }}
                                         </el-button>
                                     </el-form-item>
 
@@ -126,9 +126,9 @@
                         <div class="box-body">
                             <el-form-item label="">
                                 <el-checkbox v-model="page.is_home" :true-label="1" :false-label="0" name="is_home"
-                                             :label="translate('page', 'is homepage')"></el-checkbox>
+                                             :label="$t('page.is_homepage')"></el-checkbox>
                             </el-form-item>
-                            <el-form-item :label="translate('page', 'template')"
+                            <el-form-item :label="$t('page.template')"
                                           :class="{'el-form-item is-error': form.errors.has('template') }">
                                 <el-select v-model="page.template" filterable>
                                     <el-option v-for="(template, key) in templates" :key="template"
@@ -148,12 +148,11 @@
 
 <script>
     import axios from 'axios'
-    import Translate from '../../../../Core/Assets/js/mixins/Translate'
     import Slugify from '../../../../Core/Assets/js/mixins/Slugify'
     import Form from 'form-backend-validation'
 
     export default {
-        mixins: [Translate, Slugify],
+        mixins: [Slugify],
         props: {
             locales: {default: null},
             pageTitle: {default: null, String},
