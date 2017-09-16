@@ -4,6 +4,7 @@ versions:
         added:
             - Created a vue component for the delete buttons on index pages
             - Created a vue component for CkEditor
+            - Created vue component to more easily translate laravel translations
         changed:
             - Replacing URL::route() by route() helper
             - Updated menu ordering in Content section. Leaving spots in between for custom modules.
