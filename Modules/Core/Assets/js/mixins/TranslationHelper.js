@@ -1,7 +1,8 @@
 export default {
     methods: {
         trans(string) {
-            // Makes a string: page.
+            // Makes a string: core.button.cancel | core.button.created at
+            // to: core["button.cancel"] | core["button.created at"]
             let array = string.split('.');
 
             if (array.length < 2) { return this.$t(string) }
