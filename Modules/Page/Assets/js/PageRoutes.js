@@ -16,7 +16,7 @@ export default [
         component: PageForm,
         props: {
             locales,
-            pageTitle: 'create-page',
+            pageTitle: 'create page',
         }
     },
     {
@@ -25,7 +25,7 @@ export default [
         component: PageForm,
         props: {
             locales,
-            pageTitle: 'edit-page',
+            pageTitle: 'edit page',
         }
     },
 ];

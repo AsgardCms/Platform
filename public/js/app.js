@@ -71902,7 +71902,7 @@ exports.default = [{
     component: _PageForm2.default,
     props: {
         locales: locales,
-        pageTitle: 'create-page'
+        pageTitle: 'create page'
     }
 }, {
     path: '/page/pages/:pageId/edit',
@@ -71910,7 +71910,7 @@ exports.default = [{
     component: _PageForm2.default,
     props: {
         locales: locales,
-        pageTitle: 'edit-page'
+        pageTitle: 'edit page'
     }
 }];
 
