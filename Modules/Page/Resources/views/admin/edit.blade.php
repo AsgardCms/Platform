@@ -1,14 +1,6 @@
 @extends('layouts.master')
 
 @section('content-header')
-    <h1>
-        {{ trans('page::pages.edit page') }}
-    </h1>
-    <ol class="breadcrumb">
-        <li><a href="{{ route('dashboard.index') }}"><i class="fa fa-dashboard"></i> {{ trans('core::core.breadcrumb.home') }}</a></li>
-        <li><a href="{{ route('admin.page.page.index') }}">{{ trans('page::pages.pages') }}</a></li>
-        <li class="active">{{ trans('page::pages.edit page') }}</li>
-    </ol>
 @stop
 
 @push('css-stack')
