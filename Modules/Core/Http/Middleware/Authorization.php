@@ -50,7 +50,7 @@ class Authorization
     private function handleUnauthorizedRequest(Request $request, $permission)
     {
         if ($request->ajax()) {
-            return response('Unauthorized.', Response::HTTP_UNAUTHORIZED);
+            return response('Unauthorized.', Response::HTTP_FORBIDDEN);
         }
         if ($request->user() === null) {
             return redirect()->guest('auth/login');
