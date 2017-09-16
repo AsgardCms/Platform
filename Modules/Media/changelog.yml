@@ -6,6 +6,7 @@ versions:
         changed:
             - Using return type hints in <code>MediaController</code>
             - Optional media fields are set to allow null
+            - The media menu item weight has been changed to <code>20</code>.
     "2.5.0":
         added:
             - <code>FileWasCreated</code> event

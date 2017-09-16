@@ -5,6 +5,7 @@ versions:
             - <code>logUserIn</code> on the <code>Authentication</code> interface to log a user object in
         changed:
             - <code>AuthorisedApiToken</code> middleware now logs a user in
+            - The user menu item weight has been changed to <code>10</code>.
     "2.6.0":
         added:
             - New methods on the Sentinel Guard, <code>logout</code> and <code>loginUsingId</code>

@@ -4,6 +4,8 @@ versions:
         added:
             - Created a vue component for the page table index
             - Create a vue component for the page create and edit views
+        changed:
+            - The page menu item weight has been changed to <code>10</code>.
     "2.5.1":
         changed:
             - Renamed hook <code>ContentIsRendering</code> to <code>PageContentIsRendering</code> making it more specific

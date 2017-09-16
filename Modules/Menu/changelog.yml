@@ -1,5 +1,8 @@
 url: https://github.com/AsgardCms/Platform
 versions:
+    "3.0.0@unreleased":
+        changed:
+            - The menu menu item weight has been changed to <code>30</code>.
     "2.5.0":
         added:
             - Trigger event before a menu is created (<code>MenuIsCreating</code>) allow data to be changed

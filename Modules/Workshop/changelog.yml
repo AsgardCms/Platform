@@ -3,6 +3,8 @@ versions:
     "3.0.0@unreleased":
         changed:
             - Using correct version number on module detail view
+            - The modules menu item weight has been changed to <code>30</code>.
+            - The themes menu item weight has been changed to <code>40</code>.
     "2.6.0":
         changed:
             - Read core module version from the AsgardCms class other modules keep same logic (<code>version</code> key in <code>module.json</code>)

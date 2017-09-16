@@ -3,6 +3,8 @@ versions:
     "3.0.0@unreleased":
         added:
             - Created a vue component for the tags input
+        changed:
+            - The tag menu item weight has been changed to <code>50</code>.
     "2.5.0":
         added:
             - Create and trigger events when tags are created and updated
