@@ -8,6 +8,9 @@ versions:
             - Replacing URL::route() by route() helper
             - Updated menu ordering in Content section. Leaving spots in between for custom modules.
             - Update menu ordering in Workshop section. Leaving spots in between for custom modules.
+            - Handle unauthorized and unauthenticated responses on Axios
+            - <code>Authorization</code> middleware now throws a 403 FORBIDDEN response instead of 401 to match HTTP spec.
+            - <code>AdminMiddleware</code> can now handle ajax requests
     "2.6.1":
         changed:
             - Fixing installation having 2x port in <code>.env</code>

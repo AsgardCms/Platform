@@ -1,5 +1,10 @@
 url: https://github.com/AsgardCms/Platform
 versions:
+    "3.0.0@unreleased":
+        added:
+            - <code>logUserIn</code> on the <code>Authentication</code> interface to log a user object in
+        changed:
+            - <code>AuthorisedApiToken</code> middleware now logs a user in
     "2.6.0":
         added:
             - New methods on the Sentinel Guard, <code>logout</code> and <code>loginUsingId</code>
