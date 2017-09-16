@@ -11,7 +11,7 @@ export default [
         name: 'admin.page.page.index',
         component: PageTableServerSide,
         props: {
-            translations
+            translations,
         }
     },
     {
@@ -21,6 +21,7 @@ export default [
         props: {
             translations,
             locales,
+            pageTitle: 'create page',
         }
     },
     {
@@ -30,6 +31,7 @@ export default [
         props: {
             translations,
             locales,
+            pageTitle: 'edit page',
         }
     },
 ];
