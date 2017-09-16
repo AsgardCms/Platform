@@ -46,7 +46,7 @@ const app = new Vue({
 window.axios.interceptors.response.use(null, function(error) {
     if (error.response.status === 401) {
         app.$notify.error({
-            title: 'Unauthorized',
+            title: app.$t('core.unauthorized'),
             message: app.$t('core.unauthorized-access'),
         });
         window.location = route('dashboard.index')
