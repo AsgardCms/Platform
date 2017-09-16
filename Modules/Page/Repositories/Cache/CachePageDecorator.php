@@ -2,6 +2,8 @@
 
 namespace Modules\Page\Repositories\Cache;
 
+use Illuminate\Contracts\Pagination\LengthAwarePaginator;
+use Illuminate\Http\Request;
 use Modules\Core\Repositories\Cache\BaseCacheDecorator;
 use Modules\Page\Repositories\PageRepository;
 
@@ -62,6 +64,29 @@ class CachePageDecorator extends BaseCacheDecorator implements PageRepository
             ->remember("{$this->locale}.{$this->entityName}.findBySlugInLocale.{$slug}.{$locale}", $this->cacheTime,
                 function () use ($slug, $locale) {
                     return $this->repository->findBySlugInLocale($slug, $locale);
+                }
+            );
+    }
+
+    /**
+     * Paginating, ordering and searching through pages for server side index table
+     * @param Request $request
+     * @return LengthAwarePaginator
+     */
+    public function serverPaginationFilteringFor(Request $request): LengthAwarePaginator
+    {
+        $order = $request->get('order');
+        $orderBy = $request->get('order_by');
+        $perPage = $request->get('per_page');
+        $search = $request->get('search');
+
+        $key = "{$order}-{$orderBy}-{$perPage}-{$search}";
+
+        return $this->cache
+            ->tags([$this->entityName, 'global'])
+            ->remember("{$this->locale}.{$this->entityName}.serverPaginationFilteringFor.{$key}", $this->cacheTime,
+                function () use ($request) {
+                    return $this->repository->serverPaginationFilteringFor($request);
                 }
             );
     }
