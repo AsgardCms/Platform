@@ -58,4 +58,6 @@ return [
     'back' => 'Retour',
     'back to index' => 'Retour à l\'index des :name',
     'permission denied' => 'Accès refusé. (permission nécessaire: ":permission")',
+    'unauthorized' => 'Accès refusé',
+    'unauthorized-access' => 'Vous n\'avez pas les permissions nécessaires pour accéder à cette page',
 ];

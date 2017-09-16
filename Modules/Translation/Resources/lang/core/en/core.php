@@ -71,4 +71,6 @@ return [
     'error 500 title' => 'Oops! Something went wrong',
     'error 500 description' => 'An administrator was notified.',
     'delete cancelled' => 'Delete cancelled',
+    'unauthorized' => 'Unauthorized',
+    'unauthorized-access' => 'You do not have the appropriate permissions to access that page.',
 ];

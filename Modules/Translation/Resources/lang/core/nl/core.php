@@ -57,4 +57,6 @@ return [
     'back' => 'Terug',
     'back to index' => 'Terug naar :name overzicht',
     'permission denied' => 'Toegang geweigerd. (vereiste permissie: ":permission")',
+    'unauthorized' => 'Toegang geweigerd',
+    'unauthorized-access' => 'U heefd de vereiste permissies niet om deze pagina te bekijken',
 ];
