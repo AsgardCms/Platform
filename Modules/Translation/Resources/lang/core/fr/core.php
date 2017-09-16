@@ -60,4 +60,6 @@ return [
     'permission denied' => 'Accès refusé. (permission nécessaire: ":permission")',
     'unauthorized' => 'Accès refusé',
     'unauthorized-access' => 'Vous n\'avez pas les permissions nécessaires pour accéder à cette page',
+    'unauthenticated' => 'Non authentifié',
+    'unauthenticated-access' => 'Vous devez vous connecter pour accéder à cette page',
 ];

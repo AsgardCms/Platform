@@ -59,4 +59,6 @@ return [
     'permission denied' => 'Toegang geweigerd. (vereiste permissie: ":permission")',
     'unauthorized' => 'Toegang geweigerd',
     'unauthorized-access' => 'U heefd de vereiste permissies niet om deze pagina te bekijken',
+    'unauthenticated' => '',
+    'unauthenticated-access' => 'Vous devez vous connecter pour accéder à cette page',
 ];
