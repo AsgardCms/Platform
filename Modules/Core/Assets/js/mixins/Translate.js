@@ -1,10 +1,15 @@
 export default {
-    props: {
-        translations: {default: null}
+    data() {
+        return {
+            translations: {},
+        };
     },
     methods: {
         translate(namespace, name) {
             return _.get(this.translations[namespace], name);
         }
+    },
+    mounted() {
+        this.translations = window.translations;
     }
 }
