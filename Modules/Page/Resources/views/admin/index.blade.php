@@ -17,14 +17,4 @@
 @stop
 
 @push('js-stack')
-    <?php $locale = App::getLocale(); ?>
-    <script type="text/javascript">
-        $( document ).ready(function() {
-            $(document).keypressAction({
-                actions: [
-                    { key: 'c', route: "<?= route('admin.page.page.create') ?>" }
-                ]
-            });
-        });
-    </script>
 @endpush

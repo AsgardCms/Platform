@@ -28,13 +28,4 @@
 @stop
 
 @push('js-stack')
-    <script>
-        $( document ).ready(function() {
-            $(document).keypressAction({
-                actions: [
-                    { key: 'b', route: "<?= route('admin.page.page.index') ?>" }
-                ]
-            });
-        });
-    </script>
 @endpush
