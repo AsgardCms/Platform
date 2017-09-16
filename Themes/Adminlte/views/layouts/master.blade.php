@@ -41,7 +41,7 @@
 <body class="{{ config('asgard.core.core.skin', 'skin-blue') }} sidebar-mini" style="padding-bottom: 0 !important;">
 <div class="wrapper" id="app">
     <header class="main-header">
-        <a href="{{ URL::route('dashboard.index') }}" class="logo">
+        <a href="{{ route('dashboard.index') }}" class="logo">
             <span class="logo-mini">
                 @setting('core::site-name-mini')
             </span>
