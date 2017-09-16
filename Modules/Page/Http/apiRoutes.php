@@ -7,7 +7,7 @@ $router->bind('page', function ($id) {
     return app(\Modules\Page\Repositories\PageRepository::class)->find($id);
 });
 
-$router->group(['prefix' => '/page'], function (Router $router) {
+$router->group(['prefix' => '/page', 'middleware' => ['api.token', 'auth.admin']], function (Router $router) {
     $router->get('pages', [
         'as' => 'api.page.page.index',
         'uses' => 'PageController@index',
