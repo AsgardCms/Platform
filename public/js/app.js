@@ -31310,6 +31310,17 @@ var app = new _vue2.default({
     i18n: i18n
 });
 
+window.axios.interceptors.response.use(null, function (error) {
+    if (error.response.status === 401) {
+        app.$notify.error({
+            title: 'Unauthorized',
+            message: app.$t('core.unauthorized-access')
+        });
+        window.location = route('dashboard.index');
+    }
+    return Promise.reject(error);
+});
+
 /***/ }),
 /* 39 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
