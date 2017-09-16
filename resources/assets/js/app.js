@@ -27,9 +27,8 @@ const router = new VueRouter({
 });
 
 let messages = {
-    [currentLocale]: window.translations,
+    [currentLocale]: window.AsgardCMS.translations,
 };
-console.log(messages);
 
 const i18n = new VueI18n({
     locale: currentLocale,
@@ -41,12 +40,3 @@ const app = new Vue({
     router,
     i18n,
 });
-
-// window.axios.get(route('api.translation.translations.all'))
-//     .then(response => {
-//         messages = {
-//             [currentLocale]: response.data,
-//         };
-//         console.log(messages);
-//         app.$i18n.setLocaleMessage('en', messages)
-//     });
