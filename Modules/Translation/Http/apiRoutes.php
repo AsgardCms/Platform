@@ -17,4 +17,8 @@ $router->group(['prefix' => '/translation', 'middleware' => 'api.token'], functi
         'uses' => 'TranslationController@revisions',
         'as' => 'api.translation.translations.revisions',
     ]);
+    $router->get('/', [
+        'uses' => 'AllTranslationController',
+        'as' => 'api.translation.translations.all',
+    ]);
 });
