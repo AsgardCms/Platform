@@ -29,16 +29,16 @@
                                     }}</span>
                                     <el-form-item :label="translate('page', 'title')"
                                                   :class="{'el-form-item is-error': form.errors.has(locale + '.title') }">
-                                        <el-input v-model="page[locale].title"
-                                                  @change="slugifyTitle($event, locale)"></el-input>
+                                        <el-input v-model="page[locale].title"></el-input>
                                         <div class="el-form-item__error" v-if="form.errors.has(locale + '.title')"
                                              v-text="form.errors.first(locale + '.title')"></div>
                                     </el-form-item>
 
                                     <el-form-item :label="translate('page', 'slug')"
                                                   :class="{'el-form-item is-error': form.errors.has(locale + '.slug') }">
-                                        <el-button>Generate</el-button>
-                                        <el-input v-model="page[locale].slug"></el-input>
+                                        <el-input v-model="page[locale].slug">
+                                            <el-button slot="prepend" @click="generateSlug($event, locale)">Generate</el-button>
+                                        </el-input>
                                         <div class="el-form-item__error" v-if="form.errors.has(locale + '.slug')"
                                              v-text="form.errors.first(locale + '.slug')"></div>
                                     </el-form-item>
@@ -218,8 +218,8 @@
                         this.templates = response.data;
                     });
             },
-            slugifyTitle(event, locale) {
-                this.page[locale].slug = this.slugify(event);
+            generateSlug(event, locale) {
+                this.page[locale].slug = this.slugify(this.page[locale].title);
             },
             setTags(tags) {
                 this.tags = tags;

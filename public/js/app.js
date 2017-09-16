@@ -72497,8 +72497,8 @@ exports.default = {
                 _this2.templates = response.data;
             });
         },
-        slugifyTitle: function slugifyTitle(event, locale) {
-            this.page[locale].slug = this.slugify(event);
+        generateSlug: function generateSlug(event, locale) {
+            this.page[locale].slug = this.slugify(this.page[locale].title);
         },
         setTags: function setTags(tags) {
             this.tags = tags;
@@ -73021,11 +73021,6 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         "label": _vm.translate('page', 'title')
       }
     }, [_c('el-input', {
-      on: {
-        "change": function($event) {
-          _vm.slugifyTitle($event, locale)
-        }
-      },
       model: {
         value: (_vm.page[locale].title),
         callback: function($$v) {
@@ -73045,7 +73040,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       attrs: {
         "label": _vm.translate('page', 'slug')
       }
-    }, [_c('el-button', [_vm._v("Generate")]), _vm._v(" "), _c('el-input', {
+    }, [_c('el-input', {
       model: {
         value: (_vm.page[locale].slug),
         callback: function($$v) {
@@ -73053,7 +73048,14 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         },
         expression: "page[locale].slug"
       }
-    }), _vm._v(" "), (_vm.form.errors.has(locale + '.slug')) ? _c('div', {
+    }, [_c('el-button', {
+      on: {
+        "click": function($event) {
+          _vm.generateSlug($event, locale)
+        }
+      },
+      slot: "prepend"
+    }, [_vm._v("Generate")])], 1), _vm._v(" "), (_vm.form.errors.has(locale + '.slug')) ? _c('div', {
       staticClass: "el-form-item__error",
       domProps: {
         "textContent": _vm._s(_vm.form.errors.first(locale + '.slug'))
