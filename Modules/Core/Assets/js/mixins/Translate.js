@@ -10,6 +10,6 @@ export default {
         }
     },
     mounted() {
-        this.translations = window.translations;
+        this.translations = window.AsgardCMS.translations;
     }
 }

@@ -74,7 +74,10 @@
     <script src="{{ URL::asset($js) }}" type="text/javascript"></script>
 @endforeach
 <script>
-    window.translations = {!! json_encode(['page' => trans('page::pages'), 'core' => trans('core::core')]) !!};
+    window.AsgardCMS = {
+        translations: {!! json_encode(['page' => trans('page::pages'), 'core' => trans('core::core')]) !!}
+    };
+
     window.locales = {!! json_encode(LaravelLocalization::getSupportedLocales()) !!}
     window.currentLocale = '{{ locale() }}';
 </script>
