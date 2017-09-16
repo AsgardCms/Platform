@@ -11117,33 +11117,7 @@ module.exports = function ( delay, atBegin, callback ) {
 
 
 /***/ }),
-/* 10 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-exports.default = {
-    data: function data() {
-        return {
-            translations: {}
-        };
-    },
-
-    methods: {
-        translate: function translate(namespace, name) {
-            return _.get(this.translations[namespace], name);
-        }
-    },
-    mounted: function mounted() {
-        this.translations = window.AsgardCMS.translations;
-    }
-};
-
-/***/ }),
+/* 10 */,
 /* 11 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -70570,12 +70544,9 @@ var _axios = __webpack_require__(8);
 
 var _axios2 = _interopRequireDefault(_axios);
 
-var _Translate = __webpack_require__(10);
-
-var _Translate2 = _interopRequireDefault(_Translate);
-
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+var _data = void 0; //
 //
 //
 //
@@ -70605,12 +70576,8 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 //
 //
 //
-//
-
-var _data = void 0;
 
 exports.default = {
-    mixins: [_Translate2.default],
     data: function data() {
         var _this = this;
 
@@ -70621,7 +70588,7 @@ exports.default = {
             links: {},
             actionsDef: {
                 def: [{
-                    name: this.translate('page', 'create page'),
+                    name: this.$t('page.create-page'),
                     icon: 'edit',
                     handler: function handler() {
                         _this.$router.push({ name: 'admin.page.page.create' });
@@ -71735,7 +71702,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }), _vm._v(" "), _c('el-table-column', {
     attrs: {
       "prop": "title",
-      "label": _vm.translate('page', 'title')
+      "label": _vm.$t('page.title')
     }
   }), _vm._v(" "), _c('el-table-column', {
     attrs: {

@@ -6,7 +6,7 @@
                     <data-tables :data="data" :actions-def="actionsDef">
                         <el-table-column prop="id" label="Id" width="100">
                         </el-table-column>
-                        <el-table-column prop="title" :label="translate('page', 'title')">
+                        <el-table-column prop="title" :label="$t('page.title')">
                         </el-table-column>
                         <el-table-column prop="slug" label="Slug">
                         </el-table-column>
@@ -30,12 +30,10 @@
 
 <script>
     import axios from 'axios'
-    import Translate from '../../../../Core/Assets/js/mixins/Translate'
 
     let data;
 
     export default {
-        mixins: [Translate],
         data() {
             return {
                 data,
@@ -44,7 +42,7 @@
                 links: {},
                 actionsDef: {
                     def: [{
-                        name: this.translate('page', 'create page'),
+                        name: this.$t('page.create-page'),
                         icon: 'edit',
                         handler: () => {
                             this.$router.push({name: 'admin.page.page.create'})
