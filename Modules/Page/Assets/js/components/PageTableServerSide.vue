@@ -71,7 +71,7 @@
                 </div>
             </div>
         </div>
-        <button v-shortkey="['c']" @shortkey="pushRoute({name: 'admin.page.page.create'})" style="display: none"></button>
+        <button v-shortkey="['c']" @shortkey="pushRoute({name: 'admin.page.page.create'})" v-show="false"></button>
     </div>
 </template>
 

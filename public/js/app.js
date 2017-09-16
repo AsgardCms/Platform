@@ -73143,10 +73143,12 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       rawName: "v-shortkey",
       value: (['c']),
       expression: "['c']"
+    }, {
+      name: "show",
+      rawName: "v-show",
+      value: (false),
+      expression: "false"
     }],
-    staticStyle: {
-      "display": "none"
-    },
     on: {
       "shortkey": function($event) {
         _vm.pushRoute({
@@ -74252,10 +74254,12 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       rawName: "v-shortkey",
       value: (['b']),
       expression: "['b']"
+    }, {
+      name: "show",
+      rawName: "v-show",
+      value: (false),
+      expression: "false"
     }],
-    staticStyle: {
-      "display": "none"
-    },
     on: {
       "shortkey": function($event) {
         _vm.pushRoute({

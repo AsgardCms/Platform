@@ -143,7 +143,7 @@
                 </div>
             </div>
         </el-form>
-        <button v-shortkey="['b']" @shortkey="pushRoute({name: 'admin.page.page.index'})" style="display: none"></button>
+        <button v-shortkey="['b']" @shortkey="pushRoute({name: 'admin.page.page.index'})" v-show="false"></button>
     </div>
 </template>
 
