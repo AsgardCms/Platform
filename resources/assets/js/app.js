@@ -5,7 +5,6 @@ import VueI18n from 'vue-i18n'
 import VueRouter from 'vue-router'
 import ElementUI from 'element-ui'
 import DataTables from 'vue-data-tables'
-import 'element-ui/lib/theme-default/index.css'
 import locale from 'element-ui/lib/locale/lang/en'
 
 Vue.use(ElementUI, { locale });
