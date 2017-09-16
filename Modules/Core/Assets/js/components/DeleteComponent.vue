@@ -45,7 +45,7 @@
                 }).catch(() => {
                     this.$message({
                         type: 'info',
-                        message: this.trans('core.delete-cancelled')
+                        message: this.trans('core.delete cancelled')
                     });
                 });
             }
