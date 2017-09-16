@@ -143,6 +143,7 @@
                 </div>
             </div>
         </el-form>
+        <button v-shortkey="['b']" @shortkey="pushRoute({name: 'admin.page.page.index'})" style="display: none"></button>
     </div>
 </template>
 
@@ -150,10 +151,11 @@
     import axios from 'axios'
     import Slugify from '../../../../Core/Assets/js/mixins/Slugify'
     import TranslationHelper from '../../../../Core/Assets/js/mixins/TranslationHelper'
+    import ShortcutHelper from '../../../../Core/Assets/js/mixins/ShortcutHelper'
     import Form from 'form-backend-validation'
 
     export default {
-        mixins: [Slugify, TranslationHelper],
+        mixins: [Slugify, TranslationHelper, ShortcutHelper],
         props: {
             locales: {default: null},
             pageTitle: {default: null, String},

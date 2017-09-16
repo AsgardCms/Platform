@@ -71,6 +71,7 @@
                 </div>
             </div>
         </div>
+        <button v-shortkey="['c']" @shortkey="pushRoute({name: 'admin.page.page.create'})" style="display: none"></button>
     </div>
 </template>
 
@@ -78,11 +79,12 @@
     import axios from 'axios'
     import _ from "lodash";
     import TranslationHelper from '../../../../Core/Assets/js/mixins/TranslationHelper'
+    import ShortcutHelper from '../../../../Core/Assets/js/mixins/ShortcutHelper'
 
     let data;
 
     export default {
-        mixins: [TranslationHelper],
+        mixins: [TranslationHelper, ShortcutHelper],
         data() {
             return {
                 data,
