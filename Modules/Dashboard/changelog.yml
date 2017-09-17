@@ -1,6 +1,6 @@
 url: https://github.com/AsgardCms/Platform
 versions:
-    "3.0.0@unreleased":
+    "3.0.0":
         changed:
             - Making <code>WidgetServiceProvider</code> not deferred anymore
     "2.5.0":

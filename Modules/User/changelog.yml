@@ -1,6 +1,6 @@
 url: https://github.com/AsgardCms/Platform
 versions:
-    "3.0.0@unreleased":
+    "3.0.0":
         added:
             - <code>logUserIn</code> on the <code>Authentication</code> interface to log a user object in
         changed:

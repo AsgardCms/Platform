@@ -1,6 +1,6 @@
 url: https://github.com/AsgardCms/Platform
 versions:
-    "3.0.0@unreleased":
+    "3.0.0":
         added:
             - Created a vue component for the delete buttons on index pages
             - Created a vue component for CkEditor

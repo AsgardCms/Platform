@@ -1,6 +1,6 @@
 url: https://github.com/AsgardCms/Platform
 versions:
-    "3.0.0@unreleased":
+    "3.0.0":
         changed:
             - The translation menu item weight has been changed to <code>40</code>.
     "2.6.0":

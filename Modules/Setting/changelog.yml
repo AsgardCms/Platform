@@ -1,6 +1,6 @@
 url: https://github.com/AsgardCms/Platform
 versions:
-    "3.0.0@unreleased":
+    "3.0.0":
         changed:
             - Fixing active class on settings module list sidebar
             - The setting menu item weight has been changed to <code>20</code>.

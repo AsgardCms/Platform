@@ -1,6 +1,6 @@
 url: https://github.com/AsgardCms/Platform
 versions:
-    "3.0.0@unreleased":
+    "3.0.0":
         changed:
             - Using correct version number on module detail view
             - The modules menu item weight has been changed to <code>30</code>.
