@@ -1,5 +1,8 @@
 url: https://github.com/AsgardCms/Platform
 versions:
+    "3.0.3":
+        changed:
+            - Adding error styles on el-tabs
     "3.0.0":
         added:
             - <code>@route</code> directive to include all laravel routes, now accessible via javascript
