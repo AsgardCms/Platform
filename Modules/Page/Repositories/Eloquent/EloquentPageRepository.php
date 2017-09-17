@@ -141,7 +141,7 @@ class EloquentPageRepository extends EloquentBaseRepository implements PageRepos
 
         if ($request->get('search') !== null) {
             $term = $request->get('search');
-            $pages->whereHas('translations', function($query) use($term) {
+            $pages->whereHas('translations', function ($query) use ($term) {
                 $query->where('title', 'LIKE', "%{$term}%");
                 $query->orWhere('slug', 'LIKE', "%{$term}%");
             })

@@ -8,8 +8,8 @@ use Illuminate\Support\Facades\Response;
 use Illuminate\Support\Facades\View;
 use Modules\Core\Http\Controllers\Admin\AdminBaseController;
 use Modules\Workshop\Manager\ModuleManager;
-use Nwidart\Modules\Module;
 use Nwidart\Modules\Contracts\RepositoryInterface;
+use Nwidart\Modules\Module;
 use Symfony\Component\Console\Output\BufferedOutput;
 
 class ModulesController extends AdminBaseController

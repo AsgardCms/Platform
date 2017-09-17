@@ -4,8 +4,8 @@ namespace Modules\Page\Console;
 
 use Illuminate\Console\Command;
 use Modules\Page\Repositories\PageRepository;
-use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Input\InputArgument;
+use Symfony\Component\Console\Input\InputOption;
 
 class CreatePagesCommand extends Command
 {
@@ -32,7 +32,7 @@ class CreatePagesCommand extends Command
         $total = 10000;
         $bar = $this->output->createProgressBar($total);
 
-        for($i = 0; $i < $total; $i++) {
+        for ($i = 0; $i < $total; $i++) {
             $this->createPage();
             $bar->advance();
         }

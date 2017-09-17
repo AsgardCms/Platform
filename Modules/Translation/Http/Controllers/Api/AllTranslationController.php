@@ -10,7 +10,7 @@ class AllTranslationController extends Controller
     {
         return response()->json([
             'page' => trans('page::pages'),
-            'core' => trans('core::core')
+            'core' => trans('core::core'),
         ]);
     }
 }

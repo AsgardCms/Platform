@@ -10,7 +10,7 @@ class TranslationsViewComposer
     {
         $staticTranslations = json_encode([
             'page' => array_dot(trans('page::pages')),
-            'core' => array_dot(trans('core::core'))
+            'core' => array_dot(trans('core::core')),
         ]);
 
         $view->with(compact('staticTranslations'));

@@ -25,7 +25,7 @@ class PageController extends Controller
 
     public function index()
     {
-       return PageTransformer::collection($this->page->all());
+        return PageTransformer::collection($this->page->all());
     }
 
     public function indexServerSide(Request $request)

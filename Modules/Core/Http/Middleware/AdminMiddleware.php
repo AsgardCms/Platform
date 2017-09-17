@@ -4,8 +4,8 @@ namespace Modules\Core\Http\Middleware;
 
 use Illuminate\Foundation\Application;
 use Illuminate\Http\Request;
-use Illuminate\Routing\Redirector;
 use Illuminate\Http\Response;
+use Illuminate\Routing\Redirector;
 use Illuminate\Session\Store;
 use Modules\User\Contracts\Authentication;
 
