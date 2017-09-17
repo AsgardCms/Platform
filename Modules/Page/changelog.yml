@@ -1,5 +1,8 @@
 url: https://github.com/AsgardCms/Platform
 versions:
+    "3.0.2":
+        changed:
+            - Fixing create page key on page index
     "3.0.0":
         added:
             - Created a vue component for the page table index
