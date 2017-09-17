@@ -139,7 +139,7 @@ class EloquentPageRepository extends EloquentBaseRepository implements PageRepos
     {
         $pages = $this->allWithBuilder();
 
-        if ($request->has('search')) {
+        if ($request->get('search') !== null) {
             $term = $request->get('search');
             $pages->whereHas('translations', function($query) use($term) {
                 $query->where('title', 'LIKE', "%{$term}%");
@@ -148,7 +148,7 @@ class EloquentPageRepository extends EloquentBaseRepository implements PageRepos
                 ->orWhere('id', $term);
         }
 
-        if ($request->has('order_by') && $request->get('order_by') !== 'undefined' && $request->get('order') !== 'null') {
+        if ($request->get('order_by') !== null && $request->get('order') !== 'null') {
             $order = $request->get('order') === 'ascending' ? 'asc' : 'desc';
 
             if (str_contains($request->get('order_by'), '.')) {
