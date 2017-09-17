@@ -1,5 +1,8 @@
 url: https://github.com/AsgardCms/Platform
 versions:
+    "3.0.3":
+        changed:
+            - Set the active tab to the currently active tab
     "3.0.2":
         changed:
             - Fixing create page key on page index
