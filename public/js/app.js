@@ -31335,7 +31335,7 @@ window.axios.interceptors.response.use(null, function (error) {
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /*!
- * vue-i18n v7.2.0
+ * vue-i18n v7.2.0 
  * (c) 2017 kazuya kawaguchi
  * Released under the MIT License.
  */
@@ -72852,7 +72852,6 @@ exports.default = {
         return {
             data: _data,
             meta: {
-            meta: {
                 current_page: 1,
                 per_page: 10
             },
@@ -72877,6 +72876,7 @@ exports.default = {
                 order: this.order_meta.order,
                 search: this.searchQuery
             };
+
             _axios2.default.get(route('api.page.page.indexServerSide', _lodash2.default.merge(properties, customProperties))).then(function (response) {
                 _this.tableIsLoading = false;
                 _this.data = response.data.data;

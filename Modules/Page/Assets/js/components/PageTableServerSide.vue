@@ -110,6 +110,7 @@
                     order: this.order_meta.order,
                     search: this.searchQuery,
                 };
+
                 axios.get(route('api.page.page.indexServerSide', _.merge(properties, customProperties)))
                     .then(response => {
                         this.tableIsLoading = false;
