@@ -31335,7 +31335,7 @@ window.axios.interceptors.response.use(null, function (error) {
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /*!
- * vue-i18n v7.2.0 
+ * vue-i18n v7.2.0
  * (c) 2017 kazuya kawaguchi
  * Released under the MIT License.
  */
@@ -72851,8 +72851,15 @@ exports.default = {
     data: function data() {
         return {
             data: _data,
-            meta: {},
-            order_meta: {},
+            meta: {
+            meta: {
+                current_page: 1,
+                per_page: 10
+            },
+            order_meta: {
+                order_by: '',
+                order: ''
+            },
             links: {},
             searchQuery: '',
             tableIsLoading: false
@@ -72860,89 +72867,52 @@ exports.default = {
     },
 
     methods: {
-        fetchData: function fetchData() {
+        queryServer: function queryServer(customProperties) {
             var _this = this;
 
-            this.tableIsLoading = true;
-            _axios2.default.get(route('api.page.page.indexServerSide')).then(function (response) {
+            var properties = {
+                page: this.meta.current_page,
+                per_page: this.meta.per_page,
+                order_by: this.order_meta.order_by,
+                order: this.order_meta.order,
+                search: this.searchQuery
+            };
+            _axios2.default.get(route('api.page.page.indexServerSide', _lodash2.default.merge(properties, customProperties))).then(function (response) {
                 _this.tableIsLoading = false;
                 _this.data = response.data.data;
                 _this.meta = response.data.meta;
                 _this.links = response.data.links;
+
+                _this.order_meta.order_by = properties.order_by;
+                _this.order_meta.order = properties.order;
             });
+        },
+        fetchData: function fetchData() {
+            this.tableIsLoading = true;
+            this.queryServer();
         },
         goToEdit: function goToEdit(scope) {
             this.$router.push({ name: 'admin.page.page.edit', params: { pageId: scope.row.id } });
         },
         handleSizeChange: function handleSizeChange(event) {
-            var _this2 = this;
-
             console.log('per page :' + event);
             this.tableIsLoading = true;
-            _axios2.default.get(route('api.page.page.indexServerSide', {
-                per_page: event,
-                page: this.meta.current_page,
-                order_by: this.order_meta.order_by,
-                order: this.order_meta.order
-            })).then(function (response) {
-                _this2.tableIsLoading = false;
-                _this2.data = response.data.data;
-                _this2.meta = response.data.meta;
-                _this2.links = response.data.links;
-            });
+            this.queryServer({ per_page: event });
         },
         handleCurrentChange: function handleCurrentChange(event) {
-            var _this3 = this;
-
             console.log('current page :' + event);
             this.tableIsLoading = true;
-            _axios2.default.get(route('api.page.page.indexServerSide', {
-                page: event,
-                per_page: this.meta.per_page,
-                order_by: this.order_meta.order_by,
-                order: this.order_meta.order,
-                search: this.searchQuery
-            })).then(function (response) {
-                _this3.tableIsLoading = false;
-                _this3.data = response.data.data;
-                _this3.meta = response.data.meta;
-                _this3.links = response.data.links;
-            });
+            this.queryServer({ page: event });
         },
         handleSortChange: function handleSortChange(event) {
-            var _this4 = this;
-
             console.log('sorting', event);
             this.tableIsLoading = true;
-            _axios2.default.get(route('api.page.page.indexServerSide', {
-                page: this.meta.current_page,
-                per_page: this.meta.per_page,
-                order_by: event.prop,
-                order: event.order,
-                search: this.searchQuery
-            })).then(function (response) {
-                _this4.tableIsLoading = false;
-                _this4.data = response.data.data;
-                _this4.meta = response.data.meta;
-                _this4.links = response.data.links;
-
-                _this4.order_meta.order_by = event.prop;
-                _this4.order_meta.order = event.order;
-            });
+            this.queryServer({ order_by: event.prop, order: event.order });
         },
         performSearch: function performSearch(query) {
-            var _this5 = this;
-
             console.log('searching:' + query);
             this.tableIsLoading = true;
-            _axios2.default.get(route('api.page.page.indexServerSide', {
-                search: query
-            })).then(function (response) {
-                _this5.tableIsLoading = false;
-                _this5.data = response.data.data;
-                _this5.meta = response.data.meta;
-                _this5.links = response.data.links;
-            });
+            this.queryServer({ search: query });
         }
     },
     mounted: function mounted() {

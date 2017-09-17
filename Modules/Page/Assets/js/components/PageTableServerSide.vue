@@ -88,23 +88,42 @@
         data() {
             return {
                 data,
-                meta: {},
-                order_meta: {},
+                meta: {
+                    current_page: 1,
+                    per_page: 10,
+                },
+                order_meta: {
+                    order_by: '',
+                    order: '',
+                },
                 links: {},
                 searchQuery: '',
                 tableIsLoading: false,
             }
         },
         methods: {
-            fetchData() {
-                this.tableIsLoading = true;
-                axios.get(route('api.page.page.indexServerSide'))
+            queryServer(customProperties) {
+                let properties = {
+                    page: this.meta.current_page,
+                    per_page: this.meta.per_page,
+                    order_by: this.order_meta.order_by,
+                    order: this.order_meta.order,
+                    search: this.searchQuery,
+                };
+                axios.get(route('api.page.page.indexServerSide', _.merge(properties, customProperties)))
                     .then(response => {
                         this.tableIsLoading = false;
                         this.data = response.data.data;
                         this.meta = response.data.meta;
                         this.links = response.data.links;
+
+                        this.order_meta.order_by = properties.order_by;
+                        this.order_meta.order = properties.order;
                     });
+            },
+            fetchData() {
+                this.tableIsLoading = true;
+                this.queryServer();
             },
             goToEdit(scope) {
                 this.$router.push({name: 'admin.page.page.edit', params: {pageId: scope.row.id}})
@@ -112,68 +131,22 @@
             handleSizeChange(event) {
                 console.log('per page :' + event);
                 this.tableIsLoading = true;
-                axios.get(route('api.page.page.indexServerSide', {
-                    per_page: event,
-                    page: this.meta.current_page,
-                    order_by: this.order_meta.order_by,
-                    order: this.order_meta.order,
-                }))
-                    .then(response => {
-                        this.tableIsLoading = false;
-                        this.data = response.data.data;
-                        this.meta = response.data.meta;
-                        this.links = response.data.links;
-                    });
+                this.queryServer({per_page: event});
             },
             handleCurrentChange(event) {
                 console.log('current page :' + event);
                 this.tableIsLoading = true;
-                axios.get(route('api.page.page.indexServerSide', {
-                    page: event,
-                    per_page: this.meta.per_page,
-                    order_by: this.order_meta.order_by,
-                    order: this.order_meta.order,
-                    search: this.searchQuery,
-                }))
-                    .then(response => {
-                        this.tableIsLoading = false;
-                        this.data = response.data.data;
-                        this.meta = response.data.meta;
-                        this.links = response.data.links;
-                    });
+                this.queryServer({page: event});
             },
             handleSortChange(event) {
                 console.log('sorting', event);
                 this.tableIsLoading = true;
-                axios.get(route('api.page.page.indexServerSide', {
-                    page: this.meta.current_page,
-                    per_page: this.meta.per_page,
-                    order_by: event.prop,
-                    order: event.order,
-                    search: this.searchQuery,
-                }))
-                    .then(response => {
-                        this.tableIsLoading = false;
-                        this.data = response.data.data;
-                        this.meta = response.data.meta;
-                        this.links = response.data.links;
-
-                        this.order_meta.order_by = event.prop;
-                        this.order_meta.order = event.order;
-                    });
+                this.queryServer({order_by: event.prop, order: event.order,});
             },
             performSearch(query) {
                 console.log('searching:' + query);
                 this.tableIsLoading = true;
-                axios.get(route('api.page.page.indexServerSide', {
-                    search: query,
-                }))
-                    .then(response => {
-                        this.tableIsLoading = false;
-                        this.data = response.data.data;
-                        this.meta = response.data.meta;
-                        this.links = response.data.links;
-                    });
+                this.queryServer({search: query});
             },
         },
         mounted() {
