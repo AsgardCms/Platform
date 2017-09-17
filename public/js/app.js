@@ -73167,7 +73167,8 @@ exports.default = {
             },
             form: new _formBackendValidation2.default(),
             loading: false,
-            tags: {}
+            tags: {},
+            activeTab: window.AsgardCMS.currentLocale || 'en'
         };
     },
 
@@ -73856,12 +73857,20 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }, [_c('el-tabs', {
     attrs: {
       "type": "card"
+    },
+    model: {
+      value: (_vm.activeTab),
+      callback: function($$v) {
+        _vm.activeTab = $$v
+      },
+      expression: "activeTab"
     }
   }, _vm._l((_vm.locales), function(localeArray, locale) {
     return _c('el-tab-pane', {
       key: localeArray.name,
       attrs: {
-        "label": localeArray.name
+        "label": localeArray.name,
+        "name": locale
       }
     }, [_c('span', {
       class: {

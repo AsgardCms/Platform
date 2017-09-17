@@ -22,9 +22,9 @@
                 <div class="col-md-10">
                     <div class="box box-primary">
                         <div class="box-body">
-                            <el-tabs type="card">
+                            <el-tabs type="card" v-model="activeTab">
                                 <el-tab-pane :label="localeArray.name" v-for="(localeArray, locale) in locales"
-                                             :key="localeArray.name">
+                                             :key="localeArray.name" :name="locale">
                                 <span slot="label" :class="{'error' : form.errors.has(locale)}">{{ localeArray.name
                                     }}</span>
                                     <el-form-item :label="trans('page.title')"
@@ -186,6 +186,7 @@
                 form: new Form(),
                 loading: false,
                 tags: {},
+                activeTab: window.AsgardCMS.currentLocale || 'en',
             }
         },
         methods: {
