@@ -21,7 +21,7 @@
                                 <div class="actions el-col el-col-5">
                                     <router-link :to="{name: 'admin.page.page.create'}">
                                         <el-button type="primary"><i class="el-icon-edit"></i>
-                                            {{ trans('page.create-page') }}
+                                            {{ trans('page.create page') }}
                                         </el-button>
                                     </router-link>
                                 </div>
