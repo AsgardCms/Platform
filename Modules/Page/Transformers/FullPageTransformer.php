@@ -3,6 +3,7 @@
 namespace Modules\Page\Transformers;
 
 use Illuminate\Http\Resources\Json\Resource;
+use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
 class FullPageTransformer extends Resource
 {
@@ -14,9 +15,12 @@ class FullPageTransformer extends Resource
             'is_home' => $this->is_home,
         ];
 
-        foreach ($this->translations as $pageTranslation) {
-            $pageData[$pageTranslation->locale] = $pageTranslation;
+        foreach (LaravelLocalization::getSupportedLocales() as $locale => $supportedLocale) {
+            foreach ($this->translatedAttributes as $translatedAttribute) {
+                $pageData[$locale][$translatedAttribute] = $this->translateOrNew($locale)->$translatedAttribute;
+            }
         }
+
         foreach ($this->tags as $tag) {
             $pageData['tags'][] = $tag->name;
         }
