@@ -1,5 +1,8 @@
 url: https://github.com/AsgardCms/Platform
 versions:
+    "3.1.0@unreleased":
+        changed:
+            - Checking for null value instead of empty for non translatable settings
     "3.0.3":
         changed:
             - Make setting value nullable

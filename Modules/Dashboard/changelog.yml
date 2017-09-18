@@ -1,5 +1,13 @@
 url: https://github.com/AsgardCms/Platform
 versions:
+    "3.1.0@unreleased":
+        added:
+            - Created & loading a settings config file
+            - No widget dashboard now used by default
+            - Dashboard settings with welcome title and description
+            - New welcome box displayed on the dashboard
+        removed:
+            - Gridstack (widgets) from overwritten dashboard. To enable again, set <code>dashboard..useViewNamespaces.resources</code> to <code>false</code>
     "3.0.0":
         changed:
             - Making <code>WidgetServiceProvider</code> not deferred anymore
