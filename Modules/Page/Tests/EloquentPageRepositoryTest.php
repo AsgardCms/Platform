@@ -193,7 +193,7 @@ class EloquentPageRepositoryTest extends BasePageTest
     {
         $page = $this->createRandomOfflinePage();
 
-        $page = $this->page->markAsOnlineInAllLocales($page->id);
+        $page = $this->page->markAsOnlineInAllLocales($page);
 
         $this->assertTrue($page->translate('en')->status);
         $this->assertTrue($page->translate('fr')->status);
@@ -204,7 +204,7 @@ class EloquentPageRepositoryTest extends BasePageTest
     {
         $page = $this->createRandomOnlinePage();
 
-        $page = $this->page->markAsOfflineInAllLocales($page->id);
+        $page = $this->page->markAsOfflineInAllLocales($page);
 
         $this->assertFalse($page->translate('en')->status);
         $this->assertFalse($page->translate('fr')->status);
