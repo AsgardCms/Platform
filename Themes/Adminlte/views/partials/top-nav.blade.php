@@ -13,7 +13,7 @@
             <?php if (is_module_enabled('Notification')): ?>
             @include('notification::partials.notifications')
             <?php endif; ?>
-            <li><a href="{{ URL::to('/') }}" target="_blank"><i class="fa fa-eye"></i> {{trans('core::core.general.view website')}}</a></li>
+            <li><a href="{{ url('/') }}"><i class="fa fa-eye"></i> {{ trans('core::core.general.view website') }}</a></li>
             <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                     <i class="fa fa-flag"></i>
