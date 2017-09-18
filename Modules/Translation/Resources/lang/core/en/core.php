@@ -78,4 +78,5 @@ return [
     'something went wrong' => 'Whoops! Something went wrong.',
     'mark as online' => 'Mark as online',
     'mark as offline' => 'Mark as offline',
+    'back to backend' => 'Back to backend',
 ];

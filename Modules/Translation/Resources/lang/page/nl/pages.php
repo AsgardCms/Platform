@@ -20,6 +20,8 @@ return [
     'status' => 'Status',
     'pages were updated' => 'De paginas werden gewijzigd',
 
+    'view-page' => 'De pagina bekijken',
+    'edit-page' => 'De pagina bewerken',
     'validation' => [
         'attributes' => [
             'title' => 'titel',

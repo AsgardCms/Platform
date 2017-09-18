@@ -21,6 +21,8 @@ return [
     'status' => 'Status',
     'pages were updated' => 'Les pages ont été modifiées',
 
+    'view-page' => 'Voir la page',
+    'edit-page' => 'Editez la page',
     'validation' => [
         'attributes' => [
             'title' => 'titre',

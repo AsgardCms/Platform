@@ -27,6 +27,8 @@ return [
     'edit resource' => 'Edit pages',
     'destroy resource' => 'Delete pages',
 
+    'view-page' => 'View page',
+    'edit-page' => 'Edit page',
     'validation' => [
         'attributes' => [
             'title' => 'title',

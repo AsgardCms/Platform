@@ -65,4 +65,5 @@ return [
     'something went wrong' => 'Whoops! Il y a eu une erreur.',
     'mark as online' => 'Marquer comme étant en-ligne',
     'mark as offline' => 'Marquer comme étant hors-ligne',
+    'back to backend' => 'Retour vers backoffice',
 ];

@@ -64,4 +64,5 @@ return [
     'something went wrong' => 'Whoops! Er iets misgegaan.',
     'mark as online' => 'Markeer als online',
     'mark as offline' => 'Markeer als offline',
+    'back to backend' => 'Terug naar de backend',
 ];
