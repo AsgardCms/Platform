@@ -188,6 +188,17 @@ class EloquentPageRepositoryTest extends BasePageTest
         });
     }
 
+    /** @test */
+    public function it_can_mark_page_as_online_in_all_locales()
+    {
+        $page = $this->createRandomPage(['en' => ['status' => 0], 'fr' => ['status' => 0]]);
+
+        $page = $this->page->markAsOnlineInAllLocales($page->id);
+
+        $this->assertTrue($page->translate('en')->status);
+        $this->assertTrue($page->translate('fr')->status);
+    }
+
     private function createPage()
     {
         return $this->page->create([
@@ -199,5 +210,26 @@ class EloquentPageRepositoryTest extends BasePageTest
                 'body' => 'My Page Body',
             ],
         ]);
+    }
+
+    private function createRandomPage(array $properties)
+    {
+        $faker = \Faker\Factory::create();
+
+        $data = [
+            'is_home' => 0,
+            'template' => 'default',
+            'en' => [
+                'title' => $faker->name,
+                'slug' => $faker->slug,
+                'body' => $faker->paragraph(),
+            ],
+            'fr' => [
+                'title' => $faker->name,
+                'slug' => $faker->slug,
+                'body' => $faker->paragraph(),
+            ],
+        ];
+        return $this->page->create($data + $properties);
     }
 }

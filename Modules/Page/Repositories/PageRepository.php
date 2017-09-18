@@ -33,4 +33,10 @@ interface PageRepository extends BaseRepository
      * @return LengthAwarePaginator
      */
     public function serverPaginationFilteringFor(Request $request) : LengthAwarePaginator;
+
+    /**
+     * @param int $pageId
+     * @return mixed
+     */
+    public function markAsOnlineInAllLocales(int $pageId);
 }

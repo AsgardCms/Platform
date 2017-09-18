@@ -90,4 +90,15 @@ class CachePageDecorator extends BaseCacheDecorator implements PageRepository
                 }
             );
     }
+
+    /**
+     * @param int $pageId
+     * @return mixed
+     */
+    public function markAsOnlineInAllLocales(int $pageId)
+    {
+        $this->clearCache();
+
+        $this->markAsOnlineInAllLocales($pageId);
+    }
 }

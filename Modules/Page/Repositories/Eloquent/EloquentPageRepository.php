@@ -5,6 +5,7 @@ namespace Modules\Page\Repositories\Eloquent;
 use Illuminate\Contracts\Pagination\LengthAwarePaginator;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\Request;
+use Mcamara\LaravelLocalization\LaravelLocalization;
 use Modules\Core\Repositories\Eloquent\EloquentBaseRepository;
 use Modules\Page\Events\PageIsCreating;
 use Modules\Page\Events\PageIsUpdating;
@@ -170,5 +171,21 @@ class EloquentPageRepository extends EloquentBaseRepository implements PageRepos
 //        })->where('t.locale', locale())
 //            ->groupBy('page__pages.id')->orderBy("t.title", 'desc');
         return $pages->paginate($request->get('per_page', 10));
+    }
+
+    /**
+     * @param int $pageId
+     * @return mixed
+     */
+    public function markAsOnlineInAllLocales(int $pageId)
+    {
+        $page = $this->find($pageId);
+
+        $data = [];
+        foreach (app(LaravelLocalization::class)->getSupportedLocales() as $locale => $supportedLocale) {
+            $data[$locale] = ['status' => 1];
+        }
+
+        return $this->update($page, $data);
     }
 }
