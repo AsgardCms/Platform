@@ -191,7 +191,7 @@ class EloquentPageRepositoryTest extends BasePageTest
     /** @test */
     public function it_can_mark_page_as_online_in_all_locales()
     {
-        $page = $this->createRandomPage(['en' => ['status' => 0], 'fr' => ['status' => 0]]);
+        $page = $this->createRandomOfflinePage();
 
         $page = $this->page->markAsOnlineInAllLocales($page->id);
 
@@ -212,7 +212,7 @@ class EloquentPageRepositoryTest extends BasePageTest
         ]);
     }
 
-    private function createRandomPage(array $properties)
+    private function createRandomOfflinePage()
     {
         $faker = \Faker\Factory::create();
 
@@ -220,16 +220,19 @@ class EloquentPageRepositoryTest extends BasePageTest
             'is_home' => 0,
             'template' => 'default',
             'en' => [
+                'status' => 0,
                 'title' => $faker->name,
                 'slug' => $faker->slug,
                 'body' => $faker->paragraph(),
             ],
             'fr' => [
+                'status' => 0,
                 'title' => $faker->name,
                 'slug' => $faker->slug,
                 'body' => $faker->paragraph(),
             ],
         ];
-        return $this->page->create($data + $properties);
+
+        return $this->page->create($data);
     }
 }
