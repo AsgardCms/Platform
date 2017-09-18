@@ -47,6 +47,20 @@ class Page extends Model implements TaggableInterface
     ];
     protected static $entityNamespace = 'asgardcms/page';
 
+    public function getCanonicalUrl() : string
+    {
+        if ($this->is_home === true) {
+            return url('/');
+        }
+
+        return route('page', $this->slug);
+    }
+
+    public function getEditUrl() : string
+    {
+        return route('admin.page.page.edit', $this->id);
+    }
+
     public function __call($method, $parameters)
     {
         #i: Convert array to dot notation
