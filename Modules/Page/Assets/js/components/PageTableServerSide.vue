@@ -18,7 +18,16 @@
                     <div class="box-body">
                         <div class="sc-table">
                             <div class="tool-bar el-row" style="padding-bottom: 20px;">
-                                <div class="actions el-col el-col-5">
+                                <div class="actions el-col el-col-8">
+                                    <el-dropdown @command="handleExtraActions" v-if="showExtraButtons">
+                                        <el-button type="primary">
+                                            {{ trans('core.table.actions') }}<i class="el-icon-caret-bottom el-icon--right"></i>
+                                        </el-button>
+                                        <el-dropdown-menu slot="dropdown">
+                                            <el-dropdown-item command="mark-online">Mark as online</el-dropdown-item>
+                                            <el-dropdown-item command="mark-offline">Mark as offline</el-dropdown-item>
+                                        </el-dropdown-menu>
+                                    </el-dropdown>
                                     <router-link :to="{name: 'admin.page.page.create'}">
                                         <el-button type="primary"><i class="el-icon-edit"></i>
                                             {{ trans('page.create page') }}
@@ -35,8 +44,19 @@
                                     :data="data"
                                     stripe
                                     style="width: 100%"
+                                    ref="pageTable"
                                     v-loading.body="tableIsLoading"
-                                    @sort-change="handleSortChange">
+                                    @sort-change="handleSortChange"
+                                    @selection-change="handleSelectionChange">
+                                <el-table-column
+                                        type="selection"
+                                        width="55">
+                                </el-table-column>
+                                <el-table-column :label="trans('page.status')" width="75">
+                                    <template scope="scope">
+                                        <i class="el-icon-fa-circle" :class="(scope.row.translations.status === true) ? 'text-success':'text-danger'"></i>
+                                    </template>
+                                </el-table-column>
                                 <el-table-column prop="id" label="Id" width="100" sortable="custom">
                                 </el-table-column>
                                 <el-table-column prop="translations.title" :label="trans('page.title')">
@@ -99,6 +119,13 @@
                 links: {},
                 searchQuery: '',
                 tableIsLoading: false,
+                showExtraButtons: false,
+                selectedPages: {},
+            }
+        },
+        watch: {
+            selectedPages() {
+                this.selectedPages.length >= 1 ? this.showExtraButtons = true : this.showExtraButtons = false;
             }
         },
         methods: {
@@ -148,6 +175,33 @@
                 console.log('searching:' + query);
                 this.tableIsLoading = true;
                 this.queryServer({search: query});
+            },
+            handleExtraActions(action) {
+                let pageIds = _.map(this.selectedPages, function(elem) {
+                    return elem.id;
+                });
+                axios.get(route('api.page.page.mark-status', {action: action, pageIds: JSON.stringify(pageIds)}))
+                    .then(response => {
+                        this.$message({
+                            type: 'success',
+                            message: response.data.message
+                        });
+                        this.$refs.pageTable.clearSelection();
+                        this.data.find(function (page) {
+                            if (pageIds.indexOf(page.id) >= 0) {
+                                page.translations.status = action === 'mark-online';
+                            }
+                        });
+                    })
+                    .catch(error => {
+                        this.$message({
+                            type: 'error',
+                            message: this.trans('core.something went wrong'),
+                        });
+                    })
+            },
+            handleSelectionChange(selectedPages) {
+                this.selectedPages = selectedPages;
             },
         },
         mounted() {
