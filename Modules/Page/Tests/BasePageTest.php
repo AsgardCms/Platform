@@ -60,6 +60,10 @@ abstract class BasePageTest extends TestCase
             'prefix' => '',
         ));
         $app['config']->set('translatable.locales', ['en', 'fr']);
+        $app['config']->set('laravellocalization.supportedLocales', [
+            'en' => ['asd' => 'asd'],
+            'fr' => ['asd' => 'asd'],
+        ]);
     }
 
     private function resetDatabase()
