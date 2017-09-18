@@ -72991,11 +72991,11 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     attrs: {
       "command": "mark-online"
     }
-  }, [_vm._v("Mark as online")]), _vm._v(" "), _c('el-dropdown-item', {
+  }, [_vm._v(_vm._s(_vm.trans('core.mark as online')))]), _vm._v(" "), _c('el-dropdown-item', {
     attrs: {
       "command": "mark-offline"
     }
-  }, [_vm._v("Mark as offline")])], 1)], 1) : _vm._e(), _vm._v(" "), _c('router-link', {
+  }, [_vm._v(_vm._s(_vm.trans('core.mark as offline')))])], 1)], 1) : _vm._e(), _vm._v(" "), _c('router-link', {
     attrs: {
       "to": {
         name: 'admin.page.page.create'

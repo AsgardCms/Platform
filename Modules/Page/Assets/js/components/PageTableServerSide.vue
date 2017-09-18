@@ -24,8 +24,8 @@
                                             {{ trans('core.table.actions') }}<i class="el-icon-caret-bottom el-icon--right"></i>
                                         </el-button>
                                         <el-dropdown-menu slot="dropdown">
-                                            <el-dropdown-item command="mark-online">Mark as online</el-dropdown-item>
-                                            <el-dropdown-item command="mark-offline">Mark as offline</el-dropdown-item>
+                                            <el-dropdown-item command="mark-online">{{ trans('core.mark as online') }}</el-dropdown-item>
+                                            <el-dropdown-item command="mark-offline">{{ trans('core.mark as offline') }}</el-dropdown-item>
                                         </el-dropdown-menu>
                                     </el-dropdown>
                                     <router-link :to="{name: 'admin.page.page.create'}">

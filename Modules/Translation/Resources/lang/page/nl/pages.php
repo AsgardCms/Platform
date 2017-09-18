@@ -17,6 +17,8 @@ return [
     'template' => 'Pagina template naam',
     'is homepage' => 'Startpagina?',
     'body' => 'Inhoud',
+    'status' => 'Status',
+    'pages were updated' => 'De paginas werden gewijzigd',
 
     'validation' => [
         'attributes' => [

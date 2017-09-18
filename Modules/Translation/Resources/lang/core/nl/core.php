@@ -61,4 +61,7 @@ return [
     'unauthorized-access' => 'U heefd de vereiste permissies niet om deze pagina te bekijken',
     'unauthenticated' => '',
     'unauthenticated-access' => 'Vous devez vous connecter pour accéder à cette page',
+    'something went wrong' => 'Whoops! Er iets misgegaan.',
+    'mark as online' => 'Markeer als online',
+    'mark as offline' => 'Markeer als offline',
 ];

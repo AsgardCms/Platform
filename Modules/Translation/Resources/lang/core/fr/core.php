@@ -62,4 +62,7 @@ return [
     'unauthorized-access' => 'Vous n\'avez pas les permissions nécessaires pour accéder à cette page',
     'unauthenticated' => 'Non authentifié',
     'unauthenticated-access' => 'Vous devez vous connecter pour accéder à cette page',
+    'something went wrong' => 'Whoops! Il y a eu une erreur.',
+    'mark as online' => 'Marquer comme étant en-ligne',
+    'mark as offline' => 'Marquer comme étant hors-ligne',
 ];

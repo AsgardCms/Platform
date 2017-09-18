@@ -18,6 +18,8 @@ return [
     'template' => 'Modèle de page',
     'is homepage' => 'Page d\'accueil ?',
     'body' => 'Contenu',
+    'status' => 'Status',
+    'pages were updated' => 'Les pages ont été modifiées',
 
     'validation' => [
         'attributes' => [
