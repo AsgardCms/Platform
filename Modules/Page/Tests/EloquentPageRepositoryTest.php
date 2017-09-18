@@ -200,6 +200,23 @@ class EloquentPageRepositoryTest extends BasePageTest
     }
 
     /** @test */
+    public function it_can_mark_multiple_pages_as_online()
+    {
+        $pageOne = $this->createRandomOfflinePage();
+        $pageTwo = $this->createRandomOfflinePage();
+
+        $this->page->markMultipleAsOnlineInAllLocales([1,2]);
+
+        $pageOne->refresh();
+        $pageTwo->refresh();
+
+        $this->assertTrue($pageOne->translate('en')->status);
+        $this->assertTrue($pageOne->translate('fr')->status);
+        $this->assertTrue($pageTwo->translate('en')->status);
+        $this->assertTrue($pageTwo->translate('fr')->status);
+    }
+
+    /** @test */
     public function it_can_mark_page_as_offline_in_all_locales()
     {
         $page = $this->createRandomOnlinePage();
@@ -208,6 +225,23 @@ class EloquentPageRepositoryTest extends BasePageTest
 
         $this->assertFalse($page->translate('en')->status);
         $this->assertFalse($page->translate('fr')->status);
+    }
+
+    /** @test */
+    public function it_can_mark_multiple_pages_as_offline()
+    {
+        $pageOne = $this->createRandomOnlinePage();
+        $pageTwo = $this->createRandomOnlinePage();
+
+        $this->page->markMultipleAsOfflineInAllLocales([1,2]);
+
+        $pageOne->refresh();
+        $pageTwo->refresh();
+
+        $this->assertFalse($pageOne->translate('en')->status);
+        $this->assertFalse($pageOne->translate('fr')->status);
+        $this->assertFalse($pageTwo->translate('en')->status);
+        $this->assertFalse($pageTwo->translate('fr')->status);
     }
 
     private function createPage()
