@@ -41,7 +41,7 @@ class Settings implements Setting
                 return empty($setting->translate($locale)->value) ? $defaultFromConfig : $setting->translate($locale)->value;
             }
         } else {
-            return empty($setting->plainValue) ? $defaultFromConfig : $setting->plainValue;
+            return $setting->plainValue === null ? $defaultFromConfig : $setting->plainValue;
         }
 
         return $defaultFromConfig;
