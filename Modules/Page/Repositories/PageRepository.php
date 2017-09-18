@@ -39,4 +39,10 @@ interface PageRepository extends BaseRepository
      * @return mixed
      */
     public function markAsOnlineInAllLocales(int $pageId);
+
+    /**
+     * @param int $pageId
+     * @return mixed
+     */
+    public function markAsOfflineInAllLocales(int $pageId);
 }

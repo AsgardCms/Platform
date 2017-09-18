@@ -188,4 +188,20 @@ class EloquentPageRepository extends EloquentBaseRepository implements PageRepos
 
         return $this->update($page, $data);
     }
+
+    /**
+     * @param int $pageId
+     * @return mixed
+     */
+    public function markAsOfflineInAllLocales(int $pageId)
+    {
+        $page = $this->find($pageId);
+
+        $data = [];
+        foreach (app(LaravelLocalization::class)->getSupportedLocales() as $locale => $supportedLocale) {
+            $data[$locale] = ['status' => 0];
+        }
+
+        return $this->update($page, $data);
+    }
 }
