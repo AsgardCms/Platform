@@ -24,7 +24,7 @@ class UpdatePageStatusController extends Controller
 
         $this->handleAction($request->get('action'), $pageIds);
 
-        return response()->json(['errors' => false, 'message' => 'Pages were updated']);
+        return response()->json(['errors' => false, 'message' => trans('page::pages.pages were updated')]);
     }
 
     private function handleAction(string $action, array $pageIds)
