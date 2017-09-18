@@ -3,10 +3,7 @@
 </template>
 
 <script>
-    import TranslationHelper from '../../../../Core/Assets/js/mixins/TranslationHelper'
-
     export default {
-        mixins: [TranslationHelper],
         props: {
             rows: {default: null},
             scope: {default: null},

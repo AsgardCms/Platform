@@ -150,12 +150,11 @@
 <script>
     import axios from 'axios'
     import Slugify from '../../../../Core/Assets/js/mixins/Slugify'
-    import TranslationHelper from '../../../../Core/Assets/js/mixins/TranslationHelper'
     import ShortcutHelper from '../../../../Core/Assets/js/mixins/ShortcutHelper'
     import Form from 'form-backend-validation'
 
     export default {
-        mixins: [Slugify, TranslationHelper, ShortcutHelper],
+        mixins: [Slugify, ShortcutHelper],
         props: {
             locales: {default: null},
             pageTitle: {default: null, String},

@@ -30,12 +30,10 @@
 
 <script>
     import axios from 'axios'
-    import TranslationHelper from '../../../../Core/Assets/js/mixins/TranslationHelper'
 
     let data;
 
     export default {
-        mixins: [TranslationHelper],
         data() {
             return {
                 data,

@@ -12,6 +12,8 @@ Vue.use(DataTables, { locale });
 Vue.use(VueI18n);
 Vue.use(VueRouter);
 Vue.use(require('vue-shortkey'), { prevent: ['input', 'textarea'] });
+require('./mixins');
+
 
 Vue.component('ckeditor', require('../../../Modules/Core/Assets/js/components/CkEditor.vue'));
 Vue.component('DeleteButton', require('../../../Modules/Core/Assets/js/components/DeleteComponent.vue'));

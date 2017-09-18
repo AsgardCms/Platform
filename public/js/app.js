@@ -31219,6 +31219,7 @@ _vue2.default.use(_vueDataTables2.default, { locale: _en2.default });
 _vue2.default.use(_vueI18n2.default);
 _vue2.default.use(_vueRouter2.default);
 _vue2.default.use(__webpack_require__(119), { prevent: ['input', 'textarea'] });
+__webpack_require__(144);
 
 _vue2.default.component('ckeditor', __webpack_require__(120));
 _vue2.default.component('DeleteButton', __webpack_require__(128));
@@ -71415,12 +71416,9 @@ var _axios = __webpack_require__(8);
 
 var _axios2 = _interopRequireDefault(_axios);
 
-var _TranslationHelper = __webpack_require__(10);
-
-var _TranslationHelper2 = _interopRequireDefault(_TranslationHelper);
-
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+var _data = void 0; //
 //
 //
 //
@@ -71450,12 +71448,8 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 //
 //
 //
-//
-
-var _data = void 0;
 
 exports.default = {
-    mixins: [_TranslationHelper2.default],
     data: function data() {
         var _this = this;
 
@@ -72689,16 +72683,13 @@ var _lodash = __webpack_require__(34);
 
 var _lodash2 = _interopRequireDefault(_lodash);
 
-var _TranslationHelper = __webpack_require__(10);
-
-var _TranslationHelper2 = _interopRequireDefault(_TranslationHelper);
-
 var _ShortcutHelper = __webpack_require__(35);
 
 var _ShortcutHelper2 = _interopRequireDefault(_ShortcutHelper);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+var _data = void 0; //
 //
 //
 //
@@ -72795,12 +72786,9 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 //
 //
 //
-//
-
-var _data = void 0;
 
 exports.default = {
-    mixins: [_TranslationHelper2.default, _ShortcutHelper2.default],
+    mixins: [_ShortcutHelper2.default],
     data: function data() {
         return {
             data: _data,
@@ -73223,10 +73211,6 @@ var _Slugify = __webpack_require__(113);
 
 var _Slugify2 = _interopRequireDefault(_Slugify);
 
-var _TranslationHelper = __webpack_require__(10);
-
-var _TranslationHelper2 = _interopRequireDefault(_TranslationHelper);
-
 var _ShortcutHelper = __webpack_require__(35);
 
 var _ShortcutHelper2 = _interopRequireDefault(_ShortcutHelper);
@@ -73237,8 +73221,158 @@ var _formBackendValidation2 = _interopRequireDefault(_formBackendValidation);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
 exports.default = {
-    mixins: [_Slugify2.default, _TranslationHelper2.default, _ShortcutHelper2.default],
+    mixins: [_Slugify2.default, _ShortcutHelper2.default],
     props: {
         locales: { default: null },
         pageTitle: { default: null, String: String }
@@ -73333,155 +73467,7 @@ exports.default = {
             this.fetchPage();
         }
     }
-}; //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
+};
 
 /***/ }),
 /* 113 */
@@ -74892,15 +74878,12 @@ module.exports = Component.exports
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
-
-var _TranslationHelper = __webpack_require__(10);
-
-var _TranslationHelper2 = _interopRequireDefault(_TranslationHelper);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+//
+//
+//
+//
 
 exports.default = {
-    mixins: [_TranslationHelper2.default],
     props: {
         rows: { default: null },
         scope: { default: null }
@@ -74949,10 +74932,7 @@ exports.default = {
         this.deleteMessage = this.trans('core.modal.confirmation-message');
         this.deleteTitle = this.trans('core.modal.title');
     }
-}; //
-//
-//
-//
+};
 
 /***/ }),
 /* 130 */
@@ -75216,6 +75196,25 @@ function toComment(sourceMap) {
 	return '/*# ' + data + ' */';
 }
 
+
+/***/ }),
+/* 144 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var _vue = __webpack_require__(3);
+
+var _vue2 = _interopRequireDefault(_vue);
+
+var _TranslationHelper = __webpack_require__(10);
+
+var _TranslationHelper2 = _interopRequireDefault(_TranslationHelper);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+_vue2.default.mixin(_TranslationHelper2.default);
 
 /***/ })
 /******/ ]);

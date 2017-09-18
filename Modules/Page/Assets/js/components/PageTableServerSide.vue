@@ -98,13 +98,12 @@
 <script>
     import axios from 'axios'
     import _ from "lodash";
-    import TranslationHelper from '../../../../Core/Assets/js/mixins/TranslationHelper'
     import ShortcutHelper from '../../../../Core/Assets/js/mixins/ShortcutHelper'
 
     let data;
 
     export default {
-        mixins: [TranslationHelper, ShortcutHelper],
+        mixins: [ShortcutHelper],
         data() {
             return {
                 data,
