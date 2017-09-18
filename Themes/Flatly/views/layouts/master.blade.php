@@ -16,7 +16,9 @@
 </head>
 <body>
 
-@include('partials.top-nav')
+@auth
+    @include('partials.admin-bar')
+@endauth
 @include('partials.navigation')
 
 <div class="container">
