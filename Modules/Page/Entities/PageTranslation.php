@@ -22,6 +22,10 @@ class PageTranslation extends Model
         'og_type',
     ];
 
+    protected $casts = [
+        'status' => 'boolean',
+    ];
+
     public function getBodyAttribute($body)
     {
         event($event = new PageContentIsRendering($body));
