@@ -23,6 +23,7 @@
     "babel-preset-es2015": "^6.24.1",
     "babel-preset-stage-3": "^6.24.1",
     "element-ui": "^1.4.4",
+    "font-awesome": "^4.7.0",
     "form-backend-validation": "^2.0.1",
     "moment": "^2.18.1",
     "vue-data-tables": "^2.0.4",
