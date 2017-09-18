@@ -13,6 +13,11 @@
             <?php if (is_module_enabled('Notification')): ?>
             @include('notification::partials.notifications')
             <?php endif; ?>
+            <li>
+                <a href="" class="publicUrl" style="display: none">
+                    <i class="fa fa-eye"></i> {{ trans('page::pages.view-page') }}
+                </a>
+            </li>
             <li><a href="{{ url('/') }}"><i class="fa fa-eye"></i> {{ trans('core::core.general.view website') }}</a></li>
             <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
