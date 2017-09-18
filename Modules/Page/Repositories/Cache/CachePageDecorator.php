@@ -99,7 +99,7 @@ class CachePageDecorator extends BaseCacheDecorator implements PageRepository
     {
         $this->clearCache();
 
-        $this->markAsOnlineInAllLocales($pageId);
+        return $this->repository->markAsOnlineInAllLocales($pageId);
     }
 
     /**
@@ -110,6 +110,6 @@ class CachePageDecorator extends BaseCacheDecorator implements PageRepository
     {
         $this->clearCache();
 
-        $this->markAsOfflineInAllLocales($pageId);
+        return $this->repository->markAsOfflineInAllLocales($pageId);
     }
 }
