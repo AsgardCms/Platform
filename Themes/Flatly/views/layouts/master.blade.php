@@ -12,9 +12,11 @@
     <link rel="shortcut icon" href="{{ Theme::url('favicon.ico') }}">
 
     {!! Theme::style('css/main.css') !!}
+    @stack('css-stack')
 </head>
 <body>
 
+@include('partials.top-nav')
 @include('partials.navigation')
 
 <div class="container">
@@ -28,5 +30,6 @@
 <?php if (Setting::has('core::analytics-script')): ?>
     {!! Setting::get('core::analytics-script') !!}
 <?php endif; ?>
+@stack('js-stack')
 </body>
 </html>
