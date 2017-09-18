@@ -18,6 +18,11 @@ $router->group(['prefix' => '/page', 'middleware' => ['api.token', 'auth.admin']
         'uses' => 'PageController@indexServerSide',
         'middleware' => 'token-can:page.pages.index',
     ]);
+    $router->get('mark-pages-status', [
+        'as' => 'api.page.page.mark-status',
+        'uses' => 'UpdatePageStatusController',
+        'middleware' => 'token-can:page.pages.edit',
+    ]);
     $router->delete('pages/{page}', [
         'as' => 'api.page.page.destroy',
         'uses' => 'PageController@destroy',
