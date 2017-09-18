@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\Request;
 use Mcamara\LaravelLocalization\LaravelLocalization;
 use Modules\Core\Repositories\Eloquent\EloquentBaseRepository;
+use Modules\Page\Entities\Page;
 use Modules\Page\Events\PageIsCreating;
 use Modules\Page\Events\PageIsUpdating;
 use Modules\Page\Events\PageWasCreated;
@@ -174,13 +175,11 @@ class EloquentPageRepository extends EloquentBaseRepository implements PageRepos
     }
 
     /**
-     * @param int $pageId
+     * @param Page $page
      * @return mixed
      */
-    public function markAsOnlineInAllLocales(int $pageId)
+    public function markAsOnlineInAllLocales(Page $page)
     {
-        $page = $this->find($pageId);
-
         $data = [];
         foreach (app(LaravelLocalization::class)->getSupportedLocales() as $locale => $supportedLocale) {
             $data[$locale] = ['status' => 1];
@@ -190,18 +189,38 @@ class EloquentPageRepository extends EloquentBaseRepository implements PageRepos
     }
 
     /**
-     * @param int $pageId
+     * @param Page $page
      * @return mixed
      */
-    public function markAsOfflineInAllLocales(int $pageId)
+    public function markAsOfflineInAllLocales(Page $page)
     {
-        $page = $this->find($pageId);
-
         $data = [];
         foreach (app(LaravelLocalization::class)->getSupportedLocales() as $locale => $supportedLocale) {
             $data[$locale] = ['status' => 0];
         }
 
         return $this->update($page, $data);
+    }
+
+    /**
+     * @param array $pageIds [int]
+     * @return mixed
+     */
+    public function markMultipleAsOnlineInAllLocales(array $pageIds)
+    {
+        foreach ($pageIds as $pageId) {
+            $this->markAsOnlineInAllLocales($this->find($pageId));
+        }
+    }
+
+    /**
+     * @param array $pageIds [int]
+     * @return mixed
+     */
+    public function markMultipleAsOfflineInAllLocales(array $pageIds)
+    {
+        foreach ($pageIds as $pageId) {
+            $this->markAsOfflineInAllLocales($this->find($pageId));
+        }
     }
 }

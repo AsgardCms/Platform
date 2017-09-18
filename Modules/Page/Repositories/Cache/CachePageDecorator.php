@@ -5,6 +5,7 @@ namespace Modules\Page\Repositories\Cache;
 use Illuminate\Contracts\Pagination\LengthAwarePaginator;
 use Illuminate\Http\Request;
 use Modules\Core\Repositories\Cache\BaseCacheDecorator;
+use Modules\Page\Entities\Page;
 use Modules\Page\Repositories\PageRepository;
 
 class CachePageDecorator extends BaseCacheDecorator implements PageRepository
@@ -92,24 +93,46 @@ class CachePageDecorator extends BaseCacheDecorator implements PageRepository
     }
 
     /**
-     * @param int $pageId
+     * @param Page $page
      * @return mixed
      */
-    public function markAsOnlineInAllLocales(int $pageId)
+    public function markAsOnlineInAllLocales(Page $page)
     {
         $this->clearCache();
 
-        return $this->repository->markAsOnlineInAllLocales($pageId);
+        return $this->repository->markAsOnlineInAllLocales($page);
     }
 
     /**
-     * @param int $pageId
+     * @param Page $page
      * @return mixed
      */
-    public function markAsOfflineInAllLocales(int $pageId)
+    public function markAsOfflineInAllLocales(Page $page)
     {
         $this->clearCache();
 
-        return $this->repository->markAsOfflineInAllLocales($pageId);
+        return $this->repository->markAsOfflineInAllLocales($page);
+    }
+
+    /**
+     * @param array $pageIds [int]
+     * @return mixed
+     */
+    public function markMultipleAsOnlineInAllLocales(array $pageIds)
+    {
+        $this->clearCache();
+
+        return $this->repository->markMultipleAsOnlineInAllLocales($pageIds);
+    }
+
+    /**
+     * @param array $pageIds [int]
+     * @return mixed
+     */
+    public function markMultipleAsOfflineInAllLocales(array $pageIds)
+    {
+        $this->clearCache();
+
+        return $this->repository->markMultipleAsOfflineInAllLocales($pageIds);
     }
 }

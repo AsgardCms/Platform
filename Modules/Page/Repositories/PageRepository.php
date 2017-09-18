@@ -5,6 +5,7 @@ namespace Modules\Page\Repositories;
 use Illuminate\Contracts\Pagination\LengthAwarePaginator;
 use Illuminate\Http\Request;
 use Modules\Core\Repositories\BaseRepository;
+use Modules\Page\Entities\Page;
 
 interface PageRepository extends BaseRepository
 {
@@ -35,14 +36,28 @@ interface PageRepository extends BaseRepository
     public function serverPaginationFilteringFor(Request $request) : LengthAwarePaginator;
 
     /**
-     * @param int $pageId
+     * @param Page $page
      * @return mixed
+     * @internal param int $pageId
      */
-    public function markAsOnlineInAllLocales(int $pageId);
+    public function markAsOnlineInAllLocales(Page $page);
 
     /**
-     * @param int $pageId
+     * @param array $pageIds[int]
      * @return mixed
      */
-    public function markAsOfflineInAllLocales(int $pageId);
+    public function markMultipleAsOnlineInAllLocales(array $pageIds);
+
+    /**
+     * @param Page $page
+     * @return mixed
+     * @internal param int $pageId
+     */
+    public function markAsOfflineInAllLocales(Page $page);
+
+    /**
+     * @param array $pageIds[int]
+     * @return mixed
+     */
+    public function markMultipleAsOfflineInAllLocales(array $pageIds);
 }
