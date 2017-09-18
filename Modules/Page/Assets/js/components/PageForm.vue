@@ -233,6 +233,7 @@
                         this.loading = false;
                         this.page = response.data.data;
                         this.tags = response.data.data.tags;
+                        $('.publicUrl').attr('href', this.page.urls.public_url).show();
                     })
                     .catch(error => {
                     })
@@ -250,6 +251,9 @@
             if (this.$route.params.pageId !== undefined) {
                 this.fetchPage();
             }
+        },
+        destroyed() {
+            $('.publicUrl').hide();
         }
     }
 </script>
