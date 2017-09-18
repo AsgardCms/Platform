@@ -44,6 +44,9 @@ const app = new Vue({
 });
 
 window.axios.interceptors.response.use(null, function(error) {
+    if (error.response === undefined) {
+        console.log(error);
+    }
     if (error.response.status === 403) {
         app.$notify.error({
             title: app.$t('core.unauthorized'),
