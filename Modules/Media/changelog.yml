@@ -1,5 +1,12 @@
 url: https://github.com/AsgardCms/Platform
 versions:
+    "3.1.0@unreleased":
+        added:
+            - Creating an UploadZone component
+            - Creating the media list component for media modal
+            - Creating a single media vue component
+        changed:
+            - Allow pdfs to be uploaded by default too
     "3.0.0":
         added:
             - New <code>MaxFolderSizeRule</code> class, using new validator classes in laravel 5.5
