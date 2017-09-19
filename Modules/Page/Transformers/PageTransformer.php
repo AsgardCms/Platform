@@ -18,6 +18,9 @@ class PageTransformer extends Resource
                 'slug' => optional($this->translate(locale()))->slug,
                 'status' => optional($this->translate(locale()))->status,
             ],
+            'urls' => [
+                'delete_url' => route('api.page.page.destroy', $this->id),
+            ],
         ];
     }
 }
