@@ -56,16 +56,18 @@ class InstallCommand extends Command
         $this->blockMessage('Welcome!', 'Starting the installation process...', 'comment');
 
         $success = $this->installer->stack([
-            \Modules\Core\Console\Installers\Scripts\ProtectInstaller::class,
-            \Modules\Core\Console\Installers\Scripts\ConfigureDatabase::class,
-            \Modules\Core\Console\Installers\Scripts\SetAppKey::class,
-            \Modules\Core\Console\Installers\Scripts\ConfigureUserProvider::class,
+            \Modules\Core\Console\Installers\Scripts\ProtectInstaller::class, // check if the .env file already exists
+            \Modules\Core\Console\Installers\Scripts\CreateEnvFile::class, // create a .env file
+            \Modules\Core\Console\Installers\Scripts\ConfigureDatabase::class, // prompt for database connection details
+            \Modules\Core\Console\Installers\Scripts\SetAppKey::class, // generate a unqiue app key
+            \Modules\Core\Console\Installers\Scripts\ConfigureAppUrl::class, // prompt for the app url
+            \Modules\Core\Console\Installers\Scripts\ConfigureUserProvider::class, // configure the admin user
             \Modules\Core\Console\Installers\Scripts\ModuleMigrator::class,
             \Modules\Core\Console\Installers\Scripts\ModuleSeeders::class,
             \Modules\Core\Console\Installers\Scripts\ModuleAssets::class,
             \Modules\Core\Console\Installers\Scripts\ThemeAssets::class,
             \Modules\Core\Console\Installers\Scripts\UnignoreComposerLock::class,
-            \Modules\Core\Console\Installers\Scripts\SetInstalledFlag::class,
+            \Modules\Core\Console\Installers\Scripts\SetInstalledFlag::class, // set the INSTALLED=true flag
         ])->install($this);
 
         if ($success) {
