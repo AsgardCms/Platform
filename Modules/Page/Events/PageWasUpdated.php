@@ -2,9 +2,10 @@
 
 namespace Modules\Page\Events;
 
+use Modules\Media\Contracts\StoringMedia;
 use Modules\Page\Entities\Page;
 
-class PageWasUpdated
+class PageWasUpdated implements StoringMedia
 {
     /**
      * @var array
@@ -19,5 +20,23 @@ class PageWasUpdated
     {
         $this->data = $data;
         $this->page = $page;
+    }
+
+    /**
+     * Return the entity
+     * @return \Illuminate\Database\Eloquent\Model
+     */
+    public function getEntity()
+    {
+        return $this->page;
+    }
+
+    /**
+     * Return the ALL data sent
+     * @return array
+     */
+    public function getSubmissionData()
+    {
+        return $this->data;
     }
 }
