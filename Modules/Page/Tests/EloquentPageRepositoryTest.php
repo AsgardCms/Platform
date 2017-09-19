@@ -162,7 +162,7 @@ class EloquentPageRepositoryTest extends BasePageTest
         $this->page->update($page, ['en' => ['title' => 'Better!']]);
 
         Event::assertDispatched(PageWasUpdated::class, function ($e) use ($page) {
-            return $e->pageId === $page->id;
+            return $e->page->id === $page->id;
         });
     }
 

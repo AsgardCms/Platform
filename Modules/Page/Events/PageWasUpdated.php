@@ -2,6 +2,8 @@
 
 namespace Modules\Page\Events;
 
+use Modules\Page\Entities\Page;
+
 class PageWasUpdated
 {
     /**
@@ -9,13 +11,13 @@ class PageWasUpdated
      */
     public $data;
     /**
-     * @var int
+     * @var Page
      */
-    public $pageId;
+    public $page;
 
-    public function __construct($pageId, array $data)
+    public function __construct(Page $page, array $data)
     {
         $this->data = $data;
-        $this->pageId = $pageId;
+        $this->page = $page;
     }
 }
