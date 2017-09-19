@@ -1,6 +1,9 @@
 url: https://github.com/AsgardCms/Platform
 versions:
     "3.1.0@unreleased":
+        added:
+            - Carbon format set globally in <code>AppServiceProvider</code>
+            - Creating a string helpers mixing file
         changed:
             - Registering the TranslationHelper mixin globally to access it from anywhere
     "3.0.0":

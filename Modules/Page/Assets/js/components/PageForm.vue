@@ -138,6 +138,9 @@
                                      v-text="form.errors.first('template')"></div>
                             </el-form-item>
                             <tags-input namespace="asgardcms/page" @input="setTags" :current-tags="tags"></tags-input>
+
+                            <single-media zone="image" @singleFileSelected="selectSingleFile"
+                                          entity="Modules\Page\Entities\Page" :entity-id="page.id"></single-media>
                         </div>
                     </div>
                 </div>
@@ -174,7 +177,7 @@
                         og_type: '',
                     }])
                     .fromPairs()
-                    .merge({template: 'default', is_home: 0})
+                    .merge({template: 'default', is_home: 0, medias_single: []})
                     .value(),
 
                 templates: {
@@ -244,6 +247,11 @@
                 }
                 return route('api.page.page.store');
             },
+            selectSingleFile(event) {
+                this.page.medias_single = {
+                    [event.zone]: event.id,
+                };
+            }
         },
         mounted() {
             this.fetchTemplates();
