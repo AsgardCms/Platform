@@ -51,6 +51,7 @@ const app = new Vue({
 window.axios.interceptors.response.use(null, function(error) {
     if (error.response === undefined) {
         console.log(error);
+        return;
     }
     if (error.response.status === 403) {
         app.$notify.error({
