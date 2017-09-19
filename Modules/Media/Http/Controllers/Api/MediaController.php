@@ -68,6 +68,23 @@ class MediaController extends Controller
         return new MediaTransformer($file);
     }
 
+    public function findFirstByZoneEntity(Request $request)
+    {
+        $imageable = DB::table('media__imageables')
+            ->where('imageable_id', $request->get('entity_id'))
+            ->whereZone($request->get('zone'))
+            ->whereImageableType($request->get('entity'))
+            ->first();
+
+        if ($imageable === null) {
+            return response()->json(null);
+        }
+
+        $file = $this->file->find($imageable->file_id);
+
+        return new MediaTransformer($file);
+    }
+
     /**
      * Store a newly created resource in storage.
      *

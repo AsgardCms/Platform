@@ -31,6 +31,10 @@ $router->group(['middleware' => 'api.token'], function (Router $router) {
         'uses' => 'MediaController@sortMedia',
         'as' => 'api.media.sort',
     ]);
+    $router->get('media/find-first-by-zone-and-entity', [
+        'uses' => 'MediaController@findFirstByZoneEntity',
+        'as' => 'api.media.find-first-by-zone-and-entity',
+    ]);
 
     $router->get('media/{media}', [
         'uses' => 'MediaController@find',
