@@ -12,7 +12,7 @@
 
 <script>
     // Source: https://github.com/dangvanthanh/vue-ckeditor2
-    let inc = 0
+    let inc = new Date().getTime();
     export default {
         name: 'vue-ckeditor',
         props: {
@@ -46,9 +46,11 @@
         },
         watch: {
             value (val) {
-                let html = this.instance.getData();
-                if (val !== html) {
-                    this.instance.setData(val);
+                if (this.instance) {
+                    let html = this.instance.getData();
+                    if (val !== html) {
+                        this.instance.setData(val);
+                    }
                 }
             }
         },
