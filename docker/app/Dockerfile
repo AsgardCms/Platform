@@ -41,6 +41,8 @@ COPY default /etc/nginx/sites-enabled/default
 COPY php-fpm.conf /etc/php/7.0/fpm/php-fpm.conf
 COPY supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 
+COPY laravel.ini /etc/php/php7.0/conf.d
+
 RUN mkdir /tmp/certgen
 WORKDIR /tmp/certgen
 RUN openssl genrsa -des3 -passout pass:x -out server.pass.key 2048 \
