@@ -12,15 +12,19 @@ class EnvFileWriter
     private $finder;
 
     /**
+     * Variables in .env.example that can be written by the installer when it creates the .env file
+     * 
      * @var array
      */
-    protected $search = [
-        'DB_CONNECTION=mysql',
-        'DB_HOST=127.0.0.1',
-        'DB_PORT=3306',
-        'DB_DATABASE=homestead',
-        'DB_USERNAME=homestead',
-        'DB_PASSWORD=secret',
+    protected $setable_variables = [
+        'db_driver' => 'DB_CONNECTION=mysql',
+        'db_host' => 'DB_HOST=127.0.0.1',
+        'db_port' => 'DB_PORT=3306',
+        'db_database' => 'DB_DATABASE=homestead',
+        'db_username' => 'DB_USERNAME=homestead',
+        'db_password' => 'DB_PASSWORD=secret',
+        'app_url' => 'APP_URL=http://localhost',
+        'installed' => 'INSTALLED=false',
     ];
 
     /**
@@ -42,29 +46,48 @@ class EnvFileWriter
     }
 
     /**
-     * @param $driver
-     * @param $host
-     * @param $port
-     * @param $name
-     * @param $username
-     * @param $password
+     * Create a new .env file using the contents of .env.example
+     * 
      * @throws \Illuminate\Contracts\Filesystem\FileNotFoundException
+     * @return void
      */
-    public function write($driver, $host, $port, $name, $username, $password)
+    public function create()
     {
         $environmentFile = $this->finder->get($this->template);
+        
+        $this->finder->put($this->file, $environmentFile);
+    }
+    
+    /**
+     * Update the .env file
+     * 
+     * @param array $vars
+     * @throws \Illuminate\Contracts\Filesystem\FileNotFoundException
+     * @return void
+     */
+    public function write($vars)
+    {
+        if (!empty($vars)) {
+            
+            $environmentFile = $this->finder->get($this->file);
 
-        $replace = [
-            "DB_CONNECTION=$driver",
-            "DB_HOST=$host",
-            "DB_PORT=$port",
-            "DB_DATABASE=$name",
-            "DB_USERNAME=$username",
-            "DB_PASSWORD=$password",
-        ];
+            foreach ($vars as $key => $value) {
+                
+                if (isset($this->setable_variables[$key])) {
+                    
+                    $env_var_name = explode('=', $this->setable_variables[$key])[0];
+                    
+                    $value = $env_var_name . '=' . $value;
+                    
+                    $environmentFile = str_replace($this->setable_variables[$key], $value, $environmentFile);
 
-        $newEnvironmentFile = str_replace($this->search, $replace, $environmentFile);
+                }
+ 
+            }
 
-        $this->finder->put($this->file, $newEnvironmentFile);
+            $this->finder->put($this->file, $environmentFile);
+            
+        }
+
     }
 }
