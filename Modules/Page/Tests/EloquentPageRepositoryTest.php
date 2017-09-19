@@ -91,7 +91,7 @@ class EloquentPageRepositoryTest extends BasePageTest
         ]);
 
         Event::assertDispatched(PageWasCreated::class, function ($e) use ($page) {
-            return $e->pageId === $page->id;
+            return $e->page->id === $page->id;
         });
     }
 

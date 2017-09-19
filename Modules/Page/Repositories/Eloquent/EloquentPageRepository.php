@@ -60,7 +60,7 @@ class EloquentPageRepository extends EloquentBaseRepository implements PageRepos
         event($event = new PageIsCreating($data));
         $page = $this->model->create($event->getAttributes());
 
-        event(new PageWasCreated($page->id, $data));
+        event(new PageWasCreated($page, $data));
 
         $page->setTags(array_get($data, 'tags', []));
 
