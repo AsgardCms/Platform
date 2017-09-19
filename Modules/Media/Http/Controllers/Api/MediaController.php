@@ -63,6 +63,11 @@ class MediaController extends Controller
         return MediaTransformer::collection($this->file->serverPaginationFilteringFor($request));
     }
 
+    public function find(File $file)
+    {
+        return new MediaTransformer($file);
+    }
+
     /**
      * Store a newly created resource in storage.
      *

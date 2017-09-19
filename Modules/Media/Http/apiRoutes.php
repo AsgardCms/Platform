@@ -31,4 +31,9 @@ $router->group(['middleware' => 'api.token'], function (Router $router) {
         'uses' => 'MediaController@sortMedia',
         'as' => 'api.media.sort',
     ]);
+
+    $router->get('media/{media}', [
+        'uses' => 'MediaController@find',
+        'as' => 'api.media.find',
+    ]);
 });
