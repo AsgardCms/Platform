@@ -11,6 +11,7 @@ class TranslationsViewComposer
         $staticTranslations = json_encode([
             'page' => array_dot(trans('page::pages')),
             'core' => array_dot(trans('core::core')),
+            'media' => array_dot(trans('media::media')),
         ]);
 
         $view->with(compact('staticTranslations'));
