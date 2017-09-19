@@ -3,6 +3,7 @@
 namespace Modules\Media\Repositories\Eloquent;
 
 use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Http\Request;
 use Modules\Core\Repositories\Eloquent\EloquentBaseRepository;
 use Modules\Media\Entities\File;
 use Modules\Media\Events\FileIsCreating;
@@ -120,5 +121,29 @@ class EloquentFileRepository extends EloquentBaseRepository implements FileRepos
         $version++;
 
         return $fileNameOnly . '_' . $version . '.' . $extension;
+    }
+
+    /**
+     * @param Request $request
+     * @return mixed
+     */
+    public function serverPaginationFilteringFor(Request $request)
+    {
+        $media = $this->allWithBuilder();
+
+        if ($request->get('search') !== null) {
+            $term = $request->get('search');
+            $media->where('filename', 'LIKE', "%{$term}%");
+        }
+
+        if ($request->get('order_by') !== null && $request->get('order') !== 'null') {
+            $order = $request->get('order') === 'ascending' ? 'asc' : 'desc';
+
+            $media->orderBy($request->get('order_by'), $order);
+        } else {
+            $media->orderBy('created_at', 'desc');
+        }
+
+        return $media->paginate($request->get('per_page', 10));
     }
 }

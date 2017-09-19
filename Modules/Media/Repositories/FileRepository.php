@@ -2,6 +2,7 @@
 
 namespace Modules\Media\Repositories;
 
+use Illuminate\Http\Request;
 use Modules\Core\Repositories\BaseRepository;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 
@@ -29,4 +30,10 @@ interface FileRepository extends BaseRepository
      * @return object
      */
     public function findMultipleFilesByZoneForEntity($zone, $entity);
+
+    /**
+     * @param Request $request
+     * @return mixed
+     */
+    public function serverPaginationFilteringFor(Request $request);
 }
