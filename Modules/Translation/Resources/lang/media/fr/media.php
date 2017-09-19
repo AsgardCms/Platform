@@ -32,4 +32,6 @@ return [
     'insert' => 'Sélectionner ce fichier',
     'file picker' => 'Sélection de fichiers',
     'Browse' => 'Parcourir...',
+    'upload file' => 'Uploadez un fichier',
+    'remove media' => 'Supprimez le fichier',
 ];

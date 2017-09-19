@@ -32,6 +32,8 @@ return [
     'insert' => 'Insert this file',
     'file picker' => 'File Picker',
     'Browse' => 'Browse ...',
+    'upload file' => 'Upload a file',
+    'remove media' => 'Remove media',
     'list resource' => 'List media',
     'create resource' => 'Create media',
     'edit resource' => 'Edit media',

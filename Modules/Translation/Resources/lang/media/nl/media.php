@@ -32,4 +32,6 @@ return [
     'insert' => 'Voeg dit bestand in',
     'file picker' => 'Bestandskiezer',
     'Browse' => 'Bladeren ...',
+    'upload file' => 'File uploaded',
+    'remove media' => 'File verwijderen',
 ];
