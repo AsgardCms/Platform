@@ -4,6 +4,8 @@ versions:
         added:
             - New UI interaction on the page index to select pages and mark one or mutiple as on/offline
             - New view page button on edit page views
+        changed:
+            - Sending the full page entity to the PageWasUpdated event
     "3.0.3":
         changed:
             - Set the active tab to the currently active tab
