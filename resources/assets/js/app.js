@@ -5,6 +5,7 @@ import VueI18n from 'vue-i18n'
 import VueRouter from 'vue-router'
 import ElementUI from 'element-ui'
 import DataTables from 'vue-data-tables'
+import VueEvents from 'vue-events'
 import locale from 'element-ui/lib/locale/lang/en'
 
 Vue.use(ElementUI, { locale });
@@ -12,12 +13,14 @@ Vue.use(DataTables, { locale });
 Vue.use(VueI18n);
 Vue.use(VueRouter);
 Vue.use(require('vue-shortkey'), { prevent: ['input', 'textarea'] });
+Vue.use(VueEvents);
 require('./mixins');
 
 
 Vue.component('ckeditor', require('../../../Modules/Core/Assets/js/components/CkEditor.vue'));
 Vue.component('DeleteButton', require('../../../Modules/Core/Assets/js/components/DeleteComponent.vue'));
 Vue.component('TagsInput', require('../../../Modules/Tag/Assets/js/components/TagInput.vue'));
+Vue.component('SingleMedia', require('../../../Modules/Media/Assets/js/components/SingleMedia.vue'));
 import PageRoutes from '../../../Modules/Page/Assets/js/PageRoutes';
 
 const currentLocale =  window.AsgardCMS.currentLocale;
