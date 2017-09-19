@@ -22,6 +22,11 @@ $router->group(['middleware' => 'api.token'], function (Router $router) {
         'as' => 'api.media.all',
         'middleware' => 'token-can:media.medias.index',
     ]);
+    $router->get('media/all-vue', [
+        'uses' => 'MediaController@allVue',
+        'as' => 'api.media.all-vue',
+        'middleware' => 'token-can:media.medias.index',
+    ]);
     $router->post('media/sort', [
         'uses' => 'MediaController@sortMedia',
         'as' => 'api.media.sort',

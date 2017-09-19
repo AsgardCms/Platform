@@ -15,6 +15,7 @@ use Modules\Media\Http\Requests\UploadMediaRequest;
 use Modules\Media\Image\Facade\Imagy;
 use Modules\Media\Repositories\FileRepository;
 use Modules\Media\Services\FileService;
+use Modules\Media\Transformers\MediaTransformer;
 use Yajra\DataTables\Facades\DataTables;
 
 class MediaController extends Controller
@@ -55,6 +56,11 @@ class MediaController extends Controller
             })
             ->rawColumns(['thumbnail'])
             ->toJson();
+    }
+
+    public function allVue(Request $request)
+    {
+        return MediaTransformer::collection($this->file->serverPaginationFilteringFor($request));
     }
 
     /**
