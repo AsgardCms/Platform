@@ -102,25 +102,26 @@
                 }.bind(this);
                 this.edit_grid = function () {
                     mode = jQuery('#edit-grid').data('mode');
+                    var grid = this;
                     if (mode == 0) {
                         // enable all the grid editing
                         _.map(jQuery('.grid-stack > .grid-stack-item:visible'), function (el) {
-                            this.grid.movable(el, true);
+                            grid.grid.movable(el, true);
                             jQuery(el).on('dblclick', function (e) {
-                                this.grid.resizable(el, true);
+                                grid.grid.resizable(el, true);
                             }.bind(this));
                         }, this);
                         jQuery('#edit-grid').data('mode', 1).text('{{ trans('dashboard::dashboard.save grid') }}');
                     } else {
                         // disable all the grid editing
                         _.map(jQuery('.grid-stack > .grid-stack-item:visible'), function (el) {
-                            this.grid.movable(el, false);
-                            this.grid.resizable(el, false);
+                            grid.grid.movable(el, false);
+                            grid.grid.resizable(el, false);
                             jQuery(el).off('dblclick');
                         }, this);
                         jQuery('#edit-grid').data('mode', 0).text('{{ trans('dashboard::dashboard.edit grid') }}');
                         // run the save mech
-                        this.save_grid();
+                        grid.save_grid();
                     }
                 }.bind(this);
                 this.spawn_widget = function (node) {
