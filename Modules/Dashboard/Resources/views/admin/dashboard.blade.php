@@ -65,9 +65,10 @@
                 this.grid = jQuery('.grid-stack').data('gridstack');
                 this.load_grid = function () {
                     this.grid.remove_all();
+                    var grid = this;
                     var items = GridStackUI.Utils.sort(this.serialized_data);
                     _.each(items, function (node) {
-                        this.spawn_widget(node);
+                        grid.spawn_widget(node);
                         jQuery(jQuery.find('option[value="'+node.id+'"]')[0]).hide();
                     }, this);
                 }.bind(this);
