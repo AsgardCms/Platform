@@ -79,6 +79,7 @@
         translations: {!! $staticTranslations !!},
         locales: {!! json_encode(LaravelLocalization::getSupportedLocales()) !!},
         currentLocale: '{{ locale() }}',
+        editor: '{{ $activeEditor }}',
     };
 </script>
 
