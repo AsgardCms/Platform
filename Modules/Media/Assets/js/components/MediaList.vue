@@ -2,50 +2,82 @@
     <div class="row">
         <div class="col-xs-12">
             <div class="sc-table">
-                <div class="tool-bar el-row" style="padding-bottom: 20px;">
-                    <div class="actions el-col el-col-8">
-                        <h4>{{ trans('media.choose file') }}</h4>
-                    </div>
-                    <div class="search el-col el-col-5">
-                        <el-input icon="search" @change="performSearch" v-model="searchQuery">
-                        </el-input>
+                 <div class="el-row">
+                    <div class="title">
+                        <h4 v-if="singleModal">{{ trans('media.choose file') }}</h4>
+                        <h3 v-if="! singleModal">{{ trans('media.title.media') }}</h3>
                     </div>
                 </div>
-                <el-table
-                        :data="data"
-                        stripe
-                        style="width: 100%"
-                        ref="mediaTable"
-                        v-loading.body="tableIsLoading"
-                        @sort-change="handleSortChange">
-                    <el-table-column label="" width="150">
-                        <template scope="scope">
-                            <img :src="scope.row.small_thumb" alt="" v-if="scope.row.is_image"/>
-                            <i :class="`fa ${scope.row.fa_icon}`" style="font-size: 20px;" v-if="! scope.row.is_image"></i>
-                        </template>
-                    </el-table-column>
-                    <el-table-column prop="filename" :label="trans('media.table.filename')" sortable="custom">
-                    </el-table-column>
-                    <el-table-column prop="created_at" :label="trans('core.table.created at')" sortable="custom">
-                    </el-table-column>
-                    <el-table-column prop="actions" label="" width="150">
-                        <template scope="scope">
-                            <a class="btn btn-primary btn-flat" @click.prevent="insertMedia(scope)" v-if="singleModal">
-                                {{ trans('media.insert') }}
-                            </a>
-                        </template>
-                    </el-table-column>
-                </el-table>
-                <div class="pagination-wrap" style="text-align: center; padding-top: 20px;">
-                    <el-pagination
-                            @size-change="handleSizeChange"
-                            @current-change="handleCurrentChange"
-                            :current-page.sync="meta.current_page"
-                            :page-sizes="[10, 20, 50, 100]"
-                            :page-size="parseInt(meta.per_page)"
-                            layout="total, sizes, prev, pager, next, jumper"
-                            :total="meta.total">
-                    </el-pagination>
+                <div class="box box-primary">
+                    <div class="box-body">
+                        <div class="tool-bar el-row" style="padding-bottom: 20px;">
+                            <div class="actions el-col el-col-14">
+                                <new-folder></new-folder>
+                                <upload-button></upload-button>
+                                <el-button-group>
+                                    <el-button type="primary" :disabled="selectedMedia.length === 0">Move</el-button>
+                                    <el-button type="warning" :disabled="selectedMedia.length === 0">Rename</el-button>
+                                    <el-button type="danger" :disabled="selectedMedia.length === 0">Delete</el-button>
+                                </el-button-group>
+                            </div>
+                            <div class="search el-col el-col-5">
+                                <el-input icon="search" @change="performSearch" v-model="searchQuery">
+                                </el-input>
+                            </div>
+                        </div>
+
+                        <el-table
+                                :data="data"
+                                stripe
+                                style="width: 100%"
+                                ref="mediaTable"
+                                v-loading.body="tableIsLoading"
+                                @sort-change="handleSortChange"
+                                @selection-change="handleSelectionChange">
+                            <el-table-column
+                                    type="selection"
+                                    width="55">
+                            </el-table-column>
+                            <el-table-column label="" width="150">
+                                <template scope="scope">
+                                    <img :src="scope.row.small_thumb" alt="" v-if="scope.row.is_image"/>
+                                    <i :class="`fa ${scope.row.fa_icon}`" style="font-size: 38px;"
+                                       v-if="! scope.row.is_image && ! scope.row.is_folder"></i>
+                                    <i class="fa fa-folder" style="font-size: 38px;"
+                                       v-if="scope.row.is_folder"></i>
+                                </template>
+                            </el-table-column>
+
+                            <el-table-column prop="filename" :label="trans('media.table.filename')" sortable="custom">
+                                <template scope="scope">
+                                    <strong v-if="scope.row.is_folder" style="cursor: pointer;">{{ scope.row.filename }}</strong>
+                                    <span v-else>{{ scope.row.filename }}</span>
+                                </template>
+                            </el-table-column>
+                            <el-table-column prop="created_at" :label="trans('core.table.created at')" sortable="custom"
+                                             width="150">
+                            </el-table-column>
+                            <el-table-column prop="actions" label="" width="150">
+                                <template scope="scope">
+                                    <a class="btn btn-primary btn-flat" @click.prevent="insertMedia(scope)"
+                                       v-if="singleModal">
+                                        {{ trans('media.insert') }}
+                                    </a>
+                                </template>
+                            </el-table-column>
+                        </el-table>
+                        <div class="pagination-wrap" style="text-align: center; padding-top: 20px;">
+                            <el-pagination
+                                    @size-change="handleSizeChange"
+                                    @current-change="handleCurrentChange"
+                                    :current-page.sync="meta.current_page"
+                                    :page-sizes="[10, 20, 50, 100]"
+                                    :page-size="parseInt(meta.per_page)"
+                                    layout="total, sizes, prev, pager, next, jumper"
+                                    :total="meta.total">
+                            </el-pagination>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -53,7 +85,14 @@
 </template>
 
 <script>
+    import NewFolder from './NewFolder.vue';
+    import UploadButton from './UploadButton.vue';
+
     export default {
+        components: {
+            'new-folder': NewFolder,
+            'upload-button': UploadButton,
+        },
         props: {
             singleModal: {type: Boolean},
         },
@@ -71,6 +110,7 @@
                 },
                 links: {},
                 searchQuery: '',
+                selectedMedia: {},
             }
         },
         methods: {
@@ -121,8 +161,12 @@
             insertMedia(scope) {
                 this.$events.emit('fileWasSelected', scope.row);
             },
+            handleSelectionChange(selectedMedia) {
+                this.selectedMedia = selectedMedia;
+            },
         },
         mounted() {
+            this.selectedMedia.length = 0;
             this.fetchMediaData();
             this.$events.listen('fileWasUploaded', eventData => {
                 this.fetchMediaData();
