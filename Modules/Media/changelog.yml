@@ -5,6 +5,9 @@ versions:
             - Creating an UploadZone component
             - Creating the media list component for media modal
             - Creating a single media vue component
+            - New media permissions for folders
+            - Creating NewFolder component
+            - Creating UploadButton component
         changed:
             - Allow pdfs to be uploaded by default too
     "3.0.0":
