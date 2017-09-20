@@ -82,6 +82,10 @@ class SentinelGroupSeedTableSeeder extends Seeder
             'media.medias.create' => true,
             'media.medias.edit' => true,
             'media.medias.destroy' => true,
+            'media.folders.index' => true,
+            'media.folders.create' => true,
+            'media.folders.edit' => true,
+            'media.folders.destroy' => true,
             /* Settings */
             'setting.settings.index' => true,
             'setting.settings.edit' => true,
