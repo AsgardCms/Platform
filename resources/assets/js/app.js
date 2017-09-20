@@ -23,6 +23,7 @@ Vue.component('ckeditor', require('../../../Modules/Core/Assets/js/components/Ck
 Vue.component('DeleteButton', require('../../../Modules/Core/Assets/js/components/DeleteComponent.vue'));
 Vue.component('TagsInput', require('../../../Modules/Tag/Assets/js/components/TagInput.vue'));
 Vue.component('SingleMedia', require('../../../Modules/Media/Assets/js/components/SingleMedia.vue'));
+Vue.component('MediaManager', require('../../../Modules/Media/Assets/js/components/MediaManager.vue'));
 import PageRoutes from '../../../Modules/Page/Assets/js/PageRoutes';
 
 const currentLocale =  window.AsgardCMS.currentLocale;
