@@ -45,8 +45,9 @@
 
                                     <el-form-item :label="trans('page.body')"
                                                   :class="{'el-form-item is-error': form.errors.has(locale + '.body') }">
-                                        <ckeditor v-model="page[locale].body" :value="page[locale].body">
-                                        </ckeditor>
+                                        <component :is="getCurrentEditor()" v-model="page[locale].body" :value="page[locale].body">
+                                        </component>
+
                                         <div class="el-form-item__error" v-if="form.errors.has(locale + '.body')"
                                              v-text="form.errors.first(locale + '.body')"></div>
                                     </el-form-item>
@@ -154,10 +155,11 @@
     import axios from 'axios'
     import Slugify from '../../../../Core/Assets/js/mixins/Slugify'
     import ShortcutHelper from '../../../../Core/Assets/js/mixins/ShortcutHelper'
+    import ActiveEditor from '../../../../Core/Assets/js/mixins/ActiveEditor'
     import Form from 'form-backend-validation'
 
     export default {
-        mixins: [Slugify, ShortcutHelper],
+        mixins: [Slugify, ShortcutHelper, ActiveEditor],
         props: {
             locales: {default: null},
             pageTitle: {default: null, String},
