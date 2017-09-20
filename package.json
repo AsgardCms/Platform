@@ -30,6 +30,7 @@
     "vue-events": "^3.0.1",
     "vue-i18n": "^7.2.0",
     "vue-router": "^2.7.0",
-    "vue-shortkey": "^2.2.2"
+    "vue-shortkey": "^2.2.2",
+    "vue-simplemde": "^0.4.4"
   }
 }

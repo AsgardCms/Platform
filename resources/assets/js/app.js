@@ -7,6 +7,7 @@ import ElementUI from 'element-ui'
 import DataTables from 'vue-data-tables'
 import VueEvents from 'vue-events'
 import locale from 'element-ui/lib/locale/lang/en'
+import VueSimplemde from 'vue-simplemde'
 
 Vue.use(ElementUI, { locale });
 Vue.use(DataTables, { locale });
@@ -14,6 +15,7 @@ Vue.use(VueI18n);
 Vue.use(VueRouter);
 Vue.use(require('vue-shortkey'), { prevent: ['input', 'textarea'] });
 Vue.use(VueEvents);
+Vue.use(VueSimplemde);
 require('./mixins');
 
 
