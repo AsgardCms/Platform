@@ -48,6 +48,9 @@ class MediaController extends Controller
 
         return Datatables::eloquent($files)
             ->addColumn('thumbnail', function ($file) {
+                if ($file->isFolder()) {
+                    return '<i class="fa fa-folder" style="font-size: 20px;"></i>';
+                }
                 if ($file->isImage()) {
                     return '<img src="' . Imagy::getThumbnail($file->path, 'smallThumb') . '"/>';
                 }
