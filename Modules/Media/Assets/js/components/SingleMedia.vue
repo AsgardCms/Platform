@@ -21,7 +21,7 @@
                 :before-close="handleClose">
 
             <upload-zone></upload-zone>
-            <media-list></media-list>
+            <media-list single-modal></media-list>
 
             <span slot="footer" class="dialog-footer">
                 <el-button @click="dialogVisible = false">{{ trans('core.button.cancel') }}</el-button>

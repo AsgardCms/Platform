@@ -18,7 +18,7 @@
                         ref="mediaTable"
                         v-loading.body="tableIsLoading"
                         @sort-change="handleSortChange">
-                    <el-table-column :label="trans('core.table.thumbnail')" width="150">
+                    <el-table-column label="" width="150">
                         <template scope="scope">
                             <img :src="scope.row.small_thumb" alt="" v-if="scope.row.is_image"/>
                             <i :class="`fa ${scope.row.fa_icon}`" style="font-size: 20px;" v-if="! scope.row.is_image"></i>
@@ -28,9 +28,9 @@
                     </el-table-column>
                     <el-table-column prop="created_at" :label="trans('core.table.created at')" sortable="custom">
                     </el-table-column>
-                    <el-table-column prop="actions" :label="trans('core.table.actions')" width="150">
+                    <el-table-column prop="actions" label="" width="150">
                         <template scope="scope">
-                            <a class="btn btn-primary btn-flat" @click.prevent="insertMedia(scope)">
+                            <a class="btn btn-primary btn-flat" @click.prevent="insertMedia(scope)" v-if="singleModal">
                                 {{ trans('media.insert') }}
                             </a>
                         </template>
@@ -54,6 +54,9 @@
 
 <script>
     export default {
+        props: {
+            singleModal: {type: Boolean},
+        },
         data() {
             return {
                 data: [],
