@@ -25,13 +25,23 @@ class MediaTransformer extends Resource
         return [
             'id' => $this->id,
             'filename' => $this->filename,
-            'path' => (string) $this->path,
+            'path' => $this->getPath(),
             'is_image' => $this->isImage(),
+            'is_folder' => $this->isFolder(),
             'media_type' => $this->media_type,
             'fa_icon' => FileHelper::getFaIcon($this->media_type),
             'created_at' => $this->created_at,
             'small_thumb' => $this->imagy->getThumbnail($this->path,'smallThumb'),
             'medium_thumb' => $this->imagy->getThumbnail($this->path,'mediumThumb'),
         ];
+    }
+
+    private function getPath()
+    {
+        if ($this->is_folder) {
+            return $this->path->getRelativeUrl();
+        }
+
+        return (string) $this->path;
     }
 }
