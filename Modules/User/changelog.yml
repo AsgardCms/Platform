@@ -1,5 +1,8 @@
 url: https://github.com/AsgardCms/Platform
 versions:
+    "3.1.0@unreleased":
+        added:
+            - Seeding new media.folders permissions on install
     "3.0.0":
         added:
             - <code>logUserIn</code> on the <code>Authentication</code> interface to log a user object in
