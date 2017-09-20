@@ -57,6 +57,7 @@ class InstallCommand extends Command
 
         $success = $this->installer->stack([
             \Modules\Core\Console\Installers\Scripts\ProtectInstaller::class,
+            \Modules\Core\Console\Installers\Scripts\CreateEnvFile::class,
             \Modules\Core\Console\Installers\Scripts\ConfigureDatabase::class,
             \Modules\Core\Console\Installers\Scripts\SetAppKey::class,
             \Modules\Core\Console\Installers\Scripts\ConfigureUserProvider::class,
