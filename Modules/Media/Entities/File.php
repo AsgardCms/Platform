@@ -28,6 +28,7 @@ class File extends Model implements TaggableInterface
     protected $table = 'media__files';
     public $translatedAttributes = ['description', 'alt_attribute', 'keywords'];
     protected $fillable = [
+        'is_folder',
         'description',
         'alt_attribute',
         'keywords',
@@ -41,6 +42,7 @@ class File extends Model implements TaggableInterface
         'folder_id',
     ];
     protected $appends = ['path_string', 'media_type'];
+    protected $casts = ['is_folder' => 'boolean', ];
     protected static $entityNamespace = 'asgardcms/media';
 
     public function getPathAttribute($value)
@@ -56,6 +58,11 @@ class File extends Model implements TaggableInterface
     public function getMediaTypeAttribute()
     {
         return FileHelper::getTypeByMimetype($this->mimetype);
+    }
+
+    public function isFolder() : bool
+    {
+        return $this->is_folder;
     }
 
     public function isImage()
