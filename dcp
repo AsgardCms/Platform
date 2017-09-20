@@ -11,6 +11,14 @@ if [ $# -gt 0 ]; then
         shift 1
         EXEC_CMD="cd /var/www/html && php artisan $@"
         $COMPOSE exec app bash -c "$EXEC_CMD"
+    elif [ "$1" == "bin/console" ]; then
+        shift 1
+        EXEC_CMD="cd /var/www/html && php bin/console $@"
+        $COMPOSE exec app bash -c "$EXEC_CMD"
+    elif [ "$1" == "app/console" ]; then
+        shift 1
+        EXEC_CMD="cd /var/www/html && php app/console $@"
+        $COMPOSE exec app bash -c "$EXEC_CMD"
     elif [ "$1" == "test" ]; then
         shift 1
         $COMPOSE run --rm -w /var/www/html app ./vendor/bin/phpunit $@

@@ -43,6 +43,13 @@ services:
     volumes:
       - .:/var/www/html
 
+  blackfire:
+    image: blackfire/blackfire
+    environment:
+      BLACKFIRE_SERVER_ID:
+      BLACKFIRE_SERVER_TOKEN:
+    networks:
+    - asgard_net
 
 volumes:
   redisdata:
