@@ -4,6 +4,12 @@ use Illuminate\Routing\Router;
 
 /** @var Router $router */
 $router->group(['middleware' => 'api.token'], function (Router $router) {
+    $router->post('folder', [
+        'uses' => 'FolderController@store',
+        'as' => 'api.media.folders.store',
+        'middleware' => 'token-can:media.folders.create',
+    ]);
+
     $router->post('file', [
         'uses' => 'MediaController@store',
         'as' => 'api.media.store',
