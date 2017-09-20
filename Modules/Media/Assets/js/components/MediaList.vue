@@ -12,7 +12,7 @@
                     <div class="box-body">
                         <div class="tool-bar el-row" style="padding-bottom: 20px;">
                             <div class="actions el-col el-col-14">
-                                <new-folder></new-folder>
+                                <new-folder :parent-id="folderId"></new-folder>
                                 <upload-button></upload-button>
                                 <el-button-group>
                                     <el-button type="primary" :disabled="selectedMedia.length === 0">Move</el-button>
@@ -50,7 +50,9 @@
 
                             <el-table-column prop="filename" :label="trans('media.table.filename')" sortable="custom">
                                 <template scope="scope">
-                                    <strong v-if="scope.row.is_folder" style="cursor: pointer;">{{ scope.row.filename }}</strong>
+                                    <strong v-if="scope.row.is_folder" style="cursor: pointer;" @click="enterFolder(scope)">
+                                        {{ scope.row.filename }}
+                                    </strong>
                                     <span v-else>{{ scope.row.filename }}</span>
                                 </template>
                             </el-table-column>
@@ -110,6 +112,7 @@
                 },
                 links: {},
                 searchQuery: '',
+                folderId: 0,
                 selectedMedia: {},
             }
         },
@@ -121,6 +124,7 @@
                     order_by: this.order_meta.order_by,
                     order: this.order_meta.order,
                     search: this.searchQuery,
+                    folder_id: this.folderId,
                 };
 
                 axios.get(route('api.media.all-vue', _.merge(properties, customProperties)))
@@ -158,6 +162,11 @@
                 this.tableIsLoading = true;
                 this.queryServer({search: query});
             },
+            enterFolder(scope) {
+                this.tableIsLoading = true;
+                this.queryServer({folder_id: scope.row.id});
+                this.folderId = scope.row.id;
+            },
             insertMedia(scope) {
                 this.$events.emit('fileWasSelected', scope.row);
             },
@@ -169,6 +178,9 @@
             this.selectedMedia.length = 0;
             this.fetchMediaData();
             this.$events.listen('fileWasUploaded', eventData => {
+                this.fetchMediaData();
+            });
+            this.$events.listen('folderWasCreated', eventData => {
                 this.fetchMediaData();
             });
         }

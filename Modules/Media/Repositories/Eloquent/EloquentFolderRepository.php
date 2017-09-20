@@ -13,6 +13,7 @@ class EloquentFolderRepository extends EloquentBaseRepository implements FolderR
             'filename' => array_get($data, 'name'),
             'path' => str_slug(array_get($data, 'name')),
             'is_folder' => true,
+            'folder_id' => array_get($data, 'parent_id'),
         ]);
     }
 }

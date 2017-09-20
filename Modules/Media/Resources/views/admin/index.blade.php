@@ -59,6 +59,9 @@
         </div>
     </div>
 </div>
+
+<media-manager></media-manager>
+
 @include('core::partials.delete-modal')
 @stop
 

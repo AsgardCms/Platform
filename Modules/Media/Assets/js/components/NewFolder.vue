@@ -31,6 +31,9 @@
     import Form from 'form-backend-validation'
 
     export default {
+        props: {
+            parentId: {type: Number}
+        },
         data() {
             return {
                 dialogFormVisible: false,
@@ -43,7 +46,7 @@
         },
         methods: {
             onSubmit() {
-                this.form = new Form(this.folder);
+                this.form = new Form(_.merge(this.folder, {parent_id: this.parentId}));
                 this.loading = true;
                 this.form.post(route('api.media.folders.store'))
                     .then(response => {
@@ -53,6 +56,8 @@
                             message: response.message
                         });
                         this.dialogFormVisible = false;
+                        this.folder.name = '';
+                        this.$events.emit('folderWasCreated', response);
                     })
                     .catch(error => {
                         console.log(error);

@@ -93895,6 +93895,8 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 //
 //
 //
+//
+//
 
 exports.default = {
     components: {
@@ -93918,6 +93920,7 @@ exports.default = {
             },
             links: {},
             searchQuery: '',
+            folderId: 0,
             selectedMedia: {}
         };
     },
@@ -93931,7 +93934,8 @@ exports.default = {
                 per_page: this.meta.per_page,
                 order_by: this.order_meta.order_by,
                 order: this.order_meta.order,
-                search: this.searchQuery
+                search: this.searchQuery,
+                folder_id: this.folderId
             };
 
             axios.get(route('api.media.all-vue', _.merge(properties, customProperties))).then(function (response) {
@@ -93968,6 +93972,11 @@ exports.default = {
             this.tableIsLoading = true;
             this.queryServer({ search: query });
         },
+        enterFolder: function enterFolder(scope) {
+            this.tableIsLoading = true;
+            this.queryServer({ folder_id: scope.row.id });
+            this.folderId = scope.row.id;
+        },
         insertMedia: function insertMedia(scope) {
             this.$events.emit('fileWasSelected', scope.row);
         },
@@ -93981,6 +93990,9 @@ exports.default = {
         this.selectedMedia.length = 0;
         this.fetchMediaData();
         this.$events.listen('fileWasUploaded', function (eventData) {
+            _this2.fetchMediaData();
+        });
+        this.$events.listen('folderWasCreated', function (eventData) {
             _this2.fetchMediaData();
         });
     }
@@ -94088,6 +94100,9 @@ var _formBackendValidation2 = _interopRequireDefault(_formBackendValidation);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 exports.default = {
+    props: {
+        parentId: { type: Number }
+    },
     data: function data() {
         return {
             dialogFormVisible: false,
@@ -94103,7 +94118,7 @@ exports.default = {
         onSubmit: function onSubmit() {
             var _this = this;
 
-            this.form = new _formBackendValidation2.default(this.folder);
+            this.form = new _formBackendValidation2.default(_.merge(this.folder, { parent_id: this.parentId }));
             this.loading = true;
             this.form.post(route('api.media.folders.store')).then(function (response) {
                 _this.loading = false;
@@ -94112,6 +94127,8 @@ exports.default = {
                     message: response.message
                 });
                 _this.dialogFormVisible = false;
+                _this.folder.name = '';
+                _this.$events.emit('folderWasCreated', response);
             }).catch(function (error) {
                 console.log(error);
                 _this.loading = false;
@@ -94401,7 +94418,11 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   }, [_c('div', {
     staticClass: "actions el-col el-col-14"
-  }, [_c('new-folder'), _vm._v(" "), _c('upload-button'), _vm._v(" "), _c('el-button-group', [_c('el-button', {
+  }, [_c('new-folder', {
+    attrs: {
+      "parent-id": _vm.folderId
+    }
+  }), _vm._v(" "), _c('upload-button'), _vm._v(" "), _c('el-button-group', [_c('el-button', {
     attrs: {
       "type": "primary",
       "disabled": _vm.selectedMedia.length === 0
@@ -94497,8 +94518,13 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         return [(scope.row.is_folder) ? _c('strong', {
           staticStyle: {
             "cursor": "pointer"
+          },
+          on: {
+            "click": function($event) {
+              _vm.enterFolder(scope)
+            }
           }
-        }, [_vm._v(_vm._s(scope.row.filename))]) : _c('span', [_vm._v(_vm._s(scope.row.filename))])]
+        }, [_vm._v("\n                                    " + _vm._s(scope.row.filename) + "\n                                ")]) : _c('span', [_vm._v(_vm._s(scope.row.filename))])]
       }
     }])
   }), _vm._v(" "), _c('el-table-column', {
