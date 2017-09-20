@@ -11,6 +11,7 @@ class LoadSimpleMde
         $editor->addJs('simplemde.js')->addCss('simplemde.css');
         $editor->setEditorClass('simplemde');
         $editor->setEditorJsPartial('core::partials.simplemde');
+        view()->share('activeEditor', 'simplemde');
 
         return false;
     }

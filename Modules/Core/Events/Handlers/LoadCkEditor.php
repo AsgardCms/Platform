@@ -10,6 +10,7 @@ class LoadCkEditor
     {
         $editor->addJs('ckeditor.js');
         $editor->setEditorClass('ckeditor');
+        view()->share('activeEditor', 'ckeditor');
 
         return false;
     }
