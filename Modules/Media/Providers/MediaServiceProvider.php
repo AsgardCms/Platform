@@ -19,7 +19,9 @@ use Modules\Media\Events\Handlers\RegisterMediaSidebar;
 use Modules\Media\Events\Handlers\RemovePolymorphicLink;
 use Modules\Media\Image\ThumbnailManager;
 use Modules\Media\Repositories\Eloquent\EloquentFileRepository;
+use Modules\Media\Repositories\Eloquent\EloquentFolderRepository;
 use Modules\Media\Repositories\FileRepository;
+use Modules\Media\Repositories\FolderRepository;
 use Modules\Tag\Repositories\TagManager;
 
 class MediaServiceProvider extends ServiceProvider
@@ -89,6 +91,9 @@ class MediaServiceProvider extends ServiceProvider
     {
         $this->app->bind(FileRepository::class, function () {
             return new EloquentFileRepository(new File());
+        });
+        $this->app->bind(FolderRepository::class, function () {
+            return new EloquentFolderRepository(new File());
         });
     }
 
