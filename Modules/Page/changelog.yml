@@ -7,6 +7,7 @@ versions:
         changed:
             - Sending the full page entity to the PageWasUpdated event
             - Sending the full page enity to PageWasCreated event
+            - Allow editor component to be dynamic again
     "3.0.3":
         changed:
             - Set the active tab to the currently active tab

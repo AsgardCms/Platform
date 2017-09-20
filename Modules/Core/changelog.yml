@@ -6,6 +6,7 @@ versions:
             - Creating a string helpers mixing file
         changed:
             - Registering the TranslationHelper mixin globally to access it from anywhere
+            - CkEditor and SimpleMde hooks set a view variable containing their name
     "3.0.0":
         added:
             - Created a vue component for the delete buttons on index pages
