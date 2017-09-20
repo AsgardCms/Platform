@@ -6,17 +6,28 @@ use Illuminate\Console\Command;
 use Modules\Core\Console\Installers\SetupScript;
 use Modules\Core\Console\Installers\Writers\EnvFileWriter;
 
-class SetInstalledFlag implements SetupScript
+
+class CreateEnvFile implements SetupScript
 {
+     
     /**
      * @var EnvFileWriter
      */
     protected $env;
 
+    /**
+     * @param Config        $config
+     * @param EnvFileWriter $env
+     */
     public function __construct(EnvFileWriter $env)
     {
         $this->env = $env;
     }
+
+    /**
+     * @var Command
+     */
+    protected $command;
 
     /**
      * Fire the install script
@@ -25,14 +36,14 @@ class SetInstalledFlag implements SetupScript
      */
     public function fire(Command $command)
     {
-         
-        $vars = [];
+        $this->command = $command;
 
-        $vars['installed'] = 'true';
+        $this->env->create();
 
-        $this->env->write($vars);
-
-        $command->info('The application is now installed');
-
+        $command->info('Successfully created .env file');
     }
+
+     
+
 }
+
