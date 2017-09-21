@@ -13,9 +13,9 @@ class EloquentFolderRepository extends EloquentBaseRepository implements FolderR
     /**
      * Find a folder by its ID
      * @param int $folderId
-     * @return File
+     * @return File|null
      */
-    public function findFolder(int $folderId): File
+    public function findFolder(int $folderId)
     {
         return $this->model->where('is_folder', 1)->where('id', $folderId)->first();
     }
@@ -44,8 +44,9 @@ class EloquentFolderRepository extends EloquentBaseRepository implements FolderR
     {
         if (array_key_exists('parent_id', $data)) {
             $parent = $this->findFolder($data['parent_id']);
-
-            return $parent->path->getRelativeUrl() . '/' . str_slug(array_get($data, 'name'));
+            if ($parent !== null) {
+                return $parent->path->getRelativeUrl() . '/' . str_slug(array_get($data, 'name'));
+            }
         }
 
         return config('asgard.media.config.files-path') . str_slug(array_get($data, 'name'));
