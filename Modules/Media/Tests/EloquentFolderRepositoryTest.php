@@ -2,6 +2,8 @@
 
 namespace Modules\Media\Tests;
 
+use Illuminate\Support\Facades\Event;
+use Modules\Media\Events\FolderWasCreated;
 use Modules\Media\Repositories\Eloquent\EloquentFolderRepository;
 use Modules\Media\Repositories\FolderRepository;
 use PHPUnit\Framework\TestCase;
@@ -34,6 +36,18 @@ final class EloquentFolderRepositoryTest extends MediaTestCase
         $this->assertTrue( $folder->is_folder);
         $this->assertTrue( $folder->isFolder());
         $this->assertEquals(0, $folder->folder_id);
+    }
+
+    /** @test */
+    public function it_triggers_event_on_created_folder()
+    {
+        Event::fake();
+
+        $folder = $this->folder->create(['name' => 'My Folder']);
+
+        Event::assertDispatched(FolderWasCreated::class, function ($e) use ($folder) {
+            return $e->folder->id === $folder->id;
+        });
     }
 
     private function resetDatabase()
