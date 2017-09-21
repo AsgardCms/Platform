@@ -1,3 +1,18 @@
+<style>
+    .el-upload__input {
+        display: none !important;
+    }
+    .el-upload--text {
+        display: block;
+    }
+    .el-upload-dragger {
+        width: 100%;
+    }
+    .media-upload {
+        margin-bottom: 10px;
+    }
+</style>
+
 <template>
     <el-upload
             class="upload-demo"

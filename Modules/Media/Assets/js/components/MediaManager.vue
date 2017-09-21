@@ -1,6 +1,5 @@
 <template>
     <div>
-        <upload-zone></upload-zone>
         <media-list></media-list>
     </div>
 </template>
