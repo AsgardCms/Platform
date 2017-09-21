@@ -20,6 +20,7 @@ final class EloquentFolderRepositoryTest extends MediaTestCase
         $this->resetDatabase();
 
         $this->folder = app(FolderRepository::class);
+        $this->app['config']->set('asgard.media.config.files-path', '/assets/media/');
     }
 
     /** @test */
@@ -29,7 +30,7 @@ final class EloquentFolderRepositoryTest extends MediaTestCase
 
         $this->assertCount(1, $this->folder->all());
         $this->assertEquals('My Folder', $folder->filename);
-        $this->assertEquals('my-folder', $folder->path->getRelativeUrl());
+        $this->assertEquals('/assets/media/my-folder', $folder->path->getRelativeUrl());
         $this->assertTrue( $folder->is_folder);
     }
 
