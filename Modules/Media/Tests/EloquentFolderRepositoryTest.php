@@ -5,9 +5,7 @@ namespace Modules\Media\Tests;
 use Illuminate\Support\Facades\Event;
 use Modules\Media\Events\FolderIsCreating;
 use Modules\Media\Events\FolderWasCreated;
-use Modules\Media\Repositories\Eloquent\EloquentFolderRepository;
 use Modules\Media\Repositories\FolderRepository;
-use PHPUnit\Framework\TestCase;
 
 final class EloquentFolderRepositoryTest extends MediaTestCase
 {
@@ -24,6 +22,13 @@ final class EloquentFolderRepositoryTest extends MediaTestCase
 
         $this->folder = app(FolderRepository::class);
         $this->app['config']->set('asgard.media.config.files-path', '/assets/media/');
+    }
+
+    public function tearDown()
+    {
+        if ($this->app['files']->isDirectory(public_path('assets')) === true) {
+            $this->app['files']->deleteDirectory(public_path('assets'));
+        }
     }
 
     /** @test */
@@ -74,6 +79,14 @@ final class EloquentFolderRepositoryTest extends MediaTestCase
         $folder = $this->folder->create(['name' => 'My Folder']);
 
         $this->assertEquals('MY FOLDER', $folder->filename);
+    }
+
+    /** @test */
+    public function it_can_create_folder_on_disk()
+    {
+        $this->folder->create(['name' => 'My Folder']);
+
+        $this->assertTrue($this->app['files']->isDirectory(public_path('assets/media/my-folder')));
     }
 
     private function resetDatabase()

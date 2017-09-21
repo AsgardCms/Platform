@@ -65,5 +65,6 @@ abstract class MediaTestCase extends TestCase
         $app['config']->set('app.url', 'http://localhost');
         $app['config']->set('filesystems.disks.local.url', 'http://localhost');
         $app['config']->set('filesystems.disks.local.visibility', 'public');
+        $app['config']->set('filesystems.disks.local.root', public_path());
     }
 }
