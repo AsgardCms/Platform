@@ -35,7 +35,7 @@ final class EloquentFolderRepositoryTest extends MediaTestCase
     /** @test */
     public function it_can_create_a_folder_in_database()
     {
-        $folder = $this->folder->create(['name' => 'My Folder']);
+        $folder = $this->folder->create(['name' => 'My Folder', 'parent_id' => 0]);
 
         $this->assertCount(1, $this->folder->all());
         $this->assertEquals('My Folder', $folder->filename);

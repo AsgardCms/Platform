@@ -19,7 +19,16 @@ class CreateFolderOnDisk
 
     public function handle(FolderWasCreated $event)
     {
-        $this->filesystem->disk($this->getConfiguredFilesystem())->makeDirectory($event->folder->path->getRelativeUrl());
+        $this->filesystem->disk($this->getConfiguredFilesystem())->makeDirectory($this->getDestinationPath($event->folder->path->getRelativeUrl()));
+    }
+
+    private function getDestinationPath($path)
+    {
+        if ($this->getConfiguredFilesystem() === 'local') {
+            return basename(public_path()) . $path;
+        }
+
+        return $path;
     }
 
     /**
