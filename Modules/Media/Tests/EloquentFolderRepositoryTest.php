@@ -24,7 +24,7 @@ final class EloquentFolderRepositoryTest extends MediaTestCase
     }
 
     /** @test */
-    public function it_can_create_a_folder()
+    public function it_can_create_a_folder_in_database()
     {
         $folder = $this->folder->create(['name' => 'My Folder']);
 
