@@ -3,6 +3,7 @@
 namespace Modules\Media\Tests;
 
 use Illuminate\Support\Facades\Event;
+use Modules\Media\Entities\File;
 use Modules\Media\Events\FolderIsCreating;
 use Modules\Media\Events\FolderWasCreated;
 use Modules\Media\Repositories\FolderRepository;
@@ -87,6 +88,27 @@ final class EloquentFolderRepositoryTest extends MediaTestCase
         $this->folder->create(['name' => 'My Folder']);
 
         $this->assertTrue($this->app['files']->isDirectory(public_path('assets/media/my-folder')));
+    }
+
+    /** @test */
+    public function it_can_find_a_folder()
+    {
+        $this->folder->create(['name' => 'My Folder']);
+
+        $folder = $this->folder->findFolder(1);
+
+        $this->assertInstanceOf(File::class, $folder);
+        $this->assertEquals(1, $folder->id);
+    }
+
+    /** @test */
+    public function it_can_create_folders_belonging_to_another_folder()
+    {
+        $this->folder->create(['name' => 'Root Folder']);
+        $childFolder = $this->folder->create(['name' => 'Child folder', 'parent_id' => 1]);
+
+        $this->assertEquals('/assets/media/root-folder/child-folder', $childFolder->path->getRelativeUrl());
+        $this->assertTrue($this->app['files']->isDirectory(public_path('assets/media/root-folder/child-folder')));
     }
 
     private function resetDatabase()
