@@ -2,6 +2,7 @@
 
 namespace Modules\Media\Repositories;
 
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Http\Request;
 use Modules\Core\Repositories\BaseRepository;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
@@ -37,4 +38,10 @@ interface FileRepository extends BaseRepository
      * @return mixed
      */
     public function serverPaginationFilteringFor(Request $request);
+
+    /**
+     * @param int $folderId
+     * @return Collection
+     */
+    public function allChildrenOf(int $folderId) : Collection;
 }

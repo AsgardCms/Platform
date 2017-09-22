@@ -189,4 +189,29 @@ final class EloquentFolderRepositoryTest extends MediaTestCase
         $this->assertTrue($this->app['files']->exists(public_path('assets/media/new-name/my-file_smallThumb.jpg')));
         $this->assertTrue($this->app['files']->exists(public_path('assets/media/new-name/my-file_mediumThumb.jpg')));
     }
+
+    /** @test */
+    public function it_renames_folder_and_database_references_to_that_folder()
+    {
+        $parentFolder = $this->folder->create(['name' => 'My Folder']);
+        $folderTwo = $this->folder->create(['name' => 'Child folder', 'parent_id' => $parentFolder->id]);
+        $file = \Illuminate\Http\UploadedFile::fake()->image('my-file.jpg');
+        $fileTwo = \Illuminate\Http\UploadedFile::fake()->image('my-second-file.jpg');
+        $fileThree = \Illuminate\Http\UploadedFile::fake()->image('my-third-file.jpg');
+        $fileOne = app(FileService::class)->store($file, $parentFolder->id);
+        $fileTwo = app(FileService::class)->store($fileTwo, $parentFolder->id);
+        $fileThree = app(FileService::class)->store($fileThree, $folderTwo->id);
+
+        $parentFolder = $this->folder->update($parentFolder, ['name' => 'New Name!']);
+        $this->assertTrue($this->app['files']->isDirectory(public_path('assets/media/new-name')));
+        $this->assertTrue($this->app['files']->exists(public_path('assets/media/new-name/my-file.jpg')));
+        $this->assertTrue($this->app['files']->exists(public_path('assets/media/new-name/child-folder/my-third-file.jpg')));
+
+        $fileOne->refresh();
+        $fileTwo->refresh();
+        $fileThree->refresh();
+        $this->assertEquals('/assets/media/new-name/my-file.jpg', $fileOne->path->getRelativeUrl());
+        $this->assertEquals('/assets/media/new-name/my-second-file.jpg', $fileTwo->path->getRelativeUrl());
+        $this->assertEquals('/assets/media/new-name/child-folder/my-third-file.jpg', $fileThree->path->getRelativeUrl());
+    }
 }

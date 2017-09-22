@@ -163,4 +163,13 @@ class EloquentFileRepository extends EloquentBaseRepository implements FileRepos
 
         return $media->paginate($request->get('per_page', 10));
     }
+
+    /**
+     * @param int $folderId
+     * @return Collection
+     */
+    public function allChildrenOf(int $folderId): Collection
+    {
+        return $this->model->where('folder_id', $folderId)->get();
+    }
 }
