@@ -13,7 +13,7 @@
                         <div class="tool-bar el-row" style="padding-bottom: 20px;">
                             <div class="actions el-col el-col-14">
                                 <new-folder :parent-id="folderId"></new-folder>
-                                <upload-button></upload-button>
+                                <upload-button :parent-id="folderId"></upload-button>
                                 <el-button-group>
                                     <el-button type="primary" :disabled="selectedMedia.length === 0">Move</el-button>
                                     <el-button type="warning" :disabled="selectedMedia.length === 0">Rename</el-button>
@@ -178,10 +178,12 @@
             this.selectedMedia.length = 0;
             this.fetchMediaData();
             this.$events.listen('fileWasUploaded', eventData => {
-                this.fetchMediaData();
+                this.tableIsLoading = true;
+                this.queryServer({folder_id: eventData.data.folder_id});
             });
             this.$events.listen('folderWasCreated', eventData => {
-                this.fetchMediaData();
+                this.tableIsLoading = true;
+                this.queryServer({folder_id: eventData.data.folder_id});
             });
         }
     }
