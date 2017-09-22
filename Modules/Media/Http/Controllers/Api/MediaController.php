@@ -96,7 +96,7 @@ class MediaController extends Controller
      */
     public function store(UploadMediaRequest $request) : JsonResponse
     {
-        $savedFile = $this->fileService->store($request->file('file'));
+        $savedFile = $this->fileService->store($request->file('file'), $request->get('parent_id'));
 
         if (is_string($savedFile)) {
             return response()->json([
