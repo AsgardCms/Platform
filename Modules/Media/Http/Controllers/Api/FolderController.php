@@ -3,6 +3,7 @@
 namespace Modules\Media\Http\Controllers\Api;
 
 use Illuminate\Routing\Controller;
+use Modules\Media\Entities\File;
 use Modules\Media\Http\Requests\CreateFolderRequest;
 use Modules\Media\Repositories\FolderRepository;
 
@@ -25,6 +26,17 @@ class FolderController extends Controller
         return response()->json([
             'errors' => false,
             'message' => trans('media::folders.folder was created'),
+            'data' => $folder,
+        ]);
+    }
+
+    public function update(File $folder, CreateFolderRequest $request)
+    {
+        $folder = $this->folder->update($folder, $request->all());
+
+        return response()->json([
+            'errors' => false,
+            'message' => trans('media::folders.folder was updated'),
             'data' => $folder,
         ]);
     }

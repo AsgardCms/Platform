@@ -10,6 +10,12 @@ $router->group(['middleware' => 'api.token'], function (Router $router) {
         'middleware' => 'token-can:media.folders.create',
     ]);
 
+    $router->post('folder/{folder}', [
+        'uses' => 'FolderController@update',
+        'as' => 'api.media.folders.update',
+        'middleware' => 'token-can:media.folders.edit',
+    ]);
+
     $router->post('file', [
         'uses' => 'MediaController@store',
         'as' => 'api.media.store',

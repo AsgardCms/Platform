@@ -75,6 +75,8 @@
                                     </a>
                                     <a class="btn btn-default btn-flat" :href="getEditMediaUrl(scope)"
                                        v-if="! singleModal && ! scope.row.is_folder"><i class="fa fa-pencil"></i></a>
+                                    <rename-folder :current-folder="scope.row" v-if="! singleModal && scope.row.is_folder">
+                                    </rename-folder>
                                 </template>
                             </el-table-column>
                         </el-table>
@@ -99,11 +101,13 @@
 <script>
     import NewFolder from './NewFolder.vue';
     import UploadButton from './UploadButton.vue';
+    import RenameFolder from './RenameFolder.vue';
 
     export default {
         components: {
             'new-folder': NewFolder,
             'upload-button': UploadButton,
+            'rename-folder': RenameFolder,
         },
         props: {
             singleModal: {type: Boolean},
@@ -206,6 +210,10 @@
                 this.queryServer({folder_id: eventData.data.folder_id});
             });
             this.$events.listen('folderWasCreated', eventData => {
+                this.tableIsLoading = true;
+                this.queryServer({folder_id: eventData.data.folder_id});
+            });
+            this.$events.listen('folderWasUpdated', eventData => {
                 this.tableIsLoading = true;
                 this.queryServer({folder_id: eventData.data.folder_id});
             });

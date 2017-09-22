@@ -93807,111 +93807,17 @@ var _UploadButton = __webpack_require__(172);
 
 var _UploadButton2 = _interopRequireDefault(_UploadButton);
 
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+var _RenameFolder = __webpack_require__(197);
 
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
+var _RenameFolder2 = _interopRequireDefault(_RenameFolder);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 exports.default = {
     components: {
         'new-folder': _NewFolder2.default,
-        'upload-button': _UploadButton2.default
+        'upload-button': _UploadButton2.default,
+        'rename-folder': _RenameFolder2.default
     },
     props: {
         singleModal: { type: Boolean }
@@ -94018,8 +93924,111 @@ exports.default = {
             _this2.tableIsLoading = true;
             _this2.queryServer({ folder_id: eventData.data.folder_id });
         });
+        this.$events.listen('folderWasUpdated', function (eventData) {
+            _this2.tableIsLoading = true;
+            _this2.queryServer({ folder_id: eventData.data.folder_id });
+        });
     }
-};
+}; //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /***/ }),
 /* 167 */
@@ -94690,7 +94699,11 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
           }
         }, [_c('i', {
           staticClass: "fa fa-pencil"
-        })]) : _vm._e()]
+        })]) : _vm._e(), _vm._v(" "), (!_vm.singleModal && scope.row.is_folder) ? _c('rename-folder', {
+          attrs: {
+            "current-folder": scope.row
+          }
+        }) : _vm._e()]
       }
     }])
   })], 1), _vm._v(" "), _c('div', {
@@ -94983,6 +94996,240 @@ if (false) {
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 186 */,
+/* 187 */,
+/* 188 */,
+/* 189 */,
+/* 190 */,
+/* 191 */,
+/* 192 */,
+/* 193 */,
+/* 194 */,
+/* 195 */,
+/* 196 */,
+/* 197 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var Component = __webpack_require__(2)(
+  /* script */
+  __webpack_require__(198),
+  /* template */
+  __webpack_require__(199),
+  /* styles */
+  null,
+  /* scopeId */
+  null,
+  /* moduleIdentifier (server only) */
+  null
+)
+Component.options.__file = "/Users/nicolaswidart/Sites/Asguard/Platform/Modules/Media/Assets/js/components/RenameFolder.vue"
+if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
+if (Component.options.functional) {console.error("[vue-loader] RenameFolder.vue: functional components are not supported with templates, they should use render functions.")}
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-7ada96ca", Component.options)
+  } else {
+    hotAPI.reload("data-v-7ada96ca", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 198 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _formBackendValidation = __webpack_require__(41);
+
+var _formBackendValidation2 = _interopRequireDefault(_formBackendValidation);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+exports.default = {
+    props: {
+        currentFolder: { type: Object }
+    },
+    data: function data() {
+        return {
+            dialogFormVisible: false,
+            folder: {
+                name: '',
+                id: ''
+            },
+            form: new _formBackendValidation2.default(),
+            loading: false
+        };
+    },
+
+    methods: {
+        onSubmit: function onSubmit() {
+            var _this = this;
+
+            this.form = new _formBackendValidation2.default(this.folder);
+            this.loading = true;
+            this.form.post(route('api.media.folders.update', { folder: this.folder.id })).then(function (response) {
+                _this.loading = false;
+                _this.$message({
+                    type: 'success',
+                    message: response.message
+                });
+                _this.dialogFormVisible = false;
+                _this.$events.emit('folderWasUpdated', response);
+            }).catch(function (error) {
+                console.log(error);
+                _this.loading = false;
+                _this.$notify.error({
+                    title: 'Error',
+                    message: 'There are some errors in the form.'
+                });
+            });
+        },
+        closeDialog: function closeDialog() {
+            this.form.clear();
+            this.dialogFormVisible = false;
+        }
+    },
+    mounted: function mounted() {
+        this.folder.name = this.currentFolder.filename;
+        this.folder.id = this.currentFolder.id;
+    }
+}; //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/***/ }),
+/* 199 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', [_c('a', {
+    staticClass: "btn btn-default btn-flat",
+    on: {
+      "click": function($event) {
+        $event.preventDefault();
+        _vm.dialogFormVisible = true
+      }
+    }
+  }, [_c('i', {
+    staticClass: "fa fa-pencil"
+  })]), _vm._v(" "), _c('el-dialog', {
+    attrs: {
+      "title": "Rename Folder",
+      "visible": _vm.dialogFormVisible,
+      "size": "tiny"
+    },
+    on: {
+      "update:visible": function($event) {
+        _vm.dialogFormVisible = $event
+      }
+    }
+  }, [_c('el-form', {
+    directives: [{
+      name: "loading",
+      rawName: "v-loading.body",
+      value: (_vm.loading),
+      expression: "loading",
+      modifiers: {
+        "body": true
+      }
+    }],
+    attrs: {
+      "model": _vm.folder
+    },
+    nativeOn: {
+      "submit": function($event) {
+        $event.preventDefault();
+        _vm.onSubmit()
+      }
+    }
+  }, [_c('el-form-item', {
+    class: {
+      'el-form-item is-error': _vm.form.errors.has('name')
+    },
+    attrs: {
+      "label": "Folder name"
+    }
+  }, [_c('el-input', {
+    attrs: {
+      "auto-complete": "off",
+      "autofocus": ""
+    },
+    model: {
+      value: (_vm.folder.name),
+      callback: function($$v) {
+        _vm.folder.name = $$v
+      },
+      expression: "folder.name"
+    }
+  }), _vm._v(" "), (_vm.form.errors.has('name')) ? _c('div', {
+    staticClass: "el-form-item__error",
+    domProps: {
+      "textContent": _vm._s(_vm.form.errors.first('name'))
+    }
+  }) : _vm._e()], 1)], 1), _vm._v(" "), _c('span', {
+    staticClass: "dialog-footer",
+    slot: "footer"
+  }, [_c('el-button', {
+    on: {
+      "click": _vm.closeDialog
+    }
+  }, [_vm._v("Cancel")]), _vm._v(" "), _c('el-button', {
+    attrs: {
+      "type": "primary"
+    },
+    on: {
+      "click": function($event) {
+        _vm.onSubmit()
+      }
+    }
+  }, [_vm._v("Confirm")])], 1)], 1)], 1)
+},staticRenderFns: []}
+module.exports.render._withStripped = true
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+     require("vue-hot-reload-api").rerender("data-v-7ada96ca", module.exports)
+  }
+}
 
 /***/ })
 /******/ ]);
