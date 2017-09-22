@@ -81,8 +81,10 @@ class ModulesController extends AdminBaseController
     {
         $module->enable();
 
-        return redirect()->route('admin.workshop.modules.show', [$module->getLowerName()])->with('success',
-            trans('workshop::modules.module enabled'));
+        return redirect()->route('admin.workshop.modules.show', [$module->getLowerName()])->with(
+            'success',
+            trans('workshop::modules.module enabled')
+        );
     }
 
     /**

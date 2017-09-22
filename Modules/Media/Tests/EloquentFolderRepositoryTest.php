@@ -40,8 +40,8 @@ final class EloquentFolderRepositoryTest extends MediaTestCase
         $this->assertCount(1, $this->folder->all());
         $this->assertEquals('My Folder', $folder->filename);
         $this->assertEquals('/assets/media/my-folder', $folder->path->getRelativeUrl());
-        $this->assertTrue( $folder->is_folder);
-        $this->assertTrue( $folder->isFolder());
+        $this->assertTrue($folder->is_folder);
+        $this->assertTrue($folder->isFolder());
         $this->assertEquals(0, $folder->folder_id);
     }
 

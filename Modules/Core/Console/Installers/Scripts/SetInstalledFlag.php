@@ -25,7 +25,6 @@ class SetInstalledFlag implements SetupScript
      */
     public function fire(Command $command)
     {
-         
         $vars = [];
 
         $vars['installed'] = 'true';
@@ -33,6 +32,5 @@ class SetInstalledFlag implements SetupScript
         $this->env->write($vars);
 
         $command->info('The application is now installed');
-
     }
 }

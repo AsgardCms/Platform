@@ -23,7 +23,9 @@ class CacheWidgetDecorator extends BaseCacheDecorator implements WidgetRepositor
     {
         return $this->cache
             ->tags([$this->entityName, 'global'])
-            ->remember("{$this->locale}.{$this->entityName}.findForUser.{$userId}", $this->cacheTime,
+            ->remember(
+                "{$this->locale}.{$this->entityName}.findForUser.{$userId}",
+                $this->cacheTime,
                 function () use ($userId) {
                     return $this->repository->findForUser($userId);
                 }
@@ -40,7 +42,9 @@ class CacheWidgetDecorator extends BaseCacheDecorator implements WidgetRepositor
     {
         return $this->cache
             ->tags([$this->entityName, 'global'])
-            ->remember("{$this->locale}.{$this->entityName}.updateOrCreateForUser.{$userId}", $this->cacheTime,
+            ->remember(
+                "{$this->locale}.{$this->entityName}.updateOrCreateForUser.{$userId}",
+                $this->cacheTime,
                 function () use ($widgets, $userId) {
                     return $this->repository->updateOrCreateForUser($widgets, $userId);
                 }

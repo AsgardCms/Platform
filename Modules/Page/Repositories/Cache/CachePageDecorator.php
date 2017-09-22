@@ -31,7 +31,9 @@ class CachePageDecorator extends BaseCacheDecorator implements PageRepository
     {
         return $this->cache
             ->tags([$this->entityName, 'global'])
-            ->remember("{$this->locale}.{$this->entityName}.findHomepage", $this->cacheTime,
+            ->remember(
+                "{$this->locale}.{$this->entityName}.findHomepage",
+                $this->cacheTime,
                 function () {
                     return $this->repository->findHomepage();
                 }
@@ -46,7 +48,9 @@ class CachePageDecorator extends BaseCacheDecorator implements PageRepository
     {
         return $this->cache
             ->tags([$this->entityName, 'global'])
-            ->remember("{$this->locale}.{$this->entityName}.countAll", $this->cacheTime,
+            ->remember(
+                "{$this->locale}.{$this->entityName}.countAll",
+                $this->cacheTime,
                 function () {
                     return $this->repository->countAll();
                 }
@@ -62,7 +66,9 @@ class CachePageDecorator extends BaseCacheDecorator implements PageRepository
     {
         return $this->cache
             ->tags([$this->entityName, 'global'])
-            ->remember("{$this->locale}.{$this->entityName}.findBySlugInLocale.{$slug}.{$locale}", $this->cacheTime,
+            ->remember(
+                "{$this->locale}.{$this->entityName}.findBySlugInLocale.{$slug}.{$locale}",
+                $this->cacheTime,
                 function () use ($slug, $locale) {
                     return $this->repository->findBySlugInLocale($slug, $locale);
                 }
@@ -85,7 +91,9 @@ class CachePageDecorator extends BaseCacheDecorator implements PageRepository
 
         return $this->cache
             ->tags([$this->entityName, 'global'])
-            ->remember("{$this->locale}.{$this->entityName}.serverPaginationFilteringFor.{$key}", $this->cacheTime,
+            ->remember(
+                "{$this->locale}.{$this->entityName}.serverPaginationFilteringFor.{$key}",
+                $this->cacheTime,
                 function () use ($request) {
                     return $this->repository->serverPaginationFilteringFor($request);
                 }

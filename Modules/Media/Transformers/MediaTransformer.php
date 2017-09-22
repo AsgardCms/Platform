@@ -31,8 +31,8 @@ class MediaTransformer extends Resource
             'media_type' => $this->media_type,
             'fa_icon' => FileHelper::getFaIcon($this->media_type),
             'created_at' => $this->created_at,
-            'small_thumb' => $this->imagy->getThumbnail($this->path,'smallThumb'),
-            'medium_thumb' => $this->imagy->getThumbnail($this->path,'mediumThumb'),
+            'small_thumb' => $this->imagy->getThumbnail($this->path, 'smallThumb'),
+            'medium_thumb' => $this->imagy->getThumbnail($this->path, 'mediumThumb'),
         ];
     }
 

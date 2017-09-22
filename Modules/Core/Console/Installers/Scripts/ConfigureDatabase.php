@@ -51,7 +51,6 @@ class ConfigureDatabase implements SetupScript
         $vars = [];
 
         while (! $connected) {
-
             $vars['db_driver'] = $this->askDatabaseDriver();
             $vars['db_host'] = $this->askDatabaseHost();
             $vars['db_port'] = $this->askDatabasePort($vars['db_driver']);
@@ -158,7 +157,7 @@ class ConfigureDatabase implements SetupScript
         $this->config['database.connections.' . $driver . '.database'] = $vars['db_database'];
         $this->config['database.connections.' . $driver . '.username'] = $vars['db_username'];
         $this->config['database.connections.' . $driver . '.password'] = $vars['db_password'];
-        
+
         app(DatabaseManager::class)->purge($driver);
         app(ConnectionFactory::class)->make($this->config['database.connections.' . $driver], $driver);
     }

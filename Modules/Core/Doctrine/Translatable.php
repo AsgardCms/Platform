@@ -98,8 +98,10 @@ trait Translatable
         $cacheArray = [];
         $translatedEntityName = $this->getTranslationClass();
         if (! isset($cacheArray[$translatedEntityName])) {
-            $cacheArray[$translatedEntityName] = array_values(array_diff(EntityManagerFacade::getClassMetadata($translatedEntityName)->getColumnNames(),
-                ['id', 'locale']));
+            $cacheArray[$translatedEntityName] = array_values(array_diff(
+                EntityManagerFacade::getClassMetadata($translatedEntityName)->getColumnNames(),
+                ['id', 'locale']
+            ));
         }
 
         return $cacheArray[$translatedEntityName];

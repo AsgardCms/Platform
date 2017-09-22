@@ -68,26 +68,19 @@ class EnvFileWriter
     public function write($vars)
     {
         if (!empty($vars)) {
-
             $environmentFile = $this->finder->get($this->file);
 
             foreach ($vars as $key => $value) {
-
                 if (isset($this->setable_variables[$key])) {
-
                     $env_var_name = explode('=', $this->setable_variables[$key])[0];
 
                     $value = $env_var_name . '=' . $value;
 
                     $environmentFile = str_replace($this->setable_variables[$key], $value, $environmentFile);
-
                 }
-
             }
 
             $this->finder->put($this->file, $environmentFile);
-
         }
-
     }
 }

@@ -35,7 +35,9 @@ class CacheSettingDecorator extends BaseCacheDecorator implements SettingReposit
     {
         return $this->cache
             ->tags([$this->entityName, 'global'])
-            ->remember("{$this->locale}.{$this->entityName}.findByName.{$settingName}", $this->cacheTime,
+            ->remember(
+                "{$this->locale}.{$this->entityName}.findByName.{$settingName}",
+                $this->cacheTime,
                 function () use ($settingName) {
                     return $this->repository->findByName($settingName);
                 }
@@ -54,7 +56,9 @@ class CacheSettingDecorator extends BaseCacheDecorator implements SettingReposit
 
         return $this->cache
             ->tags([$this->entityName, 'global'])
-            ->remember("{$this->locale}.{$this->entityName}.moduleSettings.{$moduleList}", $this->cacheTime,
+            ->remember(
+                "{$this->locale}.{$this->entityName}.moduleSettings.{$moduleList}",
+                $this->cacheTime,
                 function () use ($modules) {
                     return $this->repository->moduleSettings($modules);
                 }
@@ -70,7 +74,9 @@ class CacheSettingDecorator extends BaseCacheDecorator implements SettingReposit
     {
         return $this->cache
             ->tags([$this->entityName, 'global'])
-            ->remember("{$this->locale}.{$this->entityName}.savedModuleSettings.{$module}", $this->cacheTime,
+            ->remember(
+                "{$this->locale}.{$this->entityName}.savedModuleSettings.{$module}",
+                $this->cacheTime,
                 function () use ($module) {
                     return $this->repository->savedModuleSettings($module);
                 }
@@ -86,7 +92,9 @@ class CacheSettingDecorator extends BaseCacheDecorator implements SettingReposit
     {
         return $this->cache
             ->tags([$this->entityName, 'global'])
-            ->remember("{$this->locale}.{$this->entityName}.findByModule.{$module}", $this->cacheTime,
+            ->remember(
+                "{$this->locale}.{$this->entityName}.findByModule.{$module}",
+                $this->cacheTime,
                 function () use ($module) {
                     return $this->repository->findByModule($module);
                 }
@@ -102,7 +110,9 @@ class CacheSettingDecorator extends BaseCacheDecorator implements SettingReposit
     {
         return $this->cache
             ->tags([$this->entityName, 'global'])
-            ->remember("{$this->locale}.{$this->entityName}.get.{$settingName}", $this->cacheTime,
+            ->remember(
+                "{$this->locale}.{$this->entityName}.get.{$settingName}",
+                $this->cacheTime,
                 function () use ($settingName) {
                     return $this->repository->get($settingName);
                 }
@@ -118,7 +128,9 @@ class CacheSettingDecorator extends BaseCacheDecorator implements SettingReposit
     {
         return $this->cache
             ->tags([$this->entityName, 'global'])
-            ->remember("{$this->locale}.{$this->entityName}.translatableModuleSettings.{$module}", $this->cacheTime,
+            ->remember(
+                "{$this->locale}.{$this->entityName}.translatableModuleSettings.{$module}",
+                $this->cacheTime,
                 function () use ($module) {
                     return $this->repository->translatableModuleSettings($module);
                 }
@@ -134,7 +146,9 @@ class CacheSettingDecorator extends BaseCacheDecorator implements SettingReposit
     {
         return $this->cache
             ->tags([$this->entityName, 'global'])
-            ->remember("{$this->locale}.{$this->entityName}.plainModuleSettings.{$module}", $this->cacheTime,
+            ->remember(
+                "{$this->locale}.{$this->entityName}.plainModuleSettings.{$module}",
+                $this->cacheTime,
                 function () use ($module) {
                     return $this->repository->plainModuleSettings($module);
                 }

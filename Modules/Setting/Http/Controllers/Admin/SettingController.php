@@ -58,7 +58,9 @@ class SettingController extends AdminBaseController
 
         $dbSettings = $this->setting->savedModuleSettings($currentModule->getLowerName());
 
-        return view('setting::admin.module-settings',
-            compact('currentModule', 'translatableSettings', 'plainSettings', 'dbSettings', 'modulesWithSettings'));
+        return view(
+            'setting::admin.module-settings',
+            compact('currentModule', 'translatableSettings', 'plainSettings', 'dbSettings', 'modulesWithSettings')
+        );
     }
 }

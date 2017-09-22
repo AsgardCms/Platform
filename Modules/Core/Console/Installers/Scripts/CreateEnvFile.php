@@ -6,10 +6,8 @@ use Illuminate\Console\Command;
 use Modules\Core\Console\Installers\SetupScript;
 use Modules\Core\Console\Installers\Writers\EnvFileWriter;
 
-
 class CreateEnvFile implements SetupScript
 {
-     
     /**
      * @var EnvFileWriter
      */
@@ -42,8 +40,4 @@ class CreateEnvFile implements SetupScript
 
         $command->info('Successfully created .env file');
     }
-
-     
-
 }
-

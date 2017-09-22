@@ -29,7 +29,9 @@ class CacheMenuItemDecorator extends BaseCacheDecorator implements MenuItemRepos
     {
         return $this->cache
             ->tags([$this->entityName, 'global'])
-            ->remember("{$this->locale}.{$this->entityName}.rootsForMenu.{$menuId}", $this->cacheTime,
+            ->remember(
+                "{$this->locale}.{$this->entityName}.rootsForMenu.{$menuId}",
+                $this->cacheTime,
                 function () use ($menuId) {
                     return $this->repository->rootsForMenu($menuId);
                 }
@@ -45,7 +47,9 @@ class CacheMenuItemDecorator extends BaseCacheDecorator implements MenuItemRepos
     {
         return $this->cache
             ->tags([$this->entityName, 'global'])
-            ->remember("{$this->locale}.{$this->entityName}.getForRoutes", $this->cacheTime,
+            ->remember(
+                "{$this->locale}.{$this->entityName}.getForRoutes",
+                $this->cacheTime,
                 function () {
                     return $this->repository->getForRoutes();
                 }
@@ -62,7 +66,9 @@ class CacheMenuItemDecorator extends BaseCacheDecorator implements MenuItemRepos
     {
         return $this->cache
             ->tags([$this->entityName, 'global'])
-            ->remember("{$this->locale}.{$this->entityName}.getRootForMenu.{$menuId}", $this->cacheTime,
+            ->remember(
+                "{$this->locale}.{$this->entityName}.getRootForMenu.{$menuId}",
+                $this->cacheTime,
                 function () use ($menuId) {
                     return $this->repository->getRootForMenu($menuId);
                 }
@@ -79,7 +85,9 @@ class CacheMenuItemDecorator extends BaseCacheDecorator implements MenuItemRepos
     {
         return $this->cache
             ->tags([$this->entityName, 'global'])
-            ->remember("{$this->locale}.{$this->entityName}.getTreeForMenu.{$menuId}", $this->cacheTime,
+            ->remember(
+                "{$this->locale}.{$this->entityName}.getTreeForMenu.{$menuId}",
+                $this->cacheTime,
                 function () use ($menuId) {
                     return $this->repository->getTreeForMenu($menuId);
                 }
@@ -96,7 +104,9 @@ class CacheMenuItemDecorator extends BaseCacheDecorator implements MenuItemRepos
     {
         return $this->cache
             ->tags([$this->entityName, 'global'])
-            ->remember("{$this->locale}.{$this->entityName}.allRootsForMenu.{$menuId}", $this->cacheTime,
+            ->remember(
+                "{$this->locale}.{$this->entityName}.allRootsForMenu.{$menuId}",
+                $this->cacheTime,
                 function () use ($menuId) {
                     return $this->repository->allRootsForMenu($menuId);
                 }
@@ -112,7 +122,9 @@ class CacheMenuItemDecorator extends BaseCacheDecorator implements MenuItemRepos
     {
         return $this->cache
             ->tags([$this->entityName, 'global'])
-            ->remember("{$this->locale}.{$this->entityName}.findByUriInLanguage.{$uri}.{$locale}", $this->cacheTime,
+            ->remember(
+                "{$this->locale}.{$this->entityName}.findByUriInLanguage.{$uri}.{$locale}",
+                $this->cacheTime,
                 function () use ($uri, $locale) {
                     return $this->repository->findByUriInLanguage($uri, $locale);
                 }

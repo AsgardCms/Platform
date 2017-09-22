@@ -27,7 +27,8 @@ class CacheTranslationDecorator extends BaseCacheDecorator implements Translatio
         $locale = $locale ?: app()->getLocale();
 
         return app('cache')->driver('translations')
-            ->rememberForever("{$this->entityName}.findByKeyAndLocale.{$cleanKey}.{$locale}",
+            ->rememberForever(
+                "{$this->entityName}.findByKeyAndLocale.{$cleanKey}.{$locale}",
                 function () use ($key, $locale) {
                     return $this->repository->findByKeyAndLocale($key, $locale);
                 }
@@ -37,7 +38,8 @@ class CacheTranslationDecorator extends BaseCacheDecorator implements Translatio
     public function allFormatted()
     {
         return app('cache')->driver('translations')
-            ->rememberForever("{$this->locale}.{$this->entityName}.allFormatted",
+            ->rememberForever(
+                "{$this->locale}.{$this->entityName}.allFormatted",
                 function () {
                     return $this->repository->allFormatted();
                 }
@@ -56,7 +58,8 @@ class CacheTranslationDecorator extends BaseCacheDecorator implements Translatio
         $cleanKey = $this->cleanKey($key);
 
         return app('cache')->driver('translations')
-            ->rememberForever("{$this->locale}.{$this->entityName}.findTranslationByKey.{$cleanKey}",
+            ->rememberForever(
+                "{$this->locale}.{$this->entityName}.findTranslationByKey.{$cleanKey}",
                 function () use ($key) {
                     return $this->repository->findTranslationByKey($key);
                 }
@@ -102,7 +105,8 @@ class CacheTranslationDecorator extends BaseCacheDecorator implements Translatio
     public function getTranslationsForGroupAndNamespace($locale, $group, $namespace)
     {
         return  app('cache')->driver('translations')
-            ->rememberForever("{$this->entityName}.findByKeyAndLocale.{$locale}.{$group}.[$namespace]",
+            ->rememberForever(
+                "{$this->entityName}.findByKeyAndLocale.{$locale}.{$group}.[$namespace]",
                 function () use ($locale, $group, $namespace) {
                     return $this->repository->getTranslationsForGroupAndNamespace($locale, $group, $namespace);
                 }

@@ -67,7 +67,10 @@ abstract class BaseFormRequest extends FormRequest
         }
 
         return $factory->make(
-            $this->all(), $rules, array_merge($this->messages(), $messages), $attributes
+            $this->all(),
+            $rules,
+            array_merge($this->messages(), $messages),
+            $attributes
         );
     }
 

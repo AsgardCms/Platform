@@ -10,7 +10,8 @@ $router->bind('theme', function ($theme) {
     return app(\Modules\Workshop\Manager\ThemeManager::class)->find($theme);
 });
 
-$router->group(['prefix' => '/workshop'],
+$router->group(
+    ['prefix' => '/workshop'],
     function (Router $router) {
         $router->get('modules', [
             'as' => 'admin.workshop.modules.index',

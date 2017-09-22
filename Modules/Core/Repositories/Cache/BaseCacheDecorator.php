@@ -45,7 +45,9 @@ abstract class BaseCacheDecorator implements BaseRepository
     {
         return $this->cache
             ->tags([$this->entityName, 'global'])
-            ->remember("{$this->locale}.{$this->entityName}.find.{$id}", $this->cacheTime,
+            ->remember(
+                "{$this->locale}.{$this->entityName}.find.{$id}",
+                $this->cacheTime,
                 function () use ($id) {
                     return $this->repository->find($id);
                 }
@@ -59,7 +61,9 @@ abstract class BaseCacheDecorator implements BaseRepository
     {
         return $this->cache
             ->tags([$this->entityName, 'global'])
-            ->remember("{$this->locale}.{$this->entityName}.all", $this->cacheTime,
+            ->remember(
+                "{$this->locale}.{$this->entityName}.all",
+                $this->cacheTime,
                 function () {
                     return $this->repository->all();
                 }
@@ -73,7 +77,9 @@ abstract class BaseCacheDecorator implements BaseRepository
     {
         return $this->cache
             ->tags([$this->entityName, 'global'])
-            ->remember("{$this->locale}.{$this->entityName}.allWithBuilder", $this->cacheTime,
+            ->remember(
+                "{$this->locale}.{$this->entityName}.allWithBuilder",
+                $this->cacheTime,
                 function () {
                     return $this->repository->allWithBuilder();
                 }
@@ -87,7 +93,9 @@ abstract class BaseCacheDecorator implements BaseRepository
     {
         return $this->cache
             ->tags([$this->entityName, 'global'])
-            ->remember("{$this->locale}.{$this->entityName}.paginate.{$perPage}", $this->cacheTime,
+            ->remember(
+                "{$this->locale}.{$this->entityName}.paginate.{$perPage}",
+                $this->cacheTime,
                 function () use ($perPage) {
                     return $this->repository->paginate($perPage);
                 }
@@ -101,7 +109,9 @@ abstract class BaseCacheDecorator implements BaseRepository
     {
         return $this->cache
             ->tags([$this->entityName, 'global'])
-            ->remember("{$this->locale}.{$this->entityName}.allTranslatedIn.{$lang}", $this->cacheTime,
+            ->remember(
+                "{$this->locale}.{$this->entityName}.allTranslatedIn.{$lang}",
+                $this->cacheTime,
                 function () use ($lang) {
                     return $this->repository->allTranslatedIn($lang);
                 }
@@ -115,7 +125,9 @@ abstract class BaseCacheDecorator implements BaseRepository
     {
         return $this->cache
             ->tags([$this->entityName, 'global'])
-            ->remember("{$this->locale}.{$this->entityName}.findBySlug.{$slug}", $this->cacheTime,
+            ->remember(
+                "{$this->locale}.{$this->entityName}.findBySlug.{$slug}",
+                $this->cacheTime,
                 function () use ($slug) {
                     return $this->repository->findBySlug($slug);
                 }
@@ -161,7 +173,9 @@ abstract class BaseCacheDecorator implements BaseRepository
 
         return $this->cache
             ->tags([$this->entityName, 'global'])
-            ->remember("{$this->locale}.{$this->entityName}.findByAttributes.{$tagIdentifier}", $this->cacheTime,
+            ->remember(
+                "{$this->locale}.{$this->entityName}.findByAttributes.{$tagIdentifier}",
+                $this->cacheTime,
                 function () use ($attributes) {
                     return $this->repository->findByAttributes($attributes);
                 }
@@ -177,7 +191,9 @@ abstract class BaseCacheDecorator implements BaseRepository
 
         return $this->cache
             ->tags([$this->entityName, 'global'])
-            ->remember("{$this->locale}.{$this->entityName}.findByAttributes.{$tagIdentifier}.{$orderBy}.{$sortOrder}", $this->cacheTime,
+            ->remember(
+                "{$this->locale}.{$this->entityName}.findByAttributes.{$tagIdentifier}.{$orderBy}.{$sortOrder}",
+                $this->cacheTime,
                 function () use ($attributes, $orderBy, $sortOrder) {
                     return $this->repository->getByAttributes($attributes, $orderBy, $sortOrder);
                 }
@@ -193,7 +209,9 @@ abstract class BaseCacheDecorator implements BaseRepository
 
         return $this->cache
             ->tags([$this->entityName, 'global'])
-            ->remember("{$this->locale}.{$this->entityName}.findByMany.{$tagIdentifier}", $this->cacheTime,
+            ->remember(
+                "{$this->locale}.{$this->entityName}.findByMany.{$tagIdentifier}",
+                $this->cacheTime,
                 function () use ($ids) {
                     return $this->repository->findByMany($ids);
                 }
