@@ -14,10 +14,15 @@ class FolderWasUpdated
      * @var array
      */
     public $data;
+    /**
+     * @var array
+     */
+    public $previousFolderData;
 
-    public function __construct(File $folder, array $data)
+    public function __construct(File $folder, array $data, array $previousFolderData)
     {
         $this->folder = $folder;
         $this->data = $data;
+        $this->previousFolderData = $previousFolderData;
     }
 }

@@ -9,6 +9,7 @@ use Modules\Media\Events\FolderIsUpdating;
 use Modules\Media\Events\FolderWasCreated;
 use Modules\Media\Events\FolderWasUpdated;
 use Modules\Media\Repositories\FolderRepository;
+use Modules\Media\Services\FileService;
 
 final class EloquentFolderRepositoryTest extends MediaTestCase
 {
@@ -163,5 +164,29 @@ final class EloquentFolderRepositoryTest extends MediaTestCase
         $folder = $this->folder->update($folder, ['name' => 'New Name!']);
 
         $this->assertEquals('NEW NAME!', $folder->filename);
+    }
+
+    /** @test */
+    public function it_can_rename_folder_on_disk()
+    {
+        $folder = $this->folder->create(['name' => 'My Folder']);
+        $this->assertTrue($this->app['files']->isDirectory(public_path('assets/media/my-folder')));
+
+        $folder = $this->folder->update($folder, ['name' => 'New Name!']);
+        $this->assertTrue($this->app['files']->isDirectory(public_path('assets/media/new-name')));
+    }
+
+    /** @test */
+    public function it_can_rename_folder_with_content()
+    {
+        $folder = $this->folder->create(['name' => 'My Folder']);
+        $file = \Illuminate\Http\UploadedFile::fake()->image('my-file.jpg');
+        app(FileService::class)->store($file, $folder->id);
+
+        $folder = $this->folder->update($folder, ['name' => 'New Name!']);
+        $this->assertTrue($this->app['files']->isDirectory(public_path('assets/media/new-name')));
+        $this->assertTrue($this->app['files']->exists(public_path('assets/media/new-name/my-file.jpg')));
+        $this->assertTrue($this->app['files']->exists(public_path('assets/media/new-name/my-file_smallThumb.jpg')));
+        $this->assertTrue($this->app['files']->exists(public_path('assets/media/new-name/my-file_mediumThumb.jpg')));
     }
 }

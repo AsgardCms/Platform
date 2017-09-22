@@ -40,6 +40,10 @@ class EloquentFolderRepository extends EloquentBaseRepository implements FolderR
 
     public function update($model, $data)
     {
+        $previousData = [
+            'filename' => $model->filename,
+            'path' => $model->path,
+        ];
         $formattedData = [
             'filename' => array_get($data, 'name'),
             'path' => $this->getPath($data),
@@ -47,7 +51,7 @@ class EloquentFolderRepository extends EloquentBaseRepository implements FolderR
         event($event = new FolderIsUpdating($formattedData));
         $model->update($event->getAttributes());
 
-        event(new FolderWasUpdated($model, $formattedData));
+        event(new FolderWasUpdated($model, $formattedData, $previousData));
 
         return $model;
     }
