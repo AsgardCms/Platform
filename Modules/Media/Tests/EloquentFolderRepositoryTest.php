@@ -110,25 +110,4 @@ final class EloquentFolderRepositoryTest extends MediaTestCase
         $this->assertEquals('/assets/media/root-folder/child-folder', $childFolder->path->getRelativeUrl());
         $this->assertTrue($this->app['files']->isDirectory(public_path('assets/media/root-folder/child-folder')));
     }
-
-    private function resetDatabase()
-    {
-        // Makes sure the migrations table is created
-        $this->artisan('migrate', [
-            '--database' => 'sqlite',
-        ]);
-        // We empty all tables
-        $this->artisan('migrate:reset', [
-            '--database' => 'sqlite',
-        ]);
-        // Migrate
-        $this->artisan('migrate', [
-            '--database' => 'sqlite',
-        ]);
-
-        $this->artisan('migrate', [
-            '--database' => 'sqlite',
-            '--path'     => 'Modules/Tag/Database/Migrations',
-        ]);
-    }
 }

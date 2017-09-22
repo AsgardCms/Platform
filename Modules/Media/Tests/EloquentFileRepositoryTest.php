@@ -255,25 +255,4 @@ class EloquentFileRepositoryTest extends MediaTestCase
             'folder_id' => 0,
         ]);
     }
-
-    private function resetDatabase()
-    {
-        // Makes sure the migrations table is created
-        $this->artisan('migrate', [
-            '--database' => 'sqlite',
-        ]);
-        // We empty all tables
-        $this->artisan('migrate:reset', [
-            '--database' => 'sqlite',
-        ]);
-        // Migrate
-        $this->artisan('migrate', [
-            '--database' => 'sqlite',
-        ]);
-
-        $this->artisan('migrate', [
-            '--database' => 'sqlite',
-            '--path'     => 'Modules/Tag/Database/Migrations',
-        ]);
-    }
 }

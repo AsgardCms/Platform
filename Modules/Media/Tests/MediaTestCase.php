@@ -67,4 +67,25 @@ abstract class MediaTestCase extends TestCase
         $app['config']->set('filesystems.disks.local.visibility', 'public');
         $app['config']->set('filesystems.disks.local.root', base_path());
     }
+
+    protected function resetDatabase()
+    {
+        // Makes sure the migrations table is created
+        $this->artisan('migrate', [
+            '--database' => 'sqlite',
+        ]);
+        // We empty all tables
+        $this->artisan('migrate:reset', [
+            '--database' => 'sqlite',
+        ]);
+        // Migrate
+        $this->artisan('migrate', [
+            '--database' => 'sqlite',
+        ]);
+
+        $this->artisan('migrate', [
+            '--database' => 'sqlite',
+            '--path' => 'Modules/Tag/Database/Migrations',
+        ]);
+    }
 }
