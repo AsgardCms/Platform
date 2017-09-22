@@ -73,10 +73,13 @@
                                        v-if="singleModal">
                                         {{ trans('media.insert') }}
                                     </a>
-                                    <a class="btn btn-default btn-flat" :href="getEditMediaUrl(scope)"
+                                    <a class="btn btn-default btn-flat" @click.prevent="loadEditForm(scope)"
                                        v-if="! singleModal && ! scope.row.is_folder"><i class="fa fa-pencil"></i></a>
-                                    <rename-folder :current-folder="scope.row" v-if="! singleModal && scope.row.is_folder">
-                                    </rename-folder>
+
+                                    <a @click.prevent="showEditFolder(scope.row)" class="btn btn-default btn-flat"
+                                       v-if="! singleModal && scope.row.is_folder">
+                                        <i class="fa fa-pencil"></i>
+                                    </a>
                                 </template>
                             </el-table-column>
                         </el-table>
@@ -95,6 +98,7 @@
                 </div>
             </div>
         </div>
+        <rename-folder></rename-folder>
     </div>
 </template>
 
@@ -194,6 +198,12 @@
             },
             getEditMediaUrl(scope) {
                 return route('admin.media.media.edit', {media: scope.row.id});
+            },
+            loadEditForm(scope) {
+                this.$events.emit('editMediaWasClicked', scope.row);
+            },
+            showEditFolder(scope) {
+                this.$events.emit('editFolderWasClicked', scope);
             },
             changeRoot(folderId, index) {
                 this.tableIsLoading = true;

@@ -1,9 +1,5 @@
 <template>
     <div>
-        <a @click.prevent="dialogFormVisible = true" class="btn btn-default btn-flat">
-            <i class="fa fa-pencil"></i>
-        </a>
-
         <el-dialog title="Rename Folder" :visible.sync="dialogFormVisible" size="tiny">
             <el-form :model="folder" v-loading.body="loading" @submit.native.prevent="onSubmit()">
                 <el-form-item label="Folder name" :class="{'el-form-item is-error': form.errors.has('name') }">
@@ -24,15 +20,16 @@
     import Form from 'form-backend-validation'
 
     export default {
-        props: {
-            currentFolder: {type: Object}
-        },
+//        props: {
+//            currentFolder: {type: Object}
+//        },
         data() {
             return {
                 dialogFormVisible: false,
                 folder: {
                     name: '',
                     id: '',
+                    parent_id: '',
                 },
                 form: new Form(),
                 loading: false,
@@ -67,8 +64,12 @@
             },
         },
         mounted() {
-            this.folder.name = this.currentFolder.filename;
-            this.folder.id = this.currentFolder.id;
+            this.$events.listen('editFolderWasClicked', eventData => {
+                this.folder.name = eventData.filename;
+                this.folder.id = eventData.id;
+                this.folder.parent_id = eventData.folder_id;
+                this.dialogFormVisible = true;
+            });
         }
     }
 </script>
