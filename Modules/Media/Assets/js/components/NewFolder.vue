@@ -11,9 +11,9 @@
         </el-button>
 
         <el-dialog title="New Folder" :visible.sync="dialogFormVisible" size="tiny">
-            <el-form :model="folder" v-loading.body="loading">
+            <el-form :model="folder" v-loading.body="loading" @submit.native.prevent="onSubmit()">
                 <el-form-item label="Folder name" :class="{'el-form-item is-error': form.errors.has('name') }">
-                    <el-input v-model="folder.name" auto-complete="off"></el-input>
+                    <el-input v-model="folder.name" auto-complete="off" autofocus></el-input>
                     <div class="el-form-item__error" v-if="form.errors.has('name')"
                          v-text="form.errors.first('name')"></div>
                 </el-form-item>

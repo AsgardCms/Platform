@@ -94237,6 +94237,12 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }],
     attrs: {
       "model": _vm.folder
+    },
+    nativeOn: {
+      "submit": function($event) {
+        $event.preventDefault();
+        _vm.onSubmit()
+      }
     }
   }, [_c('el-form-item', {
     class: {
@@ -94247,7 +94253,8 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   }, [_c('el-input', {
     attrs: {
-      "auto-complete": "off"
+      "auto-complete": "off",
+      "autofocus": ""
     },
     model: {
       value: (_vm.folder.name),
