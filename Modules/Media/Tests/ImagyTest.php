@@ -8,6 +8,8 @@ use Illuminate\Support\Facades\App;
 use Modules\Media\Image\Imagy;
 use Modules\Media\Image\Intervention\InterventionFactory;
 use Modules\Media\Image\ThumbnailManager;
+use Modules\Media\Repositories\FolderRepository;
+use Modules\Media\Services\FileService;
 use Modules\Media\ValueObjects\MediaPath;
 
 class ImagyTest extends MediaTestCase
@@ -36,6 +38,7 @@ class ImagyTest extends MediaTestCase
     public function setUp()
     {
         parent::setUp();
+        $this->app['config']->set('asgard.media.config.files-path', '/assets/media/');
         $this->config = App::make(Repository::class);
         $this->finder = App::make(Filesystem::class);
         $this->imagy = new Imagy(new InterventionFactory(), app(ThumbnailManager::class), $this->config);
@@ -49,6 +52,9 @@ class ImagyTest extends MediaTestCase
     {
         $this->finder->delete("{$this->testbenchPublicPath}google-map.png");
         $this->finder->delete("{$this->testbenchPublicPath}google-map_smallThumb.png");
+        if ($this->app['files']->isDirectory(public_path('assets')) === true) {
+            $this->app['files']->deleteDirectory(public_path('assets'));
+        }
     }
 
     public function it_should_create_a_file()
@@ -70,11 +76,36 @@ class ImagyTest extends MediaTestCase
     /** @test */
     public function it_should_return_thumbnail_path()
     {
-        $path = $this->imagy->getThumbnail("{$this->mediaPath}google-map.png", 'smallThumb');
+        $this->resetDatabase();
 
-        $expected = config('app.url') . DIRECTORY_SEPARATOR . config('asgard.media.config.files-path') . 'google-map_smallThumb.png';
+        $file = \Illuminate\Http\UploadedFile::fake()->image('my-file.jpg');
 
+        $file = app(FileService::class)->store($file);
+
+        $expected = config('app.url') . config('asgard.media.config.files-path') . 'my-file_smallThumb.jpg';
+        $path = $this->imagy->getThumbnail($file->path, 'smallThumb');
+
+        $this->assertTrue($this->app['files']->exists(public_path('assets/media/my-file.jpg')));
         $this->assertEquals($expected, $path);
+    }
+
+    /** @test */
+    public function it_should_return_thumbnail_path_to_sub_folders()
+    {
+        $this->resetDatabase();
+
+        app(FolderRepository::class)->create(['name' => 'My Folder', 'parent_id' => 0]);
+        $file = \Illuminate\Http\UploadedFile::fake()->image('my-file.jpg');
+
+        $file = app(FileService::class)->store($file, 1);
+
+        $this->assertTrue($this->app['files']->exists(public_path('assets/media/my-folder/my-file.jpg')));
+
+        $smallThumbPath = $this->imagy->getThumbnail($file->path, 'smallThumb');
+
+        $expected = config('app.url') . config('asgard.media.config.files-path') . 'my-folder/my-file_smallThumb.jpg';
+
+        $this->assertEquals($expected, $smallThumbPath);
     }
 
     /** @test */

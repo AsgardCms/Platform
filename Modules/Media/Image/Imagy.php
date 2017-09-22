@@ -93,7 +93,7 @@ class Imagy
             return (new MediaPath($originalImage))->getRelativeUrl();
         }
 
-        $path = config('asgard.media.config.files-path') . $this->newFilename($originalImage, $thumbnail);
+        $path = $this->getFilenameFor($originalImage, $thumbnail);
 
         return (new MediaPath($path))->getUrl();
     }
@@ -245,16 +245,38 @@ class Imagy
         return $path;
     }
 
-    private function getFilenameFor(MediaPath $path, Thumbnail $thumbnail)
+    /**
+     * @param MediaPath $path
+     * @param Thumbnail|string $thumbnail
+     * @return string
+     */
+    private function getFilenameFor(MediaPath $path, $thumbnail)
     {
-        $filenameWithoutPrefix = str_replace(config('asgard.media.config.files-path'), '', $path->getRelativeUrl());
+        if ($thumbnail instanceof  Thumbnail) {
+            $thumbnail = $thumbnail->name();
+        }
+        $filenameWithoutPrefix = $this->removeConfigPrefix($path->getRelativeUrl());
         $filename = substr(strrchr($filenameWithoutPrefix, '/'), 1);
         $folders = str_replace($filename, '' , $filenameWithoutPrefix);
 
         if ($filename === false) {
-            return config('asgard.media.config.files-path') . $this->newFilename($path, $thumbnail->name());
+            return config('asgard.media.config.files-path') . $this->newFilename($path, $thumbnail);
         }
 
-        return config('asgard.media.config.files-path') . $folders .  $this->newFilename($path, $thumbnail->name());
+        return config('asgard.media.config.files-path') . $folders .  $this->newFilename($path, $thumbnail);
+    }
+
+    /**
+     * @param string $path
+     * @return string
+     */
+    private function removeConfigPrefix(string $path) : string
+    {
+        $configAssetPath = config('asgard.media.config.files-path');
+
+        return str_replace([
+            $configAssetPath,
+            ltrim($configAssetPath, '/')
+        ], '', $path);
     }
 }

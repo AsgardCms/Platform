@@ -70,7 +70,7 @@ class FileTest extends MediaTestCase
     {
         $file = $this->createFile('my/file/name.jpg');
 
-        $this->assertEquals('http://localhost/name_smallThumb.jpg', $file->getThumbnail('smallThumb'));
+        $this->assertEquals('http://localhost/my/file/name_smallThumb.jpg', $file->getThumbnail('smallThumb'));
     }
 
     /** @test */
