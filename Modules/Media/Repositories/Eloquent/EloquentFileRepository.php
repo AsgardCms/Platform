@@ -12,6 +12,7 @@ use Modules\Media\Events\FileWasCreated;
 use Modules\Media\Events\FileWasUpdated;
 use Modules\Media\Helpers\FileHelper;
 use Modules\Media\Repositories\FileRepository;
+use Modules\Media\Repositories\FolderRepository;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 class EloquentFileRepository extends EloquentBaseRepository implements FileRepository
@@ -37,9 +38,10 @@ class EloquentFileRepository extends EloquentBaseRepository implements FileRepos
     /**
      * Create a file row from the given file
      * @param  UploadedFile $file
+     * @param int $parentId
      * @return mixed
      */
-    public function createFromFile(UploadedFile $file)
+    public function createFromFile(UploadedFile $file, int $parentId = 0)
     {
         $fileName = FileHelper::slug($file->getClientOriginalName());
 
@@ -51,7 +53,7 @@ class EloquentFileRepository extends EloquentBaseRepository implements FileRepos
 
         $data = [
             'filename' => $fileName,
-            'path' => config('asgard.media.config.files-path') . "{$fileName}",
+            'path' => $this->getPathFor($fileName, $parentId),
             'extension' => substr(strrchr($fileName, '.'), 1),
             'mimetype' => $file->getClientMimeType(),
             'filesize' => $file->getFileInfo()->getSize(),
@@ -64,6 +66,18 @@ class EloquentFileRepository extends EloquentBaseRepository implements FileRepos
         event(new FileWasCreated($file));
 
         return $file;
+    }
+
+    private function getPathFor(string $filename, int $folderId)
+    {
+        if ($folderId !== 0) {
+            $parent = app(FolderRepository::class)->findFolder($folderId);
+            if ($parent !== null) {
+                return $parent->path->getRelativeUrl() . '/' . $filename;
+            }
+        }
+
+        return config('asgard.media.config.files-path') . $filename;
     }
 
     public function destroy($file)

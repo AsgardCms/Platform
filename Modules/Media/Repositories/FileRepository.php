@@ -11,9 +11,10 @@ interface FileRepository extends BaseRepository
     /**
      * Create a file row from the given file
      * @param  UploadedFile $file
+     * @param int $parentId
      * @return mixed
      */
-    public function createFromFile(UploadedFile $file);
+    public function createFromFile(UploadedFile $file, int $parentId = 0);
 
     /**
      * Find a file for the entity by zone

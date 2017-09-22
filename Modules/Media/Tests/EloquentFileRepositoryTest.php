@@ -10,6 +10,7 @@ use Modules\Media\Events\FileIsUpdating;
 use Modules\Media\Events\FileWasCreated;
 use Modules\Media\Events\FileWasUpdated;
 use Modules\Media\Repositories\FileRepository;
+use Modules\Media\Repositories\FolderRepository;
 use Symfony\Component\Finder\SplFileInfo;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 
@@ -27,6 +28,14 @@ class EloquentFileRepositoryTest extends MediaTestCase
         $this->resetDatabase();
 
         $this->file = app(FileRepository::class);
+        $this->app['config']->set('asgard.media.config.files-path', '/assets/media/');
+    }
+
+    public function tearDown()
+    {
+        if ($this->app['files']->isDirectory(public_path('assets')) === true) {
+            $this->app['files']->deleteDirectory(public_path('assets'));
+        }
     }
 
     /** @test */
@@ -210,6 +219,29 @@ class EloquentFileRepositoryTest extends MediaTestCase
 
         $this->assertEquals('bettername.jpg', $file->filename);
         $this->assertEquals('Hello World', $file->translate('en')->description);
+    }
+
+    /** @test */
+    public function it_can_create_a_file_in_a_folder()
+    {
+        $folder = app(FolderRepository::class)->create(['name' => 'My Folder', 'parent_id' => 0]);
+        $file = $this->file->createFromFile(\Illuminate\Http\UploadedFile::fake()->image('my-file.jpg'), $folder->id);
+
+        $this->assertCount(2, $this->file->all());
+
+        $this->assertEquals('/assets/media/my-folder/my-file.jpg', $file->path->getRelativeUrl());
+    }
+
+    /** @test */
+    public function it_can_create_a_file_in_sub_sub_folder()
+    {
+        $folderRepository = app(FolderRepository::class);
+        $folderRepository->create(['name' => 'My Folder', 'parent_id' => 0]);
+        $nestedFolder = $folderRepository->create(['name' => 'Nested Folder', 'parent_id' => 1]);
+
+        $file = $this->file->createFromFile(\Illuminate\Http\UploadedFile::fake()->image('my-file.jpg'), $nestedFolder->id);
+
+        $this->assertEquals('/assets/media/my-folder/nested-folder/my-file.jpg', $file->path->getRelativeUrl());
     }
 
     private function createFile($fileName = 'random/name.jpg')
