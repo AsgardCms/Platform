@@ -5,7 +5,9 @@ namespace Modules\Media\Tests;
 use Illuminate\Support\Facades\Event;
 use Modules\Media\Entities\File;
 use Modules\Media\Events\FolderIsCreating;
+use Modules\Media\Events\FolderIsUpdating;
 use Modules\Media\Events\FolderWasCreated;
+use Modules\Media\Events\FolderWasUpdated;
 use Modules\Media\Repositories\FolderRepository;
 
 final class EloquentFolderRepositoryTest extends MediaTestCase
@@ -109,5 +111,57 @@ final class EloquentFolderRepositoryTest extends MediaTestCase
 
         $this->assertEquals('/assets/media/root-folder/child-folder', $childFolder->path->getRelativeUrl());
         $this->assertTrue($this->app['files']->isDirectory(public_path('assets/media/root-folder/child-folder')));
+    }
+
+    /** @test */
+    public function it_can_update_a_folder_in_database()
+    {
+        $folder = $this->folder->create(['name' => 'My Folder', 'parent_id' => 0]);
+
+        $folder = $this->folder->update($folder, ['name' => 'New Name!']);
+
+        $this->assertCount(1, $this->folder->all());
+        $this->assertEquals('New Name!', $folder->filename);
+        $this->assertEquals('/assets/media/new-name', $folder->path->getRelativeUrl());
+    }
+
+    /** @test */
+    public function it_triggers_event_when_folder_was_updated()
+    {
+        Event::fake();
+
+        $folder = $this->folder->create(['name' => 'My Folder', 'parent_id' => 0]);
+        $folder = $this->folder->update($folder, ['name' => 'New Name!']);
+
+        Event::assertDispatched(FolderWasUpdated::class, function ($e) use ($folder) {
+            return $e->folder->id === $folder->id;
+        });
+    }
+
+    /** @test */
+    public function it_triggers_an_event_when_folder_is_updating()
+    {
+        Event::fake();
+
+        $folder = $this->folder->create(['name' => 'My Folder']);
+        $folder = $this->folder->update($folder, ['name' => 'New Name!']);
+
+        Event::assertDispatched(FolderIsUpdating::class, function ($e) use ($folder) {
+            return $e->getAttribute('filename') === $folder->filename;
+        });
+    }
+
+    /** @test */
+    public function it_can_change_data_when_folder_is_updating()
+    {
+        Event::listen(FolderIsUpdating::class, function (FolderIsUpdating $event) {
+            $filename = $event->getAttribute('filename');
+            $event->setAttributes(['filename' => strtoupper($filename)]);
+        });
+
+        $folder = $this->folder->create(['name' => 'My Folder']);
+        $folder = $this->folder->update($folder, ['name' => 'New Name!']);
+
+        $this->assertEquals('NEW NAME!', $folder->filename);
     }
 }

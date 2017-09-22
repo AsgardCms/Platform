@@ -5,7 +5,9 @@ namespace Modules\Media\Repositories\Eloquent;
 use Modules\Core\Repositories\Eloquent\EloquentBaseRepository;
 use Modules\Media\Entities\File;
 use Modules\Media\Events\FolderIsCreating;
+use Modules\Media\Events\FolderIsUpdating;
 use Modules\Media\Events\FolderWasCreated;
+use Modules\Media\Events\FolderWasUpdated;
 use Modules\Media\Repositories\FolderRepository;
 
 class EloquentFolderRepository extends EloquentBaseRepository implements FolderRepository
@@ -34,6 +36,20 @@ class EloquentFolderRepository extends EloquentBaseRepository implements FolderR
         event(new FolderWasCreated($folder, $data));
 
         return $folder;
+    }
+
+    public function update($model, $data)
+    {
+        $formattedData = [
+            'filename' => array_get($data, 'name'),
+            'path' => $this->getPath($data),
+        ];
+        event($event = new FolderIsUpdating($formattedData));
+        $model->update($event->getAttributes());
+
+        event(new FolderWasUpdated($model, $formattedData));
+
+        return $model;
     }
 
     /**
