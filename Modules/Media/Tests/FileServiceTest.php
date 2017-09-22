@@ -1,0 +1,51 @@
+<?php
+
+namespace Modules\Media\Tests;
+
+use Modules\Media\Services\FileService;
+
+final class FileServiceTest extends MediaTestCase
+{
+    /**
+     * @var FileService
+     */
+    private $fileService;
+
+    public function setUp()
+    {
+        parent::setUp();
+        $this->resetDatabase();
+        $this->fileService = app(FileService::class);
+        $this->app['config']->set('asgard.media.config.files-path', '/assets/media/');
+    }
+
+    public function tearDown()
+    {
+        if ($this->app['files']->isDirectory(public_path('assets')) === true) {
+            $this->app['files']->deleteDirectory(public_path('assets'));
+        }
+    }
+
+    /** @test */
+    public function it_creates_a_file_on_disk()
+    {
+        $file = \Illuminate\Http\UploadedFile::fake()->image('my-file.jpg');
+
+        $this->fileService->store($file);
+
+        $this->assertTrue($this->app['files']->isDirectory(public_path('assets/media')));
+        $this->assertTrue($this->app['files']->exists(public_path('assets/media/my-file.jpg')));
+    }
+
+    /** @test */
+    public function it_creates_file_thumbnails_on_disk()
+    {
+        $file = \Illuminate\Http\UploadedFile::fake()->image('my-file.jpg');
+
+        $this->fileService->store($file);
+
+        $this->assertTrue($this->app['files']->isDirectory(public_path('assets/media')));
+        $this->assertTrue($this->app['files']->exists(public_path('assets/media/my-file_smallThumb.jpg')));
+        $this->assertTrue($this->app['files']->exists(public_path('assets/media/my-file_mediumThumb.jpg')));
+    }
+}
