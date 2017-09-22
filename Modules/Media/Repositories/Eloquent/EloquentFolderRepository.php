@@ -48,7 +48,7 @@ class EloquentFolderRepository extends EloquentBaseRepository implements FolderR
             'filename' => array_get($data, 'name'),
             'path' => $this->getPath($data),
         ];
-        dd($previousData, $formattedData);
+
         event($event = new FolderIsUpdating($formattedData));
         $model->update($event->getAttributes());
 

@@ -127,6 +127,18 @@ final class EloquentFolderRepositoryTest extends MediaTestCase
     }
 
     /** @test */
+    public function it_can_update_sub_folder_in_database()
+    {
+        $folder = $this->folder->create(['name' => 'My Folder', 'parent_id' => 0]);
+        $folderTwo = $this->folder->create(['name' => 'Child Folder', 'parent_id' => $folder->id]);
+
+        $folderTwo = $this->folder->update($folderTwo, ['name' => 'Awesome Child', 'parent_id' => $folder->id]);
+
+        $this->assertEquals('Awesome Child', $folderTwo->filename);
+        $this->assertEquals('/assets/media/my-folder/awesome-child', $folderTwo->path->getRelativeUrl());
+    }
+
+    /** @test */
     public function it_triggers_event_when_folder_was_updated()
     {
         Event::fake();
