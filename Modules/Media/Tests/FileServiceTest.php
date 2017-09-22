@@ -48,4 +48,16 @@ final class FileServiceTest extends MediaTestCase
         $this->assertTrue($this->app['files']->exists(public_path('assets/media/my-file_smallThumb.jpg')));
         $this->assertTrue($this->app['files']->exists(public_path('assets/media/my-file_mediumThumb.jpg')));
     }
+
+    /** @test */
+    public function it_doesnt_create_thumbnails_for_non_images()
+    {
+        $file = \Illuminate\Http\UploadedFile::fake()->create('records.pdf');
+
+        $this->fileService->store($file);
+
+        $this->assertTrue($this->app['files']->exists(public_path('assets/media/records.pdf')));
+        $this->assertFalse($this->app['files']->exists(public_path('assets/media/records_smallThumb.pdf')));
+        $this->assertFalse($this->app['files']->exists(public_path('assets/media/records_mediumThumb.pdf')));
+    }
 }
