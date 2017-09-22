@@ -104,7 +104,7 @@ footer.main-footer p.text-muted {
   margin-bottom: 20px;
   margin-top: -30px;
 }
-.content .el-breadcrumb {
+.content .content-header .el-breadcrumb {
   float: right;
   background: transparent;
   margin-top: 0;
