@@ -20,11 +20,12 @@ class FolderController extends Controller
 
     public function store(CreateFolderRequest $request)
     {
-        $this->folder->create($request->all());
+        $folder = $this->folder->create($request->all());
 
         return response()->json([
             'errors' => false,
             'message' => trans('media::folders.folder was created'),
+            'data' => $folder,
         ]);
     }
 }
