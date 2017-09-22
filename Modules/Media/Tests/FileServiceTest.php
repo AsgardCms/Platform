@@ -2,6 +2,7 @@
 
 namespace Modules\Media\Tests;
 
+use Modules\Media\Repositories\FolderRepository;
 use Modules\Media\Services\FileService;
 
 final class FileServiceTest extends MediaTestCase
@@ -59,5 +60,31 @@ final class FileServiceTest extends MediaTestCase
         $this->assertTrue($this->app['files']->exists(public_path('assets/media/records.pdf')));
         $this->assertFalse($this->app['files']->exists(public_path('assets/media/records_smallThumb.pdf')));
         $this->assertFalse($this->app['files']->exists(public_path('assets/media/records_mediumThumb.pdf')));
+    }
+
+    /** @test */
+    public function it_can_store_a_file_in_sub_folder()
+    {
+        $folderRepository = app(FolderRepository::class);
+        $folderRepository->create(['name' => 'My Folder', 'parent_id' => 0]);
+        $file = \Illuminate\Http\UploadedFile::fake()->create('records.pdf');
+
+        $this->fileService->store($file, 1);
+
+        $this->assertTrue($this->app['files']->exists(public_path('assets/media/my-folder/records.pdf')));
+    }
+
+    /** @test */
+    public function it_can_store_an_image_with_thumbnails_in_sub_folder()
+    {
+        $folderRepository = app(FolderRepository::class);
+        $folderRepository->create(['name' => 'My Folder', 'parent_id' => 0]);
+        $file = \Illuminate\Http\UploadedFile::fake()->image('my-file.jpg');
+
+        $this->fileService->store($file, 1);
+
+        $this->assertTrue($this->app['files']->exists(public_path('assets/media/my-folder/my-file.jpg')));
+        $this->assertTrue($this->app['files']->exists(public_path('assets/media/my-folder/my-file_smallThumb.jpg')));
+        $this->assertTrue($this->app['files']->exists(public_path('assets/media/my-folder/my-file_mediumThumb.jpg')));
     }
 }

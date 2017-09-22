@@ -110,10 +110,13 @@ class Imagy
 
         foreach ($this->manager->all() as $thumbnail) {
             $image = $this->image->make($this->filesystem->disk($this->getConfiguredFilesystem())->get($this->getDestinationPath($path->getRelativeUrl())));
-            $filename = config('asgard.media.config.files-path') . $this->newFilename($path, $thumbnail->name());
+
+            $filename = $this->getFilenameFor($path, $thumbnail);
+
             foreach ($thumbnail->filters() as $manipulation => $options) {
                 $image = $this->imageFactory->make($manipulation)->handle($image, $options);
             }
+
             $image = $image->stream(pathinfo($path, PATHINFO_EXTENSION), array_get($thumbnail->filters(), 'quality', 90));
             $this->writeImage($filename, $image);
         }
@@ -240,5 +243,18 @@ class Imagy
         }
 
         return $path;
+    }
+
+    private function getFilenameFor(MediaPath $path, Thumbnail $thumbnail)
+    {
+        $filenameWithoutPrefix = str_replace(config('asgard.media.config.files-path'), '', $path->getRelativeUrl());
+        $filename = substr(strrchr($filenameWithoutPrefix, '/'), 1);
+        $folders = str_replace($filename, '' , $filenameWithoutPrefix);
+
+        if ($filename === false) {
+            return config('asgard.media.config.files-path') . $this->newFilename($path, $thumbnail->name());
+        }
+
+        return config('asgard.media.config.files-path') . $folders .  $this->newFilename($path, $thumbnail->name());
     }
 }

@@ -30,11 +30,12 @@ class FileService
 
     /**
      * @param  UploadedFile $file
+     * @param int $parentId
      * @return mixed
      */
-    public function store(UploadedFile $file)
+    public function store(UploadedFile $file, int $parentId = 0)
     {
-        $savedFile = $this->file->createFromFile($file);
+        $savedFile = $this->file->createFromFile($file, $parentId);
 
         $path = $this->getDestinationPath($savedFile->getOriginal('path'));
         $stream = fopen($file->getRealPath(), 'r+');
