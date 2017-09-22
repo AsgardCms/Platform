@@ -230,6 +230,7 @@ class EloquentFileRepositoryTest extends MediaTestCase
         $this->assertCount(2, $this->file->all());
 
         $this->assertEquals('/assets/media/my-folder/my-file.jpg', $file->path->getRelativeUrl());
+        $this->assertEquals($folder->id, $file->folder_id);
     }
 
     /** @test */
@@ -242,6 +243,7 @@ class EloquentFileRepositoryTest extends MediaTestCase
         $file = $this->file->createFromFile(\Illuminate\Http\UploadedFile::fake()->image('my-file.jpg'), $nestedFolder->id);
 
         $this->assertEquals('/assets/media/my-folder/nested-folder/my-file.jpg', $file->path->getRelativeUrl());
+        $this->assertEquals($nestedFolder->id, $file->folder_id);
     }
 
     private function createFile($fileName = 'random/name.jpg')

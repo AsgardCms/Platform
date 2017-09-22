@@ -57,7 +57,7 @@ class EloquentFileRepository extends EloquentBaseRepository implements FileRepos
             'extension' => substr(strrchr($fileName, '.'), 1),
             'mimetype' => $file->getClientMimeType(),
             'filesize' => $file->getFileInfo()->getSize(),
-            'folder_id' => 0,
+            'folder_id' => $parentId,
         ];
 
         event($event = new FileIsCreating($data));
