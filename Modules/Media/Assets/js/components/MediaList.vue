@@ -25,7 +25,15 @@
                                 </el-input>
                             </div>
                         </div>
-
+                        <el-row>
+                            <el-col :span="24">
+                                <el-breadcrumb separator="/" style="margin-bottom: 20px;">
+                                    <el-breadcrumb-item v-for="(folder, index) in folderBreadcrumb" @click.native="changeRoot(folder.id, index)" :key="folder.id">
+                                        {{ folder.name }}
+                                    </el-breadcrumb-item>
+                                </el-breadcrumb>
+                            </el-col>
+                        </el-row>
                         <el-table
                                 :data="data"
                                 stripe
@@ -65,6 +73,8 @@
                                        v-if="singleModal">
                                         {{ trans('media.insert') }}
                                     </a>
+                                    <a class="btn btn-default btn-flat" :href="getEditMediaUrl(scope)"
+                                       v-if="! singleModal && ! scope.row.is_folder"><i class="fa fa-pencil"></i></a>
                                 </template>
                             </el-table-column>
                         </el-table>
@@ -114,6 +124,10 @@
                 searchQuery: '',
                 folderId: 0,
                 selectedMedia: {},
+                folderBreadcrumb: [
+                    {id: 0, name: 'Home'},
+                    //{id: 37, name: 'Folder'},
+                ]
             }
         },
         methods: {
@@ -166,12 +180,22 @@
                 this.tableIsLoading = true;
                 this.queryServer({folder_id: scope.row.id});
                 this.folderId = scope.row.id;
+                this.folderBreadcrumb.push({id: scope.row.id, name: scope.row.filename});
             },
             insertMedia(scope) {
                 this.$events.emit('fileWasSelected', scope.row);
             },
             handleSelectionChange(selectedMedia) {
                 this.selectedMedia = selectedMedia;
+            },
+            getEditMediaUrl(scope) {
+                return route('admin.media.media.edit', {media: scope.row.id});
+            },
+            changeRoot(folderId, index) {
+                this.tableIsLoading = true;
+                this.queryServer({folder_id: folderId});
+                this.folderId = folderId;
+                this.folderBreadcrumb.splice(index+1, this.folderBreadcrumb.length);
             },
         },
         mounted() {

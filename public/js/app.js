@@ -93897,6 +93897,16 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 exports.default = {
     components: {
@@ -93921,7 +93931,8 @@ exports.default = {
             links: {},
             searchQuery: '',
             folderId: 0,
-            selectedMedia: {}
+            selectedMedia: {},
+            folderBreadcrumb: [{ id: 0, name: 'Home' }]
         };
     },
 
@@ -93976,12 +93987,22 @@ exports.default = {
             this.tableIsLoading = true;
             this.queryServer({ folder_id: scope.row.id });
             this.folderId = scope.row.id;
+            this.folderBreadcrumb.push({ id: scope.row.id, name: scope.row.filename });
         },
         insertMedia: function insertMedia(scope) {
             this.$events.emit('fileWasSelected', scope.row);
         },
         handleSelectionChange: function handleSelectionChange(selectedMedia) {
             this.selectedMedia = selectedMedia;
+        },
+        getEditMediaUrl: function getEditMediaUrl(scope) {
+            return route('admin.media.media.edit', { media: scope.row.id });
+        },
+        changeRoot: function changeRoot(folderId, index) {
+            this.tableIsLoading = true;
+            this.queryServer({ folder_id: folderId });
+            this.folderId = folderId;
+            this.folderBreadcrumb.splice(index + 1, this.folderBreadcrumb.length);
         }
     },
     mounted: function mounted() {
@@ -94537,7 +94558,27 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       },
       expression: "searchQuery"
     }
-  })], 1)]), _vm._v(" "), _c('el-table', {
+  })], 1)]), _vm._v(" "), _c('el-row', [_c('el-col', {
+    attrs: {
+      "span": 24
+    }
+  }, [_c('el-breadcrumb', {
+    staticStyle: {
+      "margin-bottom": "20px"
+    },
+    attrs: {
+      "separator": "/"
+    }
+  }, _vm._l((_vm.folderBreadcrumb), function(folder, index) {
+    return _c('el-breadcrumb-item', {
+      key: folder.id,
+      nativeOn: {
+        "click": function($event) {
+          _vm.changeRoot(folder.id, index)
+        }
+      }
+    }, [_vm._v("\n                                    " + _vm._s(folder.name) + "\n                                ")])
+  }))], 1)], 1), _vm._v(" "), _c('el-table', {
     directives: [{
       name: "loading",
       rawName: "v-loading.body",
@@ -94635,7 +94676,14 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
               _vm.insertMedia(scope)
             }
           }
-        }, [_vm._v("\n                                    " + _vm._s(_vm.trans('media.insert')) + "\n                                ")]) : _vm._e()]
+        }, [_vm._v("\n                                    " + _vm._s(_vm.trans('media.insert')) + "\n                                ")]) : _vm._e(), _vm._v(" "), (!_vm.singleModal && !scope.row.is_folder) ? _c('a', {
+          staticClass: "btn btn-default btn-flat",
+          attrs: {
+            "href": _vm.getEditMediaUrl(scope)
+          }
+        }, [_c('i', {
+          staticClass: "fa fa-pencil"
+        })]) : _vm._e()]
       }
     }])
   })], 1), _vm._v(" "), _c('div', {
