@@ -3,8 +3,10 @@
 namespace Modules\Media\Transformers;
 
 use Illuminate\Http\Resources\Json\Resource;
+use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 use Modules\Media\Helpers\FileHelper;
 use Modules\Media\Image\Imagy;
+use Modules\Media\Image\ThumbnailManager;
 
 class MediaTransformer extends Resource
 {
@@ -12,17 +14,22 @@ class MediaTransformer extends Resource
      * @var Imagy
      */
     private $imagy;
+    /**
+     * @var ThumbnailManager
+     */
+    private $thumbnailManager;
 
     public function __construct($resource)
     {
         parent::__construct($resource);
 
         $this->imagy = app(Imagy::class);
+        $this->thumbnailManager = app(ThumbnailManager::class);
     }
 
     public function toArray($request)
     {
-        return [
+        $data = [
             'id' => $this->id,
             'filename' => $this->filename,
             'path' => $this->getPath(),
@@ -35,6 +42,28 @@ class MediaTransformer extends Resource
             'small_thumb' => $this->imagy->getThumbnail($this->path, 'smallThumb'),
             'medium_thumb' => $this->imagy->getThumbnail($this->path, 'mediumThumb'),
         ];
+
+        foreach ($this->thumbnailManager->all() as $thumbnail) {
+            $thumbnailName = $thumbnail->name();
+
+            $data['thumbnails'][] = [
+                'name' => $thumbnailName,
+                'path' => $this->imagy->getThumbnail($this->path, $thumbnailName),
+                'size' => $thumbnail->size(),
+            ];
+        }
+
+        foreach (LaravelLocalization::getSupportedLocales() as $locale => $supportedLocale) {
+            foreach ($this->translatedAttributes as $translatedAttribute) {
+                $data[$locale][$translatedAttribute] = $this->translateOrNew($locale)->$translatedAttribute;
+            }
+        }
+
+        foreach ($this->tags as $tag) {
+            $data['tags'][] = $tag->name;
+        }
+
+        return $data;
     }
 
     private function getPath()
