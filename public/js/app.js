@@ -282,7 +282,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports["default"] = {
-  required: __webpack_require__(31),
+  required: __webpack_require__(30),
   whitespace: __webpack_require__(67),
   type: __webpack_require__(68),
   range: __webpack_require__(69),
@@ -10490,7 +10490,7 @@ module.exports = Vue$3;
 "use strict";
 
 
-var bind = __webpack_require__(35);
+var bind = __webpack_require__(34);
 var isBuffer = __webpack_require__(114);
 
 /*global toString:true*/
@@ -20619,7 +20619,7 @@ module.exports = g;
 
 /* eslint-disable no-undefined */
 
-var throttle = __webpack_require__(28);
+var throttle = __webpack_require__(27);
 
 /**
  * Debounce execution of a function. Debouncing, unlike throttling,
@@ -21527,7 +21527,7 @@ var _vue = __webpack_require__(3);
 
 var _vue2 = _interopRequireDefault(_vue);
 
-var _popup = __webpack_require__(24);
+var _popup = __webpack_require__(23);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -22075,10 +22075,10 @@ function getDefaultAdapter() {
   var adapter;
   if (typeof XMLHttpRequest !== 'undefined') {
     // For browsers use XHR adapter
-    adapter = __webpack_require__(36);
+    adapter = __webpack_require__(35);
   } else if (typeof process !== 'undefined') {
     // For node use HTTP adapter
-    adapter = __webpack_require__(36);
+    adapter = __webpack_require__(35);
   }
   return adapter;
 }
@@ -22158,43 +22158,6 @@ module.exports = defaults;
 "use strict";
 
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _Form = __webpack_require__(141);
-
-Object.defineProperty(exports, 'default', {
-  enumerable: true,
-  get: function get() {
-    return _interopRequireDefault(_Form).default;
-  }
-});
-Object.defineProperty(exports, 'Form', {
-  enumerable: true,
-  get: function get() {
-    return _interopRequireDefault(_Form).default;
-  }
-});
-
-var _Errors = __webpack_require__(42);
-
-Object.defineProperty(exports, 'Errors', {
-  enumerable: true,
-  get: function get() {
-    return _interopRequireDefault(_Errors).default;
-  }
-});
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-/***/ }),
-/* 23 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
 exports.__esModule = true;
 
 var _vue = __webpack_require__(3);
@@ -22266,7 +22229,7 @@ exports.default = {
 };
 
 /***/ }),
-/* 24 */
+/* 23 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -22571,7 +22534,7 @@ exports.default = {
 exports.PopupManager = _popupManager2.default;
 
 /***/ }),
-/* 25 */
+/* 24 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports =
@@ -22998,7 +22961,7 @@ module.exports =
 /******/ });
 
 /***/ }),
-/* 26 */
+/* 25 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -23034,7 +22997,7 @@ function scrollIntoView(container, selected) {
 }
 
 /***/ }),
-/* 27 */
+/* 26 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -23057,7 +23020,7 @@ exports.default = {
 };
 
 /***/ }),
-/* 28 */
+/* 27 */
 /***/ (function(module, exports) {
 
 /* eslint-disable no-undefined,no-param-reassign,no-shadow */
@@ -23154,7 +23117,7 @@ module.exports = function ( delay, noTrailing, callback, debounceMode ) {
 
 
 /***/ }),
-/* 29 */
+/* 28 */
 /***/ (function(module, exports) {
 
 module.exports =
@@ -23405,7 +23368,7 @@ module.exports =
 /******/ });
 
 /***/ }),
-/* 30 */
+/* 29 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -23431,7 +23394,7 @@ function getFirstComponentChild(children) {
 };
 
 /***/ }),
-/* 31 */
+/* 30 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -23468,7 +23431,7 @@ exports["default"] = required;
 module.exports = exports['default'];
 
 /***/ }),
-/* 32 */
+/* 31 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // CodeMirror, copyright (c) by Marijn Haverbeke and others
@@ -23476,7 +23439,7 @@ module.exports = exports['default'];
 
 (function(mod) {
   if (true) // CommonJS
-    mod(__webpack_require__(5), __webpack_require__(33), __webpack_require__(98));
+    mod(__webpack_require__(5), __webpack_require__(32), __webpack_require__(98));
   else if (typeof define == "function" && define.amd) // AMD
     define(["../../lib/codemirror", "../xml/xml", "../meta"], mod);
   else // Plain browser env
@@ -24333,7 +24296,7 @@ CodeMirror.defineMIME("text/x-markdown", "markdown");
 
 
 /***/ }),
-/* 33 */
+/* 32 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // CodeMirror, copyright (c) by Marijn Haverbeke and others
@@ -24733,7 +24696,7 @@ if (!CodeMirror.mimeModes.hasOwnProperty("text/html"))
 
 
 /***/ }),
-/* 34 */
+/* 33 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // CodeMirror, copyright (c) by Marijn Haverbeke and others
@@ -24829,7 +24792,7 @@ CodeMirror.overlayMode = function(base, overlay, combine) {
 
 
 /***/ }),
-/* 35 */
+/* 34 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -24847,7 +24810,7 @@ module.exports = function bind(fn, thisArg) {
 
 
 /***/ }),
-/* 36 */
+/* 35 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -24858,7 +24821,7 @@ var settle = __webpack_require__(118);
 var buildURL = __webpack_require__(120);
 var parseHeaders = __webpack_require__(121);
 var isURLSameOrigin = __webpack_require__(122);
-var createError = __webpack_require__(37);
+var createError = __webpack_require__(36);
 var btoa = (typeof window !== 'undefined' && window.btoa && window.btoa.bind(window)) || __webpack_require__(123);
 
 module.exports = function xhrAdapter(config) {
@@ -25034,7 +24997,7 @@ module.exports = function xhrAdapter(config) {
 
 
 /***/ }),
-/* 37 */
+/* 36 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -25059,7 +25022,7 @@ module.exports = function createError(message, config, code, request, response) 
 
 
 /***/ }),
-/* 38 */
+/* 37 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -25071,7 +25034,7 @@ module.exports = function isCancel(value) {
 
 
 /***/ }),
-/* 39 */
+/* 38 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -25097,7 +25060,7 @@ module.exports = Cancel;
 
 
 /***/ }),
-/* 40 */
+/* 39 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(global, module) {var __WEBPACK_AMD_DEFINE_RESULT__;/**
@@ -42189,7 +42152,7 @@ module.exports = Cancel;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(10), __webpack_require__(135)(module)))
 
 /***/ }),
-/* 41 */
+/* 40 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -42205,6 +42168,43 @@ exports.default = {
         }
     }
 };
+
+/***/ }),
+/* 41 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _Form = __webpack_require__(141);
+
+Object.defineProperty(exports, 'default', {
+  enumerable: true,
+  get: function get() {
+    return _interopRequireDefault(_Form).default;
+  }
+});
+Object.defineProperty(exports, 'Form', {
+  enumerable: true,
+  get: function get() {
+    return _interopRequireDefault(_Form).default;
+  }
+});
+
+var _Errors = __webpack_require__(42);
+
+Object.defineProperty(exports, 'Errors', {
+  enumerable: true,
+  get: function get() {
+    return _interopRequireDefault(_Errors).default;
+  }
+});
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 /***/ }),
 /* 42 */
@@ -42385,7 +42385,7 @@ var Component = __webpack_require__(2)(
   /* script */
   __webpack_require__(166),
   /* template */
-  __webpack_require__(180),
+  __webpack_require__(177),
   /* styles */
   null,
   /* scopeId */
@@ -42421,7 +42421,7 @@ module.exports = Component.exports
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(46);
-module.exports = __webpack_require__(188);
+module.exports = __webpack_require__(185);
 
 
 /***/ }),
@@ -42467,6 +42467,10 @@ var _PageRoutes = __webpack_require__(110);
 
 var _PageRoutes2 = _interopRequireDefault(_PageRoutes);
 
+var _MediaRoutes = __webpack_require__(203);
+
+var _MediaRoutes2 = _interopRequireDefault(_MediaRoutes);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
@@ -42488,15 +42492,16 @@ _vue2.default.component('ckeditor', __webpack_require__(148));
 _vue2.default.component('DeleteButton', __webpack_require__(154));
 _vue2.default.component('TagsInput', __webpack_require__(157));
 _vue2.default.component('SingleMedia', __webpack_require__(160));
-_vue2.default.component('MediaManager', __webpack_require__(185));
+_vue2.default.component('MediaManager', __webpack_require__(182));
 
 
 var currentLocale = window.AsgardCMS.currentLocale;
+var adminPrefix = window.AsgardCMS.adminPrefix;
 
 var router = new _vueRouter2.default({
     mode: 'history',
-    base: currentLocale + '/backend',
-    routes: [].concat(_toConsumableArray(_PageRoutes2.default))
+    base: currentLocale + '/' + adminPrefix,
+    routes: [].concat(_toConsumableArray(_PageRoutes2.default), _toConsumableArray(_MediaRoutes2.default))
 });
 
 var messages = _defineProperty({}, currentLocale, window.AsgardCMS.translations);
@@ -47669,7 +47674,7 @@ module.exports =
 /* 10 */
 /***/ function(module, exports) {
 
-	module.exports = __webpack_require__(27);
+	module.exports = __webpack_require__(26);
 
 /***/ },
 /* 11 */
@@ -47878,7 +47883,7 @@ module.exports =
 /* 14 */
 /***/ function(module, exports) {
 
-	module.exports = __webpack_require__(24);
+	module.exports = __webpack_require__(23);
 
 /***/ },
 /* 15 */
@@ -48198,7 +48203,7 @@ module.exports =
 /* 21 */
 /***/ function(module, exports) {
 
-	module.exports = __webpack_require__(23);
+	module.exports = __webpack_require__(22);
 
 /***/ },
 /* 22 */
@@ -48340,7 +48345,7 @@ module.exports =
 /* 25 */
 /***/ function(module, exports) {
 
-	module.exports = __webpack_require__(25);
+	module.exports = __webpack_require__(24);
 
 /***/ },
 /* 26 */
@@ -53089,7 +53094,7 @@ module.exports =
 /* 109 */
 /***/ function(module, exports) {
 
-	module.exports = __webpack_require__(29);
+	module.exports = __webpack_require__(28);
 
 /***/ },
 /* 110 */
@@ -53107,7 +53112,7 @@ module.exports =
 /* 112 */
 /***/ function(module, exports) {
 
-	module.exports = __webpack_require__(26);
+	module.exports = __webpack_require__(25);
 
 /***/ },
 /* 113 */
@@ -54231,7 +54236,7 @@ module.exports =
 /* 131 */
 /***/ function(module, exports) {
 
-	module.exports = __webpack_require__(28);
+	module.exports = __webpack_require__(27);
 
 /***/ },
 /* 132 */
@@ -62244,7 +62249,7 @@ module.exports =
 /* 194 */
 /***/ function(module, exports) {
 
-	module.exports = __webpack_require__(30);
+	module.exports = __webpack_require__(29);
 
 /***/ },
 /* 195 */
@@ -74626,7 +74631,7 @@ module.exports =
 /***/ 10:
 /***/ function(module, exports) {
 
-	module.exports = __webpack_require__(23);
+	module.exports = __webpack_require__(22);
 
 /***/ },
 
@@ -74647,7 +74652,7 @@ module.exports =
 /***/ 15:
 /***/ function(module, exports) {
 
-	module.exports = __webpack_require__(25);
+	module.exports = __webpack_require__(24);
 
 /***/ },
 
@@ -74661,14 +74666,14 @@ module.exports =
 /***/ 60:
 /***/ function(module, exports) {
 
-	module.exports = __webpack_require__(26);
+	module.exports = __webpack_require__(25);
 
 /***/ },
 
 /***/ 61:
 /***/ function(module, exports) {
 
-	module.exports = __webpack_require__(27);
+	module.exports = __webpack_require__(26);
 
 /***/ },
 
@@ -75848,7 +75853,7 @@ module.exports =
 /***/ 270:
 /***/ function(module, exports) {
 
-	module.exports = __webpack_require__(29);
+	module.exports = __webpack_require__(28);
 
 /***/ },
 
@@ -79345,7 +79350,7 @@ module.exports =
 /***/ 197:
 /***/ function(module, exports) {
 
-	module.exports = __webpack_require__(30);
+	module.exports = __webpack_require__(29);
 
 /***/ },
 
@@ -80552,7 +80557,7 @@ var _util = __webpack_require__(0);
 
 var util = _interopRequireWildcard(_util);
 
-var _required = __webpack_require__(31);
+var _required = __webpack_require__(30);
 
 var _required2 = _interopRequireDefault(_required);
 
@@ -82737,12 +82742,12 @@ var CodeMirror = __webpack_require__(5);
 __webpack_require__(95);
 __webpack_require__(96);
 __webpack_require__(97);
-__webpack_require__(32);
-__webpack_require__(34);
+__webpack_require__(31);
+__webpack_require__(33);
 __webpack_require__(99);
 __webpack_require__(100);
 __webpack_require__(101);
-__webpack_require__(33);
+__webpack_require__(32);
 var CodeMirrorSpellChecker = __webpack_require__(102);
 var marked = __webpack_require__(109);
 
@@ -85337,7 +85342,7 @@ CodeMirror.commands.shiftTabAndUnindentMarkdownList = function (cm) {
 
 (function(mod) {
   if (true) // CommonJS
-    mod(__webpack_require__(5), __webpack_require__(32), __webpack_require__(34));
+    mod(__webpack_require__(5), __webpack_require__(31), __webpack_require__(33));
   else if (typeof define == "function" && define.amd) // AMD
     define(["../../lib/codemirror", "../markdown/markdown", "../../addon/mode/overlay"], mod);
   else // Plain browser env
@@ -90028,7 +90033,7 @@ exports.default = {
 
 
 var utils = __webpack_require__(4);
-var bind = __webpack_require__(35);
+var bind = __webpack_require__(34);
 var Axios = __webpack_require__(115);
 var defaults = __webpack_require__(21);
 
@@ -90063,9 +90068,9 @@ axios.create = function create(instanceConfig) {
 };
 
 // Expose Cancel & CancelToken
-axios.Cancel = __webpack_require__(39);
+axios.Cancel = __webpack_require__(38);
 axios.CancelToken = __webpack_require__(130);
-axios.isCancel = __webpack_require__(38);
+axios.isCancel = __webpack_require__(37);
 
 // Expose all/spread
 axios.all = function all(promises) {
@@ -90415,7 +90420,7 @@ module.exports = function normalizeHeaderName(headers, normalizedName) {
 "use strict";
 
 
-var createError = __webpack_require__(37);
+var createError = __webpack_require__(36);
 
 /**
  * Resolve or reject a Promise based on response status.
@@ -90834,7 +90839,7 @@ module.exports = InterceptorManager;
 
 var utils = __webpack_require__(4);
 var transformData = __webpack_require__(127);
-var isCancel = __webpack_require__(38);
+var isCancel = __webpack_require__(37);
 var defaults = __webpack_require__(21);
 
 /**
@@ -90987,7 +90992,7 @@ module.exports = function combineURLs(baseURL, relativeURL) {
 "use strict";
 
 
-var Cancel = __webpack_require__(39);
+var Cancel = __webpack_require__(38);
 
 /**
  * A `CancelToken` is an object that can be used to request cancellation of an operation.
@@ -91210,11 +91215,11 @@ var _axios = __webpack_require__(7);
 
 var _axios2 = _interopRequireDefault(_axios);
 
-var _lodash = __webpack_require__(40);
+var _lodash = __webpack_require__(39);
 
 var _lodash2 = _interopRequireDefault(_lodash);
 
-var _ShortcutHelper = __webpack_require__(41);
+var _ShortcutHelper = __webpack_require__(40);
 
 var _ShortcutHelper2 = _interopRequireDefault(_ShortcutHelper);
 
@@ -91742,7 +91747,7 @@ var _Slugify = __webpack_require__(139);
 
 var _Slugify2 = _interopRequireDefault(_Slugify);
 
-var _ShortcutHelper = __webpack_require__(41);
+var _ShortcutHelper = __webpack_require__(40);
 
 var _ShortcutHelper2 = _interopRequireDefault(_ShortcutHelper);
 
@@ -91750,7 +91755,7 @@ var _ActiveEditor = __webpack_require__(140);
 
 var _ActiveEditor2 = _interopRequireDefault(_ActiveEditor);
 
-var _formBackendValidation = __webpack_require__(22);
+var _formBackendValidation = __webpack_require__(41);
 
 var _formBackendValidation2 = _interopRequireDefault(_formBackendValidation);
 
@@ -91978,9 +91983,6 @@ exports.default = {
         },
         generateSlug: function generateSlug(event, locale) {
             this.page[locale].slug = this.slugify(this.page[locale].title);
-        },
-        setTags: function setTags(tags) {
-            this.tags = tags;
         },
         fetchPage: function fetchPage() {
             var _this3 = this;
@@ -92771,10 +92773,15 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }) : _vm._e()], 1), _vm._v(" "), _c('tags-input', {
     attrs: {
       "namespace": "asgardcms/page",
+      "value": _vm.tags,
       "current-tags": _vm.tags
     },
-    on: {
-      "input": _vm.setTags
+    model: {
+      value: (_vm.tags),
+      callback: function($$v) {
+        _vm.tags = $$v
+      },
+      expression: "tags"
     }
   }), _vm._v(" "), _c('single-media', {
     attrs: {
@@ -92821,7 +92828,7 @@ if (false) {
 "use strict";
 
 
-window._ = __webpack_require__(40);
+window._ = __webpack_require__(39);
 
 /**
  * We'll load jQuery and the Bootstrap jQuery plugin which provides support
@@ -93482,7 +93489,7 @@ var Component = __webpack_require__(2)(
   /* script */
   __webpack_require__(161),
   /* template */
-  __webpack_require__(184),
+  __webpack_require__(181),
   /* styles */
   null,
   /* scopeId */
@@ -93532,7 +93539,7 @@ var _MediaList = __webpack_require__(44);
 
 var _MediaList2 = _interopRequireDefault(_MediaList);
 
-var _StringHelpers = __webpack_require__(181);
+var _StringHelpers = __webpack_require__(178);
 
 var _StringHelpers2 = _interopRequireDefault(_StringHelpers);
 
@@ -93799,6 +93806,10 @@ Object.defineProperty(exports, "__esModule", {
     value: true
 });
 
+var _axios = __webpack_require__(7);
+
+var _axios2 = _interopRequireDefault(_axios);
+
 var _NewFolder = __webpack_require__(167);
 
 var _NewFolder2 = _interopRequireDefault(_NewFolder);
@@ -93807,11 +93818,115 @@ var _UploadButton = __webpack_require__(172);
 
 var _UploadButton2 = _interopRequireDefault(_UploadButton);
 
-var _RenameFolder = __webpack_require__(177);
+var _RenameFolder = __webpack_require__(197);
 
 var _RenameFolder2 = _interopRequireDefault(_RenameFolder);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 exports.default = {
     components: {
@@ -93855,7 +93970,7 @@ exports.default = {
                 folder_id: this.folderId
             };
 
-            axios.get(route('api.media.all-vue', _.merge(properties, customProperties))).then(function (response) {
+            _axios2.default.get(route('api.media.all-vue', _.merge(properties, customProperties))).then(function (response) {
                 _this.tableIsLoading = false;
                 _this.data = response.data.data;
                 _this.meta = response.data.meta;
@@ -93867,6 +93982,10 @@ exports.default = {
         },
         fetchMediaData: function fetchMediaData() {
             this.tableIsLoading = true;
+            if (this.$route.query.folder_id !== undefined) {
+                this.queryServer({ folder_id: this.$route.query.folder_id });
+                return;
+            }
             this.queryServer();
         },
         handleSizeChange: function handleSizeChange(event) {
@@ -93894,6 +94013,11 @@ exports.default = {
             this.queryServer({ folder_id: scope.row.id });
             this.folderId = scope.row.id;
             this.folderBreadcrumb.push({ id: scope.row.id, name: scope.row.filename });
+            this.$router.push({ query: { folder_id: scope.row.id } });
+
+            _axios2.default.get(route('api.media.folders.breadcrumb', { folder: scope.row.id })).then(function (response) {
+                console.log(response);
+            });
         },
         insertMedia: function insertMedia(scope) {
             this.$events.emit('fileWasSelected', scope.row);
@@ -93905,7 +94029,8 @@ exports.default = {
             return route('admin.media.media.edit', { media: scope.row.id });
         },
         loadEditForm: function loadEditForm(scope) {
-            this.$events.emit('editMediaWasClicked', scope.row);
+            console.log('clicked edit to' + scope.row.id);
+            this.$router.push({ name: 'admin.media.media.edit', params: { mediaId: scope.row.id } });
         },
         showEditFolder: function showEditFolder(scope) {
             this.$events.emit('editFolderWasClicked', scope);
@@ -93914,7 +94039,16 @@ exports.default = {
             this.tableIsLoading = true;
             this.queryServer({ folder_id: folderId });
             this.folderId = folderId;
+            if (folderId === 0) {
+                this.$router.push({ query: {} });
+            } else {
+                this.$router.push({ query: { folder_id: folderId } });
+            }
             this.folderBreadcrumb.splice(index + 1, this.folderBreadcrumb.length);
+
+            _axios2.default.get(route('api.media.folders.breadcrumb', { folder: folderId })).then(function (response) {
+                console.log(response);
+            });
         }
     },
     mounted: function mounted() {
@@ -93935,110 +94069,7 @@ exports.default = {
             _this2.queryServer({ folder_id: eventData.data.folder_id });
         });
     }
-}; //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
+};
 
 /***/ }),
 /* 167 */
@@ -94135,7 +94166,7 @@ Object.defineProperty(exports, "__esModule", {
     value: true
 });
 
-var _formBackendValidation = __webpack_require__(22);
+var _formBackendValidation = __webpack_require__(41);
 
 var _formBackendValidation2 = _interopRequireDefault(_formBackendValidation);
 
@@ -94523,222 +94554,6 @@ if (false) {
 /* 177 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var disposed = false
-var Component = __webpack_require__(2)(
-  /* script */
-  __webpack_require__(178),
-  /* template */
-  __webpack_require__(179),
-  /* styles */
-  null,
-  /* scopeId */
-  null,
-  /* moduleIdentifier (server only) */
-  null
-)
-Component.options.__file = "/Users/nicolaswidart/Sites/Asguard/Platform/Modules/Media/Assets/js/components/RenameFolder.vue"
-if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
-if (Component.options.functional) {console.error("[vue-loader] RenameFolder.vue: functional components are not supported with templates, they should use render functions.")}
-
-/* hot reload */
-if (false) {(function () {
-  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), false)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-7ada96ca", Component.options)
-  } else {
-    hotAPI.reload("data-v-7ada96ca", Component.options)
-  }
-  module.hot.dispose(function (data) {
-    disposed = true
-  })
-})()}
-
-module.exports = Component.exports
-
-
-/***/ }),
-/* 178 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-
-var _formBackendValidation = __webpack_require__(22);
-
-var _formBackendValidation2 = _interopRequireDefault(_formBackendValidation);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-exports.default = {
-    //        props: {
-    //            currentFolder: {type: Object}
-    //        },
-    data: function data() {
-        return {
-            dialogFormVisible: false,
-            folder: {
-                name: '',
-                id: '',
-                parent_id: ''
-            },
-            form: new _formBackendValidation2.default(),
-            loading: false
-        };
-    },
-
-    methods: {
-        onSubmit: function onSubmit() {
-            var _this = this;
-
-            this.form = new _formBackendValidation2.default(this.folder);
-            this.loading = true;
-            this.form.post(route('api.media.folders.update', { folder: this.folder.id })).then(function (response) {
-                _this.loading = false;
-                _this.$message({
-                    type: 'success',
-                    message: response.message
-                });
-                _this.dialogFormVisible = false;
-                _this.$events.emit('folderWasUpdated', response);
-            }).catch(function (error) {
-                console.log(error);
-                _this.loading = false;
-                _this.$notify.error({
-                    title: 'Error',
-                    message: 'There are some errors in the form.'
-                });
-            });
-        },
-        closeDialog: function closeDialog() {
-            this.form.clear();
-            this.dialogFormVisible = false;
-        }
-    },
-    mounted: function mounted() {
-        var _this2 = this;
-
-        this.$events.listen('editFolderWasClicked', function (eventData) {
-            _this2.folder.name = eventData.filename;
-            _this2.folder.id = eventData.id;
-            _this2.folder.parent_id = eventData.folder_id;
-            _this2.dialogFormVisible = true;
-        });
-    }
-}; //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-/***/ }),
-/* 179 */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', [_c('el-dialog', {
-    attrs: {
-      "title": "Rename Folder",
-      "visible": _vm.dialogFormVisible,
-      "size": "tiny"
-    },
-    on: {
-      "update:visible": function($event) {
-        _vm.dialogFormVisible = $event
-      }
-    }
-  }, [_c('el-form', {
-    directives: [{
-      name: "loading",
-      rawName: "v-loading.body",
-      value: (_vm.loading),
-      expression: "loading",
-      modifiers: {
-        "body": true
-      }
-    }],
-    attrs: {
-      "model": _vm.folder
-    },
-    nativeOn: {
-      "submit": function($event) {
-        $event.preventDefault();
-        _vm.onSubmit()
-      }
-    }
-  }, [_c('el-form-item', {
-    class: {
-      'el-form-item is-error': _vm.form.errors.has('name')
-    },
-    attrs: {
-      "label": "Folder name"
-    }
-  }, [_c('el-input', {
-    attrs: {
-      "auto-complete": "off",
-      "autofocus": ""
-    },
-    model: {
-      value: (_vm.folder.name),
-      callback: function($$v) {
-        _vm.folder.name = $$v
-      },
-      expression: "folder.name"
-    }
-  }), _vm._v(" "), (_vm.form.errors.has('name')) ? _c('div', {
-    staticClass: "el-form-item__error",
-    domProps: {
-      "textContent": _vm._s(_vm.form.errors.first('name'))
-    }
-  }) : _vm._e()], 1)], 1), _vm._v(" "), _c('span', {
-    staticClass: "dialog-footer",
-    slot: "footer"
-  }, [_c('el-button', {
-    on: {
-      "click": _vm.closeDialog
-    }
-  }, [_vm._v("Cancel")]), _vm._v(" "), _c('el-button', {
-    attrs: {
-      "type": "primary"
-    },
-    on: {
-      "click": function($event) {
-        _vm.onSubmit()
-      }
-    }
-  }, [_vm._v("Confirm")])], 1)], 1)], 1)
-},staticRenderFns: []}
-module.exports.render._withStripped = true
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-     require("vue-hot-reload-api").rerender("data-v-7ada96ca", module.exports)
-  }
-}
-
-/***/ }),
-/* 180 */
-/***/ (function(module, exports, __webpack_require__) {
-
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('div', {
     staticClass: "row"
@@ -94771,15 +94586,10 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   }), _vm._v(" "), _c('el-button-group', [_c('el-button', {
     attrs: {
-      "type": "primary",
-      "disabled": _vm.selectedMedia.length === 0
-    }
-  }, [_vm._v("Move")]), _vm._v(" "), _c('el-button', {
-    attrs: {
       "type": "warning",
       "disabled": _vm.selectedMedia.length === 0
     }
-  }, [_vm._v("Rename")]), _vm._v(" "), _c('el-button', {
+  }, [_vm._v("Move")]), _vm._v(" "), _c('el-button', {
     attrs: {
       "type": "danger",
       "disabled": _vm.selectedMedia.length === 0
@@ -94973,15 +94783,15 @@ if (false) {
 }
 
 /***/ }),
-/* 181 */
+/* 178 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var Component = __webpack_require__(2)(
   /* script */
-  __webpack_require__(182),
+  __webpack_require__(179),
   /* template */
-  __webpack_require__(183),
+  __webpack_require__(180),
   /* styles */
   null,
   /* scopeId */
@@ -95013,7 +94823,7 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 182 */
+/* 179 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -95040,7 +94850,7 @@ exports.default = {
 };
 
 /***/ }),
-/* 183 */
+/* 180 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -95055,7 +94865,7 @@ if (false) {
 }
 
 /***/ }),
-/* 184 */
+/* 181 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -95131,15 +94941,15 @@ if (false) {
 }
 
 /***/ }),
-/* 185 */
+/* 182 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var Component = __webpack_require__(2)(
   /* script */
-  __webpack_require__(186),
+  __webpack_require__(183),
   /* template */
-  __webpack_require__(187),
+  __webpack_require__(184),
   /* styles */
   null,
   /* scopeId */
@@ -95171,7 +94981,7 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 186 */
+/* 183 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -95181,13 +94991,13 @@ Object.defineProperty(exports, "__esModule", {
     value: true
 });
 
-var _UploadZone = __webpack_require__(43);
-
-var _UploadZone2 = _interopRequireDefault(_UploadZone);
-
 var _MediaList = __webpack_require__(44);
 
 var _MediaList2 = _interopRequireDefault(_MediaList);
+
+var _MediaForm = __webpack_require__(200);
+
+var _MediaForm2 = _interopRequireDefault(_MediaForm);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -95200,8 +95010,8 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 exports.default = {
     components: {
-        'upload-zone': _UploadZone2.default,
-        'media-list': _MediaList2.default
+        'media-list': _MediaList2.default,
+        'media-form': _MediaForm2.default
     },
     data: function data() {
         return {};
@@ -95212,11 +95022,11 @@ exports.default = {
 };
 
 /***/ }),
-/* 187 */
+/* 184 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', [_c('media-list')], 1)
+  return _c('div', [_c('router-view')], 1)
 },staticRenderFns: []}
 module.exports.render._withStripped = true
 if (false) {
@@ -95227,10 +95037,399 @@ if (false) {
 }
 
 /***/ }),
-/* 188 */
+/* 185 */
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 186 */,
+/* 187 */,
+/* 188 */,
+/* 189 */,
+/* 190 */,
+/* 191 */,
+/* 192 */,
+/* 193 */,
+/* 194 */,
+/* 195 */,
+/* 196 */,
+/* 197 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var Component = __webpack_require__(2)(
+  /* script */
+  __webpack_require__(198),
+  /* template */
+  __webpack_require__(199),
+  /* styles */
+  null,
+  /* scopeId */
+  null,
+  /* moduleIdentifier (server only) */
+  null
+)
+Component.options.__file = "/Users/nicolaswidart/Sites/Asguard/Platform/Modules/Media/Assets/js/components/RenameFolder.vue"
+if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
+if (Component.options.functional) {console.error("[vue-loader] RenameFolder.vue: functional components are not supported with templates, they should use render functions.")}
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-7ada96ca", Component.options)
+  } else {
+    hotAPI.reload("data-v-7ada96ca", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 198 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _formBackendValidation = __webpack_require__(41);
+
+var _formBackendValidation2 = _interopRequireDefault(_formBackendValidation);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+exports.default = {
+    //        props: {
+    //            currentFolder: {type: Object}
+    //        },
+    data: function data() {
+        return {
+            dialogFormVisible: false,
+            folder: {
+                name: '',
+                id: '',
+                parent_id: ''
+            },
+            form: new _formBackendValidation2.default(),
+            loading: false
+        };
+    },
+
+    methods: {
+        onSubmit: function onSubmit() {
+            var _this = this;
+
+            this.form = new _formBackendValidation2.default(this.folder);
+            this.loading = true;
+            this.form.post(route('api.media.folders.update', { folder: this.folder.id })).then(function (response) {
+                _this.loading = false;
+                _this.$message({
+                    type: 'success',
+                    message: response.message
+                });
+                _this.dialogFormVisible = false;
+                _this.$events.emit('folderWasUpdated', response);
+            }).catch(function (error) {
+                console.log(error);
+                _this.loading = false;
+                _this.$notify.error({
+                    title: 'Error',
+                    message: 'There are some errors in the form.'
+                });
+            });
+        },
+        closeDialog: function closeDialog() {
+            this.form.clear();
+            this.dialogFormVisible = false;
+        }
+    },
+    mounted: function mounted() {
+        var _this2 = this;
+
+        this.$events.listen('editFolderWasClicked', function (eventData) {
+            _this2.folder.name = eventData.filename;
+            _this2.folder.id = eventData.id;
+            _this2.folder.parent_id = eventData.folder_id;
+            _this2.dialogFormVisible = true;
+        });
+    }
+}; //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/***/ }),
+/* 199 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', [_c('el-dialog', {
+    attrs: {
+      "title": "Rename Folder",
+      "visible": _vm.dialogFormVisible,
+      "size": "tiny"
+    },
+    on: {
+      "update:visible": function($event) {
+        _vm.dialogFormVisible = $event
+      }
+    }
+  }, [_c('el-form', {
+    directives: [{
+      name: "loading",
+      rawName: "v-loading.body",
+      value: (_vm.loading),
+      expression: "loading",
+      modifiers: {
+        "body": true
+      }
+    }],
+    attrs: {
+      "model": _vm.folder
+    },
+    nativeOn: {
+      "submit": function($event) {
+        $event.preventDefault();
+        _vm.onSubmit()
+      }
+    }
+  }, [_c('el-form-item', {
+    class: {
+      'el-form-item is-error': _vm.form.errors.has('name')
+    },
+    attrs: {
+      "label": "Folder name"
+    }
+  }, [_c('el-input', {
+    attrs: {
+      "auto-complete": "off",
+      "autofocus": ""
+    },
+    model: {
+      value: (_vm.folder.name),
+      callback: function($$v) {
+        _vm.folder.name = $$v
+      },
+      expression: "folder.name"
+    }
+  }), _vm._v(" "), (_vm.form.errors.has('name')) ? _c('div', {
+    staticClass: "el-form-item__error",
+    domProps: {
+      "textContent": _vm._s(_vm.form.errors.first('name'))
+    }
+  }) : _vm._e()], 1)], 1), _vm._v(" "), _c('span', {
+    staticClass: "dialog-footer",
+    slot: "footer"
+  }, [_c('el-button', {
+    on: {
+      "click": _vm.closeDialog
+    }
+  }, [_vm._v("Cancel")]), _vm._v(" "), _c('el-button', {
+    attrs: {
+      "type": "primary"
+    },
+    on: {
+      "click": function($event) {
+        _vm.onSubmit()
+      }
+    }
+  }, [_vm._v("Confirm")])], 1)], 1)], 1)
+},staticRenderFns: []}
+module.exports.render._withStripped = true
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+     require("vue-hot-reload-api").rerender("data-v-7ada96ca", module.exports)
+  }
+}
+
+/***/ }),
+/* 200 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var Component = __webpack_require__(2)(
+  /* script */
+  __webpack_require__(201),
+  /* template */
+  __webpack_require__(202),
+  /* styles */
+  null,
+  /* scopeId */
+  null,
+  /* moduleIdentifier (server only) */
+  null
+)
+Component.options.__file = "/Users/nicolaswidart/Sites/Asguard/Platform/Modules/Media/Assets/js/components/MediaForm.vue"
+if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
+if (Component.options.functional) {console.error("[vue-loader] MediaForm.vue: functional components are not supported with templates, they should use render functions.")}
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-b461138c", Component.options)
+  } else {
+    hotAPI.reload("data-v-b461138c", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 201 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _formBackendValidation = __webpack_require__(41);
+
+var _formBackendValidation2 = _interopRequireDefault(_formBackendValidation);
+
+var _axios = __webpack_require__(7);
+
+var _axios2 = _interopRequireDefault(_axios);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+//
+//
+//
+//
+//
+//
+//
+//
+
+exports.default = {
+    data: function data() {
+        return {
+            media: _(this.locales).keys().map(function (locale) {
+                return [locale, {
+                    description: '',
+                    alt_attribute: '',
+                    keywords: ''
+                }];
+            }).fromPairs()
+            //.merge({template: 'default', is_home: 0, medias_single: []})
+            .value(),
+            form: new _formBackendValidation2.default(),
+            loading: false,
+            tags: {}
+        };
+    },
+
+    methods: {
+        backToList: function backToList() {
+            this.$router.push({ name: 'admin.media.media.index', query: { folder_id: this.media.folder_id } });
+        },
+        fetchMedia: function fetchMedia() {
+            var _this = this;
+
+            this.loading = true;
+            _axios2.default.get(route('api.media.media.find', { media: this.$route.params.mediaId })).then(function (response) {
+                console.log(response);
+                _this.loading = false;
+                _this.media = response.data.data;
+                _this.tags = response.data.data.tags;
+            }).catch(function (error) {});
+        }
+    },
+    mounted: function mounted() {
+        console.log('received ' + this.$route.params.mediaId);
+        if (this.$route.params.mediaId !== undefined) {
+            this.fetchMedia();
+        }
+    }
+};
+
+/***/ }),
+/* 202 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', [_vm._v("\n    " + _vm._s(_vm.media.filename) + "\n\n    "), _c('el-button', {
+    on: {
+      "click": _vm.backToList
+    }
+  }, [_vm._v("Back to list")])], 1)
+},staticRenderFns: []}
+module.exports.render._withStripped = true
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+     require("vue-hot-reload-api").rerender("data-v-b461138c", module.exports)
+  }
+}
+
+/***/ }),
+/* 203 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _MediaManager = __webpack_require__(182);
+
+var _MediaManager2 = _interopRequireDefault(_MediaManager);
+
+var _MediaList = __webpack_require__(44);
+
+var _MediaList2 = _interopRequireDefault(_MediaList);
+
+var _MediaForm = __webpack_require__(200);
+
+var _MediaForm2 = _interopRequireDefault(_MediaForm);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+exports.default = [{
+    path: '/media/media',
+    component: _MediaManager2.default,
+    children: [{ path: '', component: _MediaList2.default, name: 'admin.media.media.index' }, { path: ':mediaId/edit', component: _MediaForm2.default, name: 'admin.media.media.edit' }]
+}];
 
 /***/ })
 /******/ ]);

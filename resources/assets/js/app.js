@@ -25,14 +25,17 @@ Vue.component('TagsInput', require('../../../Modules/Tag/Assets/js/components/Ta
 Vue.component('SingleMedia', require('../../../Modules/Media/Assets/js/components/SingleMedia.vue'));
 Vue.component('MediaManager', require('../../../Modules/Media/Assets/js/components/MediaManager.vue'));
 import PageRoutes from '../../../Modules/Page/Assets/js/PageRoutes';
+import MediaRoutes from '../../../Modules/Media/Assets/js/MediaRoutes';
 
 const currentLocale =  window.AsgardCMS.currentLocale;
+const adminPrefix = window.AsgardCMS.adminPrefix;
 
 const router = new VueRouter({
     mode: 'history',
-    base: `${currentLocale}/backend`,
+    base: `${currentLocale}/${adminPrefix}`,
     routes : [
         ...PageRoutes,
+        ...MediaRoutes,
     ],
 });
 
