@@ -95343,8 +95343,88 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 exports.default = {
+    props: {
+        locales: { default: null }
+    },
     data: function data() {
         return {
             media: _(this.locales).keys().map(function (locale) {
@@ -95358,14 +95438,12 @@ exports.default = {
             .value(),
             form: new _formBackendValidation2.default(),
             loading: false,
-            tags: {}
+            tags: {},
+            activeTab: window.AsgardCMS.currentLocale || 'en'
         };
     },
 
     methods: {
-        backToList: function backToList() {
-            this.$router.push({ name: 'admin.media.media.index', query: { folder_id: this.media.folder_id } });
-        },
         fetchMedia: function fetchMedia() {
             var _this = this;
 
@@ -95376,6 +95454,31 @@ exports.default = {
                 _this.media = response.data.data;
                 _this.tags = response.data.data.tags;
             }).catch(function (error) {});
+        },
+        onSubmit: function onSubmit() {
+            var _this2 = this;
+
+            this.form = new _formBackendValidation2.default(_.merge(this.media, { tags: this.tags }));
+            this.loading = true;
+
+            this.form.put(route('api.media.media.update', { file: this.media.id })).then(function (response) {
+                _this2.loading = false;
+                _this2.$message({
+                    type: 'success',
+                    message: response.message
+                });
+                _this2.$router.push({ name: 'admin.media.media.index', query: { folder_id: _this2.media.folder_id } });
+            }).catch(function (error) {
+                console.log(error);
+                _this2.loading = false;
+                _this2.$notify.error({
+                    title: 'Error',
+                    message: 'There are some errors in the form.'
+                });
+            });
+        },
+        onCancel: function onCancel() {
+            this.$router.push({ name: 'admin.media.media.index', query: { folder_id: this.media.folder_id } });
         }
     },
     mounted: function mounted() {
@@ -95391,11 +95494,211 @@ exports.default = {
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', [_vm._v("\n    " + _vm._s(_vm.media.filename) + "\n\n    "), _c('el-button', {
-    on: {
-      "click": _vm.backToList
+  return _c('div', [_c('div', {
+    staticClass: "content-header"
+  }, [_c('h1', [_vm._v("\n            " + _vm._s(_vm.trans('media.title.edit media')) + "\n        ")]), _vm._v(" "), _c('el-breadcrumb', {
+    attrs: {
+      "separator": "/"
     }
-  }, [_vm._v("Back to list")])], 1)
+  }, [_c('el-breadcrumb-item', [_c('a', {
+    attrs: {
+      "href": "/backend"
+    }
+  }, [_vm._v("Home")])]), _vm._v(" "), _c('el-breadcrumb-item', {
+    attrs: {
+      "to": {
+        name: 'admin.media.media.index',
+        query: {
+          folder_id: _vm.media.folder_id
+        }
+      }
+    }
+  }, [_vm._v(_vm._s(_vm.trans('media.breadcrumb.media')) + "\n            ")]), _vm._v(" "), _c('el-breadcrumb-item', {
+    attrs: {
+      "to": {
+        name: 'admin.media.media.edit'
+      }
+    }
+  }, [_vm._v(_vm._s(_vm.trans('media.title.edit media')) + "\n            ")])], 1)], 1), _vm._v(" "), _c('el-form', {
+    directives: [{
+      name: "loading",
+      rawName: "v-loading.body",
+      value: (_vm.loading),
+      expression: "loading",
+      modifiers: {
+        "body": true
+      }
+    }],
+    ref: "form",
+    attrs: {
+      "model": _vm.media,
+      "label-width": "120px",
+      "label-position": "top"
+    },
+    on: {
+      "keydown": function($event) {
+        _vm.form.errors.clear($event.target.name);
+      }
+    }
+  }, [_c('div', {
+    staticClass: "row"
+  }, [_c('div', {
+    staticClass: "col-md-8"
+  }, [_c('div', {
+    staticClass: "box box-primary"
+  }, [_c('div', {
+    staticClass: "box-body"
+  }, [_c('el-tabs', {
+    attrs: {
+      "type": "card"
+    },
+    model: {
+      value: (_vm.activeTab),
+      callback: function($$v) {
+        _vm.activeTab = $$v
+      },
+      expression: "activeTab"
+    }
+  }, _vm._l((_vm.locales), function(localeArray, locale) {
+    return _c('el-tab-pane', {
+      key: localeArray.name,
+      attrs: {
+        "label": localeArray.name,
+        "name": locale
+      }
+    }, [_c('el-form-item', {
+      class: {
+        'el-form-item is-error': _vm.form.errors.has(locale + '.alt_attribute')
+      },
+      attrs: {
+        "label": _vm.trans('media.form.alt_attribute')
+      }
+    }, [_c('el-input', {
+      model: {
+        value: (_vm.media[locale].alt_attribute),
+        callback: function($$v) {
+          _vm.media[locale].alt_attribute = $$v
+        },
+        expression: "media[locale].alt_attribute"
+      }
+    }), _vm._v(" "), (_vm.form.errors.has(locale + '.alt_attribute')) ? _c('div', {
+      staticClass: "el-form-item__error",
+      domProps: {
+        "textContent": _vm._s(_vm.form.errors.first(locale + '.alt_attribute'))
+      }
+    }) : _vm._e()], 1), _vm._v(" "), _c('el-form-item', {
+      class: {
+        'el-form-item is-error': _vm.form.errors.has(locale + '.description')
+      },
+      attrs: {
+        "label": _vm.trans('media.form.description')
+      }
+    }, [_c('el-input', {
+      attrs: {
+        "type": "textarea"
+      },
+      model: {
+        value: (_vm.media[locale].description),
+        callback: function($$v) {
+          _vm.media[locale].description = $$v
+        },
+        expression: "media[locale].description"
+      }
+    }), _vm._v(" "), (_vm.form.errors.has(locale + '.description')) ? _c('div', {
+      staticClass: "el-form-item__error",
+      domProps: {
+        "textContent": _vm._s(_vm.form.errors.first(locale + '.description'))
+      }
+    }) : _vm._e()], 1), _vm._v(" "), _c('el-form-item', {
+      class: {
+        'el-form-item is-error': _vm.form.errors.has(locale + '.keywords')
+      },
+      attrs: {
+        "label": _vm.trans('media.form.keywords')
+      }
+    }, [_c('el-input', {
+      model: {
+        value: (_vm.media[locale].keywords),
+        callback: function($$v) {
+          _vm.media[locale].keywords = $$v
+        },
+        expression: "media[locale].keywords"
+      }
+    }), _vm._v(" "), (_vm.form.errors.has(locale + '.keywords')) ? _c('div', {
+      staticClass: "el-form-item__error",
+      domProps: {
+        "textContent": _vm._s(_vm.form.errors.first(locale + '.keywords'))
+      }
+    }) : _vm._e()], 1), _vm._v(" "), _c('hr'), _vm._v(" "), _c('tags-input', {
+      attrs: {
+        "namespace": "asgardcms/media",
+        "value": _vm.tags,
+        "current-tags": _vm.tags
+      },
+      model: {
+        value: (_vm.tags),
+        callback: function($$v) {
+          _vm.tags = $$v
+        },
+        expression: "tags"
+      }
+    }), _vm._v(" "), _c('el-form-item', [_c('el-button', {
+      attrs: {
+        "type": "primary",
+        "loading": _vm.loading
+      },
+      on: {
+        "click": function($event) {
+          _vm.onSubmit()
+        }
+      }
+    }, [_vm._v("\n                                        " + _vm._s(_vm.trans('core.save')) + "\n                                    ")]), _vm._v(" "), _c('el-button', {
+      on: {
+        "click": function($event) {
+          _vm.onCancel()
+        }
+      }
+    }, [_vm._v(_vm._s(_vm.trans('core.button.cancel')) + "\n                                    ")])], 1)], 1)
+  }))], 1)])]), _vm._v(" "), _c('div', {
+    staticClass: "col-md-4"
+  }, [(_vm.media.is_image) ? _c('img', {
+    staticStyle: {
+      "width": "100%"
+    },
+    attrs: {
+      "src": _vm.media.path,
+      "alt": ""
+    }
+  }) : _c('i', {
+    staticClass: "fa fa-file",
+    staticStyle: {
+      "font-size": "50px"
+    }
+  })])])]), _vm._v(" "), _c('div', {
+    staticClass: "row"
+  }, [_c('div', {
+    staticClass: "col-md-12"
+  }, [_c('h3', [_vm._v("Thumbnails")]), _vm._v(" "), _c('ul', {
+    staticClass: "list-unstyled"
+  }, _vm._l((_vm.media.thumbnails), function(thumbnail) {
+    return _c('li', {
+      key: thumbnail.name,
+      staticStyle: {
+        "float": "left",
+        "margin-right": "10px"
+      }
+    }, [_c('img', {
+      attrs: {
+        "src": thumbnail.path,
+        "alt": ""
+      }
+    }), _vm._v(" "), _c('p', {
+      staticClass: "text-muted",
+      staticStyle: {
+        "text-align": "center"
+      }
+    }, [_vm._v(_vm._s(thumbnail.name) + " (" + _vm._s(thumbnail.size) + ")")])])
+  }))])])], 1)
 },staticRenderFns: []}
 module.exports.render._withStripped = true
 if (false) {
@@ -95430,10 +95733,23 @@ var _MediaForm2 = _interopRequireDefault(_MediaForm);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+var locales = window.AsgardCMS.locales;
+
 exports.default = [{
     path: '/media/media',
     component: _MediaManager2.default,
-    children: [{ path: '', component: _MediaList2.default, name: 'admin.media.media.index' }, { path: ':mediaId/edit', component: _MediaForm2.default, name: 'admin.media.media.edit' }]
+    children: [{
+        path: '',
+        component: _MediaList2.default,
+        name: 'admin.media.media.index'
+    }, {
+        path: ':mediaId/edit',
+        component: _MediaForm2.default,
+        name: 'admin.media.media.edit',
+        props: {
+            locales: locales
+        }
+    }]
 }];
 
 /***/ })
