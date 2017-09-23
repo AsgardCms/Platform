@@ -80,6 +80,7 @@
         locales: {!! json_encode(LaravelLocalization::getSupportedLocales()) !!},
         currentLocale: '{{ locale() }}',
         editor: '{{ $activeEditor }}',
+        adminPrefix: '{{ config('asgard.core.core.admin-prefix') }}',
     };
 </script>
 
