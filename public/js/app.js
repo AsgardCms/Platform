@@ -93927,6 +93927,15 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 exports.default = {
     components: {
@@ -94561,7 +94570,10 @@ if (false) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('div', {
-    staticClass: "row"
+    staticClass: "row",
+    staticStyle: {
+      "margin-top": "-35px"
+    }
   }, [_c('div', {
     staticClass: "col-xs-12"
   }, [_c('div', {
@@ -94570,7 +94582,23 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "el-row"
   }, [_c('div', {
     staticClass: "title"
-  }, [(_vm.singleModal) ? _c('h4', [_vm._v(_vm._s(_vm.trans('media.choose file')))]) : _vm._e(), _vm._v(" "), (!_vm.singleModal) ? _c('h3', [_vm._v(_vm._s(_vm.trans('media.title.media')))]) : _vm._e()])]), _vm._v(" "), _c('div', {
+  }, [(_vm.singleModal) ? _c('h4', [_vm._v(_vm._s(_vm.trans('media.choose file')))]) : _vm._e(), _vm._v(" "), (!_vm.singleModal) ? _c('h3', [_vm._v(_vm._s(_vm.trans('media.title.media')))]) : _vm._e(), _vm._v(" "), _c('div', {
+    staticClass: "media-breadcrumb"
+  }, [(!_vm.singleModal) ? _c('el-breadcrumb', {
+    attrs: {
+      "separator": "/"
+    }
+  }, [_c('el-breadcrumb-item', [_c('a', {
+    attrs: {
+      "href": "/backend"
+    }
+  }, [_vm._v("Home")])]), _vm._v(" "), _c('el-breadcrumb-item', {
+    attrs: {
+      "to": {
+        name: 'admin.media.media.index'
+      }
+    }
+  }, [_vm._v(_vm._s(_vm.trans('media.breadcrumb.media')) + "\n                            ")])], 1) : _vm._e()], 1)])]), _vm._v(" "), _c('div', {
     staticClass: "box box-primary"
   }, [_c('div', {
     staticClass: "box-body"
@@ -94995,17 +95023,6 @@ module.exports = Component.exports
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
-
-var _MediaList = __webpack_require__(44);
-
-var _MediaList2 = _interopRequireDefault(_MediaList);
-
-var _MediaForm = __webpack_require__(200);
-
-var _MediaForm2 = _interopRequireDefault(_MediaForm);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
 //
 //
 //
@@ -95014,10 +95031,6 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 //
 
 exports.default = {
-    components: {
-        'media-list': _MediaList2.default,
-        'media-form': _MediaForm2.default
-    },
     data: function data() {
         return {};
     },
@@ -95279,13 +95292,17 @@ if (false) {
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
+function injectStyle (ssrContext) {
+  if (disposed) return
+  __webpack_require__(204)
+}
 var Component = __webpack_require__(2)(
   /* script */
   __webpack_require__(201),
   /* template */
   __webpack_require__(202),
   /* styles */
-  null,
+  injectStyle,
   /* scopeId */
   null,
   /* moduleIdentifier (server only) */
@@ -95420,6 +95437,11 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 //
 //
 //
+//
+//
+//
+//
+//
 
 exports.default = {
     props: {
@@ -95449,7 +95471,6 @@ exports.default = {
 
             this.loading = true;
             _axios2.default.get(route('api.media.media.find', { media: this.$route.params.mediaId })).then(function (response) {
-                console.log(response);
                 _this.loading = false;
                 _this.media = response.data.data;
                 _this.tags = response.data.data.tags;
@@ -95478,11 +95499,14 @@ exports.default = {
             });
         },
         onCancel: function onCancel() {
+            if (this.media.folder_id == 0) {
+                this.$router.push({ name: 'admin.media.media.index', query: {} });
+                return;
+            }
             this.$router.push({ name: 'admin.media.media.index', query: { folder_id: this.media.folder_id } });
         }
     },
     mounted: function mounted() {
-        console.log('received ' + this.$route.params.mediaId);
         if (this.$route.params.mediaId !== undefined) {
             this.fetchMedia();
         }
@@ -95751,6 +95775,46 @@ exports.default = [{
         }
     }]
 }];
+
+/***/ }),
+/* 204 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(205);
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var update = __webpack_require__(13)("75bcd50b", content, false);
+// Hot Module Replacement
+if(false) {
+ // When the styles change, update the <style> tags
+ if(!content.locals) {
+   module.hot.accept("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-b461138c\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./MediaForm.vue", function() {
+     var newContent = require("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-b461138c\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./MediaForm.vue");
+     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+     update(newContent);
+   });
+ }
+ // When the module is disposed, remove the <style> tags
+ module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+/* 205 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(12)(undefined);
+// imports
+
+
+// module
+exports.push([module.i, "\n.el-select{\n    display: block;\n}\n", ""]);
+
+// exports
+
 
 /***/ })
 /******/ ]);
