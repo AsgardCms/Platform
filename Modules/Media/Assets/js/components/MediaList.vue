@@ -1,11 +1,20 @@
 <template>
-    <div class="row">
+    <div class="row" style="margin-top: -35px;">
         <div class="col-xs-12">
             <div class="sc-table">
                  <div class="el-row">
                     <div class="title">
                         <h4 v-if="singleModal">{{ trans('media.choose file') }}</h4>
                         <h3 v-if="! singleModal">{{ trans('media.title.media') }}</h3>
+                        <div class="media-breadcrumb">
+                            <el-breadcrumb separator="/" v-if="! singleModal">
+                                <el-breadcrumb-item>
+                                    <a href="/backend">Home</a>
+                                </el-breadcrumb-item>
+                                <el-breadcrumb-item :to="{name: 'admin.media.media.index'}">{{ trans('media.breadcrumb.media') }}
+                                </el-breadcrumb-item>
+                            </el-breadcrumb>
+                        </div>
                     </div>
                 </div>
                 <div class="box box-primary">
