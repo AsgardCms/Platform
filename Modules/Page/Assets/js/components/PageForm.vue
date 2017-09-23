@@ -138,7 +138,7 @@
                                 <div class="el-form-item__error" v-if="form.errors.has('template')"
                                      v-text="form.errors.first('template')"></div>
                             </el-form-item>
-                            <tags-input namespace="asgardcms/page" @input="setTags" :current-tags="tags"></tags-input>
+                            <tags-input namespace="asgardcms/page" v-model="tags" :value="tags" :current-tags="tags"></tags-input>
 
                             <single-media zone="image" @singleFileSelected="selectSingleFile"
                                           entity="Modules\Page\Entities\Page" :entity-id="page.id"></single-media>
@@ -227,9 +227,6 @@
             },
             generateSlug(event, locale) {
                 this.page[locale].slug = this.slugify(this.page[locale].title);
-            },
-            setTags(tags) {
-                this.tags = tags;
             },
             fetchPage() {
                 this.loading = true;
