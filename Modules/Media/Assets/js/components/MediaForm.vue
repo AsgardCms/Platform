@@ -119,7 +119,6 @@
                 this.loading = true;
                 axios.get(route('api.media.media.find', {media: this.$route.params.mediaId}))
                     .then(response => {
-                        console.log(response);
                         this.loading = false;
                         this.media = response.data.data;
                         this.tags = response.data.data.tags;
@@ -150,11 +149,14 @@
                     });
             },
             onCancel() {
+                if (this.media.folder_id == 0) {
+                    this.$router.push({name: 'admin.media.media.index', query: {}});
+                    return;
+                }
                 this.$router.push({name: 'admin.media.media.index', query: {folder_id: this.media.folder_id}})
             },
         },
         mounted() {
-            console.log('received ' + this.$route.params.mediaId);
             if (this.$route.params.mediaId !== undefined) {
                 this.fetchMedia();
             }
