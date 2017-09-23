@@ -45,6 +45,11 @@ class File extends Model implements TaggableInterface
     protected $casts = ['is_folder' => 'boolean', ];
     protected static $entityNamespace = 'asgardcms/media';
 
+    public function parent_folder()
+    {
+        return $this->belongsTo(__CLASS__, 'folder_id');
+    }
+
     public function getPathAttribute($value)
     {
         return new MediaPath($value);
