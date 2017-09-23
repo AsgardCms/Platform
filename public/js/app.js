@@ -93984,9 +93984,21 @@ exports.default = {
             this.tableIsLoading = true;
             if (this.$route.query.folder_id !== undefined) {
                 this.queryServer({ folder_id: this.$route.query.folder_id });
+                this.fetchFolderBreadcrumb(this.$route.query.folder_id);
                 return;
             }
             this.queryServer();
+        },
+        fetchFolderBreadcrumb: function fetchFolderBreadcrumb(folderId) {
+            var _this2 = this;
+
+            if (folderId === 0) {
+                this.folderBreadcrumb = [{ id: 0, name: 'Home' }];
+                return;
+            }
+            _axios2.default.get(route('api.media.folders.breadcrumb', { folder: folderId })).then(function (response) {
+                _this2.folderBreadcrumb = response.data;
+            });
         },
         handleSizeChange: function handleSizeChange(event) {
             console.log('per page :' + event);
@@ -94012,12 +94024,8 @@ exports.default = {
             this.tableIsLoading = true;
             this.queryServer({ folder_id: scope.row.id });
             this.folderId = scope.row.id;
-            this.folderBreadcrumb.push({ id: scope.row.id, name: scope.row.filename });
             this.$router.push({ query: { folder_id: scope.row.id } });
-
-            _axios2.default.get(route('api.media.folders.breadcrumb', { folder: scope.row.id })).then(function (response) {
-                console.log(response);
-            });
+            this.fetchFolderBreadcrumb(scope.row.id);
         },
         insertMedia: function insertMedia(scope) {
             this.$events.emit('fileWasSelected', scope.row);
@@ -94044,29 +94052,26 @@ exports.default = {
             } else {
                 this.$router.push({ query: { folder_id: folderId } });
             }
-            this.folderBreadcrumb.splice(index + 1, this.folderBreadcrumb.length);
 
-            _axios2.default.get(route('api.media.folders.breadcrumb', { folder: folderId })).then(function (response) {
-                console.log(response);
-            });
+            this.fetchFolderBreadcrumb(folderId);
         }
     },
     mounted: function mounted() {
-        var _this2 = this;
+        var _this3 = this;
 
         this.selectedMedia.length = 0;
         this.fetchMediaData();
         this.$events.listen('fileWasUploaded', function (eventData) {
-            _this2.tableIsLoading = true;
-            _this2.queryServer({ folder_id: eventData.data.folder_id });
+            _this3.tableIsLoading = true;
+            _this3.queryServer({ folder_id: eventData.data.folder_id });
         });
         this.$events.listen('folderWasCreated', function (eventData) {
-            _this2.tableIsLoading = true;
-            _this2.queryServer({ folder_id: eventData.data.folder_id });
+            _this3.tableIsLoading = true;
+            _this3.queryServer({ folder_id: eventData.data.folder_id });
         });
         this.$events.listen('folderWasUpdated', function (eventData) {
-            _this2.tableIsLoading = true;
-            _this2.queryServer({ folder_id: eventData.data.folder_id });
+            _this3.tableIsLoading = true;
+            _this3.queryServer({ folder_id: eventData.data.folder_id });
         });
     }
 };
