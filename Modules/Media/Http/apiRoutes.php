@@ -9,7 +9,10 @@ $router->group(['middleware' => 'api.token'], function (Router $router) {
         'as' => 'api.media.folders.store',
         'middleware' => 'token-can:media.folders.create',
     ]);
-
+    $router->get('folder/breadcrumb/{folder}', [
+        'uses' => 'FolderBreadcrumbController',
+        'as' => 'api.media.folders.breadcrumb',
+    ]);
     $router->post('folder/{folder}', [
         'uses' => 'FolderController@update',
         'as' => 'api.media.folders.update',
@@ -50,6 +53,6 @@ $router->group(['middleware' => 'api.token'], function (Router $router) {
 
     $router->get('media/{media}', [
         'uses' => 'MediaController@find',
-        'as' => 'api.media.find',
+        'as' => 'api.media.media.find',
     ]);
 });
