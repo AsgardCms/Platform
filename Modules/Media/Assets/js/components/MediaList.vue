@@ -103,6 +103,7 @@
 </template>
 
 <script>
+    import axios from 'axios'
     import NewFolder from './NewFolder.vue';
     import UploadButton from './UploadButton.vue';
     import RenameFolder from './RenameFolder.vue';
@@ -134,8 +135,7 @@
                 selectedMedia: {},
                 folderBreadcrumb: [
                     {id: 0, name: 'Home'},
-                    //{id: 37, name: 'Folder'},
-                ]
+                ],
             }
         },
         methods: {
@@ -162,7 +162,24 @@
             },
             fetchMediaData() {
                 this.tableIsLoading = true;
+                if (this.$route.query.folder_id !== undefined) {
+                    this.queryServer({folder_id: this.$route.query.folder_id});
+                    this.fetchFolderBreadcrumb(this.$route.query.folder_id);
+                    return;
+                }
                 this.queryServer();
+            },
+            fetchFolderBreadcrumb(folderId) {
+                if (folderId === 0) {
+                    this.folderBreadcrumb = [
+                        {id: 0, name: 'Home'},
+                    ];
+                    return;
+                }
+                axios.get(route('api.media.folders.breadcrumb', {folder: folderId}))
+                    .then(response => {
+                        this.folderBreadcrumb = response.data;
+                    });
             },
             handleSizeChange(event) {
                 console.log('per page :' + event);
@@ -188,7 +205,8 @@
                 this.tableIsLoading = true;
                 this.queryServer({folder_id: scope.row.id});
                 this.folderId = scope.row.id;
-                this.folderBreadcrumb.push({id: scope.row.id, name: scope.row.filename});
+                this.$router.push({ query: { folder_id: scope.row.id }});
+                this.fetchFolderBreadcrumb(scope.row.id);
             },
             insertMedia(scope) {
                 this.$events.emit('fileWasSelected', scope.row);
@@ -200,7 +218,8 @@
                 return route('admin.media.media.edit', {media: scope.row.id});
             },
             loadEditForm(scope) {
-                this.$events.emit('editMediaWasClicked', scope.row);
+                console.log('clicked edit to' + scope.row.id);
+                this.$router.push({name: 'admin.media.media.edit', params: {mediaId: scope.row.id}})
             },
             showEditFolder(scope) {
                 this.$events.emit('editFolderWasClicked', scope);
@@ -209,7 +228,13 @@
                 this.tableIsLoading = true;
                 this.queryServer({folder_id: folderId});
                 this.folderId = folderId;
-                this.folderBreadcrumb.splice(index+1, this.folderBreadcrumb.length);
+                if (folderId === 0) {
+                    this.$router.push({ query: {}});
+                } else {
+                    this.$router.push({ query: { folder_id: folderId }});
+                }
+
+                this.fetchFolderBreadcrumb(folderId);
             },
         },
         mounted() {
