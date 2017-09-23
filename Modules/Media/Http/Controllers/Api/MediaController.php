@@ -109,6 +109,18 @@ class MediaController extends Controller
         return response()->json($savedFile->toArray());
     }
 
+    public function update(File $file, Request $request)
+    {
+        $data = $request->except(['filename', 'path', 'extension', 'size', 'id', 'thumbnails']);
+
+        $this->file->update($file, $data);
+
+        return response()->json([
+            'errors' => false,
+            'message' => trans('media::messages.file updated'),
+        ]);
+    }
+
     /**
      * Link the given entity with a media file
      * @param Request $request

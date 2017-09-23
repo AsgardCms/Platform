@@ -55,4 +55,9 @@ $router->group(['middleware' => 'api.token'], function (Router $router) {
         'uses' => 'MediaController@find',
         'as' => 'api.media.media.find',
     ]);
+    $router->put('file/{file}', [
+        'uses' => 'MediaController@update',
+        'as' => 'api.media.media.update',
+        'middleware' => 'token-can:media.medias.edit',
+    ]);
 });
