@@ -9,8 +9,10 @@ class UploadMediaRequest extends FormRequest
 {
     public function rules()
     {
+        $extensions = 'mimes:' . str_replace('.', '', config('asgard.media.config.allowed-types'));
+
         return [
-            'file' => ['required', new MaxFolderSizeRule()],
+            'file' => ['required', new MaxFolderSizeRule(), $extensions],
         ];
     }
 

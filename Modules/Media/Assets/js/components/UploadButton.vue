@@ -19,7 +19,7 @@
             :action="uploadUrl"
             :on-remove="handleRemove"
             :on-success="handleSuccess"
-            :file-list="fileList"
+            :show-file-list="false"
             :http-request="uploadFile"
             style="display: inline-block; margin-right: 10px;">
         <el-button size="small" type="primary" style="padding: 11px 9px;">Upload File</el-button>
@@ -35,7 +35,6 @@
         },
         data() {
             return {
-                fileList: [],
             }
         },
         computed: {
@@ -52,7 +51,6 @@
         methods: {
             handleSuccess(response, file, fileList) {
                 this.$events.emit('fileWasUploaded', response);
-                this.fileList = [];
             },
             uploadFile(event) {
                 let data = new FormData();
@@ -60,8 +58,14 @@
                 data.append('file', event.file);
                 axios.post(route('api.media.store'), data)
                     .then(response => {
-                        this.fileList = [];
                         this.$events.emit('fileWasUploaded', response);
+                    })
+                    .catch(error => {
+                        console.log(error.response.data);
+                        this.$notify.error({
+                            title: 'Error',
+                            message: error.response.data.errors.file[0]
+                        });
                     });
             },
             handleRemove() {},
