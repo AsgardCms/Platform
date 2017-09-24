@@ -4,6 +4,7 @@ versions:
         added:
             - Carbon format set globally in <code>AppServiceProvider</code>
             - Creating a string helpers mixing file
+            - Add additional install script to prompt for APP_URL
         changed:
             - Registering the TranslationHelper mixin globally to access it from anywhere
             - CkEditor and SimpleMde hooks set a view variable containing their name
