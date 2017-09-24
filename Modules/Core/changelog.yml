@@ -8,6 +8,7 @@ versions:
             - Registering the TranslationHelper mixin globally to access it from anywhere
             - CkEditor and SimpleMde hooks set a view variable containing their name
             - Refactoring the .env local file writer
+            - Tell users about the -f force flag for the asgard installer
     "3.0.0":
         added:
             - Created a vue component for the delete buttons on index pages
