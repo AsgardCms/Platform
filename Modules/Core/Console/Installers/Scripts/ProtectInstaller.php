@@ -31,7 +31,7 @@ class ProtectInstaller implements SetupScript
     public function fire(Command $command)
     {
         if ($this->finder->isFile('.env') && ! $command->option('force')) {
-            throw new Exception('Asgard has already been installed. You can already log into your administration.');
+            throw new Exception('Asgard has already been installed. You can already log into your administration. Run \'php artisan asgard:install -f\' to force replace the .env file.');
         }
     }
 }
