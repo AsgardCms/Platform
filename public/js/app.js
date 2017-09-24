@@ -94464,9 +94464,7 @@ exports.default = {
         parentId: { type: Number }
     },
     data: function data() {
-        return {
-            fileList: []
-        };
+        return {};
     },
 
     computed: {
@@ -94483,7 +94481,6 @@ exports.default = {
     methods: {
         handleSuccess: function handleSuccess(response, file, fileList) {
             this.$events.emit('fileWasUploaded', response);
-            this.fileList = [];
         },
         uploadFile: function uploadFile(event) {
             var _this = this;
@@ -94492,8 +94489,13 @@ exports.default = {
             data.append('parent_id', this.parentId);
             data.append('file', event.file);
             _axios2.default.post(route('api.media.store'), data).then(function (response) {
-                _this.fileList = [];
                 _this.$events.emit('fileWasUploaded', response);
+            }).catch(function (error) {
+                console.log(error.response.data);
+                _this.$notify.error({
+                    title: 'Error',
+                    message: error.response.data.errors.file[0]
+                });
             });
         },
         handleRemove: function handleRemove() {}
@@ -94543,7 +94545,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "action": _vm.uploadUrl,
       "on-remove": _vm.handleRemove,
       "on-success": _vm.handleSuccess,
-      "file-list": _vm.fileList,
+      "show-file-list": false,
       "http-request": _vm.uploadFile
     }
   }, [_c('el-button', {
