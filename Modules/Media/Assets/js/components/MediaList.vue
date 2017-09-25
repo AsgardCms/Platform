@@ -82,13 +82,15 @@
                                        v-if="singleModal">
                                         {{ trans('media.insert') }}
                                     </a>
-                                    <a class="btn btn-default btn-flat" @click.prevent="loadEditForm(scope)"
-                                       v-if="! singleModal && ! scope.row.is_folder"><i class="fa fa-pencil"></i></a>
+                                    <div v-if="! singleModal">
+                                        <a class="btn btn-default btn-flat" @click.prevent="loadEditForm(scope)"
+                                           v-if="! scope.row.is_folder"><i class="fa fa-pencil"></i></a>
 
-                                    <a @click.prevent="showEditFolder(scope.row)" class="btn btn-default btn-flat"
-                                       v-if="! singleModal && scope.row.is_folder">
-                                        <i class="fa fa-pencil"></i>
-                                    </a>
+                                        <a @click.prevent="showEditFolder(scope.row)" class="btn btn-default btn-flat"
+                                           v-if="scope.row.is_folder">
+                                            <i class="fa fa-pencil"></i>
+                                        </a>
+                                    </div>
                                 </template>
                             </el-table-column>
                         </el-table>
