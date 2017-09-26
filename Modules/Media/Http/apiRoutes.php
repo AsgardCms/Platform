@@ -18,6 +18,11 @@ $router->group(['middleware' => 'api.token'], function (Router $router) {
         'as' => 'api.media.folders.update',
         'middleware' => 'token-can:media.folders.edit',
     ]);
+    $router->delete('folder/{folder}', [
+        'uses' => 'FolderController@destroy',
+        'as' => 'api.media.folders.destroy',
+        'middleware' => 'token-can:media.folders.destroy',
+    ]);
 
     $router->post('file', [
         'uses' => 'MediaController@store',
@@ -59,5 +64,10 @@ $router->group(['middleware' => 'api.token'], function (Router $router) {
         'uses' => 'MediaController@update',
         'as' => 'api.media.media.update',
         'middleware' => 'token-can:media.medias.edit',
+    ]);
+    $router->delete('file/{file}', [
+        'uses' => 'MediaController@destroy',
+        'as' => 'api.media.media.destroy',
+        'middleware' => 'token-can:media.medias.destroy',
     ]);
 });

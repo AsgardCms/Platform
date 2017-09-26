@@ -12,7 +12,7 @@ use Modules\Media\Events\FileWasUnlinked;
 use Modules\Media\Events\FileWasUploaded;
 use Modules\Media\Helpers\FileHelper;
 use Modules\Media\Http\Requests\UploadMediaRequest;
-use Modules\Media\Image\Facade\Imagy;
+use Modules\Media\Image\Imagy;
 use Modules\Media\Repositories\FileRepository;
 use Modules\Media\Services\FileService;
 use Modules\Media\Transformers\MediaTransformer;
@@ -205,6 +205,17 @@ class MediaController extends Controller
         }
 
         return response()->json(['error' => false, 'message' => 'The items have been reorder.']);
+    }
+
+    public function destroy(File $file)
+    {
+        $this->imagy->deleteAllFor($file);
+        $this->file->destroy($file);
+
+        return response()->json([
+            'errors' => false,
+            'message' => trans('media::messages.file deleted'),
+        ]);
     }
 
     /**
