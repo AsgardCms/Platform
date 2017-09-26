@@ -36,7 +36,7 @@
                         .catch(error => {
                             vm.$message({
                                 type: 'error',
-                                message: response.data.message
+                                message: error.data.message
                             });
                         });
                 }).catch(() => {
