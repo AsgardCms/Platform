@@ -25,7 +25,10 @@
                                 <upload-button :parent-id="folderId"></upload-button>
                                 <el-button-group>
                                     <el-button type="primary" :disabled="selectedMedia.length === 0">Move</el-button>
-                                    <el-button type="danger" :disabled="selectedMedia.length === 0">Delete</el-button>
+                                    <el-button type="danger" :disabled="selectedMedia.length === 0"
+                                        @click.preent="batchDelete" :loading="filesAreDeleting">
+                                        Delete
+                                    </el-button>
                                 </el-button-group>
                             </div>
                             <div class="search el-col el-col-5">
@@ -148,6 +151,7 @@
                 folderBreadcrumb: [
                     {id: 0, name: 'Home'},
                 ],
+                filesAreDeleting: false,
             }
         },
         methods: {
@@ -226,9 +230,6 @@
             handleSelectionChange(selectedMedia) {
                 this.selectedMedia = selectedMedia;
             },
-            getEditMediaUrl(scope) {
-                return route('admin.media.media.edit', {media: scope.row.id});
-            },
             loadEditForm(scope) {
                 console.log('clicked edit to' + scope.row.id);
                 this.$router.push({name: 'admin.media.media.edit', params: {mediaId: scope.row.id}})
@@ -247,6 +248,34 @@
                 }
 
                 this.fetchFolderBreadcrumb(folderId);
+            },
+            batchDelete() {
+                this.$confirm(this.trans('core.modal.confirmation-message'), this.trans('core.modal.title'), {
+                    confirmButtonText: this.trans('core.button.delete'),
+                    cancelButtonText: this.trans('core.button.cancel'),
+                    type: 'warning'
+                })
+                    .then(() => {
+                        this.filesAreDeleting = true;
+                        axios.post(route('api.media.media.batch-destroy'), {
+                            files: this.selectedMedia
+                        })
+                            .then(response => {
+                                this.$message({
+                                    type: 'success',
+                                    message: response.data.message
+                                });
+                                this.filesAreDeleting = false;
+                                this.$refs.mediaTable.clearSelection();
+                                this.queryServer();
+                            });
+                    })
+                    .catch(() => {
+                        this.$message({
+                            type: 'info',
+                            message: this.trans('core.delete cancelled')
+                        });
+                    });
             },
         },
         mounted() {

@@ -93961,6 +93961,9 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 //
 //
 //
+//
+//
+//
 
 exports.default = {
     components: {
@@ -93987,7 +93990,8 @@ exports.default = {
             searchQuery: '',
             folderId: 0,
             selectedMedia: {},
-            folderBreadcrumb: [{ id: 0, name: 'Home' }]
+            folderBreadcrumb: [{ id: 0, name: 'Home' }],
+            filesAreDeleting: false
         };
     },
 
@@ -94067,9 +94071,6 @@ exports.default = {
         handleSelectionChange: function handleSelectionChange(selectedMedia) {
             this.selectedMedia = selectedMedia;
         },
-        getEditMediaUrl: function getEditMediaUrl(scope) {
-            return route('admin.media.media.edit', { media: scope.row.id });
-        },
         loadEditForm: function loadEditForm(scope) {
             console.log('clicked edit to' + scope.row.id);
             this.$router.push({ name: 'admin.media.media.edit', params: { mediaId: scope.row.id } });
@@ -94088,24 +94089,51 @@ exports.default = {
             }
 
             this.fetchFolderBreadcrumb(folderId);
+        },
+        batchDelete: function batchDelete() {
+            var _this3 = this;
+
+            this.$confirm(this.trans('core.modal.confirmation-message'), this.trans('core.modal.title'), {
+                confirmButtonText: this.trans('core.button.delete'),
+                cancelButtonText: this.trans('core.button.cancel'),
+                type: 'warning'
+            }).then(function () {
+                _this3.filesAreDeleting = true;
+                _axios2.default.post(route('api.media.media.batch-destroy'), {
+                    files: _this3.selectedMedia
+                }).then(function (response) {
+                    _this3.$message({
+                        type: 'success',
+                        message: response.data.message
+                    });
+                    _this3.filesAreDeleting = false;
+                    _this3.$refs.mediaTable.clearSelection();
+                    _this3.queryServer();
+                });
+            }).catch(function () {
+                _this3.$message({
+                    type: 'info',
+                    message: _this3.trans('core.delete cancelled')
+                });
+            });
         }
     },
     mounted: function mounted() {
-        var _this3 = this;
+        var _this4 = this;
 
         this.selectedMedia.length = 0;
         this.fetchMediaData();
         this.$events.listen('fileWasUploaded', function (eventData) {
-            _this3.tableIsLoading = true;
-            _this3.queryServer({ folder_id: eventData.data.folder_id });
+            _this4.tableIsLoading = true;
+            _this4.queryServer({ folder_id: eventData.data.folder_id });
         });
         this.$events.listen('folderWasCreated', function (eventData) {
-            _this3.tableIsLoading = true;
-            _this3.queryServer({ folder_id: eventData.data.folder_id });
+            _this4.tableIsLoading = true;
+            _this4.queryServer({ folder_id: eventData.data.folder_id });
         });
         this.$events.listen('folderWasUpdated', function (eventData) {
-            _this3.tableIsLoading = true;
-            _this3.queryServer({ folder_id: eventData.data.folder_id });
+            _this4.tableIsLoading = true;
+            _this4.queryServer({ folder_id: eventData.data.folder_id });
         });
     }
 };
@@ -95066,10 +95094,26 @@ var render = function() {
                               {
                                 attrs: {
                                   type: "danger",
-                                  disabled: _vm.selectedMedia.length === 0
+                                  disabled: _vm.selectedMedia.length === 0,
+                                  loading: _vm.filesAreDeleting
+                                },
+                                on: {
+                                  click: function($event) {
+                                    if (
+                                      !("button" in $event) &&
+                                      _vm._k($event.keyCode, "preent")
+                                    ) {
+                                      return null
+                                    }
+                                    _vm.batchDelete($event)
+                                  }
                                 }
                               },
-                              [_vm._v("Delete")]
+                              [
+                                _vm._v(
+                                  "\n                                    Delete\n                                "
+                                )
+                              ]
                             )
                           ],
                           1
@@ -96494,7 +96538,7 @@ exports.default = {
                 }).catch(function (error) {
                     vm.$message({
                         type: 'error',
-                        message: response.data.message
+                        message: error.data.message
                     });
                 });
             }).catch(function () {

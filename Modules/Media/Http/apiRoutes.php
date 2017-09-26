@@ -70,4 +70,10 @@ $router->group(['middleware' => 'api.token'], function (Router $router) {
         'as' => 'api.media.media.destroy',
         'middleware' => 'token-can:media.medias.destroy',
     ]);
+
+    $router->post('batch-destroy', [
+        'uses' => 'BatchDestroyController',
+        'as' => 'api.media.media.batch-destroy',
+        'middleware' => 'token-can:media.medias.destroy',
+    ]);
 });
