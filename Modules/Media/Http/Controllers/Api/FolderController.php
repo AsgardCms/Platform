@@ -40,4 +40,14 @@ class FolderController extends Controller
             'data' => $folder,
         ]);
     }
+
+    public function destroy(File $folder)
+    {
+        $this->folder->destroy($folder);
+
+        return response()->json([
+            'errors' => false,
+            'message' => trans('media::messages.folder deleted'),
+        ]);
+    }
 }
