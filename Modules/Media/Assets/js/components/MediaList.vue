@@ -90,6 +90,8 @@
                                            v-if="scope.row.is_folder">
                                             <i class="fa fa-pencil"></i>
                                         </a>
+
+                                        <delete-button :scope="scope" :rows="data"></delete-button>
                                     </div>
                                 </template>
                             </el-table-column>
