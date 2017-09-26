@@ -14,9 +14,12 @@ use Modules\Media\Console\RefreshThumbnailCommand;
 use Modules\Media\Contracts\DeletingMedia;
 use Modules\Media\Contracts\StoringMedia;
 use Modules\Media\Entities\File;
+use Modules\Media\Events\FolderIsDeleting;
 use Modules\Media\Events\FolderWasCreated;
 use Modules\Media\Events\FolderWasUpdated;
 use Modules\Media\Events\Handlers\CreateFolderOnDisk;
+use Modules\Media\Events\Handlers\DeleteAllChildrenOfFolder;
+use Modules\Media\Events\Handlers\DeleteFolderOnDisk;
 use Modules\Media\Events\Handlers\HandleMediaStorage;
 use Modules\Media\Events\Handlers\RegisterMediaSidebar;
 use Modules\Media\Events\Handlers\RemovePolymorphicLink;
@@ -75,6 +78,8 @@ class MediaServiceProvider extends ServiceProvider
         $events->listen(DeletingMedia::class, RemovePolymorphicLink::class);
         $events->listen(FolderWasCreated::class, CreateFolderOnDisk::class);
         $events->listen(FolderWasUpdated::class, RenameFolderOnDisk::class);
+        $events->listen(FolderIsDeleting::class, DeleteFolderOnDisk::class);
+        $events->listen(FolderIsDeleting::class, DeleteAllChildrenOfFolder::class);
 
         $this->app[TagManager::class]->registerNamespace(new File());
         $this->registerThumbnails();
