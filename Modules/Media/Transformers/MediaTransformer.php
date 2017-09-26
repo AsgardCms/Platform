@@ -41,6 +41,9 @@ class MediaTransformer extends Resource
             'folder_id' => $this->folder_id,
             'small_thumb' => $this->imagy->getThumbnail($this->path, 'smallThumb'),
             'medium_thumb' => $this->imagy->getThumbnail($this->path, 'mediumThumb'),
+            'urls' => [
+                'delete_url' => $this->getDeleteUrl(),
+            ],
         ];
 
         foreach ($this->thumbnailManager->all() as $thumbnail) {
@@ -73,5 +76,14 @@ class MediaTransformer extends Resource
         }
 
         return (string) $this->path;
+    }
+
+    private function getDeleteUrl()
+    {
+        if ($this->isImage()) {
+            return route('api.media.media.destroy', $this->id);
+        }
+
+        return route('api.media.folders.destroy', $this->id);
     }
 }
