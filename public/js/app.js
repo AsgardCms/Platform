@@ -94580,7 +94580,9 @@ exports.default = {
         parentId: { type: Number }
     },
     data: function data() {
-        return {};
+        return {
+            fileIsUploading: false
+        };
     },
 
     computed: {
@@ -94601,13 +94603,16 @@ exports.default = {
         uploadFile: function uploadFile(event) {
             var _this = this;
 
+            this.fileIsUploading = true;
             var data = new FormData();
             data.append('parent_id', this.parentId);
             data.append('file', event.file);
             _axios2.default.post(route('api.media.store'), data).then(function (response) {
                 _this.$events.emit('fileWasUploaded', response);
+                _this.fileIsUploading = false;
             }).catch(function (error) {
                 console.log(error.response.data);
+                _this.fileIsUploading = false;
                 _this.$notify.error({
                     title: 'Error',
                     message: error.response.data.errors.file[0]
@@ -94672,7 +94677,11 @@ var render = function() {
         "el-button",
         {
           staticStyle: { padding: "11px 9px" },
-          attrs: { size: "small", type: "primary" }
+          attrs: {
+            size: "small",
+            type: "primary",
+            loading: _vm.fileIsUploading
+          }
         },
         [_vm._v("Upload File")]
       )
