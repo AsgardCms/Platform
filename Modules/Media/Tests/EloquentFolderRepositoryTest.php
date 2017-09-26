@@ -5,6 +5,7 @@ namespace Modules\Media\Tests;
 use Illuminate\Support\Facades\Event;
 use Modules\Media\Entities\File;
 use Modules\Media\Events\FolderIsCreating;
+use Modules\Media\Events\FolderIsDeleting;
 use Modules\Media\Events\FolderIsUpdating;
 use Modules\Media\Events\FolderWasCreated;
 use Modules\Media\Events\FolderWasUpdated;
@@ -246,6 +247,19 @@ final class EloquentFolderRepositoryTest extends MediaTestCase
         $this->assertCount(1, $this->folder->all());
         $this->folder->destroy($folder);
         $this->assertCount(0, $this->folder->all());
+    }
+
+    /** @test */
+    public function it_triggers_event_when_folder_is_deleting()
+    {
+        Event::fake();
+
+        $folder = $this->folder->create(['name' => 'My Folder']);
+        $this->folder->destroy($folder);
+
+        Event::assertDispatched(FolderIsDeleting::class, function ($e) use ($folder) {
+            return $e->folder->id === $folder->id;
+        });
     }
 
     private function createFile($fileName = 'random/name.jpg')

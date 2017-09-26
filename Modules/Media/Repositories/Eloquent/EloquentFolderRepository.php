@@ -5,6 +5,7 @@ namespace Modules\Media\Repositories\Eloquent;
 use Modules\Core\Repositories\Eloquent\EloquentBaseRepository;
 use Modules\Media\Entities\File;
 use Modules\Media\Events\FolderIsCreating;
+use Modules\Media\Events\FolderIsDeleting;
 use Modules\Media\Events\FolderIsUpdating;
 use Modules\Media\Events\FolderWasCreated;
 use Modules\Media\Events\FolderWasUpdated;
@@ -65,6 +66,8 @@ class EloquentFolderRepository extends EloquentBaseRepository implements FolderR
 
     public function destroy($folder)
     {
+        event(new FolderIsDeleting($folder));
+
         return $folder->delete();
     }
 
