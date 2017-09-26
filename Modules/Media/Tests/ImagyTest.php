@@ -59,10 +59,16 @@ class ImagyTest extends MediaTestCase
 
     public function it_should_create_a_file()
     {
-        $path = new MediaPath("/google-map.png");
-        $this->imagy->get($path, 'smallThumb', true);
+        $this->resetDatabase();
 
-        $this->assertTrue($this->finder->isFile("{$this->testbenchPublicPath}google-map_smallThumb.png"));
+        $file = \Illuminate\Http\UploadedFile::fake()->image('my-file.jpg');
+        $file = app(FileService::class)->store($file);
+
+        $this->finder->delete(public_path(config('asgard.media.config.files-path') . 'my-file_smallThumb.jpg'));
+
+        $this->imagy->get($file->path, 'smallThumb', true);
+
+        $this->assertTrue($this->finder->isFile(public_path(config('asgard.media.config.files-path') . 'my-file_smallThumb.jpg')));
     }
 
     /** @test */
