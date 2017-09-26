@@ -12,6 +12,11 @@ use Modules\Media\Repositories\FolderRepository;
 
 class EloquentFolderRepository extends EloquentBaseRepository implements FolderRepository
 {
+    public function all()
+    {
+        return $this->model->with('translations')->where('is_folder', 1)->orderBy('created_at', 'DESC')->get();
+    }
+
     /**
      * Find a folder by its ID
      * @param int $folderId
@@ -56,6 +61,11 @@ class EloquentFolderRepository extends EloquentBaseRepository implements FolderR
         event(new FolderWasUpdated($model, $formattedData, $previousData));
 
         return $model;
+    }
+
+    public function destroy($folder)
+    {
+        return $folder->delete();
     }
 
     /**

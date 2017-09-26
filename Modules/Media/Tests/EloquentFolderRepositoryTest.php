@@ -226,4 +226,37 @@ final class EloquentFolderRepositoryTest extends MediaTestCase
         $this->assertEquals('/assets/media/new-name/my-second-file.jpg', $fileTwo->path->getRelativeUrl());
         $this->assertEquals('/assets/media/new-name/child-folder/my-third-file.jpg', $fileThree->path->getRelativeUrl());
     }
+
+    /** @test */
+    public function it_can_find_all_folders()
+    {
+        $parentFolder = $this->folder->create(['name' => 'My Folder']);
+        $this->folder->create(['name' => 'Child folder', 'parent_id' => $parentFolder->id]);
+        $this->createFile();
+        $this->createFile('second-file.jpg');
+
+        $this->assertCount(2, $this->folder->all());
+    }
+
+    /** @test */
+    public function it_can_delete_a_folder_from_database()
+    {
+        $folder = $this->folder->create(['name' => 'My Folder']);
+
+        $this->assertCount(1, $this->folder->all());
+        $this->folder->destroy($folder);
+        $this->assertCount(0, $this->folder->all());
+    }
+
+    private function createFile($fileName = 'random/name.jpg')
+    {
+        return File::create([
+            'filename' => $fileName,
+            'path' => config('asgard.media.config.files-path') . $fileName,
+            'extension' => substr(strrchr($fileName, "."), 1),
+            'mimetype' => 'image/jpg',
+            'filesize' => '1024',
+            'folder_id' => 0,
+        ]);
+    }
 }
