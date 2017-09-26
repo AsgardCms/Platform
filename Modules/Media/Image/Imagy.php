@@ -206,10 +206,10 @@ class Imagy
         }
 
         $paths[] = $this->getDestinationPath($file->path->getRelativeUrl());
-        $fileName = pathinfo($file->path, PATHINFO_FILENAME);
-        $extension = pathinfo($file->path, PATHINFO_EXTENSION);
+
         foreach ($this->manager->all() as $thumbnail) {
-            $path = config('asgard.media.config.files-path') . "{$fileName}_{$thumbnail->name()}.{$extension}";
+            $path = $this->getFilenameFor($file->path, $thumbnail);
+
             if ($this->fileExists($this->getDestinationPath($path))) {
                 $paths[] = (new MediaPath($this->getDestinationPath($path)))->getRelativeUrl();
             }

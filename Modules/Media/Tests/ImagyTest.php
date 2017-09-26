@@ -109,6 +109,36 @@ class ImagyTest extends MediaTestCase
     }
 
     /** @test */
+    public function it_can_delete_thumbnail_files()
+    {
+        $this->resetDatabase();
+
+        $file = \Illuminate\Http\UploadedFile::fake()->image('my-file.jpg');
+
+        $file = app(FileService::class)->store($file);
+
+        $this->assertCount(3, $this->app['files']->allFiles(public_path(config('asgard.media.config.files-path'))));
+        $this->imagy->deleteAllFor($file);
+        $this->assertCount(0, $this->app['files']->allFiles(public_path(config('asgard.media.config.files-path'))));
+    }
+
+    /** @test */
+    public function it_can_delete_thumbnail_files_in_subdirectory()
+    {
+        $this->resetDatabase();
+
+        app(FolderRepository::class)->create(['name' => 'My Folder', 'parent_id' => 0]);
+        $file = \Illuminate\Http\UploadedFile::fake()->image('my-file.jpg');
+        $file = app(FileService::class)->store($file, 1);
+
+        $path = public_path(config('asgard.media.config.files-path') . 'my-folder/');
+
+        $this->assertCount(3, $this->app['files']->allFiles($path));
+        $this->imagy->deleteAllFor($file);
+        $this->assertCount(0, $this->app['files']->allFiles($path));
+    }
+
+    /** @test */
     public function it_should_return_same_path_for_non_images()
     {
         $path = $this->imagy->getThumbnail("{$this->mediaPath}test-pdf.pdf", 'smallThumb');
