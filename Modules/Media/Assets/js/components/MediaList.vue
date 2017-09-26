@@ -25,7 +25,6 @@
                                 <upload-button :parent-id="folderId"></upload-button>
                                 <el-button-group>
                                     <el-button type="primary" :disabled="selectedMedia.length === 0">Move</el-button>
-                                    <el-button type="warning" :disabled="selectedMedia.length === 0">Rename</el-button>
                                     <el-button type="danger" :disabled="selectedMedia.length === 0">Delete</el-button>
                                 </el-button-group>
                             </div>

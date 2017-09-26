@@ -93961,7 +93961,6 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 //
 //
 //
-//
 
 exports.default = {
     components: {
@@ -95051,17 +95050,6 @@ var render = function() {
                                 }
                               },
                               [_vm._v("Move")]
-                            ),
-                            _vm._v(" "),
-                            _c(
-                              "el-button",
-                              {
-                                attrs: {
-                                  type: "warning",
-                                  disabled: _vm.selectedMedia.length === 0
-                                }
-                              },
-                              [_vm._v("Rename")]
                             ),
                             _vm._v(" "),
                             _c(
