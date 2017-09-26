@@ -85,6 +85,10 @@ class MediaController extends Controller
 
         $file = $this->file->find($imageable->file_id);
 
+        if ($file === null) {
+            return response()->json(['data' => null]);
+        }
+
         return new MediaTransformer($file);
     }
 
