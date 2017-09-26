@@ -58,7 +58,7 @@ class Imagy
             return;
         }
 
-        $filename = config('asgard.media.config.files-path') . $this->newFilename($path, $thumbnail);
+        $filename = $this->getFilenameFor($path, $thumbnail);
 
         if ($this->returnCreatedFile($filename, $forceCreate)) {
             return $filename;
