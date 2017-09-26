@@ -131,6 +131,7 @@
         },
         props: {
             singleModal: {type: Boolean},
+            eventName: {},
         },
         data() {
             return {
@@ -225,7 +226,7 @@
                 this.fetchFolderBreadcrumb(scope.row.id);
             },
             insertMedia(scope) {
-                this.$events.emit('fileWasSelected', scope.row);
+                this.$events.emit(this.eventName, scope.row);
             },
             handleSelectionChange(selectedMedia) {
                 this.selectedMedia = selectedMedia;
