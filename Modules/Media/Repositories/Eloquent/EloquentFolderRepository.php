@@ -2,6 +2,7 @@
 
 namespace Modules\Media\Repositories\Eloquent;
 
+use Illuminate\Database\Eloquent\Collection;
 use Modules\Core\Repositories\Eloquent\EloquentBaseRepository;
 use Modules\Media\Entities\File;
 use Modules\Media\Events\FolderIsCreating;
@@ -69,6 +70,17 @@ class EloquentFolderRepository extends EloquentBaseRepository implements FolderR
         event(new FolderIsDeleting($folder));
 
         return $folder->delete();
+    }
+
+    /**
+     * @param File $folder
+     * @return Collection
+     */
+    public function allChildrenOf(File $folder)
+    {
+        $path = $folder->path->getRelativeUrl();
+
+        return $this->model->where('path', 'like', "{$path}%")->get();
     }
 
     /**

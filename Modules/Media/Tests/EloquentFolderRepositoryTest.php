@@ -262,6 +262,60 @@ final class EloquentFolderRepositoryTest extends MediaTestCase
         });
     }
 
+    /** @test */
+    public function it_deletes_folder_from_disk()
+    {
+        $folder = $this->folder->create(['name' => 'My Folder']);
+
+        $this->assertTrue($this->app['files']->isDirectory(public_path('assets/media/my-folder')));
+        $this->folder->destroy($folder);
+        $this->assertFalse($this->app['files']->isDirectory(public_path('assets/media/my-folder')));
+    }
+
+    /** @test */
+    public function it_deletes_folder_in_subfolder_on_disk()
+    {
+        $parentFolder = $this->folder->create(['name' => 'My Folder']);
+        $folder = $this->folder->create(['name' => 'Subfolder', 'parent_id' => $parentFolder->id]);
+
+        $this->assertTrue($this->app['files']->isDirectory(public_path('assets/media/my-folder/subfolder')));
+        $this->folder->destroy($folder);
+        $this->assertFalse($this->app['files']->isDirectory(public_path('assets/media/my-folder/subfolder')));
+    }
+
+    /** @test */
+    public function it_can_remove_folder_with_files()
+    {
+        $parentFolder = $this->folder->create(['name' => 'My Folder']);
+        $folderTwo = $this->folder->create(['name' => 'Child folder', 'parent_id' => $parentFolder->id]);
+        $file = \Illuminate\Http\UploadedFile::fake()->image('my-file.jpg');
+        $fileTwo = \Illuminate\Http\UploadedFile::fake()->image('my-second-file.jpg');
+        $fileThree = \Illuminate\Http\UploadedFile::fake()->image('my-third-file.jpg');
+        app(FileService::class)->store($file, $parentFolder->id);
+        app(FileService::class)->store($fileTwo, $folderTwo->id);
+        app(FileService::class)->store($fileThree, $folderTwo->id);
+
+        $this->folder->destroy($folderTwo);
+        $this->assertFalse($this->app['files']->isDirectory(public_path('assets/media/my-folder/child-folder')));
+    }
+
+    /** @test */
+    public function it_removes_folder_and_files_from_database()
+    {
+        $parentFolder = $this->folder->create(['name' => 'My Folder']);
+        $folderTwo = $this->folder->create(['name' => 'Child folder', 'parent_id' => $parentFolder->id]);
+        $file = \Illuminate\Http\UploadedFile::fake()->image('my-file.jpg');
+        $fileTwo = \Illuminate\Http\UploadedFile::fake()->image('my-second-file.jpg');
+        $fileThree = \Illuminate\Http\UploadedFile::fake()->image('my-third-file.jpg');
+        app(FileService::class)->store($file, $parentFolder->id);
+        app(FileService::class)->store($fileTwo, $folderTwo->id);
+        app(FileService::class)->store($fileThree, $folderTwo->id);
+
+        $this->assertCount(5, File::all());
+        $this->folder->destroy($folderTwo);
+        $this->assertCount(2, File::all());
+    }
+
     private function createFile($fileName = 'random/name.jpg')
     {
         return File::create([
