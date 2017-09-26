@@ -15,13 +15,11 @@
         </div>
 
         <el-dialog
-                :title="trans('media.upload file')"
                 :visible.sync="dialogVisible"
                 size="full"
                 :before-close="handleClose">
 
-            <upload-zone></upload-zone>
-            <media-list single-modal></media-list>
+            <media-list single-modal :event-name="this.eventName"></media-list>
 
             <span slot="footer" class="dialog-footer">
                 <el-button @click="dialogVisible = false">{{ trans('core.button.cancel') }}</el-button>
@@ -59,6 +57,7 @@
             return {
                 dialogVisible: false,
                 selectedMedia: {},
+                eventName: '',
             }
         },
         computed: {
@@ -71,7 +70,8 @@
                 done();
             },
             unSelectMedia() {
-                this.selectedMedia = {}
+                this.selectedMedia = {};
+                this.$emit('singleFileSelected', _.merge({id: null}, {zone: this.zone}));
             },
             fetchMedia() {
                 axios.get(route('api.media.find-first-by-zone-and-entity', {
@@ -80,15 +80,27 @@
                     entity_id: this.entityId,
                 }))
                     .then(response => {
+                        this.$emit('singleFileSelected', _.merge(response.data.data, {zone: this.zone}));
                         this.selectedMedia = response.data.data;
                     })
             },
             getFieldLabel() {
                 return this.label || this.ucwords(this.zone.replace('_', ' '));
             },
+            makeId() {
+                let text = "";
+                let possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+
+                for (let i = 0; i < 5; i++)
+                    text += possible.charAt(Math.floor(Math.random() * possible.length));
+
+                return text;
+            },
         },
         mounted() {
-            this.$events.listen('fileWasSelected', mediaData => {
+            this.eventName = 'fileWasSelected' + this.makeId() + Math.floor(Math.random() * 999999);
+
+            this.$events.listen(this.eventName, mediaData => {
                 this.dialogVisible = false;
                 this.selectedMedia = mediaData;
                 this.$emit('singleFileSelected', _.merge(mediaData, {zone: this.zone}));
