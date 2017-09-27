@@ -94740,7 +94740,7 @@ var render = function() {
             loading: _vm.fileIsUploading
           }
         },
-        [_vm._v("Upload File")]
+        [_vm._v(_vm._s(_vm.trans("media.upload file")))]
       )
     ],
     1
