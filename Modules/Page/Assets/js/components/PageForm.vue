@@ -140,7 +140,7 @@
                             </el-form-item>
                             <tags-input namespace="asgardcms/page" v-model="tags" :value="tags" :current-tags="tags"></tags-input>
 
-                            <single-media zone="image" @singleFileSelected="selectSingleFile"
+                            <single-media zone="image" @singleFileSelected="selectSingleFile($event, 'page')"
                                           entity="Modules\Page\Entities\Page" :entity-id="page.id"></single-media>
                         </div>
                     </div>
@@ -156,10 +156,12 @@
     import Slugify from '../../../../Core/Assets/js/mixins/Slugify'
     import ShortcutHelper from '../../../../Core/Assets/js/mixins/ShortcutHelper'
     import ActiveEditor from '../../../../Core/Assets/js/mixins/ActiveEditor'
+    import SingleFileSelector from '../../../../Media/Assets/js/mixins/SingleFileSelector'
+
     import Form from 'form-backend-validation'
 
     export default {
-        mixins: [Slugify, ShortcutHelper, ActiveEditor],
+        mixins: [Slugify, ShortcutHelper, ActiveEditor, SingleFileSelector],
         props: {
             locales: {default: null},
             pageTitle: {default: null, String},
@@ -246,11 +248,6 @@
                 }
                 return route('api.page.page.store');
             },
-            selectSingleFile(event) {
-                this.page.medias_single = {
-                    [event.zone]: event.id,
-                };
-            }
         },
         mounted() {
             this.fetchTemplates();
