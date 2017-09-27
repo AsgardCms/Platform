@@ -81,7 +81,7 @@
                             <el-table-column prop="actions" label="" width="150">
                                 <template scope="scope">
                                     <a class="btn btn-primary btn-flat" @click.prevent="insertMedia(scope)"
-                                       v-if="singleModal">
+                                       v-if="singleModal && ! scope.row.is_folder">
                                         {{ trans('media.insert') }}
                                     </a>
                                     <div v-if="! singleModal">

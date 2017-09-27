@@ -92357,7 +92357,7 @@ var _ActiveEditor = __webpack_require__(140);
 
 var _ActiveEditor2 = _interopRequireDefault(_ActiveEditor);
 
-var _SingleFileSelector = __webpack_require__(207);
+var _SingleFileSelector = __webpack_require__(141);
 
 var _SingleFileSelector2 = _interopRequireDefault(_SingleFileSelector);
 
@@ -92679,7 +92679,27 @@ exports.default = {
 };
 
 /***/ }),
-/* 141 */,
+/* 141 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+exports.default = {
+    methods: {
+        selectSingleFile: function selectSingleFile(event, model) {
+            this[model].medias_single = _.merge(this[model].medias_single, _defineProperty({}, event.zone, event.id));
+        }
+    }
+};
+
+/***/ }),
 /* 142 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -95306,7 +95326,7 @@ var render = function() {
                           key: "default",
                           fn: function(scope) {
                             return [
-                              _vm.singleModal
+                              _vm.singleModal && !scope.row.is_folder
                                 ? _c(
                                     "a",
                                     {
@@ -97370,38 +97390,6 @@ if (false) {
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
-
-/***/ }),
-/* 196 */,
-/* 197 */,
-/* 198 */,
-/* 199 */,
-/* 200 */,
-/* 201 */,
-/* 202 */,
-/* 203 */,
-/* 204 */,
-/* 205 */,
-/* 206 */,
-/* 207 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
-exports.default = {
-    methods: {
-        selectSingleFile: function selectSingleFile(event, model) {
-            this[model].medias_single = _.merge(this[model].medias_single, _defineProperty({}, event.zone, event.id));
-        }
-    }
-};
 
 /***/ })
 /******/ ]);
