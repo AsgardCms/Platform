@@ -67,6 +67,7 @@ class InstallCommand extends Command
             \Modules\Core\Console\Installers\Scripts\ModuleAssets::class,
             \Modules\Core\Console\Installers\Scripts\ThemeAssets::class,
             \Modules\Core\Console\Installers\Scripts\UnignoreComposerLock::class,
+            \Modules\Core\Console\Installers\Scripts\UnignorePackageLock::class,
             \Modules\Core\Console\Installers\Scripts\SetInstalledFlag::class,
         ])->install($this);
 
