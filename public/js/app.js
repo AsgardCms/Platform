@@ -94705,6 +94705,7 @@ exports.default = {
 //
 //
 //
+//
 
 /***/ }),
 /* 159 */
@@ -94724,7 +94725,8 @@ var render = function() {
         "on-remove": _vm.handleRemove,
         "on-success": _vm.handleSuccess,
         "show-file-list": false,
-        "http-request": _vm.uploadFile
+        "http-request": _vm.uploadFile,
+        multiple: "true"
       }
     },
     [
