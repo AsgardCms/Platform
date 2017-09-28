@@ -21,7 +21,7 @@
             :on-success="handleSuccess"
             :show-file-list="false"
             :http-request="uploadFile"
-            multiple="true"
+            :multiple="true"
             style="display: inline-block; margin-right: 10px;">
         <el-button size="small" type="primary" style="padding: 11px 9px;" :loading="fileIsUploading">{{ trans('media.upload file') }}</el-button>
     </el-upload>
