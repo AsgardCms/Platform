@@ -1,4 +1,8 @@
 * text=auto
 * text eol=lf
+* .ttf eol=lf
+* .eot eol=lf
+* .woff eol=lf
+* .woff2 eol=lf
 *.png binary
 *.gif binary
