@@ -63,26 +63,18 @@ class ConfigureAppUrl implements SetupScript
      */
     protected function askAppUrl()
     {
-
-
         do {
             $str = $this->command->ask('Enter you application url (e.g. http://localhost, http://dev.example.com)', 'http://localhost');
 
             if ($str == '' || (strpos($str, 'http://') !== 0 && strpos($str, 'https://') !== 0)) {
-
                 $this->command->error('A valid http:// or https:// url is required');
 
                 $str = false;
-
             }
-
         } while (!$str);
-
 
         return $str;
     }
-
-
 
     /**
      * @param $vars
@@ -90,7 +82,5 @@ class ConfigureAppUrl implements SetupScript
     protected function setLaravelConfiguration($vars)
     {
         $this->config['app.url'] = $vars['app_url'];
-         
     }
-
 }

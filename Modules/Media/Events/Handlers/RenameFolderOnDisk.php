@@ -34,7 +34,6 @@ class RenameFolderOnDisk
         $newPath = $event->folder->path->getRelativeUrl();
 
         $this->replacePathReferences($event->folder->id, $previousPath, $newPath);
-
     }
 
     private function renameFolder($event)

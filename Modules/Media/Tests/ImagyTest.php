@@ -10,7 +10,6 @@ use Modules\Media\Image\Intervention\InterventionFactory;
 use Modules\Media\Image\ThumbnailManager;
 use Modules\Media\Repositories\FolderRepository;
 use Modules\Media\Services\FileService;
-use Modules\Media\ValueObjects\MediaPath;
 
 class ImagyTest extends MediaTestCase
 {

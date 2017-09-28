@@ -4,7 +4,6 @@ namespace Modules\Media\Http\Controllers\Api;
 
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
-use Modules\Media\Entities\File;
 use Modules\Media\Image\Imagy;
 use Modules\Media\Repositories\FileRepository;
 use Modules\Media\Repositories\FolderRepository;
