@@ -22,6 +22,7 @@ class RenameFolderOnDisk
         $this->filesystem = $filesystem;
         $this->file = $file;
     }
+
     public function handle(FolderWasUpdated $event)
     {
         $this->renameFolder($event);
