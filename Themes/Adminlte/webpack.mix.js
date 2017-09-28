@@ -23,7 +23,7 @@ mix.sass('resources/assets/scss/asgardcms.scss', 'assets/css/asgardcms.css');
 /**
  * Copy node module
  */
-// mix.copyDirectory('node_modules/admin-lte', 'assets/vendor/admin-lte');
+mix.copyDirectory('node_modules/admin-lte', 'assets/vendor/admin-lte');
 // mix.copyDirectory('node_modules/animate.css', 'assets/vendor/animate.css');
 // mix.copyDirectory('node_modules/bootstrap', 'assets/vendor/bootstrap');
 // mix.copyDirectory('node_modules/clipboard', 'assets/vendor/clipboard');
