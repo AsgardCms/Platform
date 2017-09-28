@@ -2,15 +2,15 @@
     <div class="div">
         <div class="content-header">
             <h1>
-                {{ translate('page', pageTitle) }}
+                {{ trans(`page.${pageTitle}`) }}
             </h1>
             <el-breadcrumb separator="/">
                 <el-breadcrumb-item>
                     <a href="/backend">Home</a>
                 </el-breadcrumb-item>
-                <el-breadcrumb-item :to="{name: 'admin.page.page.index'}">{{ translate('page', 'pages') }}
+                <el-breadcrumb-item :to="{name: 'admin.page.page.index'}">{{ trans('page.pages') }}
                 </el-breadcrumb-item>
-                <el-breadcrumb-item :to="{name: 'admin.page.page.create'}">{{ translate('page', pageTitle) }}
+                <el-breadcrumb-item :to="{name: 'admin.page.page.create'}">{{ trans(`page.${pageTitle}`) }}
                 </el-breadcrumb-item>
             </el-breadcrumb>
         </div>
@@ -22,19 +22,19 @@
                 <div class="col-md-10">
                     <div class="box box-primary">
                         <div class="box-body">
-                            <el-tabs type="card">
+                            <el-tabs type="card" v-model="activeTab">
                                 <el-tab-pane :label="localeArray.name" v-for="(localeArray, locale) in locales"
-                                             :key="localeArray.name">
+                                             :key="localeArray.name" :name="locale">
                                 <span slot="label" :class="{'error' : form.errors.has(locale)}">{{ localeArray.name
                                     }}</span>
-                                    <el-form-item :label="translate('page', 'title')"
+                                    <el-form-item :label="trans('page.title')"
                                                   :class="{'el-form-item is-error': form.errors.has(locale + '.title') }">
                                         <el-input v-model="page[locale].title"></el-input>
                                         <div class="el-form-item__error" v-if="form.errors.has(locale + '.title')"
                                              v-text="form.errors.first(locale + '.title')"></div>
                                     </el-form-item>
 
-                                    <el-form-item :label="translate('page', 'slug')"
+                                    <el-form-item :label="trans('page.slug')"
                                                   :class="{'el-form-item is-error': form.errors.has(locale + '.slug') }">
                                         <el-input v-model="page[locale].slug">
                                             <el-button slot="prepend" @click="generateSlug($event, locale)">Generate</el-button>
@@ -43,10 +43,11 @@
                                              v-text="form.errors.first(locale + '.slug')"></div>
                                     </el-form-item>
 
-                                    <el-form-item :label="translate('page', 'body')"
+                                    <el-form-item :label="trans('page.body')"
                                                   :class="{'el-form-item is-error': form.errors.has(locale + '.body') }">
-                                        <ckeditor v-model="page[locale].body" :value="page[locale].body">
-                                        </ckeditor>
+                                        <component :is="getCurrentEditor()" v-model="page[locale].body" :value="page[locale].body">
+                                        </component>
+
                                         <div class="el-form-item__error" v-if="form.errors.has(locale + '.body')"
                                              v-text="form.errors.first(locale + '.body')"></div>
                                     </el-form-item>
@@ -56,17 +57,17 @@
                                             <h4 class="box-title">
                                                 <a class="collapsed" data-toggle="collapse" data-parent="#accordion"
                                                    :href="`#collapseMeta-${locale}`">
-                                                    {{ translate('page', 'meta_data') }}
+                                                    {{ trans('page.meta_data') }}
                                                 </a>
                                             </h4>
                                         </div>
                                         <div style="height: 0px;" :id="`collapseMeta-${locale}`"
                                              class="panel-collapse collapse">
                                             <div class="box-body">
-                                                <el-form-item :label="translate('page', 'meta_title')">
+                                                <el-form-item :label="trans('page.meta_title')">
                                                     <el-input v-model="page[locale].meta_title"></el-input>
                                                 </el-form-item>
-                                                <el-form-item :label="translate('page', 'meta_description')">
+                                                <el-form-item :label="trans('page.meta_description')">
                                                     <el-input type="textarea"
                                                               v-model="page[locale].meta_description"></el-input>
                                                 </el-form-item>
@@ -79,28 +80,28 @@
                                             <h4 class="box-title">
                                                 <a class="collapsed" data-toggle="collapse" data-parent="#accordion"
                                                    :href="`#collapseFacebook-${locale}`">
-                                                    {{ translate('page', 'facebook_data') }}
+                                                    {{ trans('page.facebook_data') }}
                                                 </a>
                                             </h4>
                                         </div>
                                         <div style="height: 0px;" :id="`collapseFacebook-${locale}`"
                                              class="panel-collapse collapse">
                                             <div class="box-body">
-                                                <el-form-item :label="translate('page', 'og_title')">
+                                                <el-form-item :label="trans('page.og_title')">
                                                     <el-input v-model="page[locale].og_title"></el-input>
                                                 </el-form-item>
-                                                <el-form-item :label="translate('page', 'og_description')">
+                                                <el-form-item :label="trans('page.og_description')">
                                                     <el-input type="textarea"
                                                               v-model="page[locale].og_description"></el-input>
                                                 </el-form-item>
-                                                <el-form-item :label="translate('page', 'og_type')">
+                                                <el-form-item :label="trans('page.og_type')">
                                                     <el-select v-model="page[locale].og_type"
-                                                               :placeholder="translate('page', 'og_type')">
-                                                        <el-option :label="translate('page', 'facebook-types.website')"
+                                                               :placeholder="trans('page.og_type')">
+                                                        <el-option :label="trans('page.facebook-types.website')"
                                                                    value="website"></el-option>
-                                                        <el-option :label="translate('page', 'facebook-types.product')"
+                                                        <el-option :label="trans('page.facebook-types.product')"
                                                                    value="product"></el-option>
-                                                        <el-option :label="translate('page', 'facebook-types.article')"
+                                                        <el-option :label="trans('page.facebook-types.article')"
                                                                    value="article"></el-option>
                                                     </el-select>
                                                 </el-form-item>
@@ -110,9 +111,9 @@
 
                                     <el-form-item>
                                         <el-button type="primary" @click="onSubmit()" :loading="loading">
-                                            {{ translate('core', 'save') }}
+                                            {{ trans('core.save') }}
                                         </el-button>
-                                        <el-button @click="onCancel()">{{ translate('core', 'button.cancel') }}
+                                        <el-button @click="onCancel()">{{ trans('core.button.cancel') }}
                                         </el-button>
                                     </el-form-item>
 
@@ -126,9 +127,9 @@
                         <div class="box-body">
                             <el-form-item label="">
                                 <el-checkbox v-model="page.is_home" :true-label="1" :false-label="0" name="is_home"
-                                             :label="translate('page', 'is homepage')"></el-checkbox>
+                                             :label="trans('page.is homepage')"></el-checkbox>
                             </el-form-item>
-                            <el-form-item :label="translate('page', 'template')"
+                            <el-form-item :label="trans('page.template')"
                                           :class="{'el-form-item is-error': form.errors.has('template') }">
                                 <el-select v-model="page.template" filterable>
                                     <el-option v-for="(template, key) in templates" :key="template"
@@ -137,23 +138,30 @@
                                 <div class="el-form-item__error" v-if="form.errors.has('template')"
                                      v-text="form.errors.first('template')"></div>
                             </el-form-item>
-                            <tags-input namespace="asgardcms/page" @input="setTags" :current-tags="tags"></tags-input>
+                            <tags-input namespace="asgardcms/page" v-model="tags" :value="tags" :current-tags="tags"></tags-input>
+
+                            <single-media zone="image" @singleFileSelected="selectSingleFile($event, 'page')"
+                                          entity="Modules\Page\Entities\Page" :entity-id="page.id"></single-media>
                         </div>
                     </div>
                 </div>
             </div>
         </el-form>
+        <button v-shortkey="['b']" @shortkey="pushRoute({name: 'admin.page.page.index'})" v-show="false"></button>
     </div>
 </template>
 
 <script>
     import axios from 'axios'
-    import Translate from '../../../../Core/Assets/js/mixins/Translate'
     import Slugify from '../../../../Core/Assets/js/mixins/Slugify'
+    import ShortcutHelper from '../../../../Core/Assets/js/mixins/ShortcutHelper'
+    import ActiveEditor from '../../../../Core/Assets/js/mixins/ActiveEditor'
+    import SingleFileSelector from '../../../../Media/Assets/js/mixins/SingleFileSelector'
+
     import Form from 'form-backend-validation'
 
     export default {
-        mixins: [Translate, Slugify],
+        mixins: [Slugify, ShortcutHelper, ActiveEditor, SingleFileSelector],
         props: {
             locales: {default: null},
             pageTitle: {default: null, String},
@@ -173,7 +181,7 @@
                         og_type: '',
                     }])
                     .fromPairs()
-                    .merge({template: 'default', is_home: 0})
+                    .merge({template: 'default', is_home: 0, medias_single: []})
                     .value(),
 
                 templates: {
@@ -184,6 +192,7 @@
                 form: new Form(),
                 loading: false,
                 tags: {},
+                activeTab: window.AsgardCMS.currentLocale || 'en',
             }
         },
         methods: {
@@ -221,9 +230,6 @@
             generateSlug(event, locale) {
                 this.page[locale].slug = this.slugify(this.page[locale].title);
             },
-            setTags(tags) {
-                this.tags = tags;
-            },
             fetchPage() {
                 this.loading = true;
                 axios.post(route('api.page.page.find', {page: this.$route.params.pageId}))
@@ -231,6 +237,7 @@
                         this.loading = false;
                         this.page = response.data.data;
                         this.tags = response.data.data.tags;
+                        $('.publicUrl').attr('href', this.page.urls.public_url).show();
                     })
                     .catch(error => {
                     })
@@ -248,6 +255,9 @@
             if (this.$route.params.pageId !== undefined) {
                 this.fetchPage();
             }
+        },
+        destroyed() {
+            $('.publicUrl').hide();
         }
     }
 </script>

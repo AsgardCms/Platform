@@ -3,9 +3,7 @@
 </template>
 
 <script>
-    import Translate from '../../../../Core/Assets/js/mixins/Translate'
     export default {
-        mixins: [Translate],
         props: {
             rows: {default: null},
             scope: {default: null},
@@ -19,8 +17,8 @@
         methods: {
             deleteRow(event) {
                 this.$confirm(this.deleteMessage, this.deleteTitle, {
-                    confirmButtonText: this.translate('core', 'button.delete'),
-                    cancelButtonText: this.translate('core', 'button.cancel'),
+                    confirmButtonText: this.trans('core.button.delete'),
+                    cancelButtonText: this.trans('core.button.cancel'),
                     type: 'warning'
                 }).then(() => {
                     let vm = this;
@@ -38,20 +36,20 @@
                         .catch(error => {
                             vm.$message({
                                 type: 'error',
-                                message: response.data.message
+                                message: error.data.message
                             });
                         });
                 }).catch(() => {
                     this.$message({
                         type: 'info',
-                        message: this.translate('core', 'delete cancelled')
+                        message: this.trans('core.delete cancelled')
                     });
                 });
             }
         },
         mounted() {
-            this.deleteMessage = this.translate('core', 'modal.confirmation-message');
-            this.deleteTitle = this.translate('core', 'modal.title');
+            this.deleteMessage = this.trans('core.modal.confirmation-message');
+            this.deleteTitle = this.trans('core.modal.title');
         }
     }
 </script>
