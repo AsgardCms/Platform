@@ -51,7 +51,9 @@ class ConfigureAppUrl implements SetupScript
 
         $this->env->write($vars);
 
-        $command->info('Application url successfully configured');
+        if ($command->option('verbose')) {
+            $command->info('Application url successfully configured');
+        }
     }
 
     /**
