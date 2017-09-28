@@ -1,31 +1,27 @@
 {
-  "_args": [
-    [
-      "datatables.net-bs@1.10.15",
-      "/Users/nicolaswidart/Sites/Asguard/Platform/Themes/Adminlte"
-    ]
-  ],
-  "_from": "datatables.net-bs@1.10.15",
-  "_id": "datatables.net-bs@1.10.15",
+  "_from": "datatables.net-bs@1.10.16",
+  "_id": "datatables.net-bs@1.10.16",
   "_inBundle": false,
-  "_integrity": "sha1-ssImEAfYTKW1q/VsGO3CJ+DaGk0=",
+  "_integrity": "sha1-sIVPWzdPcTrj20FWx86op2DD3nY=",
   "_location": "/datatables.net-bs",
   "_phantomChildren": {},
   "_requested": {
     "type": "version",
     "registry": true,
-    "raw": "datatables.net-bs@1.10.15",
+    "raw": "datatables.net-bs@1.10.16",
     "name": "datatables.net-bs",
     "escapedName": "datatables.net-bs",
-    "rawSpec": "1.10.15",
+    "rawSpec": "1.10.16",
     "saveSpec": null,
-    "fetchSpec": "1.10.15"
+    "fetchSpec": "1.10.16"
   },
   "_requiredBy": [
+    "#USER",
     "/"
   ],
-  "_resolved": "https://registry.npmjs.org/datatables.net-bs/-/datatables.net-bs-1.10.15.tgz",
-  "_spec": "1.10.15",
+  "_resolved": "https://registry.npmjs.org/datatables.net-bs/-/datatables.net-bs-1.10.16.tgz",
+  "_shasum": "b0854f5b374f713ae3db4156c7cea8a760c3de76",
+  "_spec": "datatables.net-bs@1.10.16",
   "_where": "/Users/nicolaswidart/Sites/Asguard/Platform/Themes/Adminlte",
   "author": {
     "name": "SpryMedia Ltd",
@@ -34,11 +30,13 @@
   "bugs": {
     "url": "https://datatables.net/forums"
   },
+  "bundleDependencies": false,
   "dependencies": {
-    "datatables.net": ">=1.10.9",
+    "datatables.net": "1.10.16",
     "jquery": ">=1.7"
   },
-  "description": "DataTables for jQuery with styling for [Bootstrap](http://getbootstrap.com/)",
+  "deprecated": false,
+  "description": "DataTables for jQuery with styling for [Bootstrap 3](http://getbootstrap.com/)",
   "files": [
     "js/dataTables.bootstrap.js",
     "css/dataTables.bootstrap.css"
@@ -60,5 +58,5 @@
     "url": "git+https://github.com/DataTables/Dist-DataTables-Bootstrap.git"
   },
   "style": "css/dataTables.bootstrap.css",
-  "version": "1.10.15"
+  "version": "1.10.16"
 }

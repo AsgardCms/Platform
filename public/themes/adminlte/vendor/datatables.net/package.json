@@ -1,31 +1,28 @@
 {
-  "_args": [
-    [
-      "datatables.net@1.10.15",
-      "/Users/nicolaswidart/Sites/Asguard/Platform/Themes/Adminlte"
-    ]
-  ],
-  "_from": "datatables.net@1.10.15",
-  "_id": "datatables.net@1.10.15",
+  "_from": "datatables.net@1.10.16",
+  "_id": "datatables.net@1.10.16",
   "_inBundle": false,
-  "_integrity": "sha1-x4kHe7/jhedf9aIz+l8jJRpy32g=",
+  "_integrity": "sha1-SwUtEIKCQmG2ju2dInQbcR09JGk=",
   "_location": "/datatables.net",
   "_phantomChildren": {},
   "_requested": {
     "type": "version",
     "registry": true,
-    "raw": "datatables.net@1.10.15",
+    "raw": "datatables.net@1.10.16",
     "name": "datatables.net",
     "escapedName": "datatables.net",
-    "rawSpec": "1.10.15",
+    "rawSpec": "1.10.16",
     "saveSpec": null,
-    "fetchSpec": "1.10.15"
+    "fetchSpec": "1.10.16"
   },
   "_requiredBy": [
-    "/"
+    "#USER",
+    "/",
+    "/datatables.net-bs"
   ],
-  "_resolved": "https://registry.npmjs.org/datatables.net/-/datatables.net-1.10.15.tgz",
-  "_spec": "1.10.15",
+  "_resolved": "https://registry.npmjs.org/datatables.net/-/datatables.net-1.10.16.tgz",
+  "_shasum": "4b052d1082824261b68eed9d22741b711d3d2469",
+  "_spec": "datatables.net@1.10.16",
   "_where": "/Users/nicolaswidart/Sites/Asguard/Platform/Themes/Adminlte",
   "author": {
     "name": "SpryMedia Ltd",
@@ -34,9 +31,11 @@
   "bugs": {
     "url": "https://datatables.net/forums"
   },
+  "bundleDependencies": false,
   "dependencies": {
     "jquery": ">=1.7"
   },
+  "deprecated": false,
   "description": "DataTables for jQuery ",
   "files": [
     "js/jquery.dataTables.js"
@@ -57,5 +56,5 @@
     "type": "git",
     "url": "git+https://github.com/DataTables/Dist-DataTables.git"
   },
-  "version": "1.10.15"
+  "version": "1.10.16"
 }
