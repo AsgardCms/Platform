@@ -2,8 +2,5 @@
     "/assets/js/asgardcms.js": "/assets/js/asgardcms.js",
     "/assets/css/asgard.css": "/assets/css/asgard.css",
     "/assets/css/asgardcms.css": "/assets/css/asgardcms.css",
-    "/assets/js/main.js": "/assets/js/main.js",
-    "/assets/vendor/animate.css": "/assets/vendor/animate.css",
-    "/assets/vendor/datatables.net": "/assets/vendor/datatables.net",
-    "/assets/vendor/datatables.net-bs": "/assets/vendor/datatables.net-bs"
+    "/assets/js/main.js": "/assets/js/main.js"
 }
