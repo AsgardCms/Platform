@@ -42753,14 +42753,15 @@ _vue2.default.component('SingleMedia', __webpack_require__(184));
 _vue2.default.component('MediaManager', __webpack_require__(43));
 
 
+var currentLocale = window.AsgardCMS.currentLocale;
+var adminPrefix = window.AsgardCMS.adminPrefix;
+
 var router = new _vueRouter2.default({
     mode: 'history',
     base: makeBaseUrl(),
     routes: [].concat(_toConsumableArray(_PageRoutes2.default), _toConsumableArray(_MediaRoutes2.default))
 });
 
-var currentLocale = window.AsgardCMS.currentLocale;
-var adminPrefix = window.AsgardCMS.adminPrefix;
 function makeBaseUrl() {
     if (window.AsgardCMS.hideDefaultLocaleInURL == 1) {
         return adminPrefix;
