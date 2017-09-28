@@ -27,17 +27,23 @@ Vue.component('MediaManager', require('../../../Modules/Media/Assets/js/componen
 import PageRoutes from '../../../Modules/Page/Assets/js/PageRoutes';
 import MediaRoutes from '../../../Modules/Media/Assets/js/MediaRoutes';
 
-const currentLocale =  window.AsgardCMS.currentLocale;
-const adminPrefix = window.AsgardCMS.adminPrefix;
-
 const router = new VueRouter({
     mode: 'history',
-    base: `${currentLocale}/${adminPrefix}`,
+    base: makeBaseUrl(),
     routes : [
         ...PageRoutes,
         ...MediaRoutes,
     ],
 });
+
+const currentLocale =  window.AsgardCMS.currentLocale;
+const adminPrefix = window.AsgardCMS.adminPrefix;
+function makeBaseUrl() {
+    if (window.AsgardCMS.hideDefaultLocaleInURL == 1) {
+        return adminPrefix;
+    }
+    return `${currentLocale}/${adminPrefix}`;
+}
 
 let messages = {
     [currentLocale]: window.AsgardCMS.translations,
