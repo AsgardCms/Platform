@@ -15,6 +15,8 @@ versions:
             - Fixed issue when <code>hideDefaultLocaleInURL</code> was set to true making VueJS routes not working
             - Removed default loading of unneeded assets
             - Getting pdo object, making sure the database connection is valid
+            - Installation, set the application key ourself, based of laravel command
+            - Installation, only display success message for app_url on --verbose flag
     "3.0.0":
         added:
             - Created a vue component for the delete buttons on index pages
