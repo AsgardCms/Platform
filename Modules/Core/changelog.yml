@@ -12,6 +12,7 @@ versions:
             - Refactoring the .env local file writer
             - Tell users about the -f force flag for the asgard installer
             - Update the message displayed while the admin user is created.
+            - Fixed issue when <code>hideDefaultLocaleInURL</code> was set to true making VueJS routes not working
     "3.0.0":
         added:
             - Created a vue component for the delete buttons on index pages
