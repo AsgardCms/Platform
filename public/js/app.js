@@ -94733,7 +94733,7 @@ var render = function() {
         "on-success": _vm.handleSuccess,
         "show-file-list": false,
         "http-request": _vm.uploadFile,
-        multiple: "true"
+        multiple: true
       }
     },
     [

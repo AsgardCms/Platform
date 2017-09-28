@@ -6,13 +6,19 @@ const themeInfo = require('./theme.json');
 /**
  * Compile less
  */
-mix.less('resources/assets/less/asgard.less', 'assets/css/asgard.css')
+mix.less('resources/assets/less/asgard.less', 'assets/css/asgard.css');
 
 
 /**
  * Copy scripts
  */
-mix.copy('resources/assets/js', 'assets/js');
+mix.copy('resources/assets/js/main.js', 'assets/js/main.js');
+
+/**
+ * Compile js and scss
+ */
+mix.js('resources/assets/js/asgardcms.js', 'assets/js/asgardcms.js')
+    .sass('resources/assets/scss/asgardcms.scss', 'assets/css/asgardcms.css');
 
 /**
  * Copy node module
