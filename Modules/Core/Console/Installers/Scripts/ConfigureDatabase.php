@@ -169,7 +169,7 @@ class ConfigureDatabase implements SetupScript
     protected function databaseConnectionIsValid()
     {
         try {
-            app('db')->reconnect();
+            app('db')->reconnect()->getPdo();
 
             return true;
         } catch (PDOException $e) {
