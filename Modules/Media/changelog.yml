@@ -8,8 +8,10 @@ versions:
             - New media permissions for folders
             - Creating NewFolder component
             - Creating UploadButton component
+            - Ability to arrange Media in folders
         changed:
             - Allow pdfs to be uploaded by default too
+            - Fixed SingleMedia component to correctly unset a selected media
     "3.0.0":
         added:
             - New <code>MaxFolderSizeRule</code> class, using new validator classes in laravel 5.5
