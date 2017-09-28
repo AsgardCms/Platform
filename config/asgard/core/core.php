@@ -137,8 +137,6 @@ return [
         'css' => [
             'bootstrap.css',
             'font-awesome.css',
-            'alertify.core.css',
-            'alertify.default.css',
             'dataTables.bootstrap.css',
             'icheck.blue.css',
             'AdminLTE.css',
@@ -151,7 +149,6 @@ return [
         'js' => [
             'bootstrap.js',
             'mousetrap.js',
-            'alertify.js',
             'icheck.js',
             'jquery.dataTables.js',
             'dataTables.bootstrap.js',
