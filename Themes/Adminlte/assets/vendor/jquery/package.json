@@ -1,52 +1,30 @@
 {
   "_args": [
     [
-      {
-        "raw": "jquery@>=1.7",
-        "scope": null,
-        "escapedName": "jquery",
-        "name": "jquery",
-        "rawSpec": ">=1.7",
-        "spec": ">=1.7.0",
-        "type": "range"
-      },
-      "/Users/nicolaswidart/Sites/Asguard/Platform/Themes/Adminlte/node_modules/datatables.net"
+      "jquery@3.2.1",
+      "/Users/nicolaswidart/Sites/Asguard/Platform/Themes/Adminlte"
     ]
   ],
-  "_from": "jquery@>=1.7.0",
+  "_from": "jquery@3.2.1",
   "_id": "jquery@3.2.1",
-  "_inCache": true,
+  "_inBundle": false,
+  "_integrity": "sha1-XE2d5lKvbNCncBVKYxu6ErAVx4c=",
   "_location": "/jquery",
-  "_nodeVersion": "7.7.3",
-  "_npmOperationalInternal": {
-    "host": "packages-12-west.internal.npmjs.com",
-    "tmp": "tmp/jquery-3.2.1.tgz_1490036530067_0.19497186387889087"
-  },
-  "_npmUser": {
-    "name": "timmywil",
-    "email": "4timmywil@gmail.com"
-  },
-  "_npmVersion": "4.4.4",
   "_phantomChildren": {},
   "_requested": {
-    "raw": "jquery@>=1.7",
-    "scope": null,
-    "escapedName": "jquery",
+    "type": "version",
+    "registry": true,
+    "raw": "jquery@3.2.1",
     "name": "jquery",
-    "rawSpec": ">=1.7",
-    "spec": ">=1.7.0",
-    "type": "range"
+    "escapedName": "jquery",
+    "rawSpec": "3.2.1",
+    "saveSpec": null,
+    "fetchSpec": "3.2.1"
   },
-  "_requiredBy": [
-    "/datatables.net",
-    "/datatables.net-bs",
-    "/gridstack"
-  ],
-  "_resolved": "http://npm.spatie.be/jquery/-/jquery-3.2.1.tgz",
-  "_shasum": "5c4d9de652af6cd0a770154a631bba12b015c787",
-  "_shrinkwrap": null,
-  "_spec": "jquery@>=1.7",
-  "_where": "/Users/nicolaswidart/Sites/Asguard/Platform/Themes/Adminlte/node_modules/datatables.net",
+  "_requiredBy": [],
+  "_resolved": "https://registry.npmjs.org/jquery/-/jquery-3.2.1.tgz",
+  "_spec": "3.2.1",
+  "_where": "/Users/nicolaswidart/Sites/Asguard/Platform/Themes/Adminlte",
   "author": {
     "name": "JS Foundation and other contributors",
     "url": "https://github.com/jquery/jquery/blob/3.2.1/AUTHORS.txt"
@@ -119,12 +97,6 @@
     "strip-json-comments": "2.0.1",
     "testswarm": "1.1.0"
   },
-  "directories": {},
-  "dist": {
-    "shasum": "5c4d9de652af6cd0a770154a631bba12b015c787",
-    "tarball": "https://registry.npmjs.org/jquery/-/jquery-3.2.1.tgz"
-  },
-  "gitHead": "77d2a51d0520d2ee44173afdf4e40a9201f5964e",
   "homepage": "https://jquery.com",
   "keywords": [
     "jquery",
@@ -134,27 +106,7 @@
   ],
   "license": "MIT",
   "main": "dist/jquery.js",
-  "maintainers": [
-    {
-      "name": "dmethvin",
-      "email": "dave.methvin@gmail.com"
-    },
-    {
-      "name": "mgol",
-      "email": "m.goleb@gmail.com"
-    },
-    {
-      "name": "scott.gonzalez",
-      "email": "scott.gonzalez@gmail.com"
-    },
-    {
-      "name": "timmywil",
-      "email": "4timmywil@gmail.com"
-    }
-  ],
   "name": "jquery",
-  "optionalDependencies": {},
-  "readme": "ERROR: No README data found!",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/jquery/jquery.git"

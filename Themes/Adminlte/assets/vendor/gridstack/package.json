@@ -1,49 +1,31 @@
 {
   "_args": [
     [
-      {
-        "raw": "gridstack@>=0.2.2",
-        "scope": null,
-        "escapedName": "gridstack",
-        "name": "gridstack",
-        "rawSpec": ">=0.2.2",
-        "spec": ">=0.2.2",
-        "type": "range"
-      },
+      "gridstack@0.3.0",
       "/Users/nicolaswidart/Sites/Asguard/Platform/Themes/Adminlte"
     ]
   ],
-  "_from": "gridstack@>=0.2.2",
+  "_from": "gridstack@0.3.0",
   "_id": "gridstack@0.3.0",
-  "_inCache": true,
+  "_inBundle": false,
+  "_integrity": "sha1-vhx4kfP70q9g+dYPTH1RejDTu3g=",
   "_location": "/gridstack",
-  "_nodeVersion": "6.9.1",
-  "_npmOperationalInternal": {
-    "host": "packages-18-east.internal.npmjs.com",
-    "tmp": "tmp/gridstack-0.3.0.tgz_1493053259157_0.5387659086845815"
-  },
-  "_npmUser": {
-    "name": "dweiss",
-    "email": "dylan.weiss@gmail.com"
-  },
-  "_npmVersion": "3.10.8",
   "_phantomChildren": {},
   "_requested": {
-    "raw": "gridstack@>=0.2.2",
-    "scope": null,
-    "escapedName": "gridstack",
+    "type": "version",
+    "registry": true,
+    "raw": "gridstack@0.3.0",
     "name": "gridstack",
-    "rawSpec": ">=0.2.2",
-    "spec": ">=0.2.2",
-    "type": "range"
+    "escapedName": "gridstack",
+    "rawSpec": "0.3.0",
+    "saveSpec": null,
+    "fetchSpec": "0.3.0"
   },
   "_requiredBy": [
     "/"
   ],
-  "_resolved": "http://npm.spatie.be/gridstack/-/gridstack-0.3.0.tgz",
-  "_shasum": "be1c7891f3fbd2af60f9d60f4c7d517a30d3bb78",
-  "_shrinkwrap": null,
-  "_spec": "gridstack@>=0.2.2",
+  "_resolved": "https://registry.npmjs.org/gridstack/-/gridstack-0.3.0.tgz",
+  "_spec": "0.3.0",
   "_where": "/Users/nicolaswidart/Sites/Asguard/Platform/Themes/Adminlte",
   "author": {
     "name": "Pavel Reznikov",
@@ -84,12 +66,6 @@
     "phantomjs-prebuilt": "^2.1.5",
     "serve-static": "^1.10.2"
   },
-  "directories": {},
-  "dist": {
-    "shasum": "be1c7891f3fbd2af60f9d60f4c7d517a30d3bb78",
-    "tarball": "https://registry.npmjs.org/gridstack/-/gridstack-0.3.0.tgz"
-  },
-  "gitHead": "8ea752ddff7973a97045849eafbe7fbd5e9c9e0d",
   "homepage": "http://troolee.github.io/gridstack.js/",
   "keywords": [
     "gridstack",
@@ -100,23 +76,7 @@
   ],
   "license": "MIT",
   "main": "dist/gridstack.js",
-  "maintainers": [
-    {
-      "name": "dweiss",
-      "email": "dylan.weiss@gmail.com"
-    },
-    {
-      "name": "mikehaas763",
-      "email": "mike@emken.co"
-    },
-    {
-      "name": "troolee",
-      "email": "pashka.reznikov@gmail.com"
-    }
-  ],
   "name": "gridstack",
-  "optionalDependencies": {},
-  "readme": "ERROR: No README data found!",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/troolee/gridstack.js.git"

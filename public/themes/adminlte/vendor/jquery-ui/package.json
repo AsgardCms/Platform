@@ -1,50 +1,30 @@
 {
   "_args": [
     [
-      {
-        "raw": "jquery-ui@^1.12.0",
-        "scope": null,
-        "escapedName": "jquery-ui",
-        "name": "jquery-ui",
-        "rawSpec": "^1.12.0",
-        "spec": ">=1.12.0 <2.0.0",
-        "type": "range"
-      },
-      "/Users/nicolaswidart/Sites/Asguard/Platform/Themes/Adminlte/node_modules/gridstack"
+      "jquery-ui@1.12.1",
+      "/Users/nicolaswidart/Sites/Asguard/Platform/Themes/Adminlte"
     ]
   ],
-  "_from": "jquery-ui@>=1.12.0 <2.0.0",
+  "_from": "jquery-ui@1.12.1",
   "_id": "jquery-ui@1.12.1",
-  "_inCache": true,
+  "_inBundle": false,
+  "_integrity": "sha1-vLQEXI3QU5wTS8FIjN0+dop6nlE=",
   "_location": "/jquery-ui",
-  "_nodeVersion": "0.12.14",
-  "_npmOperationalInternal": {
-    "host": "packages-12-west.internal.npmjs.com",
-    "tmp": "tmp/jquery-ui-1.12.1.tgz_1473870856614_0.9851792592089623"
-  },
-  "_npmUser": {
-    "name": "scott.gonzalez",
-    "email": "scott.gonzalez@gmail.com"
-  },
-  "_npmVersion": "2.15.1",
   "_phantomChildren": {},
   "_requested": {
-    "raw": "jquery-ui@^1.12.0",
-    "scope": null,
-    "escapedName": "jquery-ui",
+    "type": "version",
+    "registry": true,
+    "raw": "jquery-ui@1.12.1",
     "name": "jquery-ui",
-    "rawSpec": "^1.12.0",
-    "spec": ">=1.12.0 <2.0.0",
-    "type": "range"
+    "escapedName": "jquery-ui",
+    "rawSpec": "1.12.1",
+    "saveSpec": null,
+    "fetchSpec": "1.12.1"
   },
-  "_requiredBy": [
-    "/gridstack"
-  ],
-  "_resolved": "http://npm.spatie.be/jquery-ui/-/jquery-ui-1.12.1.tgz",
-  "_shasum": "bcb4045c8dd0539c134bc1488cdd3e768a7a9e51",
-  "_shrinkwrap": null,
-  "_spec": "jquery-ui@^1.12.0",
-  "_where": "/Users/nicolaswidart/Sites/Asguard/Platform/Themes/Adminlte/node_modules/gridstack",
+  "_requiredBy": [],
+  "_resolved": "https://registry.npmjs.org/jquery-ui/-/jquery-ui-1.12.1.tgz",
+  "_spec": "1.12.1",
+  "_where": "/Users/nicolaswidart/Sites/Asguard/Platform/Themes/Adminlte",
   "author": {
     "name": "jQuery Foundation and other contributors",
     "url": "https://github.com/jquery/jquery-ui/blob/1.12.1/AUTHORS.txt"
@@ -73,33 +53,43 @@
     "rimraf": "2.5.1",
     "testswarm": "1.1.0"
   },
-  "directories": {},
-  "dist": {
-    "shasum": "bcb4045c8dd0539c134bc1488cdd3e768a7a9e51",
-    "tarball": "https://registry.npmjs.org/jquery-ui/-/jquery-ui-1.12.1.tgz"
-  },
-  "gitHead": "c6f1735249295bb37153861aa97e5b3e38d46b02",
   "homepage": "http://jqueryui.com",
   "keywords": [],
   "license": "MIT",
   "main": "ui/widget.js",
   "maintainers": [
     {
-      "name": "devongovett",
-      "email": "devongovett@gmail.com"
+      "name": "Scott González",
+      "email": "scott.gonzalez@gmail.com",
+      "url": "http://scottgonzalez.com"
     },
     {
-      "name": "jzaefferer",
-      "email": "joern.zaefferer@gmail.com"
+      "name": "Jörn Zaefferer",
+      "email": "joern.zaefferer@gmail.com",
+      "url": "http://bassistance.de"
     },
     {
-      "name": "scott.gonzalez",
-      "email": "scott.gonzalez@gmail.com"
+      "name": "Mike Sherov",
+      "email": "mike.sherov@gmail.com",
+      "url": "http://mike.sherov.com"
+    },
+    {
+      "name": "TJ VanToll",
+      "email": "tj.vantoll@gmail.com",
+      "url": "http://tjvantoll.com"
+    },
+    {
+      "name": "Felix Nagel",
+      "email": "info@felixnagel.com",
+      "url": "http://www.felixnagel.com"
+    },
+    {
+      "name": "Alex Schmitz",
+      "email": "arschmitz@gmail.com",
+      "url": "https://github.com/arschmitz"
     }
   ],
   "name": "jquery-ui",
-  "optionalDependencies": {},
-  "readme": "ERROR: No README data found!",
   "repository": {
     "type": "git",
     "url": "git://github.com/jquery/jquery-ui.git"

@@ -1,45 +1,31 @@
 {
   "_args": [
     [
-      {
-        "raw": "icheck@^1.0.2",
-        "scope": null,
-        "escapedName": "icheck",
-        "name": "icheck",
-        "rawSpec": "^1.0.2",
-        "spec": ">=1.0.2 <2.0.0",
-        "type": "range"
-      },
+      "icheck@1.0.2",
       "/Users/nicolaswidart/Sites/Asguard/Platform/Themes/Adminlte"
     ]
   ],
-  "_from": "icheck@>=1.0.2 <2.0.0",
+  "_from": "icheck@1.0.2",
   "_id": "icheck@1.0.2",
-  "_inCache": true,
+  "_inBundle": false,
+  "_integrity": "sha1-BtCNo9R65EjBU7Jjm4bprX/fcSg=",
   "_location": "/icheck",
-  "_nodeVersion": "0.12.2",
-  "_npmUser": {
-    "name": "justinsisley",
-    "email": "sisley.justin@gmail.com"
-  },
-  "_npmVersion": "2.7.5",
   "_phantomChildren": {},
   "_requested": {
-    "raw": "icheck@^1.0.2",
-    "scope": null,
-    "escapedName": "icheck",
+    "type": "version",
+    "registry": true,
+    "raw": "icheck@1.0.2",
     "name": "icheck",
-    "rawSpec": "^1.0.2",
-    "spec": ">=1.0.2 <2.0.0",
-    "type": "range"
+    "escapedName": "icheck",
+    "rawSpec": "1.0.2",
+    "saveSpec": null,
+    "fetchSpec": "1.0.2"
   },
   "_requiredBy": [
     "/"
   ],
-  "_resolved": "http://npm.spatie.be/icheck/-/icheck-1.0.2.tgz",
-  "_shasum": "06d08da3d47ae448c153b2639b86e9ad7fdf7128",
-  "_shrinkwrap": null,
-  "_spec": "icheck@^1.0.2",
+  "_resolved": "https://registry.npmjs.org/icheck/-/icheck-1.0.2.tgz",
+  "_spec": "1.0.2",
   "_where": "/Users/nicolaswidart/Sites/Asguard/Platform/Themes/Adminlte",
   "author": {
     "name": "Damir Sultanov",
@@ -49,31 +35,14 @@
   "bugs": {
     "url": "https://github.com/fronteed/icheck/issues"
   },
-  "dependencies": {},
   "description": "Highly customizable checkboxes and radio buttons (jQuery & Zepto)",
-  "devDependencies": {},
-  "directories": {},
-  "dist": {
-    "shasum": "06d08da3d47ae448c153b2639b86e9ad7fdf7128",
-    "tarball": "https://registry.npmjs.org/icheck/-/icheck-1.0.2.tgz"
-  },
-  "gitHead": "cd45d5faf4bec01b5cf0a9c214101c56d5111ed8",
   "homepage": "http://fronteed.com/iCheck/",
   "license": "MIT",
   "main": "icheck.js",
-  "maintainers": [
-    {
-      "name": "justinsisley",
-      "email": "sisley.justin@gmail.com"
-    }
-  ],
   "name": "icheck",
-  "optionalDependencies": {},
-  "readme": "ERROR: No README data found!",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/fronteed/icheck.git"
   },
-  "scripts": {},
   "version": "1.0.2"
 }
