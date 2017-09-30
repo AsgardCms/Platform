@@ -43,7 +43,7 @@ class MediaGridController extends AdminBaseController
      */
     public function ckIndex()
     {
-        $files = $this->file->all();
+        $files = $this->file->allForGrid();
         $thumbnails = $this->thumbnailsManager->all();
 
         return view('media::admin.grid.ckeditor', compact('files', 'thumbnails'));
