@@ -11,6 +11,7 @@ use Modules\Media\Events\FileWasLinked;
 use Modules\Media\Events\FileWasUnlinked;
 use Modules\Media\Events\FileWasUploaded;
 use Modules\Media\Helpers\FileHelper;
+use Modules\Media\Http\Requests\UploadDropzoneMediaRequest;
 use Modules\Media\Http\Requests\UploadMediaRequest;
 use Modules\Media\Image\Imagy;
 use Modules\Media\Repositories\FileRepository;
@@ -101,6 +102,21 @@ class MediaController extends Controller
     public function store(UploadMediaRequest $request) : JsonResponse
     {
         $savedFile = $this->fileService->store($request->file('file'), $request->get('parent_id'));
+
+        if (is_string($savedFile)) {
+            return response()->json([
+                'error' => $savedFile,
+            ], 409);
+        }
+
+        event(new FileWasUploaded($savedFile));
+
+        return response()->json($savedFile->toArray());
+    }
+
+    public function storeDropzone(UploadDropzoneMediaRequest $request) : JsonResponse
+    {
+        $savedFile = $this->fileService->store($request->file('file'));
 
         if (is_string($savedFile)) {
             return response()->json([

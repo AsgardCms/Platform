@@ -29,6 +29,11 @@ $router->group(['middleware' => 'api.token'], function (Router $router) {
         'as' => 'api.media.store',
         'middleware' => 'token-can:media.medias.create',
     ]);
+    $router->post('file-dropzone', [
+        'uses' => 'MediaController@storeDropzone',
+        'as' => 'api.media.store-dropzone',
+        'middleware' => 'token-can:media.medias.create',
+    ]);
     $router->post('media/link', [
         'uses' => 'MediaController@linkMedia',
         'as' => 'api.media.link',
