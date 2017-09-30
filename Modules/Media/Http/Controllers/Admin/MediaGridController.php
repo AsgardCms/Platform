@@ -31,7 +31,7 @@ class MediaGridController extends AdminBaseController
      */
     public function index()
     {
-        $files = $this->file->all();
+        $files = $this->file->allForGrid();
         $thumbnails = $this->thumbnailsManager->all();
 
         return view('media::admin.grid.general', compact('files', 'thumbnails'));
