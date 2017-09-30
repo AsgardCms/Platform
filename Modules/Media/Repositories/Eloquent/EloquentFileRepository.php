@@ -172,4 +172,16 @@ class EloquentFileRepository extends EloquentBaseRepository implements FileRepos
     {
         return $this->model->where('folder_id', $folderId)->get();
     }
+
+    public function findForVirtualPath(string $path)
+    {
+        $prefix = config('asgard.media.config.files-path');
+
+        return $this->model->where('path', $prefix . $path)->first();
+    }
+
+    public function allForGrid(): Collection
+    {
+        return $this->model->where('is_folder', 0)->get();
+    }
 }

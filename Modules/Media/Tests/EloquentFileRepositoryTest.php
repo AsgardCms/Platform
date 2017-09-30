@@ -246,6 +246,17 @@ class EloquentFileRepositoryTest extends MediaTestCase
         $this->assertEquals($nestedFolder->id, $file->folder_id);
     }
 
+    /** @test */
+    public function it_can_fetch_all_files_only()
+    {
+        $folderRepository = app(FolderRepository::class);
+        $folderRepository->create(['name' => 'My Folder', 'parent_id' => 0]);
+        $this->createFile();
+        $this->createFile();
+
+        $this->assertCount(2, $this->file->allForGrid());
+    }
+
     private function createFile($fileName = 'random/name.jpg')
     {
         return File::create([
