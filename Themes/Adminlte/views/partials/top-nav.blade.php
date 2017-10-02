@@ -43,7 +43,7 @@
                     <i class="glyphicon glyphicon-user"></i>
                     <span>
                         <?php if ($user->present()->fullname() != ' '): ?>
-                            <?= $user->present()->fullName(); ?>
+                            {{ $user->present()->fullName() }}
                         <?php else: ?>
                             <em>{{trans('core::core.general.complete your profile')}}.</em>
                         <?php endif; ?>
@@ -56,7 +56,7 @@
                         <img src="{{ $user->present()->gravatar() }}" class="img-circle" alt="User Image" />
                         <p>
                             <?php if ($user->present()->fullname() != ' '): ?>
-                                <?= $user->present()->fullname(); ?>
+                                {{ $user->present()->fullname() }}
                             <?php else: ?>
                                 <em>{{trans('core::core.general.complete your profile')}}.</em>
                             <?php endif; ?>
