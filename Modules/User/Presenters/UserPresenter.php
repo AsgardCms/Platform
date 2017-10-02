@@ -15,7 +15,7 @@ class UserPresenter extends Presenter
     {
         $email = md5($this->email);
 
-        return "//www.gravatar.com/avatar/$email?s=$size";
+        return "https://www.gravatar.com/avatar/$email?s=$size";
     }
 
     /**
