@@ -6,6 +6,7 @@ versions:
         changed:
             - Making sure the role slug is unique
             - Fixed Users Full Name Stored XSS Vulnerability
+            - Explicitly used https to request the users Gravatar icon
     "3.0.0":
         added:
             - <code>logUserIn</code> on the <code>Authentication</code> interface to log a user object in
