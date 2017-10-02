@@ -24,7 +24,7 @@ final class SettingDirective
     {
         $this->extractArguments($arguments);
 
-        return setting($this->settingName, $this->locale, $this->default);
+        return e(setting($this->settingName, $this->locale, $this->default));
     }
 
     /**
