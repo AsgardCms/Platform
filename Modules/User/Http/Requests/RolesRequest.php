@@ -10,6 +10,7 @@ class RolesRequest extends FormRequest
     {
         return [
             'name' => 'required',
+            'slug' => 'required|unique:roles,slug',
         ];
     }
 

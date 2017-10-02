@@ -3,6 +3,8 @@ versions:
     "3.1.0@unreleased":
         added:
             - Seeding new media.folders permissions on install
+        changed:
+            - Making sure the role slug is unique
     "3.0.0":
         added:
             - <code>logUserIn</code> on the <code>Authentication</code> interface to log a user object in
