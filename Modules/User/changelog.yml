@@ -5,6 +5,7 @@ versions:
             - Seeding new media.folders permissions on install
         changed:
             - Making sure the role slug is unique
+            - Fixed Users Full Name Stored XSS Vulnerability
     "3.0.0":
         added:
             - <code>logUserIn</code> on the <code>Authentication</code> interface to log a user object in
