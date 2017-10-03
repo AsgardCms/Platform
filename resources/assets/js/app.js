@@ -8,12 +8,14 @@ import DataTables from 'vue-data-tables';
 import VueEvents from 'vue-events';
 import locale from 'element-ui/lib/locale/lang/en';
 import VueSimplemde from 'vue-simplemde';
+import PageRoutes from '../../../Modules/Page/Assets/js/PageRoutes';
+import MediaRoutes from '../../../Modules/Media/Assets/js/MediaRoutes';
 
-Vue.use(ElementUI, { locale });
-Vue.use(DataTables, { locale });
+Vue.use(ElementUI, {locale});
+Vue.use(DataTables, {locale});
 Vue.use(VueI18n);
 Vue.use(VueRouter);
-Vue.use(require('vue-shortkey'), { prevent: ['input', 'textarea'] });
+Vue.use(require('vue-shortkey'), {prevent: ['input', 'textarea']});
 
 Vue.use(VueEvents);
 Vue.use(VueSimplemde);
@@ -26,12 +28,16 @@ Vue.component('TagsInput', require('../../../Modules/Tag/Assets/js/components/Ta
 Vue.component('SingleMedia', require('../../../Modules/Media/Assets/js/components/SingleMedia.vue'));
 Vue.component('MediaManager', require('../../../Modules/Media/Assets/js/components/MediaManager.vue'));
 
-import PageRoutes from '../../../Modules/Page/Assets/js/PageRoutes';
-import MediaRoutes from '../../../Modules/Media/Assets/js/MediaRoutes';
-
 
 const currentLocale = window.AsgardCMS.currentLocale;
 const adminPrefix = window.AsgardCMS.adminPrefix;
+
+function makeBaseUrl() {
+  if (window.AsgardCMS.hideDefaultLocaleInURL == 1) {
+    return adminPrefix;
+  }
+  return `${currentLocale}/${adminPrefix}`;
+}
 
 const router = new VueRouter({
   mode: 'history',
@@ -41,13 +47,6 @@ const router = new VueRouter({
     ...MediaRoutes,
   ],
 });
-
-function makeBaseUrl() {
-  if (window.AsgardCMS.hideDefaultLocaleInURL == 1) {
-    return adminPrefix;
-  }
-  return `${currentLocale}/${adminPrefix}`;
-}
 
 const messages = {
   [currentLocale]: window.AsgardCMS.translations,

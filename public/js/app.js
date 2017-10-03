@@ -42742,6 +42742,7 @@ _vue2.default.use(_vueDataTables2.default, { locale: _en2.default });
 _vue2.default.use(_vueI18n2.default);
 _vue2.default.use(_vueRouter2.default);
 _vue2.default.use(__webpack_require__(170), { prevent: ['input', 'textarea'] });
+
 _vue2.default.use(_vueEvents2.default);
 _vue2.default.use(_vueSimplemde2.default);
 __webpack_require__(171);
@@ -42752,56 +42753,55 @@ _vue2.default.component('TagsInput', __webpack_require__(181));
 _vue2.default.component('SingleMedia', __webpack_require__(184));
 _vue2.default.component('MediaManager', __webpack_require__(43));
 
-
 var currentLocale = window.AsgardCMS.currentLocale;
 var adminPrefix = window.AsgardCMS.adminPrefix;
 
-var router = new _vueRouter2.default({
-    mode: 'history',
-    base: makeBaseUrl(),
-    routes: [].concat(_toConsumableArray(_PageRoutes2.default), _toConsumableArray(_MediaRoutes2.default))
-});
-
 function makeBaseUrl() {
-    if (window.AsgardCMS.hideDefaultLocaleInURL == 1) {
-        return adminPrefix;
-    }
-    return currentLocale + '/' + adminPrefix;
+  if (window.AsgardCMS.hideDefaultLocaleInURL == 1) {
+    return adminPrefix;
+  }
+  return currentLocale + '/' + adminPrefix;
 }
+
+var router = new _vueRouter2.default({
+  mode: 'history',
+  base: makeBaseUrl(),
+  routes: [].concat(_toConsumableArray(_PageRoutes2.default), _toConsumableArray(_MediaRoutes2.default))
+});
 
 var messages = _defineProperty({}, currentLocale, window.AsgardCMS.translations);
 
 var i18n = new _vueI18n2.default({
-    locale: currentLocale,
-    messages: messages
+  locale: currentLocale,
+  messages: messages
 });
 
 var app = new _vue2.default({
-    el: '#app',
-    router: router,
-    i18n: i18n
+  el: '#app',
+  router: router,
+  i18n: i18n
 });
 
 window.axios.interceptors.response.use(null, function (error) {
-    if (error.response === undefined) {
-        console.log(error);
-        return;
-    }
-    if (error.response.status === 403) {
-        app.$notify.error({
-            title: app.$t('core.unauthorized'),
-            message: app.$t('core.unauthorized-access')
-        });
-        window.location = route('dashboard.index');
-    }
-    if (error.response.status === 401) {
-        app.$notify.error({
-            title: app.$t('core.unauthenticated'),
-            message: app.$t('core.unauthenticated-message')
-        });
-        window.location = route('login');
-    }
-    return Promise.reject(error);
+  if (error.response === undefined) {
+    console.log(error);
+    return;
+  }
+  if (error.response.status === 403) {
+    app.$notify.error({
+      title: app.$t('core.unauthorized'),
+      message: app.$t('core.unauthorized-access')
+    });
+    window.location = route('dashboard.index');
+  }
+  if (error.response.status === 401) {
+    app.$notify.error({
+      title: app.$t('core.unauthenticated'),
+      message: app.$t('core.unauthenticated-message')
+    });
+    window.location = route('login');
+  }
+  return Promise.reject(error);
 });
 
 /***/ }),
@@ -96157,25 +96157,25 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 var token = document.head.querySelector('meta[name="csrf-token"]');
 
 if (token) {
-    window.axios.defaults.headers.common['X-CSRF-TOKEN'] = token.content;
+  window.axios.defaults.headers.common['X-CSRF-TOKEN'] = token.content;
 } else {
-    console.error('CSRF token not found: https://laravel.com/docs/csrf#csrf-x-csrf-token');
+  console.error('CSRF token not found: https://laravel.com/docs/csrf#csrf-x-csrf-token');
 }
 
 var userApiToken = document.head.querySelector('meta[name="user-api-token"]');
 
 if (userApiToken) {
-    window.axios.defaults.headers.common['Authorization'] = 'Bearer ' + userApiToken.content;
+  window.axios.defaults.headers.common.Authorization = 'Bearer ' + userApiToken.content;
 } else {
-    console.error('User API token not found in a meta tag.');
+  console.error('User API token not found in a meta tag.');
 }
 
 var currentLocale = document.head.querySelector('meta[name="current-locale"]');
 
 if (currentLocale) {
-    window.AsgardCMS.currentLocale = currentLocale.content;
+  window.AsgardCMS.currentLocale = currentLocale.content;
 } else {
-    console.error('Current locale token not found in a meta tag.');
+  console.error('Current locale token not found in a meta tag.');
 }
 
 /**
