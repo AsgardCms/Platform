@@ -95111,48 +95111,50 @@ var render = function() {
                           attrs: { "parent-id": _vm.folderId }
                         }),
                         _vm._v(" "),
-                        _c(
-                          "el-button-group",
-                          [
-                            _c(
-                              "el-button",
-                              {
-                                attrs: {
-                                  type: "primary",
-                                  disabled: _vm.selectedMedia.length === 0
-                                }
-                              },
-                              [_vm._v("Move")]
-                            ),
-                            _vm._v(" "),
-                            _c(
-                              "el-button",
-                              {
-                                attrs: {
-                                  type: "danger",
-                                  disabled: _vm.selectedMedia.length === 0,
-                                  loading: _vm.filesAreDeleting
-                                },
-                                on: {
-                                  click: function($event) {
-                                    if (
-                                      !("button" in $event) &&
-                                      _vm._k($event.keyCode, "preent")
-                                    ) {
-                                      return null
-                                    }
-                                    _vm.batchDelete($event)
-                                  }
-                                }
-                              },
+                        false
+                          ? _c(
+                              "el-button-group",
                               [
-                                _vm._v(
-                                  "\n                                    Delete\n                                "
+                                _c(
+                                  "el-button",
+                                  {
+                                    attrs: {
+                                      type: "primary",
+                                      disabled: _vm.selectedMedia.length === 0
+                                    }
+                                  },
+                                  [_vm._v("Move")]
                                 )
-                              ]
+                              ],
+                              1
                             )
-                          ],
-                          1
+                          : _vm._e(),
+                        _vm._v(" "),
+                        _c(
+                          "el-button",
+                          {
+                            attrs: {
+                              type: "danger",
+                              disabled: _vm.selectedMedia.length === 0,
+                              loading: _vm.filesAreDeleting
+                            },
+                            on: {
+                              click: function($event) {
+                                if (
+                                  !("button" in $event) &&
+                                  _vm._k($event.keyCode, "preent")
+                                ) {
+                                  return null
+                                }
+                                _vm.batchDelete($event)
+                              }
+                            }
+                          },
+                          [
+                            _vm._v(
+                              "\n                                Delete\n                            "
+                            )
+                          ]
                         )
                       ],
                       1

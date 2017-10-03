@@ -23,13 +23,13 @@
                             <div class="actions el-col el-col-14">
                                 <new-folder :parent-id="folderId"></new-folder>
                                 <upload-button :parent-id="folderId"></upload-button>
-                                <el-button-group>
+                                <el-button-group v-if="false">
                                     <el-button type="primary" :disabled="selectedMedia.length === 0">Move</el-button>
-                                    <el-button type="danger" :disabled="selectedMedia.length === 0"
-                                        @click.preent="batchDelete" :loading="filesAreDeleting">
-                                        Delete
-                                    </el-button>
                                 </el-button-group>
+                                <el-button type="danger" :disabled="selectedMedia.length === 0"
+                                    @click.preent="batchDelete" :loading="filesAreDeleting">
+                                    Delete
+                                </el-button>
                             </div>
                             <div class="search el-col el-col-5">
                                 <el-input icon="search" @change="performSearch" v-model="searchQuery">
