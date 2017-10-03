@@ -29,28 +29,28 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
  * a simple convenience so we don't have to attach every token manually.
  */
 
-let token = document.head.querySelector('meta[name="csrf-token"]');
+const token = document.head.querySelector('meta[name="csrf-token"]');
 
 if (token) {
-    window.axios.defaults.headers.common['X-CSRF-TOKEN'] = token.content;
+  window.axios.defaults.headers.common['X-CSRF-TOKEN'] = token.content;
 } else {
-    console.error('CSRF token not found: https://laravel.com/docs/csrf#csrf-x-csrf-token');
+  console.error('CSRF token not found: https://laravel.com/docs/csrf#csrf-x-csrf-token');
 }
 
-let userApiToken = document.head.querySelector('meta[name="user-api-token"]');
+const userApiToken = document.head.querySelector('meta[name="user-api-token"]');
 
 if (userApiToken) {
-    window.axios.defaults.headers.common['Authorization'] = 'Bearer ' + userApiToken.content;
+  window.axios.defaults.headers.common.Authorization = `Bearer ${userApiToken.content}`;
 } else {
-    console.error('User API token not found in a meta tag.');
+  console.error('User API token not found in a meta tag.');
 }
 
-let currentLocale = document.head.querySelector('meta[name="current-locale"]');
+const currentLocale = document.head.querySelector('meta[name="current-locale"]');
 
 if (currentLocale) {
-    window.AsgardCMS.currentLocale = currentLocale.content;
+  window.AsgardCMS.currentLocale = currentLocale.content;
 } else {
-    console.error('Current locale token not found in a meta tag.');
+  console.error('Current locale token not found in a meta tag.');
 }
 
 
