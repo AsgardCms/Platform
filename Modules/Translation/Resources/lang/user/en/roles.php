@@ -36,7 +36,7 @@ return [
     'inherit all' => 'Inherit all',
     'allow' => 'Allow',
     'deny' => 'Deny',
-    'inherit' => 'Inherit',
+    'inherit' => 'Inherit from role',
     'list resource' => 'List roles',
     'create resource' => 'Create roles',
     'edit resource' => 'Edit roles',
