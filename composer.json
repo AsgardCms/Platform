@@ -14,6 +14,7 @@
         "php": ">=7.0.0",
         "fideloper/proxy": "~3.3",
         "laravel/framework": "5.5.*",
+        "laravel/tinker": "~1.0",
         "nwidart/laravel-modules": "~2.0",
         "cartalyst/sentinel": "~2.0",
         "idavoll/core-module": "~3.0",
@@ -27,8 +28,7 @@
         "idavoll/translation-module": "~3.0",
         "idavoll/tag-module": "~3.0",
         "idavoll/flatly-theme": "~3.0",
-        "idavoll/adminlte-theme": "~3.0",
-        "laravel/tinker": "~1.0"
+        "idavoll/adminlte-theme": "~3.0"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",
