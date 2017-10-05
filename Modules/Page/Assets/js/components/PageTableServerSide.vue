@@ -60,8 +60,18 @@
                                 <el-table-column prop="id" label="Id" width="100" sortable="custom">
                                 </el-table-column>
                                 <el-table-column prop="translations.title" :label="trans('page.title')">
+                                    <template scope="scope">
+                                        <a @click.prevent="goToEdit(scope)" href="#">
+                                            {{  scope.row.translations.title }}
+                                        </a>
+                                    </template>
                                 </el-table-column>
                                 <el-table-column prop="translations.slug" :label="trans('page.slug')">
+                                    <template scope="scope">
+                                        <a @click.prevent="goToEdit(scope)" href="#">
+                                            {{  scope.row.translations.slug }}
+                                        </a>
+                                    </template>
                                 </el-table-column>
                                 <el-table-column prop="created_at" :label="trans('core.table.created at')" sortable="custom">
                                 </el-table-column>
@@ -197,6 +207,9 @@
             },
             handleSelectionChange(selectedPages) {
                 this.selectedPages = selectedPages;
+            },
+            goToEdit(scope) {
+                this.$router.push({name: 'admin.page.page.edit', params: {pageId: scope.row.id}})
             },
         },
         mounted() {

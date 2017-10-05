@@ -91820,6 +91820,16 @@ var _data = void 0; //
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 exports.default = {
     mixins: [_ShortcutHelper2.default],
@@ -91919,6 +91929,9 @@ exports.default = {
         },
         handleSelectionChange: function handleSelectionChange(selectedPages) {
             this.selectedPages = selectedPages;
+        },
+        goToEdit: function goToEdit(scope) {
+            this.$router.push({ name: 'admin.page.page.edit', params: { pageId: scope.row.id } });
         }
     },
     mounted: function mounted() {
@@ -92168,14 +92181,70 @@ var render = function() {
                       attrs: {
                         prop: "translations.title",
                         label: _vm.trans("page.title")
-                      }
+                      },
+                      scopedSlots: _vm._u([
+                        {
+                          key: "default",
+                          fn: function(scope) {
+                            return [
+                              _c(
+                                "a",
+                                {
+                                  attrs: { href: "#" },
+                                  on: {
+                                    click: function($event) {
+                                      $event.preventDefault()
+                                      _vm.goToEdit(scope)
+                                    }
+                                  }
+                                },
+                                [
+                                  _vm._v(
+                                    "\n                                        " +
+                                      _vm._s(scope.row.translations.title) +
+                                      "\n                                    "
+                                  )
+                                ]
+                              )
+                            ]
+                          }
+                        }
+                      ])
                     }),
                     _vm._v(" "),
                     _c("el-table-column", {
                       attrs: {
                         prop: "translations.slug",
                         label: _vm.trans("page.slug")
-                      }
+                      },
+                      scopedSlots: _vm._u([
+                        {
+                          key: "default",
+                          fn: function(scope) {
+                            return [
+                              _c(
+                                "a",
+                                {
+                                  attrs: { href: "#" },
+                                  on: {
+                                    click: function($event) {
+                                      $event.preventDefault()
+                                      _vm.goToEdit(scope)
+                                    }
+                                  }
+                                },
+                                [
+                                  _vm._v(
+                                    "\n                                        " +
+                                      _vm._s(scope.row.translations.slug) +
+                                      "\n                                    "
+                                  )
+                                ]
+                              )
+                            ]
+                          }
+                        }
+                      ])
                     }),
                     _vm._v(" "),
                     _c("el-table-column", {
