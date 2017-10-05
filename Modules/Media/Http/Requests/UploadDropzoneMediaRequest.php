@@ -17,7 +17,7 @@ class UploadDropzoneMediaRequest extends FormRequest
                 'required',
                 new MaxFolderSizeRule(),
                 $extensions,
-                "size:$maxFileSize",
+                "max:$maxFileSize",
             ],
         ];
     }
@@ -27,7 +27,7 @@ class UploadDropzoneMediaRequest extends FormRequest
         $size = $this->getMaxFileSize();
 
         return [
-            'file.size' => trans('media::media.file too large', ['size' => $size])
+            'file.max' => trans('media::media.file too large', ['size' => $size])
         ];
     }
 
