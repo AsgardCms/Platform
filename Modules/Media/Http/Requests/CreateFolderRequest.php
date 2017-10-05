@@ -9,11 +9,13 @@ class CreateFolderRequest extends FormRequest
 {
     public function rules()
     {
+        $parentID = $this->get('parent_id');
+
         return [
             'name' => [
                 'required',
-                Rule::unique('media__files', 'filename')->where(function ($query) {
-                    return $query->where('is_folder', 1);
+                Rule::unique('media__files', 'filename')->where(function ($query) use ($parentID) {
+                    return $query->where('is_folder', 1)->where('folder_id', $parentID);
                 }),
             ],
         ];
