@@ -72,7 +72,10 @@
                                     <strong v-if="scope.row.is_folder" style="cursor: pointer;" @click="enterFolder(scope)">
                                         {{ scope.row.filename }}
                                     </strong>
-                                    <span v-else>{{ scope.row.filename }}</span>
+                                    <span v-else>
+                                        <a href="#"
+                                           @click.prevent="goToEdit(scope)">{{ scope.row.filename }}</a>
+                                    </span>
                                 </template>
                             </el-table-column>
                             <el-table-column prop="created_at" :label="trans('core.table.created at')" sortable="custom"
@@ -281,6 +284,9 @@
                             message: this.trans('core.delete cancelled')
                         });
                     });
+            },
+            goToEdit(scope) {
+                this.$router.push({name: 'admin.media.media.edit', params: {mediaId: scope.row.id}})
             },
         },
         mounted() {

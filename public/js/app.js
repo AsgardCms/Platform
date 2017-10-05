@@ -94070,6 +94070,9 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 //
 //
 //
+//
+//
+//
 
 exports.default = {
     components: {
@@ -94220,6 +94223,9 @@ exports.default = {
                     message: _this3.trans('core.delete cancelled')
                 });
             });
+        },
+        goToEdit: function goToEdit(scope) {
+            this.$router.push({ name: 'admin.media.media.edit', params: { mediaId: scope.row.id } });
         }
     },
     mounted: function mounted() {
@@ -95365,7 +95371,19 @@ var render = function() {
                                     ]
                                   )
                                 : _c("span", [
-                                    _vm._v(_vm._s(scope.row.filename))
+                                    _c(
+                                      "a",
+                                      {
+                                        attrs: { href: "#" },
+                                        on: {
+                                          click: function($event) {
+                                            $event.preventDefault()
+                                            _vm.goToEdit(scope)
+                                          }
+                                        }
+                                      },
+                                      [_vm._v(_vm._s(scope.row.filename))]
+                                    )
                                   ])
                             ]
                           }
