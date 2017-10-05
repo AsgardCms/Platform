@@ -91822,7 +91822,6 @@ var _data = void 0; //
 //
 //
 //
-//
 
 exports.default = {
     mixins: [_ShortcutHelper2.default],
@@ -92206,25 +92205,19 @@ var render = function() {
                               _c(
                                 "el-button-group",
                                 [
-                                  !scope.row.is_folder
-                                    ? _c(
-                                        "el-button",
-                                        {
-                                          attrs: { size: "small" },
-                                          on: {
-                                            click: function($event) {
-                                              $event.preventDefault()
-                                              _vm.goToEdit(scope)
-                                            }
-                                          }
-                                        },
-                                        [
-                                          _c("i", {
-                                            staticClass: "fa fa-pencil"
-                                          })
-                                        ]
-                                      )
-                                    : _vm._e(),
+                                  _c(
+                                    "el-button",
+                                    {
+                                      attrs: { size: "small" },
+                                      on: {
+                                        click: function($event) {
+                                          $event.preventDefault()
+                                          _vm.goToEdit(scope)
+                                        }
+                                      }
+                                    },
+                                    [_c("i", { staticClass: "fa fa-pencil" })]
+                                  ),
                                   _vm._v(" "),
                                   _c("delete-button", {
                                     attrs: { scope: scope, rows: _vm.data }

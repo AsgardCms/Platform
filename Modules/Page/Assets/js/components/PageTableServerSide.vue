@@ -70,8 +70,7 @@
                                         <el-button-group>
                                         <el-button
                                                 size="small"
-                                                @click.prevent="goToEdit(scope)"
-                                                v-if="! scope.row.is_folder"><i class="fa fa-pencil"></i></el-button>
+                                                @click.prevent="goToEdit(scope)"><i class="fa fa-pencil"></i></el-button>
 
                                         <delete-button :scope="scope" :rows="data"></delete-button>
                                         </el-button-group>
