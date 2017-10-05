@@ -44,6 +44,7 @@ RUN add-apt-repository ppa:nginx/stable \
     && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 COPY default /etc/nginx/sites-enabled/default
+COPY php.ini /etc/php/7.0/fpm/php.ini
 COPY php-fpm.conf /etc/php/7.0/fpm/php-fpm.conf
 COPY supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 
