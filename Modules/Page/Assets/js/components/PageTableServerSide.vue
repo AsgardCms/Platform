@@ -52,21 +52,21 @@
                                         type="selection"
                                         width="55">
                                 </el-table-column>
-                                <el-table-column :label="trans('page.status')" width="75">
+                                <el-table-column prop="translations.status" :label="trans('page.status')" width="100" sortable="custom">
                                     <template scope="scope">
                                         <i class="el-icon-fa-circle" :class="(scope.row.translations.status === true) ? 'text-success':'text-danger'"></i>
                                     </template>
                                 </el-table-column>
-                                <el-table-column prop="id" label="Id" width="100" sortable="custom">
+                                <el-table-column prop="id" label="Id" width="80" sortable="custom">
                                 </el-table-column>
-                                <el-table-column prop="translations.title" :label="trans('page.title')">
+                                <el-table-column prop="translations.title" :label="trans('page.title')" sortable="custom">
                                     <template scope="scope">
                                         <a @click.prevent="goToEdit(scope)" href="#">
-                                            {{  scope.row.translations.title }}
+                                            {{ scope.row.translations.title }}
                                         </a>
                                     </template>
                                 </el-table-column>
-                                <el-table-column prop="translations.slug" :label="trans('page.slug')">
+                                <el-table-column prop="translations.slug" :label="trans('page.slug')" sortable="custom">
                                     <template scope="scope">
                                         <a @click.prevent="goToEdit(scope)" href="#">
                                             {{  scope.row.translations.slug }}
