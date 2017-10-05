@@ -65,14 +65,11 @@
                                 </el-table-column>
                                 <el-table-column prop="created_at" :label="trans('core.table.created at')" sortable="custom">
                                 </el-table-column>
-                                <el-table-column fixed="right" prop="actions" :label="trans('core.table.actions')">
+                                <el-table-column prop="actions" :label="trans('core.table.actions')">
                                     <template scope="scope">
                                         <el-button-group>
-                                        <el-button
-                                                size="small"
-                                                @click.prevent="goToEdit(scope)"><i class="fa fa-pencil"></i></el-button>
-
-                                        <delete-button :scope="scope" :rows="data"></delete-button>
+                                            <edit-button :to="{name: 'admin.page.page.edit', params: {pageId: scope.row.id}}"></edit-button>
+                                            <delete-button :scope="scope" :rows="data"></delete-button>
                                         </el-button-group>
                                     </template>
                                 </el-table-column>
@@ -153,9 +150,6 @@
             fetchData() {
                 this.tableIsLoading = true;
                 this.queryServer();
-            },
-            goToEdit(scope) {
-                this.$router.push({name: 'admin.page.page.edit', params: {pageId: scope.row.id}})
             },
             handleSizeChange(event) {
                 console.log('per page :' + event);

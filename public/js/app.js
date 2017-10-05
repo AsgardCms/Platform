@@ -42749,6 +42749,7 @@ __webpack_require__(171);
 
 _vue2.default.component('ckeditor', __webpack_require__(173));
 _vue2.default.component('DeleteButton', __webpack_require__(178));
+_vue2.default.component('EditButton', __webpack_require__(207));
 _vue2.default.component('TagsInput', __webpack_require__(181));
 _vue2.default.component('SingleMedia', __webpack_require__(184));
 _vue2.default.component('MediaManager', __webpack_require__(43));
@@ -91819,9 +91820,6 @@ var _data = void 0; //
 //
 //
 //
-//
-//
-//
 
 exports.default = {
     mixins: [_ShortcutHelper2.default],
@@ -91874,9 +91872,6 @@ exports.default = {
         fetchData: function fetchData() {
             this.tableIsLoading = true;
             this.queryServer();
-        },
-        goToEdit: function goToEdit(scope) {
-            this.$router.push({ name: 'admin.page.page.edit', params: { pageId: scope.row.id } });
         },
         handleSizeChange: function handleSizeChange(event) {
             console.log('per page :' + event);
@@ -92193,7 +92188,6 @@ var render = function() {
                     _vm._v(" "),
                     _c("el-table-column", {
                       attrs: {
-                        fixed: "right",
                         prop: "actions",
                         label: _vm.trans("core.table.actions")
                       },
@@ -92205,19 +92199,14 @@ var render = function() {
                               _c(
                                 "el-button-group",
                                 [
-                                  _c(
-                                    "el-button",
-                                    {
-                                      attrs: { size: "small" },
-                                      on: {
-                                        click: function($event) {
-                                          $event.preventDefault()
-                                          _vm.goToEdit(scope)
-                                        }
+                                  _c("edit-button", {
+                                    attrs: {
+                                      to: {
+                                        name: "admin.page.page.edit",
+                                        params: { pageId: scope.row.id }
                                       }
-                                    },
-                                    [_c("i", { staticClass: "fa fa-pencil" })]
-                                  ),
+                                    }
+                                  }),
                                   _vm._v(" "),
                                   _c("delete-button", {
                                     attrs: { scope: scope, rows: _vm.data }
@@ -94012,8 +94001,6 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 //
 //
 //
-//
-//
 
 exports.default = {
     components: {
@@ -94122,10 +94109,6 @@ exports.default = {
         },
         handleSelectionChange: function handleSelectionChange(selectedMedia) {
             this.selectedMedia = selectedMedia;
-        },
-        loadEditForm: function loadEditForm(scope) {
-            console.log('clicked edit to' + scope.row.id);
-            this.$router.push({ name: 'admin.media.media.edit', params: { mediaId: scope.row.id } });
         },
         showEditFolder: function showEditFolder(scope) {
             this.$events.emit('editFolderWasClicked', scope);
@@ -95376,28 +95359,17 @@ var render = function() {
                                             "el-button-group",
                                             [
                                               !scope.row.is_folder
-                                                ? _c(
-                                                    "el-button",
-                                                    {
-                                                      attrs: { size: "small" },
-                                                      on: {
-                                                        click: function(
-                                                          $event
-                                                        ) {
-                                                          $event.preventDefault()
-                                                          _vm.loadEditForm(
-                                                            scope
-                                                          )
+                                                ? _c("edit-button", {
+                                                    attrs: {
+                                                      to: {
+                                                        name:
+                                                          "admin.media.media.edit",
+                                                        params: {
+                                                          mediaId: scope.row.id
                                                         }
                                                       }
-                                                    },
-                                                    [
-                                                      _c("i", {
-                                                        staticClass:
-                                                          "fa fa-pencil"
-                                                      })
-                                                    ]
-                                                  )
+                                                    }
+                                                  })
                                                 : _vm._e(),
                                               _vm._v(" "),
                                               scope.row.is_folder &&
@@ -97412,6 +97384,125 @@ if (false) {
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 196 */,
+/* 197 */,
+/* 198 */,
+/* 199 */,
+/* 200 */,
+/* 201 */,
+/* 202 */,
+/* 203 */,
+/* 204 */,
+/* 205 */,
+/* 206 */,
+/* 207 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(2)
+/* script */
+var __vue_script__ = __webpack_require__(208)
+/* template */
+var __vue_template__ = __webpack_require__(209)
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "Modules/Core/Assets/js/components/EditButtonComponent.vue"
+if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
+if (Component.options.functional) {console.error("[vue-loader] EditButtonComponent.vue: functional components are not supported with templates, they should use render functions.")}
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-2a895d88", Component.options)
+  } else {
+    hotAPI.reload("data-v-2a895d88", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 208 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+//
+//
+//
+//
+//
+//
+//
+//
+
+exports.default = {
+    props: {
+        to: { type: Object, required: true }
+    },
+    methods: {
+        goToEditPage: function goToEditPage() {
+            this.$router.push(this.to);
+        }
+    }
+};
+
+/***/ }),
+/* 209 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "el-button",
+    {
+      attrs: { size: "small" },
+      on: {
+        click: function($event) {
+          $event.preventDefault()
+          _vm.goToEditPage()
+        }
+      }
+    },
+    [_c("i", { staticClass: "fa fa-pencil" })]
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+     require("vue-hot-reload-api").rerender("data-v-2a895d88", module.exports)
+  }
+}
 
 /***/ })
 /******/ ]);

@@ -90,16 +90,14 @@
                                         </el-button>
                                         <div v-if="! singleModal">
                                             <el-button-group>
+                                                <edit-button :to="{name: 'admin.media.media.edit', params: {mediaId: scope.row.id}}"
+                                                             v-if="! scope.row.is_folder"></edit-button>
                                                 <el-button
                                                         size="small"
-                                                        @click.prevent="loadEditForm(scope)"
-                                                        v-if="! scope.row.is_folder"><i class="fa fa-pencil"></i></el-button>
-                                                    <el-button
-                                                            size="small"
-                                                            @click.prevent="showEditFolder(scope.row)"
-                                                            v-if="scope.row.is_folder && canEditFolders">
-                                                        <i class="fa fa-pencil"></i>
-                                                    </el-button>
+                                                        @click.prevent="showEditFolder(scope.row)"
+                                                        v-if="scope.row.is_folder && canEditFolders">
+                                                    <i class="fa fa-pencil"></i>
+                                                </el-button>
                                                 <delete-button :scope="scope" :rows="data"></delete-button>
                                             </el-button-group>
                                         </div>
@@ -240,10 +238,6 @@
             },
             handleSelectionChange(selectedMedia) {
                 this.selectedMedia = selectedMedia;
-            },
-            loadEditForm(scope) {
-                console.log('clicked edit to' + scope.row.id);
-                this.$router.push({name: 'admin.media.media.edit', params: {mediaId: scope.row.id}})
             },
             showEditFolder(scope) {
                 this.$events.emit('editFolderWasClicked', scope);
