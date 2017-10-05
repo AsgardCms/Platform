@@ -52,12 +52,12 @@
                                         type="selection"
                                         width="55">
                                 </el-table-column>
-                                <el-table-column :label="trans('page.status')" width="75">
+                                <el-table-column :label="trans('page.status')" width="100">
                                     <template scope="scope">
                                         <i class="el-icon-fa-circle" :class="(scope.row.translations.status === true) ? 'text-success':'text-danger'"></i>
                                     </template>
                                 </el-table-column>
-                                <el-table-column prop="id" label="Id" width="100" sortable="custom">
+                                <el-table-column prop="id" label="Id" width="75" sortable="custom">
                                 </el-table-column>
                                 <el-table-column prop="translations.title" :label="trans('page.title')">
                                     <template scope="scope">
