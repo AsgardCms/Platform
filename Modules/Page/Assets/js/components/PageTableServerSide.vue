@@ -67,11 +67,14 @@
                                 </el-table-column>
                                 <el-table-column fixed="right" prop="actions" :label="trans('core.table.actions')">
                                     <template scope="scope">
-                                        <a class="btn btn-default btn-flat" @click.prevent="goToEdit(scope)"><i
-                                                class="fa fa-pencil"></i></a>
+                                        <el-button-group>
+                                        <el-button
+                                                size="small"
+                                                @click.prevent="goToEdit(scope)"
+                                                v-if="! scope.row.is_folder"><i class="fa fa-pencil"></i></el-button>
 
-                                        <delete-button :scope="scope" :rows="data">
-                                        </delete-button>
+                                        <delete-button :scope="scope" :rows="data"></delete-button>
+                                        </el-button-group>
                                     </template>
                                 </el-table-column>
                             </el-table>

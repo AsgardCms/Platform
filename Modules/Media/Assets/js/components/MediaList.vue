@@ -81,20 +81,27 @@
                             <el-table-column prop="actions" label="" width="150">
                                 <template scope="scope">
                                     <div class="pull-right">
-                                        <a class="btn btn-primary btn-flat" @click.prevent="insertMedia(scope)"
-                                           v-if="singleModal && ! scope.row.is_folder">
+                                        <el-button
+                                                type="primary"
+                                                size="small"
+                                                @click.prevent="insertMedia(scope)"
+                                                v-if="singleModal && ! scope.row.is_folder">
                                             {{ trans('media.insert') }}
-                                        </a>
+                                        </el-button>
                                         <div v-if="! singleModal">
-                                            <a class="btn btn-default btn-flat" @click.prevent="loadEditForm(scope)"
-                                               v-if="! scope.row.is_folder"><i class="fa fa-pencil"></i></a>
-
-                                            <a @click.prevent="showEditFolder(scope.row)" class="btn btn-default btn-flat"
-                                               v-if="scope.row.is_folder && canEditFolders">
-                                                <i class="fa fa-pencil"></i>
-                                            </a>
-
-                                            <delete-button :scope="scope" :rows="data"></delete-button>
+                                            <el-button-group>
+                                                <el-button
+                                                        size="small"
+                                                        @click.prevent="loadEditForm(scope)"
+                                                        v-if="! scope.row.is_folder"><i class="fa fa-pencil"></i></el-button>
+                                                    <el-button
+                                                            size="small"
+                                                            @click.prevent="showEditFolder(scope.row)"
+                                                            v-if="scope.row.is_folder && canEditFolders">
+                                                        <i class="fa fa-pencil"></i>
+                                                    </el-button>
+                                                <delete-button :scope="scope" :rows="data"></delete-button>
+                                            </el-button-group>
                                         </div>
                                     </div>
                                 </template>

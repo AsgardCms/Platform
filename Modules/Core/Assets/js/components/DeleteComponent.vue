@@ -1,5 +1,5 @@
 <template>
-    <button class="btn btn-danger btn-flat" @click="deleteRow"><i class="fa fa-trash"></i></button>
+    <el-button type="danger" @click="deleteRow" size="small"><i class="fa fa-trash"></i></el-button>
 </template>
 
 <script>
