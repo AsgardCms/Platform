@@ -94,11 +94,13 @@ class EloquentFileRepositoryTest extends MediaTestCase
     {
         $this->createFile('my-file.jpg');
 
+        sleep(1);
+        $this->file->createFromFile(\Illuminate\Http\UploadedFile::fake()->image('my-file.jpg'));
+        sleep(1);
         $this->file->createFromFile(\Illuminate\Http\UploadedFile::fake()->image('my-file.jpg'));
 
-        $file = $this->file->find(2);
-
-        $this->assertEquals('my-file_1.jpg', $file->filename);
+        $this->assertEquals('my-file_1.jpg', $this->file->find(2)->filename);
+        $this->assertEquals('my-file_2.jpg', $this->file->find(3)->filename);
     }
 
     /** @test */
