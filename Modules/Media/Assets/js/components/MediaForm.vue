@@ -1,8 +1,3 @@
-<style>
-    .el-select{
-        display: block;
-    }
-</style>
 <template>
     <div>
         <div class="content-header">
@@ -163,3 +158,8 @@
         }
     }
 </script>
+<style>
+    .el-select{
+        display: block;
+    }
+</style>
