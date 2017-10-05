@@ -103,6 +103,19 @@ class EloquentFileRepositoryTest extends MediaTestCase
         $this->assertEquals('my-file_2.jpg', $this->file->find(3)->filename);
     }
 
+    public function it_weird_edge_case()
+    {
+        $file = $this->file->createFromFile(\Illuminate\Http\UploadedFile::fake()->image('my-file.jpg'));
+        $this->file->createFromFile(\Illuminate\Http\UploadedFile::fake()->image('my-file_1.jpg'));
+        $this->file->destroy($file);
+        sleep(1);
+        $this->file->createFromFile(\Illuminate\Http\UploadedFile::fake()->image('my-file.jpg'));
+        sleep(1);
+        $fileAgain = $this->file->createFromFile(\Illuminate\Http\UploadedFile::fake()->image('my-file.jpg'));
+
+        $this->assertEquals('my-file_2.jpg', $fileAgain->filename);
+    }
+
     /** @test */
     public function it_can_delete_a_file()
     {
