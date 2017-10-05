@@ -49,6 +49,10 @@ COPY php-fpm.conf /etc/php/7.0/fpm/php-fpm.conf
 COPY supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 
 COPY laravel.ini /etc/php/7.0/fpm/conf.d/laravel.ini
+#COPY disabled-xdebug.ini /etc/php/7.0/mods-available/xdebug.ini
+COPY enabled-xdebug.ini /etc/php/7.0/mods-available/xdebug.ini
+
+RUN /etc/init.d/php7.0-fpm restart
 
 RUN mkdir /tmp/certgen
 WORKDIR /tmp/certgen
