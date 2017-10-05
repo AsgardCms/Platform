@@ -1,9 +1,3 @@
-<style>
-    .new-folder {
-        float: left;
-        margin-right: 10px;
-    }
-</style>
 <template>
     <div>
         <el-button type="success" class="new-folder" @click="dialogFormVisible = true">
@@ -77,3 +71,9 @@
         }
     }
 </script>
+<style>
+    .new-folder {
+        float: left;
+        margin-right: 10px;
+    }
+</style>

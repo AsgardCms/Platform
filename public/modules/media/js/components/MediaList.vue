@@ -23,13 +23,13 @@
                             <div class="actions el-col el-col-14">
                                 <new-folder :parent-id="folderId"></new-folder>
                                 <upload-button :parent-id="folderId"></upload-button>
-                                <el-button-group>
+                                <el-button-group v-if="false">
                                     <el-button type="primary" :disabled="selectedMedia.length === 0">Move</el-button>
-                                    <el-button type="danger" :disabled="selectedMedia.length === 0"
-                                        @click.preent="batchDelete" :loading="filesAreDeleting">
-                                        Delete
-                                    </el-button>
                                 </el-button-group>
+                                <el-button type="danger" :disabled="selectedMedia.length === 0"
+                                    @click.preent="batchDelete" :loading="filesAreDeleting">
+                                    Delete
+                                </el-button>
                             </div>
                             <div class="search el-col el-col-5">
                                 <el-input icon="search" @change="performSearch" v-model="searchQuery">
@@ -72,7 +72,10 @@
                                     <strong v-if="scope.row.is_folder" style="cursor: pointer;" @click="enterFolder(scope)">
                                         {{ scope.row.filename }}
                                     </strong>
-                                    <span v-else>{{ scope.row.filename }}</span>
+                                    <span v-else>
+                                        <a href="#"
+                                           @click.prevent="goToEdit(scope)">{{ scope.row.filename }}</a>
+                                    </span>
                                 </template>
                             </el-table-column>
                             <el-table-column prop="created_at" :label="trans('core.table.created at')" sortable="custom"
@@ -80,20 +83,27 @@
                             </el-table-column>
                             <el-table-column prop="actions" label="" width="150">
                                 <template scope="scope">
-                                    <a class="btn btn-primary btn-flat" @click.prevent="insertMedia(scope)"
-                                       v-if="singleModal && ! scope.row.is_folder">
-                                        {{ trans('media.insert') }}
-                                    </a>
-                                    <div v-if="! singleModal">
-                                        <a class="btn btn-default btn-flat" @click.prevent="loadEditForm(scope)"
-                                           v-if="! scope.row.is_folder"><i class="fa fa-pencil"></i></a>
-
-                                        <a @click.prevent="showEditFolder(scope.row)" class="btn btn-default btn-flat"
-                                           v-if="scope.row.is_folder">
-                                            <i class="fa fa-pencil"></i>
-                                        </a>
-
-                                        <delete-button :scope="scope" :rows="data"></delete-button>
+                                    <div class="pull-right">
+                                        <el-button
+                                                type="primary"
+                                                size="small"
+                                                @click.prevent="insertMedia(scope)"
+                                                v-if="singleModal && ! scope.row.is_folder">
+                                            {{ trans('media.insert') }}
+                                        </el-button>
+                                        <div v-if="! singleModal">
+                                            <el-button-group>
+                                                <edit-button :to="{name: 'admin.media.media.edit', params: {mediaId: scope.row.id}}"
+                                                             v-if="! scope.row.is_folder"></edit-button>
+                                                <el-button
+                                                        size="small"
+                                                        @click.prevent="showEditFolder(scope.row)"
+                                                        v-if="scope.row.is_folder && canEditFolders">
+                                                    <i class="fa fa-pencil"></i>
+                                                </el-button>
+                                                <delete-button :scope="scope" :rows="data"></delete-button>
+                                            </el-button-group>
+                                        </div>
                                     </div>
                                 </template>
                             </el-table-column>
@@ -153,6 +163,7 @@
                     {id: 0, name: 'Home'},
                 ],
                 filesAreDeleting: false,
+                canEditFolders: true,
             }
         },
         methods: {
@@ -231,10 +242,6 @@
             handleSelectionChange(selectedMedia) {
                 this.selectedMedia = selectedMedia;
             },
-            loadEditForm(scope) {
-                console.log('clicked edit to' + scope.row.id);
-                this.$router.push({name: 'admin.media.media.edit', params: {mediaId: scope.row.id}})
-            },
             showEditFolder(scope) {
                 this.$events.emit('editFolderWasClicked', scope);
             },
@@ -278,8 +285,14 @@
                         });
                     });
             },
+            goToEdit(scope) {
+                this.$router.push({name: 'admin.media.media.edit', params: {mediaId: scope.row.id}})
+            },
         },
         mounted() {
+            if (window.AsgardCMS.filesystem === 's3') {
+                this.canEditFolders = false;
+            }
             this.selectedMedia.length = 0;
             this.fetchMediaData();
             this.$events.listen('fileWasUploaded', eventData => {

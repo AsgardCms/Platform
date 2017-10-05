@@ -1,17 +1,3 @@
-<style>
-    .el-upload__input {
-        display: none !important;
-    }
-    .el-upload--text {
-        display: block;
-    }
-    .el-upload-dragger {
-        width: 100%;
-    }
-    .media-upload {
-        margin-bottom: 10px;
-    }
-</style>
 <template>
     <div class="row">
         <div class="col-xs-12">
@@ -61,3 +47,17 @@
         mounted() {}
     }
 </script>
+<style>
+    .el-upload__input {
+        display: none !important;
+    }
+    .el-upload--text {
+        display: block;
+    }
+    .el-upload-dragger {
+        width: 100%;
+    }
+    .media-upload {
+        margin-bottom: 10px;
+    }
+</style>

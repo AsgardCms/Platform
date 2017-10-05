@@ -24,7 +24,7 @@ $( document ).ready(function() {
         } else {
             html = '<div class="alert alert-danger" role="alert">' + errorMessage + '</div>';
         }
-        $('.col-md-12').first().prepend(html);
+        $('.dropzone').first().parent().prepend(html);
         setTimeout(function() {
             myDropzone.removeFile(file);
         }, 2000);
