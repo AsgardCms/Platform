@@ -17,6 +17,7 @@ versions:
             - Getting pdo object, making sure the database connection is valid
             - Installation, set the application key ourself, based of laravel command
             - Installation, only display success message for app_url on --verbose flag
+            - Updated <code>config/breadcasting.php</code> pusher config to match laravel upstream
     "3.0.0":
         added:
             - Created a vue component for the delete buttons on index pages
