@@ -96645,7 +96645,8 @@ exports.default = {
             this.$confirm(this.deleteMessage, this.deleteTitle, {
                 confirmButtonText: this.trans('core.button.delete'),
                 cancelButtonText: this.trans('core.button.cancel'),
-                type: 'warning'
+                type: 'warning',
+                confirmButtonClass: 'el-button--danger'
             }).then(function () {
                 var vm = _this;
                 axios.delete(_this.scope.row.urls.delete_url).then(function (response) {

@@ -19,7 +19,8 @@
                 this.$confirm(this.deleteMessage, this.deleteTitle, {
                     confirmButtonText: this.trans('core.button.delete'),
                     cancelButtonText: this.trans('core.button.cancel'),
-                    type: 'warning'
+                    type: 'warning',
+                    confirmButtonClass: 'el-button--danger',
                 }).then(() => {
                     let vm = this;
                     axios.delete(this.scope.row.urls.delete_url)
