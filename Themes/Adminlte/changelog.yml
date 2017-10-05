@@ -3,6 +3,7 @@ versions:
     "3.1.0@unreleased":
         changed:
             - Updated AdminLTE to version 2.4.0
+            - Use the pusher key read from configuration instead of env file
     "3.0.3":
         changed:
             - Adding error styles on el-tabs
