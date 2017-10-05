@@ -82,7 +82,8 @@
         currentLocale: '{{ locale() }}',
         editor: '{{ $activeEditor }}',
         adminPrefix: '{{ config('asgard.core.core.admin-prefix') }}',
-        hideDefaultLocaleInURL: '{{ config('laravellocalization.hideDefaultLocaleInURL') }}'
+        hideDefaultLocaleInURL: '{{ config('laravellocalization.hideDefaultLocaleInURL') }}',
+        filesystem: '{{ config('asgard.media.config.filesystem') }}'
     };
 </script>
 

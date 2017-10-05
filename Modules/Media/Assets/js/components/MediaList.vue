@@ -80,20 +80,22 @@
                             </el-table-column>
                             <el-table-column prop="actions" label="" width="150">
                                 <template scope="scope">
-                                    <a class="btn btn-primary btn-flat" @click.prevent="insertMedia(scope)"
-                                       v-if="singleModal && ! scope.row.is_folder">
-                                        {{ trans('media.insert') }}
-                                    </a>
-                                    <div v-if="! singleModal">
-                                        <a class="btn btn-default btn-flat" @click.prevent="loadEditForm(scope)"
-                                           v-if="! scope.row.is_folder"><i class="fa fa-pencil"></i></a>
-
-                                        <a @click.prevent="showEditFolder(scope.row)" class="btn btn-default btn-flat"
-                                           v-if="scope.row.is_folder">
-                                            <i class="fa fa-pencil"></i>
+                                    <div class="pull-right">
+                                        <a class="btn btn-primary btn-flat" @click.prevent="insertMedia(scope)"
+                                           v-if="singleModal && ! scope.row.is_folder">
+                                            {{ trans('media.insert') }}
                                         </a>
+                                        <div v-if="! singleModal">
+                                            <a class="btn btn-default btn-flat" @click.prevent="loadEditForm(scope)"
+                                               v-if="! scope.row.is_folder"><i class="fa fa-pencil"></i></a>
 
-                                        <delete-button :scope="scope" :rows="data"></delete-button>
+                                            <a @click.prevent="showEditFolder(scope.row)" class="btn btn-default btn-flat"
+                                               v-if="scope.row.is_folder && canEditFolders">
+                                                <i class="fa fa-pencil"></i>
+                                            </a>
+
+                                            <delete-button :scope="scope" :rows="data"></delete-button>
+                                        </div>
                                     </div>
                                 </template>
                             </el-table-column>
@@ -153,6 +155,7 @@
                     {id: 0, name: 'Home'},
                 ],
                 filesAreDeleting: false,
+                canEditFolders: true,
             }
         },
         methods: {
@@ -280,6 +283,9 @@
             },
         },
         mounted() {
+            if (window.AsgardCMS.filesystem === 's3') {
+                this.canEditFolders = false;
+            }
             this.selectedMedia.length = 0;
             this.fetchMediaData();
             this.$events.listen('fileWasUploaded', eventData => {
