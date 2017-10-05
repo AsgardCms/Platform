@@ -94,24 +94,7 @@ class EloquentFileRepositoryTest extends MediaTestCase
     {
         $this->createFile('my-file.jpg');
 
-        $uploadedFile = Mockery::mock(UploadedFile::class);
-        $fileInfo = Mockery::mock(SplFileInfo::class);
-
-        $fileInfo->shouldReceive('getSize')
-            ->andReturn(1024)
-            ->once();
-
-        $uploadedFile->shouldReceive('getClientOriginalName')
-            ->andReturn('my-file.jpg')
-            ->once();
-        $uploadedFile->shouldReceive('getClientMimeType')
-            ->andReturn('image/jpg')
-            ->once();
-        $uploadedFile->shouldReceive('getFileInfo')
-            ->andReturn($fileInfo)
-            ->once();
-
-        $this->file->createFromFile($uploadedFile);
+        $this->file->createFromFile(\Illuminate\Http\UploadedFile::fake()->image('my-file.jpg'));
 
         $file = $this->file->find(2);
 
