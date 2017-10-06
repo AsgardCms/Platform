@@ -103,10 +103,11 @@ class EloquentFileRepositoryTest extends MediaTestCase
         $this->assertEquals('my-file_2.jpg', $this->file->find(3)->filename);
     }
 
-    public function it_weird_edge_case()
+    /** @test */
+    public function it_can_increment_file_name_version_to_a_number_higher_than_any_existing()
     {
         $file = $this->file->createFromFile(\Illuminate\Http\UploadedFile::fake()->image('my-file.jpg'));
-        $this->file->createFromFile(\Illuminate\Http\UploadedFile::fake()->image('my-file_1.jpg'));
+        $this->file->createFromFile(\Illuminate\Http\UploadedFile::fake()->image('my-file.jpg'));
         $this->file->destroy($file);
         sleep(1);
         $this->file->createFromFile(\Illuminate\Http\UploadedFile::fake()->image('my-file.jpg'));

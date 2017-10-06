@@ -127,14 +127,23 @@ class EloquentFileRepository extends EloquentBaseRepository implements FileRepos
     private function getNewUniqueFilename($fileName)
     {
         $fileNameOnly = pathinfo($fileName, PATHINFO_FILENAME);
-        $model = $this->model->where('filename', 'LIKE', "$fileNameOnly%")->orderBy('created_at', 'desc')->first();
-        $latestFilename = pathinfo($model->filename, PATHINFO_FILENAME);
-        $extension = pathinfo($model->filename, PATHINFO_EXTENSION);
+        $extension = pathinfo($fileName, PATHINFO_EXTENSION);
 
-        $version = substr($latestFilename, -1, strpos($latestFilename, '_'));
-        $version++;
+        $models = $this->model->where('filename', 'LIKE', "$fileNameOnly%")->get();
 
-        return $fileNameOnly . '_' . $version . '.' . $extension;
+        $versionCurrent = $models->reduce(function ($carry, $model) {
+            $latestFilename = pathinfo($model->filename, PATHINFO_FILENAME);
+
+            if (preg_match('/_([0-9]+)$/', $latestFilename, $matches) !== 1) {
+                return $carry;
+            }
+
+            $version = (int)$matches[1];
+
+            return ($version > $carry) ? $version : $carry;
+        }, 0);
+
+        return $fileNameOnly . '_' . ($versionCurrent+1) . '.' . $extension;
     }
 
     /**
