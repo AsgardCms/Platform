@@ -11,11 +11,11 @@ import VueSimplemde from 'vue-simplemde';
 import PageRoutes from '../../../Modules/Page/Assets/js/PageRoutes';
 import MediaRoutes from '../../../Modules/Media/Assets/js/MediaRoutes';
 
-Vue.use(ElementUI, {locale});
-Vue.use(DataTables, {locale});
+Vue.use(ElementUI, { locale });
+Vue.use(DataTables, { locale });
 Vue.use(VueI18n);
 Vue.use(VueRouter);
-Vue.use(require('vue-shortkey'), {prevent: ['input', 'textarea']});
+Vue.use(require('vue-shortkey'), { prevent: ['input', 'textarea'] });
 
 Vue.use(VueEvents);
 Vue.use(VueSimplemde);
@@ -34,54 +34,54 @@ const currentLocale = window.AsgardCMS.currentLocale;
 const adminPrefix = window.AsgardCMS.adminPrefix;
 
 function makeBaseUrl() {
-  if (window.AsgardCMS.hideDefaultLocaleInURL == 1) {
-    return adminPrefix;
-  }
-  return `${currentLocale}/${adminPrefix}`;
+    if (window.AsgardCMS.hideDefaultLocaleInURL == 1) {
+        return adminPrefix;
+    }
+    return `${currentLocale}/${adminPrefix}`;
 }
 
 const router = new VueRouter({
-  mode: 'history',
-  base: makeBaseUrl(),
-  routes: [
-    ...PageRoutes,
-    ...MediaRoutes,
-  ],
+    mode: 'history',
+    base: makeBaseUrl(),
+    routes: [
+        ...PageRoutes,
+        ...MediaRoutes,
+    ],
 });
 
 const messages = {
-  [currentLocale]: window.AsgardCMS.translations,
+    [currentLocale]: window.AsgardCMS.translations,
 };
 
 const i18n = new VueI18n({
-  locale: currentLocale,
-  messages,
+    locale: currentLocale,
+    messages,
 });
 
 const app = new Vue({
-  el: '#app',
-  router,
-  i18n,
+    el: '#app',
+    router,
+    i18n,
 });
 
 window.axios.interceptors.response.use(null, (error) => {
-  if (error.response === undefined) {
-    console.log(error);
-    return;
-  }
-  if (error.response.status === 403) {
-    app.$notify.error({
-      title: app.$t('core.unauthorized'),
-      message: app.$t('core.unauthorized-access'),
-    });
-    window.location = route('dashboard.index');
-  }
-  if (error.response.status === 401) {
-    app.$notify.error({
-      title: app.$t('core.unauthenticated'),
-      message: app.$t('core.unauthenticated-message'),
-    });
-    window.location = route('login');
-  }
-  return Promise.reject(error);
+    if (error.response === undefined) {
+        console.log(error);
+        return;
+    }
+    if (error.response.status === 403) {
+        app.$notify.error({
+            title: app.$t('core.unauthorized'),
+            message: app.$t('core.unauthorized-access'),
+        });
+        window.location = route('dashboard.index');
+    }
+    if (error.response.status === 401) {
+        app.$notify.error({
+            title: app.$t('core.unauthenticated'),
+            message: app.$t('core.unauthenticated-message'),
+        });
+        window.location = route('login');
+    }
+    return Promise.reject(error);
 });

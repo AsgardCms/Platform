@@ -152,19 +152,18 @@
 </template>
 
 <script>
-    import axios from 'axios'
-    import Slugify from '../../../../Core/Assets/js/mixins/Slugify'
-    import ShortcutHelper from '../../../../Core/Assets/js/mixins/ShortcutHelper'
-    import ActiveEditor from '../../../../Core/Assets/js/mixins/ActiveEditor'
-    import SingleFileSelector from '../../../../Media/Assets/js/mixins/SingleFileSelector'
-
-    import Form from 'form-backend-validation'
+    import axios from 'axios';
+    import Form from 'form-backend-validation';
+    import Slugify from '../../../../Core/Assets/js/mixins/Slugify';
+    import ShortcutHelper from '../../../../Core/Assets/js/mixins/ShortcutHelper';
+    import ActiveEditor from '../../../../Core/Assets/js/mixins/ActiveEditor';
+    import SingleFileSelector from '../../../../Media/Assets/js/mixins/SingleFileSelector';
 
     export default {
         mixins: [Slugify, ShortcutHelper, ActiveEditor, SingleFileSelector],
         props: {
-            locales: {default: null},
-            pageTitle: {default: null, String},
+            locales: { default: null },
+            pageTitle: { default: null, String },
         },
         data() {
             return {
@@ -181,49 +180,49 @@
                         og_type: '',
                     }])
                     .fromPairs()
-                    .merge({template: 'default', is_home: 0, medias_single: []})
+                    .merge({ template: 'default', is_home: 0, medias_single: [] })
                     .value(),
 
                 templates: {
-                    'index': 'index',
-                    'home': 'home',
-                    'default': 'default',
+                    index: 'index',
+                    home: 'home',
+                    default: 'default',
                 },
                 form: new Form(),
                 loading: false,
                 tags: {},
                 activeTab: window.AsgardCMS.currentLocale || 'en',
-            }
+            };
         },
         methods: {
             onSubmit() {
-                this.form = new Form(_.merge(this.page, {tags: this.tags}));
+                this.form = new Form(_.merge(this.page, { tags: this.tags }));
                 this.loading = true;
 
                 this.form.post(this.getRoute())
-                    .then(response => {
+                    .then((response) => {
                         this.loading = false;
                         this.$message({
                             type: 'success',
-                            message: response.message
+                            message: response.message,
                         });
-                        this.$router.push({name: 'admin.page.page.index'});
+                        this.$router.push({ name: 'admin.page.page.index' });
                     })
-                    .catch(error => {
+                    .catch((error) => {
                         console.log(error);
                         this.loading = false;
                         this.$notify.error({
                             title: 'Error',
-                            message: 'There are some errors in the form.'
+                            message: 'There are some errors in the form.',
                         });
                     });
             },
             onCancel() {
-                this.$router.push({name: 'admin.page.page.index'});
+                this.$router.push({ name: 'admin.page.page.index' });
             },
             fetchTemplates() {
                 axios.get(route('api.page.page-templates.index'))
-                    .then(response => {
+                    .then((response) => {
                         this.templates = response.data;
                     });
             },
@@ -232,19 +231,17 @@
             },
             fetchPage() {
                 this.loading = true;
-                axios.post(route('api.page.page.find', {page: this.$route.params.pageId}))
-                    .then(response => {
+                axios.post(route('api.page.page.find', { page: this.$route.params.pageId }))
+                    .then((response) => {
                         this.loading = false;
                         this.page = response.data.data;
                         this.tags = response.data.data.tags;
                         $('.publicUrl').attr('href', this.page.urls.public_url).show();
-                    })
-                    .catch(error => {
-                    })
+                    });
             },
             getRoute() {
                 if (this.$route.params.pageId !== undefined) {
-                    return route('api.page.page.update', {page: this.$route.params.pageId});
+                    return route('api.page.page.update', { page: this.$route.params.pageId });
                 }
                 return route('api.page.page.store');
             },
@@ -258,6 +255,6 @@
         },
         destroyed() {
             $('.publicUrl').hide();
-        }
-    }
+        },
+    };
 </script>
