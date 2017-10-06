@@ -165,6 +165,11 @@ return [
     |--------------------------------------------------------------------------
     | Enable module view overrides at theme locations
     |--------------------------------------------------------------------------
+    | By default you can only have module views in resources/views/asgard/[module]
+    | setting this setting to true will add ability for you to store those views
+    | in any of front or backend themes in my-theme/views/modules/[module]/...
+    |
+    | useViewNamespaces.backend-theme needs to be enabled at module level
     */
     'enable-theme-overrides' => false,
 ];
