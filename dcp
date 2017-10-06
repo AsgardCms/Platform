@@ -7,7 +7,7 @@ if [ $# -gt 0 ]; then
         $COMPOSE up -d
     elif [ "$1" == "reload" ] || [ "$1" == "restart" ] || [ "$1" == "rs" ] || [ "$1" == "rl" ]; then
         $COMPOSE down && $COMPOSE up -d
-    elif [ "$1" == "artisan" ]; then
+    elif [ "$1" == "artisan" ] || [ "$1" == "art" ] || [ "$1" == "a" ]; then
         shift 1
         EXEC_CMD="cd /var/www/html && php artisan $@"
         $COMPOSE exec app bash -c "$EXEC_CMD"
