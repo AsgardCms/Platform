@@ -21202,7 +21202,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _Form = __webpack_require__(142);
+var _Form = __webpack_require__(139);
 
 Object.defineProperty(exports, 'default', {
   enumerable: true,
@@ -42758,51 +42758,51 @@ var currentLocale = window.AsgardCMS.currentLocale;
 var adminPrefix = window.AsgardCMS.adminPrefix;
 
 function makeBaseUrl() {
-  if (window.AsgardCMS.hideDefaultLocaleInURL == 1) {
-    return adminPrefix;
-  }
-  return currentLocale + '/' + adminPrefix;
+    if (window.AsgardCMS.hideDefaultLocaleInURL == 1) {
+        return adminPrefix;
+    }
+    return currentLocale + '/' + adminPrefix;
 }
 
 var router = new _vueRouter2.default({
-  mode: 'history',
-  base: makeBaseUrl(),
-  routes: [].concat(_toConsumableArray(_PageRoutes2.default), _toConsumableArray(_MediaRoutes2.default))
+    mode: 'history',
+    base: makeBaseUrl(),
+    routes: [].concat(_toConsumableArray(_PageRoutes2.default), _toConsumableArray(_MediaRoutes2.default))
 });
 
 var messages = _defineProperty({}, currentLocale, window.AsgardCMS.translations);
 
 var i18n = new _vueI18n2.default({
-  locale: currentLocale,
-  messages: messages
+    locale: currentLocale,
+    messages: messages
 });
 
 var app = new _vue2.default({
-  el: '#app',
-  router: router,
-  i18n: i18n
+    el: '#app',
+    router: router,
+    i18n: i18n
 });
 
 window.axios.interceptors.response.use(null, function (error) {
-  if (error.response === undefined) {
-    console.log(error);
-    return;
-  }
-  if (error.response.status === 403) {
-    app.$notify.error({
-      title: app.$t('core.unauthorized'),
-      message: app.$t('core.unauthorized-access')
-    });
-    window.location = route('dashboard.index');
-  }
-  if (error.response.status === 401) {
-    app.$notify.error({
-      title: app.$t('core.unauthenticated'),
-      message: app.$t('core.unauthenticated-message')
-    });
-    window.location = route('login');
-  }
-  return Promise.reject(error);
+    if (error.response === undefined) {
+        console.log(error);
+        return;
+    }
+    if (error.response.status === 403) {
+        app.$notify.error({
+            title: app.$t('core.unauthorized'),
+            message: app.$t('core.unauthorized-access')
+        });
+        window.location = route('dashboard.index');
+    }
+    if (error.response.status === 401) {
+        app.$notify.error({
+            title: app.$t('core.unauthenticated'),
+            message: app.$t('core.unauthenticated-message')
+        });
+        window.location = route('login');
+    }
+    return Promise.reject(error);
 });
 
 /***/ }),
@@ -91920,7 +91920,7 @@ exports.default = {
                         page.translations.status = action === 'mark-online';
                     }
                 });
-            }).catch(function (error) {
+            }).catch(function () {
                 _this2.$message({
                     type: 'error',
                     message: _this2.trans('core.something went wrong')
@@ -92418,7 +92418,11 @@ var _axios = __webpack_require__(6);
 
 var _axios2 = _interopRequireDefault(_axios);
 
-var _Slugify = __webpack_require__(139);
+var _formBackendValidation = __webpack_require__(14);
+
+var _formBackendValidation2 = _interopRequireDefault(_formBackendValidation);
+
+var _Slugify = __webpack_require__(141);
 
 var _Slugify2 = _interopRequireDefault(_Slugify);
 
@@ -92426,17 +92430,13 @@ var _ShortcutHelper = __webpack_require__(41);
 
 var _ShortcutHelper2 = _interopRequireDefault(_ShortcutHelper);
 
-var _ActiveEditor = __webpack_require__(140);
+var _ActiveEditor = __webpack_require__(142);
 
 var _ActiveEditor2 = _interopRequireDefault(_ActiveEditor);
 
-var _SingleFileSelector = __webpack_require__(141);
+var _SingleFileSelector = __webpack_require__(143);
 
 var _SingleFileSelector2 = _interopRequireDefault(_SingleFileSelector);
-
-var _formBackendValidation = __webpack_require__(14);
-
-var _formBackendValidation2 = _interopRequireDefault(_formBackendValidation);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -92616,9 +92616,9 @@ exports.default = {
             }).fromPairs().merge({ template: 'default', is_home: 0, medias_single: [] }).value(),
 
             templates: {
-                'index': 'index',
-                'home': 'home',
-                'default': 'default'
+                index: 'index',
+                home: 'home',
+                default: 'default'
             },
             form: new _formBackendValidation2.default(),
             loading: false,
@@ -92672,7 +92672,7 @@ exports.default = {
                 _this3.page = response.data.data;
                 _this3.tags = response.data.data.tags;
                 $('.publicUrl').attr('href', _this3.page.urls.public_url).show();
-            }).catch(function (error) {});
+            });
         },
         getRoute: function getRoute() {
             if (this.$route.params.pageId !== undefined) {
@@ -92703,85 +92703,6 @@ exports.default = {
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
-exports.default = {
-    methods: {
-        slugify: function slugify(string) {
-            var value = void 0;
-            value = string.replace(/^\s+|\s+$/g, ''); // trim
-            value = value.toLowerCase();
-
-            // remove accents, swap ñ for n, etc
-            var from = "ãàáäâẽèéëêìíïîõòóöôùúüûñç·/_,:;";
-            var to = "aaaaaeeeeeiiiiooooouuuunc------";
-            for (var i = 0, l = from.length; i < l; i++) {
-                value = value.replace(new RegExp(from.charAt(i), 'g'), to.charAt(i));
-            }
-
-            value = value.replace(/[^a-z0-9 -]/g, '') // remove invalid chars
-            .replace(/\s+/g, '-') // collapse whitespace and replace by -
-            .replace(/-+/g, '-'); // collapse dashes
-
-            return value;
-        }
-    }
-};
-
-/***/ }),
-/* 140 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-exports.default = {
-    methods: {
-        getCurrentEditor: function getCurrentEditor() {
-            var configuredEditor = window.AsgardCMS.editor;
-            if (configuredEditor === 'simplemde') {
-                return 'markdown-editor';
-            }
-            if (configuredEditor === 'ckeditor') {
-                return 'ckeditor';
-            }
-            return 'ckeditor';
-        }
-    }
-};
-
-/***/ }),
-/* 141 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
-exports.default = {
-    methods: {
-        selectSingleFile: function selectSingleFile(event, model) {
-            this[model].medias_single = _.merge(this[model].medias_single, _defineProperty({}, event.zone, event.id));
-        }
-    }
-};
-
-/***/ }),
-/* 142 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
@@ -92789,7 +92710,7 @@ var _Errors = __webpack_require__(42);
 
 var _Errors2 = _interopRequireDefault(_Errors);
 
-var _util = __webpack_require__(143);
+var _util = __webpack_require__(140);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -93090,7 +93011,7 @@ var Form = function () {
 exports.default = Form;
 
 /***/ }),
-/* 143 */
+/* 140 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -93112,6 +93033,85 @@ function guardAgainstReservedFieldName(fieldName) {
         throw new Error('Field name ' + fieldName + ' isn\'t allowed to be used in a Form or Errors instance.');
     }
 }
+
+/***/ }),
+/* 141 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.default = {
+    methods: {
+        slugify: function slugify(string) {
+            var value = void 0;
+            value = string.replace(/^\s+|\s+$/g, ''); // trim
+            value = value.toLowerCase();
+
+            // remove accents, swap ñ for n, etc
+            var from = 'ãàáäâẽèéëêìíïîõòóöôùúüûñç·/_,:;';
+            var to = 'aaaaaeeeeeiiiiooooouuuunc------';
+            for (var i = 0, l = from.length; i < l; i++) {
+                value = value.replace(new RegExp(from.charAt(i), 'g'), to.charAt(i));
+            }
+
+            value = value.replace(/[^a-z0-9 -]/g, '') // remove invalid chars
+            .replace(/\s+/g, '-') // collapse whitespace and replace by -
+            .replace(/-+/g, '-'); // collapse dashes
+
+            return value;
+        }
+    }
+};
+
+/***/ }),
+/* 142 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.default = {
+    methods: {
+        getCurrentEditor: function getCurrentEditor() {
+            var configuredEditor = window.AsgardCMS.editor;
+            if (configuredEditor === 'simplemde') {
+                return 'markdown-editor';
+            }
+            if (configuredEditor === 'ckeditor') {
+                return 'ckeditor';
+            }
+            return 'ckeditor';
+        }
+    }
+};
+
+/***/ }),
+/* 143 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+exports.default = {
+    methods: {
+        selectSingleFile: function selectSingleFile(event, model) {
+            this[model].medias_single = _.merge(this[model].medias_single, _defineProperty({}, event.zone, event.id));
+        }
+    }
+};
 
 /***/ }),
 /* 144 */
@@ -94185,7 +94185,7 @@ exports.default = {
         showEditFolder: function showEditFolder(scope) {
             this.$events.emit('editFolderWasClicked', scope);
         },
-        changeRoot: function changeRoot(folderId, index) {
+        changeRoot: function changeRoot(folderId) {
             this.tableIsLoading = true;
             this.queryServer({ folder_id: folderId });
             this.folderId = folderId;
@@ -94727,12 +94727,12 @@ exports.default = {
         requestHeaders: function requestHeaders() {
             var userApiToken = document.head.querySelector('meta[name="user-api-token"]');
             return {
-                'Authorization': 'Bearer ' + userApiToken.content
+                Authorization: 'Bearer ' + userApiToken.content
             };
         }
     },
     methods: {
-        handleSuccess: function handleSuccess(response, file, fileList) {
+        handleSuccess: function handleSuccess(response) {
             this.$events.emit('fileWasUploaded', response);
         },
         uploadFile: function uploadFile(event) {
@@ -95198,12 +95198,7 @@ var render = function() {
                             },
                             on: {
                               click: function($event) {
-                                if (
-                                  !("button" in $event) &&
-                                  _vm._k($event.keyCode, "preent")
-                                ) {
-                                  return null
-                                }
+                                $event.preventDefault()
                                 _vm.batchDelete($event)
                               }
                             }
@@ -95771,7 +95766,7 @@ exports.default = {
                     keywords: ''
                 }];
             }).fromPairs()
-            //.merge({template: 'default', is_home: 0, medias_single: []})
+            // .merge({template: 'default', is_home: 0, medias_single: []})
             .value(),
             form: new _formBackendValidation2.default(),
             loading: false,
@@ -95789,7 +95784,7 @@ exports.default = {
                 _this.loading = false;
                 _this.media = response.data.data;
                 _this.tags = response.data.data.tags;
-            }).catch(function (error) {});
+            });
         },
         onSubmit: function onSubmit() {
             var _this2 = this;
@@ -96243,25 +96238,25 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 var token = document.head.querySelector('meta[name="csrf-token"]');
 
 if (token) {
-  window.axios.defaults.headers.common['X-CSRF-TOKEN'] = token.content;
+    window.axios.defaults.headers.common['X-CSRF-TOKEN'] = token.content;
 } else {
-  console.error('CSRF token not found: https://laravel.com/docs/csrf#csrf-x-csrf-token');
+    console.error('CSRF token not found: https://laravel.com/docs/csrf#csrf-x-csrf-token');
 }
 
 var userApiToken = document.head.querySelector('meta[name="user-api-token"]');
 
 if (userApiToken) {
-  window.axios.defaults.headers.common.Authorization = 'Bearer ' + userApiToken.content;
+    window.axios.defaults.headers.common.Authorization = 'Bearer ' + userApiToken.content;
 } else {
-  console.error('User API token not found in a meta tag.');
+    console.error('User API token not found in a meta tag.');
 }
 
 var currentLocale = document.head.querySelector('meta[name="current-locale"]');
 
 if (currentLocale) {
-  window.AsgardCMS.currentLocale = currentLocale.content;
+    window.AsgardCMS.currentLocale = currentLocale.content;
 } else {
-  console.error('Current locale token not found in a meta tag.');
+    console.error('Current locale token not found in a meta tag.');
 }
 
 /**
@@ -97025,6 +97020,10 @@ Object.defineProperty(exports, "__esModule", {
     value: true
 });
 
+var _axios = __webpack_require__(6);
+
+var _axios2 = _interopRequireDefault(_axios);
+
 var _UploadZone = __webpack_require__(189);
 
 var _UploadZone2 = _interopRequireDefault(_UploadZone);
@@ -97036,10 +97035,6 @@ var _MediaList2 = _interopRequireDefault(_MediaList);
 var _StringHelpers = __webpack_require__(194);
 
 var _StringHelpers2 = _interopRequireDefault(_StringHelpers);
-
-var _axios = __webpack_require__(6);
-
-var _axios2 = _interopRequireDefault(_axios);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -97130,12 +97125,14 @@ exports.default = {
             return this.label || this.ucwords(this.zone.replace('_', ' '));
         },
         makeId: function makeId() {
-            var text = "";
-            var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+            var text = '';
+            var possible = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
 
             for (var i = 0; i < 5; i++) {
                 text += possible.charAt(Math.floor(Math.random() * possible.length));
-            }return text;
+            }
+
+            return text;
         }
     },
     mounted: function mounted() {
@@ -97286,12 +97283,12 @@ exports.default = {
         requestHeaders: function requestHeaders() {
             var userApiToken = document.head.querySelector('meta[name="user-api-token"]');
             return {
-                'Authorization': 'Bearer ' + userApiToken.content
+                Authorization: 'Bearer ' + userApiToken.content
             };
         }
     },
     methods: {
-        handleSuccess: function handleSuccess(response, file, fileList) {
+        handleSuccess: function handleSuccess(response) {
             this.$events.emit('fileWasUploaded', response);
             this.fileList = [];
         },
@@ -97409,6 +97406,7 @@ module.exports = Component.exports
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
+//
 //
 //
 //

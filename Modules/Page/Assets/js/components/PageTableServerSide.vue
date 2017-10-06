@@ -105,9 +105,9 @@
 </template>
 
 <script>
-    import axios from 'axios'
-    import _ from "lodash";
-    import ShortcutHelper from '../../../../Core/Assets/js/mixins/ShortcutHelper'
+    import axios from 'axios';
+    import _ from 'lodash';
+    import ShortcutHelper from '../../../../Core/Assets/js/mixins/ShortcutHelper';
 
     let data;
 
@@ -129,16 +129,16 @@
                 tableIsLoading: false,
                 showExtraButtons: false,
                 selectedPages: {},
-            }
+            };
         },
         watch: {
             selectedPages() {
                 this.selectedPages.length >= 1 ? this.showExtraButtons = true : this.showExtraButtons = false;
-            }
+            },
         },
         methods: {
             queryServer(customProperties) {
-                let properties = {
+                const properties = {
                     page: this.meta.current_page,
                     per_page: this.meta.per_page,
                     order_by: this.order_meta.order_by,
@@ -147,7 +147,7 @@
                 };
 
                 axios.get(route('api.page.page.indexServerSide', _.merge(properties, customProperties)))
-                    .then(response => {
+                    .then((response) => {
                         this.tableIsLoading = false;
                         this.data = response.data.data;
                         this.meta = response.data.meta;
@@ -162,58 +162,56 @@
                 this.queryServer();
             },
             handleSizeChange(event) {
-                console.log('per page :' + event);
+                console.log(`per page :${event}`);
                 this.tableIsLoading = true;
-                this.queryServer({per_page: event});
+                this.queryServer({ per_page: event });
             },
             handleCurrentChange(event) {
-                console.log('current page :' + event);
+                console.log(`current page :${event}`);
                 this.tableIsLoading = true;
-                this.queryServer({page: event});
+                this.queryServer({ page: event });
             },
             handleSortChange(event) {
                 console.log('sorting', event);
                 this.tableIsLoading = true;
-                this.queryServer({order_by: event.prop, order: event.order,});
+                this.queryServer({ order_by: event.prop, order: event.order });
             },
             performSearch(query) {
-                console.log('searching:' + query);
+                console.log(`searching:${query}`);
                 this.tableIsLoading = true;
-                this.queryServer({search: query});
+                this.queryServer({ search: query });
             },
             handleExtraActions(action) {
-                let pageIds = _.map(this.selectedPages, function(elem) {
-                    return elem.id;
-                });
-                axios.get(route('api.page.page.mark-status', {action: action, pageIds: JSON.stringify(pageIds)}))
-                    .then(response => {
+                const pageIds = _.map(this.selectedPages, elem => elem.id);
+                axios.get(route('api.page.page.mark-status', { action, pageIds: JSON.stringify(pageIds) }))
+                    .then((response) => {
                         this.$message({
                             type: 'success',
-                            message: response.data.message
+                            message: response.data.message,
                         });
                         this.$refs.pageTable.clearSelection();
-                        this.data.find(function (page) {
+                        this.data.find((page) => {
                             if (pageIds.indexOf(page.id) >= 0) {
                                 page.translations.status = action === 'mark-online';
                             }
                         });
                     })
-                    .catch(error => {
+                    .catch(() => {
                         this.$message({
                             type: 'error',
                             message: this.trans('core.something went wrong'),
                         });
-                    })
+                    });
             },
             handleSelectionChange(selectedPages) {
                 this.selectedPages = selectedPages;
             },
             goToEdit(scope) {
-                this.$router.push({name: 'admin.page.page.edit', params: {pageId: scope.row.id}})
+                this.$router.push({ name: 'admin.page.page.edit', params: { pageId: scope.row.id } });
             },
         },
         mounted() {
             this.fetchData();
-        }
-    }
+        },
+    };
 </script>

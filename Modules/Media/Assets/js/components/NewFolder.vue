@@ -22,11 +22,11 @@
 </template>
 
 <script>
-    import Form from 'form-backend-validation'
+    import Form from 'form-backend-validation';
 
     export default {
         props: {
-            parentId: {type: Number}
+            parentId: { type: Number },
         },
         data() {
             return {
@@ -36,29 +36,29 @@
                 },
                 form: new Form(),
                 loading: false,
-            }
+            };
         },
         methods: {
             onSubmit() {
-                this.form = new Form(_.merge(this.folder, {parent_id: this.parentId}));
+                this.form = new Form(_.merge(this.folder, { parent_id: this.parentId }));
                 this.loading = true;
                 this.form.post(route('api.media.folders.store'))
-                    .then(response => {
+                    .then((response) => {
                         this.loading = false;
                         this.$message({
                             type: 'success',
-                            message: response.message
+                            message: response.message,
                         });
                         this.dialogFormVisible = false;
                         this.folder.name = '';
                         this.$events.emit('folderWasCreated', response);
                     })
-                    .catch(error => {
+                    .catch((error) => {
                         console.log(error);
                         this.loading = false;
                         this.$notify.error({
                             title: 'Error',
-                            message: 'There are some errors in the form.'
+                            message: 'There are some errors in the form.',
                         });
                     });
             },
@@ -68,8 +68,8 @@
             },
         },
         mounted() {
-        }
-    }
+        },
+    };
 </script>
 <style>
     .new-folder {

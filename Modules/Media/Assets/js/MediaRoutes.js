@@ -12,7 +12,7 @@ export default [
             {
                 path: '',
                 component: MediaList,
-                name: 'admin.media.media.index'
+                name: 'admin.media.media.index',
             },
             {
                 path: ':mediaId/edit',
@@ -20,8 +20,8 @@ export default [
                 name: 'admin.media.media.edit',
                 props: {
                     locales,
-                }
+                },
             },
-        ]
-    }
+        ],
+    },
 ];

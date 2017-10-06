@@ -1,19 +1,20 @@
 require('./bootstrap');
 
-import Vue from 'vue'
-import VueI18n from 'vue-i18n'
-import VueRouter from 'vue-router'
-import ElementUI from 'element-ui'
-import DataTables from 'vue-data-tables'
-import VueEvents from 'vue-events'
-import locale from 'element-ui/lib/locale/lang/en'
-import VueSimplemde from 'vue-simplemde'
+import Vue from 'vue';
+import VueI18n from 'vue-i18n';
+import VueRouter from 'vue-router';
+import ElementUI from 'element-ui';
+import DataTables from 'vue-data-tables';
+import VueEvents from 'vue-events';
+import locale from 'element-ui/lib/locale/lang/en';
+import VueSimplemde from 'vue-simplemde';
 
 Vue.use(ElementUI, { locale });
 Vue.use(DataTables, { locale });
 Vue.use(VueI18n);
 Vue.use(VueRouter);
 Vue.use(require('vue-shortkey'), { prevent: ['input', 'textarea'] });
+
 Vue.use(VueEvents);
 Vue.use(VueSimplemde);
 require('./mixins');
@@ -24,17 +25,18 @@ Vue.component('DeleteButton', require('../../../../../Modules/Core/Assets/js/com
 Vue.component('TagsInput', require('../../../../../Modules/Tag/Assets/js/components/TagInput.vue'));
 Vue.component('SingleMedia', require('../../../../../Modules/Media/Assets/js/components/SingleMedia.vue'));
 Vue.component('MediaManager', require('../../../../../Modules/Media/Assets/js/components/MediaManager.vue'));
+
 import PageRoutes from '../../../../../Modules/Page/Assets/js/PageRoutes';
 import MediaRoutes from '../../../../../Modules/Media/Assets/js/MediaRoutes';
 
 
-const currentLocale =  window.AsgardCMS.currentLocale;
+const currentLocale = window.AsgardCMS.currentLocale;
 const adminPrefix = window.AsgardCMS.adminPrefix;
 
 const router = new VueRouter({
     mode: 'history',
     base: makeBaseUrl(),
-    routes : [
+    routes: [
         ...PageRoutes,
         ...MediaRoutes,
     ],
@@ -47,7 +49,7 @@ function makeBaseUrl() {
     return `${currentLocale}/${adminPrefix}`;
 }
 
-let messages = {
+const messages = {
     [currentLocale]: window.AsgardCMS.translations,
 };
 
@@ -62,7 +64,7 @@ const app = new Vue({
     i18n,
 });
 
-window.axios.interceptors.response.use(null, function(error) {
+window.axios.interceptors.response.use(null, (error) => {
     if (error.response === undefined) {
         console.log(error);
         return;

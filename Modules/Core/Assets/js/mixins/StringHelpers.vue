@@ -1,4 +1,5 @@
 <template>
+    <div></div>
 </template>
 
 <script>
@@ -8,8 +9,8 @@
                 return string[0].toUpperCase() + string.substr(1);
             },
             ucwords(string) {
-                return string.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();});
-            }
+                return string.replace(/\w\S*/g, txt => txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase());
+            },
         },
-    }
+    };
 </script>

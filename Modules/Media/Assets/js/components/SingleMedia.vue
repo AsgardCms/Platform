@@ -29,18 +29,18 @@
 </template>
 
 <script>
+    import axios from 'axios';
     import UploadZone from './UploadZone.vue';
     import MediaList from './MediaList.vue';
-    import StringHelpers from '../../../../Core/Assets/js/mixins/StringHelpers'
-    import axios from 'axios'
+    import StringHelpers from '../../../../Core/Assets/js/mixins/StringHelpers.vue';
 
     export default {
         mixins: [StringHelpers],
         props: {
-            zone: {type: String, required: true},
-            entity: {type: String, required: true},
-            entityId: {type: Number},
-            label: {type: String},
+            zone: { type: String, required: true },
+            entity: { type: String, required: true },
+            entityId: { type: Number },
+            label: { type: String },
         },
         components: {
             'upload-zone': UploadZone,
@@ -58,11 +58,11 @@
                 dialogVisible: false,
                 selectedMedia: {},
                 eventName: '',
-            }
+            };
         },
         computed: {
             hasSelectedMedia() {
-                return ! _.isEmpty(this.selectedMedia);
+                return !_.isEmpty(this.selectedMedia);
             },
         },
         methods: {
@@ -71,7 +71,7 @@
             },
             unSelectMedia() {
                 this.selectedMedia = {};
-                this.$emit('singleFileSelected', _.merge({id: null}, {zone: this.zone}));
+                this.$emit('singleFileSelected', _.merge({ id: null }, { zone: this.zone }));
             },
             fetchMedia() {
                 axios.get(route('api.media.find-first-by-zone-and-entity', {
@@ -79,32 +79,31 @@
                     entity: this.entity,
                     entity_id: this.entityId,
                 }))
-                    .then(response => {
-                        this.$emit('singleFileSelected', _.merge(response.data.data, {zone: this.zone}));
+                    .then((response) => {
+                        this.$emit('singleFileSelected', _.merge(response.data.data, { zone: this.zone }));
                         this.selectedMedia = response.data.data;
-                    })
+                    });
             },
             getFieldLabel() {
                 return this.label || this.ucwords(this.zone.replace('_', ' '));
             },
             makeId() {
-                let text = "";
-                let possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+                let text = '';
+                const possible = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
 
-                for (let i = 0; i < 5; i++)
-                    text += possible.charAt(Math.floor(Math.random() * possible.length));
+                for (let i = 0; i < 5; i++) { text += possible.charAt(Math.floor(Math.random() * possible.length)); }
 
                 return text;
             },
         },
         mounted() {
-            this.eventName = 'fileWasSelected' + this.makeId() + Math.floor(Math.random() * 999999);
+            this.eventName = `fileWasSelected${this.makeId()}${Math.floor(Math.random() * 999999)}`;
 
-            this.$events.listen(this.eventName, mediaData => {
+            this.$events.listen(this.eventName, (mediaData) => {
                 this.dialogVisible = false;
                 this.selectedMedia = mediaData;
-                this.$emit('singleFileSelected', _.merge(mediaData, {zone: this.zone}));
+                this.$emit('singleFileSelected', _.merge(mediaData, { zone: this.zone }));
             });
-        }
-    }
+        },
+    };
 </script>

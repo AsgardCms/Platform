@@ -17,7 +17,7 @@
 </template>
 
 <script>
-    import Form from 'form-backend-validation'
+    import Form from 'form-backend-validation';
 
     export default {
 //        props: {
@@ -33,28 +33,28 @@
                 },
                 form: new Form(),
                 loading: false,
-            }
+            };
         },
         methods: {
             onSubmit() {
                 this.form = new Form(this.folder);
                 this.loading = true;
-                this.form.post(route('api.media.folders.update', {folder: this.folder.id}))
-                    .then(response => {
+                this.form.post(route('api.media.folders.update', { folder: this.folder.id }))
+                    .then((response) => {
                         this.loading = false;
                         this.$message({
                             type: 'success',
-                            message: response.message
+                            message: response.message,
                         });
                         this.dialogFormVisible = false;
                         this.$events.emit('folderWasUpdated', response);
                     })
-                    .catch(error => {
+                    .catch((error) => {
                         console.log(error);
                         this.loading = false;
                         this.$notify.error({
                             title: 'Error',
-                            message: 'There are some errors in the form.'
+                            message: 'There are some errors in the form.',
                         });
                     });
             },
@@ -64,12 +64,12 @@
             },
         },
         mounted() {
-            this.$events.listen('editFolderWasClicked', eventData => {
+            this.$events.listen('editFolderWasClicked', (eventData) => {
                 this.folder.name = eventData.filename;
                 this.folder.id = eventData.id;
                 this.folder.parent_id = eventData.folder_id;
                 this.dialogFormVisible = true;
             });
-        }
-    }
+        },
+    };
 </script>

@@ -64,7 +64,7 @@
                 </div>
                 <div class="col-md-4">
                     <img :src="media.path" alt="" v-if="media.is_image" style="width: 100%;"/>
-                    <i class="fa fa-file" style="font-size: 50px;" v-else=""></i>
+                    <i class="fa fa-file" style="font-size: 50px;" v-else></i>
                 </div>
             </div>
         </el-form>
@@ -84,12 +84,12 @@
 </template>
 
 <script>
-    import Form from 'form-backend-validation'
-    import axios from 'axios'
+    import Form from 'form-backend-validation';
+    import axios from 'axios';
 
     export default {
         props: {
-            locales: {default: null},
+            locales: { default: null },
         },
         data() {
             return {
@@ -101,62 +101,60 @@
                         keywords: '',
                     }])
                     .fromPairs()
-                    //.merge({template: 'default', is_home: 0, medias_single: []})
+                    // .merge({template: 'default', is_home: 0, medias_single: []})
                     .value(),
                 form: new Form(),
                 loading: false,
                 tags: {},
                 activeTab: window.AsgardCMS.currentLocale || 'en',
-            }
+            };
         },
         methods: {
             fetchMedia() {
                 this.loading = true;
-                axios.get(route('api.media.media.find', {media: this.$route.params.mediaId}))
-                    .then(response => {
+                axios.get(route('api.media.media.find', { media: this.$route.params.mediaId }))
+                    .then((response) => {
                         this.loading = false;
                         this.media = response.data.data;
                         this.tags = response.data.data.tags;
-                    })
-                    .catch(error => {
-                    })
+                    });
             },
             onSubmit() {
-                this.form = new Form(_.merge(this.media, {tags: this.tags}));
+                this.form = new Form(_.merge(this.media, { tags: this.tags }));
                 this.loading = true;
 
-                this.form.put(route('api.media.media.update', {file: this.media.id}))
-                    .then(response => {
+                this.form.put(route('api.media.media.update', { file: this.media.id }))
+                    .then((response) => {
                         this.loading = false;
                         this.$message({
                             type: 'success',
-                            message: response.message
+                            message: response.message,
                         });
-                        this.$router.push({name: 'admin.media.media.index', query: {folder_id: this.media.folder_id}})
+                        this.$router.push({ name: 'admin.media.media.index', query: { folder_id: this.media.folder_id } });
                     })
-                    .catch(error => {
+                    .catch((error) => {
                         console.log(error);
                         this.loading = false;
                         this.$notify.error({
                             title: 'Error',
-                            message: 'There are some errors in the form.'
+                            message: 'There are some errors in the form.',
                         });
                     });
             },
             onCancel() {
                 if (this.media.folder_id == 0) {
-                    this.$router.push({name: 'admin.media.media.index', query: {}});
+                    this.$router.push({ name: 'admin.media.media.index', query: {} });
                     return;
                 }
-                this.$router.push({name: 'admin.media.media.index', query: {folder_id: this.media.folder_id}})
+                this.$router.push({ name: 'admin.media.media.index', query: { folder_id: this.media.folder_id } });
             },
         },
         mounted() {
             if (this.$route.params.mediaId !== undefined) {
                 this.fetchMedia();
             }
-        }
-    }
+        },
+    };
 </script>
 <style>
     .el-select{

@@ -23,29 +23,29 @@
         data() {
             return {
                 fileList: [],
-            }
+            };
         },
         computed: {
             uploadUrl() {
                 return route('api.media.store').domain + route('api.media.store').url;
             },
             requestHeaders() {
-                let userApiToken = document.head.querySelector('meta[name="user-api-token"]');
+                const userApiToken = document.head.querySelector('meta[name="user-api-token"]');
                 return {
-                    'Authorization': 'Bearer ' + userApiToken.content
+                    Authorization: `Bearer ${userApiToken.content}`,
                 };
             },
         },
         methods: {
-            handleSuccess(response, file, fileList) {
+            handleSuccess(response) {
                 this.$events.emit('fileWasUploaded', response);
                 this.fileList = [];
             },
             handlePreview() {},
             handleRemove() {},
         },
-        mounted() {}
-    }
+        mounted() {},
+    };
 </script>
 <style>
     .el-upload__input {

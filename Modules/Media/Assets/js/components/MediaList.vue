@@ -27,7 +27,7 @@
                                     <el-button type="primary" :disabled="selectedMedia.length === 0">Move</el-button>
                                 </el-button-group>
                                 <el-button type="danger" :disabled="selectedMedia.length === 0"
-                                    @click.preent="batchDelete" :loading="filesAreDeleting">
+                                    @click.prevent="batchDelete" :loading="filesAreDeleting">
                                     Delete
                                 </el-button>
                             </div>
@@ -128,7 +128,7 @@
 </template>
 
 <script>
-    import axios from 'axios'
+    import axios from 'axios';
     import NewFolder from './NewFolder.vue';
     import UploadButton from './UploadButton.vue';
     import RenameFolder from './RenameFolder.vue';
@@ -140,7 +140,7 @@
             'rename-folder': RenameFolder,
         },
         props: {
-            singleModal: {type: Boolean},
+            singleModal: { type: Boolean },
             eventName: {},
         },
         data() {
@@ -160,15 +160,15 @@
                 folderId: 0,
                 selectedMedia: {},
                 folderBreadcrumb: [
-                    {id: 0, name: 'Home'},
+                    { id: 0, name: 'Home' },
                 ],
                 filesAreDeleting: false,
                 canEditFolders: true,
-            }
+            };
         },
         methods: {
             queryServer(customProperties) {
-                let properties = {
+                const properties = {
                     page: this.meta.current_page,
                     per_page: this.meta.per_page,
                     order_by: this.order_meta.order_by,
@@ -178,7 +178,7 @@
                 };
 
                 axios.get(route('api.media.all-vue', _.merge(properties, customProperties)))
-                    .then(response => {
+                    .then((response) => {
                         this.tableIsLoading = false;
                         this.data = response.data.data;
                         this.meta = response.data.meta;
@@ -191,7 +191,7 @@
             fetchMediaData() {
                 this.tableIsLoading = true;
                 if (this.$route.query.folder_id !== undefined) {
-                    this.queryServer({folder_id: this.$route.query.folder_id});
+                    this.queryServer({ folder_id: this.$route.query.folder_id });
                     this.fetchFolderBreadcrumb(this.$route.query.folder_id);
                     return;
                 }
@@ -200,40 +200,40 @@
             fetchFolderBreadcrumb(folderId) {
                 if (folderId === 0) {
                     this.folderBreadcrumb = [
-                        {id: 0, name: 'Home'},
+                        { id: 0, name: 'Home' },
                     ];
                     return;
                 }
-                axios.get(route('api.media.folders.breadcrumb', {folder: folderId}))
-                    .then(response => {
+                axios.get(route('api.media.folders.breadcrumb', { folder: folderId }))
+                    .then((response) => {
                         this.folderBreadcrumb = response.data;
                     });
             },
             handleSizeChange(event) {
-                console.log('per page :' + event);
+                console.log(`per page :${event}`);
                 this.tableIsLoading = true;
-                this.queryServer({per_page: event});
+                this.queryServer({ per_page: event });
             },
             handleCurrentChange(event) {
-                console.log('current page :' + event);
+                console.log(`current page :${event}`);
                 this.tableIsLoading = true;
-                this.queryServer({page: event});
+                this.queryServer({ page: event });
             },
             handleSortChange(event) {
                 console.log('sorting', event);
                 this.tableIsLoading = true;
-                this.queryServer({order_by: event.prop, order: event.order,});
+                this.queryServer({ order_by: event.prop, order: event.order });
             },
             performSearch(query) {
-                console.log('searching:' + query);
+                console.log(`searching:${query}`);
                 this.tableIsLoading = true;
-                this.queryServer({search: query});
+                this.queryServer({ search: query });
             },
             enterFolder(scope) {
                 this.tableIsLoading = true;
-                this.queryServer({folder_id: scope.row.id});
+                this.queryServer({ folder_id: scope.row.id });
                 this.folderId = scope.row.id;
-                this.$router.push({ query: { folder_id: scope.row.id }});
+                this.$router.push({ query: { folder_id: scope.row.id } });
                 this.fetchFolderBreadcrumb(scope.row.id);
             },
             insertMedia(scope) {
@@ -245,14 +245,14 @@
             showEditFolder(scope) {
                 this.$events.emit('editFolderWasClicked', scope);
             },
-            changeRoot(folderId, index) {
+            changeRoot(folderId) {
                 this.tableIsLoading = true;
-                this.queryServer({folder_id: folderId});
+                this.queryServer({ folder_id: folderId });
                 this.folderId = folderId;
                 if (folderId === 0) {
-                    this.$router.push({ query: {}});
+                    this.$router.push({ query: {} });
                 } else {
-                    this.$router.push({ query: { folder_id: folderId }});
+                    this.$router.push({ query: { folder_id: folderId } });
                 }
 
                 this.fetchFolderBreadcrumb(folderId);
@@ -261,17 +261,17 @@
                 this.$confirm(this.trans('core.modal.confirmation-message'), this.trans('core.modal.title'), {
                     confirmButtonText: this.trans('core.button.delete'),
                     cancelButtonText: this.trans('core.button.cancel'),
-                    type: 'warning'
+                    type: 'warning',
                 })
                     .then(() => {
                         this.filesAreDeleting = true;
                         axios.post(route('api.media.media.batch-destroy'), {
-                            files: this.selectedMedia
+                            files: this.selectedMedia,
                         })
-                            .then(response => {
+                            .then((response) => {
                                 this.$message({
                                     type: 'success',
-                                    message: response.data.message
+                                    message: response.data.message,
                                 });
                                 this.filesAreDeleting = false;
                                 this.$refs.mediaTable.clearSelection();
@@ -281,12 +281,12 @@
                     .catch(() => {
                         this.$message({
                             type: 'info',
-                            message: this.trans('core.delete cancelled')
+                            message: this.trans('core.delete cancelled'),
                         });
                     });
             },
             goToEdit(scope) {
-                this.$router.push({name: 'admin.media.media.edit', params: {mediaId: scope.row.id}})
+                this.$router.push({ name: 'admin.media.media.edit', params: { mediaId: scope.row.id } });
             },
         },
         mounted() {
@@ -295,18 +295,18 @@
             }
             this.selectedMedia.length = 0;
             this.fetchMediaData();
-            this.$events.listen('fileWasUploaded', eventData => {
+            this.$events.listen('fileWasUploaded', (eventData) => {
                 this.tableIsLoading = true;
-                this.queryServer({folder_id: eventData.data.folder_id});
+                this.queryServer({ folder_id: eventData.data.folder_id });
             });
-            this.$events.listen('folderWasCreated', eventData => {
+            this.$events.listen('folderWasCreated', (eventData) => {
                 this.tableIsLoading = true;
-                this.queryServer({folder_id: eventData.data.folder_id});
+                this.queryServer({ folder_id: eventData.data.folder_id });
             });
-            this.$events.listen('folderWasUpdated', eventData => {
+            this.$events.listen('folderWasUpdated', (eventData) => {
                 this.tableIsLoading = true;
-                this.queryServer({folder_id: eventData.data.folder_id});
+                this.queryServer({ folder_id: eventData.data.folder_id });
             });
-        }
-    }
+        },
+    };
 </script>
