@@ -215,3 +215,11 @@
         },
     };
 </script>
+<style>
+    .text-success {
+        color: #13ce66;
+    }
+    .text-danger {
+        color: #ff4949;
+    }
+</style>
