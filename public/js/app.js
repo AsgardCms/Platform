@@ -91931,7 +91931,7 @@ exports.default = {
 
     watch: {
         selectedPages: function selectedPages() {
-            this.selectedPages.length >= 1 ? this.showExtraButtons = true : this.showExtraButtons = false;
+            this.showExtraButtons = this.selectedPages.length >= 1;
         }
     },
     methods: {
