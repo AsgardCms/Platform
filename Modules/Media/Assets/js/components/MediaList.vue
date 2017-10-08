@@ -23,8 +23,8 @@
                             <div class="actions el-col el-col-14">
                                 <new-folder :parent-id="folderId"></new-folder>
                                 <upload-button :parent-id="folderId"></upload-button>
-                                <el-button-group v-if="false">
-                                    <el-button type="primary" :disabled="selectedMedia.length === 0">{{ trans('core.move') }}</el-button>
+                                <el-button-group>
+                                    <move-button :selected-media="selectedMedia"></move-button>
                                 </el-button-group>
                                 <el-button type="danger" :disabled="selectedMedia.length === 0"
                                     @click.prevent="batchDelete" :loading="filesAreDeleting">
@@ -132,12 +132,14 @@
     import NewFolder from './NewFolder.vue';
     import UploadButton from './UploadButton.vue';
     import RenameFolder from './RenameFolder.vue';
+    import MoveButton from './MoveMediaButton.vue';
 
     export default {
         components: {
             'new-folder': NewFolder,
             'upload-button': UploadButton,
             'rename-folder': RenameFolder,
+            'move-button': MoveButton,
         },
         props: {
             singleModal: { type: Boolean },
@@ -158,7 +160,7 @@
                 links: {},
                 searchQuery: '',
                 folderId: 0,
-                selectedMedia: {},
+                selectedMedia: [],
                 folderBreadcrumb: [
                     { id: 0, name: 'Home' },
                 ],
@@ -293,7 +295,6 @@
             if (window.AsgardCMS.filesystem === 's3') {
                 this.canEditFolders = false;
             }
-            this.selectedMedia.length = 0;
             this.fetchMediaData();
             this.$events.listen('fileWasUploaded', (eventData) => {
                 this.tableIsLoading = true;
