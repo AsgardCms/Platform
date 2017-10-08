@@ -264,16 +264,33 @@ class EloquentFileRepositoryTest extends MediaTestCase
         $parentFolder = $folderRepository->create(['name' => 'My Folder', 'parent_id' => 0]);
         $folder = $folderRepository->create(['name' => 'Child Folder', 'parent_id' => $parentFolder->id]);
 
-        $file = $this->createFile('my-file.jpg');
+        $file = \Illuminate\Http\UploadedFile::fake()->create('my-file.pdf');
+        $file = app(FileService::class)->store($file);
 
         $file = $this->file->move($file, $folder);
 
-        $this->assertEquals('my-file.jpg', $file->filename);
-        $this->assertEquals('/assets/media/my-folder/child-folder/my-file.jpg', $file->path->getRelativeUrl());
+        $this->assertEquals('my-file.pdf', $file->filename);
+        $this->assertEquals('/assets/media/my-folder/child-folder/my-file.pdf', $file->path->getRelativeUrl());
     }
 
     /** @test */
     public function it_can_move_file_on_disk()
+    {
+        $folderRepository = app(FolderRepository::class);
+        $parentFolder = $folderRepository->create(['name' => 'My Folder', 'parent_id' => 0]);
+        $folder = $folderRepository->create(['name' => 'Child Folder', 'parent_id' => $parentFolder->id]);
+
+        $file = \Illuminate\Http\UploadedFile::fake()->create('my-file.pdf');
+
+        $file = app(FileService::class)->store($file);
+        $this->assertTrue($this->app['files']->exists(public_path('/assets/media/my-file.pdf')));
+
+        $this->file->move($file, $folder);
+        $this->assertTrue($this->app['files']->exists(public_path('/assets/media/my-folder/child-folder/my-file.pdf')));
+    }
+
+    /** @test */
+    public function it_can_move_file_with_thumbnails_on_disk()
     {
         $folderRepository = app(FolderRepository::class);
         $parentFolder = $folderRepository->create(['name' => 'My Folder', 'parent_id' => 0]);
@@ -285,7 +302,10 @@ class EloquentFileRepositoryTest extends MediaTestCase
         $this->assertTrue($this->app['files']->exists(public_path('/assets/media/my-file.jpg')));
 
         $this->file->move($file, $folder);
+
         $this->assertTrue($this->app['files']->exists(public_path('/assets/media/my-folder/child-folder/my-file.jpg')));
+        $this->assertTrue($this->app['files']->exists(public_path('/assets/media/my-folder/child-folder/my-file_smallThumb.jpg')));
+        $this->assertTrue($this->app['files']->exists(public_path('/assets/media/my-folder/child-folder/my-file_mediumThumb.jpg')));
     }
 
     private function createFile($fileName = 'random/name.jpg')
