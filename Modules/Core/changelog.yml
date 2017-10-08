@@ -18,6 +18,7 @@ versions:
             - Installation, set the application key ourself, based of laravel command
             - Installation, only display success message for app_url on --verbose flag
             - Updated <code>config/breadcasting.php</code> pusher config to match laravel upstream
+            - Removing optional modules (blog, block, notification) from core module list
     "3.0.0":
         added:
             - Created a vue component for the delete buttons on index pages
