@@ -1,7 +1,7 @@
 <template>
     <div>
         <el-button type="success" class="new-folder" @click="dialogFormVisible = true">
-            <i class="el-icon-fa-plus"></i> New Folder
+            <i class="el-icon-fa-plus"></i> {{ trans('folders.create resource') }}
         </el-button>
 
         <el-dialog title="New Folder" :visible.sync="dialogFormVisible" size="tiny">
@@ -13,8 +13,8 @@
                 </el-form-item>
             </el-form>
             <span slot="footer" class="dialog-footer">
-            <el-button @click="closeDialog">Cancel</el-button>
-            <el-button type="primary" @click="onSubmit()">Confirm</el-button>
+            <el-button @click="closeDialog">{{ trans('core.button.cancel') }}</el-button>
+            <el-button type="primary" @click="onSubmit()">{{ trans('core.confirm') }}</el-button>
           </span>
         </el-dialog>
 

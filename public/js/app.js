@@ -94530,7 +94530,7 @@ var render = function() {
         },
         [
           _c("i", { staticClass: "el-icon-fa-plus" }),
-          _vm._v(" New Folder\n    ")
+          _vm._v(" " + _vm._s(_vm.trans("folders.create resource")) + "\n    ")
         ]
       ),
       _vm._v(" "),
@@ -94614,7 +94614,7 @@ var render = function() {
             },
             [
               _c("el-button", { on: { click: _vm.closeDialog } }, [
-                _vm._v("Cancel")
+                _vm._v(_vm._s(_vm.trans("core.button.cancel")))
               ]),
               _vm._v(" "),
               _c(
@@ -94627,7 +94627,7 @@ var render = function() {
                     }
                   }
                 },
-                [_vm._v("Confirm")]
+                [_vm._v(_vm._s(_vm.trans("core.confirm")))]
               )
             ],
             1
@@ -95095,7 +95095,7 @@ var render = function() {
             },
             [
               _c("el-button", { on: { click: _vm.closeDialog } }, [
-                _vm._v("Cancel")
+                _vm._v(_vm._s(_vm.trans("core.button.cancel")))
               ]),
               _vm._v(" "),
               _c(
@@ -95108,7 +95108,7 @@ var render = function() {
                     }
                   }
                 },
-                [_vm._v("Confirm")]
+                [_vm._v(_vm._s(_vm.trans("core.confirm")))]
               )
             ],
             1
