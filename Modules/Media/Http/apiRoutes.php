@@ -4,6 +4,11 @@ use Illuminate\Routing\Router;
 
 /** @var Router $router */
 $router->group(['middleware' => 'api.token'], function (Router $router) {
+    $router->get('folder', [
+        'uses' => 'AllNestableFolderController',
+        'as' => 'api.media.folders.all-nestable',
+        'middleware' => 'token-can:media.folders.index',
+    ]);
     $router->post('folder', [
         'uses' => 'FolderController@store',
         'as' => 'api.media.folders.store',
@@ -41,6 +46,10 @@ $router->group(['middleware' => 'api.token'], function (Router $router) {
     $router->post('media/unlink', [
         'uses' => 'MediaController@unlinkMedia',
         'as' => 'api.media.unlink',
+    ]);
+    $router->post('media/move', [
+        'uses' => 'MoveMediaController',
+        'as' => 'api.media.media.move',
     ]);
     $router->get('media/all', [
         'uses' => 'MediaController@all',
