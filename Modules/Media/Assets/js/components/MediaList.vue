@@ -316,9 +316,9 @@
                 this.tableIsLoading = true;
                 this.queryServer({ folder_id: eventData.data.folder_id });
             });
-            this.$events.listen('mediaWasUpdated', (eventData) => {
+            this.$events.listen('mediaWasMoved', (eventData) => {
                 this.tableIsLoading = true;
-                this.queryServer();
+                this.queryServer({ folder_id: eventData.data.folder_id });
             });
         },
     };

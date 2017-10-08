@@ -27,15 +27,15 @@ class MoveMediaController extends Controller
 
     public function __invoke(Request $request)
     {
+        $destination = $this->folder->findFolder($request->get('destinationFolder'));
+        if ($destination === null) {
+            $destination = $this->makeRootFolder();
+        }
+
         foreach ($request->get('files') as $file) {
             $file = $this->file->find($file['id']);
 
             if ($file->is_folder === false) {
-                $destination = $this->folder->findFolder($request->get('destinationFolder'));
-                if ($destination === null) {
-                    $destination = $this->makeRootFolder();
-                }
-
                 $this->file->move($file, $destination);
             }
         }
@@ -43,6 +43,7 @@ class MoveMediaController extends Controller
         return response()->json([
             'errors' => false,
             'message' => 'Files moved successfully',
+            'folder_id' => $destination->id,
         ]);
     }
 

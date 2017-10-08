@@ -58,7 +58,7 @@
                             message: response.data.message,
                         });
                         this.dialogFormVisible = false;
-                        this.$events.emit('mediaWasUpdated', response);
+                        this.$events.emit('mediaWasMoved', response);
                     });
             },
             closeDialog() {

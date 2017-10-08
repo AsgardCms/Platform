@@ -103121,9 +103121,9 @@ exports.default = {
             _this4.tableIsLoading = true;
             _this4.queryServer({ folder_id: eventData.data.folder_id });
         });
-        this.$events.listen('mediaWasUpdated', function (eventData) {
+        this.$events.listen('mediaWasMoved', function (eventData) {
             _this4.tableIsLoading = true;
-            _this4.queryServer();
+            _this4.queryServer({ folder_id: eventData.data.folder_id });
         });
     }
 }; //
@@ -104230,7 +104230,7 @@ exports.default = {
                     message: response.data.message
                 });
                 _this.dialogFormVisible = false;
-                _this.$events.emit('mediaWasUpdated', response);
+                _this.$events.emit('mediaWasMoved', response);
             });
         },
         closeDialog: function closeDialog() {
