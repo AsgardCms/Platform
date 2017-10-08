@@ -106745,7 +106745,7 @@ exports.default = {
                 _this.loading = false;
                 _this.$message({
                     type: 'success',
-                    message: response.message
+                    message: response.data.message
                 });
                 _this.dialogFormVisible = false;
                 _this.$events.emit('mediaWasUpdated', response);

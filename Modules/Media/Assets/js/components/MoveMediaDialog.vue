@@ -53,7 +53,7 @@
                         this.loading = false;
                         this.$message({
                             type: 'success',
-                            message: response.message,
+                            message: response.data.message,
                         });
                         this.dialogFormVisible = false;
                         this.$events.emit('mediaWasUpdated', response);
