@@ -7,4 +7,5 @@ return [
     'destroy resource' => 'Delete folder',
     'folder was created' => 'Dossier créée avec succès.',
     'folder was updated' => 'Dossier mise à jour avec succès.',
+    'folder name' => 'Nom du dossier',
 ];
