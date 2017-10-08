@@ -33,6 +33,7 @@ return [
         'update and back' => 'Wijzig en ga terug',
     ],
     'save' => 'Opslaan',
+    'confirm' => 'Bevestigen',
     'breadcrumb' => [
         'home' => 'Start',
     ],

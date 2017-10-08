@@ -34,6 +34,7 @@ return [
         'update and back' => 'Update and go back',
     ],
     'save' => 'Save',
+    'confirm' => 'Confirm',
     'breadcrumb' => [
         'home' => 'Home',
     ],

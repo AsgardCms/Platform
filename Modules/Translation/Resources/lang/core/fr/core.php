@@ -34,6 +34,7 @@ return [
         'update and back' => 'Mise à jour et retour',
     ],
     'save' => 'Sauvegardé',
+    'confirm' => 'Confirmer',
     'breadcrumb' => [
         'home' => 'Accueil',
     ],
