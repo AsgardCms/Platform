@@ -61,7 +61,7 @@
                         this.dialogFormVisible = false;
                         this.$events.emit('mediaWasMoved', response);
                     })
-                    .catch((error) => {
+                    .catch(() => {
                         this.loading = false;
                         this.$notify.error({
                             title: 'Error',

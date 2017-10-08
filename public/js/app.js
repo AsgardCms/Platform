@@ -104232,7 +104232,7 @@ exports.default = {
                 });
                 _this.dialogFormVisible = false;
                 _this.$events.emit('mediaWasMoved', response);
-            }).catch(function (error) {
+            }).catch(function () {
                 _this.loading = false;
                 _this.$notify.error({
                     title: 'Error',
