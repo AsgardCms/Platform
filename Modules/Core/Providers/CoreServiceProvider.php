@@ -140,13 +140,10 @@ class CoreServiceProvider extends ServiceProvider
 
         $this->app->singleton('asgard.ModulesList', function () {
             return [
-                'block',
-                'blog',
                 'core',
                 'dashboard',
                 'media',
                 'menu',
-                'notification',
                 'page',
                 'setting',
                 'tag',
