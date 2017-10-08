@@ -190,11 +190,10 @@
                             message: response.data.message,
                         });
                         this.$refs.pageTable.clearSelection();
-                        this.data.find((page) => {
-                            if (pageIds.indexOf(page.id) >= 0) {
+                        this.data.filter(page => pageIds.indexOf(page.id) >= 0)
+                            .map((page) => {
                                 page.translations.status = action === 'mark-online';
-                            }
-                        });
+                            });
                     })
                     .catch(() => {
                         this.$message({

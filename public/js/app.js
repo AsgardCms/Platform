@@ -91992,10 +91992,10 @@ exports.default = {
                     message: response.data.message
                 });
                 _this2.$refs.pageTable.clearSelection();
-                _this2.data.find(function (page) {
-                    if (pageIds.indexOf(page.id) >= 0) {
-                        page.translations.status = action === 'mark-online';
-                    }
+                _this2.data.filter(function (page) {
+                    return pageIds.indexOf(page.id) >= 0;
+                }).map(function (page) {
+                    page.translations.status = action === 'mark-online';
                 });
             }).catch(function () {
                 _this2.$message({
