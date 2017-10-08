@@ -319,6 +319,7 @@
             this.$events.listen('mediaWasMoved', (eventData) => {
                 this.tableIsLoading = true;
                 this.queryServer({ folder_id: eventData.folder_id });
+                this.fetchFolderBreadcrumb(eventData.folder_id);
             });
         },
     };

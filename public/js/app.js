@@ -103124,6 +103124,7 @@ exports.default = {
         this.$events.listen('mediaWasMoved', function (eventData) {
             _this4.tableIsLoading = true;
             _this4.queryServer({ folder_id: eventData.folder_id });
+            _this4.fetchFolderBreadcrumb(eventData.folder_id);
         });
     }
 }; //
