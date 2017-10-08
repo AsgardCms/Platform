@@ -91994,8 +91994,10 @@ exports.default = {
                 _this2.$refs.pageTable.clearSelection();
                 _this2.data.filter(function (page) {
                     return pageIds.indexOf(page.id) >= 0;
-                }).map(function (page) {
+                }).map(function (p) {
+                    var page = p;
                     page.translations.status = action === 'mark-online';
+                    return page;
                 });
             }).catch(function () {
                 _this2.$message({

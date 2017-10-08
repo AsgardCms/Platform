@@ -191,8 +191,10 @@
                         });
                         this.$refs.pageTable.clearSelection();
                         this.data.filter(page => pageIds.indexOf(page.id) >= 0)
-                            .map((page) => {
+                            .map((p) => {
+                                const page = p;
                                 page.translations.status = action === 'mark-online';
+                                return page;
                             });
                     })
                     .catch(() => {
