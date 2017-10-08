@@ -5,6 +5,7 @@ namespace Modules\Media\Repositories;
 use Illuminate\Database\Eloquent\Collection;
 use Modules\Core\Repositories\BaseRepository;
 use Modules\Media\Entities\File;
+use Modules\Media\Support\Collection\NestedFoldersCollection;
 
 interface FolderRepository extends BaseRepository
 {
@@ -20,4 +21,6 @@ interface FolderRepository extends BaseRepository
      * @return Collection
      */
     public function allChildrenOf(File $folder);
+
+    public function allNested() : NestedFoldersCollection;
 }

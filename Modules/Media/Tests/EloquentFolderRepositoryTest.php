@@ -11,6 +11,7 @@ use Modules\Media\Events\FolderWasCreated;
 use Modules\Media\Events\FolderWasUpdated;
 use Modules\Media\Repositories\FolderRepository;
 use Modules\Media\Services\FileService;
+use Modules\Media\Support\Collection\NestedFoldersCollection;
 
 final class EloquentFolderRepositoryTest extends MediaTestCase
 {
@@ -237,6 +238,19 @@ final class EloquentFolderRepositoryTest extends MediaTestCase
         $this->createFile('second-file.jpg');
 
         $this->assertCount(2, $this->folder->all());
+    }
+
+    /** @test */
+    public function it_can_find_all_folders_with_nested()
+    {
+        $parentFolder = $this->folder->create(['name' => 'My Folder']);
+        $this->folder->create(['name' => 'Child folder', 'parent_id' => $parentFolder->id]);
+        $this->createFile();
+        $this->createFile('second-file.jpg');
+
+        $folders = $this->folder->allNested();
+        $this->assertInstanceOf(NestedFoldersCollection::class, $folders);
+        $this->assertCount(2, $folders);
     }
 
     /** @test */

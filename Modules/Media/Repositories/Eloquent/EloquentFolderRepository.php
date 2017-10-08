@@ -11,6 +11,7 @@ use Modules\Media\Events\FolderIsUpdating;
 use Modules\Media\Events\FolderWasCreated;
 use Modules\Media\Events\FolderWasUpdated;
 use Modules\Media\Repositories\FolderRepository;
+use Modules\Media\Support\Collection\NestedFoldersCollection;
 
 class EloquentFolderRepository extends EloquentBaseRepository implements FolderRepository
 {
@@ -81,6 +82,11 @@ class EloquentFolderRepository extends EloquentBaseRepository implements FolderR
         $path = $folder->path->getRelativeUrl();
 
         return $this->model->where('path', 'like', "{$path}%")->get();
+    }
+
+    public function allNested(): NestedFoldersCollection
+    {
+        return new NestedFoldersCollection($this->all());
     }
 
     /**
