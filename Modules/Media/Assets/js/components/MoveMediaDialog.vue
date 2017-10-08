@@ -1,6 +1,6 @@
 <template>
     <div>
-        <el-dialog title="Move Media" :visible.sync="dialogFormVisible" size="tiny" class="move-media-dialog">
+        <el-dialog title="Move Media" :visible.sync="dialogFormVisible" size="tiny" class="move-media-dialog"  @open="fetchFolders">
             <el-form v-loading.body="loading" @submit.native.prevent="onSubmit()">
                 <el-form-item label="To" :class="{'el-form-item is-error': form.errors.has('name') }">
                     <el-select v-model="destinationFolder" placeholder="Select">
@@ -8,7 +8,8 @@
                                 v-for="(item, id) in options"
                                 :key="id"
                                 :label="item"
-                                :value="id">
+                                :value="id"
+                                :loading="selectIsLoading">
                             <span v-html="item"></span>
                         </el-option>
                     </el-select>
@@ -37,6 +38,7 @@
                 dialogFormVisible: false,
                 form: new Form(),
                 loading: false,
+                selectIsLoading: false,
                 options: [],
                 destinationFolder: '',
             };
@@ -63,15 +65,17 @@
                 this.form.clear();
                 this.dialogFormVisible = false;
             },
-            async fetchFolders() {
+            fetchFolders() {
+                this.selectIsLoading = true;
                 axios.get(route('api.media.folders.all-nestable'))
                     .then((response) => {
-                        this.options = _.merge(response.data, {0: 'Root'});
+                        console.log(response);
+                        this.options = _.merge(response.data, { 0: 'Root' });
+                        this.selectIsLoading = false;
                     });
             },
         },
         mounted() {
-            this.fetchFolders();
             this.$events.listen('moveMediaWasClicked', (eventData) => {
                 this.selectedMedia = eventData;
                 this.dialogFormVisible = true;
