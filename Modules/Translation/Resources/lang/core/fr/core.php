@@ -35,6 +35,7 @@ return [
     ],
     'save' => 'Sauvegardé',
     'confirm' => 'Confirmer',
+    'move' => 'Déplacer',
     'breadcrumb' => [
         'home' => 'Accueil',
     ],

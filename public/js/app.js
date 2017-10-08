@@ -95227,7 +95227,7 @@ var render = function() {
                                       disabled: _vm.selectedMedia.length === 0
                                     }
                                   },
-                                  [_vm._v("Move")]
+                                  [_vm._v(_vm._s(_vm.trans("core.move")))]
                                 )
                               ],
                               1
@@ -95251,7 +95251,9 @@ var render = function() {
                           },
                           [
                             _vm._v(
-                              "\n                                Delete\n                            "
+                              "\n                                " +
+                                _vm._s(_vm.trans("core.button.delete")) +
+                                "\n                            "
                             )
                           ]
                         )

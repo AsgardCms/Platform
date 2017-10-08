@@ -34,6 +34,7 @@ return [
     ],
     'save' => 'Opslaan',
     'confirm' => 'Bevestigen',
+    'move' => 'Verplaatsen',
     'breadcrumb' => [
         'home' => 'Start',
     ],

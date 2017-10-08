@@ -24,11 +24,11 @@
                                 <new-folder :parent-id="folderId"></new-folder>
                                 <upload-button :parent-id="folderId"></upload-button>
                                 <el-button-group v-if="false">
-                                    <el-button type="primary" :disabled="selectedMedia.length === 0">Move</el-button>
+                                    <el-button type="primary" :disabled="selectedMedia.length === 0">{{ trans('core.move') }}</el-button>
                                 </el-button-group>
                                 <el-button type="danger" :disabled="selectedMedia.length === 0"
                                     @click.prevent="batchDelete" :loading="filesAreDeleting">
-                                    Delete
+                                    {{ trans('core.button.delete') }}
                                 </el-button>
                             </div>
                             <div class="search el-col el-col-5">
