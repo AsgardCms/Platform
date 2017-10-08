@@ -20,7 +20,9 @@ use Modules\Media\Events\FolderWasUpdated;
 use Modules\Media\Events\Handlers\CreateFolderOnDisk;
 use Modules\Media\Events\Handlers\DeleteAllChildrenOfFolder;
 use Modules\Media\Events\Handlers\DeleteFolderOnDisk;
+use Modules\Media\Events\FileStartedMoving;
 use Modules\Media\Events\Handlers\HandleMediaStorage;
+use Modules\Media\Events\Handlers\MoveFileOnDisk;
 use Modules\Media\Events\Handlers\RegisterMediaSidebar;
 use Modules\Media\Events\Handlers\RemovePolymorphicLink;
 use Modules\Media\Events\Handlers\RenameFolderOnDisk;
@@ -80,6 +82,7 @@ class MediaServiceProvider extends ServiceProvider
         $events->listen(FolderWasUpdated::class, RenameFolderOnDisk::class);
         $events->listen(FolderIsDeleting::class, DeleteFolderOnDisk::class);
         $events->listen(FolderIsDeleting::class, DeleteAllChildrenOfFolder::class);
+        $events->listen(FileStartedMoving::class, MoveFileOnDisk::class);
 
         $this->app[TagManager::class]->registerNamespace(new File());
         $this->registerThumbnails();

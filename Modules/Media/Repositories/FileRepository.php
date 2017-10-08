@@ -5,6 +5,7 @@ namespace Modules\Media\Repositories;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Http\Request;
 use Modules\Core\Repositories\BaseRepository;
+use Modules\Media\Entities\File;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 interface FileRepository extends BaseRepository
@@ -48,4 +49,6 @@ interface FileRepository extends BaseRepository
     public function findForVirtualPath(string $path);
 
     public function allForGrid() : Collection;
+
+    public function move(File $file, File $destination) : File;
 }

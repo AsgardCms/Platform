@@ -11,6 +11,7 @@ use Modules\Media\Events\FileWasCreated;
 use Modules\Media\Events\FileWasUpdated;
 use Modules\Media\Repositories\FileRepository;
 use Modules\Media\Repositories\FolderRepository;
+use Modules\Media\Services\FileService;
 use Symfony\Component\Finder\SplFileInfo;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 
@@ -254,6 +255,37 @@ class EloquentFileRepositoryTest extends MediaTestCase
         $this->createFile();
 
         $this->assertCount(2, $this->file->allForGrid());
+    }
+
+    /** @test */
+    public function it_can_move_a_file_database()
+    {
+        $folderRepository = app(FolderRepository::class);
+        $parentFolder = $folderRepository->create(['name' => 'My Folder', 'parent_id' => 0]);
+        $folder = $folderRepository->create(['name' => 'Child Folder', 'parent_id' => $parentFolder->id]);
+
+        $file = $this->createFile('my-file.jpg');
+
+        $file = $this->file->move($file, $folder);
+
+        $this->assertEquals('my-file.jpg', $file->filename);
+        $this->assertEquals('/assets/media/my-folder/child-folder/my-file.jpg', $file->path->getRelativeUrl());
+    }
+
+    /** @test */
+    public function it_can_move_file_on_disk()
+    {
+        $folderRepository = app(FolderRepository::class);
+        $parentFolder = $folderRepository->create(['name' => 'My Folder', 'parent_id' => 0]);
+        $folder = $folderRepository->create(['name' => 'Child Folder', 'parent_id' => $parentFolder->id]);
+
+        $file = \Illuminate\Http\UploadedFile::fake()->image('my-file.jpg');
+
+        $file = app(FileService::class)->store($file);
+        $this->assertTrue($this->app['files']->exists(public_path('/assets/media/my-file.jpg')));
+
+        $this->file->move($file, $folder);
+        $this->assertTrue($this->app['files']->exists(public_path('/assets/media/my-folder/child-folder/my-file.jpg')));
     }
 
     private function createFile($fileName = 'random/name.jpg')

@@ -8,6 +8,7 @@ use Modules\Core\Repositories\Eloquent\EloquentBaseRepository;
 use Modules\Media\Entities\File;
 use Modules\Media\Events\FileIsCreating;
 use Modules\Media\Events\FileIsUpdating;
+use Modules\Media\Events\FileStartedMoving;
 use Modules\Media\Events\FileWasCreated;
 use Modules\Media\Events\FileWasUpdated;
 use Modules\Media\Helpers\FileHelper;
@@ -192,5 +193,21 @@ class EloquentFileRepository extends EloquentBaseRepository implements FileRepos
     public function allForGrid(): Collection
     {
         return $this->model->where('is_folder', 0)->get();
+    }
+
+    public function move(File $file, File $destination) : File
+    {
+        $previousData = [
+            'filename' => $file->filename,
+            'path' => $file->path,
+        ];
+
+        $this->update($file, [
+            'path' => $this->getPathFor($file->filename, $destination->id),
+        ]);
+
+        event(new FileStartedMoving($file, $previousData));
+
+        return $file;
     }
 }
