@@ -23,13 +23,17 @@
                             <div class="actions el-col el-col-14">
                                 <new-folder :parent-id="folderId"></new-folder>
                                 <upload-button :parent-id="folderId"></upload-button>
-                                <el-button-group>
-                                    <move-button :selected-media="selectedMedia"></move-button>
+                                <el-button-group style="width: 30%">
+                                    <el-button type="warning"
+                                               :disabled="selectedMedia.length === 0"
+                                               @click="showMoveMedia"
+                                               >{{ trans('core.move') }}
+                                    </el-button>
+                                    <el-button type="danger" :disabled="selectedMedia.length === 0"
+                                        @click.prevent="batchDelete" :loading="filesAreDeleting">
+                                        {{ trans('core.button.delete') }}
+                                    </el-button>
                                 </el-button-group>
-                                <el-button type="danger" :disabled="selectedMedia.length === 0"
-                                    @click.prevent="batchDelete" :loading="filesAreDeleting">
-                                    {{ trans('core.button.delete') }}
-                                </el-button>
                             </div>
                             <div class="search el-col el-col-5">
                                 <el-input icon="search" @change="performSearch" v-model="searchQuery">
@@ -124,6 +128,7 @@
             </div>
         </div>
         <rename-folder></rename-folder>
+        <move-dialog></move-dialog>
     </div>
 </template>
 
@@ -132,14 +137,14 @@
     import NewFolder from './NewFolder.vue';
     import UploadButton from './UploadButton.vue';
     import RenameFolder from './RenameFolder.vue';
-    import MoveButton from './MoveMediaButton.vue';
+    import MoveMediaDialog from './MoveMediaDialog.vue';
 
     export default {
         components: {
             'new-folder': NewFolder,
             'upload-button': UploadButton,
             'rename-folder': RenameFolder,
-            'move-button': MoveButton,
+            'move-dialog': MoveMediaDialog,
         },
         props: {
             singleModal: { type: Boolean },
@@ -247,6 +252,9 @@
             showEditFolder(scope) {
                 this.$events.emit('editFolderWasClicked', scope);
             },
+            showMoveMedia() {
+                this.$events.emit('moveMediaWasClicked', this.selectedMedia);
+            },
             changeRoot(folderId) {
                 this.tableIsLoading = true;
                 this.queryServer({ folder_id: folderId });
@@ -307,6 +315,10 @@
             this.$events.listen('folderWasUpdated', (eventData) => {
                 this.tableIsLoading = true;
                 this.queryServer({ folder_id: eventData.data.folder_id });
+            });
+            this.$events.listen('mediaWasUpdated', (eventData) => {
+                this.tableIsLoading = true;
+                this.queryServer();
             });
         },
     };
