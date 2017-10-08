@@ -103123,7 +103123,7 @@ exports.default = {
         });
         this.$events.listen('mediaWasMoved', function (eventData) {
             _this4.tableIsLoading = true;
-            _this4.queryServer({ folder_id: eventData.data.folder_id });
+            _this4.queryServer({ folder_id: eventData.folder_id });
         });
     }
 }; //
@@ -104219,18 +104219,25 @@ exports.default = {
             var _this = this;
 
             this.loading = true;
-            _axios2.default.post(route('api.media.media.move'), {
+            this.form = new _formBackendValidation2.default({
                 files: this.selectedMedia,
                 destinationFolder: this.destinationFolder
-            }).then(function (response) {
+            });
+            this.form.post(route('api.media.media.move')).then(function (response) {
                 console.log(response);
                 _this.loading = false;
                 _this.$message({
                     type: 'success',
-                    message: response.data.message
+                    message: response.message
                 });
                 _this.dialogFormVisible = false;
                 _this.$events.emit('mediaWasMoved', response);
+            }).catch(function (error) {
+                _this.loading = false;
+                _this.$notify.error({
+                    title: 'Error',
+                    message: 'There are some errors in the form.'
+                });
             });
         },
         closeDialog: function closeDialog() {
@@ -104242,7 +104249,6 @@ exports.default = {
 
             this.selectIsLoading = true;
             _axios2.default.get(route('api.media.folders.all-nestable')).then(function (response) {
-                console.log(response);
                 _this2.options = _.merge(response.data, { 0: 'Root' });
                 _this2.selectIsLoading = false;
             });
@@ -104310,7 +104316,9 @@ var render = function() {
                 "el-form-item",
                 {
                   class: {
-                    "el-form-item is-error": _vm.form.errors.has("name")
+                    "el-form-item is-error": _vm.form.errors.has(
+                      "destinationFolder"
+                    )
                   },
                   attrs: { label: "To" }
                 },
@@ -104343,11 +104351,13 @@ var render = function() {
                     })
                   ),
                   _vm._v(" "),
-                  _vm.form.errors.has("name")
+                  _vm.form.errors.has("destinationFolder")
                     ? _c("div", {
                         staticClass: "el-form-item__error",
                         domProps: {
-                          textContent: _vm._s(_vm.form.errors.first("name"))
+                          textContent: _vm._s(
+                            _vm.form.errors.first("destinationFolder")
+                          )
                         }
                       })
                     : _vm._e()

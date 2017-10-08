@@ -2,7 +2,7 @@
     <div>
         <el-dialog title="Move Media" :visible.sync="dialogFormVisible" size="tiny" class="move-media-dialog"  @open="fetchFolders">
             <el-form v-loading.body="loading" @submit.native.prevent="onSubmit()">
-                <el-form-item label="To" :class="{'el-form-item is-error': form.errors.has('name') }">
+                <el-form-item label="To" :class="{'el-form-item is-error': form.errors.has('destinationFolder') }">
                     <el-select v-model="destinationFolder" placeholder="Select">
                         <el-option
                                 v-for="(item, id) in options"
@@ -13,8 +13,8 @@
                             <span v-html="item"></span>
                         </el-option>
                     </el-select>
-                    <div class="el-form-item__error" v-if="form.errors.has('name')"
-                         v-text="form.errors.first('name')"></div>
+                    <div class="el-form-item__error" v-if="form.errors.has('destinationFolder')"
+                         v-text="form.errors.first('destinationFolder')"></div>
                 </el-form-item>
             </el-form>
             <span slot="footer" class="dialog-footer">
@@ -46,19 +46,27 @@
         methods: {
             onSubmit() {
                 this.loading = true;
-                axios.post(route('api.media.media.move'), {
+                this.form = new Form({
                     files: this.selectedMedia,
                     destinationFolder: this.destinationFolder,
-                })
+                });
+                this.form.post(route('api.media.media.move'))
                     .then((response) => {
                         console.log(response);
                         this.loading = false;
                         this.$message({
                             type: 'success',
-                            message: response.data.message,
+                            message: response.message,
                         });
                         this.dialogFormVisible = false;
                         this.$events.emit('mediaWasMoved', response);
+                    })
+                    .catch((error) => {
+                        this.loading = false;
+                        this.$notify.error({
+                            title: 'Error',
+                            message: 'There are some errors in the form.',
+                        });
                     });
             },
             closeDialog() {
@@ -69,7 +77,6 @@
                 this.selectIsLoading = true;
                 axios.get(route('api.media.folders.all-nestable'))
                     .then((response) => {
-                        console.log(response);
                         this.options = _.merge(response.data, { 0: 'Root' });
                         this.selectIsLoading = false;
                     });

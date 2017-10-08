@@ -2,9 +2,9 @@
 
 namespace Modules\Media\Http\Controllers\Api;
 
-use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Modules\Media\Entities\File;
+use Modules\Media\Http\Requests\MoveMediaRequest;
 use Modules\Media\Repositories\FileRepository;
 use Modules\Media\Repositories\FolderRepository;
 
@@ -25,7 +25,7 @@ class MoveMediaController extends Controller
         $this->folder = $folder;
     }
 
-    public function __invoke(Request $request)
+    public function __invoke(MoveMediaRequest $request)
     {
         $destination = $this->folder->findFolder($request->get('destinationFolder'));
         if ($destination === null) {
