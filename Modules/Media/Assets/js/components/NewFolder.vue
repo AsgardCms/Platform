@@ -4,9 +4,9 @@
             <i class="el-icon-fa-plus"></i> {{ trans('folders.create resource') }}
         </el-button>
 
-        <el-dialog title="New Folder" :visible.sync="dialogFormVisible" size="tiny">
+        <el-dialog :title="trans('folders.create resource')" :visible.sync="dialogFormVisible" size="tiny">
             <el-form :model="folder" v-loading.body="loading" @submit.native.prevent="onSubmit()">
-                <el-form-item label="Folder name" :class="{'el-form-item is-error': form.errors.has('name') }">
+                <el-form-item :label="trans('folders.folder name')" :class="{'el-form-item is-error': form.errors.has('name') }">
                     <el-input v-model="folder.name" auto-complete="off" autofocus></el-input>
                     <div class="el-form-item__error" v-if="form.errors.has('name')"
                          v-text="form.errors.first('name')"></div>
