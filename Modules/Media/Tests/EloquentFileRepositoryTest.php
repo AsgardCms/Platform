@@ -270,6 +270,7 @@ class EloquentFileRepositoryTest extends MediaTestCase
         $file = $this->file->move($file, $folder);
 
         $this->assertEquals('my-file.pdf', $file->filename);
+        $this->assertEquals($file->folder_id, $folder->id);
         $this->assertEquals('/assets/media/my-folder/child-folder/my-file.pdf', $file->path->getRelativeUrl());
     }
 

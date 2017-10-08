@@ -204,6 +204,7 @@ class EloquentFileRepository extends EloquentBaseRepository implements FileRepos
 
         $this->update($file, [
             'path' => $this->getPathFor($file->filename, $destination->id),
+            'folder_id' => $destination->id,
         ]);
 
         event(new FileStartedMoving($file, $previousData));
