@@ -309,6 +309,40 @@ class EloquentFileRepositoryTest extends MediaTestCase
         $this->assertTrue($this->app['files']->exists(public_path('/assets/media/my-folder/child-folder/my-file_mediumThumb.jpg')));
     }
 
+    /** @test */
+    public function it_can_move_file_back_to_root_folder()
+    {
+        $folderRepository = app(FolderRepository::class);
+        $parentFolder = $folderRepository->create(['name' => 'My Folder', 'parent_id' => 0]);
+        $folder = $folderRepository->create(['name' => 'Child Folder', 'parent_id' => $parentFolder->id]);
+
+        $file = \Illuminate\Http\UploadedFile::fake()->create('my-file.pdf');
+
+        $file = app(FileService::class)->store($file, $folder->id);
+        $this->assertTrue($this->app['files']->exists(public_path('/assets/media/my-folder/child-folder/my-file.pdf')));
+
+        $this->file->move($file, $this->makeRootFolder());
+        $this->assertTrue($this->app['files']->exists(public_path('/assets/media/my-file.pdf')));
+    }
+
+    /** @test */
+    public function it_can_move_file_with_thumbnails_back_to_root_folder()
+    {
+        $folderRepository = app(FolderRepository::class);
+        $parentFolder = $folderRepository->create(['name' => 'My Folder', 'parent_id' => 0]);
+        $folder = $folderRepository->create(['name' => 'Child Folder', 'parent_id' => $parentFolder->id]);
+
+        $file = \Illuminate\Http\UploadedFile::fake()->image('my-file.jpg');
+
+        $file = app(FileService::class)->store($file, $folder->id);
+        $this->assertTrue($this->app['files']->exists(public_path('/assets/media/my-folder/child-folder/my-file.jpg')));
+
+        $this->file->move($file, $this->makeRootFolder());
+        $this->assertTrue($this->app['files']->exists(public_path('/assets/media/my-file.jpg')));
+        $this->assertTrue($this->app['files']->exists(public_path('/assets/media/my-file_smallThumb.jpg')));
+        $this->assertTrue($this->app['files']->exists(public_path('/assets/media/my-file_mediumThumb.jpg')));
+    }
+
     private function createFile($fileName = 'random/name.jpg')
     {
         return File::create([
@@ -317,6 +351,14 @@ class EloquentFileRepositoryTest extends MediaTestCase
             'extension' => substr(strrchr($fileName, "."), 1),
             'mimetype' => 'image/jpg',
             'filesize' => '1024',
+            'folder_id' => 0,
+        ]);
+    }
+
+    private function makeRootFolder() : File
+    {
+        return new File([
+            'id' => 0,
             'folder_id' => 0,
         ]);
     }

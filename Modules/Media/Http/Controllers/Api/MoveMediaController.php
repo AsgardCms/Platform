@@ -4,6 +4,7 @@ namespace Modules\Media\Http\Controllers\Api;
 
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
+use Modules\Media\Entities\File;
 use Modules\Media\Repositories\FileRepository;
 use Modules\Media\Repositories\FolderRepository;
 
@@ -31,6 +32,9 @@ class MoveMediaController extends Controller
 
             if ($file->is_folder === false) {
                 $destination = $this->folder->findFolder($request->get('destinationFolder'));
+                if ($destination === null) {
+                    $destination = $this->makeRootFolder();
+                }
 
                 $this->file->move($file, $destination);
             }
@@ -39,6 +43,14 @@ class MoveMediaController extends Controller
         return response()->json([
             'errors' => false,
             'message' => 'Files moved successfully',
+        ]);
+    }
+
+    private function makeRootFolder() : File
+    {
+        return new File([
+            'id' => 0,
+            'folder_id' => 0,
         ]);
     }
 }

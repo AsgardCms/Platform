@@ -28,6 +28,7 @@ class File extends Model implements TaggableInterface
     protected $table = 'media__files';
     public $translatedAttributes = ['description', 'alt_attribute', 'keywords'];
     protected $fillable = [
+        'id',
         'is_folder',
         'description',
         'alt_attribute',
