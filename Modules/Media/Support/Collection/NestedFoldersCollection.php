@@ -26,7 +26,7 @@ class NestedFoldersCollection extends Collection
     public function nest()
     {
         $parentColumn = $this->parentColumn;
-        if ( ! $parentColumn) {
+        if (! $parentColumn) {
             return $this;
         }
         // Set id as keys.
@@ -34,7 +34,7 @@ class NestedFoldersCollection extends Collection
         $keysToDelete = [];
         // Add empty collection to each items.
         $collection = $this->each(function ($item) {
-            if ( ! $item->items) {
+            if (! $item->items) {
                 $item->items = app(BaseCollection::class);
             }
         });
@@ -43,6 +43,7 @@ class NestedFoldersCollection extends Collection
             $collection = $this->reject(function ($item) use ($parentColumn) {
                 if ($item->$parentColumn) {
                     $missingAncestor = $this->anAncestorIsMissing($item);
+
                     return $missingAncestor;
                 }
             });
@@ -56,6 +57,7 @@ class NestedFoldersCollection extends Collection
         }
         // Delete moved items.
         $this->items = array_values(array_except($collection->items, $keysToDelete));
+
         return $this;
     }
 
@@ -71,7 +73,11 @@ class NestedFoldersCollection extends Collection
      * @return array
      */
     public function listsFlattened(
-        $column = 'title', BaseCollection $collection = null, $level = 0, array &$flattened = [], $indentChars = null,
+        $column = 'title',
+        BaseCollection $collection = null,
+        $level = 0,
+        array &$flattened = [],
+        $indentChars = null,
         $parent_string = null
     ) {
         $collection = $collection ?: $this;
@@ -84,10 +90,17 @@ class NestedFoldersCollection extends Collection
             }
             $flattened[$item->id] = $item_string;
             if ($item->items) {
-                $this->listsFlattened($column, $item->items, $level + 1, $flattened, $indentChars,
-                    ($parent_string) ? $item_string : null);
+                $this->listsFlattened(
+                    $column,
+                    $item->items,
+                    $level + 1,
+                    $flattened,
+                    $indentChars,
+                    ($parent_string) ? $item_string : null
+                );
             }
         }
+
         return $flattened;
     }
 
@@ -101,7 +114,11 @@ class NestedFoldersCollection extends Collection
      * @return array
      */
     public function listsFlattenedQualified(
-        $column = 'title', BaseCollection $collection = null, $level = 0, array &$flattened = [], $indentChars = null
+        $column = 'title',
+        BaseCollection $collection = null,
+        $level = 0,
+        array &$flattened = [],
+        $indentChars = null
     ) {
         return $this->listsFlattened($column, $collection, $level, $flattened, $indentChars, true);
     }
@@ -114,6 +131,7 @@ class NestedFoldersCollection extends Collection
     public function setIndent(string $indentChars)
     {
         $this->indentChars = $indentChars;
+
         return $this;
     }
 
@@ -124,6 +142,7 @@ class NestedFoldersCollection extends Collection
     public function noCleaning()
     {
         $this->removeItemsWithMissingAncestor = false;
+
         return $this;
     }
 
@@ -135,13 +154,14 @@ class NestedFoldersCollection extends Collection
     public function anAncestorIsMissing($item)
     {
         $parentColumn = $this->parentColumn;
-        if ( ! $item->$parentColumn) {
+        if (! $item->$parentColumn) {
             return false;
         }
-        if ( ! $this->has($item->$parentColumn)) {
+        if (! $this->has($item->$parentColumn)) {
             return true;
         }
         $parent = $this[$item->$parentColumn];
+
         return $this->anAncestorIsMissing($parent);
     }
 

@@ -3,7 +3,6 @@
 namespace Modules\Media\Http\Controllers\Frontend;
 
 use Illuminate\Routing\Controller;
-use Illuminate\Support\Facades\Storage;
 use Intervention\Image\Facades\Image;
 use Modules\Media\Repositories\FileRepository;
 
@@ -29,7 +28,7 @@ class MediaController extends Controller
         return Image::make($path)->response();
 
         return response()->file($path, [
-            "Content-Type:$type"
+            "Content-Type:$type",
         ]);
     }
 }

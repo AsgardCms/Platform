@@ -3,8 +3,8 @@
 namespace Modules\Core\Console\Installers\Scripts;
 
 use Illuminate\Console\Command;
-use Illuminate\Encryption\Encrypter;
 use Illuminate\Console\ConfirmableTrait;
+use Illuminate\Encryption\Encrypter;
 use Modules\Core\Console\Installers\SetupScript;
 
 class SetAppKey implements SetupScript
@@ -40,7 +40,7 @@ class SetAppKey implements SetupScript
      */
     protected function generateRandomKey()
     {
-        return 'base64:'.base64_encode(
+        return 'base64:' . base64_encode(
                 Encrypter::generateKey(config('app.cipher'))
             );
     }
@@ -74,7 +74,7 @@ class SetAppKey implements SetupScript
     {
         file_put_contents(app()->environmentFilePath(), preg_replace(
             $this->keyReplacementPattern(),
-            'APP_KEY='.$key,
+            'APP_KEY=' . $key,
             file_get_contents(app()->environmentFilePath())
         ));
     }
@@ -86,7 +86,7 @@ class SetAppKey implements SetupScript
      */
     protected function keyReplacementPattern()
     {
-        $escaped = preg_quote('='.config('app.key'), '/');
+        $escaped = preg_quote('=' . config('app.key'), '/');
 
         return "/^APP_KEY{$escaped}/m";
     }

@@ -27,7 +27,7 @@ class UploadMediaRequest extends FormRequest
         $size = $this->getMaxFileSize();
 
         return [
-            'file.max' => trans('media::media.file too large', ['size' => $size])
+            'file.max' => trans('media::media.file too large', ['size' => $size]),
         ];
     }
 

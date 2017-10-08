@@ -50,7 +50,7 @@ class MoveFileOnDisk
             $fromPath = $this->getFilenameFor($event->previousData['path'], $thumbnail);
             $toPath = $this->getFilenameFor($event->file->path, $thumbnail);
 
-           $this->move($fromPath, $toPath);
+            $this->move($fromPath, $toPath);
         }
     }
 

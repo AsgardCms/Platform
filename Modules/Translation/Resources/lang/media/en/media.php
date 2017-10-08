@@ -38,5 +38,5 @@ return [
     'create resource' => 'Create media',
     'edit resource' => 'Edit media',
     'destroy resource' => 'Delete media',
-    'file too large' => 'File is too large. Must be below :size MB.'
+    'file too large' => 'File is too large. Must be below :size MB.',
 ];
