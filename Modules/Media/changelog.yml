@@ -9,6 +9,7 @@ versions:
             - Creating NewFolder component
             - Creating UploadButton component
             - Ability to arrange Media in folders
+            - Ability to move files inside folders
         changed:
             - Allow pdfs to be uploaded by default too
             - Fixed SingleMedia component to correctly unset a selected media
