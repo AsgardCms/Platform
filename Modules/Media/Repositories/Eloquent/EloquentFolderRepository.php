@@ -8,6 +8,7 @@ use Modules\Media\Entities\File;
 use Modules\Media\Events\FolderIsCreating;
 use Modules\Media\Events\FolderIsDeleting;
 use Modules\Media\Events\FolderIsUpdating;
+use Modules\Media\Events\FolderStartedMoving;
 use Modules\Media\Events\FolderWasCreated;
 use Modules\Media\Events\FolderWasUpdated;
 use Modules\Media\Repositories\FolderRepository;
@@ -87,6 +88,28 @@ class EloquentFolderRepository extends EloquentBaseRepository implements FolderR
     public function allNested(): NestedFoldersCollection
     {
         return new NestedFoldersCollection($this->all());
+    }
+
+    public function move(File $folder, File $destination): File
+    {
+        $previousData = [
+            'filename' => $folder->filename,
+            'path' => $folder->path,
+        ];
+
+        $folder->update([
+            'path' => $this->getNewPathFor($folder->filename, $destination),
+            'folder_id' => $destination->id,
+        ]);
+
+        event(new FolderStartedMoving($folder, $previousData));
+
+        return $folder;
+    }
+
+    private function getNewPathFor(string $filename, File $folder)
+    {
+        return $folder->path->getRelativeUrl() . '/' . str_slug($filename);
     }
 
     /**

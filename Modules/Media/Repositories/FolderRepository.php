@@ -23,4 +23,6 @@ interface FolderRepository extends BaseRepository
     public function allChildrenOf(File $folder);
 
     public function allNested() : NestedFoldersCollection;
+
+    public function move(File $folder, File $destination) : File;
 }
