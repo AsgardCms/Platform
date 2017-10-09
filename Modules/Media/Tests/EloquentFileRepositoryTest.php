@@ -360,6 +360,7 @@ class EloquentFileRepositoryTest extends MediaTestCase
         return new File([
             'id' => 0,
             'folder_id' => 0,
+            'path' => config('asgard.media.config.files-path'),
         ]);
     }
 }
