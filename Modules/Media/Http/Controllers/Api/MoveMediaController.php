@@ -38,6 +38,9 @@ class MoveMediaController extends Controller
             if ($file->is_folder === false) {
                 $this->file->move($file, $destination);
             }
+            if ($file->is_folder === true) {
+                $this->folder->move($file, $destination);
+            }
         }
 
         return response()->json([
@@ -52,6 +55,7 @@ class MoveMediaController extends Controller
         return new File([
             'id' => 0,
             'folder_id' => 0,
+            'path' => config('asgard.media.config.files-path'),
         ]);
     }
 }
