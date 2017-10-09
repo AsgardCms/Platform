@@ -51,7 +51,7 @@ class MoveFolderOnDisk
             $oldPath = $media->path->getRelativeUrl();
 
             $media->update([
-                'path' => str_replace($previousPath, $newPath, $oldPath),
+                'path' => $this->removeDoubleSlashes(str_replace($previousPath, $newPath, $oldPath)),
             ]);
             if ($media->isFolder() === true) {
                 $this->replacePathReferences($media->id, $previousPath, $newPath);
@@ -83,5 +83,10 @@ class MoveFolderOnDisk
     private function getConfiguredFilesystem() : string
     {
         return config('asgard.media.config.filesystem');
+    }
+
+    private function removeDoubleSlashes(string $string) : string
+    {
+        return str_replace('//', '/', $string);
     }
 }

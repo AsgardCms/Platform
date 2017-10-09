@@ -109,7 +109,12 @@ class EloquentFolderRepository extends EloquentBaseRepository implements FolderR
 
     private function getNewPathFor(string $filename, File $folder)
     {
-        return $folder->path->getRelativeUrl() . '/' . str_slug($filename);
+        return $this->removeDoubleSlashes($folder->path->getRelativeUrl() . '/' . str_slug($filename));
+    }
+
+    private function removeDoubleSlashes(string $string) : string
+    {
+        return str_replace('//', '/', $string);
     }
 
     /**
