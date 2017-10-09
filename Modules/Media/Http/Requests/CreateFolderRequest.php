@@ -4,6 +4,7 @@ namespace Modules\Media\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
+use Modules\Media\Validators\AlphaDashWithSpaces;
 
 class CreateFolderRequest extends FormRequest
 {
@@ -13,7 +14,7 @@ class CreateFolderRequest extends FormRequest
 
         return [
             'name' => [
-                'alpha_dash',
+                new AlphaDashWithSpaces(),
                 'required',
                 Rule::unique('media__files', 'filename')->where(function ($query) use ($parentId) {
                     return $query->where('is_folder', 1)->where('folder_id', $parentId);
