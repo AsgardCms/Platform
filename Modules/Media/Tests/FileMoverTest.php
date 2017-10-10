@@ -124,26 +124,6 @@ final class FileMoverTest extends MediaTestCase
     }
 
     /** @test */
-    public function it_can_store_same_filename_in_other_folder_with_no_suffix()
-    {
-        $folderRepository = app(FolderRepository::class);
-        $folder = $folderRepository->create(['name' => 'My Folder', 'parent_id' => 0]);
-        $file = app(FileService::class)->store(\Illuminate\Http\UploadedFile::fake()->image('my-file.jpg'), $folder->id);
-        $fileTwo = app(FileService::class)->store(\Illuminate\Http\UploadedFile::fake()->image('my-file.jpg'));
-
-        $subFolder = $folderRepository->create(['name' => 'My Sub Folder', 'parent_id' => $folder->id]);
-        $fileThree = app(FileService::class)->store(\Illuminate\Http\UploadedFile::fake()->image('my-file.jpg'), $subFolder->id);
-
-        $this->assertTrue($this->app['files']->exists(public_path('/assets/media/my-file.jpg')));
-        $this->assertTrue($this->app['files']->exists(public_path('/assets/media/my-folder/my-file.jpg')));
-        $this->assertTrue($this->app['files']->exists(public_path('/assets/media/my-folder/my-sub-folder/my-file.jpg')));
-
-        $this->assertEquals('/assets/media/my-folder/my-file.jpg', $file->path->getRelativeUrl());
-        $this->assertEquals('/assets/media/my-file.jpg', $fileTwo->path->getRelativeUrl());
-        $this->assertEquals('/assets/media/my-folder/my-sub-folder/my-file.jpg', $fileThree->path->getRelativeUrl());
-    }
-
-    /** @test */
     public function it_does_not_move_file_if_file_name_exists_at_location()
     {
         $folderRepository = app(FolderRepository::class);

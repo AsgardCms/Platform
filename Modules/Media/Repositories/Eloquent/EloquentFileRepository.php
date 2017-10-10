@@ -46,10 +46,10 @@ class EloquentFileRepository extends EloquentBaseRepository implements FileRepos
     {
         $fileName = FileHelper::slug($file->getClientOriginalName());
 
-        $exists = $this->model->whereFilename($fileName)->first();
+        $exists = $this->model->where('filename', $fileName)->where('folder_id', $parentId)->first();
 
         if ($exists) {
-            $fileName = $this->getNewUniqueFilename($fileName, $parentId);
+            $fileName = $this->getNewUniqueFilename($fileName);
         }
 
         $data = [
@@ -124,15 +124,14 @@ class EloquentFileRepository extends EloquentBaseRepository implements FileRepos
 
     /**
      * @param $fileName
-     * @param int $parentId
      * @return string
      */
-    private function getNewUniqueFilename($fileName, int $parentId = 0)
+    private function getNewUniqueFilename($fileName)
     {
         $fileNameOnly = pathinfo($fileName, PATHINFO_FILENAME);
         $extension = pathinfo($fileName, PATHINFO_EXTENSION);
 
-        $models = $this->model->where('filename', 'LIKE', "$fileNameOnly%")->where('folder_id', $parentId)->get();
+        $models = $this->model->where('filename', 'LIKE', "$fileNameOnly%")->get();
 
         $versionCurrent = $models->reduce(function ($carry, $model) {
             $latestFilename = pathinfo($model->filename, PATHINFO_FILENAME);
@@ -145,9 +144,6 @@ class EloquentFileRepository extends EloquentBaseRepository implements FileRepos
 
             return ($version > $carry) ? $version : $carry;
         }, 0);
-        if ($versionCurrent === 0 && $models->count() === 0) {
-            return $fileName;
-        }
 
         return $fileNameOnly . '_' . ($versionCurrent+1) . '.' . $extension;
     }
