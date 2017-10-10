@@ -25,4 +25,12 @@ interface FolderRepository extends BaseRepository
     public function allNested() : NestedFoldersCollection;
 
     public function move(File $folder, File $destination) : File;
+
+    /**
+     * Find the folder by ID or return a root folder
+     * which is an instantiated File class
+     * @param int $folderId
+     * @return File
+     */
+    public function findFolderOrRoot($folderId) : File;
 }

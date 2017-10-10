@@ -330,6 +330,22 @@ final class EloquentFolderRepositoryTest extends MediaTestCase
         $this->assertCount(2, File::all());
     }
 
+    /** @test */
+    public function it_finds_a_folder_or_returns_a_root_folder()
+    {
+        $this->folder->create(['name' => 'My Folder']);
+
+        $foundFolder = $this->folder->findFolderOrRoot(1);
+        $this->assertInstanceOf(File::class, $foundFolder);
+        $this->assertEquals('My Folder', $foundFolder->filename);
+        $this->assertTrue($foundFolder->exists);
+        $notFolder = $this->folder->findFolderOrRoot(0);
+        $this->assertFalse($notFolder->exists);
+        $this->assertEquals(0, $notFolder->id);
+        $this->assertEquals(0, $notFolder->folder_id);
+        $this->assertEquals(config('asgard.media.config.files-path'), $notFolder->path->getRelativeUrl());
+    }
+
     private function createFile($fileName = 'random/name.jpg')
     {
         return File::create([

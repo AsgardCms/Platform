@@ -37,7 +37,7 @@ class MoveMediaController extends Controller
 
     public function __invoke(MoveMediaRequest $request)
     {
-        $destination = $this->getDestinationFolder($request->get('destinationFolder'));
+        $destination = $this->folder->findFolderOrRoot($request->get('destinationFolder'));
 
         $failedMoves = 0;
         foreach ($request->get('files') as $file) {
@@ -49,28 +49,5 @@ class MoveMediaController extends Controller
             'message' => $failedMoves > 0 ? 'Some files were not moved' : 'Files moved successfully',
             'folder_id' => $destination->id,
         ]);
-    }
-
-    private function makeRootFolder() : File
-    {
-        return new File([
-            'id' => 0,
-            'folder_id' => 0,
-            'path' => config('asgard.media.config.files-path'),
-        ]);
-    }
-
-    /**
-     * @param int $destinationFolderId
-     * @return File
-     */
-    protected function getDestinationFolder($destinationFolderId) : File
-    {
-        $destination = $this->folder->findFolder($destinationFolderId);
-        if ($destination === null) {
-            $destination = $this->makeRootFolder();
-        }
-
-        return $destination;
     }
 }

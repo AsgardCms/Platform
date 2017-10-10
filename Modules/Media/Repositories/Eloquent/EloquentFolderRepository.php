@@ -107,6 +107,23 @@ class EloquentFolderRepository extends EloquentBaseRepository implements FolderR
         return $folder;
     }
 
+    /**
+     * Find the folder by ID or return a root folder
+     * which is an instantiated File class
+     * @param int $folderId
+     * @return File
+     */
+    public function findFolderOrRoot($folderId): File
+    {
+        $destination = $this->findFolder($folderId);
+
+        if ($destination === null) {
+            $destination = $this->makeRootFolder();
+        }
+
+        return $destination;
+    }
+
     private function getNewPathFor(string $filename, File $folder)
     {
         return $this->removeDoubleSlashes($folder->path->getRelativeUrl() . '/' . str_slug($filename));
@@ -131,5 +148,18 @@ class EloquentFolderRepository extends EloquentBaseRepository implements FolderR
         }
 
         return config('asgard.media.config.files-path') . str_slug(array_get($data, 'name'));
+    }
+
+    /**
+     * Create an instantiated File entity, appointed as root
+     * @return File
+     */
+    private function makeRootFolder() : File
+    {
+        return new File([
+            'id' => 0,
+            'folder_id' => 0,
+            'path' => config('asgard.media.config.files-path'),
+        ]);
     }
 }
