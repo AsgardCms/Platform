@@ -8,6 +8,7 @@ use Illuminate\Support\ServiceProvider;
 use Modules\Core\Events\BuildingSidebar;
 use Modules\Core\Traits\CanGetSidebarClassForModule;
 use Modules\Core\Traits\CanPublishConfiguration;
+use Modules\User\Console\GrantRolePermissionsCommand;
 use Modules\User\Contracts\Authentication;
 use Modules\User\Entities\UserToken;
 use Modules\User\Events\Handlers\RegisterUserSidebar;
@@ -66,6 +67,9 @@ class UserServiceProvider extends ServiceProvider
             BuildingSidebar::class,
             $this->getSidebarClassForModule('user', RegisterUserSidebar::class)
         );
+        $this->commands([
+            GrantRolePermissionsCommand::class,
+        ]);
     }
 
     /**

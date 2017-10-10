@@ -1,5 +1,8 @@
 url: https://github.com/AsgardCms/Platform
 versions:
+    "3.2.0@unreleased":
+        added:
+            - Adding new <code>asgard:user:grant-permissions</code> command to grant all module permissions to admin role
     "3.1.0":
         added:
             - Seeding new media.folders permissions on install
