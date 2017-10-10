@@ -1,5 +1,8 @@
 url: https://github.com/AsgardCms/Platform
 versions:
+    "3.2.0@unreleased":
+        changed:
+            - Upgrade Pusher client and sending additional options to the plugin
     "3.1.0":
         changed:
             - Updated AdminLTE to version 2.4.0
