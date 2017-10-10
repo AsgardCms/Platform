@@ -3,6 +3,7 @@
 namespace Modules\Media\Events\Handlers;
 
 use Illuminate\Contracts\Filesystem\Factory;
+use League\Flysystem\FileExistsException;
 use Modules\Media\Events\FileStartedMoving;
 use Modules\Media\Image\Thumbnail;
 use Modules\Media\Image\ThumbnailManager;
@@ -56,11 +57,15 @@ class MoveFileOnDisk
 
     private function move($fromPath, $toPath)
     {
-        $this->filesystem->disk($this->getConfiguredFilesystem())
-            ->move(
-                $this->getDestinationPath($fromPath),
-                $this->getDestinationPath($toPath)
-            );
+        try {
+            $this->filesystem->disk($this->getConfiguredFilesystem())
+                ->move(
+                    $this->getDestinationPath($fromPath),
+                    $this->getDestinationPath($toPath)
+                );
+        } catch (FileExistsException $e) {
+
+        }
     }
 
     /**

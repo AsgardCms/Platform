@@ -84,7 +84,6 @@ class MediaServiceProvider extends ServiceProvider
         $events->listen(FolderWasUpdated::class, RenameFolderOnDisk::class);
         $events->listen(FolderIsDeleting::class, DeleteFolderOnDisk::class);
         $events->listen(FolderIsDeleting::class, DeleteAllChildrenOfFolder::class);
-        $events->listen(FileStartedMoving::class, MoveFileOnDisk::class);
 
         $this->app[TagManager::class]->registerNamespace(new File());
         $this->registerThumbnails();
