@@ -34,4 +34,6 @@ return [
     'Browse' => 'Parcourir...',
     'upload file' => 'Uploadez un fichier',
     'remove media' => 'Supprimez le fichier',
+    'some files not moved' => 'Certains fichiers n\'ont pas été déplacés',
+    'files moved successfully' => 'Fichiers déplacés avec succès',
 ];

@@ -39,4 +39,6 @@ return [
     'edit resource' => 'Edit media',
     'destroy resource' => 'Delete media',
     'file too large' => 'File is too large. Must be below :size MB.',
+    'some files not moved' => 'Some files were not moved',
+    'files moved successfully' => 'Files moved successfully',
 ];

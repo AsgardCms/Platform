@@ -34,4 +34,6 @@ return [
     'Browse' => 'Bladeren ...',
     'upload file' => 'File uploaded',
     'remove media' => 'File verwijderen',
+    'some files not moved' => 'Sommige bestanden zijn niet verplaatst',
+    'files moved successfully' => 'Bestanden zijn succesvol verplaatst',
 ];
