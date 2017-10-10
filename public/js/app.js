@@ -104225,7 +104225,6 @@ exports.default = {
                 destinationFolder: this.destinationFolder
             });
             this.form.post(route('api.media.media.move')).then(function (response) {
-                console.log(response);
                 _this.loading = false;
                 var type = response.errors === true ? 'warning' : 'success';
 

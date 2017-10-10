@@ -52,7 +52,6 @@
                 });
                 this.form.post(route('api.media.media.move'))
                     .then((response) => {
-                        console.log(response);
                         this.loading = false;
                         const type = response.errors === true ? 'warning' : 'success';
 
