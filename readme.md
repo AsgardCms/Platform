@@ -11,3 +11,7 @@
 View the documentation at [AsgardCMS.com/docs](http://asgardcms.com/docs/).
 
 Join the conversation on Slack [![Slack](http://slack.asgardcms.com/badge.svg)](http://slack.asgardcms.com/)
+
+## License
+
+The AsgardCMS is open-sourced software licensed under the [MIT license](http://opensource.org/licenses/MIT).
