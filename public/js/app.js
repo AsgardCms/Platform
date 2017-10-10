@@ -104227,8 +104227,10 @@ exports.default = {
             this.form.post(route('api.media.media.move')).then(function (response) {
                 console.log(response);
                 _this.loading = false;
+                var type = response.errors === true ? 'warning' : 'success';
+
                 _this.$message({
-                    type: 'success',
+                    type: type,
                     message: response.message
                 });
                 _this.dialogFormVisible = false;

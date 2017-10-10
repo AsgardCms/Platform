@@ -7,6 +7,7 @@ use Modules\Media\Entities\File;
 use Modules\Media\Http\Requests\MoveMediaRequest;
 use Modules\Media\Repositories\FileRepository;
 use Modules\Media\Repositories\FolderRepository;
+use Modules\Media\Services\FolderMover;
 
 class MoveMediaController extends Controller
 {
@@ -18,11 +19,16 @@ class MoveMediaController extends Controller
      * @var FolderRepository
      */
     private $folder;
+    /**
+     * @var FolderMover
+     */
+    private $folderMover;
 
-    public function __construct(FileRepository $file, FolderRepository $folder)
+    public function __construct(FileRepository $file, FolderRepository $folder, FolderMover $folderMover)
     {
         $this->file = $file;
         $this->folder = $folder;
+        $this->folderMover = $folderMover;
     }
 
     public function __invoke(MoveMediaRequest $request)
@@ -32,6 +38,7 @@ class MoveMediaController extends Controller
             $destination = $this->makeRootFolder();
         }
 
+        $failedMoves = 0;
         foreach ($request->get('files') as $file) {
             $file = $this->file->find($file['id']);
 
@@ -39,13 +46,15 @@ class MoveMediaController extends Controller
                 $this->file->move($file, $destination);
             }
             if ($file->is_folder === true) {
-                $this->folder->move($file, $destination);
+                if ($this->folderMover->move($file, $destination) === false) {
+                    $failedMoves++;
+                }
             }
         }
 
         return response()->json([
-            'errors' => false,
-            'message' => 'Files moved successfully',
+            'errors' => $failedMoves > 0,
+            'message' => $failedMoves > 0 ? 'Some files were not moved' : 'Files moved successfully',
             'folder_id' => $destination->id,
         ]);
     }

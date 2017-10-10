@@ -54,8 +54,10 @@
                     .then((response) => {
                         console.log(response);
                         this.loading = false;
+                        const type = response.errors === true ? 'warning' : 'success';
+
                         this.$message({
-                            type: 'success',
+                            type,
                             message: response.message,
                         });
                         this.dialogFormVisible = false;
