@@ -330,101 +330,6 @@ final class EloquentFolderRepositoryTest extends MediaTestCase
         $this->assertCount(2, File::all());
     }
 
-    /** @test */
-    public function it_can_move_folder_in_database()
-    {
-        $folder = $this->folder->create(['name' => 'My Folder']);
-        $folderTwo = $this->folder->create(['name' => 'Future Child folder']);
-
-        $this->assertEquals('/assets/media/future-child-folder', $folderTwo->path->getRelativeUrl());
-        $this->folder->move($folderTwo, $folder);
-        $this->assertEquals('/assets/media/my-folder/future-child-folder', $folderTwo->path->getRelativeUrl());
-    }
-
-    /** @test */
-    public function it_can_move_folder_on_disk()
-    {
-        $folder = $this->folder->create(['name' => 'My Folder']);
-        $folderTwo = $this->folder->create(['name' => 'Future Child folder']);
-
-        $this->assertTrue($this->app['files']->isDirectory(public_path('/assets/media/future-child-folder')));
-        $this->folder->move($folderTwo, $folder);
-        $this->assertTrue(
-            $this->app['files']->isDirectory(public_path('/assets/media/my-folder/future-child-folder')),
-            'Folder was not moved'
-        );
-    }
-
-    /** @test */
-    public function it_can_move_folder_with_folders_and_files_in_it_database()
-    {
-        $mainFolder = $this->folder->create(['name' => 'My Folder']);
-        $folderTwo = $this->folder->create(['name' => 'Second folder']);
-        $folderThird = $this->folder->create(['name' => 'Third folder', 'parent_id' => $folderTwo->id]);
-        $file = app(FileService::class)->store(\Illuminate\Http\UploadedFile::fake()->image('my-file.jpg'), $folderTwo->id);
-        $fileTwo = app(FileService::class)->store(\Illuminate\Http\UploadedFile::fake()->image('my-other-file.jpg'), $folderThird->id);
-
-        $this->assertEquals('/assets/media/second-folder', $folderTwo->path->getRelativeUrl());
-        $this->assertEquals('/assets/media/second-folder/third-folder', $folderThird->path->getRelativeUrl());
-        $this->assertEquals('/assets/media/second-folder/my-file.jpg', $file->path->getRelativeUrl());
-        $this->assertEquals('/assets/media/second-folder/third-folder/my-other-file.jpg', $fileTwo->path->getRelativeUrl());
-
-        $this->folder->move($folderTwo, $mainFolder);
-
-        $folderTwo->refresh();
-        $folderThird->refresh();
-        $file->refresh();
-        $fileTwo->refresh();
-        $this->assertEquals('/assets/media/my-folder/second-folder', $folderTwo->path->getRelativeUrl());
-        $this->assertEquals('/assets/media/my-folder/second-folder/third-folder', $folderThird->path->getRelativeUrl());
-        $this->assertEquals('/assets/media/my-folder/second-folder/my-file.jpg', $file->path->getRelativeUrl());
-        $this->assertEquals('/assets/media/my-folder/second-folder/third-folder/my-other-file.jpg', $fileTwo->path->getRelativeUrl());
-    }
-
-    /** @test */
-    public function it_can_move_folder_back_to_root_folder()
-    {
-        $parentFolder = $this->folder->create(['name' => 'My Folder', 'parent_id' => 0]);
-        $folder = $this->folder->create(['name' => 'Child Folder', 'parent_id' => $parentFolder->id]);
-
-        $file = app(FileService::class)->store(\Illuminate\Http\UploadedFile::fake()->image('my-file.jpg'), $folder->id);
-
-        $this->assertEquals('/assets/media/my-folder/child-folder', $folder->path->getRelativeUrl());
-        $this->assertEquals('/assets/media/my-folder/child-folder/my-file.jpg', $file->path->getRelativeUrl());
-        $this->assertTrue($this->app['files']->isDirectory(public_path('/assets/media/my-folder/child-folder')));
-        $this->assertTrue($this->app['files']->exists(public_path('/assets/media/my-folder/child-folder/my-file.jpg')));
-
-        $this->folder->move($folder, $this->makeRootFolder());
-
-        $this->assertTrue($this->app['files']->isDirectory(public_path('/assets/media/child-folder')));
-        $this->assertTrue($this->app['files']->exists(public_path('/assets/media/child-folder/my-file.jpg')));
-        $this->assertEquals('/assets/media/child-folder', $folder->path->getRelativeUrl());
-        $file->refresh();
-        $this->assertEquals('/assets/media/child-folder/my-file.jpg', $file->path->getRelativeUrl());
-    }
-
-    /** @test */
-    public function it_can_move_folder_with_folders_and_files_in_it_disk()
-    {
-        $mainFolder = $this->folder->create(['name' => 'My Folder']);
-        $folderTwo = $this->folder->create(['name' => 'Second folder']);
-        $folderThird = $this->folder->create(['name' => 'Third folder', 'parent_id' => $folderTwo->id]);
-        $file = app(FileService::class)->store(\Illuminate\Http\UploadedFile::fake()->image('my-file.jpg'), $folderTwo->id);
-        $fileTwo = app(FileService::class)->store(\Illuminate\Http\UploadedFile::fake()->image('my-other-file.jpg'), $folderThird->id);
-
-        $this->assertTrue($this->app['files']->isDirectory(public_path('/assets/media/second-folder')));
-        $this->assertTrue($this->app['files']->isDirectory(public_path('/assets/media/second-folder/third-folder')));
-        $this->assertTrue($this->app['files']->exists(public_path('/assets/media/second-folder/my-file.jpg')));
-        $this->assertTrue($this->app['files']->exists(public_path('/assets/media/second-folder/third-folder/my-other-file.jpg')));
-
-        $this->folder->move($folderTwo, $mainFolder);
-
-        $this->assertTrue($this->app['files']->isDirectory(public_path('/assets/media/my-folder/second-folder')));
-        $this->assertTrue($this->app['files']->isDirectory(public_path('/assets/media/my-folder/second-folder/third-folder')));
-        $this->assertTrue($this->app['files']->exists(public_path('/assets/media/my-folder/second-folder/my-file.jpg')));
-        $this->assertTrue($this->app['files']->exists(public_path('/assets/media/my-folder/second-folder/third-folder/my-other-file.jpg')));
-    }
-
     private function createFile($fileName = 'random/name.jpg')
     {
         return File::create([
@@ -434,15 +339,6 @@ final class EloquentFolderRepositoryTest extends MediaTestCase
             'mimetype' => 'image/jpg',
             'filesize' => '1024',
             'folder_id' => 0,
-        ]);
-    }
-
-    private function makeRootFolder() : File
-    {
-        return new File([
-            'id' => 0,
-            'folder_id' => 0,
-            'path' => config('asgard.media.config.files-path'),
         ]);
     }
 }
