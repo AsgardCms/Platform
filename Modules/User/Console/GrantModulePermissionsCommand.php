@@ -6,7 +6,7 @@ use Illuminate\Console\Command;
 use Modules\User\Permissions\PermissionsAdder;
 use Symfony\Component\Console\Input\InputArgument;
 
-class GrantRolePermissionsCommand extends Command
+class GrantModulePermissionsCommand extends Command
 {
     protected $name = 'asgard:user:grant-permissions';
     protected $description = 'Grant all the permissions to the admin role of given module';
