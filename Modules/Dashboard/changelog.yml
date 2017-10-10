@@ -1,6 +1,6 @@
 url: https://github.com/AsgardCms/Platform
 versions:
-    "3.1.0@unreleased":
+    "3.1.0":
         added:
             - Created & loading a settings config file
             - No widget dashboard now used by default

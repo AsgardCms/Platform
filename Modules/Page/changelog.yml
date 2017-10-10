@@ -1,6 +1,6 @@
 url: https://github.com/AsgardCms/Platform
 versions:
-    "3.1.0@unreleased":
+    "3.1.0":
         added:
             - New UI interaction on the page index to select pages and mark one or mutiple as on/offline
             - New view page button on edit page views

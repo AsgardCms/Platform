@@ -1,6 +1,6 @@
 url: https://github.com/AsgardCms/Platform
 versions:
-    "3.1.0@unreleased":
+    "3.1.0":
         changed:
             - Checking for null value instead of empty for non translatable settings
             - Escaping the output of the @setting blade directive

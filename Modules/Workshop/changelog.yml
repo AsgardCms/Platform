@@ -26,7 +26,7 @@ versions:
     "2.0.0":
         added:
             - Laravel 5.4 compatibility
-            - Ability to add unreleased items in module changelog, by suffixing version with <code>@unreleased</code>
+            - Ability to add unreleased items in module changelog, by suffixing version with <code></code>
             - Protecting api routes with api admin middleware
         changed:
             - Using new more flexible way of handle permissions via middleware

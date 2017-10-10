@@ -1,6 +1,6 @@
 url: https://github.com/AsgardCms/Platform
 versions:
-    "3.1.0@unreleased":
+    "3.1.0":
         changed:
             - Updated AdminLTE to version 2.4.0
             - Use the pusher key read from configuration instead of env file
