@@ -7,8 +7,7 @@ use Modules\Media\Entities\File;
 use Modules\Media\Http\Requests\MoveMediaRequest;
 use Modules\Media\Repositories\FileRepository;
 use Modules\Media\Repositories\FolderRepository;
-use Modules\Media\Services\Movers\FileMover;
-use Modules\Media\Services\Movers\FolderMover;
+use Modules\Media\Services\Movers\Mover;
 
 class MoveMediaController extends Controller
 {
@@ -21,25 +20,19 @@ class MoveMediaController extends Controller
      */
     private $folder;
     /**
-     * @var FolderMover
+     * @var Mover
      */
-    private $folderMover;
-    /**
-     * @var FileMover
-     */
-    private $fileMover;
+    private $mover;
 
     public function __construct(
         FileRepository $file,
         FolderRepository $folder,
-        FolderMover $folderMover,
-        FileMover $fileMover
+        Mover $mover
     )
     {
         $this->file = $file;
         $this->folder = $folder;
-        $this->folderMover = $folderMover;
-        $this->fileMover = $fileMover;
+        $this->mover = $mover;
     }
 
     public function __invoke(MoveMediaRequest $request)
@@ -48,18 +41,7 @@ class MoveMediaController extends Controller
 
         $failedMoves = 0;
         foreach ($request->get('files') as $file) {
-            $file = $this->file->find($file['id']);
-            // $this->>mover->move($file, $destination)
-            if ($file->is_folder === false) {
-                if ($this->fileMover->move($file, $destination) === false) {
-                    $failedMoves++;
-                }
-            }
-            if ($file->is_folder === true) {
-                if ($this->folderMover->move($file, $destination) === false) {
-                    $failedMoves++;
-                }
-            }
+            $failedMoves = $this->mover->move($this->file->find($file['id']), $destination);
         }
 
         return response()->json([

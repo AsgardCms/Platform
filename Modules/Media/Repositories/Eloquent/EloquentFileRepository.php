@@ -59,6 +59,7 @@ class EloquentFileRepository extends EloquentBaseRepository implements FileRepos
             'mimetype' => $file->getClientMimeType(),
             'filesize' => $file->getFileInfo()->getSize(),
             'folder_id' => $parentId,
+            'is_folder' => 0,
         ];
 
         event($event = new FileIsCreating($data));
