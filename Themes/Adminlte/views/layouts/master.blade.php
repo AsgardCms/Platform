@@ -90,12 +90,14 @@
 <script src="{{ mix('js/app.js') }}"></script>
 
 <?php if (is_module_enabled('Notification')): ?>
-    <script src="https://js.pusher.com/3.0/pusher.min.js"></script>
+    <script src="https://js.pusher.com/4.1/pusher.min.js"></script>
     <script src="{{ Module::asset('notification:js/pusherNotifications.js') }}"></script>
     <script>
-        $(".notifications-list").pusherNotifications({
+        $('.notifications-list').pusherNotifications({
             pusherKey: '{{ config('broadcasting.connections.pusher.key') }}',
-            loggedInUserId: {{ $currentUser->id }}
+            pusherCluster: '{{ config('broadcasting.connections.pusher.options.cluster') }}',
+            pusherEncrypted: {{ config('broadcasting.connections.pusher.options.encrypted') }},
+            loggedInUserId: {{ $currentUser->id }},
         });
     </script>
 <?php endif; ?>
