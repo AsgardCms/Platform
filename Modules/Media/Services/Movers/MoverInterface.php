@@ -1,10 +1,10 @@
 <?php
 
-namespace Modules\Media\Services;
+namespace Modules\Media\Services\Movers;
 
 use Modules\Media\Entities\File;
 
-interface Mover
+interface MoverInterface
 {
     public function move(File $file, File $destination) : bool;
 }

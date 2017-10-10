@@ -1,6 +1,6 @@
 <?php
 
-namespace Modules\Media\Services;
+namespace Modules\Media\Services\Movers;
 
 use Illuminate\Contracts\Filesystem\Factory;
 use League\Flysystem\FileExistsException;
@@ -8,7 +8,7 @@ use Modules\Media\Entities\File;
 use Modules\Media\Repositories\FileRepository;
 use Modules\Media\Repositories\FolderRepository;
 
-final class FolderMover implements Mover
+final class FolderMover implements MoverInterface
 {
     /**
      * @var Factory

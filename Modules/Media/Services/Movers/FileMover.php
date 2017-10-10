@@ -1,6 +1,6 @@
 <?php
 
-namespace Modules\Media\Services;
+namespace Modules\Media\Services\Movers;
 
 use Illuminate\Contracts\Filesystem\Factory;
 use League\Flysystem\FileExistsException;
@@ -9,9 +9,8 @@ use Modules\Media\Image\Thumbnail;
 use Modules\Media\Image\ThumbnailManager;
 use Modules\Media\Repositories\FileRepository;
 use Modules\Media\Repositories\FolderRepository;
-use Modules\Media\ValueObjects\MediaPath;
 
-class FileMover implements Mover
+final class FileMover implements MoverInterface
 {
     /**
      * All the different images types where thumbnails should be created

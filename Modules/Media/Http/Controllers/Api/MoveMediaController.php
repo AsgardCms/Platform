@@ -7,8 +7,8 @@ use Modules\Media\Entities\File;
 use Modules\Media\Http\Requests\MoveMediaRequest;
 use Modules\Media\Repositories\FileRepository;
 use Modules\Media\Repositories\FolderRepository;
-use Modules\Media\Services\FileMover;
-use Modules\Media\Services\FolderMover;
+use Modules\Media\Services\Movers\FileMover;
+use Modules\Media\Services\Movers\FolderMover;
 
 class MoveMediaController extends Controller
 {
@@ -49,7 +49,7 @@ class MoveMediaController extends Controller
         $failedMoves = 0;
         foreach ($request->get('files') as $file) {
             $file = $this->file->find($file['id']);
-
+            // $this->>mover->move($file, $destination)
             if ($file->is_folder === false) {
                 if ($this->fileMover->move($file, $destination) === false) {
                     $failedMoves++;

@@ -5,7 +5,7 @@ namespace Modules\Media\Tests;
 use Modules\Media\Entities\File;
 use Modules\Media\Repositories\FileRepository;
 use Modules\Media\Repositories\FolderRepository;
-use Modules\Media\Services\FileMover;
+use Modules\Media\Services\Movers\FileMover;
 use Modules\Media\Services\FileService;
 
 final class FileMoverTest extends MediaTestCase
