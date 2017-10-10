@@ -25,10 +25,10 @@ class MediaController extends Controller
 
         $path = storage_path('app' . $file->path->getRelativeUrl());
 
-        return Image::make($path)->response();
+        //return Image::make($path)->response();
 
         return response()->file($path, [
-            "Content-Type:$type",
+            'Content-Type' => $type,
         ]);
     }
 }
