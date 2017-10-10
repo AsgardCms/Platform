@@ -90,6 +90,7 @@ final class FileMover implements MoverInterface
         } catch (FileExistsException $e) {
             return false;
         }
+
         return true;
     }
 

@@ -64,7 +64,6 @@ class MoveFileOnDisk
                     $this->getDestinationPath($toPath)
                 );
         } catch (FileExistsException $e) {
-
         }
     }
 

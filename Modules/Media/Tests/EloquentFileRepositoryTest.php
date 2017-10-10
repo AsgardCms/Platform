@@ -11,7 +11,6 @@ use Modules\Media\Events\FileWasCreated;
 use Modules\Media\Events\FileWasUpdated;
 use Modules\Media\Repositories\FileRepository;
 use Modules\Media\Repositories\FolderRepository;
-use Modules\Media\Services\FileService;
 use Symfony\Component\Finder\SplFileInfo;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 

@@ -3,7 +3,6 @@
 namespace Modules\Media\Http\Controllers\Api;
 
 use Illuminate\Routing\Controller;
-use Modules\Media\Entities\File;
 use Modules\Media\Http\Requests\MoveMediaRequest;
 use Modules\Media\Repositories\FileRepository;
 use Modules\Media\Repositories\FolderRepository;
@@ -28,8 +27,7 @@ class MoveMediaController extends Controller
         FileRepository $file,
         FolderRepository $folder,
         Mover $mover
-    )
-    {
+    ) {
         $this->file = $file;
         $this->folder = $folder;
         $this->mover = $mover;
