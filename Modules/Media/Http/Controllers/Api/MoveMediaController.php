@@ -7,6 +7,7 @@ use Modules\Media\Entities\File;
 use Modules\Media\Http\Requests\MoveMediaRequest;
 use Modules\Media\Repositories\FileRepository;
 use Modules\Media\Repositories\FolderRepository;
+use Modules\Media\Services\FileMover;
 use Modules\Media\Services\FolderMover;
 
 class MoveMediaController extends Controller
@@ -23,12 +24,22 @@ class MoveMediaController extends Controller
      * @var FolderMover
      */
     private $folderMover;
+    /**
+     * @var FileMover
+     */
+    private $fileMover;
 
-    public function __construct(FileRepository $file, FolderRepository $folder, FolderMover $folderMover)
+    public function __construct(
+        FileRepository $file,
+        FolderRepository $folder,
+        FolderMover $folderMover,
+        FileMover $fileMover
+    )
     {
         $this->file = $file;
         $this->folder = $folder;
         $this->folderMover = $folderMover;
+        $this->fileMover = $fileMover;
     }
 
     public function __invoke(MoveMediaRequest $request)
@@ -43,7 +54,9 @@ class MoveMediaController extends Controller
             $file = $this->file->find($file['id']);
 
             if ($file->is_folder === false) {
-                $this->file->move($file, $destination);
+                if ($this->fileMover->move($file, $destination) === false) {
+                    $failedMoves++;
+                }
             }
             if ($file->is_folder === true) {
                 if ($this->folderMover->move($file, $destination) === false) {
