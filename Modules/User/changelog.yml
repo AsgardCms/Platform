@@ -3,6 +3,7 @@ versions:
     "3.2.0@unreleased":
         added:
             - Adding new <code>asgard:user:grant-permissions</code> command to grant all module permissions to admin role
+            - Adding new <code>asgard:user:remove-permissions</code> command to remove all permissions of given module from roles and users
     "3.1.0":
         added:
             - Seeding new media.folders permissions on install

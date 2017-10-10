@@ -9,6 +9,7 @@ use Modules\Core\Events\BuildingSidebar;
 use Modules\Core\Traits\CanGetSidebarClassForModule;
 use Modules\Core\Traits\CanPublishConfiguration;
 use Modules\User\Console\GrantModulePermissionsCommand;
+use Modules\User\Console\RemoveModulePermissionsCommand;
 use Modules\User\Contracts\Authentication;
 use Modules\User\Entities\UserToken;
 use Modules\User\Events\Handlers\RegisterUserSidebar;
@@ -69,6 +70,7 @@ class UserServiceProvider extends ServiceProvider
         );
         $this->commands([
             GrantModulePermissionsCommand::class,
+            RemoveModulePermissionsCommand::class,
         ]);
     }
 
