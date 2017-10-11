@@ -44,6 +44,7 @@
                                 </el-tab-pane>
                                 <el-tab-pane :label="trans('roles.tabs.permissions')">
                                     <asgard-permissions v-model="role.permissions"
+                                                        is-role
                                                         :current-permissions="role.permissions"></asgard-permissions>
                                 </el-tab-pane>
                                 <el-tab-pane :label="trans('users.title.users')">

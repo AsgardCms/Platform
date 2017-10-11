@@ -38,7 +38,7 @@ class FullRoleTransformer extends Resource
         foreach ($permissionsConfig as $mainKey => $subPermissions) {
             foreach ($subPermissions as $key => $permissionGroup) {
                 foreach ($permissionGroup as $lastKey => $description) {
-                    $list[strtolower($key) . '.' . $lastKey] = current_permission_value($this, $key, $lastKey);
+                    $list[strtolower($key) . '.' . $lastKey] = current_permission_value_for_roles($this, $key, $lastKey);
                 }
             }
         }

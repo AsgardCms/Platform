@@ -106410,6 +106410,7 @@ exports.default = {
 //
 //
 //
+//
 
 /***/ }),
 /* 508 */
@@ -106580,10 +106581,12 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 //
 //
 //
+//
 
 exports.default = {
     mixins: [_StringHelpers2.default],
     props: {
+        isRole: { type: Boolean },
         currentPermissions: { default: null }
     },
     data: function data() {
@@ -106690,7 +106693,7 @@ var render = function() {
                           _c(
                             "el-button",
                             {
-                              attrs: { type: "text" },
+                              attrs: { type: "text", disabled: _vm.isRole },
                               on: {
                                 click: function($event) {
                                   _vm.changeState(
@@ -106815,7 +106818,7 @@ var render = function() {
                                 _c(
                                   "el-radio-button",
                                   {
-                                    attrs: { label: 0 },
+                                    attrs: { label: 0, disabled: _vm.isRole },
                                     on: { click: _vm.triggerEvent }
                                   },
                                   [_vm._v(_vm._s(_vm.trans("roles.inherit")))]
@@ -107057,6 +107060,7 @@ var render = function() {
                           [
                             _c("asgard-permissions", {
                               attrs: {
+                                "is-role": "",
                                 "current-permissions": _vm.role.permissions
                               },
                               model: {

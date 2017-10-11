@@ -14,6 +14,7 @@
                                         {{ trans('roles.allow all') }}
                                     </el-button>
                                     <el-button type="text"
+                                               :disabled="isRole"
                                                @click="changeState(subPermissionTitle, permissionActions, 0)">
                                         {{ trans('roles.inherit all') }}
                                     </el-button>
@@ -40,7 +41,7 @@
                             <div class="col-md-9">
                                 <el-radio-group v-model="permissions[`${subPermissionTitle}.${permissionAction}`]">
                                     <el-radio-button :label="1" @click="triggerEvent">{{ trans('roles.allow') }}</el-radio-button>
-                                    <el-radio-button :label="0" @click="triggerEvent">{{ trans('roles.inherit') }}</el-radio-button>
+                                    <el-radio-button :label="0" @click="triggerEvent" :disabled="isRole">{{ trans('roles.inherit') }}</el-radio-button>
                                     <el-radio-button :label="-1" @click="triggerEvent">{{ trans('roles.deny') }}</el-radio-button>
                                 </el-radio-group>
                             </div>
@@ -59,6 +60,7 @@
     export default {
         mixins: [StringHelpers],
         props: {
+            isRole: { type: Boolean },
             currentPermissions: { default: null },
         },
         data() {
