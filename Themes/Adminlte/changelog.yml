@@ -1,6 +1,6 @@
 url: https://github.com/AsgardCms/Platform
 versions:
-    "3.2.0@unreleased":
+    "3.1.1":
         changed:
             - Upgrade Pusher client and sending additional options to the plugin
     "3.1.0":
