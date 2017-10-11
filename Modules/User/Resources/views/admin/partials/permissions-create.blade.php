@@ -1,3 +1,4 @@
+@push('css-stack')
 <style>
     h3  {
         border-bottom: 1px solid #eee;
@@ -6,6 +7,7 @@
         padding: 6px 0 4px 0;
     }
 </style>
+@endpush
 <div class="box-body">
     <div class="row">
         <div class="col-md-12">

@@ -1,3 +1,4 @@
+@push('js-stack')
 <script>
     $( document ).ready(function() {
         $('.jsSelectAllAllow').on('click',function (event) {
@@ -20,3 +21,4 @@
         });
     });
 </script>
+@endpush
