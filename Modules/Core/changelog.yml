@@ -1,5 +1,8 @@
 url: https://github.com/AsgardCms/Platform
 versions:
+    "3.2.0@unreleased":
+        changed:
+            - Use blade directive in Core module views
     "3.1.0":
         added:
             - Carbon format set globally in <code>AppServiceProvider</code>
