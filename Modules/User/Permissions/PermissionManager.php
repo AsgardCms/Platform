@@ -61,11 +61,11 @@ class PermissionManager
      */
     protected function getState($checkedPermission)
     {
-        if ($checkedPermission === '1') {
+        if ($checkedPermission === '1' || $checkedPermission === 1) {
             return true;
         }
 
-        if ($checkedPermission === '-1') {
+        if ($checkedPermission === '-1' || $checkedPermission === -1) {
             return false;
         }
 
