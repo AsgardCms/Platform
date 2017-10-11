@@ -13,6 +13,8 @@ class TranslationsViewComposer
             'core' => array_dot(trans('core::core')),
             'media' => array_dot(trans('media::media')),
             'folders' => array_dot(trans('media::folders')),
+            'roles' => array_dot(trans('user::roles')),
+            'users' => array_dot(trans('user::users')),
         ]);
 
         $view->with(compact('staticTranslations'));

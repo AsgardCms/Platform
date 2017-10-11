@@ -16,6 +16,7 @@ return [
     ],
     'table' => [
         'name' => 'Name',
+        'slug' => 'Slug',
     ],
     'tabs' => [
         'data' => 'Data',
