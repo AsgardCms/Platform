@@ -6,7 +6,7 @@
             </h1>
             <el-breadcrumb separator="/">
                 <el-breadcrumb-item>
-                    <a href="/backend">Home</a>
+                    <a href="/backend">{{ trans('core.breadcrumb.home') }}</a>
                 </el-breadcrumb-item>
                 <el-breadcrumb-item :to="{name: 'admin.user.roles.index'}">{{ trans('roles.title.roles') }}
                 </el-breadcrumb-item>
@@ -22,7 +22,7 @@
                                 <div class="actions el-col el-col-8">
                                     <router-link :to="{name: 'admin.user.roles.create'}">
                                         <el-button type="primary"><i class="el-icon-edit"></i>
-                                            {{ trans('roles.button.new-role') }}
+                                            {{ trans('roles.new-role') }}
                                         </el-button>
                                     </router-link>
                                 </div>
@@ -62,7 +62,7 @@
                                     <template scope="scope">
                                         <el-button-group>
                                             <edit-button
-                                                    :to="{name: 'admin.page.page.edit', params: {pageId: scope.row.id}}"></edit-button>
+                                                    :to="{name: 'admin.user.roles.edit', params: {roleId: scope.row.id}}"></edit-button>
                                             <delete-button :scope="scope" :rows="data"></delete-button>
                                         </el-button-group>
                                     </template>
@@ -157,7 +157,7 @@
                 this.queryServer({ search: query });
             },
             goToEdit(scope) {
-                this.$router.push({ name: 'admin.page.page.edit', params: { pageId: scope.row.id } });
+                this.$router.push({ name: 'admin.user.roles.edit', params: { roleId: scope.row.id } });
             },
         },
         mounted() {
