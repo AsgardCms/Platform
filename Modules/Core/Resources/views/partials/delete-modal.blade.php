@@ -7,11 +7,11 @@
             </div>
             <div class="modal-body">
                 <div class="default-message">
-                    <?php if (isset($message)): ?>
+                    @isset($message)
                         {!! $message !!}
-                    <?php else: ?>
+                    @else
                         {{ trans('core::core.modal.confirmation-message') }}
-                    <?php endif; ?>
+                    @endisset
                 </div>
                 <div class="custom-message"></div>
             </div>
