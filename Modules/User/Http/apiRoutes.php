@@ -18,9 +18,14 @@ $router->group(['prefix' => '/user', 'middleware' => ['api.token', 'auth.admin']
         'uses' => 'RoleController@store',
         'middleware' => 'token-can:user.roles.create',
     ]);
-    $router->post('roles/{role}', [
+    $router->post('roles/find/{role}', [
         'as' => 'api.user.role.find',
         'uses' => 'RoleController@find',
+        'middleware' => 'token-can:user.roles.edit',
+    ]);
+    $router->post('roles/find-new', [
+        'as' => 'api.user.role.find-new',
+        'uses' => 'RoleController@findNew',
         'middleware' => 'token-can:user.roles.edit',
     ]);
     $router->post('roles/{role}/edit', [
@@ -28,10 +33,15 @@ $router->group(['prefix' => '/user', 'middleware' => ['api.token', 'auth.admin']
         'uses' => 'RoleController@update',
         'middleware' => 'token-can:user.roles.edit',
     ]);
-
     $router->delete('roles/{role}', [
         'as' => 'api.user.role.destroy',
         'uses' => 'RoleController@destroy',
         'middleware' => 'token-can:user.roles.destroy',
+    ]);
+
+    $router->get('permissions', [
+        'as' => 'api.user.permissions.index',
+        'uses' => 'PermissionsController@index',
+        'middleware' => 'token-can:user.roles.index',
     ]);
 });
