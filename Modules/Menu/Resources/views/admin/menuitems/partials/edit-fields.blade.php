@@ -13,22 +13,22 @@
     <label for="page">{{ trans('menu::menu-items.form.page') }}</label>
     <select class="form-control" name="page_id" id="page">
         <option value=""></option>
-        <?php foreach ($pages as $page): ?>
-        <option value="{{ $page->id }}" {{ $menuItem->page_id == $page->id ? 'selected' : '' }}>
-            {{ $page->title }}
-        </option>
-        <?php endforeach; ?>
+        @foreach ($pages as $page)
+            <option value="{{ $page->id }}" {{ $menuItem->page_id == $page->id ? 'selected' : '' }}>
+                {{ $page->title }}
+            </option>
+        @endforeach
     </select>
 </div>
 <div class="form-group">
     <label for="parent_id">{{ trans('menu::menu-items.form.parent menu item') }}</label>
     <select class="form-control" name="parent_id" id="parent_id">
         <option value=""></option>
-        <?php foreach ($menuSelect as $parentMenuItemId => $parentMenuItemName): ?>
-        <?php if ($menuItem->id != $parentMenuItemId): ?>
-        <option value="{{ $parentMenuItemId }}" {{ $menuItem->parent_id == $parentMenuItemId ? ' selected' : '' }}>{{ $parentMenuItemName }}</option>
-        <?php endif; ?>
-        <?php endforeach; ?>
+        @foreach ($menuSelect as $parentMenuItemId => $parentMenuItemName)
+            @if ($menuItem->id != $parentMenuItemId)
+                <option value="{{ $parentMenuItemId }}" {{ $menuItem->parent_id == $parentMenuItemId ? ' selected' : '' }}>{{ $parentMenuItemName }}</option>
+            @endif
+        @endforeach
     </select>
 </div>
 <div class="form-group">

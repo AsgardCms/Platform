@@ -23,21 +23,23 @@
                 <div class="nav-tabs-custom">
                     <ul class="nav nav-tabs">
                         <?php $i = 0; ?>
-                        <?php foreach (LaravelLocalization::getSupportedLocales() as $locale => $language): ?>
+                        @foreach (LaravelLocalization::getSupportedLocales() as $locale => $language)
                             <?php $i++; ?>
                             <li class="{{ App::getLocale() == $locale ? 'active' : '' }}">
-                                <a href="#tab_{{ $i }}" data-toggle="tab">{{ trans('core::core.tab.'. strtolower($language['name'])) }}</a>
+                                <a href="#tab_{{ $i }}" data-toggle="tab">
+                                    {{ trans('core::core.tab.'. strtolower($language['name'])) }}
+                                </a>
                             </li>
-                        <?php endforeach; ?>
+                        @endforeach
                     </ul>
                     <div class="tab-content">
                         <?php $i = 0; ?>
-                        <?php foreach (LaravelLocalization::getSupportedLocales() as $locale => $language): ?>
+                        @foreach (LaravelLocalization::getSupportedLocales() as $locale => $language): ?>
                             <?php $i++; ?>
                             <div class="tab-pane {{ App::getLocale() == $locale ? 'active' : '' }}" id="tab_{{ $i }}">
                                 @include('menu::admin.menuitems.partials.create-trans-fields', ['lang' => $locale])
                             </div>
-                        <?php endforeach; ?>
+                        @endforeach
                     </div>
                 </div>
             </div>

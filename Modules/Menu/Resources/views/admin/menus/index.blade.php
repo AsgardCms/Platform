@@ -34,8 +34,8 @@
                         </tr>
                     </thead>
                     <tbody>
-                    <?php if (isset($menus)): ?>
-                        <?php foreach ($menus as $menu): ?>
+                    @isset($menus)
+                        @foreach ($menus as $menu)
                             <tr>
                                 <td>
                                     <a href="{{ route('admin.menu.menu.edit', [$menu->id]) }}">
@@ -49,13 +49,17 @@
                                 </td>
                                 <td>
                                     <div class="btn-group">
-                                        <a href="{{ route('admin.menu.menu.edit', [$menu->id]) }}" class="btn btn-default btn-flat"><i class="glyphicon glyphicon-pencil"></i></a>
-                                        <button class="btn btn-danger btn-flat" data-toggle="modal" data-target="#confirmation-{{ $menu->id }}"><i class="glyphicon glyphicon-trash"></i></button>
+                                        <a href="{{ route('admin.menu.menu.edit', [$menu->id]) }}"
+                                           class="btn btn-default btn-flat"><i
+                                                    class="glyphicon glyphicon-pencil"></i></a>
+                                        <button class="btn btn-danger btn-flat" data-toggle="modal"
+                                                data-target="#confirmation-{{ $menu->id }}"><i
+                                                    class="glyphicon glyphicon-trash"></i></button>
                                     </div>
                                 </td>
                             </tr>
-                        <?php endforeach; ?>
-                    <?php endif; ?>
+                        @endforeach
+                    @endisset
                     </tbody>
                     <tfoot>
                         <tr>
@@ -71,8 +75,8 @@
         </div>
     </div>
 </div>
-<?php if (isset($menus)): ?>
-    <?php foreach ($menus as $menu): ?>
+@isset($menus)
+    @foreach ($menus as $menu)
     <!-- Modal -->
     <div class="modal fade modal-danger" id="confirmation-{{ $menu->id }}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
         <div class="modal-dialog">
@@ -93,8 +97,8 @@
             </div>
         </div>
     </div>
-    <?php endforeach; ?>
-<?php endif; ?>
+    @endforeach
+@endisset
 @stop
 
 @section('footer')
