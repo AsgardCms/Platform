@@ -11,6 +11,7 @@ import locale from 'element-ui/lib/locale/lang/en';
 import VueSimplemde from 'vue-simplemde';
 import PageRoutes from '../../../Modules/Page/Assets/js/PageRoutes';
 import MediaRoutes from '../../../Modules/Media/Assets/js/MediaRoutes';
+import UserRoutes from '../../../Modules/User/Assets/js/UserRoutes';
 
 Vue.use(ElementUI, { locale });
 Vue.use(DataTables, { locale });
@@ -47,6 +48,7 @@ const router = new VueRouter({
     routes: [
         ...PageRoutes,
         ...MediaRoutes,
+        ...UserRoutes,
     ],
 });
 

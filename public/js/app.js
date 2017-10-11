@@ -46337,6 +46337,10 @@ var _MediaRoutes = __webpack_require__(473);
 
 var _MediaRoutes2 = _interopRequireDefault(_MediaRoutes);
 
+var _UserRoutes = __webpack_require__(542);
+
+var _UserRoutes2 = _interopRequireDefault(_UserRoutes);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
@@ -46375,7 +46379,7 @@ function makeBaseUrl() {
 var router = new _vueRouter2.default({
     mode: 'history',
     base: makeBaseUrl(),
-    routes: [].concat(_toConsumableArray(_PageRoutes2.default), _toConsumableArray(_MediaRoutes2.default))
+    routes: [].concat(_toConsumableArray(_PageRoutes2.default), _toConsumableArray(_MediaRoutes2.default), _toConsumableArray(_UserRoutes2.default))
 });
 
 var messages = _defineProperty({}, currentLocale, window.AsgardCMS.translations);
@@ -106917,6 +106921,595 @@ if (false) {
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 531 */,
+/* 532 */,
+/* 533 */,
+/* 534 */,
+/* 535 */,
+/* 536 */,
+/* 537 */,
+/* 538 */,
+/* 539 */,
+/* 540 */,
+/* 541 */,
+/* 542 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _RoleTable = __webpack_require__(543);
+
+var _RoleTable2 = _interopRequireDefault(_RoleTable);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var locales = window.AsgardCMS.locales;
+
+exports.default = [{
+    path: '/user/roles',
+    name: 'admin.user.roles.index',
+    component: _RoleTable2.default
+}, {
+    path: '/user/roles/create',
+    name: 'admin.user.roles.create',
+    component: _RoleTable2.default
+}];
+
+/***/ }),
+/* 543 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(11)
+/* script */
+var __vue_script__ = __webpack_require__(544)
+/* template */
+var __vue_template__ = __webpack_require__(545)
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "Modules/User/Assets/js/components/RoleTable.vue"
+if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
+if (Component.options.functional) {console.error("[vue-loader] RoleTable.vue: functional components are not supported with templates, they should use render functions.")}
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-09f37447", Component.options)
+  } else {
+    hotAPI.reload("data-v-09f37447", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 544 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _axios = __webpack_require__(27);
+
+var _axios2 = _interopRequireDefault(_axios);
+
+var _lodash = __webpack_require__(163);
+
+var _lodash2 = _interopRequireDefault(_lodash);
+
+var _ShortcutHelper = __webpack_require__(164);
+
+var _ShortcutHelper2 = _interopRequireDefault(_ShortcutHelper);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+exports.default = {
+    mixins: [_ShortcutHelper2.default],
+    data: function data() {
+        return {
+            data: [],
+            meta: {
+                current_page: 1,
+                per_page: 10
+            },
+            order_meta: {
+                order_by: '',
+                order: ''
+            },
+            links: {},
+            searchQuery: '',
+            tableIsLoading: false
+        };
+    },
+
+    methods: {
+        queryServer: function queryServer(customProperties) {
+            var _this = this;
+
+            var properties = {
+                page: this.meta.current_page,
+                per_page: this.meta.per_page,
+                order_by: this.order_meta.order_by,
+                order: this.order_meta.order,
+                search: this.searchQuery
+            };
+
+            _axios2.default.get(route('api.user.role.index', _lodash2.default.merge(properties, customProperties))).then(function (response) {
+                _this.tableIsLoading = false;
+                _this.data = response.data.data;
+                _this.meta = response.data.meta;
+                _this.links = response.data.links;
+
+                _this.order_meta.order_by = properties.order_by;
+                _this.order_meta.order = properties.order;
+            });
+        },
+        fetchData: function fetchData() {
+            this.tableIsLoading = true;
+            this.queryServer();
+        },
+        handleSizeChange: function handleSizeChange(event) {
+            console.log('per page :' + event);
+            this.tableIsLoading = true;
+            this.queryServer({ per_page: event });
+        },
+        handleCurrentChange: function handleCurrentChange(event) {
+            console.log('current page :' + event);
+            this.tableIsLoading = true;
+            this.queryServer({ page: event });
+        },
+        handleSortChange: function handleSortChange(event) {
+            console.log('sorting', event);
+            this.tableIsLoading = true;
+            this.queryServer({ order_by: event.prop, order: event.order });
+        },
+        performSearch: function performSearch(query) {
+            console.log('searching:' + query);
+            this.tableIsLoading = true;
+            this.queryServer({ search: query });
+        },
+        goToEdit: function goToEdit(scope) {
+            this.$router.push({ name: 'admin.page.page.edit', params: { pageId: scope.row.id } });
+        }
+    },
+    mounted: function mounted() {
+        this.fetchData();
+    }
+}; //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/***/ }),
+/* 545 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", [
+    _c(
+      "div",
+      { staticClass: "content-header" },
+      [
+        _c("h1", [
+          _vm._v(
+            "\n            " +
+              _vm._s(_vm.trans("roles.title.roles")) +
+              "\n        "
+          )
+        ]),
+        _vm._v(" "),
+        _c(
+          "el-breadcrumb",
+          { attrs: { separator: "/" } },
+          [
+            _c("el-breadcrumb-item", [
+              _c("a", { attrs: { href: "/backend" } }, [_vm._v("Home")])
+            ]),
+            _vm._v(" "),
+            _c(
+              "el-breadcrumb-item",
+              { attrs: { to: { name: "admin.user.roles.index" } } },
+              [
+                _vm._v(
+                  _vm._s(_vm.trans("roles.title.roles")) + "\n            "
+                )
+              ]
+            )
+          ],
+          1
+        )
+      ],
+      1
+    ),
+    _vm._v(" "),
+    _c("div", { staticClass: "row" }, [
+      _c("div", { staticClass: "col-xs-12" }, [
+        _c("div", { staticClass: "box box-primary" }, [
+          _c("div", { staticClass: "box-body" }, [
+            _c(
+              "div",
+              { staticClass: "sc-table" },
+              [
+                _c(
+                  "div",
+                  {
+                    staticClass: "tool-bar el-row",
+                    staticStyle: { "padding-bottom": "20px" }
+                  },
+                  [
+                    _c(
+                      "div",
+                      { staticClass: "actions el-col el-col-8" },
+                      [
+                        _c(
+                          "router-link",
+                          {
+                            attrs: { to: { name: "admin.user.roles.create" } }
+                          },
+                          [
+                            _c("el-button", { attrs: { type: "primary" } }, [
+                              _c("i", { staticClass: "el-icon-edit" }),
+                              _vm._v(
+                                "\n                                        " +
+                                  _vm._s(_vm.trans("roles.button.new-role")) +
+                                  "\n                                    "
+                              )
+                            ])
+                          ],
+                          1
+                        )
+                      ],
+                      1
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      { staticClass: "search el-col el-col-5" },
+                      [
+                        _c("el-input", {
+                          attrs: { icon: "search" },
+                          on: { change: _vm.performSearch },
+                          model: {
+                            value: _vm.searchQuery,
+                            callback: function($$v) {
+                              _vm.searchQuery = $$v
+                            },
+                            expression: "searchQuery"
+                          }
+                        })
+                      ],
+                      1
+                    )
+                  ]
+                ),
+                _vm._v(" "),
+                _c(
+                  "el-table",
+                  {
+                    directives: [
+                      {
+                        name: "loading",
+                        rawName: "v-loading.body",
+                        value: _vm.tableIsLoading,
+                        expression: "tableIsLoading",
+                        modifiers: { body: true }
+                      }
+                    ],
+                    ref: "pageTable",
+                    staticStyle: { width: "100%" },
+                    attrs: { data: _vm.data, stripe: "" },
+                    on: { "sort-change": _vm.handleSortChange }
+                  },
+                  [
+                    _c("el-table-column", {
+                      attrs: {
+                        prop: "id",
+                        label: "Id",
+                        width: "75",
+                        sortable: "custom"
+                      }
+                    }),
+                    _vm._v(" "),
+                    _c("el-table-column", {
+                      attrs: {
+                        prop: "name",
+                        label: _vm.trans("roles.table.name"),
+                        sortable: "custom"
+                      },
+                      scopedSlots: _vm._u([
+                        {
+                          key: "default",
+                          fn: function(scope) {
+                            return [
+                              _c(
+                                "a",
+                                {
+                                  attrs: { href: "#" },
+                                  on: {
+                                    click: function($event) {
+                                      $event.preventDefault()
+                                      _vm.goToEdit(scope)
+                                    }
+                                  }
+                                },
+                                [
+                                  _vm._v(
+                                    "\n                                        " +
+                                      _vm._s(scope.row.name) +
+                                      "\n                                    "
+                                  )
+                                ]
+                              )
+                            ]
+                          }
+                        }
+                      ])
+                    }),
+                    _vm._v(" "),
+                    _c("el-table-column", {
+                      attrs: {
+                        prop: "slug",
+                        label: _vm.trans("roles.table.slug"),
+                        sortable: "custom"
+                      },
+                      scopedSlots: _vm._u([
+                        {
+                          key: "default",
+                          fn: function(scope) {
+                            return [
+                              _c(
+                                "a",
+                                {
+                                  attrs: { href: "#" },
+                                  on: {
+                                    click: function($event) {
+                                      $event.preventDefault()
+                                      _vm.goToEdit(scope)
+                                    }
+                                  }
+                                },
+                                [
+                                  _vm._v(
+                                    "\n                                        " +
+                                      _vm._s(scope.row.slug) +
+                                      "\n                                    "
+                                  )
+                                ]
+                              )
+                            ]
+                          }
+                        }
+                      ])
+                    }),
+                    _vm._v(" "),
+                    _c("el-table-column", {
+                      attrs: {
+                        prop: "created_at",
+                        label: _vm.trans("core.table.created at"),
+                        sortable: "custom"
+                      }
+                    }),
+                    _vm._v(" "),
+                    _c("el-table-column", {
+                      attrs: {
+                        prop: "actions",
+                        label: _vm.trans("core.table.actions")
+                      },
+                      scopedSlots: _vm._u([
+                        {
+                          key: "default",
+                          fn: function(scope) {
+                            return [
+                              _c(
+                                "el-button-group",
+                                [
+                                  _c("edit-button", {
+                                    attrs: {
+                                      to: {
+                                        name: "admin.page.page.edit",
+                                        params: { pageId: scope.row.id }
+                                      }
+                                    }
+                                  }),
+                                  _vm._v(" "),
+                                  _c("delete-button", {
+                                    attrs: { scope: scope, rows: _vm.data }
+                                  })
+                                ],
+                                1
+                              )
+                            ]
+                          }
+                        }
+                      ])
+                    })
+                  ],
+                  1
+                ),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  {
+                    staticClass: "pagination-wrap",
+                    staticStyle: {
+                      "text-align": "center",
+                      "padding-top": "20px"
+                    }
+                  },
+                  [
+                    _c("el-pagination", {
+                      attrs: {
+                        "current-page": _vm.meta.current_page,
+                        "page-sizes": [10, 20, 50, 100],
+                        "page-size": parseInt(_vm.meta.per_page),
+                        layout: "total, sizes, prev, pager, next, jumper",
+                        total: _vm.meta.total
+                      },
+                      on: {
+                        "size-change": _vm.handleSizeChange,
+                        "current-change": _vm.handleCurrentChange,
+                        "update:currentPage": function($event) {
+                          _vm.meta.current_page = $event
+                        }
+                      }
+                    })
+                  ],
+                  1
+                )
+              ],
+              1
+            )
+          ])
+        ])
+      ])
+    ]),
+    _vm._v(" "),
+    _c("button", {
+      directives: [
+        {
+          name: "shortkey",
+          rawName: "v-shortkey",
+          value: ["c"],
+          expression: "['c']"
+        },
+        { name: "show", rawName: "v-show", value: false, expression: "false" }
+      ],
+      on: {
+        shortkey: function($event) {
+          _vm.pushRoute({ name: "admin.user.roles.create" })
+        }
+      }
+    })
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+     require("vue-hot-reload-api").rerender("data-v-09f37447", module.exports)
+  }
+}
 
 /***/ })
 /******/ ]);
