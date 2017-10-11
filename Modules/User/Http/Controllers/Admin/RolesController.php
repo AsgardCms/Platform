@@ -2,7 +2,7 @@
 
 namespace Modules\User\Http\Controllers\Admin;
 
-use Modules\User\Http\Requests\RolesRequest;
+use Modules\User\Http\Requests\UpdateRoleRequest;
 use Modules\User\Permissions\PermissionManager;
 use Modules\User\Repositories\RoleRepository;
 
@@ -45,11 +45,10 @@ class RolesController extends BaseUserModuleController
 
     /**
      * Store a newly created resource in storage.
-     *
-     * @param  RolesRequest $request
+     * @param  UpdateRoleRequest $request
      * @return Response
      */
-    public function store(RolesRequest $request)
+    public function store(UpdateRoleRequest $request)
     {
         $data = $this->mergeRequestWithPermissions($request);
 
@@ -77,12 +76,11 @@ class RolesController extends BaseUserModuleController
 
     /**
      * Update the specified resource in storage.
-     *
      * @param  int          $id
-     * @param  RolesRequest $request
+     * @param  UpdateRoleRequest $request
      * @return Response
      */
-    public function update($id, RolesRequest $request)
+    public function update($id, UpdateRoleRequest $request)
     {
         $data = $this->mergeRequestWithPermissions($request);
 
