@@ -1,5 +1,20 @@
 <template>
     <div>
+        <p class="pull-right">
+            <el-button type="text"
+                       @click="changeStateForAll(1)">
+                {{ trans('roles.allow all') }}
+            </el-button>
+            <el-button type="text"
+                       :disabled="isRole"
+                       @click="changeStateForAll(0)">
+                {{ trans('roles.inherit all') }}
+            </el-button>
+            <el-button type="text"
+                       @click="changeStateForAll(-1)">
+                {{ trans('roles.deny all') }}
+            </el-button>
+        </p>
         <div v-for="(value, name) in allPermissions" :key="name">
             <h3>{{ name }}</h3>
             <div v-for="(permissionActions, subPermissionTitle) in value" :key="subPermissionTitle">
@@ -82,6 +97,11 @@
             changeState(permissionPart, actions, state) {
                 _.forEach(actions, (translationKey, key) => {
                     this.permissions[`${permissionPart}.${key}`] = state;
+                });
+            },
+            changeStateForAll(state) {
+                _.forEach(this.permissions, (index, permission) => {
+                    this.permissions[permission] = state;
                 });
             },
             fetchPermissions() {

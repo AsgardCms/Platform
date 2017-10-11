@@ -106583,6 +106583,21 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 exports.default = {
     mixins: [_StringHelpers2.default],
@@ -106614,12 +106629,19 @@ exports.default = {
                 _this.permissions[permissionPart + '.' + key] = state;
             });
         },
-        fetchPermissions: function fetchPermissions() {
+        changeStateForAll: function changeStateForAll(state) {
             var _this2 = this;
 
+            _.forEach(this.permissions, function (index, permission) {
+                _this2.permissions[permission] = state;
+            });
+        },
+        fetchPermissions: function fetchPermissions() {
+            var _this3 = this;
+
             _axios2.default.get(route('api.user.permissions.index')).then(function (response) {
-                _this2.loading = false;
-                _this2.allPermissions = response.data.permissions;
+                _this3.loading = false;
+                _this3.allPermissions = response.data.permissions;
             });
         }
     },
@@ -106645,211 +106667,278 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c(
     "div",
-    _vm._l(_vm.allPermissions, function(value, name) {
-      return _c(
-        "div",
-        { key: name },
+    [
+      _c(
+        "p",
+        { staticClass: "pull-right" },
         [
-          _c("h3", [_vm._v(_vm._s(name))]),
+          _c(
+            "el-button",
+            {
+              attrs: { type: "text" },
+              on: {
+                click: function($event) {
+                  _vm.changeStateForAll(1)
+                }
+              }
+            },
+            [
+              _vm._v(
+                "\n            " +
+                  _vm._s(_vm.trans("roles.allow all")) +
+                  "\n        "
+              )
+            ]
+          ),
           _vm._v(" "),
-          _vm._l(value, function(permissionActions, subPermissionTitle) {
-            return _c("div", { key: subPermissionTitle }, [
-              _c("div", { staticClass: "row" }, [
-                _c("div", { staticClass: "col-md-12" }, [
-                  _c("div", { staticClass: "row" }, [
-                    _c("div", { staticClass: "col-md-3" }, [
-                      _c("h4", { staticClass: "pull-left" }, [
-                        _vm._v(_vm._s(_vm.ucfirst(subPermissionTitle)))
-                      ])
-                    ]),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "col-md-9" }, [
-                      _c(
-                        "p",
-                        { staticStyle: { "margin-top": "10px" } },
-                        [
-                          _c(
-                            "el-button",
-                            {
-                              attrs: { type: "text" },
-                              on: {
-                                click: function($event) {
-                                  _vm.changeState(
-                                    subPermissionTitle,
-                                    permissionActions,
-                                    1
-                                  )
-                                }
-                              }
-                            },
-                            [
-                              _vm._v(
-                                "\n                                    " +
-                                  _vm._s(_vm.trans("roles.allow all")) +
-                                  "\n                                "
-                              )
-                            ]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "el-button",
-                            {
-                              attrs: { type: "text", disabled: _vm.isRole },
-                              on: {
-                                click: function($event) {
-                                  _vm.changeState(
-                                    subPermissionTitle,
-                                    permissionActions,
-                                    0
-                                  )
-                                }
-                              }
-                            },
-                            [
-                              _vm._v(
-                                "\n                                    " +
-                                  _vm._s(_vm.trans("roles.inherit all")) +
-                                  "\n                                "
-                              )
-                            ]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "el-button",
-                            {
-                              attrs: { type: "text" },
-                              on: {
-                                click: function($event) {
-                                  _vm.changeState(
-                                    subPermissionTitle,
-                                    permissionActions,
-                                    -1
-                                  )
-                                }
-                              }
-                            },
-                            [
-                              _vm._v(
-                                "\n                                    " +
-                                  _vm._s(_vm.trans("roles.deny all")) +
-                                  "\n                                "
-                              )
-                            ]
-                          )
-                        ],
-                        1
-                      )
-                    ])
-                  ])
-                ])
-              ]),
-              _vm._v(" "),
-              _c(
-                "div",
-                { staticClass: "row" },
-                _vm._l(permissionActions, function(label, permissionAction) {
-                  return _c(
-                    "div",
-                    { key: permissionAction, staticClass: "col-md-12" },
-                    [
-                      _c("div", { staticClass: "row" }, [
-                        _c("div", { staticClass: "col-md-3" }, [
-                          _c(
-                            "div",
-                            {
-                              staticClass:
-                                "visible-sm-block visible-md-block visible-lg-block"
-                            },
-                            [
-                              _c(
-                                "label",
-                                {
-                                  staticClass: "control-label text-right",
-                                  staticStyle: { display: "block" }
-                                },
-                                [_vm._v(_vm._s(_vm.parseTranslation(label)))]
-                              )
-                            ]
-                          ),
-                          _vm._v(" "),
-                          _c("div", { staticClass: "visible-xs-block" }, [
-                            _c("label", { staticClass: "control-label" }, [
-                              _vm._v(_vm._s(_vm.parseTranslation(label)))
-                            ])
-                          ])
-                        ]),
-                        _vm._v(" "),
+          _c(
+            "el-button",
+            {
+              attrs: { type: "text", disabled: _vm.isRole },
+              on: {
+                click: function($event) {
+                  _vm.changeStateForAll(0)
+                }
+              }
+            },
+            [
+              _vm._v(
+                "\n            " +
+                  _vm._s(_vm.trans("roles.inherit all")) +
+                  "\n        "
+              )
+            ]
+          ),
+          _vm._v(" "),
+          _c(
+            "el-button",
+            {
+              attrs: { type: "text" },
+              on: {
+                click: function($event) {
+                  _vm.changeStateForAll(-1)
+                }
+              }
+            },
+            [
+              _vm._v(
+                "\n            " +
+                  _vm._s(_vm.trans("roles.deny all")) +
+                  "\n        "
+              )
+            ]
+          )
+        ],
+        1
+      ),
+      _vm._v(" "),
+      _vm._l(_vm.allPermissions, function(value, name) {
+        return _c(
+          "div",
+          { key: name },
+          [
+            _c("h3", [_vm._v(_vm._s(name))]),
+            _vm._v(" "),
+            _vm._l(value, function(permissionActions, subPermissionTitle) {
+              return _c("div", { key: subPermissionTitle }, [
+                _c("div", { staticClass: "row" }, [
+                  _c("div", { staticClass: "col-md-12" }, [
+                    _c("div", { staticClass: "row" }, [
+                      _c("div", { staticClass: "col-md-3" }, [
+                        _c("h4", { staticClass: "pull-left" }, [
+                          _vm._v(_vm._s(_vm.ucfirst(subPermissionTitle)))
+                        ])
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "col-md-9" }, [
                         _c(
-                          "div",
-                          { staticClass: "col-md-9" },
+                          "p",
+                          { staticStyle: { "margin-top": "10px" } },
                           [
                             _c(
-                              "el-radio-group",
+                              "el-button",
                               {
-                                model: {
-                                  value:
-                                    _vm.permissions[
-                                      subPermissionTitle +
-                                        "." +
-                                        permissionAction
-                                    ],
-                                  callback: function($$v) {
-                                    _vm.$set(
-                                      _vm.permissions,
-                                      subPermissionTitle +
-                                        "." +
-                                        permissionAction,
-                                      $$v
+                                attrs: { type: "text" },
+                                on: {
+                                  click: function($event) {
+                                    _vm.changeState(
+                                      subPermissionTitle,
+                                      permissionActions,
+                                      1
                                     )
-                                  },
-                                  expression:
-                                    "permissions[`${subPermissionTitle}.${permissionAction}`]"
+                                  }
                                 }
                               },
                               [
-                                _c(
-                                  "el-radio-button",
-                                  {
-                                    attrs: { label: 1 },
-                                    on: { click: _vm.triggerEvent }
-                                  },
-                                  [_vm._v(_vm._s(_vm.trans("roles.allow")))]
-                                ),
-                                _vm._v(" "),
-                                _c(
-                                  "el-radio-button",
-                                  {
-                                    attrs: { label: 0, disabled: _vm.isRole },
-                                    on: { click: _vm.triggerEvent }
-                                  },
-                                  [_vm._v(_vm._s(_vm.trans("roles.inherit")))]
-                                ),
-                                _vm._v(" "),
-                                _c(
-                                  "el-radio-button",
-                                  {
-                                    attrs: { label: -1 },
-                                    on: { click: _vm.triggerEvent }
-                                  },
-                                  [_vm._v(_vm._s(_vm.trans("roles.deny")))]
+                                _vm._v(
+                                  "\n                                    " +
+                                    _vm._s(_vm.trans("roles.allow all")) +
+                                    "\n                                "
                                 )
-                              ],
-                              1
+                              ]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "el-button",
+                              {
+                                attrs: { type: "text", disabled: _vm.isRole },
+                                on: {
+                                  click: function($event) {
+                                    _vm.changeState(
+                                      subPermissionTitle,
+                                      permissionActions,
+                                      0
+                                    )
+                                  }
+                                }
+                              },
+                              [
+                                _vm._v(
+                                  "\n                                    " +
+                                    _vm._s(_vm.trans("roles.inherit all")) +
+                                    "\n                                "
+                                )
+                              ]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "el-button",
+                              {
+                                attrs: { type: "text" },
+                                on: {
+                                  click: function($event) {
+                                    _vm.changeState(
+                                      subPermissionTitle,
+                                      permissionActions,
+                                      -1
+                                    )
+                                  }
+                                }
+                              },
+                              [
+                                _vm._v(
+                                  "\n                                    " +
+                                    _vm._s(_vm.trans("roles.deny all")) +
+                                    "\n                                "
+                                )
+                              ]
                             )
                           ],
                           1
                         )
                       ])
-                    ]
-                  )
-                })
-              )
-            ])
-          })
-        ],
-        2
-      )
-    })
+                    ])
+                  ])
+                ]),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  { staticClass: "row" },
+                  _vm._l(permissionActions, function(label, permissionAction) {
+                    return _c(
+                      "div",
+                      { key: permissionAction, staticClass: "col-md-12" },
+                      [
+                        _c("div", { staticClass: "row" }, [
+                          _c("div", { staticClass: "col-md-3" }, [
+                            _c(
+                              "div",
+                              {
+                                staticClass:
+                                  "visible-sm-block visible-md-block visible-lg-block"
+                              },
+                              [
+                                _c(
+                                  "label",
+                                  {
+                                    staticClass: "control-label text-right",
+                                    staticStyle: { display: "block" }
+                                  },
+                                  [_vm._v(_vm._s(_vm.parseTranslation(label)))]
+                                )
+                              ]
+                            ),
+                            _vm._v(" "),
+                            _c("div", { staticClass: "visible-xs-block" }, [
+                              _c("label", { staticClass: "control-label" }, [
+                                _vm._v(_vm._s(_vm.parseTranslation(label)))
+                              ])
+                            ])
+                          ]),
+                          _vm._v(" "),
+                          _c(
+                            "div",
+                            { staticClass: "col-md-9" },
+                            [
+                              _c(
+                                "el-radio-group",
+                                {
+                                  model: {
+                                    value:
+                                      _vm.permissions[
+                                        subPermissionTitle +
+                                          "." +
+                                          permissionAction
+                                      ],
+                                    callback: function($$v) {
+                                      _vm.$set(
+                                        _vm.permissions,
+                                        subPermissionTitle +
+                                          "." +
+                                          permissionAction,
+                                        $$v
+                                      )
+                                    },
+                                    expression:
+                                      "permissions[`${subPermissionTitle}.${permissionAction}`]"
+                                  }
+                                },
+                                [
+                                  _c(
+                                    "el-radio-button",
+                                    {
+                                      attrs: { label: 1 },
+                                      on: { click: _vm.triggerEvent }
+                                    },
+                                    [_vm._v(_vm._s(_vm.trans("roles.allow")))]
+                                  ),
+                                  _vm._v(" "),
+                                  _c(
+                                    "el-radio-button",
+                                    {
+                                      attrs: { label: 0, disabled: _vm.isRole },
+                                      on: { click: _vm.triggerEvent }
+                                    },
+                                    [_vm._v(_vm._s(_vm.trans("roles.inherit")))]
+                                  ),
+                                  _vm._v(" "),
+                                  _c(
+                                    "el-radio-button",
+                                    {
+                                      attrs: { label: -1 },
+                                      on: { click: _vm.triggerEvent }
+                                    },
+                                    [_vm._v(_vm._s(_vm.trans("roles.deny")))]
+                                  )
+                                ],
+                                1
+                              )
+                            ],
+                            1
+                          )
+                        ])
+                      ]
+                    )
+                  })
+                )
+              ])
+            })
+          ],
+          2
+        )
+      })
+    ],
+    2
   )
 }
 var staticRenderFns = []
