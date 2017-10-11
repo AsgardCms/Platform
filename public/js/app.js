@@ -106411,6 +106411,7 @@ exports.default = {
 //
 //
 //
+//
 
 /***/ }),
 /* 508 */
@@ -107161,7 +107162,24 @@ var render = function() {
             ])
           ])
         ]
-      )
+      ),
+      _vm._v(" "),
+      _c("button", {
+        directives: [
+          {
+            name: "shortkey",
+            rawName: "v-shortkey",
+            value: ["b"],
+            expression: "['b']"
+          },
+          { name: "show", rawName: "v-show", value: false, expression: "false" }
+        ],
+        on: {
+          shortkey: function($event) {
+            _vm.pushRoute({ name: "admin.user.roles.index" })
+          }
+        }
+      })
     ],
     1
   )

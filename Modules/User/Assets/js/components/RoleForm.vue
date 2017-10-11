@@ -68,6 +68,7 @@
                 </div>
             </div>
         </el-form>
+        <button v-shortkey="['b']" @shortkey="pushRoute({name: 'admin.user.roles.index'})" v-show="false"></button>
     </div>
 </template>
 
