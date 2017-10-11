@@ -3,6 +3,9 @@
 namespace Modules\User\Repositories\Sentinel;
 
 use Cartalyst\Sentinel\Laravel\Facades\Sentinel;
+use Illuminate\Contracts\Pagination\LengthAwarePaginator;
+use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Http\Request;
 use Modules\User\Events\RoleIsCreating;
 use Modules\User\Events\RoleIsUpdating;
 use Modules\User\Events\RoleWasCreated;
@@ -28,6 +31,33 @@ class SentinelRoleRepository implements RoleRepository
     public function all()
     {
         return $this->role->all();
+    }
+
+    /**
+     * Paginating, ordering and searching through pages for server side index table
+     * @param Request $request
+     * @return LengthAwarePaginator
+     */
+    public function serverPaginationFilteringFor(Request $request): LengthAwarePaginator
+    {
+        $roles = $this->allWithBuilder();
+
+        if ($request->get('search') !== null) {
+            $term = $request->get('search');
+            $roles->where('name', 'LIKE', "%{$term}%")
+                ->orWhere('slug', 'LIKE', "%{$term}%")
+                ->orWhere('id', $term);
+        }
+
+        if ($request->get('order_by') !== null && $request->get('order') !== 'null') {
+            $order = $request->get('order') === 'ascending' ? 'asc' : 'desc';
+
+            $roles->orderBy($request->get('order_by'), $order);
+        } else {
+            $roles->orderBy('created_at', 'desc');
+        }
+
+        return $roles->paginate($request->get('per_page', 10));
     }
 
     /**
@@ -94,5 +124,13 @@ class SentinelRoleRepository implements RoleRepository
     public function findByName($name)
     {
         return Sentinel::findRoleByName($name);
+    }
+
+    /**
+     * @inheritdoc
+     */
+    public function allWithBuilder() : Builder
+    {
+        return $this->role->newQuery();
     }
 }
