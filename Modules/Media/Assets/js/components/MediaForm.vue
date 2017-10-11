@@ -21,7 +21,7 @@
                 <div class="col-md-8">
                     <div class="box box-primary">
                         <div class="box-body">
-                            <el-tabs type="card" v-model="activeTab">
+                            <el-tabs v-model="activeTab">
                                 <el-tab-pane :label="localeArray.name" v-for="(localeArray, locale) in locales"
                                              :key="localeArray.name" :name="locale">
 
