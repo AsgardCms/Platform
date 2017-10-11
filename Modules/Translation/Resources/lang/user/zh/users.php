@@ -1,9 +1,7 @@
 <?php
 
 return [
-    'button' => [
-        'new-user' => '新用户',
-    ],
+    'new-user' => '新用户',
     'title' => [
         'users' => '用户',
         'new-user' => '新用户',
