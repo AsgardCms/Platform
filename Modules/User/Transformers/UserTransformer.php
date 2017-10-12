@@ -17,7 +17,7 @@ class UserTransformer extends Resource
             'created_at' => $this->created_at,
 
             'urls' => [
-                'delete_url' => route('api.user.role.destroy', $this->id),
+                'delete_url' => route('api.user.user.destroy', $this->id),
             ],
         ];
     }
