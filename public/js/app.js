@@ -107994,7 +107994,7 @@ var render = function() {
                                     attrs: {
                                       to: {
                                         name: "admin.user.users.edit",
-                                        params: { roleId: scope.row.id }
+                                        params: { userId: scope.row.id }
                                       }
                                     }
                                   }),

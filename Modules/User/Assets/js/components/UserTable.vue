@@ -69,7 +69,7 @@
                                     <template scope="scope">
                                         <el-button-group>
                                             <edit-button
-                                                    :to="{name: 'admin.user.users.edit', params: {roleId: scope.row.id}}"></edit-button>
+                                                    :to="{name: 'admin.user.users.edit', params: {userId: scope.row.id}}"></edit-button>
                                             <delete-button :scope="scope" :rows="data"></delete-button>
                                         </el-button-group>
                                     </template>
