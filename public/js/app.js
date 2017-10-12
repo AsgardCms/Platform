@@ -109606,6 +109606,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 //
 //
 //
+//
 
 exports.default = {
     mixins: [_ShortcutHelper2.default],
@@ -110371,7 +110372,24 @@ var render = function() {
             ])
           ])
         ]
-      )
+      ),
+      _vm._v(" "),
+      _c("button", {
+        directives: [
+          {
+            name: "shortkey",
+            rawName: "v-shortkey",
+            value: ["b"],
+            expression: "['b']"
+          },
+          { name: "show", rawName: "v-show", value: false, expression: "false" }
+        ],
+        on: {
+          shortkey: function($event) {
+            _vm.pushRoute({ name: "admin.user.users.index" })
+          }
+        }
+      })
     ],
     1
   )
