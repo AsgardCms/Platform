@@ -74,6 +74,11 @@ $router->group(['prefix' => '/user', 'middleware' => ['api.token', 'auth.admin']
             'uses' => 'UserController@update',
             'middleware' => 'token-can:user.users.edit',
         ]);
+        $router->get('{user}/sendResetPassword', [
+            'as' => 'api.user.user.sendResetPassword',
+            'uses' => 'UserController@sendResetPassword',
+            'middleware' => 'token-can:user.users.edit',
+        ]);
         $router->delete('{user}', [
             'as' => 'api.user.user.destroy',
             'uses' => 'UserController@destroy',
