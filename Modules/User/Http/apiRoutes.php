@@ -40,6 +40,42 @@ $router->group(['prefix' => '/user', 'middleware' => ['api.token', 'auth.admin']
         ]);
     });
 
+    $router->group(['prefix' => 'users'], function (Router $router) {
+        $router->bind('user', function ($id) {
+            return app(\Modules\User\Repositories\UserRepository::class)->find($id);
+        });
+        $router->get('/', [
+            'as' => 'api.user.user.index',
+            'uses' => 'UserController@index',
+            'middleware' => 'token-can:user.users.index',
+        ]);
+        $router->post('/', [
+            'as' => 'api.user.user.store',
+            'uses' => 'UserController@store',
+            'middleware' => 'token-can:user.users.create',
+        ]);
+        $router->post('find/{role}', [
+            'as' => 'api.user.user.find',
+            'uses' => 'UserController@find',
+            'middleware' => 'token-can:user.users.edit',
+        ]);
+        $router->post('find-new', [
+            'as' => 'api.user.user.find-new',
+            'uses' => 'UserController@findNew',
+            'middleware' => 'token-can:user.users.edit',
+        ]);
+        $router->post('{role}/edit', [
+            'as' => 'api.user.user.update',
+            'uses' => 'UserController@update',
+            'middleware' => 'token-can:user.users.edit',
+        ]);
+        $router->delete('{role}', [
+            'as' => 'api.user.user.destroy',
+            'uses' => 'UserController@destroy',
+            'middleware' => 'token-can:user.users.destroy',
+        ]);
+    });
+
     $router->get('permissions', [
         'as' => 'api.user.permissions.index',
         'uses' => 'PermissionsController@index',
