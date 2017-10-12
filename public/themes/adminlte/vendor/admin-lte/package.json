@@ -1,32 +1,35 @@
 {
-  "_from": "admin-lte@2.4.0",
-  "_id": "admin-lte@2.4.0",
+  "_args": [
+    [
+      "admin-lte@2.4.2",
+      "/Users/nicolaswidart/Sites/Asguard/Platform/Themes/Adminlte"
+    ]
+  ],
+  "_from": "admin-lte@2.4.2",
+  "_id": "admin-lte@2.4.2",
   "_inBundle": false,
-  "_integrity": "sha512-BYR7rdzORuaW2yqloH1hqh76scZVn1APpanaVwuA0GyTFqp5ZKztUF36Cqmw/Y9ygb7LGpamdYSvUsG4Csh5zQ==",
+  "_integrity": "sha512-BNKSU3jski491OjnnOTEsKOJxyhJU39DzLcnX7plHODN1q0PxxiKyxMsic+R8FEOovv++7zyMGlSATfF1fleUg==",
   "_location": "/admin-lte",
   "_phantomChildren": {},
   "_requested": {
     "type": "version",
     "registry": true,
-    "raw": "admin-lte@2.4.0",
+    "raw": "admin-lte@2.4.2",
     "name": "admin-lte",
     "escapedName": "admin-lte",
-    "rawSpec": "2.4.0",
+    "rawSpec": "2.4.2",
     "saveSpec": null,
-    "fetchSpec": "2.4.0"
+    "fetchSpec": "2.4.2"
   },
   "_requiredBy": [
-    "#USER",
     "/"
   ],
-  "_resolved": "https://registry.npmjs.org/admin-lte/-/admin-lte-2.4.0.tgz",
-  "_shasum": "e5b768738defed3550932d7faab129f1f6402f4a",
-  "_spec": "admin-lte@2.4.0",
+  "_resolved": "https://registry.npmjs.org/admin-lte/-/admin-lte-2.4.2.tgz",
+  "_spec": "2.4.2",
   "_where": "/Users/nicolaswidart/Sites/Asguard/Platform/Themes/Adminlte",
   "bugs": {
     "url": "https://github.com/almasaeed2010/AdminLTE/issues"
   },
-  "bundleDependencies": false,
   "dependencies": {
     "bootstrap": "^3.3.7",
     "bootstrap-colorpicker": "^2.5.1",
@@ -57,7 +60,6 @@
     "select2": "^4.0.3",
     "slimscroll": "^0.9.1"
   },
-  "deprecated": false,
   "description": "Introduction ============",
   "devDependencies": {
     "R2": "^1.4.3",
@@ -88,5 +90,5 @@
     "type": "git",
     "url": "git://github.com/almasaeed2010/AdminLTE.git"
   },
-  "version": "2.4.0"
+  "version": "2.4.2"
 }
