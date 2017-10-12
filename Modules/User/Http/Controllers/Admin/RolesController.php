@@ -28,9 +28,7 @@ class RolesController extends BaseUserModuleController
      */
     public function index()
     {
-        $roles = $this->role->all();
-
-        return view('user::admin.roles.index', compact('roles'));
+        return view('user::admin.roles.index');
     }
 
     /**
@@ -61,17 +59,11 @@ class RolesController extends BaseUserModuleController
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int      $id
      * @return Response
      */
-    public function edit($id)
+    public function edit()
     {
-        if (!$role = $this->role->find($id)) {
-            return redirect()->route('admin.user.role.index')
-                ->withError(trans('user::messages.role not found'));
-        }
-
-        return view('user::admin.roles.edit', compact('role'));
+        return view('user::admin.roles.edit');
     }
 
     /**
