@@ -53,11 +53,7 @@ class UserController extends BaseUserModuleController
      */
     public function index()
     {
-        $users = $this->user->all();
-
-        $currentUser = $this->auth->user();
-
-        return view('user::admin.users.index', compact('users', 'currentUser'));
+        return view('user::admin.users.index');
     }
 
     /**
@@ -67,9 +63,7 @@ class UserController extends BaseUserModuleController
      */
     public function create()
     {
-        $roles = $this->role->all();
-
-        return view('user::admin.users.create', compact('roles'));
+        return view('user::admin.users.create');
     }
 
     /**
@@ -91,20 +85,11 @@ class UserController extends BaseUserModuleController
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int      $id
      * @return Response
      */
-    public function edit($id)
+    public function edit()
     {
-        if (!$user = $this->user->find($id)) {
-            return redirect()->route('admin.user.user.index')
-                ->withError(trans('user::messages.user not found'));
-        }
-        $roles = $this->role->all();
-
-        $currentUser = $this->auth->user();
-
-        return view('user::admin.users.edit', compact('user', 'roles', 'currentUser'));
+        return view('user::admin.users.edit');
     }
 
     /**
