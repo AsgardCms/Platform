@@ -54,7 +54,7 @@ $router->group(['prefix' => '/user', 'middleware' => ['api.token', 'auth.admin']
             'uses' => 'UserController@store',
             'middleware' => 'token-can:user.users.create',
         ]);
-        $router->post('find/{role}', [
+        $router->post('find/{user}', [
             'as' => 'api.user.user.find',
             'uses' => 'UserController@find',
             'middleware' => 'token-can:user.users.edit',
@@ -64,12 +64,12 @@ $router->group(['prefix' => '/user', 'middleware' => ['api.token', 'auth.admin']
             'uses' => 'UserController@findNew',
             'middleware' => 'token-can:user.users.edit',
         ]);
-        $router->post('{role}/edit', [
+        $router->post('{user}/edit', [
             'as' => 'api.user.user.update',
             'uses' => 'UserController@update',
             'middleware' => 'token-can:user.users.edit',
         ]);
-        $router->delete('{role}', [
+        $router->delete('{user}', [
             'as' => 'api.user.user.destroy',
             'uses' => 'UserController@destroy',
             'middleware' => 'token-can:user.users.destroy',
