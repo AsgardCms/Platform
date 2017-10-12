@@ -29,6 +29,11 @@ class RoleController extends Controller
         $this->permissions = $permissions;
     }
 
+    public function all()
+    {
+        return RoleTransformer::collection($this->role->all());
+    }
+
     public function index(Request $request)
     {
         return RoleTransformer::collection($this->role->serverPaginationFilteringFor($request));

@@ -13,6 +13,11 @@ $router->group(['prefix' => '/user', 'middleware' => ['api.token', 'auth.admin']
             'uses' => 'RoleController@index',
             'middleware' => 'token-can:user.roles.index',
         ]);
+        $router->get('all', [
+            'as' => 'api.user.role.all',
+            'uses' => 'RoleController@all',
+            'middleware' => 'token-can:user.roles.index',
+        ]);
         $router->post('/', [
             'as' => 'api.user.role.store',
             'uses' => 'RoleController@store',
