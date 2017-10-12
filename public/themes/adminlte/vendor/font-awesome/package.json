@@ -22,7 +22,8 @@
     "fetchSpec": "4.7.0"
   },
   "_requiredBy": [
-    "/"
+    "/",
+    "/admin-lte"
   ],
   "_resolved": "https://registry.npmjs.org/font-awesome/-/font-awesome-4.7.0.tgz",
   "_spec": "4.7.0",

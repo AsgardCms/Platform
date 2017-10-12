@@ -1,4 +1,4 @@
-let mix = require('laravel-mix');
+const mix = require('laravel-mix');
 const WebpackShellPlugin = require('webpack-shell-plugin');
 const themeInfo = require('./theme.json');
 
@@ -41,7 +41,7 @@ mix.copyDirectory('node_modules/admin-lte', 'assets/vendor/admin-lte');
  * Publishing the assets
  */
 mix.webpackConfig({
-  plugins: [
-    new WebpackShellPlugin({onBuildEnd:['php ../../artisan stylist:publish ' + themeInfo.name]})
-  ]
+    plugins: [
+        new WebpackShellPlugin({ onBuildEnd: [`php ../../artisan stylist:publish ${themeInfo.name}`] }),
+    ],
 });
