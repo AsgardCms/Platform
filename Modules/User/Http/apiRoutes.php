@@ -86,6 +86,17 @@ $router->group(['prefix' => '/user', 'middleware' => ['api.token', 'auth.admin']
         ]);
     });
 
+    $router->group(['prefix' => '/account'], function (Router $router) {
+        $router->get('profile', [
+            'as' => 'api.account.profile.find-current-user',
+            'uses' => 'ProfileController@findCurrentUser',
+        ]);
+        $router->post('profile', [
+            'as' => 'api.account.profile.update',
+            'uses' => 'ProfileController@update',
+        ]);
+    });
+
     $router->get('permissions', [
         'as' => 'api.user.permissions.index',
         'uses' => 'PermissionsController@index',

@@ -2,6 +2,7 @@ import RoleTable from './components/RoleTable.vue';
 import RoleForm from './components/RoleForm.vue';
 import UserTable from './components/UserTable.vue';
 import UserForm from './components/UserForm.vue';
+import UserProfile from './components/UserProfile.vue';
 
 
 const locales = window.AsgardCMS.locales;
@@ -54,5 +55,11 @@ export default [
             locales,
             pageTitle: 'title.edit-user',
         },
+    },
+    // Account routes
+    {
+        path: '/account/profile',
+        name: 'admin.user.users.account',
+        component: UserProfile,
     },
 ];
