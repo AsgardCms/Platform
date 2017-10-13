@@ -11,7 +11,7 @@ return [
     'ae' => ['name' => 'Avestan', 'script' => 'Latn', 'native' => 'avesta'],
     'ay' => ['name' => 'Aymara', 'script' => 'Latn', 'native' => 'aymar aru'],
     'az' => ['name' => 'Azerbaijani (Latin)', 'script' => 'Latn', 'native' => 'azərbaycanca'],
-    'id' => ['name' => 'Indonesian', 'script' => 'Latn', 'native' => 'Bahasa Indonesia'],
+    'ind' => ['name' => 'Indonesian', 'script' => 'Latn', 'native' => 'Bahasa Indonesia'],
     'ms' => ['name' => 'Malay', 'script' => 'Latn', 'native' => 'Bahasa Melayu'],
     'bm' => ['name' => 'Bambara', 'script' => 'Latn', 'native' => 'bamanakan'],
     'jv' => ['name' => 'Javanese (Latin)', 'script' => 'Latn', 'native' => 'Basa Jawa'],
