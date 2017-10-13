@@ -57,6 +57,7 @@ class MediaTransformer extends Resource
         }
 
         foreach (LaravelLocalization::getSupportedLocales() as $locale => $supportedLocale) {
+            $data[$locale] = [];
             foreach ($this->translatedAttributes as $translatedAttribute) {
                 $data[$locale][$translatedAttribute] = $this->translateOrNew($locale)->$translatedAttribute;
             }

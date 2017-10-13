@@ -19,6 +19,7 @@ class FullPageTransformer extends Resource
         ];
 
         foreach (LaravelLocalization::getSupportedLocales() as $locale => $supportedLocale) {
+            $pageData[$locale] = [];
             foreach ($this->translatedAttributes as $translatedAttribute) {
                 $pageData[$locale][$translatedAttribute] = $this->translateOrNew($locale)->$translatedAttribute;
             }
