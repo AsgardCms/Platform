@@ -8,7 +8,7 @@
                 <el-breadcrumb-item>
                     <a href="/backend">{{ trans('core.breadcrumb.home') }}</a>
                 </el-breadcrumb-item>
-                <el-breadcrumb-item :to="{name: 'admin.user.users.profile'}">{{ trans('users.breadcrumb.edit-profile') }}
+                <el-breadcrumb-item :to="{name: 'admin.user.users.account'}">{{ trans('users.breadcrumb.edit-profile') }}
                 </el-breadcrumb-item>
             </el-breadcrumb>
         </div>
