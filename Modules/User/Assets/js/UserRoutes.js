@@ -3,6 +3,7 @@ import RoleForm from './components/RoleForm.vue';
 import UserTable from './components/UserTable.vue';
 import UserForm from './components/UserForm.vue';
 import UserProfile from './components/UserProfile.vue';
+import ApiKeys from './components/ApiKeys.vue';
 
 
 const locales = window.AsgardCMS.locales;
@@ -61,5 +62,10 @@ export default [
         path: '/account/profile',
         name: 'admin.user.users.account',
         component: UserProfile,
+    },
+    {
+        path: '/account/api-keys',
+        name: 'admin.user.users.account.api-keys',
+        component: ApiKeys,
     },
 ];

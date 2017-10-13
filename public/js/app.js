@@ -101875,6 +101875,13 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
 
 exports.default = {
     mixins: [_Slugify2.default, _ShortcutHelper2.default, _ActiveEditor2.default, _SingleFileSelector2.default],
@@ -102611,6 +102618,47 @@ var render = function() {
                             ),
                             _vm._v(" "),
                             _c(
+                              "el-form-item",
+                              {
+                                class: {
+                                  "el-form-item is-error": _vm.form.errors.has(
+                                    locale + ".status"
+                                  )
+                                },
+                                attrs: { label: _vm.trans("page.status") }
+                              },
+                              [
+                                _c(
+                                  "el-checkbox",
+                                  {
+                                    model: {
+                                      value: _vm.page[locale].status,
+                                      callback: function($$v) {
+                                        _vm.page[locale].status = $$v
+                                      },
+                                      expression: "page[locale].status"
+                                    }
+                                  },
+                                  [_vm._v(_vm._s(_vm.trans("page.status")))]
+                                ),
+                                _vm._v(" "),
+                                _vm.form.errors.has(locale + ".status")
+                                  ? _c("div", {
+                                      staticClass: "el-form-item__error",
+                                      domProps: {
+                                        textContent: _vm._s(
+                                          _vm.form.errors.first(
+                                            locale + ".status"
+                                          )
+                                        )
+                                      }
+                                    })
+                                  : _vm._e()
+                              ],
+                              1
+                            ),
+                            _vm._v(" "),
+                            _c(
                               "div",
                               { staticClass: "panel box box-primary" },
                               [
@@ -103026,7 +103074,7 @@ var render = function() {
                       attrs: {
                         zone: "image",
                         entity: "Modules\\Page\\Entities\\Page",
-                        "entity-id": _vm.page.id
+                        "entity-id": _vm.$route.params.pageId
                       },
                       on: {
                         singleFileSelected: function($event) {
@@ -105829,6 +105877,10 @@ var _UserProfile = __webpack_require__(520);
 
 var _UserProfile2 = _interopRequireDefault(_UserProfile);
 
+var _ApiKeys = __webpack_require__(562);
+
+var _ApiKeys2 = _interopRequireDefault(_ApiKeys);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var locales = window.AsgardCMS.locales;
@@ -105883,6 +105935,10 @@ exports.default = [
     path: '/account/profile',
     name: 'admin.user.users.account',
     component: _UserProfile2.default
+}, {
+    path: '/account/api-keys',
+    name: 'admin.user.users.account.api-keys',
+    component: _ApiKeys2.default
 }];
 
 /***/ }),
@@ -109347,7 +109403,7 @@ var render = function() {
               _vm._v(" "),
               _c(
                 "el-breadcrumb-item",
-                { attrs: { to: { name: "admin.user.users.profile" } } },
+                { attrs: { to: { name: "admin.user.users.account" } } },
                 [
                   _vm._v(
                     _vm._s(_vm.trans("users.breadcrumb.edit-profile")) +
@@ -110572,7 +110628,7 @@ exports.default = {
     props: {
         zone: { type: String, required: true },
         entity: { type: String, required: true },
-        entityId: { type: Number },
+        entityId: { default: null },
         label: { type: String }
     },
     components: {
@@ -110636,6 +110692,9 @@ exports.default = {
     mounted: function mounted() {
         var _this2 = this;
 
+        if (this.entityId) {
+            this.fetchMedia();
+        }
         this.eventName = 'fileWasSelected' + this.makeId() + Math.floor(Math.random() * 999999);
 
         this.$events.listen(this.eventName, function (mediaData) {
@@ -110984,6 +111043,314 @@ if (false) {
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 550 */,
+/* 551 */,
+/* 552 */,
+/* 553 */,
+/* 554 */,
+/* 555 */,
+/* 556 */,
+/* 557 */,
+/* 558 */,
+/* 559 */,
+/* 560 */,
+/* 561 */,
+/* 562 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(6)
+/* script */
+var __vue_script__ = __webpack_require__(563)
+/* template */
+var __vue_template__ = __webpack_require__(564)
+/* template functional */
+  var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "Modules/User/Assets/js/components/ApiKeys.vue"
+if (Component.esModule && Object.keys(Component.esModule).some(function (key) {  return key !== "default" && key.substr(0, 2) !== "__"})) {  console.error("named exports are not supported in *.vue files.")}
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-66a1f586", Component.options)
+  } else {
+    hotAPI.reload("data-v-66a1f586", Component.options)
+' + '  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 563 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _axios = __webpack_require__(12);
+
+var _axios2 = _interopRequireDefault(_axios);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+exports.default = {
+    data: function data() {
+        return {
+            loading: false,
+            apiKeys: {}
+        };
+    },
+
+    methods: {
+        fetchApiKeys: function fetchApiKeys() {
+            var _this = this;
+
+            this.loading = true;
+            _axios2.default.get(route('api.account.api.index')).then(function (response) {
+                _this.loading = false;
+                _this.apiKeys = response.data.data;
+            });
+        },
+        generateKey: function generateKey() {
+            var _this2 = this;
+
+            _axios2.default.get(route('api.account.api.create')).then(function (response) {
+                _this2.loading = false;
+                _this2.apiKeys = response.data.data;
+                _this2.$message({
+                    type: 'success',
+                    message: response.data.message
+                });
+            });
+        },
+        destroyApiKey: function destroyApiKey(apiKey) {
+            var _this3 = this;
+
+            this.$confirm(this.trans('users.delete api key confirm'), '', {
+                confirmButtonText: this.trans('core.button.delete'),
+                cancelButtonText: this.trans('core.button.cancel'),
+                type: 'warning',
+                confirmButtonClass: 'el-button--danger'
+            }).then(function () {
+                _axios2.default.delete(route('api.account.api.destroy', { userTokenId: apiKey.id })).then(function (response) {
+                    _this3.loading = false;
+                    _this3.apiKeys = response.data.data;
+                    _this3.$message({
+                        type: 'success',
+                        message: response.data.message
+                    });
+                });
+            }).catch(function () {});
+        }
+    },
+    mounted: function mounted() {
+        this.fetchApiKeys();
+    }
+}; //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/***/ }),
+/* 564 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", [
+    _c(
+      "div",
+      { staticClass: "content-header" },
+      [
+        _c("h1", [
+          _vm._v(
+            "\n            " +
+              _vm._s(_vm.trans("users.api-keys")) +
+              "\n        "
+          )
+        ]),
+        _vm._v(" "),
+        _c(
+          "el-breadcrumb",
+          { attrs: { separator: "/" } },
+          [
+            _c("el-breadcrumb-item", [
+              _c("a", { attrs: { href: "/backend" } }, [
+                _vm._v(_vm._s(_vm.trans("core.breadcrumb.home")))
+              ])
+            ]),
+            _vm._v(" "),
+            _c(
+              "el-breadcrumb-item",
+              { attrs: { to: { name: "admin.user.users.account.api-keys" } } },
+              [_vm._v(_vm._s(_vm.trans("users.api-keys")) + "\n            ")]
+            )
+          ],
+          1
+        )
+      ],
+      1
+    ),
+    _vm._v(" "),
+    _c("div", { staticClass: "row" }, [
+      _c("div", { staticClass: "col-md-12" }, [
+        _c("div", { staticClass: "box box-primary" }, [
+          _c("div", { staticClass: "box-header with-border" }, [
+            _c("h3", { staticClass: "box-title" }, [
+              _vm._v(_vm._s(_vm.trans("users.your api keys")))
+            ]),
+            _vm._v(" "),
+            _c(
+              "div",
+              { staticClass: "box-tools pull-right" },
+              [
+                _c(
+                  "el-button",
+                  {
+                    attrs: { type: "primary", size: "small", icon: "plus" },
+                    on: { click: _vm.generateKey }
+                  },
+                  [
+                    _vm._v(
+                      "\n                            " +
+                        _vm._s(_vm.trans("users.generate new api key")) +
+                        "\n                        "
+                    )
+                  ]
+                )
+              ],
+              1
+            )
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "box-body" }, [
+            _c(
+              "ul",
+              { staticClass: "list-unstyled" },
+              _vm._l(_vm.apiKeys, function(key) {
+                return _c(
+                  "li",
+                  { key: key.id, staticStyle: { "margin-bottom": "20px" } },
+                  [
+                    _c(
+                      "el-input",
+                      {
+                        attrs: { disabled: "" },
+                        model: {
+                          value: key.access_token,
+                          callback: function($$v) {
+                            key.access_token = $$v
+                          },
+                          expression: "key.access_token"
+                        }
+                      },
+                      [
+                        _c(
+                          "el-button",
+                          {
+                            attrs: { slot: "prepend" },
+                            on: {
+                              click: function($event) {
+                                _vm.destroyApiKey(key)
+                              }
+                            },
+                            slot: "prepend"
+                          },
+                          [_c("i", { staticClass: "fa fa-times" })]
+                        )
+                      ],
+                      1
+                    )
+                  ],
+                  1
+                )
+              })
+            )
+          ])
+        ])
+      ])
+    ])
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-66a1f586", module.exports)
+  }
+}
 
 /***/ })
 /******/ ]);

@@ -95,6 +95,26 @@ $router->group(['prefix' => '/user', 'middleware' => ['api.token', 'auth.admin']
             'as' => 'api.account.profile.update',
             'uses' => 'ProfileController@update',
         ]);
+
+        $router->bind('userTokenId', function ($id) {
+            return app(\Modules\User\Repositories\UserTokenRepository::class)->find($id);
+        });
+
+        $router->get('api-keys', [
+            'as' => 'api.account.api.index',
+            'uses' => 'ApiKeysController@index',
+            'middleware' => 'can:account.api-keys.index',
+        ]);
+        $router->get('api-keys/create', [
+            'as' => 'api.account.api.create',
+            'uses' => 'ApiKeysController@create',
+            'middleware' => 'can:account.api-keys.create',
+        ]);
+        $router->delete('api-keys/{userTokenId}', [
+            'as' => 'api.account.api.destroy',
+            'uses' => 'ApiKeysController@destroy',
+            'middleware' => 'can:account.api-keys.destroy',
+        ]);
     });
 
     $router->get('permissions', [

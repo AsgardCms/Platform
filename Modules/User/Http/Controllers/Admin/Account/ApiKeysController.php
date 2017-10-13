@@ -28,11 +28,7 @@ class ApiKeysController extends AdminBaseController
 
     public function index()
     {
-        $tokens = $this->userToken->allForUser($this->auth->id());
-
-        $this->assetPipeline->requireJs('clipboard.js');
-
-        return view('user::admin.account.api-keys.index', compact('tokens'));
+        return view('user::admin.account.api-keys.index');
     }
 
     public function create()
