@@ -4,6 +4,7 @@ versions:
         changed:
             - Adding the page status field
             - Sending the page id from the route parameters to the single media component (makes loading single media faster)
+            - Making the <code>status</code> column in <code>page_translations</code> table nullable (migrate with <code>php artisan module:migrate page</code>)
     "3.1.0":
         added:
             - New UI interaction on the page index to select pages and mark one or mutiple as on/offline
