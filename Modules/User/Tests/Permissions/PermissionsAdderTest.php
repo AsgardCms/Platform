@@ -29,7 +29,7 @@ final class PermissionsAdderTest extends BaseUserTestCase
             'slug' => 'admin',
             'permissions' => [
                 'dashboard.index' => true,
-            ]
+            ],
         ]);
         $this->user->create([
             'email' => 'n.widart@gmail.com',

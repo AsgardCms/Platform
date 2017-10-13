@@ -4,7 +4,6 @@ namespace Modules\User\Console;
 
 use Illuminate\Console\Command;
 use Modules\User\Permissions\PermissionsRemover;
-use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Input\InputArgument;
 
 class RemoveModulePermissionsCommand extends Command

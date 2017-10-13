@@ -22,6 +22,7 @@ if (function_exists('current_permission_value_for_roles') === false) {
         if ($value === true) {
             return 1;
         }
+
         return -1;
     }
 }
