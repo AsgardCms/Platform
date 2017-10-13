@@ -39,7 +39,7 @@
         props: {
             zone: { type: String, required: true },
             entity: { type: String, required: true },
-            entityId: { type: Number },
+            entityId: { default: null },
             label: { type: String },
         },
         components: {
@@ -97,6 +97,9 @@
             },
         },
         mounted() {
+            if (this.entityId) {
+                this.fetchMedia();
+            }
             this.eventName = `fileWasSelected${this.makeId()}${Math.floor(Math.random() * 999999)}`;
 
             this.$events.listen(this.eventName, (mediaData) => {
