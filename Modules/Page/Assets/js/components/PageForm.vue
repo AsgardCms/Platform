@@ -52,6 +52,13 @@
                                              v-text="form.errors.first(locale + '.body')"></div>
                                     </el-form-item>
 
+                                    <el-form-item :label="trans('page.status')"
+                                                  :class="{'el-form-item is-error': form.errors.has(locale + '.status') }">
+                                        <el-checkbox v-model="page[locale].status">{{ trans('page.status') }}</el-checkbox>
+                                        <div class="el-form-item__error" v-if="form.errors.has(locale + '.status')"
+                                             v-text="form.errors.first(locale + '.status')"></div>
+                                    </el-form-item>
+
                                     <div class="panel box box-primary">
                                         <div class="box-header">
                                             <h4 class="box-title">
@@ -141,7 +148,7 @@
                             <tags-input namespace="asgardcms/page" v-model="tags" :value="tags" :current-tags="tags"></tags-input>
 
                             <single-media zone="image" @singleFileSelected="selectSingleFile($event, 'page')"
-                                          entity="Modules\Page\Entities\Page" :entity-id="page.id"></single-media>
+                                          entity="Modules\Page\Entities\Page" :entity-id="$route.params.pageId"></single-media>
                         </div>
                     </div>
                 </div>
