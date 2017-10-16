@@ -102388,7 +102388,7 @@ var render = function() {
           _c("h1", [
             _vm._v(
               "\n            " +
-                _vm._s(_vm.trans("page." + _vm.pageTitle)) +
+                _vm._s(_vm.trans("pages." + _vm.pageTitle)) +
                 "\n        "
             )
           ]),
@@ -102412,7 +102412,7 @@ var render = function() {
                 { attrs: { to: { name: "admin.page.page.create" } } },
                 [
                   _vm._v(
-                    _vm._s(_vm.trans("page." + _vm.pageTitle)) +
+                    _vm._s(_vm.trans("pages." + _vm.pageTitle)) +
                       "\n            "
                   )
                 ]

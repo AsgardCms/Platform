@@ -2,7 +2,7 @@
     <div class="div">
         <div class="content-header">
             <h1>
-                {{ trans(`page.${pageTitle}`) }}
+                {{ trans(`pages.${pageTitle}`) }}
             </h1>
             <el-breadcrumb separator="/">
                 <el-breadcrumb-item>
@@ -10,7 +10,7 @@
                 </el-breadcrumb-item>
                 <el-breadcrumb-item :to="{name: 'admin.page.page.index'}">{{ trans('pages.pages') }}
                 </el-breadcrumb-item>
-                <el-breadcrumb-item :to="{name: 'admin.page.page.create'}">{{ trans(`page.${pageTitle}`) }}
+                <el-breadcrumb-item :to="{name: 'admin.page.page.create'}">{{ trans(`pages.${pageTitle}`) }}
                 </el-breadcrumb-item>
             </el-breadcrumb>
         </div>
