@@ -6,6 +6,7 @@ use Cartalyst\Sentinel\Laravel\SentinelServiceProvider;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\ServiceProvider;
 use Modules\Core\Events\BuildingSidebar;
+use Modules\Core\Events\LoadingBackendTranslations;
 use Modules\Core\Traits\CanGetSidebarClassForModule;
 use Modules\Core\Traits\CanPublishConfiguration;
 use Modules\User\Console\GrantModulePermissionsCommand;
@@ -68,6 +69,10 @@ class UserServiceProvider extends ServiceProvider
             BuildingSidebar::class,
             $this->getSidebarClassForModule('user', RegisterUserSidebar::class)
         );
+        $this->app['events']->listen(LoadingBackendTranslations::class, function (LoadingBackendTranslations $event) {
+            $event->load('users', array_dot(trans('user::users')));
+            $event->load('roles', array_dot(trans('user::roles')));
+        });
         $this->commands([
             GrantModulePermissionsCommand::class,
             RemoveModulePermissionsCommand::class,

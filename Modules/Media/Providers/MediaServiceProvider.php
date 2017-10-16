@@ -5,6 +5,7 @@ namespace Modules\Media\Providers;
 use Illuminate\Contracts\Events\Dispatcher as DispatcherContract;
 use Illuminate\Support\ServiceProvider;
 use Modules\Core\Events\BuildingSidebar;
+use Modules\Core\Events\LoadingBackendTranslations;
 use Modules\Core\Traits\CanGetSidebarClassForModule;
 use Modules\Core\Traits\CanPublishConfiguration;
 use Modules\Media\Blade\MediaMultipleDirective;
@@ -66,6 +67,11 @@ class MediaServiceProvider extends ServiceProvider
             BuildingSidebar::class,
             $this->getSidebarClassForModule('media', RegisterMediaSidebar::class)
         );
+
+        $this->app['events']->listen(LoadingBackendTranslations::class, function (LoadingBackendTranslations $event) {
+            $event->load('media', array_dot(trans('media::media')));
+            $event->load('folders', array_dot(trans('media::folders')));
+        });
     }
 
     public function boot(DispatcherContract $events)

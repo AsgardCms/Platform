@@ -4,6 +4,7 @@ namespace Modules\Dashboard\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use Modules\Core\Events\BuildingSidebar;
+use Modules\Core\Events\LoadingBackendTranslations;
 use Modules\Core\Traits\CanGetSidebarClassForModule;
 use Modules\Core\Traits\CanPublishConfiguration;
 use Modules\Dashboard\Entities\Widget;
@@ -44,6 +45,10 @@ class DashboardServiceProvider extends ServiceProvider
             BuildingSidebar::class,
             $this->getSidebarClassForModule('dashboard', RegisterDashboardSidebar::class)
         );
+
+        $this->app['events']->listen(LoadingBackendTranslations::class, function (LoadingBackendTranslations $event) {
+            $event->load('dashboard', array_dot(trans('dashboard::dashboard')));
+        });
     }
 
     public function boot(StylistThemeManager $theme)

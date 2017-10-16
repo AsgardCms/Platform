@@ -5,6 +5,7 @@ namespace Modules\Setting\Providers;
 use Illuminate\Foundation\AliasLoader;
 use Illuminate\Support\ServiceProvider;
 use Modules\Core\Events\BuildingSidebar;
+use Modules\Core\Events\LoadingBackendTranslations;
 use Modules\Core\Traits\CanGetSidebarClassForModule;
 use Modules\Core\Traits\CanPublishConfiguration;
 use Modules\Setting\Blade\SettingDirective;
@@ -52,6 +53,10 @@ class SettingServiceProvider extends ServiceProvider
             BuildingSidebar::class,
             $this->getSidebarClassForModule('setting', RegisterSettingSidebar::class)
         );
+
+        $this->app['events']->listen(LoadingBackendTranslations::class, function (LoadingBackendTranslations $event) {
+            $event->load('settings', array_dot(trans('setting::settings')));
+        });
     }
 
     public function boot()

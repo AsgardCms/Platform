@@ -4,6 +4,7 @@ namespace Modules\Workshop\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use Modules\Core\Events\BuildingSidebar;
+use Modules\Core\Events\LoadingBackendTranslations;
 use Modules\Core\Services\Composer;
 use Modules\Core\Traits\CanGetSidebarClassForModule;
 use Modules\Core\Traits\CanPublishConfiguration;
@@ -45,6 +46,12 @@ class WorkshopServiceProvider extends ServiceProvider
             BuildingSidebar::class,
             $this->getSidebarClassForModule('workshop', RegisterWorkshopSidebar::class)
         );
+
+        $this->app['events']->listen(LoadingBackendTranslations::class, function (LoadingBackendTranslations $event) {
+            $event->load('workshop', array_dot(trans('workshop::workshop')));
+            $event->load('modules', array_dot(trans('workshop::modules')));
+            $event->load('themes', array_dot(trans('workshop::themes')));
+        });
     }
 
     public function boot()

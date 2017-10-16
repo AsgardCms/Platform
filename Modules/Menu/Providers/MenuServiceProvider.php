@@ -4,6 +4,7 @@ namespace Modules\Menu\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use Modules\Core\Events\BuildingSidebar;
+use Modules\Core\Events\LoadingBackendTranslations;
 use Modules\Core\Traits\CanGetSidebarClassForModule;
 use Modules\Core\Traits\CanPublishConfiguration;
 use Modules\Menu\Blade\MenuDirective;
@@ -47,6 +48,11 @@ class MenuServiceProvider extends ServiceProvider
             BuildingSidebar::class,
             $this->getSidebarClassForModule('menu', RegisterMenuSidebar::class)
         );
+
+        $this->app['events']->listen(LoadingBackendTranslations::class, function (LoadingBackendTranslations $event) {
+            $event->load('menu', array_dot(trans('menu::menu')));
+            $event->load('menu-items', array_dot(trans('menu::menu-items')));
+        });
     }
 
     /**

@@ -16,6 +16,7 @@ use Modules\Core\Console\PublishThemeAssetsCommand;
 use Modules\Core\Events\BuildingSidebar;
 use Modules\Core\Events\EditorIsRendering;
 use Modules\Core\Events\Handlers\RegisterCoreSidebar;
+use Modules\Core\Events\LoadingBackendTranslations;
 use Modules\Core\Foundation\Theme\ThemeManager;
 use Modules\Core\Traits\CanGetSidebarClassForModule;
 use Modules\Core\Traits\CanPublishConfiguration;
@@ -87,6 +88,10 @@ class CoreServiceProvider extends ServiceProvider
             BuildingSidebar::class,
             $this->getSidebarClassForModule('core', RegisterCoreSidebar::class)
         );
+        $this->app['events']->listen(LoadingBackendTranslations::class, function (LoadingBackendTranslations $event) {
+            $event->load('core', array_dot(trans('core::core')));
+            $event->load('sidebar', array_dot(trans('core::sidebar')));
+        });
     }
 
     /**

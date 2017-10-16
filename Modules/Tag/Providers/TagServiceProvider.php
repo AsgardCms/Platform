@@ -4,6 +4,7 @@ namespace Modules\Tag\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use Modules\Core\Events\BuildingSidebar;
+use Modules\Core\Events\LoadingBackendTranslations;
 use Modules\Core\Traits\CanGetSidebarClassForModule;
 use Modules\Core\Traits\CanPublishConfiguration;
 use Modules\Tag\Blade\TagWidget;
@@ -41,6 +42,10 @@ class TagServiceProvider extends ServiceProvider
             BuildingSidebar::class,
             $this->getSidebarClassForModule('tag', RegisterTagSidebar::class)
         );
+
+        $this->app['events']->listen(LoadingBackendTranslations::class, function (LoadingBackendTranslations $event) {
+            $event->load('tags', array_dot(trans('tag::tags')));
+        });
     }
 
     public function boot()
