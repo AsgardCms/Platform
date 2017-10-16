@@ -2,13 +2,13 @@
     <div class="div">
         <div class="content-header">
             <h1>
-                {{ trans('page.pages') }}
+                {{ trans('pages.pages') }}
             </h1>
             <el-breadcrumb separator="/">
                 <el-breadcrumb-item>
                     <a href="/backend">Home</a>
                 </el-breadcrumb-item>
-                <el-breadcrumb-item :to="{name: 'admin.page.page.index'}">{{ trans('page.pages') }}</el-breadcrumb-item>
+                <el-breadcrumb-item :to="{name: 'admin.page.page.index'}">{{ trans('pages.pages') }}</el-breadcrumb-item>
             </el-breadcrumb>
         </div>
 
@@ -30,7 +30,7 @@
                                     </el-dropdown>
                                     <router-link :to="{name: 'admin.page.page.create'}">
                                         <el-button type="primary"><i class="el-icon-edit"></i>
-                                            {{ trans('page.create page') }}
+                                            {{ trans('pages.create page') }}
                                         </el-button>
                                     </router-link>
                                 </div>
@@ -52,21 +52,21 @@
                                         type="selection"
                                         width="55">
                                 </el-table-column>
-                                <el-table-column :label="trans('page.status')" width="100">
+                                <el-table-column :label="trans('pages.status')" width="100">
                                     <template scope="scope">
                                         <i class="el-icon-fa-circle" :class="(scope.row.translations.status === true) ? 'text-success':'text-danger'"></i>
                                     </template>
                                 </el-table-column>
                                 <el-table-column prop="id" label="Id" width="75" sortable="custom">
                                 </el-table-column>
-                                <el-table-column prop="translations.title" :label="trans('page.title')">
+                                <el-table-column prop="translations.title" :label="trans('pages.title')">
                                     <template scope="scope">
                                         <a @click.prevent="goToEdit(scope)" href="#">
                                             {{  scope.row.translations.title }}
                                         </a>
                                     </template>
                                 </el-table-column>
-                                <el-table-column prop="translations.slug" :label="trans('page.slug')">
+                                <el-table-column prop="translations.slug" :label="trans('pages.slug')">
                                     <template scope="scope">
                                         <a @click.prevent="goToEdit(scope)" href="#">
                                             {{  scope.row.translations.slug }}

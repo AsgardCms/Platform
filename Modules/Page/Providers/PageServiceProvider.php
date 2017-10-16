@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Config;
 use Illuminate\Support\ServiceProvider;
 use Modules\Core\Events\BuildingSidebar;
 use Modules\Core\Events\CollectingAssets;
+use Modules\Core\Events\LoadingBackendTranslations;
 use Modules\Core\Traits\CanGetSidebarClassForModule;
 use Modules\Core\Traits\CanPublishConfiguration;
 use Modules\Page\Console\CreatePagesCommand;
@@ -40,6 +41,10 @@ class PageServiceProvider extends ServiceProvider
             BuildingSidebar::class,
             $this->getSidebarClassForModule('page', RegisterPageSidebar::class)
         );
+
+        $this->app['events']->listen(LoadingBackendTranslations::class, function (LoadingBackendTranslations $event) {
+            $event->load('pages', array_dot(trans('page::pages')));
+        });
     }
 
     public function boot()
