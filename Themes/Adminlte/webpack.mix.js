@@ -17,8 +17,8 @@ mix.copy('resources/assets/js/main.js', 'assets/js/main.js');
 /**
  * Compile js and scss
  */
-mix.js('resources/assets/js/asgardcms.js', 'assets/js/asgardcms.js');
-mix.sass('resources/assets/scss/asgardcms.scss', 'assets/css/asgardcms.css');
+// mix.js('resources/assets/js/asgardcms.js', 'assets/js/asgardcms.js');
+// mix.sass('resources/assets/scss/asgardcms.scss', 'assets/css/asgardcms.css');
 
 /**
  * Copy node module
@@ -29,7 +29,7 @@ mix.copyDirectory('node_modules/admin-lte', 'assets/vendor/admin-lte');
 // mix.copyDirectory('node_modules/clipboard', 'assets/vendor/clipboard');
 // mix.copyDirectory('node_modules/datatables.net', 'assets/vendor/datatables.net');
 // mix.copyDirectory('node_modules/datatables.net-bs', 'assets/vendor/datatables.net-bs');
-// mix.copyDirectory('node_modules/font-awesome', 'assets/vendor/font-awesome');
+mix.copyDirectory('node_modules/font-awesome', 'assets/vendor/font-awesome');
 // mix.copyDirectory('node_modules/gridstack', 'assets/vendor/gridstack');
 // mix.copyDirectory('node_modules/icheck', 'assets/vendor/iCheck');
 // mix.copyDirectory('node_modules/jquery', 'assets/vendor/jquery');

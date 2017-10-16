@@ -74237,7 +74237,7 @@ exports.default = {
             links: {},
             actionsDef: {
                 def: [{
-                    name: this.trans('page.create-page'),
+                    name: this.trans('pages.create-page'),
                     icon: 'edit',
                     handler: function handler() {
                         _this.$router.push({ name: 'admin.page.page.create' });
@@ -75158,7 +75158,7 @@ var render = function() {
                 }),
                 _vm._v(" "),
                 _c("el-table-column", {
-                  attrs: { prop: "title", label: _vm.trans("page.title") }
+                  attrs: { prop: "title", label: _vm.trans("pages.title") }
                 }),
                 _vm._v(" "),
                 _c("el-table-column", {
@@ -92696,7 +92696,7 @@ var render = function() {
       [
         _c("h1", [
           _vm._v(
-            "\n            " + _vm._s(_vm.trans("page.pages")) + "\n        "
+            "\n            " + _vm._s(_vm.trans("pages.pages")) + "\n        "
           )
         ]),
         _vm._v(" "),
@@ -92711,7 +92711,7 @@ var render = function() {
             _c(
               "el-breadcrumb-item",
               { attrs: { to: { name: "admin.page.page.index" } } },
-              [_vm._v(_vm._s(_vm.trans("page.pages")))]
+              [_vm._v(_vm._s(_vm.trans("pages.pages")))]
             )
           ],
           1
@@ -92805,7 +92805,7 @@ var render = function() {
                               _c("i", { staticClass: "el-icon-edit" }),
                               _vm._v(
                                 "\n                                        " +
-                                  _vm._s(_vm.trans("page.create page")) +
+                                  _vm._s(_vm.trans("pages.create page")) +
                                   "\n                                    "
                               )
                             ])
@@ -92863,7 +92863,7 @@ var render = function() {
                     }),
                     _vm._v(" "),
                     _c("el-table-column", {
-                      attrs: { label: _vm.trans("page.status"), width: "100" },
+                      attrs: { label: _vm.trans("pages.status"), width: "100" },
                       scopedSlots: _vm._u([
                         {
                           key: "default",
@@ -92894,7 +92894,7 @@ var render = function() {
                     _c("el-table-column", {
                       attrs: {
                         prop: "translations.title",
-                        label: _vm.trans("page.title")
+                        label: _vm.trans("pages.title")
                       },
                       scopedSlots: _vm._u([
                         {
@@ -92929,7 +92929,7 @@ var render = function() {
                     _c("el-table-column", {
                       attrs: {
                         prop: "translations.slug",
-                        label: _vm.trans("page.slug")
+                        label: _vm.trans("pages.slug")
                       },
                       scopedSlots: _vm._u([
                         {
@@ -93156,6 +93156,13 @@ var _SingleFileSelector2 = _interopRequireDefault(_SingleFileSelector);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -93864,7 +93871,7 @@ var render = function() {
               _c(
                 "el-breadcrumb-item",
                 { attrs: { to: { name: "admin.page.page.index" } } },
-                [_vm._v(_vm._s(_vm.trans("page.pages")) + "\n            ")]
+                [_vm._v(_vm._s(_vm.trans("pages.pages")) + "\n            ")]
               ),
               _vm._v(" "),
               _c(
@@ -93953,7 +93960,7 @@ var render = function() {
                                     locale + ".title"
                                   )
                                 },
-                                attrs: { label: _vm.trans("page.title") }
+                                attrs: { label: _vm.trans("pages.title") }
                               },
                               [
                                 _c("el-input", {
@@ -93990,7 +93997,7 @@ var render = function() {
                                     locale + ".slug"
                                   )
                                 },
-                                attrs: { label: _vm.trans("page.slug") }
+                                attrs: { label: _vm.trans("pages.slug") }
                               },
                               [
                                 _c(
@@ -94046,7 +94053,7 @@ var render = function() {
                                     locale + ".body"
                                   )
                                 },
-                                attrs: { label: _vm.trans("page.body") }
+                                attrs: { label: _vm.trans("pages.body") }
                               },
                               [
                                 _c(_vm.getCurrentEditor(), {
@@ -94078,6 +94085,47 @@ var render = function() {
                             ),
                             _vm._v(" "),
                             _c(
+                              "el-form-item",
+                              {
+                                class: {
+                                  "el-form-item is-error": _vm.form.errors.has(
+                                    locale + ".status"
+                                  )
+                                },
+                                attrs: { label: _vm.trans("pages.status") }
+                              },
+                              [
+                                _c(
+                                  "el-checkbox",
+                                  {
+                                    model: {
+                                      value: _vm.page[locale].status,
+                                      callback: function($$v) {
+                                        _vm.page[locale].status = $$v
+                                      },
+                                      expression: "page[locale].status"
+                                    }
+                                  },
+                                  [_vm._v(_vm._s(_vm.trans("pages.status")))]
+                                ),
+                                _vm._v(" "),
+                                _vm.form.errors.has(locale + ".status")
+                                  ? _c("div", {
+                                      staticClass: "el-form-item__error",
+                                      domProps: {
+                                        textContent: _vm._s(
+                                          _vm.form.errors.first(
+                                            locale + ".status"
+                                          )
+                                        )
+                                      }
+                                    })
+                                  : _vm._e()
+                              ],
+                              1
+                            ),
+                            _vm._v(" "),
+                            _c(
                               "div",
                               { staticClass: "panel box box-primary" },
                               [
@@ -94097,7 +94145,7 @@ var render = function() {
                                         _vm._v(
                                           "\n                                                " +
                                             _vm._s(
-                                              _vm.trans("page.meta_data")
+                                              _vm.trans("pages.meta_data")
                                             ) +
                                             "\n                                            "
                                         )
@@ -94123,7 +94171,7 @@ var render = function() {
                                           {
                                             attrs: {
                                               label: _vm.trans(
-                                                "page.meta_title"
+                                                "pages.meta_title"
                                               )
                                             }
                                           },
@@ -94150,7 +94198,7 @@ var render = function() {
                                           {
                                             attrs: {
                                               label: _vm.trans(
-                                                "page.meta_description"
+                                                "pages.meta_description"
                                               )
                                             }
                                           },
@@ -94201,7 +94249,7 @@ var render = function() {
                                         _vm._v(
                                           "\n                                                " +
                                             _vm._s(
-                                              _vm.trans("page.facebook_data")
+                                              _vm.trans("pages.facebook_data")
                                             ) +
                                             "\n                                            "
                                         )
@@ -94226,7 +94274,7 @@ var render = function() {
                                           "el-form-item",
                                           {
                                             attrs: {
-                                              label: _vm.trans("page.og_title")
+                                              label: _vm.trans("pages.og_title")
                                             }
                                           },
                                           [
@@ -94252,7 +94300,7 @@ var render = function() {
                                           {
                                             attrs: {
                                               label: _vm.trans(
-                                                "page.og_description"
+                                                "pages.og_description"
                                               )
                                             }
                                           },
@@ -94280,7 +94328,7 @@ var render = function() {
                                           "el-form-item",
                                           {
                                             attrs: {
-                                              label: _vm.trans("page.og_type")
+                                              label: _vm.trans("pages.og_type")
                                             }
                                           },
                                           [
@@ -94289,7 +94337,7 @@ var render = function() {
                                               {
                                                 attrs: {
                                                   placeholder: _vm.trans(
-                                                    "page.og_type"
+                                                    "pages.og_type"
                                                   )
                                                 },
                                                 model: {
@@ -94308,7 +94356,7 @@ var render = function() {
                                                 _c("el-option", {
                                                   attrs: {
                                                     label: _vm.trans(
-                                                      "page.facebook-types.website"
+                                                      "pages.facebook-types.website"
                                                     ),
                                                     value: "website"
                                                   }
@@ -94317,7 +94365,7 @@ var render = function() {
                                                 _c("el-option", {
                                                   attrs: {
                                                     label: _vm.trans(
-                                                      "page.facebook-types.product"
+                                                      "pages.facebook-types.product"
                                                     ),
                                                     value: "product"
                                                   }
@@ -94326,7 +94374,7 @@ var render = function() {
                                                 _c("el-option", {
                                                   attrs: {
                                                     label: _vm.trans(
-                                                      "page.facebook-types.article"
+                                                      "pages.facebook-types.article"
                                                     ),
                                                     value: "article"
                                                   }
@@ -94415,7 +94463,7 @@ var render = function() {
                             "true-label": 1,
                             "false-label": 0,
                             name: "is_home",
-                            label: _vm.trans("page.is homepage")
+                            label: _vm.trans("pages.is homepage")
                           },
                           model: {
                             value: _vm.page.is_home,
@@ -94437,7 +94485,7 @@ var render = function() {
                             "template"
                           )
                         },
-                        attrs: { label: _vm.trans("page.template") }
+                        attrs: { label: _vm.trans("pages.template") }
                       },
                       [
                         _c(
@@ -94493,7 +94541,7 @@ var render = function() {
                       attrs: {
                         zone: "image",
                         entity: "Modules\\Page\\Entities\\Page",
-                        "entity-id": _vm.page.id
+                        "entity-id": _vm.$route.params.pageId
                       },
                       on: {
                         singleFileSelected: function($event) {
@@ -116007,7 +116055,7 @@ exports.default = {
     props: {
         zone: { type: String, required: true },
         entity: { type: String, required: true },
-        entityId: { type: Number },
+        entityId: { default: null },
         label: { type: String }
     },
     components: {
@@ -116071,6 +116119,9 @@ exports.default = {
     mounted: function mounted() {
         var _this2 = this;
 
+        if (this.entityId) {
+            this.fetchMedia();
+        }
         this.eventName = 'fileWasSelected' + this.makeId() + Math.floor(Math.random() * 999999);
 
         this.$events.listen(this.eventName, function (mediaData) {
