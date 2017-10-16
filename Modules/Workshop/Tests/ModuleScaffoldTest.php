@@ -287,6 +287,11 @@ class ModuleScaffoldTest extends BaseTestCase
             '$this->app[\'events\']->listen(BuildingSidebar::class, ' . $sidebarEventListenerName . '::class);'
         ), 'Sidebar event handler was not present');
 
+        $this->assertTrue(str_contains(
+            $file,
+            '$this->app[\'events\']->listen(LoadingBackendTranslations::class,'
+        ), 'Translations registering was not present');
+
         $this->cleanUp();
     }
 

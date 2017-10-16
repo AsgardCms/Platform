@@ -1,0 +1,2 @@
+$event->load('$PLURAL_LOWERCASE_CLASS_NAME$', array_dot(trans('$LOWERCASE_MODULE_NAME$::$PLURAL_LOWERCASE_CLASS_NAME$')));
+            // append translations

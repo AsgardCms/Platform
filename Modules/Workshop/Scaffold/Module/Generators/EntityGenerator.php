@@ -63,6 +63,7 @@ class EntityGenerator extends Generator
             $this->appendResourceRoutesToRoutesFileFor($entity);
             $this->appendPermissionsFor($entity);
             $this->appendSidebarLinksFor($entity);
+            $this->appendBackendTranslations($entity);
         }
     }
 
@@ -240,6 +241,18 @@ class EntityGenerator extends Generator
         $sidebarComposerContent = str_replace('// append', $content, $sidebarComposerContent);
 
         $this->finder->put($this->getModulesPath("Events/Handlers/Register{$this->name}Sidebar.php"), $sidebarComposerContent);
+    }
+
+    /**
+     * @param string $entity
+     */
+    private function appendBackendTranslations($entity)
+    {
+        $moduleProviderContent = $this->finder->get($this->getModulesPath("Providers/{$this->name}ServiceProvider.php"));
+
+        $translations = $this->getContentForStub('translations-append.stub', $entity);
+        $moduleProviderContent = str_replace('// append translations', $translations, $moduleProviderContent);
+        $this->finder->put($this->getModulesPath("Providers/{$this->name}ServiceProvider.php"), $moduleProviderContent);
     }
 
     /**
