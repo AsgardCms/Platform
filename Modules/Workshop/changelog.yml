@@ -1,5 +1,8 @@
 url: https://github.com/AsgardCms/Platform
 versions:
+    "3.2.0@unreleased":
+        changed:
+            - Generating the new listener on the <code>LoadingBackendTranslations</code> hook to send translations to VueJS
     "3.0.0":
         changed:
             - Using correct version number on module detail view
