@@ -1,6 +1,6 @@
 url: https://github.com/AsgardCms/Platform
 versions:
-    "3.2.0@unreleased":
+    "3.2.0":
         added:
             - New <code>LoadingBackendTranslations</code> hook to load translations to the frontend (vuejs)
         changed:

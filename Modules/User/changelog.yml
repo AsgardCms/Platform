@@ -1,6 +1,6 @@
 url: https://github.com/AsgardCms/Platform
 versions:
-    "3.2.0@unreleased":
+    "3.2.0":
         added:
             - Role views (index, create, edit) have been converted to VueJS components, as a SPA
             - User views (index, create, edit) have been converted to VueJS components, as a SPA

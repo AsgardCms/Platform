@@ -1,6 +1,6 @@
 url: https://github.com/AsgardCms/Platform
 versions:
-    "3.2.0@unreleased":
+    "3.2.0":
         added:
             - Adding the page status field
         changed:
