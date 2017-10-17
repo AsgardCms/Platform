@@ -5,7 +5,6 @@ import Vue from 'vue';
 import VueI18n from 'vue-i18n';
 import VueRouter from 'vue-router';
 import ElementUI from 'element-ui';
-import DataTables from 'vue-data-tables';
 import VueEvents from 'vue-events';
 import locale from 'element-ui/lib/locale/lang/en';
 import VueSimplemde from 'vue-simplemde';
@@ -14,7 +13,6 @@ import MediaRoutes from '../../../Modules/Media/Assets/js/MediaRoutes';
 import UserRoutes from '../../../Modules/User/Assets/js/UserRoutes';
 
 Vue.use(ElementUI, { locale });
-Vue.use(DataTables, { locale });
 Vue.use(VueI18n);
 Vue.use(VueRouter);
 Vue.use(require('vue-shortkey'), { prevent: ['input', 'textarea'] });
