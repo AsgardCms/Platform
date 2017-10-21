@@ -1,6 +1,6 @@
 url: https://github.com/AsgardCms/Platform
 versions:
-    "3.2.1@unreleased":
+    "3.2.1":
         changed:
             - Updated to VueJS 2.5. Updated all components for 2.5 compatibility.
     "3.2.0":
