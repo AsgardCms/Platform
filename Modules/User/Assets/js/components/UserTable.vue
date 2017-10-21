@@ -42,21 +42,21 @@
                                 <el-table-column prop="id" label="Id" width="75" sortable="custom">
                                 </el-table-column>
                                 <el-table-column prop="first_name" :label="trans('users.table.first-name')" sortable="custom">
-                                    <template scope="scope">
+                                    <template slot-scope="scope">
                                         <a @click.prevent="goToEdit(scope)" href="#">
                                             {{ scope.row.first_name }}
                                         </a>
                                     </template>
                                 </el-table-column>
                                 <el-table-column prop="last_name" :label="trans('users.table.last-name')" sortable="custom">
-                                    <template scope="scope">
+                                    <template slot-scope="scope">
                                         <a @click.prevent="goToEdit(scope)" href="#">
                                             {{ scope.row.last_name }}
                                         </a>
                                     </template>
                                 </el-table-column>
                                 <el-table-column prop="email" :label="trans('users.table.email')" sortable="custom">
-                                    <template scope="scope">
+                                    <template slot-scope="scope">
                                         <a @click.prevent="goToEdit(scope)" href="#">
                                             {{ scope.row.email }}
                                         </a>
@@ -66,11 +66,11 @@
                                                  sortable="custom">
                                 </el-table-column>
                                 <el-table-column prop="actions" :label="trans('core.table.actions')">
-                                    <template scope="scope">
+                                    <template slot-scope="scope">
                                         <el-button-group>
                                             <edit-button
                                                     :to="{name: 'admin.user.users.edit', params: {userId: scope.row.id}}"></edit-button>
-                                            <delete-button :scope="scope" :rows="data"></delete-button>
+                                            <delete-button :slot-scope="scope" :rows="data"></delete-button>
                                         </el-button-group>
                                     </template>
                                 </el-table-column>

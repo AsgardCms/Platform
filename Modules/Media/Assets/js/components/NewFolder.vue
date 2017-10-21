@@ -12,7 +12,7 @@
                          v-text="form.errors.first('name')"></div>
                 </el-form-item>
             </el-form>
-            <span slot="footer" class="dialog-footer">
+            <span slot-scope="footer" class="dialog-footer">
             <el-button @click="closeDialog">{{ trans('core.button.cancel') }}</el-button>
             <el-button type="primary" @click="onSubmit()">{{ trans('core.confirm') }}</el-button>
           </span>

@@ -62,7 +62,7 @@
                                     width="55">
                             </el-table-column>
                             <el-table-column label="" width="150">
-                                <template scope="scope">
+                                <template slot-scope="scope">
                                     <img :src="scope.row.small_thumb" alt="" v-if="scope.row.is_image"/>
                                     <i :class="`fa ${scope.row.fa_icon}`" style="font-size: 38px;"
                                        v-if="! scope.row.is_image && ! scope.row.is_folder"></i>
@@ -72,7 +72,7 @@
                             </el-table-column>
 
                             <el-table-column prop="filename" :label="trans('media.table.filename')" sortable="custom">
-                                <template scope="scope">
+                                <template slot-scope="scope">
                                     <strong v-if="scope.row.is_folder" style="cursor: pointer;" @click="enterFolder(scope)">
                                         {{ scope.row.filename }}
                                     </strong>
@@ -86,7 +86,7 @@
                                              width="150">
                             </el-table-column>
                             <el-table-column prop="actions" label="" width="150">
-                                <template scope="scope">
+                                <template slot-scope="scope">
                                     <div class="pull-right">
                                         <el-button
                                                 type="primary"
@@ -105,7 +105,7 @@
                                                         v-if="scope.row.is_folder && canEditFolders">
                                                     <i class="fa fa-pencil"></i>
                                                 </el-button>
-                                                <delete-button :scope="scope" :rows="data"></delete-button>
+                                                <delete-button :slot-scope="scope" :rows="data"></delete-button>
                                             </el-button-group>
                                         </div>
                                     </div>

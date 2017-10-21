@@ -36,7 +36,7 @@
                                     <el-form-item :label="trans('roles.form.slug')"
                                                   :class="{'el-form-item is-error': form.errors.has('slug') }">
                                         <el-input v-model="role.slug">
-                                            <el-button slot="prepend" @click="generateSlug">Generate</el-button>
+                                            <el-button slot-scope="prepend" @click="generateSlug">Generate</el-button>
                                         </el-input>
                                         <div class="el-form-item__error" v-if="form.errors.has('slug')"
                                              v-text="form.errors.first('slug')"></div>

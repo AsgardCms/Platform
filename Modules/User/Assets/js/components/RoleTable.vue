@@ -42,14 +42,14 @@
                                 <el-table-column prop="id" label="Id" width="75" sortable="custom">
                                 </el-table-column>
                                 <el-table-column prop="name" :label="trans('roles.table.name')" sortable="custom">
-                                    <template scope="scope">
+                                    <template slot-scope="scope">
                                         <a @click.prevent="goToEdit(scope)" href="#">
                                             {{ scope.row.name }}
                                         </a>
                                     </template>
                                 </el-table-column>
                                 <el-table-column prop="slug" :label="trans('roles.table.slug')" sortable="custom">
-                                    <template scope="scope">
+                                    <template slot-scope="scope">
                                         <a @click.prevent="goToEdit(scope)" href="#">
                                             {{ scope.row.slug }}
                                         </a>
@@ -59,11 +59,11 @@
                                                  sortable="custom">
                                 </el-table-column>
                                 <el-table-column prop="actions" :label="trans('core.table.actions')">
-                                    <template scope="scope">
+                                    <template slot-scope="scope">
                                         <el-button-group>
                                             <edit-button
                                                     :to="{name: 'admin.user.roles.edit', params: {roleId: scope.row.id}}"></edit-button>
-                                            <delete-button :scope="scope" :rows="data"></delete-button>
+                                            <delete-button :slot-scope="scope" :rows="data"></delete-button>
                                         </el-button-group>
                                     </template>
                                 </el-table-column>

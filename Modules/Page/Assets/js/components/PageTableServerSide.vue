@@ -23,7 +23,7 @@
                                         <el-button type="primary">
                                             {{ trans('core.table.actions') }}<i class="el-icon-caret-bottom el-icon--right"></i>
                                         </el-button>
-                                        <el-dropdown-menu slot="dropdown">
+                                        <el-dropdown-menu slot-slot-scope="dropdown">
                                             <el-dropdown-item command="mark-online">{{ trans('core.mark as online') }}</el-dropdown-item>
                                             <el-dropdown-item command="mark-offline">{{ trans('core.mark as offline') }}</el-dropdown-item>
                                         </el-dropdown-menu>
@@ -53,21 +53,21 @@
                                         width="55">
                                 </el-table-column>
                                 <el-table-column :label="trans('pages.status')" width="100">
-                                    <template scope="scope">
+                                    <template slot-scope="scope">
                                         <i class="el-icon-fa-circle" :class="(scope.row.translations.status === true) ? 'text-success':'text-danger'"></i>
                                     </template>
                                 </el-table-column>
                                 <el-table-column prop="id" label="Id" width="75" sortable="custom">
                                 </el-table-column>
                                 <el-table-column prop="translations.title" :label="trans('pages.title')">
-                                    <template scope="scope">
+                                    <template slot-scope="scope">
                                         <a @click.prevent="goToEdit(scope)" href="#">
                                             {{  scope.row.translations.title }}
                                         </a>
                                     </template>
                                 </el-table-column>
                                 <el-table-column prop="translations.slug" :label="trans('pages.slug')">
-                                    <template scope="scope">
+                                    <template slot-scope="scope">
                                         <a @click.prevent="goToEdit(scope)" href="#">
                                             {{  scope.row.translations.slug }}
                                         </a>
@@ -76,10 +76,10 @@
                                 <el-table-column prop="created_at" :label="trans('core.table.created at')" sortable="custom">
                                 </el-table-column>
                                 <el-table-column prop="actions" :label="trans('core.table.actions')">
-                                    <template scope="scope">
+                                    <template slot-scope="scope">
                                         <el-button-group>
                                             <edit-button :to="{name: 'admin.page.page.edit', params: {pageId: scope.row.id}}"></edit-button>
-                                            <delete-button :scope="scope" :rows="data"></delete-button>
+                                            <delete-button :slot-scope="scope" :rows="data"></delete-button>
                                         </el-button-group>
                                     </template>
                                 </el-table-column>

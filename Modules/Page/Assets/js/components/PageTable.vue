@@ -13,11 +13,11 @@
                         <el-table-column prop="created_at" label="Created at">
                         </el-table-column>
                         <el-table-column fixed="right" prop="actions" label="Actions">
-                            <template scope="scope">
+                            <template slot-scope="scope">
                                 <a class="btn btn-default btn-flat" @click.prevent="goToEdit(scope)"><i
                                         class="fa fa-pencil"></i></a>
 
-                                <delete-button :scope="scope" :rows="data" :translations="translations">
+                                <delete-button :slot-scope="scope" :rows="data" :translations="translations">
                                 </delete-button>
                             </template>
                         </el-table-column>

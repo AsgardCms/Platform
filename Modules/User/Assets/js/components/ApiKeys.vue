@@ -29,7 +29,7 @@
                                 v-for="key in apiKeys"
                                 :key="key.id">
                                 <el-input v-model="key.access_token" disabled>
-                                    <el-button slot="prepend" @click="destroyApiKey(key)">
+                                    <el-button slot-scope="prepend" @click="destroyApiKey(key)">
                                         <i class="fa fa-times"></i>
                                     </el-button>
                                 </el-input>

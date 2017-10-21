@@ -21,7 +21,7 @@
 
             <media-list single-modal :event-name="this.eventName"></media-list>
 
-            <span slot="footer" class="dialog-footer">
+            <span slot-scope="footer" class="dialog-footer">
                 <el-button @click="dialogVisible = false">{{ trans('core.button.cancel') }}</el-button>
             </span>
         </el-dialog>

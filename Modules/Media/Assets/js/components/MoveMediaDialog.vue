@@ -17,7 +17,7 @@
                          v-text="form.errors.first('destinationFolder')"></div>
                 </el-form-item>
             </el-form>
-            <span slot="footer" class="dialog-footer">
+            <span slot-scope="footer" class="dialog-footer">
                 <el-button @click="closeDialog">{{ trans('core.button.cancel') }}</el-button>
                 <el-button type="warning" @click="onSubmit()">{{ trans('core.move') }}</el-button>
             </span>
