@@ -11,6 +11,9 @@ return [
     'user no longer exists' => 'Deze gebruiker bestaat niet meer.',
     'invalid reset code' => 'Ongeldige of verlopen herstelcode.',
     'password reset' => 'Je wachtwoord werd hersteld, je kan je nu aanmelden met je nieuwe wachtwoord.',
+    /* Email subjects */
+    'welcome' => 'Welkom.',
+    'reset password' => 'Een nieuw wachtwoord instellen.',
     /* User management */
     'user created' => 'Gebruiker succesvol aangemaakt.',
     'user not found' => 'Gebruiker niet gevonden.',
@@ -21,4 +24,6 @@ return [
     'role not found' => 'Rol niet gevonden.',
     'role updated' => 'Rol succesvol aangepast.',
     'role deleted' => 'Rol succesvol verwijderd.',
+    /* Profile management */
+    'profile updated' => 'Profiel wijziging opgeslagen.',
 ];

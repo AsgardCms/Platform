@@ -14,20 +14,30 @@ return [
     ],
     'table' => [
         'name' => 'Naam',
+        'slug' => 'URL onderdeel',
     ],
     'tabs' => [
         'data' => 'Data',
-        'permissions' => 'permissies',
+        'permissions' => 'Permissies',
     ],
     'form' => [
         'name' => 'Naam',
-        'slug' => 'Pad',
+        'slug' => 'URL onderdeel',
     ],
     'navigation' => [
         'back to index' => 'Terug naar rollen overzicht',
     ],
     'select all' => 'Alles selecteren',
     'deselect all' => 'Alles deselecteren',
-    'inherit' => 'Erf van rol',
     'swap' => 'Wisselen',
+    'allow all' => 'Alles toestaan',
+    'deny all' => 'Alles weigeren',
+    'inherit all' => 'Alles erven',
+    'allow' => 'Allow',
+    'deny' => 'Deny',
+    'inherit' => 'Erf van rol',
+    'list resource' => 'Rollen overzicht',
+    'create resource' => 'Rollen creëren',
+    'edit resource' => 'Rollen wijzigen',
+    'destroy resource' => 'Rollen verwijderen',
 ];

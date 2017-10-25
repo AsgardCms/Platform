@@ -35,4 +35,8 @@ return [
     'navigation' => [
         'back to index' => 'Ga terug naar het menu overzicht',
     ],
+    'list resource' => 'Menu overzicht',
+    'create resource' => 'Menu creëren',
+    'edit resource' => 'Menu wijzigen',
+    'destroy resource' => 'Menu verwijderen',
 ];
