@@ -11,4 +11,6 @@ return [
         'settings' => 'Instellingen',
         'module settings' => ':module module instellingen',
     ],
+    'list resource' => 'Instellingen overzicht',
+    'edit resource' => 'Instellingen wijzigen',
 ];

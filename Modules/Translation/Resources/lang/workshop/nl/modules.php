@@ -31,4 +31,9 @@ return [
     'added' => 'Toegevoegd',
     'changed' => 'Gewijzigd',
     'removed' => 'Verwijderd',
+    'list resource' => 'Modules overzicht',
+    'show resource' => 'Modules weergeven',
+    'update resource' => 'Modules wijzigen',
+    'disable resource' => 'Modules uitschakelen',
+    'enable resource' => 'Modules inschakelen',
 ];

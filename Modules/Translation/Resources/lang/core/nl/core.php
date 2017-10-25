@@ -3,7 +3,7 @@
 return [
     'modal' => [
         'title' => 'Bevestiging',
-        'confirmation-message' => 'Ben je zeker dat je dit item wil verwijderen?',
+        'confirmation-message' => 'Weet je zeker dat je dit item wil verwijderen?',
     ],
     'table' => [
         'created at' => 'Aangemaakt op',
@@ -23,6 +23,7 @@ return [
         'macedonian' => 'Macedonisch',
         'turkish' => 'Turks',
         'czech' => 'Tsjechisch',
+        'swedish' => 'Zweeds',
     ],
     'button' => [
         'cancel' => 'Annuleren',
@@ -48,6 +49,7 @@ return [
         'available keyboard shortcuts' => 'Beschikbare sneltoetsen op deze pagina',
         'view website' => 'Bekijk website',
         'complete your profile' => 'Vul je profiel verder aan',
+        'profile' => 'Profiel',
         'sign out' => 'Uitloggen',
     ],
     'messages' => [
@@ -66,5 +68,18 @@ return [
     'something went wrong' => 'Whoops! Er iets misgegaan.',
     'mark as online' => 'Markeer als online',
     'mark as offline' => 'Markeer als offline',
-    'back to backend' => 'Terug naar de backend',
+    'back to backend' => 'Naar de backend',
+
+    'list resource' => ':name overzicht',
+    'create resource' => 'Creëer :name',
+    'edit resource' => 'Wijzig :name',
+    'destroy resource' => 'Verwijder :name',
+    'error token mismatch' => 'Je sessie is verlopen, verstuur het formulier opnieuw.',
+    'error 404' => '404',
+    'error 404 title' => 'Oops! De pagina is niet gevonden.',
+    'error 404 description' => 'De pagina die je hebt opgevraagd kan niet worden gevonden.',
+    'error 500' => '500',
+    'error 500 title' => 'Oops! Er is iets fout gegaan',
+    'error 500 description' => 'Een beheerder is op de hoogte gesteld.',
+    'delete cancelled' => 'Verwijderen geannuleerd',
 ];

@@ -19,4 +19,5 @@ return [
     'confirm email button' => 'Bevestig email-adres',
     'end greeting' => 'Het team',
     'sign in welcome message' => 'Meld je aan om te beginnen',
+    'reset password email was sent' => 'Email voor wachtwoord herstel is verzonden',
 ];

@@ -36,4 +36,9 @@ return [
     'remove media' => 'File verwijderen',
     'some files not moved' => 'Sommige bestanden zijn niet verplaatst',
     'files moved successfully' => 'Bestanden zijn succesvol verplaatst',
+    'list resource' => 'Media overzicht',
+    'create resource' => 'Media toevoegen',
+    'edit resource' => 'Media wijzigen',
+    'destroy resource' => 'Media verwijderen',
+    'file too large' => 'Bestand te groot. Het bestand moet kleiner zijn dan :size MB.',
 ];

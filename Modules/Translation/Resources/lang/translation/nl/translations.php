@@ -32,4 +32,9 @@ return [
     'event' => 'Gebeurtenis',
     'created' => 'Aangemaakt',
     'edited' => 'Gewijzigd',
+    'revert history' => 'Geschiedenis terugdraaien',
+    'list resource' => 'Vertalingen overzicht',
+    'edit resource' => 'Vertalingen wijzigen',
+    'import resource' => 'Vertalingen importeren',
+    'export resource' => 'Vertalingen exporteren',
 ];

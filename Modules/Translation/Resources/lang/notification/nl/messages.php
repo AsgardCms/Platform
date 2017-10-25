@@ -13,4 +13,8 @@ return [
     'all notifications deleted' => 'Alle berichten werden succesvol verwijderd.',
     'all notifications marked as read' => 'Alle berichten werden succesvol gemarkeerd als gelezen.',
     'view all' => 'Toon alle berichten',
+    'list resource' => 'Notificaties overzicht',
+    'destroy resource' => 'Notificaties verwijderen',
+    'destroy all resource' => 'Verwijder alle notificaties',
+    'markAllAsRead resource' => 'Markeer notificaties als gelezen',
 ];

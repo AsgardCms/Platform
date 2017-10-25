@@ -5,7 +5,7 @@ return [
     'create page' => 'Creëer een pagina',
     'edit page' => 'Wijzig een pagina',
     'name' => 'Naam',
-    'slug' => 'Pad',
+    'slug' => 'URL onderdeel',
     'title' => 'Titel',
     'meta_data' => 'Meta data',
     'meta_title' => 'Meta titel',
@@ -20,6 +20,12 @@ return [
     'status' => 'Status',
     'pages were updated' => 'De paginas werden gewijzigd',
 
+    'back to index' => 'Ga terug naar het pagina overzicht',
+    'list resource' => 'Pagina overzicht',
+    'create resource' => 'Pagina\'s aanmaken',
+    'edit resource' => 'Pagina\'s wijzigen',
+    'destroy resource' => 'Pagina\'s verwijderen',
+
     'view-page' => 'De pagina bekijken',
     'edit-page' => 'De pagina bewerken',
     'validation' => [
@@ -33,5 +39,4 @@ return [
         'product' => 'Product',
         'article' => 'Artikel',
     ],
-    'back to index' => 'Ga terug naar het pagina overzicht',
 ];
