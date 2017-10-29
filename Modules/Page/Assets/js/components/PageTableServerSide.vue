@@ -23,7 +23,7 @@
                                         <el-button type="primary">
                                             {{ trans('core.table.actions') }}<i class="el-icon-caret-bottom el-icon--right"></i>
                                         </el-button>
-                                        <el-dropdown-menu slot-slot-scope="dropdown">
+                                        <el-dropdown-menu slot="dropdown">
                                             <el-dropdown-item command="mark-online">{{ trans('core.mark as online') }}</el-dropdown-item>
                                             <el-dropdown-item command="mark-offline">{{ trans('core.mark as offline') }}</el-dropdown-item>
                                         </el-dropdown-menu>
@@ -35,7 +35,7 @@
                                     </router-link>
                                 </div>
                                 <div class="search el-col el-col-5">
-                                    <el-input icon="search" @change="performSearch" v-model="searchQuery">
+                                    <el-input prefix-icon="el-icon-search" @keyup.native="performSearch" v-model="searchQuery">
                                     </el-input>
                                 </div>
                             </div>
@@ -54,7 +54,7 @@
                                 </el-table-column>
                                 <el-table-column :label="trans('pages.status')" width="100">
                                     <template slot-scope="scope">
-                                        <i class="el-icon-fa-circle" :class="(scope.row.translations.status === true) ? 'text-success':'text-danger'"></i>
+                                        <i class="fa fa-circle" :class="(scope.row.translations.status === true) ? 'text-success':'text-danger'"></i>
                                     </template>
                                 </el-table-column>
                                 <el-table-column prop="id" label="Id" width="75" sortable="custom">
@@ -79,7 +79,7 @@
                                     <template slot-scope="scope">
                                         <el-button-group>
                                             <edit-button :to="{name: 'admin.page.page.edit', params: {pageId: scope.row.id}}"></edit-button>
-                                            <delete-button :slot-scope="scope" :rows="data"></delete-button>
+                                            <delete-button :scope="scope" :rows="data"></delete-button>
                                         </el-button-group>
                                     </template>
                                 </el-table-column>
@@ -176,11 +176,11 @@
                 this.tableIsLoading = true;
                 this.queryServer({ order_by: event.prop, order: event.order });
             },
-            performSearch(query) {
-                console.log(`searching:${query}`);
+            performSearch: _.debounce(function (query) {
+                console.log(`searching:${query.target.value}`);
                 this.tableIsLoading = true;
-                this.queryServer({ search: query });
-            },
+                this.queryServer({ search: query.target.value });
+            }, 300),
             handleExtraActions(action) {
                 const pageIds = _.map(this.selectedPages, elem => elem.id);
                 axios.get(route('api.page.page.mark-status', { action, pageIds: JSON.stringify(pageIds) }))

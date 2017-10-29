@@ -1,10 +1,10 @@
 <template>
     <div>
         <el-button type="success" class="new-folder" @click="dialogFormVisible = true">
-            <i class="el-icon-fa-plus"></i> {{ trans('folders.create resource') }}
+            <i class="fa fa-plus"></i> {{ trans('folders.create resource') }}
         </el-button>
 
-        <el-dialog :title="trans('folders.create resource')" :visible.sync="dialogFormVisible" size="tiny">
+        <el-dialog :title="trans('folders.create resource')" :visible.sync="dialogFormVisible" width="30%">
             <el-form :model="folder" v-loading.body="loading" @submit.native.prevent="onSubmit()">
                 <el-form-item :label="trans('folders.folder name')" :class="{'el-form-item is-error': form.errors.has('name') }">
                     <el-input v-model="folder.name" auto-complete="off" autofocus></el-input>
@@ -12,10 +12,10 @@
                          v-text="form.errors.first('name')"></div>
                 </el-form-item>
             </el-form>
-            <span slot-scope="footer" class="dialog-footer">
-            <el-button @click="closeDialog">{{ trans('core.button.cancel') }}</el-button>
-            <el-button type="primary" @click="onSubmit()">{{ trans('core.confirm') }}</el-button>
-          </span>
+            <span slot="footer" class="dialog-footer">
+                <el-button @click="closeDialog">{{ trans('core.button.cancel') }}</el-button>
+                <el-button type="primary" @click="onSubmit()">{{ trans('core.confirm') }}</el-button>
+            </span>
         </el-dialog>
 
     </div>

@@ -1,14 +1,9 @@
 // Element UI
-@import "~element-ui/lib/theme-default/index.css";
+@import "~element-ui/lib/theme-chalk/index.css";
 
-$fa-font-path: "~font-awesome/fonts";
-$fa-css-prefix: el-icon-fa;
-@import "~font-awesome/scss/font-awesome";
-[class^="el-icon-fa"], [class*=" el-icon-fa"] {
-  display: inline-block;
-  font: normal normal normal 14px/1 FontAwesome!important;
-  font-size: inherit;
-  text-rendering: auto;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-};
+.el-form-item__label {
+  line-height: normal;
+}
+.el-table td, .el-table th {
+  padding: 5px 0;
+}

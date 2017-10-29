@@ -1,6 +1,6 @@
 <template>
     <div>
-        <el-dialog title="Rename Folder" :visible.sync="dialogFormVisible" size="tiny">
+        <el-dialog title="Rename Folder" :visible.sync="dialogFormVisible" width="30%">
             <el-form :model="folder" v-loading.body="loading" @submit.native.prevent="onSubmit()">
                 <el-form-item label="Folder name" :class="{'el-form-item is-error': form.errors.has('name') }">
                     <el-input v-model="folder.name" auto-complete="off" autofocus></el-input>
@@ -8,7 +8,7 @@
                          v-text="form.errors.first('name')"></div>
                 </el-form-item>
             </el-form>
-            <span slot-scope="footer" class="dialog-footer">
+            <span slot="footer" class="dialog-footer">
             <el-button @click="closeDialog">{{ trans('core.button.cancel') }}</el-button>
             <el-button type="primary" @click="onSubmit()">{{ trans('core.confirm') }}</el-button>
           </span>

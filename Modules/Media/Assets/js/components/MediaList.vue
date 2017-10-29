@@ -36,7 +36,7 @@
                                 </el-button-group>
                             </div>
                             <div class="search el-col el-col-5">
-                                <el-input icon="search" @change="performSearch" v-model="searchQuery">
+                                <el-input prefix-icon="el-icon-search" @keyup.native="performSearch" v-model="searchQuery">
                                 </el-input>
                             </div>
                         </div>
@@ -105,7 +105,7 @@
                                                         v-if="scope.row.is_folder && canEditFolders">
                                                     <i class="fa fa-pencil"></i>
                                                 </el-button>
-                                                <delete-button :slot-scope="scope" :rows="data"></delete-button>
+                                                <delete-button :scope="scope" :rows="data"></delete-button>
                                             </el-button-group>
                                         </div>
                                     </div>
@@ -231,11 +231,11 @@
                 this.tableIsLoading = true;
                 this.queryServer({ order_by: event.prop, order: event.order });
             },
-            performSearch(query) {
-                console.log(`searching:${query}`);
+            performSearch: _.debounce(function (query) {
+                console.log(`searching:${query.target.value}`);
                 this.tableIsLoading = true;
-                this.queryServer({ search: query });
-            },
+                this.queryServer({ search: query.target.value });
+            }, 300),
             enterFolder(scope) {
                 this.tableIsLoading = true;
                 this.queryServer({ folder_id: scope.row.id });

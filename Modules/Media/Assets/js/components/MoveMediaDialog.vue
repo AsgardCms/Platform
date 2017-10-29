@@ -1,6 +1,6 @@
 <template>
     <div>
-        <el-dialog title="Move Media" :visible.sync="dialogFormVisible" size="tiny" class="move-media-dialog"  @open="fetchFolders">
+        <el-dialog title="Move Media" :visible.sync="dialogFormVisible" width="30%" class="move-media-dialog"  @open="fetchFolders">
             <el-form v-loading.body="loading" @submit.native.prevent="onSubmit()">
                 <el-form-item label="To" :class="{'el-form-item is-error': form.errors.has('destinationFolder') }">
                     <el-select v-model="destinationFolder" placeholder="Select">
@@ -17,7 +17,7 @@
                          v-text="form.errors.first('destinationFolder')"></div>
                 </el-form-item>
             </el-form>
-            <span slot-scope="footer" class="dialog-footer">
+            <span slot="footer" class="dialog-footer">
                 <el-button @click="closeDialog">{{ trans('core.button.cancel') }}</el-button>
                 <el-button type="warning" @click="onSubmit()">{{ trans('core.move') }}</el-button>
             </span>
