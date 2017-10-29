@@ -27,7 +27,7 @@
                                     </router-link>
                                 </div>
                                 <div class="search el-col el-col-5">
-                                    <el-input icon="search" @keyup.native="performSearch" v-model="searchQuery">
+                                    <el-input prefix-icon="el-icon-search" @keyup.native="performSearch" v-model="searchQuery">
                                     </el-input>
                                 </div>
                             </div>
