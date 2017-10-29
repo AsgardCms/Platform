@@ -100,7 +100,7 @@
                                                 <edit-button :to="{name: 'admin.media.media.edit', params: {mediaId: scope.row.id}}"
                                                              v-if="! scope.row.is_folder"></edit-button>
                                                 <el-button
-                                                        size="small"
+                                                        size="mini"
                                                         @click.prevent="showEditFolder(scope.row)"
                                                         v-if="scope.row.is_folder && canEditFolders">
                                                     <i class="fa fa-pencil"></i>

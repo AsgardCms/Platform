@@ -111692,7 +111692,7 @@ var render = function() {
                                                 ? _c(
                                                     "el-button",
                                                     {
-                                                      attrs: { size: "small" },
+                                                      attrs: { size: "mini" },
                                                       on: {
                                                         click: function(
                                                           $event
