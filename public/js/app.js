@@ -117157,7 +117157,7 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c(
     "el-button",
-    { attrs: { type: "danger", size: "small" }, on: { click: _vm.deleteRow } },
+    { attrs: { type: "danger", size: "mini" }, on: { click: _vm.deleteRow } },
     [_c("i", { staticClass: "fa fa-trash" })]
   )
 }
@@ -117260,7 +117260,7 @@ var render = function() {
   return _c(
     "el-button",
     {
-      attrs: { size: "small" },
+      attrs: { size: "mini" },
       on: {
         click: function($event) {
           $event.preventDefault()
