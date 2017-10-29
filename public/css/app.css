@@ -18,3 +18,8 @@
   border-radius: 3px;
 }
 
+.el-table td:first-child .cell,
+.el-table th:first-child .cell {
+  padding-left: 10px;
+}
+
