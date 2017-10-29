@@ -3,6 +3,7 @@ versions:
     "3.2.2@changelog":
         changed:
             - Updating vue-simple-mde to avoid 'marked' warning with vuejs 2.5
+            - Updating to element-ui 2.0 (<code>npm update</code> and <code>npm run dev</code> required)
     "3.2.1":
         changed:
             - Updated to VueJS 2.5. Updated all components for 2.5 compatibility.
