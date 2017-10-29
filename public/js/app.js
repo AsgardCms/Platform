@@ -112870,7 +112870,7 @@ var render = function() {
                       { staticClass: "search el-col el-col-5" },
                       [
                         _c("el-input", {
-                          attrs: { icon: "search" },
+                          attrs: { "prefix-icon": "el-icon-search" },
                           nativeOn: {
                             keyup: function($event) {
                               _vm.performSearch($event)
@@ -114487,7 +114487,7 @@ var render = function() {
                       { staticClass: "search el-col el-col-5" },
                       [
                         _c("el-input", {
-                          attrs: { icon: "search" },
+                          attrs: { "prefix-icon": "el-icon-search" },
                           nativeOn: {
                             keyup: function($event) {
                               _vm.performSearch($event)
