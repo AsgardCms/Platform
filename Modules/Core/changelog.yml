@@ -1,9 +1,9 @@
 url: https://github.com/AsgardCms/Platform
 versions:
-    "3.2.2@changelog":
+    "3.3.0":
         changed:
             - Updating vue-simple-mde to avoid 'marked' warning with vuejs 2.5
-            - Updating to element-ui 2.0 (<code>npm update</code> and <code>npm run dev</code> required)
+            - Updating to element-ui 2.0 (<code>npm update</code> and <code>npm run dev</code> are required)
     "3.2.1":
         changed:
             - Updated to VueJS 2.5. Updated all components for 2.5 compatibility.
