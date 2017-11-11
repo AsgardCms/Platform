@@ -4,12 +4,24 @@ namespace Modules\Core\Console\Installers\Scripts;
 
 use Illuminate\Console\Command;
 use Illuminate\Console\ConfirmableTrait;
+use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Encryption\Encrypter;
 use Modules\Core\Console\Installers\SetupScript;
 
 class SetAppKey implements SetupScript
 {
     use ConfirmableTrait;
+
+    /**
+     * @var Application
+     */
+    private $application;
+
+    public function __construct(Application $application)
+    {
+        $this->application = $application;
+    }
+
     /**
      * Fire the install script
      * @param  Command $command
@@ -89,5 +101,17 @@ class SetAppKey implements SetupScript
         $escaped = preg_quote('=' . config('app.key'), '/');
 
         return "/^APP_KEY{$escaped}/m";
+    }
+
+    /**
+     * Get the default confirmation callback.
+     *
+     * @return \Closure
+     */
+    protected function getDefaultConfirmCallback(): callable
+    {
+        return function () {
+            return $this->application->environment() === 'production';
+        };
     }
 }
