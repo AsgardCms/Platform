@@ -32,16 +32,16 @@ class Settings implements Setting
         $defaultFromConfig = $this->getDefaultFromConfigFor($name);
 
         $setting = $this->setting->findByName($name);
-        if (! $setting) {
+        if ($setting === null) {
             return is_null($default) ? $defaultFromConfig : $default;
         }
 
         if ($setting->isTranslatable) {
             if ($setting->hasTranslation($locale)) {
-                return empty($setting->translate($locale)->value) ? $defaultFromConfig : $setting->translate($locale)->value;
+                return trim($setting->translate($locale)->value) === '' ? $defaultFromConfig : $setting->translate($locale)->value;
             }
         } else {
-            return empty($setting->plainValue) ? $defaultFromConfig : $setting->plainValue;
+            return trim($setting->plainValue) === '' ? $defaultFromConfig : $setting->plainValue;
         }
 
         return $defaultFromConfig;
