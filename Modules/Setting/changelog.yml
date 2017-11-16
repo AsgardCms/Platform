@@ -1,5 +1,8 @@
 url: https://github.com/AsgardCms/Platform
 versions:
+    "3.4.0@unreleased":
+        changed:
+            - Fix settings with falsey values not getting returned
     "3.1.0":
         changed:
             - Checking for null value instead of empty for non translatable settings

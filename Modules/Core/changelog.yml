@@ -1,5 +1,8 @@
 url: https://github.com/AsgardCms/Platform
 versions:
+    "3.4.0@unreleased":
+        changed:
+            - Define the warning callback on the SetAppKey
     "3.3.0":
         changed:
             - Updating vue-simple-mde to avoid 'marked' warning with vuejs 2.5
