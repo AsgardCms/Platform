@@ -1,5 +1,8 @@
 url: https://github.com/AsgardCms/Platform
 versions:
+    "3.4.0@unreleased":
+        changed:
+            - Fixed vuejs compatibility
     "3.2.0":
         added:
             - Adding the page status field
