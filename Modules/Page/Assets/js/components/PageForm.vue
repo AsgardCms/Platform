@@ -145,7 +145,7 @@
                                 <div class="el-form-item__error" v-if="form.errors.has('template')"
                                      v-text="form.errors.first('template')"></div>
                             </el-form-item>
-                            <tags-input namespace="asgardcms/page" v-model="tags" :value="tags" :current-tags="tags"></tags-input>
+                            <tags-input namespace="asgardcms/page" v-model="tags" :current-tags="tags"></tags-input>
 
                             <single-media zone="image" @singleFileSelected="selectSingleFile($event, 'page')"
                                           entity="Modules\Page\Entities\Page" :entity-id="$route.params.pageId"></single-media>

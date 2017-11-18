@@ -48,7 +48,7 @@
 
                                     <hr>
 
-                                    <tags-input namespace="asgardcms/media" v-model="tags" :value="tags" :current-tags="tags"></tags-input>
+                                    <tags-input namespace="asgardcms/media" v-model="tags" :current-tags="tags"></tags-input>
 
                                     <el-form-item>
                                         <el-button type="primary" @click="onSubmit()" :loading="loading">
