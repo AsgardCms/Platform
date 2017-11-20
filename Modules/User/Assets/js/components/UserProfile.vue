@@ -25,7 +25,7 @@
                         <div class="box-body">
                             <el-tabs>
                                 <el-tab-pane :label="trans('users.tabs.data')">
-                                    <span scope="label"
+                                    <span slot="label"
                                           :class="{'error' : form.errors.any()}">
                                         {{ trans('users.tabs.data') }}
                                     </span>

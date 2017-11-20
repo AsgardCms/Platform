@@ -116873,7 +116873,8 @@ var render = function() {
                               "span",
                               {
                                 class: { error: _vm.form.errors.any() },
-                                attrs: { scope: "label" }
+                                attrs: { slot: "label" },
+                                slot: "label"
                               },
                               [
                                 _vm._v(
