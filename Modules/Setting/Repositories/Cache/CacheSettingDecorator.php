@@ -46,7 +46,7 @@ class CacheSettingDecorator extends BaseCacheDecorator implements SettingReposit
      */
     public function moduleSettings($modules)
     {
-        return $this->remember(function() use ($modules) {
+        return $this->remember(function () use ($modules) {
             return $this->repository->moduleSettings($modules);
         });
     }
@@ -58,7 +58,7 @@ class CacheSettingDecorator extends BaseCacheDecorator implements SettingReposit
      */
     public function savedModuleSettings($module)
     {
-        return $this->remember(function() use ($module) {
+        return $this->remember(function () use ($module) {
             return $this->repository->savedModuleSettings($module);
         });
     }
@@ -70,7 +70,7 @@ class CacheSettingDecorator extends BaseCacheDecorator implements SettingReposit
      */
     public function findByModule($module)
     {
-        return $this->remember(function() use ($module) {
+        return $this->remember(function () use ($module) {
             return $this->repository->findByModule($module);
         });
     }
@@ -82,7 +82,7 @@ class CacheSettingDecorator extends BaseCacheDecorator implements SettingReposit
      */
     public function get($settingName)
     {
-        return $this->remember(function() use ($settingName) {
+        return $this->remember(function () use ($settingName) {
             return $this->repository->get($settingName);
         });
     }
@@ -94,7 +94,7 @@ class CacheSettingDecorator extends BaseCacheDecorator implements SettingReposit
      */
     public function translatableModuleSettings($module)
     {
-        return $this->remember(function() use ($module) {
+        return $this->remember(function () use ($module) {
             return $this->repository->translatableModuleSettings($module);
         });
     }
@@ -106,7 +106,7 @@ class CacheSettingDecorator extends BaseCacheDecorator implements SettingReposit
      */
     public function plainModuleSettings($module)
     {
-        return $this->remember(function() use ($module) {
+        return $this->remember(function () use ($module) {
             return $this->repository->plainModuleSettings($module);
         });
     }

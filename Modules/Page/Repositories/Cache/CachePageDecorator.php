@@ -52,7 +52,7 @@ class CachePageDecorator extends BaseCacheDecorator implements PageRepository
      */
     public function findBySlugInLocale($slug, $locale)
     {
-        return $this->remember(function () use($slug, $locale) {
+        return $this->remember(function () use ($slug, $locale) {
             return $this->repository->findBySlugInLocale($slug, $locale);
         });
     }
