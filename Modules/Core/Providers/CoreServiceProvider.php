@@ -265,7 +265,7 @@ class CoreServiceProvider extends ServiceProvider
         $localeConfig = $this->app['cache']
             ->tags('setting.settings', 'global')
             ->remember(
-                "asgard.locales",
+                'asgard.locales',
                 120,
                 function () {
                     return DB::table('setting__settings')->whereName('core::locales')->first();
