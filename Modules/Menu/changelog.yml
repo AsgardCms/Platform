@@ -1,5 +1,9 @@
 url: https://github.com/AsgardCms/Platform
 versions:
+    "3.4.0@unreleased":
+        changed:
+            - Using new <code>remember</code> method in the <code>CacheMenuDecorator</code> class
+            - Using new <code>remember</code> method in the <code>CacheMenuItemDecorator</code> class
     "3.2.0":
         changed:
             - Use blade directive in Menu module views

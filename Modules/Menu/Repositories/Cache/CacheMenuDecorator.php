@@ -25,14 +25,8 @@ class CacheMenuDecorator extends BaseCacheDecorator implements MenuRepository
      */
     public function allOnline()
     {
-        return $this->cache
-            ->tags([$this->entityName, 'global'])
-            ->remember(
-                "{$this->locale}.{$this->entityName}.allOnline",
-                $this->cacheTime,
-                function () {
-                    return $this->repository->allOnline();
-                }
-            );
+        return $this->remember(function () {
+            return $this->repository->allOnline();
+        });
     }
 }
