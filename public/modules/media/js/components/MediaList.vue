@@ -23,16 +23,20 @@
                             <div class="actions el-col el-col-14">
                                 <new-folder :parent-id="folderId"></new-folder>
                                 <upload-button :parent-id="folderId"></upload-button>
-                                <el-button-group v-if="false">
-                                    <el-button type="primary" :disabled="selectedMedia.length === 0">Move</el-button>
+                                <el-button-group style="width: 30%">
+                                    <el-button type="warning"
+                                               :disabled="selectedMedia.length === 0"
+                                               @click="showMoveMedia"
+                                               >{{ trans('core.move') }}
+                                    </el-button>
+                                    <el-button type="danger" :disabled="selectedMedia.length === 0"
+                                        @click.prevent="batchDelete" :loading="filesAreDeleting">
+                                        {{ trans('core.button.delete') }}
+                                    </el-button>
                                 </el-button-group>
-                                <el-button type="danger" :disabled="selectedMedia.length === 0"
-                                    @click.preent="batchDelete" :loading="filesAreDeleting">
-                                    Delete
-                                </el-button>
                             </div>
                             <div class="search el-col el-col-5">
-                                <el-input icon="search" @change="performSearch" v-model="searchQuery">
+                                <el-input prefix-icon="el-icon-search" @keyup.native="performSearch" v-model="searchQuery">
                                 </el-input>
                             </div>
                         </div>
@@ -58,7 +62,7 @@
                                     width="55">
                             </el-table-column>
                             <el-table-column label="" width="150">
-                                <template scope="scope">
+                                <template slot-scope="scope">
                                     <img :src="scope.row.small_thumb" alt="" v-if="scope.row.is_image"/>
                                     <i :class="`fa ${scope.row.fa_icon}`" style="font-size: 38px;"
                                        v-if="! scope.row.is_image && ! scope.row.is_folder"></i>
@@ -68,7 +72,7 @@
                             </el-table-column>
 
                             <el-table-column prop="filename" :label="trans('media.table.filename')" sortable="custom">
-                                <template scope="scope">
+                                <template slot-scope="scope">
                                     <strong v-if="scope.row.is_folder" style="cursor: pointer;" @click="enterFolder(scope)">
                                         {{ scope.row.filename }}
                                     </strong>
@@ -82,7 +86,7 @@
                                              width="150">
                             </el-table-column>
                             <el-table-column prop="actions" label="" width="150">
-                                <template scope="scope">
+                                <template slot-scope="scope">
                                     <div class="pull-right">
                                         <el-button
                                                 type="primary"
@@ -96,7 +100,7 @@
                                                 <edit-button :to="{name: 'admin.media.media.edit', params: {mediaId: scope.row.id}}"
                                                              v-if="! scope.row.is_folder"></edit-button>
                                                 <el-button
-                                                        size="small"
+                                                        size="mini"
                                                         @click.prevent="showEditFolder(scope.row)"
                                                         v-if="scope.row.is_folder && canEditFolders">
                                                     <i class="fa fa-pencil"></i>
@@ -124,23 +128,26 @@
             </div>
         </div>
         <rename-folder></rename-folder>
+        <move-dialog></move-dialog>
     </div>
 </template>
 
 <script>
-    import axios from 'axios'
+    import axios from 'axios';
     import NewFolder from './NewFolder.vue';
     import UploadButton from './UploadButton.vue';
     import RenameFolder from './RenameFolder.vue';
+    import MoveMediaDialog from './MoveMediaDialog.vue';
 
     export default {
         components: {
             'new-folder': NewFolder,
             'upload-button': UploadButton,
             'rename-folder': RenameFolder,
+            'move-dialog': MoveMediaDialog,
         },
         props: {
-            singleModal: {type: Boolean},
+            singleModal: { type: Boolean },
             eventName: {},
         },
         data() {
@@ -158,17 +165,17 @@
                 links: {},
                 searchQuery: '',
                 folderId: 0,
-                selectedMedia: {},
+                selectedMedia: [],
                 folderBreadcrumb: [
-                    {id: 0, name: 'Home'},
+                    { id: 0, name: 'Home' },
                 ],
                 filesAreDeleting: false,
                 canEditFolders: true,
-            }
+            };
         },
         methods: {
             queryServer(customProperties) {
-                let properties = {
+                const properties = {
                     page: this.meta.current_page,
                     per_page: this.meta.per_page,
                     order_by: this.order_meta.order_by,
@@ -178,7 +185,7 @@
                 };
 
                 axios.get(route('api.media.all-vue', _.merge(properties, customProperties)))
-                    .then(response => {
+                    .then((response) => {
                         this.tableIsLoading = false;
                         this.data = response.data.data;
                         this.meta = response.data.meta;
@@ -191,7 +198,7 @@
             fetchMediaData() {
                 this.tableIsLoading = true;
                 if (this.$route.query.folder_id !== undefined) {
-                    this.queryServer({folder_id: this.$route.query.folder_id});
+                    this.queryServer({ folder_id: this.$route.query.folder_id });
                     this.fetchFolderBreadcrumb(this.$route.query.folder_id);
                     return;
                 }
@@ -200,40 +207,40 @@
             fetchFolderBreadcrumb(folderId) {
                 if (folderId === 0) {
                     this.folderBreadcrumb = [
-                        {id: 0, name: 'Home'},
+                        { id: 0, name: 'Home' },
                     ];
                     return;
                 }
-                axios.get(route('api.media.folders.breadcrumb', {folder: folderId}))
-                    .then(response => {
+                axios.get(route('api.media.folders.breadcrumb', { folder: folderId }))
+                    .then((response) => {
                         this.folderBreadcrumb = response.data;
                     });
             },
             handleSizeChange(event) {
-                console.log('per page :' + event);
+                console.log(`per page :${event}`);
                 this.tableIsLoading = true;
-                this.queryServer({per_page: event});
+                this.queryServer({ per_page: event });
             },
             handleCurrentChange(event) {
-                console.log('current page :' + event);
+                console.log(`current page :${event}`);
                 this.tableIsLoading = true;
-                this.queryServer({page: event});
+                this.queryServer({ page: event });
             },
             handleSortChange(event) {
                 console.log('sorting', event);
                 this.tableIsLoading = true;
-                this.queryServer({order_by: event.prop, order: event.order,});
+                this.queryServer({ order_by: event.prop, order: event.order });
             },
-            performSearch(query) {
-                console.log('searching:' + query);
+            performSearch: _.debounce(function (query) {
+                console.log(`searching:${query.target.value}`);
                 this.tableIsLoading = true;
-                this.queryServer({search: query});
-            },
+                this.queryServer({ search: query.target.value });
+            }, 300),
             enterFolder(scope) {
                 this.tableIsLoading = true;
-                this.queryServer({folder_id: scope.row.id});
+                this.queryServer({ folder_id: scope.row.id });
                 this.folderId = scope.row.id;
-                this.$router.push({ query: { folder_id: scope.row.id }});
+                this.$router.push({ query: { folder_id: scope.row.id } });
                 this.fetchFolderBreadcrumb(scope.row.id);
             },
             insertMedia(scope) {
@@ -245,14 +252,17 @@
             showEditFolder(scope) {
                 this.$events.emit('editFolderWasClicked', scope);
             },
-            changeRoot(folderId, index) {
+            showMoveMedia() {
+                this.$events.emit('moveMediaWasClicked', this.selectedMedia);
+            },
+            changeRoot(folderId) {
                 this.tableIsLoading = true;
-                this.queryServer({folder_id: folderId});
+                this.queryServer({ folder_id: folderId });
                 this.folderId = folderId;
                 if (folderId === 0) {
-                    this.$router.push({ query: {}});
+                    this.$router.push({ query: {} });
                 } else {
-                    this.$router.push({ query: { folder_id: folderId }});
+                    this.$router.push({ query: { folder_id: folderId } });
                 }
 
                 this.fetchFolderBreadcrumb(folderId);
@@ -261,17 +271,17 @@
                 this.$confirm(this.trans('core.modal.confirmation-message'), this.trans('core.modal.title'), {
                     confirmButtonText: this.trans('core.button.delete'),
                     cancelButtonText: this.trans('core.button.cancel'),
-                    type: 'warning'
+                    type: 'warning',
                 })
                     .then(() => {
                         this.filesAreDeleting = true;
                         axios.post(route('api.media.media.batch-destroy'), {
-                            files: this.selectedMedia
+                            files: this.selectedMedia,
                         })
-                            .then(response => {
+                            .then((response) => {
                                 this.$message({
                                     type: 'success',
-                                    message: response.data.message
+                                    message: response.data.message,
                                 });
                                 this.filesAreDeleting = false;
                                 this.$refs.mediaTable.clearSelection();
@@ -281,32 +291,36 @@
                     .catch(() => {
                         this.$message({
                             type: 'info',
-                            message: this.trans('core.delete cancelled')
+                            message: this.trans('core.delete cancelled'),
                         });
                     });
             },
             goToEdit(scope) {
-                this.$router.push({name: 'admin.media.media.edit', params: {mediaId: scope.row.id}})
+                this.$router.push({ name: 'admin.media.media.edit', params: { mediaId: scope.row.id } });
             },
         },
         mounted() {
             if (window.AsgardCMS.filesystem === 's3') {
                 this.canEditFolders = false;
             }
-            this.selectedMedia.length = 0;
             this.fetchMediaData();
-            this.$events.listen('fileWasUploaded', eventData => {
+            this.$events.listen('fileWasUploaded', (eventData) => {
                 this.tableIsLoading = true;
-                this.queryServer({folder_id: eventData.data.folder_id});
+                this.queryServer({ folder_id: eventData.data.folder_id });
             });
-            this.$events.listen('folderWasCreated', eventData => {
+            this.$events.listen('folderWasCreated', (eventData) => {
                 this.tableIsLoading = true;
-                this.queryServer({folder_id: eventData.data.folder_id});
+                this.queryServer({ folder_id: eventData.data.folder_id });
             });
-            this.$events.listen('folderWasUpdated', eventData => {
+            this.$events.listen('folderWasUpdated', (eventData) => {
                 this.tableIsLoading = true;
-                this.queryServer({folder_id: eventData.data.folder_id});
+                this.queryServer({ folder_id: eventData.data.folder_id });
             });
-        }
-    }
+            this.$events.listen('mediaWasMoved', (eventData) => {
+                this.tableIsLoading = true;
+                this.queryServer({ folder_id: eventData.folder_id });
+                this.fetchFolderBreadcrumb(eventData.folder_id);
+            });
+        },
+    };
 </script>

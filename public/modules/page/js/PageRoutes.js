@@ -1,6 +1,6 @@
-import PageTable from './components/PageTable.vue'
-import PageTableServerSide from './components/PageTableServerSide.vue'
-import PageForm from './components/PageForm.vue'
+import PageTable from './components/PageTable.vue';
+import PageTableServerSide from './components/PageTableServerSide.vue';
+import PageForm from './components/PageForm.vue';
 
 const locales = window.AsgardCMS.locales;
 
@@ -17,7 +17,7 @@ export default [
         props: {
             locales,
             pageTitle: 'create page',
-        }
+        },
     },
     {
         path: '/page/pages/:pageId/edit',
@@ -26,6 +26,6 @@ export default [
         props: {
             locales,
             pageTitle: 'edit page',
-        }
+        },
     },
 ];

@@ -7,9 +7,9 @@
 <script>
    export default {
         data() {
-            return {}
+            return {};
         },
         methods: {},
-        mounted() {}
-    }
+        mounted() {},
+    };
 </script>

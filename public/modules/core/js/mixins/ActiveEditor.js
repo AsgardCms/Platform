@@ -8,7 +8,7 @@ export default {
             if (configuredEditor === 'ckeditor') {
                 return 'ckeditor';
             }
-            return 'ckeditor'
+            return 'ckeditor';
         },
-    }
-}
+    },
+};
