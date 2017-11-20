@@ -163,7 +163,13 @@ abstract class BaseCacheDecorator implements BaseRepository
      */
     public function clearCache()
     {
-        return $this->cache->tags($this->entityName)->flush();
+        $store = $this->cache;
+
+        if (method_exists($this->cache->getStore(), 'tags')) {
+            $store = $store->tags($this->entityName);
+        }
+
+        return $store->flush();
     }
 
     /**

@@ -4,6 +4,7 @@ versions:
         changed:
             - Define the warning callback on the SetAppKey
             - Cleaner <code>BaseCacheDecorator</code> class with a new <code>remember</code> function
+            - Checking if the tags() method exists when flushing
     "3.3.0":
         changed:
             - Updating vue-simple-mde to avoid 'marked' warning with vuejs 2.5
