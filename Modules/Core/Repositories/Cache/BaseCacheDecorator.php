@@ -43,15 +43,9 @@ abstract class BaseCacheDecorator implements BaseRepository
      */
     public function find($id)
     {
-        return $this->cache
-            ->tags([$this->entityName, 'global'])
-            ->remember(
-                "{$this->locale}.{$this->entityName}.find.{$id}",
-                $this->cacheTime,
-                function () use ($id) {
-                    return $this->repository->find($id);
-                }
-            );
+        return $this->remember(function () use ($id) {
+            return $this->repository->find($id);
+        });
     }
 
     /**
@@ -59,15 +53,9 @@ abstract class BaseCacheDecorator implements BaseRepository
      */
     public function all()
     {
-        return $this->cache
-            ->tags([$this->entityName, 'global'])
-            ->remember(
-                "{$this->locale}.{$this->entityName}.all",
-                $this->cacheTime,
-                function () {
-                    return $this->repository->all();
-                }
-            );
+        return $this->remember(function () {
+            return $this->repository->all();
+        });
     }
 
     /**
@@ -75,15 +63,9 @@ abstract class BaseCacheDecorator implements BaseRepository
      */
     public function allWithBuilder() : Builder
     {
-        return $this->cache
-            ->tags([$this->entityName, 'global'])
-            ->remember(
-                "{$this->locale}.{$this->entityName}.allWithBuilder",
-                $this->cacheTime,
-                function () {
-                    return $this->repository->allWithBuilder();
-                }
-            );
+        return $this->remember(function () {
+            return $this->repository->allWithBuilder();
+        });
     }
 
     /**
@@ -91,15 +73,9 @@ abstract class BaseCacheDecorator implements BaseRepository
      */
     public function paginate($perPage = 15)
     {
-        return $this->cache
-            ->tags([$this->entityName, 'global'])
-            ->remember(
-                "{$this->locale}.{$this->entityName}.paginate.{$perPage}",
-                $this->cacheTime,
-                function () use ($perPage) {
-                    return $this->repository->paginate($perPage);
-                }
-            );
+        return $this->remember(function () use ($perPage) {
+            return $this->repository->paginate($perPage);
+        });
     }
 
     /**
@@ -107,15 +83,9 @@ abstract class BaseCacheDecorator implements BaseRepository
      */
     public function allTranslatedIn($lang)
     {
-        return $this->cache
-            ->tags([$this->entityName, 'global'])
-            ->remember(
-                "{$this->locale}.{$this->entityName}.allTranslatedIn.{$lang}",
-                $this->cacheTime,
-                function () use ($lang) {
-                    return $this->repository->allTranslatedIn($lang);
-                }
-            );
+        return $this->remember(function () use ($lang) {
+            return $this->repository->allTranslatedIn($lang);
+        });
     }
 
     /**
@@ -123,15 +93,9 @@ abstract class BaseCacheDecorator implements BaseRepository
      */
     public function findBySlug($slug)
     {
-        return $this->cache
-            ->tags([$this->entityName, 'global'])
-            ->remember(
-                "{$this->locale}.{$this->entityName}.findBySlug.{$slug}",
-                $this->cacheTime,
-                function () use ($slug) {
-                    return $this->repository->findBySlug($slug);
-                }
-            );
+        return $this->remember(function () use ($slug) {
+            return $this->repository->findBySlug($slug);
+        });
     }
 
     /**
@@ -169,17 +133,9 @@ abstract class BaseCacheDecorator implements BaseRepository
      */
     public function findByAttributes(array $attributes)
     {
-        $tagIdentifier = json_encode($attributes);
-
-        return $this->cache
-            ->tags([$this->entityName, 'global'])
-            ->remember(
-                "{$this->locale}.{$this->entityName}.findByAttributes.{$tagIdentifier}",
-                $this->cacheTime,
-                function () use ($attributes) {
-                    return $this->repository->findByAttributes($attributes);
-                }
-            );
+        return $this->remember(function () use ($attributes) {
+            return $this->repository->findByAttributes($attributes);
+        });
     }
 
     /**
@@ -187,17 +143,9 @@ abstract class BaseCacheDecorator implements BaseRepository
      */
     public function getByAttributes(array $attributes, $orderBy = null, $sortOrder = 'asc')
     {
-        $tagIdentifier = json_encode($attributes);
-
-        return $this->cache
-            ->tags([$this->entityName, 'global'])
-            ->remember(
-                "{$this->locale}.{$this->entityName}.findByAttributes.{$tagIdentifier}.{$orderBy}.{$sortOrder}",
-                $this->cacheTime,
-                function () use ($attributes, $orderBy, $sortOrder) {
-                    return $this->repository->getByAttributes($attributes, $orderBy, $sortOrder);
-                }
-            );
+        return $this->remember(function () use ($attributes, $orderBy, $sortOrder) {
+            return $this->repository->getByAttributes($attributes, $orderBy, $sortOrder);
+        });
     }
 
     /**
@@ -205,17 +153,9 @@ abstract class BaseCacheDecorator implements BaseRepository
      */
     public function findByMany(array $ids)
     {
-        $tagIdentifier = json_encode($ids);
-
-        return $this->cache
-            ->tags([$this->entityName, 'global'])
-            ->remember(
-                "{$this->locale}.{$this->entityName}.findByMany.{$tagIdentifier}",
-                $this->cacheTime,
-                function () use ($ids) {
-                    return $this->repository->findByMany($ids);
-                }
-            );
+        return $this->remember(function () use ($ids) {
+            return $this->repository->findByMany($ids);
+        });
     }
 
     /**
@@ -224,5 +164,50 @@ abstract class BaseCacheDecorator implements BaseRepository
     public function clearCache()
     {
         return $this->cache->tags($this->entityName)->flush();
+    }
+
+    /**
+     * @param \Closure $callback
+     * @param null|string $key
+     * @return mixed
+     */
+    protected function remember(\Closure $callback, $key = null)
+    {
+        $cacheKey = $this->makeCacheKey($key);
+
+        return $this->cache
+            ->tags([$this->entityName, 'global'])
+            ->remember($cacheKey, $this->cacheTime, $callback);
+    }
+
+    /**
+     * Generate a cache key with the called method name and its arguments
+     * If a key is provided, use that instead
+     * @param null|string $key
+     * @return string
+     */
+    private function makeCacheKey($key = null): string
+    {
+        if ($key !== null) {
+            return $key;
+        }
+
+        $cacheKey = $this->getBaseKey();
+
+        $backtrace = debug_backtrace()[2];
+
+        return sprintf("$cacheKey %s %s", $backtrace['function'], \serialize($backtrace['args']));
+    }
+
+    /**
+     * @return string
+     */
+    protected function getBaseKey(): string
+    {
+        return sprintf(
+            'asgardcms -locale:%s -entity:%s',
+            $this->locale,
+            $this->entityName
+        );
     }
 }
