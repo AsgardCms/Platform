@@ -3,6 +3,8 @@ versions:
     "3.4.0@unreleased":
         changed:
             - Fixed vuejs compatibility
+            - Using new <code>remember</code> method in the <code>CachePageDecorator</code> class
+            - Fixing bug where the current page was not cached as well on the server side pagination
     "3.2.0":
         added:
             - Adding the page status field
