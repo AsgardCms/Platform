@@ -82,22 +82,17 @@ class CachePageDecorator extends BaseCacheDecorator implements PageRepository
      */
     public function serverPaginationFilteringFor(Request $request): LengthAwarePaginator
     {
+        $page = $request->get('page');
         $order = $request->get('order');
         $orderBy = $request->get('order_by');
         $perPage = $request->get('per_page');
         $search = $request->get('search');
 
-        $key = "{$order}-{$orderBy}-{$perPage}-{$search}";
+        $key = $this->getBaseKey() . "serverPaginationFilteringFor.{$page}-{$order}-{$orderBy}-{$perPage}-{$search}";
 
-        return $this->cache
-            ->tags([$this->entityName, 'global'])
-            ->remember(
-                "{$this->locale}.{$this->entityName}.serverPaginationFilteringFor.{$key}",
-                $this->cacheTime,
-                function () use ($request) {
-                    return $this->repository->serverPaginationFilteringFor($request);
-                }
-            );
+        return $this->remember(function () use ($request) {
+            return $this->repository->serverPaginationFilteringFor($request);
+        }, $key);
     }
 
     /**
