@@ -1,6 +1,6 @@
 url: https://github.com/AsgardCms/Platform
 versions:
-    "3.4.0@unreleased":
+    "3.4.0":
         changed:
             - Define the warning callback on the SetAppKey
             - Cleaner <code>BaseCacheDecorator</code> class with a new <code>remember</code> function

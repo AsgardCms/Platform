@@ -1,6 +1,6 @@
 url: https://github.com/AsgardCms/Platform
 versions:
-    "3.4.0@unreleased":
+    "3.4.0":
         changed:
             - Fix settings with falsey values not getting returned
             - Using new <code>remember</code> method in the <code>CacheSettingDecorator</code> class

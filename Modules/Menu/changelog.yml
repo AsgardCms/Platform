@@ -1,6 +1,6 @@
 url: https://github.com/AsgardCms/Platform
 versions:
-    "3.4.0@unreleased":
+    "3.4.0":
         changed:
             - Using new <code>remember</code> method in the <code>CacheMenuDecorator</code> class
             - Using new <code>remember</code> method in the <code>CacheMenuItemDecorator</code> class
