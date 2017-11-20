@@ -3,6 +3,7 @@ versions:
     "3.4.0@unreleased":
         changed:
             - Define the warning callback on the SetAppKey
+            - Cleaner <code>BaseCacheDecorator</code> class with a new <code>remember</code> function
     "3.3.0":
         changed:
             - Updating vue-simple-mde to avoid 'marked' warning with vuejs 2.5
