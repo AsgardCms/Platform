@@ -116867,28 +116867,23 @@ var render = function() {
                       [
                         _c(
                           "el-tab-pane",
-                          {
-                            attrs: { label: _vm.trans("users.tabs.data") },
-                            scopedSlots: _vm._u([
-                              {
-                                key: "default",
-                                fn: function(label) {
-                                  return _c(
-                                    "span",
-                                    { class: { error: _vm.form.errors.any() } },
-                                    [
-                                      _vm._v(
-                                        "\n                                    " +
-                                          _vm._s(_vm.trans("users.tabs.data")) +
-                                          "\n                                "
-                                      )
-                                    ]
-                                  )
-                                }
-                              }
-                            ])
-                          },
+                          { attrs: { label: _vm.trans("users.tabs.data") } },
                           [
+                            _c(
+                              "span",
+                              {
+                                class: { error: _vm.form.errors.any() },
+                                attrs: { scope: "label" }
+                              },
+                              [
+                                _vm._v(
+                                  "\n                                    " +
+                                    _vm._s(_vm.trans("users.tabs.data")) +
+                                    "\n                                "
+                                )
+                              ]
+                            ),
+                            _vm._v(" "),
                             _c(
                               "el-form-item",
                               {
