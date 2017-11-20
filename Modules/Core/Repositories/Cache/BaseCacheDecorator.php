@@ -175,9 +175,13 @@ abstract class BaseCacheDecorator implements BaseRepository
     {
         $cacheKey = $this->makeCacheKey($key);
 
-        return $this->cache
-            ->tags([$this->entityName, 'global'])
-            ->remember($cacheKey, $this->cacheTime, $callback);
+        $store = $this->cache;
+
+        if (method_exists($this->cache->getStore(), 'tags')) {
+            $store = $store->tags([$this->entityName, 'global']);
+        }
+
+        return $store->remember($cacheKey, $this->cacheTime, $callback);
     }
 
     /**
