@@ -149,6 +149,8 @@
 
                             <single-media zone="image" @singleFileSelected="selectSingleFile($event, 'page')"
                                           entity="Modules\Page\Entities\Page" :entity-id="$route.params.pageId"></single-media>
+                            <multiple-media zone="gallery" @fileUnselected="unselectFile($event, 'page')" @multipleFileSelected="selectMultipleFile($event, 'page')"
+                                          entity="Modules\Page\Entities\Page" :entity-id="$route.params.pageId"></multiple-media>   
                         </div>
                     </div>
                 </div>
@@ -165,9 +167,10 @@
     import ShortcutHelper from '../../../../Core/Assets/js/mixins/ShortcutHelper';
     import ActiveEditor from '../../../../Core/Assets/js/mixins/ActiveEditor';
     import SingleFileSelector from '../../../../Media/Assets/js/mixins/SingleFileSelector';
+    import MultipleFileSelector from '../../../../Media/Assets/js/mixins/MultipleFileSelector';
 
     export default {
-        mixins: [Slugify, ShortcutHelper, ActiveEditor, SingleFileSelector],
+        mixins: [Slugify, ShortcutHelper, ActiveEditor, SingleFileSelector, MultipleFileSelector],
         props: {
             locales: { default: null },
             pageTitle: { default: null, String },
@@ -187,7 +190,7 @@
                         og_type: '',
                     }])
                     .fromPairs()
-                    .merge({ template: 'default', is_home: 0, medias_single: [] })
+                    .merge({ template: 'default', is_home: 0, medias_single: [], medias_multi: [] })
                     .value(),
 
                 templates: {

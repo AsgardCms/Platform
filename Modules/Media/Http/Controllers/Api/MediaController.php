@@ -93,6 +93,21 @@ class MediaController extends Controller
         return new MediaTransformer($file);
     }
 
+    public function findByZoneEntity(Request $request)
+    {
+        $entityName = (string) $request->get('entity');
+        $entityModel = new $entityName;
+        $entity = $entityModel::where('id', $request->get('entity_id'))->first();
+        $files = $this->file->findMultipleFilesByZoneForEntity($request->get('zone'), $entity);
+        return MediaTransformer::collection($files);
+        if ($files === null) {
+            return response()->json(['data' => null]);
+        }
+        return response()->json($files);
+
+        return new MediaTransformer($files);
+    }
+
     /**
      * Store a newly created resource in storage.
      *

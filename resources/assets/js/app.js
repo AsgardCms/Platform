@@ -27,6 +27,7 @@ Vue.component('DeleteButton', require('../../../Modules/Core/Assets/js/component
 Vue.component('EditButton', require('../../../Modules/Core/Assets/js/components/EditButtonComponent.vue'));
 Vue.component('TagsInput', require('../../../Modules/Tag/Assets/js/components/TagInput.vue'));
 Vue.component('SingleMedia', require('../../../Modules/Media/Assets/js/components/SingleMedia.vue'));
+Vue.component('MultipleMedia', require('../../../Modules/Media/Assets/js/components/MultipleMedia.vue'));
 Vue.component('MediaManager', require('../../../Modules/Media/Assets/js/components/MediaManager.vue'));
 
 
