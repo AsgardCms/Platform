@@ -17,7 +17,7 @@ return [
         'slug' => '슬러그',
     ],
     'tabs' => [
-        'data' => '데이터',
+        'data' => '정보',
         'permissions' => '권한',
     ],
     'form' => [

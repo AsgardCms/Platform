@@ -18,7 +18,7 @@ return [
         'edit-profile' => '프로필 수정',
     ],
     'tabs' => [
-        'data' => '데이터',
+        'data' => '정보',
         'roles' => '역할',
         'permissions' => '권한',
         'new password' => '새 비밀번호',
