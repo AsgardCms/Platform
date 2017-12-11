@@ -24,6 +24,7 @@ return [
         'turkish' => 'Turks',
         'czech' => 'Tsjechisch',
         'swedish' => 'Zweeds',
+        'korean' => 'Korean',
     ],
     'button' => [
         'cancel' => 'Annuleren',

@@ -24,6 +24,7 @@ return [
         'arabic' => 'Арапски',
         'macedonian' => 'Македонски',
         'czech' => 'Чешка',
+        'korean' => 'Korean',
     ],
     'button' => [
         'cancel' => 'Откажи',

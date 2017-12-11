@@ -23,6 +23,7 @@ return [
         'turkish' => 'Türkçe',
         'macedonian' => 'Makedonca',
         'czech' => 'Çek',
+        'korean' => 'Korean',
     ],
     'button' => [
         'cancel' => 'Vazgeç',
