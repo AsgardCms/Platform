@@ -7,3 +7,4 @@ Homestead.json
 composer.lock
 package-lock.json
 .php_cs.cache
+npm-debug.log
