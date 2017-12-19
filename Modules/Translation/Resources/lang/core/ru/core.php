@@ -19,6 +19,7 @@ return [
         'spanish' => 'Испанский',
         'russian' => 'Русский',
         'czech' => 'Чешский',
+        'korean' => 'Korean',
     ],
     'button' => [
         'cancel' => 'Отменить',

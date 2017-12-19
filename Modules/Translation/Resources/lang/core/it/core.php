@@ -18,6 +18,7 @@ return [
         'greek' => 'Ελληνικά',
         'spanish' => 'Spanish',
         'czech' => 'Ceco',
+        'korean' => 'Korean',
     ],
     'button' => [
         'cancel' => 'Cancella',
