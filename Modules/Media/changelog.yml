@@ -1,6 +1,6 @@
 url: https://github.com/AsgardCms/Platform
 versions:
-    "3.5.0@unreleased":
+    "3.5.0":
         changed:
             - Let File implement the <code>Responsable</code> interface which allows it being returned from a controller directly.
     "3.4.0":
