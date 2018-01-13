@@ -41,7 +41,7 @@ class SettingController extends AdminBaseController
 
     public function store(SettingRequest $request)
     {
-        $this->setting->createOrUpdate($request->all());
+        $this->setting->createOrUpdate($request->request->all());
 
         return redirect()->route('dashboard.module.settings', [$this->session->get('module', 'Core')])
             ->withSuccess(trans('setting::messages.settings saved'));
