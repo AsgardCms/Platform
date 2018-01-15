@@ -206,6 +206,6 @@ trait TaggableTrait
      */
     protected function generateTagSlug($name)
     {
-        return str_slug($name);
+        return utf8_slug($name);
     }
 }
