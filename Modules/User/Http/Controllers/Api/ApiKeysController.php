@@ -8,6 +8,9 @@ use Modules\User\Entities\UserToken;
 use Modules\User\Repositories\UserTokenRepository;
 use Modules\User\Transformers\ApiKeysTransformer;
 
+/**
+ * @resource UserApiKeys
+ */
 class ApiKeysController extends Controller
 {
     /**

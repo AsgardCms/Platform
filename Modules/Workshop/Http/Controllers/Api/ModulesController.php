@@ -7,6 +7,9 @@ use Illuminate\Support\Facades\Artisan;
 use InvalidArgumentException;
 use Nwidart\Modules\Module;
 
+/**
+ * @resource WorkshopModules
+ */
 class ModulesController extends Controller
 {
     public function publishAssets(Module $module)

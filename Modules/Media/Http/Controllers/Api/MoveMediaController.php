@@ -8,6 +8,9 @@ use Modules\Media\Repositories\FileRepository;
 use Modules\Media\Repositories\FolderRepository;
 use Modules\Media\Services\Movers\Mover;
 
+/**
+ * @resource Media
+ */
 class MoveMediaController extends Controller
 {
     /**

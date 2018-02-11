@@ -8,6 +8,9 @@ use Modules\Media\Image\Imagy;
 use Modules\Media\Repositories\FileRepository;
 use Modules\Media\Repositories\FolderRepository;
 
+/**
+ * @resource Media
+ */
 class BatchDestroyController extends Controller
 {
     /**

@@ -14,6 +14,9 @@ use Modules\User\Repositories\UserRepository;
 use Modules\User\Transformers\FullUserTransformer;
 use Modules\User\Transformers\UserTransformer;
 
+/**
+ * @resource User
+ */
 class UserController extends Controller
 {
     /**

@@ -7,6 +7,9 @@ use Modules\Media\Entities\File;
 use Modules\Media\Http\Requests\CreateFolderRequest;
 use Modules\Media\Repositories\FolderRepository;
 
+/**
+ * @resource MediaFolder
+ */
 class FolderController extends Controller
 {
     /**

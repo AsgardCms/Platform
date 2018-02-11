@@ -7,6 +7,9 @@ use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Artisan;
 use InvalidArgumentException;
 
+/**
+ * @resource WorkshopTheme
+ */
 class ThemeController extends Controller
 {
     public function publishAssets(Theme $theme)

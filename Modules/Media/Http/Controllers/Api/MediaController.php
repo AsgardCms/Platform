@@ -19,6 +19,9 @@ use Modules\Media\Services\FileService;
 use Modules\Media\Transformers\MediaTransformer;
 use Yajra\DataTables\Facades\DataTables;
 
+/**
+ * @resource Media
+ */
 class MediaController extends Controller
 {
     /**

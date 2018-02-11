@@ -6,6 +6,9 @@ use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Modules\Page\Repositories\PageRepository;
 
+/**
+ * @resource Page
+ */
 class UpdatePageStatusController extends Controller
 {
     /**
