@@ -1,5 +1,8 @@
 url: https://github.com/AsgardCms/Platform
 versions:
+    "3.5.0@unreleased":
+        changed:
+            - Whitespace in `config/filesystems.php` causing issues on some configurations, hooray.
     "3.4.0":
         changed:
             - Define the warning callback on the SetAppKey

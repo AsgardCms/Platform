@@ -1,5 +1,8 @@
 url: https://github.com/AsgardCms/Platform
 versions:
+    "3.5.1@unreleased":
+        changed:
+            - Modify media controller to use Imagy non-statically
     "3.5.0":
         changed:
             - Let File implement the <code>Responsable</code> interface which allows it being returned from a controller directly.
