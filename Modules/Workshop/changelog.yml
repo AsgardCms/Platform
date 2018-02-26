@@ -1,5 +1,8 @@
 url: https://github.com/AsgardCms/Platform
 versions:
+    "3.5.1@unreleased":
+        changed:
+            - Fixing issue with ThemeManager caused when a theme name has the same name as project name
     "3.2.0":
         changed:
             - Generating the new listener on the <code>LoadingBackendTranslations</code> hook to send translations to VueJS
