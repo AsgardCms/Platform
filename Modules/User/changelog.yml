@@ -1,6 +1,6 @@
 url: https://github.com/AsgardCms/Platform
 versions:
-    "3.5.1@unreleased":
+    "3.5.1":
         changed:
             - Fix issue 467 id() method checks null instead of false
     "3.4.0":

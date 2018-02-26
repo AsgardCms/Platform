@@ -1,6 +1,6 @@
 url: https://github.com/AsgardCms/Platform
 versions:
-    "3.5.1@unreleased":
+    "3.5.1":
         changed:
             - Fixing issue with ThemeManager caused when a theme name has the same name as project name
     "3.2.0":

@@ -1,6 +1,6 @@
 url: https://github.com/AsgardCms/Platform
 versions:
-    "3.5.1@unreleased":
+    "3.5.1":
         changed:
             - Modify media controller to use Imagy non-statically
     "3.5.0":
