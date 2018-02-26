@@ -53,7 +53,7 @@ class MediaController extends Controller
                     return '<i class="fa fa-folder" style="font-size: 20px;"></i>';
                 }
                 if ($file->isImage()) {
-                    return '<img src="' . Imagy::getThumbnail($file->path, 'smallThumb') . '"/>';
+                    return '<img src="' . $this->imagy->getThumbnail($file->path, 'smallThumb') . '"/>';
                 }
 
                 return '<i class="fa ' . FileHelper::getFaIcon($file->media_type) . '" style="font-size: 20px;"></i>';
