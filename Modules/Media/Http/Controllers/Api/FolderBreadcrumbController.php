@@ -6,6 +6,9 @@ use Illuminate\Routing\Controller;
 use Modules\Media\Entities\File;
 use Modules\Media\Repositories\FolderRepository;
 
+/**
+ * @resource MediaFolder
+ */
 class FolderBreadcrumbController extends Controller
 {
     /**

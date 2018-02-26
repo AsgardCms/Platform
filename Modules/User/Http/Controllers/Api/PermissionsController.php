@@ -5,6 +5,9 @@ namespace Modules\User\Http\Controllers\Api;
 use Illuminate\Routing\Controller;
 use Modules\User\Permissions\PermissionManager;
 
+/**
+ * @resource UserPermissions
+ */
 class PermissionsController extends Controller
 {
     /**

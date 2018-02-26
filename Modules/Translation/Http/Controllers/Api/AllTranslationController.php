@@ -4,6 +4,9 @@ namespace Modules\Translation\Http\Controllers\Api;
 
 use Illuminate\Routing\Controller;
 
+/**
+ * @resource Translation
+ */
 class AllTranslationController extends Controller
 {
     public function __invoke()

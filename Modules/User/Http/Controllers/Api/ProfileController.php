@@ -8,6 +8,9 @@ use Modules\User\Http\Requests\UpdateProfileRequest;
 use Modules\User\Repositories\UserRepository;
 use Modules\User\Transformers\UserProfileTransformer;
 
+/**
+ * @resource UserProfile
+ */
 class ProfileController extends Controller
 {
     /**

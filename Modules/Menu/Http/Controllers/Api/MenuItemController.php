@@ -9,6 +9,9 @@ use Illuminate\Support\Facades\Response;
 use Modules\Menu\Repositories\MenuItemRepository;
 use Modules\Menu\Services\MenuOrdener;
 
+/**
+ * @resource MenuItem
+ */
 class MenuItemController extends Controller
 {
     /**

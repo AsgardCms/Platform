@@ -12,6 +12,9 @@ use Modules\User\Repositories\RoleRepository;
 use Modules\User\Transformers\FullRoleTransformer;
 use Modules\User\Transformers\RoleTransformer;
 
+/**
+ * @resource UserRole
+ */
 class RoleController extends Controller
 {
     /**

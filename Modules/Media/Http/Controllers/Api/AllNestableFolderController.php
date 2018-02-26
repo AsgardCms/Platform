@@ -5,6 +5,9 @@ namespace Modules\Media\Http\Controllers\Api;
 use Illuminate\Routing\Controller;
 use Modules\Media\Repositories\FolderRepository;
 
+/**
+ * @resource MediaFolder
+ */
 class AllNestableFolderController extends Controller
 {
     /**

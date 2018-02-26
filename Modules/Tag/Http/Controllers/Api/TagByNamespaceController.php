@@ -7,6 +7,9 @@ use Illuminate\Routing\Controller;
 use Modules\Tag\Repositories\TagRepository;
 use Modules\Tag\Transformers\TagTransformer;
 
+/**
+ * @resource Tag
+ */
 class TagByNamespaceController extends Controller
 {
     /**

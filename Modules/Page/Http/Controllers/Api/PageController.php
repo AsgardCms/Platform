@@ -11,6 +11,9 @@ use Modules\Page\Repositories\PageRepository;
 use Modules\Page\Transformers\FullPageTransformer;
 use Modules\Page\Transformers\PageTransformer;
 
+/**
+ * @resource Page
+ */
 class PageController extends Controller
 {
     /**

@@ -9,6 +9,9 @@ use Modules\Translation\Repositories\TranslationRepository;
 use Modules\Translation\Services\TranslationRevisions;
 use Modules\User\Traits\CanFindUserWithBearerToken;
 
+/**
+ * @resource Translation
+ */
 class TranslationController extends Controller
 {
     use CanFindUserWithBearerToken;

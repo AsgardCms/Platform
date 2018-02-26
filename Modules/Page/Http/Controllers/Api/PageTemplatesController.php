@@ -7,6 +7,9 @@ use Illuminate\Routing\Controller;
 use Modules\Page\Services\FinderService;
 use Modules\Workshop\Manager\ThemeManager;
 
+/**
+ * @resource PageTemplates
+ */
 class PageTemplatesController extends Controller
 {
     /**
