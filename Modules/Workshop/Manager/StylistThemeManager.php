@@ -43,7 +43,7 @@ class StylistThemeManager implements ThemeManager
     public function find($themeName)
     {
         foreach ($this->getDirectories() as $directory) {
-            if (! str_contains(strtolower($directory), strtolower($themeName))) {
+            if (strtolower(basename($directory)) !== strtolower($themeName)) {
                 continue;
             }
 
