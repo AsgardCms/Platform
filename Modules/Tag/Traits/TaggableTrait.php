@@ -204,7 +204,7 @@ trait TaggableTrait
     /**
      * {@inheritdoc}
      */
-    protected function generateTagSlug($name, $separator = '-')
+    public function generateTagSlug($name, $separator = '-')
     {
         // Convert all dashes/underscores into separator
         $flip = $separator == '-' ? '_' : '-';
