@@ -204,8 +204,22 @@ trait TaggableTrait
     /**
      * {@inheritdoc}
      */
-    protected function generateTagSlug($name)
+    public function generateTagSlug($name, $separator = '-')
     {
-        return str_slug($name);
+        // Convert all dashes/underscores into separator
+        $flip = $separator == '-' ? '_' : '-';
+
+        $name = preg_replace('!['.preg_quote($flip).']+!u', $separator, $name);
+
+        // Replace @ with the word 'at'
+        $name = str_replace('@', $separator.'at'.$separator, $name);
+
+        // Remove all characters that are not the separator, letters, numbers, or whitespace.
+        $name = preg_replace('![^'.preg_quote($separator).'\pL\pN\s]+!u', '', mb_strtolower($name));
+
+        // Replace all separator characters and whitespace by a single separator
+        $name = preg_replace('!['.preg_quote($separator).'\s]+!u', $separator, $name);
+
+        return trim($name, $separator);
     }
 }

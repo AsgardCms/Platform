@@ -3,6 +3,7 @@
 namespace Modules\Tag\Tests\Integration;
 
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Str;
 use Modules\Page\Entities\Page;
 use Modules\Page\Repositories\PageRepository;
 use Modules\Tag\Repositories\TagRepository;
@@ -130,6 +131,26 @@ class TaggableTraitTest extends BaseTestCase
         ]);
 
         $this->assertCount(3, Page::allTags()->get());
+    }
+
+    /** @test */
+    public function it_generates_slug_like_original_str_slug()
+    {
+        $page = $this->createPage();
+
+        $this->assertEquals(Str::slug('hello world'), $page->generateTagSlug('hello world'));
+        $this->assertEquals(Str::slug('hello world'), $page->generateTagSlug('hello-world'));
+        $this->assertEquals(Str::slug('hello_world'), $page->generateTagSlug('hello_world'));
+        $this->assertEquals(Str::slug('hello_world', '_'), $page->generateTagSlug('hello_world', '_'));
+        $this->assertEquals(Str::slug('user@host'), $page->generateTagSlug('user@host'));
+    }
+
+    /** @test */
+    public function it_gets_pages_with_non_latin_tags()
+    {
+        $this->createPage(['한글 태그']);
+
+        $this->assertCount(1, Page::whereTag(['한글-태그'])->get());
     }
 
     private function createPage(array $tags = [])
