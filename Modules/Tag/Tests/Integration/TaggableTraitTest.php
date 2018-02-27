@@ -132,6 +132,14 @@ class TaggableTraitTest extends BaseTestCase
         $this->assertCount(3, Page::allTags()->get());
     }
 
+    /** @test */
+    public function it_gets_pages_with_non_latin_tags()
+    {
+        $this->createPage(['한글 태그']);
+
+        $this->assertCount(1, Page::whereTag(['한글-태그'])->get());
+    }
+
     private function createPage(array $tags = [])
     {
         return $this->page->create([
