@@ -49,6 +49,16 @@ class EloquentSettingRepository extends EloquentBaseRepository implements Settin
         $this->removeTokenKey($settings);
 
         foreach ($settings as $settingName => $settingValues) {
+            // Check if media exists
+            if(in_array($settingName, ['medias_single', 'medias_multiple'])) {
+                // Get first key of values (Original settingName)
+                foreach ($settingValues as $key => $value) {
+                    $normalisedValue = [ $settingName => [$key => $value] ];
+                    $settingName = $key;
+                    break;
+                }
+                $settingValues = $normalisedValue;
+            }
             if ($setting = $this->findByName($settingName)) {
                 $this->updateSetting($setting, $settingValues);
                 continue;
@@ -99,7 +109,7 @@ class EloquentSettingRepository extends EloquentBaseRepository implements Settin
 
         $setting->save();
 
-        event(new SettingWasCreated($setting));
+        event(new SettingWasCreated($setting, $settingValues));
 
         return $setting;
     }
@@ -121,7 +131,7 @@ class EloquentSettingRepository extends EloquentBaseRepository implements Settin
         }
         $setting->save();
 
-        event(new SettingWasUpdated($setting));
+        event(new SettingWasUpdated($setting, $settingValues));
 
         return $setting;
     }
