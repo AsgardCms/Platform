@@ -36,6 +36,10 @@ class Settings implements Setting
             return is_null($default) ? $defaultFromConfig : $default;
         }
 
+        if($media = $setting->files()->first()) {
+            return $media->path;
+        }
+
         if ($setting->isTranslatable) {
             if ($setting->hasTranslation($locale)) {
                 return trim($setting->translate($locale)->value) === '' ? $defaultFromConfig : $setting->translate($locale)->value;
