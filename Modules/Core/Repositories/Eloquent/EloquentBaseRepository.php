@@ -55,11 +55,12 @@ abstract class EloquentBaseRepository implements BaseRepository
      */
     public function allWithBuilder() : Builder
     {
+        $query = $this->model->query();
         if (method_exists($this->model, 'translations')) {
-            return $this->model->with('translations');
+            return $query->with('translations');
         }
 
-        return $this->model;
+        return $query;
     }
 
     /**
