@@ -59,7 +59,7 @@ abstract class EloquentBaseRepository implements BaseRepository
             return $this->model->with('translations');
         }
 
-        return $this->model;
+        return $this->model->query();
     }
 
     /**
