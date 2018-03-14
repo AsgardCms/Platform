@@ -1,5 +1,9 @@
 url: https://github.com/AsgardCms/Platform
 versions:
+    "@unreleased":
+        changed:
+            - Correctly returning the Query object from <code>allWithBuilder</code> method in base repository
+            - Using font awesome cdn instead of local styles
     "3.5.1":
         changed:
             - Whitespace in `config/filesystems.php` causing issues on some configurations, hooray.
