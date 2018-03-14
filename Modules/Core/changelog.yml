@@ -1,6 +1,6 @@
 url: https://github.com/AsgardCms/Platform
 versions:
-    "@unreleased":
+    "3.5.2":
         changed:
             - Correctly returning the Query object from <code>allWithBuilder</code> method in base repository
             - Using font awesome cdn instead of local styles
