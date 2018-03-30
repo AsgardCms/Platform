@@ -21,7 +21,6 @@ return [
     'status' => 'Status',
     'pages were updated' => 'Zaktualizowano stronę',
 
-    'back to index' => 'Powrót do zarządzania stronami',
     'list resource' => 'Wyświetlanie',
     'create resource' => 'Tworzenie',
     'edit resource' => 'Edycja',
@@ -39,5 +38,8 @@ return [
         'website' => 'Strona',
         'product' => 'Produkt',
         'article' => 'Artykuł',
+    ],
+    'navigation' => [
+        'back to index' => 'Powrót do zarządzania stronami',
     ],
 ];
