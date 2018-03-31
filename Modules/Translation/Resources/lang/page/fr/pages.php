@@ -34,5 +34,7 @@ return [
         'product' => 'Produit',
         'article' => 'Article',
     ],
-    'back to index' => 'Retour vers l\'index des pages',
+    'navigation' => [
+        'back to index' => 'Retour vers l\'index des pages',
+    ],
 ];

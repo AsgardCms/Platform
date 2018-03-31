@@ -21,7 +21,6 @@ return [
     'status' => '상태',
     'pages were updated' => '페이지들이 수정되었습니다',
 
-    'back to index' => '페이지 목록으로 돌아가기',
     'list resource' => '페이지 목록',
     'create resource' => '페이지 생성',
     'edit resource' => '페이지 수정',
@@ -39,5 +38,8 @@ return [
         'website' => '웹사이트',
         'product' => '상품',
         'article' => '기사',
+    ],
+    'navigation' => [
+        'back to index' => '페이지 목록으로 돌아가기',
     ],
 ];

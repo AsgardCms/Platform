@@ -28,5 +28,7 @@ return [
         'product' => 'Producto',
         'article' => 'Artículo',
     ],
-    'back to index' => 'Volver a la lista de páginas',
+    'navigation' => [
+        'back to index' => 'Volver a la lista de páginas',
+    ],
 ];

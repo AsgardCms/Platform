@@ -30,5 +30,7 @@ return [
         'product' => 'Ürün',
         'article' => 'Makale',
     ],
-    'back to index' => 'Sayfalara geri dön',
+    'navigation' => [
+        'back to index' => 'Sayfalara geri dön',
+    ],
 ];
