@@ -49,7 +49,7 @@ return [
     'general' => [
         'available keyboard shortcuts' => 'Atajos de teclado disponibles en esta página',
         'view website' => 'Ver sitio',
-        'complete your profile' => 'Complete su perfil',+
+        'complete your profile' => 'Complete su perfil',
         'profile' => 'Perfil',
         'sign out' => 'Salir',
     ],
