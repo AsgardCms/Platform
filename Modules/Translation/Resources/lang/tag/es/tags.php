@@ -7,7 +7,7 @@ return [
     'destroy resource' => 'Eliminar etiquetas',
     'tags' => 'Etiquetas',
     'tag' => 'Etiqueta',
-    'create tag' => 'Crear una  etiquetas',
+    'create tag' => 'Crear una  etiqueta',
     'edit tag' => 'Editar una etiqueta',
     'name' => 'Nombre',
     'slug' => 'URL amigable',
