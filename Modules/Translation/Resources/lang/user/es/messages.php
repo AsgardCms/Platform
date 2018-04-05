@@ -11,6 +11,9 @@ return [
     'user no longer exists' => 'El usuario ya no existe.',
     'invalid reset code' => 'Código de restablecimiento inválido o caducado.',
     'password reset' => 'La contraseña ha sido restablecida. Ahora ya puede iniciar sesión con su nueva contraseña.',
+    /* Email subjects */
+    'welcome' => 'Bievenido.',
+    'reset password' => 'Reinicia la contraseña de cuenta.',
     /* User management */
     'user created' => 'Usuario creado exitosamente.',
     'user not found' => 'Usuario no encontrado.',
@@ -21,4 +24,5 @@ return [
     'role not found' => 'Rol no encontrado.',
     'role updated' => 'Rol actualizado exitosamente.',
     'role deleted' => 'Rol eliminado exitosamete.',
-];
+    /* Profile management */
+    'profile updated' => 'Perfil se ha actualizado con éxito.',
