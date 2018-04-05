@@ -26,3 +26,4 @@ return [
     'role deleted' => 'Rol eliminado exitosamete.',
     /* Profile management */
     'profile updated' => 'Perfil se ha actualizado con éxito.',
+];
