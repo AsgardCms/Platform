@@ -1,34 +1,44 @@
 <?php
 
 return [
-    'pages' => 'Páginas',
-    'create page' => 'Crear una página',
-    'edit page' => 'Editar una página',
-    'name' => 'Nombre',
-    'slug' => 'URL amigable',
-    'title' => 'Título',
-    'meta_data' => 'Datos de Meta',
-    'meta_title' => 'Título para el Meta',
-    'meta_description' => 'Descripción para el Meta',
-    'facebook_data' => 'Datos de Facebook',
-    'og_title' => 'Título para Facebook',
-    'og_description' => 'Descripción para Facebook',
-    'og_type' => 'Tipo Facebook',
-    'template' => 'Nombre de la plantilla de la página',
-    'is homepage' => '¿Es la Página principal?',
-    'body' => 'Cuerpo',
+    'pages' => 'Pages',
+    'create page' => 'Create a page',
+    'edit page' => 'Edit a page',
+    'name' => 'Name',
+
+    'slug' => 'Slug',
+    'title' => 'Title',
+
+    'meta_data' => 'Meta data',
+    'meta_title' => 'Meta title',
+    'meta_description' => 'Meta description',
+    'facebook_data' => 'Facebook data',
+    'og_title' => 'Facebook title',
+    'og_description' => 'Facebook description',
+    'og_type' => 'Facebook type',
+    'template' => 'Page template name',
+    'is homepage' => 'Homepage ?',
+    'body' => 'Body',
+    'status' => 'Status',
+    'pages were updated' => 'Pages were updated',
+
+    'back to index' => 'Go back to the pages index',
+    'list resource' => 'List pages',
+    'create resource' => 'Create pages',
+    'edit resource' => 'Edit pages',
+    'destroy resource' => 'Delete pages',
+
+    'view-page' => 'View page',
+    'edit-page' => 'Edit page',
     'validation' => [
         'attributes' => [
-            'title' => 'Título',
-            'body' => 'Cuerpo',
+            'title' => 'title',
+            'body' => 'body',
         ],
     ],
     'facebook-types' => [
-        'website' => 'Página web',
-        'product' => 'Producto',
-        'article' => 'Artículo',
-    ],
-    'navigation' => [
-        'back to index' => 'Volver a la lista de páginas',
+        'website' => 'Website',
+        'product' => 'Product',
+        'article' => 'Article',
     ],
 ];
