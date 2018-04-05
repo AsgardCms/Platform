@@ -8,7 +8,7 @@ return [
 
     'template is required' => 'El nombre de la plantilla es requerido.',
     'title is required' => 'El título es requerido.',
-    'slug is required' => 'El slug es requerido.',
+    'slug is required' => 'La URL amigable es requerida.',
     'body is required' => 'El cuerpo es requerido.',
     'only one homepage allowed' => 'Sólo es permitida una página principal.',
 ];
