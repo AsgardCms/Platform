@@ -4,6 +4,7 @@ return [
     'pages' => 'Pages',
     'create page' => 'Create a page',
     'edit page' => 'Edit a page',
+    'name' => 'Name',
 
     'slug' => 'Slug',
     'title' => 'Title',
@@ -21,6 +22,7 @@ return [
     'status' => 'Status',
     'pages were updated' => 'Pages were updated',
 
+    'back to index' => 'Go back to the pages index',
     'list resource' => 'List pages',
     'create resource' => 'Create pages',
     'edit resource' => 'Edit pages',
@@ -38,8 +40,5 @@ return [
         'website' => 'Website',
         'product' => 'Product',
         'article' => 'Article',
-    ],
-    'navigation' => [
-        'back to index' => 'Go back to the pages index',
     ],
 ];

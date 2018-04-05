@@ -19,4 +19,5 @@ return [
     'confirm email button' => 'Confirmar correo electrónico',
     'end greeting' => 'El equipo',
     'sign in welcome message' => 'Inicie sesión',
+    'reset password email was sent' => 'Correo de reinicio de contraseña fue enviado',
 ];
