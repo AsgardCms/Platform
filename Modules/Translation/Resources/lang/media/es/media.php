@@ -2,24 +2,24 @@
 
 return [
     'title' => [
-        'media' => 'Multimedia',
-        'edit media' => 'Editar multimedia',
+        'media' => 'Media',
+        'edit media' => 'Edit media',
     ],
     'breadcrumb' => [
-        'media' => 'Multimedia',
+        'media' => 'Media',
     ],
     'table' => [
-        'filename' => 'Nombre del archivo',
-        'width' => 'Ancho',
-        'height' => 'Alto',
+        'filename' => 'Filename',
+        'width' => 'Width',
+        'height' => 'Height',
     ],
     'form' => [
-        'alt_attribute' => 'Atributo Alt',
-        'description' => 'Descripción',
-        'keywords' => 'Palabras claves',
+        'alt_attribute' => 'Alt attribute',
+        'description' => 'Description',
+        'keywords' => 'Keywords',
     ],
     'validation' => [
-        'max_size' => 'Tamaño (:size) máximo alcanzado de la carpeta multimedia.',
+        'max_size' => 'Maximum folder size (:size) of the Media folder reached.',
     ],
     'file-sizes' => [
         'B' => 'Bytes',
@@ -28,8 +28,17 @@ return [
         'GB' => 'Gb',
         'TB' => 'Tb',
     ],
-    'choose file' => 'Elija un archivo',
-    'insert' => 'Insertar este archivo',
-    'file picker' => 'Selector de archivo',
-    'Browse' => 'Examinar...',
+    'choose file' => 'Choose a file',
+    'insert' => 'Insert this file',
+    'file picker' => 'File Picker',
+    'Browse' => 'Browse ...',
+    'upload file' => 'Upload a file',
+    'remove media' => 'Remove media',
+    'list resource' => 'List media',
+    'create resource' => 'Create media',
+    'edit resource' => 'Edit media',
+    'destroy resource' => 'Delete media',
+    'file too large' => 'File is too large. Must be below :size MB.',
+    'some files not moved' => 'Some files were not moved',
+    'files moved successfully' => 'Files moved successfully',
 ];
