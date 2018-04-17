@@ -28,7 +28,5 @@ return [
         'product' => 'Продукт',
         'article' => 'Статья',
     ],
-    'navigation' => [
-        'back to index' => 'Вернуться к списку страниц',
-    ],
+    'back to index' => 'Вернуться к списку страниц',
 ];

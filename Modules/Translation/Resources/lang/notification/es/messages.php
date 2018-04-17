@@ -13,8 +13,4 @@ return [
     'all notifications deleted' => 'Todas tus notificaciones fueron eliminadas éxitosamente.',
     'all notifications marked as read' => 'Todas tus notificaciones fueron marcadas como leídas.',
     'view all' => 'Ver todo',
-    'list resource' => 'Lista notificaciones',
-    'destroy resource' => 'Eliminar notificaciones',
-    'destroy all resource' => 'Eliminar todas las notificaciones',
-    'markAllAsRead resource' => 'Marca todas notificaciones como leídas',
 ];

@@ -4,7 +4,6 @@ return [
     'pages' => 'Pages',
     'create page' => 'Create a page',
     'edit page' => 'Edit a page',
-    'name' => 'Name',
 
     'slug' => 'Slug',
     'title' => 'Title',

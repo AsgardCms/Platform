@@ -31,6 +31,7 @@ return [
         'uri' => 'URI',
         'url' => 'URL',
         'primary' => '主菜单 (用于前台导航)',
+        'description' => 'Menu Description (Can be used to provide extra information)',
     ],
     'navigation' => [
         'back to index' => '返回菜单首页',

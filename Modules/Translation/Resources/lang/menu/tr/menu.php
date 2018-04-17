@@ -31,6 +31,7 @@ return [
         'uri' => 'URI',
         'url' => 'URL',
         'primary' => 'Birincil menü (frond-end yönlendirmesi için kullanılır)',
+        'description' => 'Menu Description (Can be used to provide extra information)',
     ],
     'navigation' => [
         'back to index' => 'Menüye geri dön',

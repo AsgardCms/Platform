@@ -11,6 +11,4 @@ return [
         'settings' => 'Configuración',
         'module settings' => 'Configuración del módulo :module',
     ],
-    'list resource' => 'Lista Configuración',
-    'edit resource' => 'Editar Configuración',
 ];

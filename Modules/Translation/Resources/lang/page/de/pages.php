@@ -27,7 +27,5 @@ return [
         'product' => 'Produkt',
         'article' => 'Artikel',
     ],
-    'navigation' => [
-        'back to index' => 'Zurück zur Übersicht',
-    ],
+    'back to index' => 'Zurück zur Übersicht',
 ];

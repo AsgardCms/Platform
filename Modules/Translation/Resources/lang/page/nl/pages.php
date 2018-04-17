@@ -20,6 +20,7 @@ return [
     'status' => 'Status',
     'pages were updated' => 'De paginas werden gewijzigd',
 
+    'back to index' => 'Ga terug naar het pagina overzicht',
     'list resource' => 'Pagina overzicht',
     'create resource' => 'Pagina\'s aanmaken',
     'edit resource' => 'Pagina\'s wijzigen',
@@ -37,8 +38,5 @@ return [
         'website' => 'Website',
         'product' => 'Product',
         'article' => 'Artikel',
-    ],
-    'navigation' => [
-        'back to index' => 'Ga terug naar het pagina overzicht',
     ],
 ];

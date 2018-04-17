@@ -14,7 +14,6 @@ return [
     ],
     'table' => [
         'name' => 'Nombre',
-        'slug' => 'URL Amigable',
     ],
     'tabs' => [
         'data' => 'Datos',
@@ -29,15 +28,6 @@ return [
     ],
     'select all' => 'Seleccionar todos',
     'deselect all' => 'Deseleccionar todos',
-    'swap' => 'Cambiar',
-    'allow all' => 'Allow all',
-    'deny all' => 'Deny all',
-    'inherit all' => 'Inherit all',
-    'allow' => 'Permitir',
-    'deny' => 'Denegar',
     'inherit' => 'Heredar de rol',
-    'list resource' => 'Listar roles',
-    'create resource' => 'Crear roles',
-    'edit resource' => 'Editar roles',
-    'destroy resource' => 'Eliminar roles',
+    'swap' => 'Cambiar',
 ];
