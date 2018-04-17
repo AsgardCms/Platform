@@ -31,7 +31,6 @@ return [
         'uri' => 'URI',
         'url' => 'URL',
         'primary' => 'Menu primario (usato per il routing front-end)',
-        'description' => 'Menu Description (Can be used to provide extra information)',
     ],
     'navigation' => [
         'back to index' => 'Indietro all\'indice dei menu',

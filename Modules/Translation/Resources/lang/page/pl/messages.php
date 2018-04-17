@@ -1,10 +1,10 @@
 <?php
 
 return [
-    'page created' => 'Strona poprawnie created.',
-    'page not found' => 'Strona nie znaleziona.',
-    'page updated' => 'Strona poprawnie zaktualizowana.',
-    'page deleted' => 'Strona poprawnie usunięta.',
+    'page created' => 'Pomyślnie utworzono stronę.',
+    'page not found' => 'Nie znaleziono strony.',
+    'page updated' => 'Pomyślnie zaktualizowano stronę.',
+    'page deleted' => 'Pomyślnie usunięto stronę.',
 
     'template is required' => 'Nazwa szablonu jest wymagana.',
     'title is required' => 'Tytuł jest wymagany.',

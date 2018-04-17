@@ -82,7 +82,7 @@ return [
     'admin-assets' => [
         // Css
         'bootstrap.css' => ['theme' => 'vendor/bootstrap/dist/css/bootstrap.min.css'],
-        'font-awesome.css' => ['theme' => 'vendor/font-awesome/css/font-awesome.min.css'],
+        'font-awesome.css' => ['cdn' => 'https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css'],
         'alertify.core.css' => ['theme' => 'css/vendor/alertify/alertify.core.css'],
         'alertify.default.css' => ['theme' => 'css/vendor/alertify/alertify.default.css'],
         'dataTables.bootstrap.css' => ['theme' => 'vendor/datatables.net-bs/css/dataTables.bootstrap.min.css'],

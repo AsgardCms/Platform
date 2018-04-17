@@ -19,12 +19,6 @@
     {!! Form::text("{$lang}[url]", old("{$lang}[url]", $old), ['class' => 'form-control', 'placeholder' => trans('menu::menu.form.url')]) !!}
     {!! $errors->first("{$lang}[url]", '<span class="help-block">:message</span>') !!}
 </div>
-<div class="form-group{{ $errors->has("{$lang}[description]") ? ' has-error' : '' }}">
-    {!! Form::label("{$lang}[description]", trans('menu::menu.form.description')) !!}
-    <?php $old = $menuItem->hasTranslation($lang) ? $menuItem->translate($lang)->description : '' ?>
-    {!! Form::text("{$lang}[description]", old("{$lang}[description]", $old), ['class' => 'form-control', 'placeholder' => trans('menu::menu.form.description')]) !!}
-    {!! $errors->first("{$lang}[description]", '<span class="help-block">:message</span>') !!}
-</div>
 <div class="checkbox">
     <?php $old = $menuItem->hasTranslation($lang) ? $menuItem->translate($lang)->status : false ?>
     <label for="{{$lang}}[status]">

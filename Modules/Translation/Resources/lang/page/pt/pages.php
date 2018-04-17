@@ -26,5 +26,7 @@ return [
         'product' => 'Produto',
         'article' => 'Artigo',
     ],
-    'back to index' => 'Voltar para listagem',
+    'navigation' => [
+        'back to index' => 'Voltar para listagem',
+    ],
 ];

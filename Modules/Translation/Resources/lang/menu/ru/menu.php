@@ -31,7 +31,6 @@ return [
         'uri' => 'URI',
         'url' => 'URL',
         'primary' => 'Начальное меню (используется для маршрутизации внешнего интерфейса)',
-        'description' => 'Menu Description (Can be used to provide extra information)',
     ],
     'navigation' => [
         'back to index' => 'Вернуться к списку меню',
