@@ -31,7 +31,7 @@ return [
         'uri' => 'URI',
         'url' => 'URL',
         'primary' => 'Primair menu (gebruikt voor front-end routing)',
-        'description' => 'Menu Description (Can be used to provide extra information)',
+        'description' => 'Menu Beschrijving (kan worden gebruikt om extra informatie te geven)',
     ],
     'navigation' => [
         'back to index' => 'Ga terug naar het menu overzicht',

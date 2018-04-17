@@ -31,7 +31,7 @@ return [
         'uri' => 'URI',
         'url' => 'URL',
         'primary' => '주 메뉴 (프론트엔드 라우팅에 사용됨)',
-        'description' => 'Menu Description (Can be used to provide extra information)',
+        'description' => '메뉴 설명 (추가 정보를 제공하는 데 사용할 수 있음)',
     ],
     'navigation' => [
         'back to index' => '메뉴 목록으로 돌아가기',
