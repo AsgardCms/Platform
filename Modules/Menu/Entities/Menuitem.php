@@ -27,6 +27,7 @@ class Menuitem extends Model
         'link_type',
         'locale',
         'class',
+        'description',
     ];
     protected $table = 'menu__menuitems';
 
