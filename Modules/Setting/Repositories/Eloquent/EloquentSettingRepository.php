@@ -53,7 +53,7 @@ class EloquentSettingRepository extends EloquentBaseRepository implements Settin
             if($settingName == 'medias_single') {
                 // Get first key of values (Original settingName)
                 foreach ($settingValues as $key => $mediaId) {
-                    $normalisedValue = [ 'media_single' => $mediaId ];
+                    $normalisedValue = [ 'medias_single' => $mediaId ];
                     $settingName = $key;
                     break;
                 }
