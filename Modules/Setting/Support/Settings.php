@@ -36,7 +36,7 @@ class Settings implements Setting
             return is_null($default) ? $defaultFromConfig : $default;
         }
 
-        if($setting->hasMedia() && $media = $setting->files->first()) {
+        if($setting->isMedia() && $media = $setting->files()->first()) {
             return $media->path;
         }
 
