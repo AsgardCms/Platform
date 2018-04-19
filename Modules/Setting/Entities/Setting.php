@@ -14,7 +14,7 @@ class Setting extends Model
     protected $fillable = ['name', 'value', 'description', 'isTranslatable', 'plainValue'];
     protected $table = 'setting__settings';
 
-    public function hasMedia(): boolean
+    public function hasMedia(): bool
     {
         $value = json_decode($this->plainValue, true);
         return is_array($value) && isset($value['media_single']) && $setting->files->count();
