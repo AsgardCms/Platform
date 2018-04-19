@@ -78,5 +78,9 @@ abstract class BaseSettingTest extends TestCase
         $this->artisan('migrate', [
             '--database' => 'sqlite',
         ]);
+        $this->artisan('migrate', [
+            '--database' => 'sqlite',
+            '--path'     => 'Modules/Media/Database/Migrations',
+        ]);
     }
 }
