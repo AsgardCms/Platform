@@ -31,6 +31,7 @@ return [
         'uri' => 'URI',
         'url' => 'URL',
         'primary' => '主菜单 (用于前台导航)',
+        'description' => '菜单说明（可用于提供额外的信息）',
     ],
     'navigation' => [
         'back to index' => '返回菜单首页',
