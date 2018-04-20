@@ -2,9 +2,11 @@
 
 namespace Modules\Media\Http\Controllers\Admin;
 
+use Illuminate\Http\Request;
 use Modules\Core\Http\Controllers\Admin\AdminBaseController;
 use Modules\Media\Image\ThumbnailManager;
 use Modules\Media\Repositories\FileRepository;
+use Modules\Media\Transformers\MediaTransformer;
 
 class MediaGridController extends AdminBaseController
 {
@@ -39,13 +41,34 @@ class MediaGridController extends AdminBaseController
 
     /**
      * A grid view of uploaded files used for the wysiwyg editor
+     * @param Request $request
      * @return \Illuminate\View\View
      */
-    public function ckIndex()
+    public function ckIndex(Request $request)
     {
-        $files = $this->file->allForGrid();
-        $thumbnails = $this->thumbnailsManager->all();
+        if ($request->isXmlHttpRequest()) {
+            $cols = $request->get('columns');
+            $start = $request->get('start', 0);
+            $length = $request->get('length', 25);
+            $page = ($start/$length) + 1;
+            $requestData = ['per_page' => $length, 'page' => $page];
+            foreach ($cols as $col) {
+                if ($col['searchable'] && isset($col['search']['value'])) {
+                    $requestData[$col['data']] = $col['search']['value'];
+                }
+            }
+            $request->merge($requestData);
+            $files = $this->file->pagingForGrid($request);
 
-        return view('media::admin.grid.ckeditor', compact('files', 'thumbnails'));
+            $output = [
+                "draw" => $request->get('draw'),
+                "recordsTotal" => $files->total(),
+                "recordsFiltered" => $files->total(),
+                'data' => MediaTransformer::collection($files)
+            ];
+            return response()->json($output);
+
+        }
+        return view('media::admin.grid.ckeditor');
     }
 }

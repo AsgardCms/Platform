@@ -36,6 +36,7 @@ class MediaTransformer extends Resource
             'is_image' => $this->isImage(),
             'is_folder' => $this->isFolder(),
             'media_type' => $this->media_type,
+            'mimetype' => $this->mimetype,
             'fa_icon' => FileHelper::getFaIcon($this->media_type),
             'created_at' => $this->created_at,
             'folder_id' => $this->folder_id,

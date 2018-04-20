@@ -50,5 +50,7 @@ interface FileRepository extends BaseRepository
 
     public function allForGrid() : Collection;
 
+    public function pagingForGrid(Request $request);
+
     public function move(File $file, File $destination) : File;
 }
