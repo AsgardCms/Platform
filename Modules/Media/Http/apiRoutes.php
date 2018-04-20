@@ -70,6 +70,11 @@ $router->group(['middleware' => 'api.token'], function (Router $router) {
         'as' => 'api.media.find-first-by-zone-and-entity',
     ]);
 
+    $router->get('media/get-by-zone-and-entity', [
+        'uses' => 'MediaController@getByZoneEntity',
+        'as' => 'api.media.get-by-zone-and-entity',
+    ]);
+
     $router->get('media/{media}', [
         'uses' => 'MediaController@find',
         'as' => 'api.media.media.find',
