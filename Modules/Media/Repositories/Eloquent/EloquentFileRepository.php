@@ -196,6 +196,34 @@ class EloquentFileRepository extends EloquentBaseRepository implements FileRepos
         return $this->model->where('is_folder', 0)->get();
     }
 
+    /**
+     * @param Request $request
+     * @return \Illuminate\Contracts\Pagination\LengthAwarePaginator
+     */
+    public function pagingForGrid(Request $request)
+    {
+
+        $media = $this->allWithBuilder();
+        $media->where('is_folder', 0);
+        if ($request->get('search') !== null) {
+            $term = $request->get('search');
+            if (is_array($term)) {
+                $term = $term['value'];
+            }
+            $media->where('filename', 'LIKE', "%{$term}%");
+        }
+
+        if ($request->get('order_by') !== null && $request->get('order') !== 'null') {
+            $order = $request->get('order') === 'ascending' ? 'asc' : 'desc';
+
+            $media->orderBy($request->get('order_by'), $order);
+        } else {
+            $media->orderBy('created_at', 'desc');
+        }
+
+        return $media->paginate($request->get('per_page', 10));
+    }
+
     public function move(File $file, File $destination) : File
     {
         $previousData = [
