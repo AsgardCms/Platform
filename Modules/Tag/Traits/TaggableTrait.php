@@ -97,6 +97,10 @@ trait TaggableTrait
      */
     public function setTags($tags, $type = 'slug')
     {
+        if (empty($tags)) {
+            $tags = [];
+        }
+
         // Get the current entity tags
         $entityTags = $this->tags->pluck($type)->all();
 
