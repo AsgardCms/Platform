@@ -38,9 +38,8 @@ final class SettingDirective
 
         if (empty($value)) {
             return false;
-        } else {
-            return true;
-        }
+        }    
+        return true;
     }
 
     /**
