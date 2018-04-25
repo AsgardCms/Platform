@@ -129,7 +129,6 @@
                 {"data": "path", 'searchable': false, "orderable": false},
             ],
             createdRow: function (row, data, dataIndex) {
-                console.log(row);
                 $(row).find('td:eq(0)').html(data.id);
                 if (data.is_image === true) {
                     $(row).find('td:eq(1)').html('<img src="'+data.small_thumb+'"/>');
@@ -144,10 +143,14 @@
                 '                                    </button>\n' +'<ul class="dropdown-menu" role="menu">\n';
                 $.each(data.thumbnails, function(index, thumbnail) {
                     thumbnailMenu += '<li data-file-path="'+thumbnail.path+'" data-id="'+data.id+'" data-media-type="'+data.media_type+'" data-mimetype="'+data.mimetype+'" class="jsInsertImage">\n' +
-                        thumbnail.name+' ('+thumbnail.size+')' +
+                        '<a href="#">'+thumbnail.name+' ('+thumbnail.size+')</a>' +
                         '  </li>\n';
                 });
-                thumbnailMenu += '</ul>';
+                thumbnailMenu += '<li class="divider"></li>' +
+                    '<li data-file-path="'+data.path+'" data-id="'+data.id+'" data-media-type="'+data.media_type+'" data-mimetype="'+data.mimetype+'" class="jsInsertImage">\n' +
+                    '<a href="#">Original</a>' +
+                    '  </li>\n'+
+                    '</ul>';
                 $(row).find('td:eq(3)').html(thumbnailMenu).find('.jsInsertImage').on('click', insertImageEvent);
             },
             "language": {
