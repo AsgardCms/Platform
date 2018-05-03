@@ -28,6 +28,21 @@ final class SettingDirective
     }
 
     /**
+     * Check if a setting is set and is not empty
+     * @param array $arguments
+     * @return boolean
+     */
+    public function has($arguments)
+    {
+        $value = $this->show($arguments);
+
+        if (empty($value)) {
+            return false;
+        }    
+        return true;
+    }
+
+    /**
      * @param array $arguments
      */
     private function extractArguments(array $arguments)
