@@ -1,5 +1,8 @@
 url: https://github.com/AsgardCms/Platform
 versions:
+    "@unreleased":
+        added:
+            - New <code>@hasSetting()</code> and <code>@endHasSetting</code> directives
     "3.5.3":
         added:
             - New setting type media-single
