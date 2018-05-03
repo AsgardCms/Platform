@@ -1,6 +1,6 @@
 url: https://github.com/AsgardCms/Platform
 versions:
-    "@unreleased":
+    "3.5.2":
         changed:
             - Don't show draft pages
             - Throw a 404 if page status is disabled
