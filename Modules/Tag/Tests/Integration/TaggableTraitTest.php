@@ -153,6 +153,17 @@ class TaggableTraitTest extends BaseTestCase
         $this->assertCount(1, Page::whereTag(['한글-태그'])->get());
     }
 
+    /** @test */
+    public function it_creates_page_without_tags()
+    {
+        $this->createPage(['original tag']);
+
+        $page = $this->page->find(1);
+        $page->setTags(null);
+
+        $this->assertEmpty(Page::first()->tags->count());
+    }
+
     private function createPage(array $tags = [])
     {
         return $this->page->create([

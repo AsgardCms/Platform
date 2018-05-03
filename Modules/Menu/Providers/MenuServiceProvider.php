@@ -3,6 +3,7 @@
 namespace Modules\Menu\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 use Modules\Core\Events\BuildingSidebar;
 use Modules\Core\Events\LoadingBackendTranslations;
 use Modules\Core\Traits\CanGetSidebarClassForModule;
@@ -122,7 +123,9 @@ class MenuServiceProvider extends ServiceProvider
                 ]
             );
         } else {
-            $target = $item->link_type != 'external' ? $item->locale . '/' . $item->uri : $item->url;
+            $localisedUri = ltrim(parse_url(LaravelLocalization::localizeURL($item->uri), PHP_URL_PATH), '/');
+            $target = $item->link_type != 'external' ? $localisedUri : $item->url;
+
             $menu->url(
                 $target,
                 $item->title,
