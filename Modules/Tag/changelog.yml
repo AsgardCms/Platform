@@ -1,5 +1,8 @@
 url: https://github.com/AsgardCms/Platform
 versions:
+    "3.5.3":
+        changed:
+            - Set tags only if passed any
     "3.4.0":
         changed:
             - Using new <code>remember</code> method in the <code>CacheTagDecorator</code>

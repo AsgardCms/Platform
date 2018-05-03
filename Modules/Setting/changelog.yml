@@ -1,5 +1,8 @@
 url: https://github.com/AsgardCms/Platform
 versions:
+    "3.5.3":
+        added:
+            - New setting type media-single
     "3.4.0":
         changed:
             - Fix settings with falsey values not getting returned

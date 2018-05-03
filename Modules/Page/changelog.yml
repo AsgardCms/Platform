@@ -1,6 +1,6 @@
 url: https://github.com/AsgardCms/Platform
 versions:
-    "@unreleased":
+    "3.5.2":
         changed:
             - Adding support for UTF-8 slug for non ASCII characters (Chinese etc.)
     "3.4.0":
