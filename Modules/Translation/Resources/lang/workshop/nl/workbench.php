@@ -4,7 +4,7 @@ return [
     'title' => 'Module gereedschap',
     'subtitle' => [
         'generate new module' => 'Creëer een nieuwe module',
-        'install new module by vendor name' => 'Installeer een nieuwe module via auteur/naam',
+        'install new module by vendor name' => 'Installeer een nieuwe module met auteur/naam',
     ],
     'tab' => [
         'generators' => 'Generatoren',
