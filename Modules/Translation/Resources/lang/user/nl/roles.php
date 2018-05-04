@@ -37,7 +37,7 @@ return [
     'deny' => 'Deny',
     'inherit' => 'Erf van rol',
     'list resource' => 'Rollen overzicht',
-    'create resource' => 'Rollen creëren',
+    'create resource' => 'Rollen aanmaken',
     'edit resource' => 'Rollen wijzigen',
     'destroy resource' => 'Rollen verwijderen',
 ];

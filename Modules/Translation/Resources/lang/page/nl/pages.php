@@ -2,10 +2,10 @@
 
 return [
     'pages' => 'Pagina\'s',
-    'create page' => 'Creëer een pagina',
-    'edit page' => 'Wijzig een pagina',
+    'create page' => 'Pagina aanmaken',
+    'edit page' => 'Pagina wijzigen',
     'name' => 'Naam',
-    'slug' => 'URL onderdeel',
+    'slug' => 'URL slug',
     'title' => 'Titel',
     'meta_data' => 'Meta data',
     'meta_title' => 'Meta titel',
@@ -18,7 +18,7 @@ return [
     'is homepage' => 'Startpagina?',
     'body' => 'Inhoud',
     'status' => 'Status',
-    'pages were updated' => 'De paginas werden gewijzigd',
+    'pages were updated' => 'De paginas zijn gewijzigd',
 
     'list resource' => 'Pagina overzicht',
     'create resource' => 'Pagina\'s aanmaken',

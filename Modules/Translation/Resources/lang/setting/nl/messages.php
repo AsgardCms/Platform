@@ -1,5 +1,5 @@
 <?php
 
 return [
-    'settings saved' => 'Instellingen bewaard!',
+    'settings saved' => 'Instellingen opgeslagen!',
 ];
