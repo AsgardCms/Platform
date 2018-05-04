@@ -9,7 +9,7 @@ return [
         'new tab' => 'Nieuw tabblad',
         'icon' => 'Icoon',
         'class' => 'CSS Klasse',
-        'parent menu item' => 'Bovenliggende menu item',
+        'parent menu item' => 'Bovenliggend menu item',
     ],
     'link-type' => [
         'link type' => 'Linktype',
