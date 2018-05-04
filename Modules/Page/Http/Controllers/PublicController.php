@@ -84,12 +84,12 @@ class PublicController extends BasePublicController
     }
 
     /**
-     * Throw a 404 error page if the given page is not found
+     * Throw a 404 error page if the given page is not found or draft
      * @param $page
      */
     private function throw404IfNotFound($page)
     {
-        if (is_null($page)) {
+        if ($page->status == 0 || is_null($page)) {
             $this->app->abort('404');
         }
     }
