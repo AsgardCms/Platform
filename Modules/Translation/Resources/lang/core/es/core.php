@@ -7,6 +7,7 @@ return [
     ],
     'table' => [
         'created at' => 'Creado el',
+        'updated at' => 'Actualizado el',
         'actions' => 'Acciones',
         'thumbnail' => 'Miniaturas',
     ],
@@ -68,7 +69,7 @@ return [
     'destroy resource' => 'Eliminar :name',
     'error token mismatch' => 'Tu session se ha terminado, por favor envia el formulario nuevamente.',
     'error 404' => '404',
-    'error 404 title' => 'Oops! Lo sentimos esta páginapágina no fue encontrada.',
+    'error 404 title' => 'Oops! Lo sentimos esta página no fue encontrada.',
     'error 404 description' => 'La página que estas buscando no fue encontrada.',
     'error 500' => '500',
     'error 500 title' => 'Oops! Algo salió mal',
