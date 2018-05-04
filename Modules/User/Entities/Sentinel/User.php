@@ -2,18 +2,19 @@
 
 namespace Modules\User\Entities\Sentinel;
 
-use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
 use Illuminate\Auth\Authenticatable;
-use Cartalyst\Sentinel\Laravel\Facades\Activation;
-use Cartalyst\Sentinel\Users\EloquentUser;
-use Laracasts\Presenter\PresentableTrait;
-use Modules\User\Entities\UserInterface;
 use Modules\User\Entities\UserToken;
+use Modules\User\Entities\UserInterface;
+use Laracasts\Presenter\PresentableTrait;
+use Cartalyst\Sentinel\Users\EloquentUser;
 use Modules\User\Presenters\UserPresenter;
+use Cartalyst\Sentinel\Laravel\Facades\Activation;
+use Modules\Core\Traits\HasDynamicRelationships;
+use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
 
 class User extends EloquentUser implements UserInterface, AuthenticatableContract
 {
-    use PresentableTrait, Authenticatable;
+    use PresentableTrait, HasDynamicRelationships, Authenticatable;
 
     protected $fillable = [
         'email',
@@ -103,23 +104,6 @@ class User extends EloquentUser implements UserInterface, AuthenticatableContrac
         }
 
         return $userToken->access_token;
-    }
-
-    public function __call($method, $parameters)
-    {
-        #i: Convert array to dot notation
-        $config = implode('.', ['asgard.user.config.relations', $method]);
-
-        #i: Relation method resolver
-        if (config()->has($config)) {
-            $function = config()->get($config);
-            $bound = $function->bindTo($this);
-            
-            return $bound();
-        }
-
-        #i: No relation found, return the call to parent (Eloquent) to handle it.
-        return parent::__call($method, $parameters);
     }
 
     /**

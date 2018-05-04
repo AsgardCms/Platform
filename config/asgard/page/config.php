@@ -18,6 +18,7 @@ return [
             'edit' => [],
         ],
     ],
+
     /*
     |--------------------------------------------------------------------------
     | Dynamic relations
@@ -25,16 +26,18 @@ return [
     | Add relations that will be dynamically added to the Page entity
     */
     'relations' => [
-//        'extension' => function ($self) {
-//            return $self->belongsTo(PageExtension::class, 'id', 'page_id')->first();
+//        'extension' => function () {
+//            return $this->belongsTo(PageExtension::class, 'page_id');
 //        }
     ],
+
     /*
     |--------------------------------------------------------------------------
     | Array of middleware that will be applied on the page module front end routes
     |--------------------------------------------------------------------------
     */
     'middleware' => [],
+
     /*
      |--------------------------------------------------------------------------
      | Array of directories to ignore when selecting the template for a page
@@ -44,6 +47,7 @@ return [
         'layouts',
         'partials',
     ],
+
     /*
     |--------------------------------------------------------------------------
     | Custom Sidebar Class
