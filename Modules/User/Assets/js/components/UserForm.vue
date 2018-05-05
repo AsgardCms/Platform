@@ -161,6 +161,7 @@
                     permissions: {},
                     roles: {},
                     is_new: false,
+                    activated: false,
                 },
                 roles: {},
                 form: new Form(),

@@ -11,6 +11,7 @@ use Modules\User\Http\Requests\CreateUserRequest;
 use Modules\User\Http\Requests\UpdateUserRequest;
 use Modules\User\Permissions\PermissionManager;
 use Modules\User\Repositories\UserRepository;
+use Modules\User\Repositories\UserTokenRepository;
 use Modules\User\Transformers\FullUserTransformer;
 use Modules\User\Transformers\UserTransformer;
 
@@ -24,11 +25,16 @@ class UserController extends Controller
      * @var PermissionManager
      */
     private $permissions;
+    /**
+     * @var UserTokenRepository
+     */
+    private $userToken;
 
-    public function __construct(UserRepository $user, PermissionManager $permissions)
+    public function __construct(UserRepository $user, PermissionManager $permissions, UserTokenRepository $userToken)
     {
         $this->user = $user;
         $this->permissions = $permissions;
+        $this->userToken = $userToken;
     }
 
     public function index(Request $request)
@@ -50,7 +56,10 @@ class UserController extends Controller
     {
         $data = $this->mergeRequestWithPermissions($request);
 
-        $this->user->createWithRoles($data, $request->get('roles'), $request->get('is_activated'));
+        $user = $this->user->createWithRoles($data, $request->get('roles'), $request->get('activated'));
+        if ($user && !$this->userToken->allForUser($user->id)->count()) {
+            $this->userToken->generateFor($user->id);
+        }
 
         return response()->json([
             'errors' => false,
