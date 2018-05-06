@@ -183,6 +183,19 @@ class SentinelUserRepositoryTest extends BaseUserTestCase
     }
 
     /** @test */
+    public function it_creates_a_user_token_when_creating_user_with_roles()
+    {
+        $this->createRole('User');
+
+        $user = $this->user->createWithRoles([
+            'email' => 'n.widart@gmail.com',
+            'password' => 'demo1234',
+        ], ['User']);
+
+        $this->assertCount(1, $user->api_keys);
+    }
+
+    /** @test */
     public function it_creates_user_without_triggering_events_for_cli()
     {
         Event::fake();
