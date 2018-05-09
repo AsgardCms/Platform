@@ -1,6 +1,6 @@
 url: https://github.com/AsgardCms/Platform
 versions:
- "@unreleased":
+    "@unreleased":
          changed:
          - Adding a test the user token is correctly generated
     "3.5.1":
