@@ -1,5 +1,8 @@
 url: https://github.com/AsgardCms/Platform
 versions:
+ "@unreleased":
+         changed:
+         - Adding a test the user token is correctly generated
     "3.5.1":
         changed:
             - Fix issue 467 id() method checks null instead of false
