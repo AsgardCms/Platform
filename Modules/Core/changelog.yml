@@ -3,6 +3,7 @@ versions:
     "@unreleased":
         changed:
             - Updating Dutch translations
+            - Fix Carbon locale
     "3.5.3":
         changed:
             - Updating Polish translations
