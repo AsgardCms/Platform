@@ -3,6 +3,9 @@ versions:
     "@unreleased":
         changed:
             - Updating Dutch translations
+            - Adding a test the user token is correctly generated
+            - Dont show draft pages on public
+            - Fix Carbon locale
     "3.5.3":
         changed:
             - Updating Polish translations
