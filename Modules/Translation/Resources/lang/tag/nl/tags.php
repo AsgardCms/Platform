@@ -11,5 +11,5 @@ return [
     'edit tag' => 'Tag wijzigen',
     'name' => 'Naam',
     'slug' => 'URL onderdeel',
-    'namespace' => 'Naamruimte',
+    'namespace' => 'Onderdeel',
 ];

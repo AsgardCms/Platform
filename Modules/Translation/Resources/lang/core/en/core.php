@@ -78,7 +78,7 @@ return [
     'unauthorized' => 'Unauthorized',
     'unauthorized-access' => 'You do not have the appropriate permissions to access that page.',
     'unauthenticated' => 'Niet ingelogd',
-    'unauthenticated-access' => 'U moet inloggen om toegang te krijgen tot deze pagina',
+    'unauthenticated-access' => 'You need to be logged in to be able to view this page',
     'something went wrong' => 'Whoops! Something went wrong.',
     'mark as online' => 'Mark as online',
     'mark as offline' => 'Mark as offline',

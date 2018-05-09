@@ -1,5 +1,8 @@
 url: https://github.com/AsgardCms/Platform
 versions:
+    "@unreleased":
+        changed:
+            - Don't show draft pages
     "3.5.2":
         changed:
             - Adding support for UTF-8 slug for non ASCII characters (Chinese etc.)

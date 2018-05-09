@@ -2,5 +2,5 @@
 
 return [
     'content' => 'Inhoud',
-    'show group' => 'Zijbalk hoofdgroep weergeven',
+    'show group' => 'Zijbalk onderdeel weergeven',
 ];
