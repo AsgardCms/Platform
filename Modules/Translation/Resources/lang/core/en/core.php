@@ -8,6 +8,7 @@ return [
     'table' => [
         'created at' => 'Created at',
         'updated at' => 'Updated at',
+        'deleted at' => 'Deleted at',
         'actions' => 'Actions',
         'thumbnail' => 'Thumbnail',
     ],
