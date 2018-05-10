@@ -34,7 +34,7 @@ return [
         'update' => 'Update',
         'delete' => 'Delete',
         'reset' => 'Reset',
-         'see' => 'Ver',
+        'see' => 'See',
         'visualize' => 'Visualize',
         'update and back' => 'Update and go back',
     ],
