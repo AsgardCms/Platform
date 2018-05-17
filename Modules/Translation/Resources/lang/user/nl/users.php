@@ -21,7 +21,7 @@ return [
         'data' => 'Data',
         'roles' => 'Rollen',
         'permissions' => 'Permissies',
-        'new password' => 'Nieuwe wachtwoord',
+        'new password' => 'Nieuw wachtwoord',
         'or send reset password mail' => 'of, stuur wachtwoord herstel email',
     ],
     'form' => [
@@ -30,9 +30,9 @@ return [
         'email' => 'Email',
         'status' => 'Staat',
         'password' => 'Wachtwoord',
-        'password-confirmation' => 'Wachtwoord bevestiging',
+        'password-confirmation' => 'Bevestig Wachtwoord',
         'new password' => 'Nieuw wachtwoord',
-        'new password confirmation' => 'Nieuw wachtwoord bevestiging',
+        'new password confirmation' => 'Bevestig Nieuw Wachtwoord',
         'is activated' => 'Geactiveerd',
     ],
     'table' => [

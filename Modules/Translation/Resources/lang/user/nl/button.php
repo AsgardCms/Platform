@@ -4,5 +4,5 @@ return [
     'cancel' => 'Annuleren',
     'delete' => 'Verwijderen',
     'create' => 'Aanmaken',
-    'update' => 'Bewaren',
+    'update' => 'Wijzigen',
 ];
