@@ -8,6 +8,7 @@ return [
     'table' => [
         'created at' => 'Created at',
         'updated at' => 'Updated at',
+        'deleted at' => 'Deleted at',
         'actions' => 'Actions',
         'thumbnail' => 'Thumbnail',
     ],
@@ -33,11 +34,15 @@ return [
         'update' => 'Update',
         'delete' => 'Delete',
         'reset' => 'Reset',
+        'see' => 'See',
+        'visualize' => 'Visualize',
         'update and back' => 'Update and go back',
     ],
     'save' => 'Save',
     'confirm' => 'Confirm',
     'move' => 'Move',
+    'widget' => 'Widget',
+    'widgets' => 'Widgets',
     'breadcrumb' => [
         'home' => 'Home',
     ],
