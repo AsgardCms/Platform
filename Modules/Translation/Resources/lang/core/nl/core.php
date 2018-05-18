@@ -71,7 +71,7 @@ return [
     'mark as offline' => 'Markeer als offline',
     'back to backend' => 'Naar de backend',
 
-    'list resource' => ':name overzicht',
+    'list resource' => ':name Overzicht',
     'create resource' => ':name Aanmaken',
     'edit resource' => ':name Wijzigen',
     'destroy resource' => ':name Verwijderen',
