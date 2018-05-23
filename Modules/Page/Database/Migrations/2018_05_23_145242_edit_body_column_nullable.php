@@ -14,7 +14,7 @@ class EditBodyColumnNullable extends Migration
     public function up()
     {
         Schema::table('page__page_translations', function (Blueprint $table) {
-            $table->string('body')->nullable()->change();
+            $table->text('body')->nullable()->change();
         });
     }
 
@@ -26,7 +26,7 @@ class EditBodyColumnNullable extends Migration
     public function down()
     {
         Schema::table('page__page_translations', function (Blueprint $table) {
-            $table->string('body')->nullable(false)->change();
+            $table->text('body')->nullable(false)->change();
         });
     }
 }
