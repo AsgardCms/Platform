@@ -3,13 +3,6 @@
 use Illuminate\Routing\Router;
 
 /** @var Router $router */
-$router->bind('menu', function ($id) {
-    return app(\Modules\Menu\Repositories\MenuRepository::class)->find($id);
-});
-$router->bind('menuitem', function ($id) {
-    return app(\Modules\Menu\Repositories\MenuItemRepository::class)->find($id);
-});
-
 $router->group(['prefix' => '/menu'], function (Router $router) {
     $router->get('menus', [
         'as' => 'admin.menu.menu.index',

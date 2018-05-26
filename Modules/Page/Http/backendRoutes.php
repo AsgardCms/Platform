@@ -3,10 +3,6 @@
 use Illuminate\Routing\Router;
 
 /** @var Router $router */
-$router->bind('page', function ($id) {
-    return app(\Modules\Page\Repositories\PageRepository::class)->find($id);
-});
-
 $router->group(['prefix' => '/page'], function (Router $router) {
     $router->get('pages', [
         'as' => 'admin.page.page.index',

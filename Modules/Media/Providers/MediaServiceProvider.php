@@ -58,6 +58,10 @@ class MediaServiceProvider extends ServiceProvider
             BuildingSidebar::class,
             $this->getSidebarClassForModule('media', RegisterMediaSidebar::class)
         );
+
+        app('router')->bind('media', function ($id) {
+            return app(FileRepository::class)->find($id);
+        });
     }
 
     public function boot(DispatcherContract $events)

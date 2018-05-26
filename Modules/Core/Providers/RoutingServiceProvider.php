@@ -4,7 +4,6 @@ namespace Modules\Core\Providers;
 
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
 use Illuminate\Routing\Router;
-use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
 abstract class RoutingServiceProvider extends ServiceProvider
 {
@@ -52,14 +51,17 @@ abstract class RoutingServiceProvider extends ServiceProvider
             $this->loadApiRoutes($router);
         });
 
-        $router->group([
-            'namespace' => $this->namespace,
-            'prefix' => LaravelLocalization::setLocale(),
-            'middleware' => ['localizationRedirect', 'web'],
-        ], function (Router $router) {
-            $this->loadBackendRoutes($router);
-            $this->loadFrontendRoutes($router);
-        });
+        $prefixes = array_merge(json_decode(setting('core::locales')), ['']);
+        foreach ($prefixes as $prefix) {
+            $router->group([
+                'namespace' => $this->namespace,
+                'prefix' => $prefix,
+                'middleware' => ['localizationRedirect', 'web'],
+            ], function (Router $router) {
+                $this->loadBackendRoutes($router);
+                $this->loadFrontendRoutes($router);
+            });
+        }
     }
 
     /**

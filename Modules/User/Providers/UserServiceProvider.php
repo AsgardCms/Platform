@@ -66,6 +66,10 @@ class UserServiceProvider extends ServiceProvider
             BuildingSidebar::class,
             $this->getSidebarClassForModule('user', RegisterUserSidebar::class)
         );
+
+        app('router')->bind('userTokenId', function ($id) {
+            return app(UserTokenRepository::class)->find($id);
+        });
     }
 
     /**
