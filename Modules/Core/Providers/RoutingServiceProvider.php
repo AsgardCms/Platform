@@ -4,6 +4,7 @@ namespace Modules\Core\Providers;
 
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
 use Illuminate\Routing\Router;
+use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
 abstract class RoutingServiceProvider extends ServiceProvider
 {
@@ -51,7 +52,12 @@ abstract class RoutingServiceProvider extends ServiceProvider
             $this->loadApiRoutes($router);
         });
 
-        $prefixes = array_merge(json_decode(setting('core::locales')), ['']);
+        if (app('asgard.isInstalled')) {
+            $prefixes = array_merge(json_decode(setting('core::locales')), ['']);
+        } else {
+            $prefixes = [LaravelLocalization::setLocale()];
+        }
+
         foreach ($prefixes as $prefix) {
             $router->group([
                 'namespace' => $this->namespace,
