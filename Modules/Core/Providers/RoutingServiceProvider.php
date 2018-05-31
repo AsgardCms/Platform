@@ -52,12 +52,7 @@ abstract class RoutingServiceProvider extends ServiceProvider
             $this->loadApiRoutes($router);
         });
 
-        if (app('asgard.isInstalled')) {
-            $prefixes = array_merge(json_decode(setting('core::locales')), ['']);
-        } else {
-            $prefixes = [LaravelLocalization::setLocale()];
-        }
-
+        $prefixes = $this->getPrefixes();
         foreach ($prefixes as $prefix) {
             $router->group([
                 'namespace' => $this->namespace,
@@ -68,6 +63,19 @@ abstract class RoutingServiceProvider extends ServiceProvider
                 $this->loadFrontendRoutes($router);
             });
         }
+    }
+
+    /**
+     * Get locale prefixes
+     * @return array
+     */
+    private function getPrefixes()
+    {
+        if (app('asgard.isInstalled')) {
+            return array_merge(json_decode(setting('core::locales')), ['']);
+        }
+
+        return [LaravelLocalization::setLocale()];
     }
 
     /**
