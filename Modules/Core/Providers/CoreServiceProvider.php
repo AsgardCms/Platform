@@ -349,7 +349,7 @@ class CoreServiceProvider extends ServiceProvider
      */
     private function onBackend()
     {
-        $url = app(Request::class)->url();
+        $url = app(Request::class)->path();
         if (str_contains($url, config('asgard.core.core.admin-prefix'))) {
             return true;
         }
