@@ -27,6 +27,7 @@ return [
         'czech' => 'Czech',
         'swedish' => 'Svenska',
         'korean' => 'Korean',
+        'hungarian' => 'Magyar',
     ],
     'button' => [
         'cancel' => 'Cancel',
