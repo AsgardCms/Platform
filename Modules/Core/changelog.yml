@@ -1,9 +1,12 @@
 url: https://github.com/AsgardCms/Platform
 versions:
     "@unreleased":
+        added:
+            - New Hungarian translations
         changed:
             - Updating Dutch translations
             - Fix Carbon locale
+            - Fixed how the admin url is parsed by reading the <code>path</code> instead of <code>url</code>
     "3.5.3":
         changed:
             - Updating Polish translations
