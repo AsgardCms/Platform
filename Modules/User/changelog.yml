@@ -3,6 +3,7 @@ versions:
     "@unreleased":
          changed:
          - Adding a test the user token is correctly generated
+         - Fix creation of an activated user
     "3.5.1":
         changed:
             - Fix issue 467 id() method checks null instead of false
