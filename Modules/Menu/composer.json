@@ -32,7 +32,7 @@
     "orchestra/testbench": "3.6.*",
     "fzaninotto/faker": "1.4.0",
     "doctrine/dbal": "~2.5",
-    "idavoll/page-module": "3.0.x-dev"
+    "idavoll/page-module": "4.0.x-dev"
   },
   "autoload-dev": {
     "psr-4": {
