@@ -17,7 +17,7 @@
     "eslint-config-airbnb-base": "^13.0.0",
     "eslint-plugin-import": "^2.13.0",
     "eslint-plugin-vue": "^4.5.0",
-    "laravel-mix": "^1.7.2"
+    "laravel-mix": "^2.1.11"
   },
   "dependencies": {
     "axios": "^0.18.0",
