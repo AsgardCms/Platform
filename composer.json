@@ -17,18 +17,18 @@
         "laravel/tinker": "~1.0",
         "nwidart/laravel-modules": "~3.0",
         "cartalyst/sentinel": "~2.0",
-        "idavoll/core-module": "3.0.x-dev",
-        "idavoll/dashboard-module": "3.0.x-dev",
-        "idavoll/user-module": "3.0.x-dev",
-        "idavoll/setting-module": "3.0.x-dev",
-        "idavoll/media-module": "3.0.x-dev",
-        "idavoll/page-module": "3.0.x-dev",
-        "idavoll/menu-module": "3.0.x-dev",
-        "idavoll/workshop-module": "3.0.x-dev",
-        "idavoll/translation-module": "3.0.x-dev",
-        "idavoll/tag-module": "3.0.x-dev",
-        "idavoll/flatly-theme": "3.0.x-dev",
-        "idavoll/adminlte-theme": "3.0.x-dev"
+        "idavoll/core-module": "4.0.x-dev",
+        "idavoll/dashboard-module": "4.0.x-dev",
+        "idavoll/user-module": "4.0.x-dev",
+        "idavoll/setting-module": "4.0.x-dev",
+        "idavoll/media-module": "4.0.x-dev",
+        "idavoll/page-module": "4.0.x-dev",
+        "idavoll/menu-module": "4.0.x-dev",
+        "idavoll/workshop-module": "4.0.x-dev",
+        "idavoll/translation-module": "4.0.x-dev",
+        "idavoll/tag-module": "4.0.x-dev",
+        "idavoll/flatly-theme": "4.0.x-dev",
+        "idavoll/adminlte-theme": "4.0.x-dev"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",
@@ -72,7 +72,7 @@
     },
     "extra": {
         "branch-alias": {
-            "dev-master": "3.0.x-dev"
+            "dev-master": "4.0.x-dev"
         },
         "laravel": {
             "dont-discover": []
