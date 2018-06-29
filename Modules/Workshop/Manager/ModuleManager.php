@@ -5,13 +5,14 @@ namespace Modules\Workshop\Manager;
 use Illuminate\Config\Repository as Config;
 use Illuminate\Filesystem\Filesystem;
 use Illuminate\Support\Collection;
+use Nwidart\Modules\Contracts\RepositoryInterface;
 use Nwidart\Modules\Module;
 use Symfony\Component\Yaml\Parser;
 
 class ModuleManager
 {
     /**
-     * @var Module
+     * @var RepositoryInterface
      */
     private $module;
     /**
@@ -68,7 +69,7 @@ class ModuleManager
      */
     public function enabled()
     {
-        return $this->module->enabled();
+        return $this->module->allEnabled();
     }
 
     /**
@@ -89,7 +90,7 @@ class ModuleManager
      */
     public function getFlippedEnabledModules()
     {
-        $enabledModules = $this->module->enabled();
+        $enabledModules = $this->module->allEnabled();
 
         $enabledModules = array_map(function (Module $module) {
             return $module->getName();
