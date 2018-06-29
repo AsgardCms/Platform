@@ -20,11 +20,11 @@
     "source": "https://github.com/AsgardCms/Dashboard"
   },
   "require": {
-    "php": ">=5.6.4",
+    "php": ">=7.0",
     "composer/installers": "~1.0"
   },
   "require-dev": {
-    "friendsofphp/php-cs-fixer": "^1.11"
+    "friendsofphp/php-cs-fixer": "^2.12"
   },
   "extra": {
     "branch-alias": {

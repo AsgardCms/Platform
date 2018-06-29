@@ -19,9 +19,9 @@
     "composer/installers": "~1.0"
   },
   "require-dev": {
-    "phpunit/phpunit": "~6.0",
-    "orchestra/testbench": "3.5.*",
-    "idavoll/page-module": "~3.0"
+    "phpunit/phpunit": "~7.0",
+    "orchestra/testbench": "3.6.*",
+    "idavoll/page-module": "3.0.x-dev"
   },
   "autoload": {
     "psr-4": {

@@ -24,15 +24,15 @@
   "require": {
     "php": ">=7.0.0",
     "composer/installers": "~1.0",
-    "nwidart/laravel-menus": "~1.0",
+    "nwidart/laravel-menus": "~2.0",
     "typicms/nestablecollection": "1.1"
   },
   "require-dev": {
-    "phpunit/phpunit": "~6.0",
-    "orchestra/testbench": "3.5.*",
+    "phpunit/phpunit": "~7.0",
+    "orchestra/testbench": "3.6.*",
     "fzaninotto/faker": "1.4.0",
     "doctrine/dbal": "~2.5",
-    "idavoll/page-module": "~2.0"
+    "idavoll/page-module": "3.0.x-dev"
   },
   "autoload-dev": {
     "psr-4": {
