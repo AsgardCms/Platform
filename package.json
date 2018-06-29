@@ -27,7 +27,7 @@
     "element-ui": "^2.0.11",
     "font-awesome": "^4.7.0",
     "form-backend-validation": "^2.3.3",
-    "lodash": "^4.17.4",
+    "lodash": "^4.17.10",
     "moment": "^2.20.1",
     "vue": "^2.5.13",
     "vue-data-tables": "^2.1.1",
