@@ -3,6 +3,7 @@ versions:
     "@unreleased":
         added:
             - New Hungarian translations
+            - Laravel 5.6 compatibility
         changed:
             - Updating Dutch translations
             - Fix Carbon locale

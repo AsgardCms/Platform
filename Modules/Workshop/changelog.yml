@@ -1,5 +1,8 @@
 url: https://github.com/AsgardCms/Platform
 versions:
+    "@unreleased":
+        added:
+            - Laravel 5.6 compatibility
     "3.5.1":
         changed:
             - Fixing issue with ThemeManager caused when a theme name has the same name as project name

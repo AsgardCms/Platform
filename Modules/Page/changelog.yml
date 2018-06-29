@@ -1,5 +1,8 @@
 url: https://github.com/AsgardCms/Platform
 versions:
+    "@unreleased":
+        added:
+            - Laravel 5.6 compatibility
     "3.5.2":
         changed:
             - Don't show draft pages
