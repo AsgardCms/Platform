@@ -47,7 +47,7 @@ class AdminSidebar implements Sidebar, ShouldCache
     {
         event($event = new BuildingSidebar($this->menu));
 
-        foreach ($this->modules->enabled() as $module) {
+        foreach ($this->modules->allEnabled() as $module) {
             $lowercaseModule = strtolower($module->get('name'));
             if ($this->hasCustomSidebar($lowercaseModule) === true) {
                 $class = config("asgard.{$lowercaseModule}.config.custom-sidebar");
