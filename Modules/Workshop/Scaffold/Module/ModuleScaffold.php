@@ -303,13 +303,13 @@ JSON;
     "type": "asgard-module",
     "license": "MIT", 
     "require": {
-        "php": ">=7.0.0",
+        "php": "^7.1.3",
         "composer/installers": "~1.0",
-        "idavoll/core-module": "~3.0"
+        "idavoll/core-module": "4.0.x-dev"
     },
     "require-dev": {
-        "phpunit/phpunit": "~6.0",
-        "orchestra/testbench": "3.5.*"
+        "phpunit/phpunit": "~7.0",
+        "orchestra/testbench": "3.6.*"
     },
     "autoload-dev": {
         "psr-4": {
