@@ -157,7 +157,7 @@ class EloquentFileRepository extends EloquentBaseRepository implements FileRepos
         $media = $this->allWithBuilder();
 
         $media->orderBy('is_folder', 'desc');
-        $media->where('folder_id', $request->get('folder_id'));
+        $media->where('folder_id', $request->get('folder_id', 0));
 
         if ($request->get('search') !== null) {
             $term = $request->get('search');
