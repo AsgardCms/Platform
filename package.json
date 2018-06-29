@@ -30,12 +30,12 @@
     "lodash": "^4.17.10",
     "moment": "^2.22.2",
     "vue": "^2.5.16",
-    "vue-data-tables": "^2.1.1",
+    "vue-data-tables": "^3.4.0",
     "vue-events": "^3.1.0",
-    "vue-i18n": "^7.4.0",
+    "vue-i18n": "^8.0.0",
     "vue-router": "^3.0.0",
     "vue-shortkey": "^2.2.2",
     "vue-simplemde": "^0.4.6",
-    "vue-template-compiler": "^2.5.13"
+    "vue-template-compiler": "^2.5.16"
   }
 }
