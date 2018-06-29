@@ -49232,7 +49232,7 @@ var Errors = function () {
     /**
      * Get all the errors.
      *
-     * @param {object} errors
+     * @return {object}
      */
 
 
@@ -49307,19 +49307,21 @@ var Errors = function () {
     }, {
         key: "clear",
         value: function clear(field) {
-            var _this = this;
-
             if (!field) {
                 this.errors = {};
 
                 return;
             }
 
-            Object.keys(this.errors).filter(function (e) {
-                return e === field || e.startsWith(field + ".");
+            var errors = Object.assign({}, this.errors);
+
+            Object.keys(errors).filter(function (e) {
+                return e === field || e.startsWith(field + ".") || e.startsWith(field + "[");
             }).forEach(function (e) {
-                return delete _this.errors[e];
+                return delete errors[e];
             });
+
+            this.errors = errors;
         }
     }]);
 
@@ -107681,6 +107683,24 @@ var Form = function () {
         }
 
         /**
+         * Fetch specific data for the form.
+         *
+         * @param {array} fields
+         * @return {object}
+         */
+
+    }, {
+        key: 'only',
+        value: function only(fields) {
+            var _this = this;
+
+            return fields.reduce(function (filtered, field) {
+                filtered[field] = _this[field];
+                return filtered;
+            }, {});
+        }
+
+        /**
          * Reset the form fields.
          */
 
@@ -107701,13 +107721,13 @@ var Form = function () {
     }, {
         key: 'populate',
         value: function populate(data) {
-            var _this = this;
+            var _this2 = this;
 
             Object.keys(data).forEach(function (field) {
                 (0, _util.guardAgainstReservedFieldName)(field);
 
-                if (_this.hasOwnProperty(field)) {
-                    (0, _util.merge)(_this, _defineProperty({}, field, data[field]));
+                if (_this2.hasOwnProperty(field)) {
+                    (0, _util.merge)(_this2, _defineProperty({}, field, data[field]));
                 }
             });
 
@@ -107786,7 +107806,7 @@ var Form = function () {
     }, {
         key: 'submit',
         value: function submit(requestType, url) {
-            var _this2 = this;
+            var _this3 = this;
 
             this.__validateRequestType(requestType);
             this.errors.clear();
@@ -107794,18 +107814,29 @@ var Form = function () {
             this.successful = false;
 
             return new Promise(function (resolve, reject) {
-                _this2.__http[requestType](url, _this2.data()).then(function (response) {
-                    _this2.processing = false;
-                    _this2.onSuccess(response.data);
+                _this3.__http[requestType](url, _this3.hasFiles() ? (0, _util.objectToFormData)(_this3.data()) : _this3.data()).then(function (response) {
+                    _this3.processing = false;
+                    _this3.onSuccess(response.data);
 
                     resolve(response.data);
                 }).catch(function (error) {
-                    _this2.processing = false;
-                    _this2.onFail(error);
+                    _this3.processing = false;
+                    _this3.onFail(error);
 
                     reject(error);
                 });
             });
+        }
+    }, {
+        key: 'hasFiles',
+        value: function hasFiles() {
+            for (var property in this.initial) {
+                if (this[property] instanceof File || this[property] instanceof FileList) {
+                    return true;
+                }
+            }
+
+            return false;
         }
 
         /**
@@ -107883,7 +107914,7 @@ var Form = function () {
             var requestTypes = ['get', 'delete', 'head', 'post', 'put', 'patch'];
 
             if (requestTypes.indexOf(requestType) === -1) {
-                throw new Error('`' + requestType + '` is not a valid request type, ' + ('must be one of: `' + requestTypes.join('\`, \`') + '`.'));
+                throw new Error('`' + requestType + '` is not a valid request type, ' + ('must be one of: `' + requestTypes.join('`, `') + '`.'));
             }
         }
     }], [{
@@ -107917,6 +107948,7 @@ exports.isArray = isArray;
 exports.guardAgainstReservedFieldName = guardAgainstReservedFieldName;
 exports.merge = merge;
 exports.cloneDeep = cloneDeep;
+exports.objectToFormData = objectToFormData;
 
 function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
 
@@ -107924,7 +107956,7 @@ function isArray(object) {
     return Object.prototype.toString.call(object) === '[object Array]';
 }
 
-var reservedFieldNames = exports.reservedFieldNames = ['__http', '__options', '__validateRequestType', 'clear', 'data', 'delete', 'errors', 'getError', 'getErrors', 'hasError', 'initial', 'onFail', 'onSuccess', 'patch', 'populate', 'post', 'processing', 'successful', 'put', 'reset', 'submit', 'withData', 'withErrors', 'withOptions'];
+var reservedFieldNames = exports.reservedFieldNames = ['__http', '__options', '__validateRequestType', 'clear', 'data', 'delete', 'errors', 'getError', 'getErrors', 'hasError', 'initial', 'onFail', 'only', 'onSuccess', 'patch', 'populate', 'post', 'processing', 'successful', 'put', 'reset', 'submit', 'withData', 'withErrors', 'withOptions'];
 
 function guardAgainstReservedFieldName(fieldName) {
     if (reservedFieldNames.indexOf(fieldName) !== -1) {
@@ -107958,6 +107990,37 @@ function cloneDeep(object) {
     }
 
     return object;
+}
+
+function objectToFormData(object) {
+    var formData = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : new FormData();
+    var parent = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : null;
+
+    for (var property in object) {
+        _appendToFormData(formData, _getKey(parent, property), object[property]);
+    }
+
+    return formData;
+}
+
+function _getKey(parent, property) {
+    return parent ? parent + '[' + property + ']' : property;
+}
+
+function _appendToFormData(formData, key, value) {
+    if (value instanceof Date) {
+        return formData.append(key, value.toISOString());
+    }
+
+    if (value instanceof File) {
+        return formData.append(key, value, value.name);
+    }
+
+    if ((typeof value === 'undefined' ? 'undefined' : _typeof(value)) !== 'object') {
+        return formData.append(key, value);
+    }
+
+    objectToFormData(value, formData, key);
 }
 
 /***/ }),
