@@ -77,6 +77,16 @@ class UserServiceProvider extends ServiceProvider
             GrantModulePermissionsCommand::class,
             RemoveModulePermissionsCommand::class,
         ]);
+
+        app('router')->bind('role', function ($id) {
+            return app(RoleRepository::class)->find($id);
+        });
+        app('router')->bind('user', function ($id) {
+            return app(UserRepository::class)->find($id);
+        });
+        app('router')->bind('userTokenId', function ($id) {
+            return app(UserTokenRepository::class)->find($id);
+        });
     }
 
     /**
