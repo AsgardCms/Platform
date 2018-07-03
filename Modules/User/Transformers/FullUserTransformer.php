@@ -22,10 +22,13 @@ class FullUserTransformer extends Resource
             'created_at' => $this->created_at,
             'permissions' => $permissions,
             'roles' => $this->roles->pluck('id'),
-            'urls' => [
-                'delete_url' => route('api.user.user.destroy', $this->id),
-            ],
+            'urls' => [],
         ];
+        if ($this->id) {
+            $data['urls'] = [
+                'delete_url' => route('api.user.user.destroy', $this->id),
+            ];
+        }
 
         return $data;
     }
