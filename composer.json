@@ -41,7 +41,8 @@
         "orchestra/testbench": "3.6.*",
         "league/flysystem-aws-s3-v3": "^1.0",
         "league/commonmark": "^0.15.4",
-        "predis/predis": "^1.1"
+        "predis/predis": "^1.1",
+        "nunomaduro/collision": "^2.0"
     },
     "autoload": {
         "classmap": [
