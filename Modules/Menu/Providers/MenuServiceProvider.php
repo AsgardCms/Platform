@@ -47,6 +47,13 @@ class MenuServiceProvider extends ServiceProvider
             BuildingSidebar::class,
             $this->getSidebarClassForModule('menu', RegisterMenuSidebar::class)
         );
+
+        app('router')->bind('menu', function ($id) {
+            return app(MenuRepository::class)->find($id);
+        });
+        app('router')->bind('menuitem', function ($id) {
+            return app(MenuItemRepository::class)->find($id);
+        });
     }
 
     /**

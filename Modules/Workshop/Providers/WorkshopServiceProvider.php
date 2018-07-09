@@ -20,6 +20,7 @@ use Modules\Workshop\Scaffold\Module\Generators\ValueObjectGenerator;
 use Modules\Workshop\Scaffold\Module\ModuleScaffold;
 use Modules\Workshop\Scaffold\Theme\ThemeGeneratorFactory;
 use Modules\Workshop\Scaffold\Theme\ThemeScaffold;
+use Nwidart\Modules\Repository;
 
 class WorkshopServiceProvider extends ServiceProvider
 {
@@ -45,6 +46,13 @@ class WorkshopServiceProvider extends ServiceProvider
             BuildingSidebar::class,
             $this->getSidebarClassForModule('workshop', RegisterWorkshopSidebar::class)
         );
+
+        app('router')->bind('module', function ($module) {
+            return app(Repository::class)->find($module);
+        });
+        app('router')->bind('theme', function ($theme) {
+            return app(ThemeManager::class)->find($theme);
+        });
     }
 
     public function boot()

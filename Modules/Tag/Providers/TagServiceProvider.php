@@ -41,6 +41,10 @@ class TagServiceProvider extends ServiceProvider
             BuildingSidebar::class,
             $this->getSidebarClassForModule('tag', RegisterTagSidebar::class)
         );
+
+        app('router')->bind('tag__tag', function ($id) {
+            return app(TagRepository::class)->find($id);
+        });
     }
 
     public function boot()

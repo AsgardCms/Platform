@@ -69,7 +69,7 @@ class CoreServiceProvider extends ServiceProvider
     public function register()
     {
         $this->app->singleton('asgard.isInstalled', function () {
-            return true === env('INSTALLED', false);
+            return true === config('asgard.core.core.is_installed');
         });
         $this->app->singleton('asgard.onBackend', function () {
             return $this->onBackend();

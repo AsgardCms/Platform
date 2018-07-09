@@ -39,6 +39,10 @@ class PageServiceProvider extends ServiceProvider
             BuildingSidebar::class,
             $this->getSidebarClassForModule('page', RegisterPageSidebar::class)
         );
+
+        app('router')->bind('page', function ($id) {
+            return app(PageRepository::class)->find($id);
+        });
     }
 
     public function boot()

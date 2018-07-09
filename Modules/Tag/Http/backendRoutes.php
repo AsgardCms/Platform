@@ -4,9 +4,6 @@ use Illuminate\Routing\Router;
 
 /** @var Router $router */
 $router->group(['prefix' => 'tag'], function (Router $router) {
-    $router->bind('tag__tag', function ($id) {
-        return app(\Modules\Tag\Repositories\TagRepository::class)->find($id);
-    });
     $router->get('tags', [
         'as' => 'admin.tag.tag.index',
         'uses' => 'TagController@index',
