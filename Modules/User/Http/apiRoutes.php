@@ -5,9 +5,6 @@ use Illuminate\Routing\Router;
 /** @var Router $router */
 $router->group(['prefix' => '/user', 'middleware' => ['api.token', 'auth.admin']], function (Router $router) {
     $router->group(['prefix' => 'roles'], function (Router $router) {
-        $router->bind('role', function ($id) {
-            return app(\Modules\User\Repositories\RoleRepository::class)->find($id);
-        });
         $router->get('/', [
             'as' => 'api.user.role.index',
             'uses' => 'RoleController@index',
@@ -46,9 +43,6 @@ $router->group(['prefix' => '/user', 'middleware' => ['api.token', 'auth.admin']
     });
 
     $router->group(['prefix' => 'users'], function (Router $router) {
-        $router->bind('user', function ($id) {
-            return app(\Modules\User\Repositories\UserRepository::class)->find($id);
-        });
         $router->get('/', [
             'as' => 'api.user.user.index',
             'uses' => 'UserController@index',
@@ -95,10 +89,6 @@ $router->group(['prefix' => '/user', 'middleware' => ['api.token', 'auth.admin']
             'as' => 'api.account.profile.update',
             'uses' => 'ProfileController@update',
         ]);
-
-        $router->bind('userTokenId', function ($id) {
-            return app(\Modules\User\Repositories\UserTokenRepository::class)->find($id);
-        });
 
         $router->get('api-keys', [
             'as' => 'api.account.api.index',

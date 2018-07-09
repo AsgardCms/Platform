@@ -46,6 +46,10 @@ class TagServiceProvider extends ServiceProvider
         $this->app['events']->listen(LoadingBackendTranslations::class, function (LoadingBackendTranslations $event) {
             $event->load('tags', array_dot(trans('tag::tags')));
         });
+
+        app('router')->bind('tag__tag', function ($id) {
+            return app(TagRepository::class)->find($id);
+        });
     }
 
     public function boot()
