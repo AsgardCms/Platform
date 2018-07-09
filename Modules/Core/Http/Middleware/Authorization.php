@@ -49,7 +49,7 @@ class Authorization
      */
     private function handleUnauthorizedRequest(Request $request, $permission)
     {
-        if ($request->ajax()) {
+        if ($request->ajax() || $request->wantsJson()) {
             return response('Unauthorized.', Response::HTTP_FORBIDDEN);
         }
         if ($request->user() === null) {
