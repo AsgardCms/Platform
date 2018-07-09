@@ -81,9 +81,6 @@ $router->group(['prefix' => '/account'], function (Router $router) {
         'as' => 'admin.account.profile.update',
         'uses' => 'Account\ProfileController@update',
     ]);
-    $router->bind('userTokenId', function ($id) {
-        return app(\Modules\User\Repositories\UserTokenRepository::class)->find($id);
-    });
     $router->get('api-keys', [
         'as' => 'admin.account.api.index',
         'uses' => 'Account\ApiKeysController@index',

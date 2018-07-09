@@ -12,6 +12,7 @@ use Modules\Core\Traits\CanGetSidebarClassForModule;
 use Modules\Core\Traits\CanPublishConfiguration;
 use Modules\Translation\Console\BuildTranslationsCacheCommand;
 use Modules\Translation\Entities\Translation;
+use Modules\Translation\Entities\TranslationTranslation;
 use Modules\Translation\Events\Handlers\RegisterTranslationSidebar;
 use Modules\Translation\Repositories\Cache\CacheTranslationDecorator;
 use Modules\Translation\Repositories\Eloquent\EloquentTranslationRepository;
@@ -49,6 +50,10 @@ class TranslationServiceProvider extends ServiceProvider
 
         $this->app['events']->listen(LoadingBackendTranslations::class, function (LoadingBackendTranslations $event) {
             $event->load('translations', array_dot(trans('translation::translations')));
+        });
+
+        app('router')->bind('translations', function ($id) {
+            return TranslationTranslation::find($id);
         });
     }
 
