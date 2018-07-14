@@ -3,8 +3,8 @@
 return [
     'title' => 'Module gereedschap',
     'subtitle' => [
-        'generate new module' => 'Creëer een nieuwe module',
-        'install new module by vendor name' => 'Installeer een nieuwe module via auteur/naam',
+        'generate new module' => 'Maak een nieuwe module',
+        'install new module by vendor name' => 'Installeer een nieuwe module met auteur/naam',
     ],
     'tab' => [
         'generators' => 'Generatoren',
@@ -17,7 +17,7 @@ return [
         'install as subtree' => 'Installeren als onderdeel?',
     ],
     'button' => [
-        'generate new module' => 'Creëer een nieuwe module',
+        'generate new module' => 'Maak een nieuwe module',
         'install new module' => 'Installeer nieuwe module',
         'migrate' => 'Migreer',
         'seed' => 'Populeer',

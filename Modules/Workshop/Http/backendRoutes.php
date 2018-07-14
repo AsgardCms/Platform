@@ -3,13 +3,6 @@
 use Illuminate\Routing\Router;
 
 /** @var Router $router */
-$router->bind('module', function ($module) {
-    return app(\Nwidart\Modules\Contracts\RepositoryInterface::class)->find($module);
-});
-$router->bind('theme', function ($theme) {
-    return app(\Modules\Workshop\Manager\ThemeManager::class)->find($theme);
-});
-
 $router->group(
     ['prefix' => '/workshop'],
     function (Router $router) {

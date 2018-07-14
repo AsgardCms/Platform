@@ -119,7 +119,7 @@ return [
     'lg' => ['name' => 'Ganda', 'script' => 'Latn', 'native' => 'Luganda'],
     'luy' => ['name' => 'Oluluyia', 'script' => 'Latn', 'native' => 'Luluhia'],
     'lb' => ['name' => 'Luxembourgish', 'script' => 'Latn', 'native' => 'Lëtzebuergesch'],
-    'hu' => ['name' => 'Hungarian', 'script' => 'Latn', 'native' => 'magyar'],
+    'hu' => ['name' => 'Hungarian', 'script' => 'Latn', 'native' => 'Magyar'],
     'mgh' => ['name' => 'Makhuwa-Meetto', 'script' => 'Latn', 'native' => 'Makua'],
     'mg' => ['name' => 'Malagasy', 'script' => 'Latn', 'native' => 'Malagasy'],
     'mt' => ['name' => 'Maltese', 'script' => 'Latn', 'native' => 'Malti'],

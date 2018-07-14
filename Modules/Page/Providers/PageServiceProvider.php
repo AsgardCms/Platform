@@ -45,6 +45,10 @@ class PageServiceProvider extends ServiceProvider
         $this->app['events']->listen(LoadingBackendTranslations::class, function (LoadingBackendTranslations $event) {
             $event->load('pages', array_dot(trans('page::pages')));
         });
+
+        app('router')->bind('page', function ($id) {
+            return app(PageRepository::class)->find($id);
+        });
     }
 
     public function boot()

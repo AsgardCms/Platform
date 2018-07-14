@@ -172,4 +172,11 @@ return [
     | useViewNamespaces.backend-theme needs to be enabled at module level
     */
     'enable-theme-overrides' => false,
+
+    /*
+    |--------------------------------------------------------------------------
+    | Check if asgard was installed
+    |--------------------------------------------------------------------------
+    */
+    'is_installed' => env('INSTALLED', false)
 ];

@@ -3,6 +3,6 @@
 return [
     'cancel' => 'Annuleren',
     'delete' => 'Verwijderen',
-    'create' => 'Creëeren',
-    'update' => 'Bewaren',
+    'create' => 'Aanmaken',
+    'update' => 'Wijzigen',
 ];

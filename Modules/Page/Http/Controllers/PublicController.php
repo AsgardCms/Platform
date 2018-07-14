@@ -19,6 +19,8 @@ class PublicController extends BasePublicController
      */
     private $app;
 
+    private $disabledPage = false;
+
     public function __construct(PageRepository $page, Application $app)
     {
         parent::__construct();
@@ -84,12 +86,12 @@ class PublicController extends BasePublicController
     }
 
     /**
-     * Throw a 404 error page if the given page is not found
+     * Throw a 404 error page if the given page is not found or draft
      * @param $page
      */
     private function throw404IfNotFound($page)
     {
-        if (is_null($page)) {
+        if (null === $page || $page->status === $this->disabledPage) {
             $this->app->abort('404');
         }
     }

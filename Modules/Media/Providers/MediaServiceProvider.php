@@ -72,6 +72,10 @@ class MediaServiceProvider extends ServiceProvider
             $event->load('media', array_dot(trans('media::media')));
             $event->load('folders', array_dot(trans('media::folders')));
         });
+
+        app('router')->bind('media', function ($id) {
+            return app(FileRepository::class)->find($id);
+        });
     }
 
     public function boot(DispatcherContract $events)

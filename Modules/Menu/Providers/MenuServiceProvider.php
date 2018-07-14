@@ -54,6 +54,13 @@ class MenuServiceProvider extends ServiceProvider
             $event->load('menu', array_dot(trans('menu::menu')));
             $event->load('menu-items', array_dot(trans('menu::menu-items')));
         });
+
+        app('router')->bind('menu', function ($id) {
+            return app(MenuRepository::class)->find($id);
+        });
+        app('router')->bind('menuitem', function ($id) {
+            return app(MenuItemRepository::class)->find($id);
+        });
     }
 
     /**

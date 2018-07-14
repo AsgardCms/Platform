@@ -1,5 +1,10 @@
 url: https://github.com/AsgardCms/Platform
 versions:
+    "3.5.3":
+        changed:
+            - Description field added for extra convenience
+            - Use LaravelLocalization When Generating Menu Item URIs
+            - Updating typicms/nestablecollection package
     "3.4.0":
         changed:
             - Using new <code>remember</code> method in the <code>CacheMenuDecorator</code> class

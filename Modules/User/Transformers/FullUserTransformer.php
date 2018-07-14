@@ -17,7 +17,7 @@ class FullUserTransformer extends Resource
             'first_name' => $this->first_name,
             'last_name' => $this->last_name,
             'email' => $this->email,
-            'activated' => $this->isActivated(),
+            'is_activated' => $this->isActivated(),
             'last_login' => $this->last_login,
             'created_at' => $this->created_at,
             'permissions' => $permissions,

@@ -51,7 +51,7 @@
                                     </el-form-item>
                                     <el-form-item :label="trans('users.form.is activated')"
                                                   :class="{'el-form-item is-error': form.errors.has('activated') }">
-                                        <el-checkbox v-model="user.activated">Activated</el-checkbox>
+                                        <el-checkbox v-model="user.is_activated">Activated</el-checkbox>
                                         <div class="el-form-item__error" v-if="form.errors.has('activated')"
                                              v-text="form.errors.first('activated')"></div>
                                     </el-form-item>
@@ -161,6 +161,7 @@
                     permissions: {},
                     roles: {},
                     is_new: false,
+                    is_activated: false,
                 },
                 roles: {},
                 form: new Form(),
