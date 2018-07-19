@@ -48,8 +48,6 @@ interface FileRepository extends BaseRepository
 
     public function findForVirtualPath(string $path);
 
-    public function queryForGrid();
-
     public function allForGrid() : Collection;
 
     public function move(File $file, File $destination) : File;

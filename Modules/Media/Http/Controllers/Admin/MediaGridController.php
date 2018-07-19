@@ -2,6 +2,7 @@
 
 namespace Modules\Media\Http\Controllers\Admin;
 
+use Illuminate\Http\Request;
 use Modules\Core\Http\Controllers\Admin\AdminBaseController;
 use Modules\Media\Image\ThumbnailManager;
 use Modules\Media\Repositories\FileRepository;
@@ -29,9 +30,10 @@ class MediaGridController extends AdminBaseController
      * A grid view for the upload button
      * @return \Illuminate\View\View
      */
-    public function index()
+    public function index(Request $request)
     {
-        $files = $this->file->queryForGrid()->orderBy('id', 'desc')->paginate(20);
+        $request->merge(['folder_id' => 0]);
+        $files = $this->file->serverPaginationFilteringFor($request);
         $thumbnails = $this->thumbnailsManager->all();
 
         return view('media::admin.grid.general', compact('files', 'thumbnails'));
@@ -43,7 +45,8 @@ class MediaGridController extends AdminBaseController
      */
     public function ckIndex()
     {
-        $files = $this->file->queryForGrid()->orderBy('id', 'desc')->paginate(20);
+        $request->merge(['folder_id' => 0]);
+        $files = $this->file->serverPaginationFilteringFor($request);
         $thumbnails = $this->thumbnailsManager->all();
 
         return view('media::admin.grid.ckeditor', compact('files', 'thumbnails'));
