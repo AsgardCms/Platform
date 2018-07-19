@@ -31,7 +31,7 @@ class MediaGridController extends AdminBaseController
      */
     public function index()
     {
-        $files = $this->file->allForGrid();
+        $files = $this->file->queryForGrid()->orderBy('id', 'desc')->paginate(20);
         $thumbnails = $this->thumbnailsManager->all();
 
         return view('media::admin.grid.general', compact('files', 'thumbnails'));
@@ -43,7 +43,7 @@ class MediaGridController extends AdminBaseController
      */
     public function ckIndex()
     {
-        $files = $this->file->allForGrid();
+        $files = $this->file->queryForGrid()->orderBy('id', 'desc')->paginate(20);
         $thumbnails = $this->thumbnailsManager->all();
 
         return view('media::admin.grid.ckeditor', compact('files', 'thumbnails'));

@@ -191,6 +191,11 @@ class EloquentFileRepository extends EloquentBaseRepository implements FileRepos
         return $this->model->where('path', $prefix . $path)->first();
     }
 
+    public function queryForGrid()
+    {
+        return $this->model->where('is_folder', 0);
+    }
+
     public function allForGrid(): Collection
     {
         return $this->model->where('is_folder', 0)->get();
