@@ -38,6 +38,12 @@ class PublicController extends BasePublicController
 
         $this->throw404IfNotFound($page);
 
+        $currentTranslatedPage = $page->getTranslation(locale());
+        if ($slug !== $currentTranslatedPage->slug) {
+
+            return redirect()->to($currentTranslatedPage->locale . '/' . $currentTranslatedPage->slug, 301);
+        }
+
         $template = $this->getTemplateForPage($page);
 
         return view($template, compact('page'));
