@@ -46,6 +46,8 @@ class PublicController extends BasePublicController
 
         $template = $this->getTemplateForPage($page);
 
+        $alternate = $this->getAlternateMetaData($page);
+
         return view($template, compact('page'));
     }
 
@@ -59,6 +61,8 @@ class PublicController extends BasePublicController
         $this->throw404IfNotFound($page);
 
         $template = $this->getTemplateForPage($page);
+
+        $alternate = $this->getAlternateMetaData($page);
 
         return view($template, compact('page'));
     }
@@ -100,5 +104,24 @@ class PublicController extends BasePublicController
         if (null === $page || $page->status === $this->disabledPage) {
             $this->app->abort('404');
         }
+    }
+
+    /**
+     * Create a key=>value array for alternate links
+     *
+     * @param $page
+     *
+     * @return array
+     */
+    private function getAlternateMetaData($page)
+    {
+        $translations = $page->getTranslationsArray();
+
+        $alternate = [];
+        foreach ($translations as $locale => $data) {
+            $alternate[$locale] = $data['slug'];
+        }
+
+        return $alternate;
     }
 }
