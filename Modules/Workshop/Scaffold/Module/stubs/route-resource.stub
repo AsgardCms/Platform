@@ -1,4 +1,4 @@
-    $router->bind('$LOWERCASE_CLASS_NAME$', function ($id) {
+    $router->bind('$LOWERCASE_MODULE_NAME$_$LOWERCASE_CLASS_NAME$', function ($id) {
         return app('Modules\$MODULE_NAME$\Repositories\$CLASS_NAME$Repository')->find($id);
     });
     $router->get('$PLURAL_LOWERCASE_CLASS_NAME$', [
@@ -16,17 +16,17 @@
         'uses' => '$CLASS_NAME$Controller@store',
         'middleware' => 'can:$LOWERCASE_MODULE_NAME$.$PLURAL_LOWERCASE_CLASS_NAME$.create'
     ]);
-    $router->get('$PLURAL_LOWERCASE_CLASS_NAME$/{$LOWERCASE_CLASS_NAME$}/edit', [
+    $router->get('$PLURAL_LOWERCASE_CLASS_NAME$/{$LOWERCASE_MODULE_NAME$_$LOWERCASE_CLASS_NAME$}/edit', [
         'as' => 'admin.$LOWERCASE_MODULE_NAME$.$LOWERCASE_CLASS_NAME$.edit',
         'uses' => '$CLASS_NAME$Controller@edit',
         'middleware' => 'can:$LOWERCASE_MODULE_NAME$.$PLURAL_LOWERCASE_CLASS_NAME$.edit'
     ]);
-    $router->put('$PLURAL_LOWERCASE_CLASS_NAME$/{$LOWERCASE_CLASS_NAME$}', [
+    $router->put('$PLURAL_LOWERCASE_CLASS_NAME$/{$LOWERCASE_MODULE_NAME$_$LOWERCASE_CLASS_NAME$}', [
         'as' => 'admin.$LOWERCASE_MODULE_NAME$.$LOWERCASE_CLASS_NAME$.update',
         'uses' => '$CLASS_NAME$Controller@update',
         'middleware' => 'can:$LOWERCASE_MODULE_NAME$.$PLURAL_LOWERCASE_CLASS_NAME$.edit'
     ]);
-    $router->delete('$PLURAL_LOWERCASE_CLASS_NAME$/{$LOWERCASE_CLASS_NAME$}', [
+    $router->delete('$PLURAL_LOWERCASE_CLASS_NAME$/{$LOWERCASE_MODULE_NAME$_$LOWERCASE_CLASS_NAME$}', [
         'as' => 'admin.$LOWERCASE_MODULE_NAME$.$LOWERCASE_CLASS_NAME$.destroy',
         'uses' => '$CLASS_NAME$Controller@destroy',
         'middleware' => 'can:$LOWERCASE_MODULE_NAME$.$PLURAL_LOWERCASE_CLASS_NAME$.destroy'
