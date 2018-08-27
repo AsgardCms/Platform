@@ -94,6 +94,24 @@ class MediaController extends Controller
     }
 
     /**
+     * Get a media collection by zone and entity object. Require some params that were passed to request: entity (Full class name of entity), entity_id and zone
+     *
+     * @param Request $request
+     * @return JsonResponse|\Illuminate\Http\Resources\Json\AnonymousResourceCollection
+     */
+    public function getByZoneEntity(Request $request)
+    {
+        $entityName = (string)$request->get('entity');
+        $entityModel = new $entityName;
+        $entity = $entityModel::find($request->get('entity_id'));
+        if ($entity && in_array('Modules\Media\Support\Traits\MediaRelation', class_uses($entity)) && $entity->files()->count()) {
+            $files = $this->file->findMultipleFilesByZoneForEntity($request->get('zone'), $entity);
+            return MediaTransformer::collection($files);
+        }
+        return response()->json(['data' => null]);
+    }
+
+    /**
      * Store a newly created resource in storage.
      *
      * @param UploadMediaRequest $request
