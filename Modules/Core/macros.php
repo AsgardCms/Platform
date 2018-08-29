@@ -176,6 +176,32 @@ Form::macro('i18nSelect', function ($name, $title, ViewErrorBag $errors, $lang, 
     return new HtmlString($string);
 });
 
+Form::macro('i18nFile', function ($name, $title, ViewErrorBag $errors, $lang, $object = null, array $options = []) {
+    if (array_key_exists('multiple', $options)) {
+        $nameForm = "{$lang}[$name][]";
+    } else {
+        $nameForm = "{$lang}[$name]";
+    }
+    
+    $options = array_merge(['class' => 'form-control'], $options);
+
+    $string = "<div class='form-group " . ($errors->has($lang . '.' . $name) ? ' has-error' : '') . "'>";
+    $string .= "<label for='$nameForm'>$title</label>";
+
+    if (is_object($object)) {
+        $currentData = $object->hasTranslation($lang) ? $object->translate($lang)->{$name} : '';
+    } else {
+        $currentData = false;
+    }
+
+    $string .= Form::file("{$lang}[{$name}]",$options);
+     
+    $string .= $errors->first("{$lang}.{$name}", '<span class="help-block">:message</span>');
+    $string .= '</div>';
+
+    return new HtmlString($string);
+});
+
 /*
 |--------------------------------------------------------------------------
 | Standard fields
@@ -340,6 +366,25 @@ Form::macro('normalSelect', function ($name, $title, ViewErrorBag $errors, array
     $options = array_merge($array_option, $options);
 
     $string .= Form::select($nameForm, $choice, old($nameForm, $currentData), $options);
+    $string .= $errors->first($name, '<span class="help-block">:message</span>');
+    $string .= '</div>';
+
+    return new HtmlString($string);
+});
+
+Form::macro('normalFile', function ($name, $title, ViewErrorBag $errors, $object = null, array $options = []) {
+    $options = array_merge(['class' => 'form-control', 'placeholder' => $title,'multiple'=>'multiple'], $options);
+
+    $string = "<div class='form-group " . ($errors->has($name) ? ' has-error' : '') . "'>";
+    $string .= Form::label($name, $title);
+
+    if (is_object($object)) {
+        $currentData = $object->{$name} ?: '';
+    } else {
+        $currentData = null;
+    }
+
+    $string .= Form::file($name,$options);
     $string .= $errors->first($name, '<span class="help-block">:message</span>');
     $string .= '</div>';
 
