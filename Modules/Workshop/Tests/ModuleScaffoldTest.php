@@ -553,6 +553,16 @@ class ModuleScaffoldTest extends BaseTestCase
         $this->cleanUp();
     }
 
+    /** @test */
+    public function it_add_default_version_on_module_json_file()
+    {
+        $this->scaffoldModuleWithEloquent();
+
+        $moduleFile = $this->getModuleFile();
+
+        $this->assertEquals('1.0.0', $moduleFile->version);
+    }
+
     /**
      * Get the contents of composer.json file
      * @return string

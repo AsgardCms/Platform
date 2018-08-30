@@ -1,5 +1,6 @@
 {
   "name": "{{theme-name}}",
   "description": "",
-  "type": "{{type}}"
+  "type": "{{type}}",
+  "version": "1.0.0"
 }
