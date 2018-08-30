@@ -184,4 +184,15 @@ class ThemeScaffoldTest extends BaseTestCase
         $this->assertTrue($this->finder->isFile($this->testThemePath . '/assets/js/.gitignore'));
         $this->assertTrue($this->finder->isFile($this->testThemePath . '/assets/images/.gitignore'));
     }
+
+    /** @test */
+    public function it_has_default_version_in_theme_json_file()
+    {
+        $this->scaffold->setFiles(['themeJson']);
+
+        $this->generateFrontendTheme();
+
+        $this->assertTrue($this->finder->isFile($this->testThemePath . '/theme.json'));
+        $this->assertTrue(str_contains($this->finder->get($this->testThemePath . '/theme.json'), '"version": "1.0.0"'));
+    }
 }
