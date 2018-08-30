@@ -1,9 +1,12 @@
 url: https://github.com/AsgardCms/Platform
 versions:
     "@unreleased":
+        added:
+            - Add canonical and metadata for pages
         changed:
             - Don't show draft pages
             - Throw a 404 if page status is disabled
+            - Fixed a bug that checked the last radio even if wasn't the right one
     "3.5.2":
         changed:
             - Adding support for UTF-8 slug for non ASCII characters (Chinese etc.)

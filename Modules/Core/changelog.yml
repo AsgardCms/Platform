@@ -3,6 +3,7 @@ versions:
     "@unreleased":
         added:
             - New Hungarian translations
+            - new <code>i18nFile</code> & <code>normalFile</code> macros
         changed:
             - Updating Dutch translations
             - Fix Carbon locale
