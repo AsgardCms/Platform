@@ -3,6 +3,9 @@ versions:
     "@unreleased":
         added:
             - Laravel 5.6 compatibility
+    "3.6.0":
+        added:
+            - New MediaMuliple component for vuejs projects
     "3.5.1":
         changed:
             - Modify media controller to use Imagy non-statically

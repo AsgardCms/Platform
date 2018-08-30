@@ -1,6 +1,6 @@
 url: https://github.com/AsgardCms/Platform
 versions:
-    "@unreleased":
+    "3.6.0":
         added:
             - New <code>@hasSetting()</code> and <code>@endHasSetting</code> directives
             - Laravel 5.6 compatibility
