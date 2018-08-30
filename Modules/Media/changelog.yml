@@ -1,6 +1,6 @@
 url: https://github.com/AsgardCms/Platform
 versions:
-    "@unreleased":
+    "3.6.0":
         added:
             - New MediaMuliple component for vuejs projects
     "3.5.1":

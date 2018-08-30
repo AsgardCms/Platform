@@ -1,6 +1,6 @@
 url: https://github.com/AsgardCms/Platform
 versions:
-    "@unreleased":
+    "3.6.0":
         added:
             - New Hungarian translations
             - new <code>i18nFile</code> & <code>normalFile</code> macros

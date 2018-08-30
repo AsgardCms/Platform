@@ -1,6 +1,6 @@
 url: https://github.com/AsgardCms/Platform
 versions:
-    "@unreleased":
+    "3.6.0":
          changed:
          - Adding a test the user token is correctly generated
          - Fix creation of an activated user
