@@ -227,6 +227,7 @@ class ModuleScaffold
 
         $moduleJson = $this->loadProviders($moduleJson);
         $moduleJson = $this->setModuleOrderOrder($moduleJson);
+        $moduleJson = $this->setModuleVersion($moduleJson);
         $moduleJson = $this->removeStartPhpFile($moduleJson);
 
         $this->finder->put($this->getModulesPath('module.json'), $moduleJson);
@@ -257,6 +258,16 @@ JSON;
     private function setModuleOrderOrder($content)
     {
         return str_replace('"order": 0,', '"order": 1,', $content);
+    }
+
+    /**
+     * Set the module version to 1.0.0 by default
+     * @param string $content
+     * @return string
+     */
+    private function setModuleVersion($content)
+    {
+        return str_replace("\"active\"", "\"version\": \"1.0.0\",\n\t\"active\"", $content);
     }
 
     /**
@@ -301,7 +312,7 @@ JSON;
         $replace = <<<JSON
 "description": "",
     "type": "asgard-module",
-    "license": "MIT", 
+    "license": "MIT",
     "require": {
         "php": ">=7.0.0",
         "composer/installers": "~1.0",
