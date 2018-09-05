@@ -1,5 +1,8 @@
 url: https://github.com/AsgardCms/Platform
 versions:
+    "3.6.0":
+        added:
+            - New MediaMuliple component for vuejs projects
     "3.5.1":
         changed:
             - Modify media controller to use Imagy non-statically

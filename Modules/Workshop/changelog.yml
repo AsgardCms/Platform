@@ -1,5 +1,8 @@
 url: https://github.com/AsgardCms/Platform
 versions:
+    "@unreleased":
+        changed:
+            - Fixed issue with incorrect binding to the laravel-modules Repository class
     "3.5.1":
         changed:
             - Fixing issue with ThemeManager caused when a theme name has the same name as project name
