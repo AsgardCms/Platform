@@ -54,3 +54,13 @@ if (! function_exists('asgard_editor')) {
         return view('core::components.textarea-wrapper', compact('fieldName', 'labelName', 'content'));
     }
 }
+
+if (! function_exists('localize_route')) {
+    function localize_route($route, $locale = null)
+    {
+        $locale = $locale ? : app()->getLocale();
+
+        return str_replace(env('APP_URL'), rtrim(env('APP_URL'), '/') . '/' . $locale, route($route));
+
+    }
+}
