@@ -52,30 +52,14 @@ abstract class RoutingServiceProvider extends ServiceProvider
             $this->loadApiRoutes($router);
         });
 
-        $prefixes = $this->getPrefixes();
-        foreach ($prefixes as $prefix) {
-            $router->group([
-                'namespace' => $this->namespace,
-                'prefix' => $prefix,
-                'middleware' => ['localizationRedirect', 'web'],
-            ], function (Router $router) {
-                $this->loadBackendRoutes($router);
-                $this->loadFrontendRoutes($router);
-            });
-        }
-    }
-
-    /**
-     * Get locale prefixes
-     * @return array
-     */
-    private function getPrefixes()
-    {
-        if (app('asgard.isInstalled')) {
-            return array_merge(json_decode(setting('core::locales')), ['']);
-        }
-
-        return [LaravelLocalization::setLocale()];
+        $router->group([
+            'namespace' => $this->namespace,
+            'prefix' => LaravelLocalization::setLocale(),
+            'middleware' => ['localizationRedirect', 'web'],
+        ], function (Router $router) {
+            $this->loadBackendRoutes($router);
+            $this->loadFrontendRoutes($router);
+        });
     }
 
     /**
