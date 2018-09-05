@@ -1,6 +1,6 @@
 url: https://github.com/AsgardCms/Platform
 versions:
-    "@unreleased":
+    "3.6.1":
         changed:
             - Fixed routing issues with localization introduced in 3.6.0
     "3.6.0":
