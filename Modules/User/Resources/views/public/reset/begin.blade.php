@@ -13,7 +13,8 @@
         <p class="login-box-msg">{{ trans('user::auth.to reset password complete this form') }}</p>
         @include('partials.notifications')
 
-        {!! Form::open(['route' => 'reset.post']) !!}
+        <form method="POST" action="{{localize_route('reset.post')}}" accept-charset="UTF-8">
+                {{csrf_field()}}
             <div class="form-group has-feedback {{ $errors->has('email') ? ' has-error' : '' }}">
                 <input type="email" class="form-control" autofocus
                        name="email" placeholder="{{ trans('user::auth.email') }}" value="{{ old('email')}}">
@@ -28,7 +29,7 @@
                     </button>
                 </div>
             </div>
-        {!! Form::close() !!}
+        </form>
 
         <a href="{{ route('login') }}" class="text-center">{{ trans('user::auth.I remembered my password') }}</a>
     </div>
