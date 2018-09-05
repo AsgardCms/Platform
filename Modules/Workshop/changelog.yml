@@ -1,6 +1,6 @@
 url: https://github.com/AsgardCms/Platform
 versions:
-    "@unreleased":
+    "3.6.1":
         changed:
             - Fixed issue with incorrect binding to the laravel-modules Repository class
     "3.5.1":
