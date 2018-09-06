@@ -299,7 +299,7 @@ class SentinelUserRepositoryTest extends BaseUserTestCase
             'password' => 'demo1234',
         ], [1]);
 
-        $this->user->updateAndSyncRoles($user->id, ['first_name' => 'John', 'last_name' => 'Doe', 'activated' => 1], [2]);
+        $this->user->updateAndSyncRoles($user->id, ['first_name' => 'John', 'last_name' => 'Doe', 'is_activated' => 1], [2]);
 
         $user->refresh();
 
@@ -319,7 +319,7 @@ class SentinelUserRepositoryTest extends BaseUserTestCase
         ], [1]);
         Event::fake();
 
-        $this->user->updateAndSyncRoles($user->id, ['first_name' => 'John', 'last_name' => 'Doe', 'activated' => 1], [2]);
+        $this->user->updateAndSyncRoles($user->id, ['first_name' => 'John', 'last_name' => 'Doe', 'is_activated' => 1], [2]);
 
         Event::assertDispatched(UserWasUpdated::class, function ($e) use ($user) {
             return $e->user->id === $user->id;
@@ -342,7 +342,7 @@ class SentinelUserRepositoryTest extends BaseUserTestCase
             'password' => 'demo1234',
         ], [1]);
 
-        $this->user->updateAndSyncRoles($user->id, ['first_name' => 'John', 'last_name' => 'Doe', 'activated' => 1], [1]);
+        $this->user->updateAndSyncRoles($user->id, ['first_name' => 'John', 'last_name' => 'Doe', 'is_activated' => 1], [1]);
 
         $this->assertEquals('Jane', $this->user->find(1)->first_name);
     }
