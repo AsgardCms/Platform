@@ -13,8 +13,7 @@
         <p class="login-box-msg">{{ trans('user::auth.sign in welcome message') }}</p>
         @include('partials.notifications')
 
-        <form method="POST" action="{{localize_route('login.post')}}" accept-charset="UTF-8">
-            {{csrf_field()}}
+        {!! Form::open(['route' => 'login.post']) !!}
             <div class="form-group has-feedback {{ $errors->has('email') ? ' has-error' : '' }}">
                 <input type="email" class="form-control" autofocus
                        name="email" placeholder="{{ trans('user::auth.email') }}" value="{{ old('email')}}">
