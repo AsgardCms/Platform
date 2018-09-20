@@ -4,6 +4,6 @@
     <?php if (isset($dbSettings[$settingName]) && $dbSettings[$settingName]->plainValue !== null): ?>
         {!! Form::number($settingName, old($settingName, $dbSettings[$settingName]->plainValue) ?: $defaultValue, ['class' => 'form-control', 'placeholder' => trans($moduleInfo['description'])]) !!}
     <?php else: ?>
-        {!! Form::number($settingName, old($settingName) ?: $defaultValue, ['class' => 'form-control', 'placeholder' => trans($moduleInfo['description'])]) !!}
+        {!! Form::number($settingName, old($settingName, $defaultValue), ['class' => 'form-control', 'placeholder' => trans($moduleInfo['description'])]) !!}
     <?php endif; ?>
 </div>

@@ -5,6 +5,6 @@
         <?php $value = $dbSettings[$settingName]->hasTranslation($lang) ? $dbSettings[$settingName]->translate($lang)->value : ''; ?>
         {!! Form::text($settingName . "[$lang]", old($settingName . "[$lang]", $value) ?: $defaultValue, ['class' => 'form-control', 'placeholder' => trans($moduleInfo['description'])]) !!}
     <?php else: ?>
-        {!! Form::text($settingName . "[$lang]", old($settingName . "[$lang]") ?: $defaultValue, ['class' => 'form-control', 'placeholder' => trans($moduleInfo['description'])]) !!}
+        {!! Form::text($settingName . "[$lang]", old($settingName . "[$lang]", $defaultValue), ['class' => 'form-control', 'placeholder' => trans($moduleInfo['description'])]) !!}
     <?php endif; ?>
 </div>

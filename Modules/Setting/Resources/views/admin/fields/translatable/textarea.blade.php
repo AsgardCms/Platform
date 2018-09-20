@@ -5,6 +5,6 @@
         <?php $value = $dbSettings[$settingName]->hasTranslation($lang) ? $dbSettings[$settingName]->translate($lang)->value : ''; ?>
         {!! Form::textarea($settingName . "[$lang]", old($settingName . "[$lang]", $value) ?: $defaultValue, ['class' => 'form-control', 'placeholder' => trans($moduleInfo['description'])]) !!}
     <?php else: ?>
-        {!! Form::textarea($settingName . "[$lang]", old($settingName . "[$lang]") ?: $defaultValue, ['class' => 'form-control', 'placeholder' => trans($moduleInfo['description'])]) !!}
+        {!! Form::textarea($settingName . "[$lang]", old($settingName . "[$lang]", $defaultValue), ['class' => 'form-control', 'placeholder' => trans($moduleInfo['description'])]) !!}
     <?php endif; ?>
 </div>
