@@ -31,6 +31,7 @@
     import axios from 'axios';
     import UploadZone from '../../../../Media/Assets/js/components/UploadZone.vue';
     import MediaList from '../../../../Media/Assets/js/components/MediaList.vue';
+    import _ from 'lodash';
     import StringHelpers from '../../../../Core/Assets/js/mixins/StringHelpers.vue';
 
     export default {

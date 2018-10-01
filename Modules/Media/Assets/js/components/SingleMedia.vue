@@ -30,6 +30,7 @@
 
 <script>
     import axios from 'axios';
+    import _ from 'lodash';
     import UploadZone from './UploadZone.vue';
     import MediaList from './MediaList.vue';
     import StringHelpers from '../../../../Core/Assets/js/mixins/StringHelpers.vue';
