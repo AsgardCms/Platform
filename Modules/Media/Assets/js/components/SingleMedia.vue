@@ -34,9 +34,10 @@
     import UploadZone from './UploadZone.vue';
     import MediaList from './MediaList.vue';
     import StringHelpers from '../../../../Core/Assets/js/mixins/StringHelpers.vue';
+    import RandomString from '../mixins/RandomString';
 
     export default {
-        mixins: [StringHelpers],
+        mixins: [StringHelpers, RandomString],
         props: {
             zone: { type: String, required: true },
             entity: { type: String, required: true },
@@ -88,20 +89,12 @@
             getFieldLabel() {
                 return this.label || this.ucwords(this.zone.replace('_', ' '));
             },
-            makeId() {
-                let text = '';
-                const possible = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-
-                for (let i = 0; i < 5; i++) { text += possible.charAt(Math.floor(Math.random() * possible.length)); }
-
-                return text;
-            },
         },
         mounted() {
             if (this.entityId) {
                 this.fetchMedia();
             }
-            this.eventName = `fileWasSelected${this.makeId()}${Math.floor(Math.random() * 999999)}`;
+            this.eventName = `fileWasSelected${this.randomString()}${Math.floor(Math.random() * 999999)}`;
 
             this.$events.listen(this.eventName, (mediaData) => {
                 this.dialogVisible = false;
