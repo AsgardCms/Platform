@@ -15,9 +15,9 @@
         </div>
 
         <el-dialog
-                :visible.sync="dialogVisible"
-                fullscreen
-                :before-close="handleClose">
+            :visible.sync="dialogVisible"
+            fullscreen
+            :before-close="handleClose">
 
             <media-list single-modal :event-name="this.eventName"></media-list>
 
@@ -76,10 +76,10 @@
             },
             fetchMedia() {
                 axios.get(route('api.media.find-first-by-zone-and-entity', {
-                    zone: this.zone,
-                    entity: this.entity,
-                    entity_id: this.entityId,
-                }))
+                        zone: this.zone,
+                        entity: this.entity,
+                        entity_id: this.entityId,
+                    }))
                     .then((response) => {
                         this.$emit('singleFileSelected', _.merge(response.data.data, { zone: this.zone }));
                         this.selectedMedia = response.data.data;

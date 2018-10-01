@@ -1,7 +1,7 @@
 <template>
     <div>
         <label class="el-form-item__label">{{ getFieldLabel() }}</label>
-        <div class="jsThumbnailImageWrapper jsSingleThumbnailWrapper" v-if="hasSelectedMedia" >
+        <div class="jsThumbnailImageWrapper jsSingleThumbnailWrapper" v-if="hasSelectedMedia">
             <figure v-for="media in this.selectedMedia" :key="media.id">
                 <img :src="media.small_thumb" alt="" v-if="media.is_image"/>
                 <i :class="`fa ${media.fa_icon}`" style="font-size: 60px;" v-if="! media.is_image"></i>
@@ -14,9 +14,9 @@
             <el-button type="button" @click="dialogVisible = true">{{ trans('media.Browse') }}</el-button>
         </div>
         <el-dialog
-                :visible.sync="dialogVisible"
-                fullscreen
-                :before-close="handleClose">
+            :visible.sync="dialogVisible"
+            fullscreen
+            :before-close="handleClose">
 
             <media-list single-modal :event-name="this.eventName"></media-list>
 
@@ -29,9 +29,9 @@
 
 <script>
     import axios from 'axios';
-    import UploadZone from '../../../../Media/Assets/js/components/UploadZone.vue';
-    import MediaList from '../../../../Media/Assets/js/components/MediaList.vue';
     import _ from 'lodash';
+    import UploadZone from './UploadZone.vue';
+    import MediaList from './MediaList.vue';
     import StringHelpers from '../../../../Core/Assets/js/mixins/StringHelpers.vue';
 
     export default {
@@ -75,10 +75,10 @@
             },
             fetchMedia() {
                 axios.get(route('api.media.get-by-zone-and-entity', {
-                    zone: this.zone,
-                    entity: this.entity,
-                    entity_id: this.entityId,
-                }))
+                        zone: this.zone,
+                        entity: this.entity,
+                        entity_id: this.entityId,
+                    }))
                     .then((response) => {
                         this.selectedMedia = response.data.data;
                         _.forEach(this.selectedMedia, (file) => {
@@ -115,7 +115,7 @@
     };
 </script>
 <style>
-    .remove-media{
+    .remove-media {
         position: absolute;
         top: 5px;
         left: 5px;

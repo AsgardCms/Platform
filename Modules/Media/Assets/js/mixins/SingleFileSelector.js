@@ -5,5 +5,5 @@ export default {
                 [event.zone]: event.id,
             });
         },
-    }
-}
+    },
+};
