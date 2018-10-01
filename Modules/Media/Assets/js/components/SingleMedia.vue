@@ -15,9 +15,9 @@
         </div>
 
         <el-dialog
-                :visible.sync="dialogVisible"
-                fullscreen
-                :before-close="handleClose">
+            :visible.sync="dialogVisible"
+            width="75%"
+            :before-close="handleClose">
 
             <media-list single-modal :event-name="this.eventName"></media-list>
 
@@ -30,12 +30,14 @@
 
 <script>
     import axios from 'axios';
+    import _ from 'lodash';
     import UploadZone from './UploadZone.vue';
     import MediaList from './MediaList.vue';
     import StringHelpers from '../../../../Core/Assets/js/mixins/StringHelpers.vue';
+    import RandomString from '../mixins/RandomString';
 
     export default {
-        mixins: [StringHelpers],
+        mixins: [StringHelpers, RandomString],
         props: {
             zone: { type: String, required: true },
             entity: { type: String, required: true },
@@ -75,10 +77,10 @@
             },
             fetchMedia() {
                 axios.get(route('api.media.find-first-by-zone-and-entity', {
-                    zone: this.zone,
-                    entity: this.entity,
-                    entity_id: this.entityId,
-                }))
+                        zone: this.zone,
+                        entity: this.entity,
+                        entity_id: this.entityId,
+                    }))
                     .then((response) => {
                         this.$emit('singleFileSelected', _.merge(response.data.data, { zone: this.zone }));
                         this.selectedMedia = response.data.data;
@@ -87,20 +89,12 @@
             getFieldLabel() {
                 return this.label || this.ucwords(this.zone.replace('_', ' '));
             },
-            makeId() {
-                let text = '';
-                const possible = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-
-                for (let i = 0; i < 5; i++) { text += possible.charAt(Math.floor(Math.random() * possible.length)); }
-
-                return text;
-            },
         },
         mounted() {
             if (this.entityId) {
                 this.fetchMedia();
             }
-            this.eventName = `fileWasSelected${this.makeId()}${Math.floor(Math.random() * 999999)}`;
+            this.eventName = `fileWasSelected${this.randomString()}${Math.floor(Math.random() * 999999)}`;
 
             this.$events.listen(this.eventName, (mediaData) => {
                 this.dialogVisible = false;

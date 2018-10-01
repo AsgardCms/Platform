@@ -3,6 +3,9 @@ versions:
     "@unreleased":
         added:
             - Laravel 5.6 compatibility
+    "3.6.1":
+        changed:
+            - Fixed issue with incorrect binding to the laravel-modules Repository class
     "3.5.1":
         changed:
             - Fixing issue with ThemeManager caused when a theme name has the same name as project name
