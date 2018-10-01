@@ -16,7 +16,7 @@
 
         <el-dialog
             :visible.sync="dialogVisible"
-            fullscreen
+            width="75%"
             :before-close="handleClose">
 
             <media-list single-modal :event-name="this.eventName"></media-list>
