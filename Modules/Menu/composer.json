@@ -24,8 +24,8 @@
   "require": {
     "php": "^7.1.3",
     "composer/installers": "~1.0",
-    "nwidart/laravel-menus": "~2.0",
-    "typicms/nestablecollection": "1.1.10"
+    "nwidart/laravel-menus": "^3.0",
+    "typicms/nestablecollection": "1.1.12"
   },
   "require-dev": {
     "phpunit/phpunit": "~7.0",
