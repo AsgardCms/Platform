@@ -73,7 +73,7 @@
             },
             unSelectMedia() {
                 this.selectedMedia = {};
-                this.$emit('singleFileSelected', _.merge({ id: null }, { zone: this.zone }));
+                this.$emit('single-file-selected', { id: null, zone: this.zone });
             },
             fetchMedia() {
                 axios.get(route('api.media.find-first-by-zone-and-entity', {
@@ -82,7 +82,7 @@
                         entity_id: this.entityId,
                     }))
                     .then((response) => {
-                        this.$emit('singleFileSelected', _.merge(response.data.data, { zone: this.zone }));
+                        this.$emit('single-file-selected', _.merge(response.data.data, { zone: this.zone }));
                         this.selectedMedia = response.data.data;
                     });
             },
@@ -94,12 +94,12 @@
             if (this.entityId) {
                 this.fetchMedia();
             }
-            this.eventName = `fileWasSelected${this.randomString()}${Math.floor(Math.random() * 999999)}`;
+            this.eventName = `file-was-selected${this.randomString()}${Math.floor(Math.random() * 999999)}`;
 
             this.$events.listen(this.eventName, (mediaData) => {
                 this.dialogVisible = false;
                 this.selectedMedia = mediaData;
-                this.$emit('singleFileSelected', _.merge(mediaData, { zone: this.zone }));
+                this.$emit('single-file-selected', _.merge(mediaData, { zone: this.zone }));
             });
         },
     };
