@@ -214,7 +214,6 @@ class ModuleScaffold
         $this->renameVendorName();
         $this->removeViewResources();
 
-        $this->finder->delete($this->getModulesPath('Http/routes.php'));
         $this->finder->delete($this->getModulesPath("Http/Controllers/{$this->name}Controller.php"));
     }
 
