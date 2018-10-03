@@ -228,7 +228,6 @@ class ModuleScaffold
         $moduleJson = $this->loadProviders($moduleJson);
         $moduleJson = $this->setModuleOrderOrder($moduleJson);
         $moduleJson = $this->setModuleVersion($moduleJson);
-        $moduleJson = $this->removeStartPhpFile($moduleJson);
 
         $this->finder->put($this->getModulesPath('module.json'), $moduleJson);
     }
@@ -268,19 +267,6 @@ JSON;
     private function setModuleVersion($content)
     {
         return str_replace("\"active\"", "\"version\": \"1.0.0\",\n\t\"active\"", $content);
-    }
-
-    /**
-     * Remove the start.php start file
-     * Also removes the auto loading of that file
-     * @param string $content
-     * @return string
-     */
-    private function removeStartPhpFile($content)
-    {
-        $this->finder->delete($this->getModulesPath('start.php'));
-
-        return str_replace('"start.php"', '', $content);
     }
 
     /**
