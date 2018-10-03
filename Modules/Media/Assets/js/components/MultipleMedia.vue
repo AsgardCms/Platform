@@ -72,7 +72,7 @@
             },
             unSelectMedia(id) {
                 this.selectedMedia = _.reject(this.selectedMedia, media => media.id === id);
-                this.$emit('fileUnselected', { id, zone: this.zone });
+                this.$emit('file-unselected', { id, zone: this.zone });
             },
             fetchMedia() {
                 axios.get(route('api.media.get-by-zone-and-entity', {
@@ -83,7 +83,7 @@
                     .then((response) => {
                         this.selectedMedia = response.data.data;
                         _.forEach(this.selectedMedia, (file) => {
-                            this.$emit('multipleFileSelected', { id: file.id, zone: this.zone });
+                            this.$emit('multiple-file-selected', _.merge(file, { zone: this.zone }));
                         });
                     });
             },
@@ -95,13 +95,13 @@
             if (this.entityId) {
                 this.fetchMedia();
             }
-            this.eventName = `fileWasSelected${this.randomString()}${Math.floor(Math.random() * 999999)}`;
+            this.eventName = `file-was-selected${this.randomString()}${Math.floor(Math.random() * 999999)}`;
 
             this.$events.listen(this.eventName, (mediaData) => {
                 if (_.find(this.selectedMedia, mediaData) === undefined) {
                     if (!this.selectedMedia) this.selectedMedia = [];
                     this.selectedMedia.push(mediaData);
-                    this.$emit('multipleFileSelected', _.merge(mediaData, { zone: this.zone }));
+                    this.$emit('multiple-file-selected', _.merge(mediaData, { zone: this.zone }));
                 }
             });
         },
