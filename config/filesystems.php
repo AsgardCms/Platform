@@ -1,5 +1,7 @@
 <?php
+
 return [
+
     /*
     |--------------------------------------------------------------------------
     | Default Filesystem Disk
@@ -10,7 +12,9 @@ return [
     | based disks are available to your application. Just store away!
     |
     */
+
     'default' => env('FILESYSTEM_DRIVER', 'local'),
+
     /*
     |--------------------------------------------------------------------------
     | Default Cloud Filesystem Disk
@@ -21,7 +25,9 @@ return [
     | will be bound as the Cloud disk implementation in the container.
     |
     */
+
     'cloud' => env('FILESYSTEM_CLOUD', 's3'),
+
     /*
     |--------------------------------------------------------------------------
     | Filesystem Disks
@@ -34,10 +40,12 @@ return [
     | Supported Drivers: "local", "ftp", "sftp", "s3", "rackspace"
     |
     */
+
     'disks' => [
+
         'local' => [
             'driver' => 'local',
-            'root'   => base_path(),
+            'root' => base_path(),
             'permissions' => [
                 'file' => [
                     'public' => 0777,
@@ -51,6 +59,7 @@ return [
             'url' => env('APP_URL'),
             'visibility' => 'public',
         ],
+
         'public' => [
             'driver' => 'local',
             'root' => storage_path('app/public'),
@@ -65,11 +74,13 @@ return [
 
         's3' => [
             'driver' => 's3',
-            'key' => env('AWS_KEY'),
-            'secret' => env('AWS_SECRET'),
-            'region' => env('AWS_REGION'),
+            'key' => env('AWS_ACCESS_KEY_ID'),
+            'secret' => env('AWS_SECRET_ACCESS_KEY'),
+            'region' => env('AWS_DEFAULT_REGION'),
             'bucket' => env('AWS_BUCKET'),
             'url' => env('AWS_URL'),
         ],
+
     ],
+
 ];
