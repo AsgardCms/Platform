@@ -41,7 +41,8 @@
         "league/commonmark": "^0.15.4",
         "predis/predis": "^1.1",
         "nunomaduro/collision": "^2.0",
-        "phpunit/phpunit": "^7.0"
+        "phpunit/phpunit": "^7.0",
+        "roave/security-advisories": "dev-master"
     },
     "autoload": {
         "classmap": [
