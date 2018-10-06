@@ -13,7 +13,7 @@ return [
     |
     */
     'cache' => [
-        'method'   => null,
+        'method' => null,
         'duration' => 1440,
     ],
 ];

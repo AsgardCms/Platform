@@ -1,9 +1,14 @@
-/vendor
 /node_modules
+/public/hot
 /public/storage
-Homestead.yaml
+/storage/*.key
+/vendor
 Homestead.json
+Homestead.yaml
+npm-debug.log
+yarn-error.log
 .env
 composer.lock
 package-lock.json
+.phpunit.result.cache
 .php_cs.cache

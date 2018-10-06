@@ -26,19 +26,22 @@ return [
         'enabled' => false,
         'path' => base_path() . '/vendor/nwidart/laravel-modules/src/Commands/stubs',
         'files' => [
-            'start' => 'start.php',
-            'routes' => 'Http/routes.php',
             'views/index' => 'Resources/views/index.blade.php',
             'views/master' => 'Resources/views/layouts/master.blade.php',
             'scaffold/config' => 'Config/config.php',
             'composer' => 'composer.json',
+            'assets/js/app' => 'Resources/assets/js/app.js',
+            'assets/sass/app' => 'Resources/assets/sass/app.scss',
+            'webpack' => 'webpack.mix.js',
+            'package' => 'package.json',
         ],
         'replacements' => [
-            'start' => ['LOWER_NAME', 'ROUTES_LOCATION'],
-            'routes' => ['LOWER_NAME', 'STUDLY_NAME', 'MODULE_NAMESPACE'],
+            'routes/web' => ['LOWER_NAME', 'STUDLY_NAME'],
+            'routes/api' => ['LOWER_NAME'],
+            'webpack' => ['LOWER_NAME'],
             'json' => ['LOWER_NAME', 'STUDLY_NAME', 'MODULE_NAMESPACE'],
             'views/index' => ['LOWER_NAME'],
-            'views/master' => ['STUDLY_NAME'],
+            'views/master' => ['LOWER_NAME', 'STUDLY_NAME'],
             'scaffold/config' => ['STUDLY_NAME'],
             'composer' => [
                 'LOWER_NAME',
@@ -49,6 +52,7 @@ return [
                 'MODULE_NAMESPACE',
             ],
         ],
+        'gitkeep' => true,
     ],
     'paths' => [
         /*
@@ -170,5 +174,13 @@ return [
     */
     'register' => [
         'translations' => false,
+        /**
+         * load files on boot or register method
+         *
+         * Note: boot not compatible with asgardcms
+         *
+         * @example boot|register
+         */
+        'files' => 'register',
     ],
 ];
