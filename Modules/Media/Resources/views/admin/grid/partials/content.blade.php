@@ -101,6 +101,7 @@
                     <?php endif; ?>
                     </tbody>
                 </table>
+                {{ $files->links() }}
             </div>
         </div>
     </div>
@@ -129,7 +130,7 @@
 <script type="text/javascript">
     $(function () {
         $('.data-table').dataTable({
-            "paginate": true,
+            "paginate": false,
             "lengthChange": true,
             "filter": true,
             "sort": true,
