@@ -113,7 +113,7 @@ class EloquentMenuItemRepository extends EloquentBaseRepository implements MenuI
     {
         $items = $this->rootsForMenu($menuId);
 
-        return $items->nest();
+        return $items->noCleaning()->nest();
     }
 
     /**
