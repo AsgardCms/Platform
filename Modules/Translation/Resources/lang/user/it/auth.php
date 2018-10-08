@@ -18,4 +18,6 @@ return [
     'additional confirm email message' => 'Potremmo aver bisogno di inviare informazioni critiche sui nostri servizi ed è importante che la email sia esatta.',
     'confirm email button' => 'Conferma l\'indrizzo email',
     'end greeting' => 'Il team',
+    'sign in welcome message' => 'Effettua il login per iniziare la sessione',
+    'reset password email was sent' => 'Email per reset password inviata',
 ];
