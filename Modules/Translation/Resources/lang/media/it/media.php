@@ -32,4 +32,13 @@ return [
     'insert' => 'Inserisci questo file',
     'file picker' => 'Seleziona File',
     'Browse' => 'Seleziona ...',
+    'upload file' => 'Carica un file',
+    'remove media' => 'Rimuovi media',
+    'list resource' => 'Elenco media',
+    'create resource' => 'Crea media',
+    'edit resource' => 'Modifica media',
+    'destroy resource' => 'Cancella media',
+    'file too large' => 'Il file è stroppo pesante, la dimensione massiima è di :size MB.',
+    'some files not moved' => 'Alcuni file non sono stati spostati',
+    'files moved successfully' => 'I file sono stati spostati correttamente',
 ];

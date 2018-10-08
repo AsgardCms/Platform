@@ -31,4 +31,9 @@ return [
     'added' => 'Aggiunto',
     'changed' => 'Cambiato',
     'removed' => 'Rimosso',
+    'list resource' => 'Lista moduli',
+    'show resource' => 'Visualizza moduli',
+    'update resource' => 'Aggiorna moduli',
+    'disable resource' => 'Disabilita moduli',
+    'enable resource' => 'Abilita moduli',
 ];
