@@ -36,4 +36,8 @@ return [
     'navigation' => [
         'back to index' => 'Indietro all\'indice dei menu',
     ],
+    'list resource' => 'Elenco menu',
+    'create resource' => 'Crea menu',
+    'edit resource' => 'Modifica menu',
+    'destroy resource' => 'Cancella menu',
 ];

@@ -1,42 +1,44 @@
 <?php
 
 return [
-    'title' => [
-        'pages' => 'Pagine',
-        'create page' => 'Crea una pagina',
-        'edit page' => 'Modifica una pagina',
-    ],
-    'button' => [
-        'create page' => 'Crea pagina',
-    ],
-    'table' => [
-        'name' => 'Nome',
-        'slug' => 'Slug',
-    ],
-    'form' => [
-        'title' => 'Titolo',
-        'slug' => 'Slug',
-        'meta_title' => 'Meta titolo',
-        'meta_description' => 'Meta descrizione',
-        'og_title' => 'Facebook titolo',
-        'og_description' => 'Facebook descrizione',
-        'og_type' => 'Facebook tipo',
-        'template' => 'Nome template pagina',
-        'is homepage' => 'Homepage ?',
-        'body' => 'Corpo',
-    ],
+    'pages' => 'Pagine',
+    'create page' => 'Crea una pagina',
+    'edit page' => 'Modifica una pagina',
+    'name' => 'Nome',
+
+    'slug' => 'Slug',
+    'title' => 'Titolo',
+
+    'meta_data' => 'Meta data',
+    'meta_title' => 'Meta titolo',
+    'meta_description' => 'Meta descrizione',
+    'facebook_data' => 'Dati Facebook',
+    'og_title' => 'Titolo Facebook',
+    'og_description' => 'Descrizione Facebook',
+    'og_type' => 'Tipo Facebook',
+    'template' => 'Nome template pagina',
+    'is homepage' => 'Homepage ?',
+    'body' => 'Body',
+    'status' => 'Status',
+    'pages were updated' => 'Le pagine sono state aggiornate',
+
+    'back to index' => 'Torna all\'indice delle pagine',
+    'list resource' => 'Elenca pagine',
+    'create resource' => 'Crea pagine',
+    'edit resource' => 'Modifica pagine',
+    'destroy resource' => 'Elimina pagine',
+
+    'view-page' => 'Visualizza pagina',
+    'edit-page' => 'Modifica pagina',
     'validation' => [
         'attributes' => [
             'title' => 'titolo',
-            'body' => 'corpo',
+            'body' => 'body',
         ],
     ],
     'facebook-types' => [
-        'website' => 'Website',
+        'website' => 'Sito web',
         'product' => 'Prodotto',
         'article' => 'Articolo',
-    ],
-    'navigation' => [
-        'back to index' => 'Torna all\' indice delle pagine',
     ],
 ];

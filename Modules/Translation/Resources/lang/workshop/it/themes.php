@@ -1,11 +1,14 @@
 <?php
 
 return [
-    'title' => 'Theme Management',
+    'title' => 'Gestione tema',
     'breadcrumb' => [
-        'themes' => 'Themes',
+        'themes' => 'Temi',
     ],
-    'theme' => 'Theme',
-    'viewing theme' => 'Viewing theme :theme',
-    'type' => 'Type',
+    'theme' => 'Tema',
+    'viewing theme' => 'Visualizzando il tema :theme',
+    'type' => 'Tipo',
+    'list resource' => 'Lista temi',
+    'show resource' => 'Visualizza temi',
+    'publish assets' => 'Pubblica asset',
 ];
