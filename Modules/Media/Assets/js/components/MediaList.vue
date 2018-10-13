@@ -2,7 +2,7 @@
     <div class="row" style="margin-top: -35px;">
         <div class="col-xs-12">
             <div class="sc-table">
-                 <div class="el-row">
+                <div class="el-row">
                     <div class="title">
                         <h4 v-if="singleModal">{{ trans('media.choose file') }}</h4>
                         <h3 v-if="! singleModal">{{ trans('media.title.media') }}</h3>
@@ -19,25 +19,38 @@
                 </div>
                 <div class="box box-primary">
                     <div class="box-body">
+                        <upload-zone v-if="showUploadZone" :parent-id="folderId"></upload-zone>
                         <div class="tool-bar el-row" style="padding-bottom: 20px;">
-                            <div class="actions el-col el-col-14">
+                            <div class="actions el-col el-col-19">
                                 <new-folder :parent-id="folderId"></new-folder>
-                                <upload-button :parent-id="folderId"></upload-button>
-                                <el-button-group style="width: 30%">
-                                    <el-button type="warning"
-                                               :disabled="selectedMedia.length === 0"
-                                               @click="showMoveMedia"
-                                               >{{ trans('core.move') }}
+                                <el-button-group>
+                                    <el-button
+                                        type="primary"
+                                        @click="toggleUploadZone"
+                                    >
+                                        {{ trans('media.upload file') }}
                                     </el-button>
-                                    <el-button type="danger" :disabled="selectedMedia.length === 0"
-                                        @click.prevent="batchDelete" :loading="filesAreDeleting">
+                                </el-button-group>
+                                <el-button-group>
+                                    <el-button
+                                        type="warning"
+                                        :disabled="selectedMedia.length === 0"
+                                        @click="showMoveMedia"
+                                    >
+                                        {{ trans('core.move') }}
+                                    </el-button>
+                                    <el-button
+                                        type="danger"
+                                        :disabled="selectedMedia.length === 0"
+                                        @click.prevent="batchDelete"
+                                        :loading="filesAreDeleting"
+                                    >
                                         {{ trans('core.button.delete') }}
                                     </el-button>
                                 </el-button-group>
                             </div>
                             <div class="search el-col el-col-5">
-                                <el-input prefix-icon="el-icon-search" @keyup.native="performSearch" v-model="searchQuery">
-                                </el-input>
+                                <el-input prefix-icon="el-icon-search" @keyup.native="performSearch" v-model="searchQuery"></el-input>
                             </div>
                         </div>
                         <el-row>
@@ -50,59 +63,55 @@
                             </el-col>
                         </el-row>
                         <el-table
-                                :data="data"
-                                stripe
-                                style="width: 100%"
-                                ref="mediaTable"
-                                v-loading.body="tableIsLoading"
-                                @sort-change="handleSortChange"
-                                @selection-change="handleSelectionChange">
-                            <el-table-column
-                                    type="selection"
-                                    width="55">
-                            </el-table-column>
+                            :data="data"
+                            stripe
+                            style="width: 100%"
+                            ref="mediaTable"
+                            v-loading.body="tableIsLoading"
+                            @sort-change="handleSortChange"
+                            @selection-change="handleSelectionChange"
+                        >
+                            <el-table-column type="selection" width="55"></el-table-column>
                             <el-table-column label="" width="150">
                                 <template slot-scope="scope">
                                     <img :src="scope.row.small_thumb" alt="" v-if="scope.row.is_image"/>
-                                    <i :class="`fa ${scope.row.fa_icon}`" style="font-size: 38px;"
-                                       v-if="! scope.row.is_image && ! scope.row.is_folder"></i>
-                                    <i class="fa fa-folder" style="font-size: 38px;"
-                                       v-if="scope.row.is_folder"></i>
+                                    <i :class="`fa ${scope.row.fa_icon}`" style="font-size: 38px;" v-if="! scope.row.is_image && ! scope.row.is_folder"></i>
+                                    <i class="fa fa-folder" style="font-size: 38px;" v-if="scope.row.is_folder"></i>
                                 </template>
                             </el-table-column>
-
                             <el-table-column prop="filename" :label="trans('media.table.filename')" sortable="custom">
                                 <template slot-scope="scope">
                                     <strong v-if="scope.row.is_folder" style="cursor: pointer;" @click="enterFolder(scope)">
                                         {{ scope.row.filename }}
                                     </strong>
                                     <span v-else>
-                                        <a href="#"
-                                           @click.prevent="goToEdit(scope)">{{ scope.row.filename }}</a>
+                                        <a href="#" @click.prevent="goToEdit(scope)">{{ scope.row.filename }}</a>
                                     </span>
                                 </template>
                             </el-table-column>
-                            <el-table-column prop="created_at" :label="trans('core.table.created at')" sortable="custom"
-                                             width="150">
-                            </el-table-column>
+                            <el-table-column prop="created_at" :label="trans('core.table.created at')" sortable="custom" width="150"></el-table-column>
                             <el-table-column prop="actions" label="" width="150">
                                 <template slot-scope="scope">
                                     <div class="pull-right">
                                         <el-button
-                                                type="primary"
-                                                size="small"
-                                                @click.prevent="insertMedia(scope)"
-                                                v-if="singleModal && ! scope.row.is_folder">
+                                            type="primary"
+                                            size="small"
+                                            @click.prevent="insertMedia(scope)"
+                                            v-if="singleModal && ! scope.row.is_folder"
+                                        >
                                             {{ trans('media.insert') }}
                                         </el-button>
                                         <div v-if="! singleModal">
                                             <el-button-group>
-                                                <edit-button :to="{name: 'admin.media.media.edit', params: {mediaId: scope.row.id}}"
-                                                             v-if="! scope.row.is_folder"></edit-button>
+                                                <edit-button
+                                                    :to="{name: 'admin.media.media.edit', params: {mediaId: scope.row.id}}"
+                                                    v-if="! scope.row.is_folder"
+                                                ></edit-button>
                                                 <el-button
-                                                        size="mini"
-                                                        @click.prevent="showEditFolder(scope.row)"
-                                                        v-if="scope.row.is_folder && canEditFolders">
+                                                    size="mini"
+                                                    @click.prevent="showEditFolder(scope.row)"
+                                                    v-if="scope.row.is_folder && canEditFolders"
+                                                >
                                                     <i class="fa fa-pencil"></i>
                                                 </el-button>
                                                 <delete-button :scope="scope" :rows="data"></delete-button>
@@ -114,14 +123,14 @@
                         </el-table>
                         <div class="pagination-wrap" style="text-align: center; padding-top: 20px;">
                             <el-pagination
-                                    @size-change="handleSizeChange"
-                                    @current-change="handleCurrentChange"
-                                    :current-page.sync="meta.current_page"
-                                    :page-sizes="[10, 20, 50, 100]"
-                                    :page-size="parseInt(meta.per_page)"
-                                    layout="total, sizes, prev, pager, next, jumper"
-                                    :total="meta.total">
-                            </el-pagination>
+                                @size-change="handleSizeChange"
+                                @current-change="handleCurrentChange"
+                                :current-page.sync="meta.current_page"
+                                :page-sizes="[10, 20, 50, 100]"
+                                :page-size="parseInt(meta.per_page)"
+                                layout="total, sizes, prev, pager, next, jumper"
+                                :total="meta.total"
+                            ></el-pagination>
                         </div>
                     </div>
                 </div>
@@ -135,14 +144,14 @@
 <script>
     import axios from 'axios';
     import NewFolder from './NewFolder.vue';
-    import UploadButton from './UploadButton.vue';
+    import UploadZone from './UploadZone';
     import RenameFolder from './RenameFolder.vue';
     import MoveMediaDialog from './MoveMediaDialog.vue';
 
     export default {
         components: {
             'new-folder': NewFolder,
-            'upload-button': UploadButton,
+            'upload-zone': UploadZone,
             'rename-folder': RenameFolder,
             'move-dialog': MoveMediaDialog,
         },
@@ -169,6 +178,7 @@
                 folderBreadcrumb: [
                     { id: 0, name: 'Home' },
                 ],
+                showUploadZone: false,
                 filesAreDeleting: false,
                 canEditFolders: true,
             };
@@ -190,7 +200,6 @@
                         this.data = response.data.data;
                         this.meta = response.data.meta;
                         this.links = response.data.links;
-
                         this.order_meta.order_by = properties.order_by;
                         this.order_meta.order = properties.order;
                     });
@@ -209,6 +218,7 @@
                     this.folderBreadcrumb = [
                         { id: 0, name: 'Home' },
                     ];
+
                     return;
                 }
                 axios.get(route('api.media.folders.breadcrumb', { folder: folderId }))
@@ -249,6 +259,9 @@
             handleSelectionChange(selectedMedia) {
                 this.selectedMedia = selectedMedia;
             },
+            toggleUploadZone() {
+                this.showUploadZone = !this.showUploadZone;
+            },
             showEditFolder(scope) {
                 this.$events.emit('editFolderWasClicked', scope);
             },
@@ -269,15 +282,15 @@
             },
             batchDelete() {
                 this.$confirm(this.trans('core.modal.confirmation-message'), this.trans('core.modal.title'), {
-                    confirmButtonText: this.trans('core.button.delete'),
-                    cancelButtonText: this.trans('core.button.cancel'),
-                    type: 'warning',
-                })
+                        confirmButtonText: this.trans('core.button.delete'),
+                        cancelButtonText: this.trans('core.button.cancel'),
+                        type: 'warning',
+                    })
                     .then(() => {
                         this.filesAreDeleting = true;
                         axios.post(route('api.media.media.batch-destroy'), {
-                            files: this.selectedMedia,
-                        })
+                                files: this.selectedMedia,
+                            })
                             .then((response) => {
                                 this.$message({
                                     type: 'success',

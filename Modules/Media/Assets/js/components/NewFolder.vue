@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <el-button-group>
         <el-button type="success" class="new-folder" @click="dialogFormVisible = true">
             <i class="fa fa-plus"></i> {{ trans('folders.create resource') }}
         </el-button>
@@ -18,7 +18,7 @@
             </span>
         </el-dialog>
 
-    </div>
+    </el-button-group>
 </template>
 
 <script>
