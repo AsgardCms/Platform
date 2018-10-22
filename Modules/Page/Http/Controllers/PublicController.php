@@ -19,17 +19,16 @@ class PublicController extends BasePublicController
      */
     private $app;
 
-    private $disabledPage = false;
-
     public function __construct(PageRepository $page, Application $app)
     {
         parent::__construct();
         $this->page = $page;
-        $this->app = $app;
+        $this->app  = $app;
     }
 
     /**
      * @param $slug
+     *
      * @return \Illuminate\View\View
      */
     public function uri($slug)
@@ -40,15 +39,14 @@ class PublicController extends BasePublicController
 
         $currentTranslatedPage = $page->getTranslation(locale());
         if ($slug !== $currentTranslatedPage->slug) {
-
             return redirect()->to($currentTranslatedPage->locale . '/' . $currentTranslatedPage->slug, 301);
         }
 
         $template = $this->getTemplateForPage($page);
 
-        $alternate = $this->getAlternateMetaData($page);
+        $this->addAlternateUrls($this->getAlternateData($page));
 
-        return view($template, compact('page', 'alternate'));
+        return view($template, compact('page'));
     }
 
     /**
@@ -62,15 +60,17 @@ class PublicController extends BasePublicController
 
         $template = $this->getTemplateForPage($page);
 
-        $alternate = $this->getAlternateMetaData($page);
+        $this->addAlternateUrls($this->getAlternateData($page));
 
-        return view($template, compact('page', 'alternate'));
+        return view($template, compact('page'));
     }
 
     /**
      * Find a page for the given slug.
      * The slug can be a 'composed' slug via the Menu
+     *
      * @param string $slug
+     *
      * @return Page
      */
     private function findPageForSlug($slug)
@@ -87,7 +87,9 @@ class PublicController extends BasePublicController
     /**
      * Return the template for the given page
      * or the default template if none found
+     *
      * @param $page
+     *
      * @return string
      */
     private function getTemplateForPage($page)
@@ -96,12 +98,13 @@ class PublicController extends BasePublicController
     }
 
     /**
-     * Throw a 404 error page if the given page is not found or draft
+     * Throw a 404 error page if the given page is not found
+     *
      * @param $page
      */
     private function throw404IfNotFound($page)
     {
-        if (null === $page || $page->status === $this->disabledPage) {
+        if (is_null($page)) {
             $this->app->abort('404');
         }
     }
@@ -113,7 +116,7 @@ class PublicController extends BasePublicController
      *
      * @return array
      */
-    private function getAlternateMetaData($page)
+    private function getAlternateData($page)
     {
         $translations = $page->getTranslationsArray();
 
