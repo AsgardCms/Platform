@@ -23,14 +23,14 @@
                         <div class="tool-bar el-row" style="padding-bottom: 20px;">
                             <div class="actions el-col el-col-19">
                                 <new-folder :parent-id="folderId"></new-folder>
-                                <el-button-group>
+                                <div style="margin: 0 15px;">
                                     <el-button
                                         type="primary"
                                         @click="toggleUploadZone"
                                     >
                                         {{ trans('media.upload file') }}
                                     </el-button>
-                                </el-button-group>
+                                </div>
                                 <el-button-group>
                                     <el-button
                                         type="warning"
