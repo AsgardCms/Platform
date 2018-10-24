@@ -8,9 +8,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>@section('title')@setting('core::site-name')@show</title>
     @if(isset($alternate))
-    	@foreach($alternate as $alternateLocale=>$alternateSlug)
-        	<link rel="alternate" hreflang="{{$alternateLocale}}" href="{{url($alternateLocale.'/'.$alternateSlug)}}">
-    	@endforeach
+        @foreach($alternate as $alternateLocale=>$alternateSlug)
+            <link rel="alternate" hreflang="{{$alternateLocale}}" href="{{url($alternateLocale.'/'.$alternateSlug)}}">
+        @endforeach
     @endif
     <link rel="canonical" href="{{url()->current()}}" />
     <link rel="shortcut icon" href="{{ Theme::url('favicon.ico') }}">
