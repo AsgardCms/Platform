@@ -34,4 +34,3 @@ abstract class BasePublicController extends Controller
         view()->share('alternate', $this->alternateUrls);
     }
 }
-}
