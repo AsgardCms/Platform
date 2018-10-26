@@ -102,7 +102,7 @@ trait TaggableTrait
         }
 
         // Get the current entity tags
-        $entityTags = $this->tags->pluck($type)->all();
+        $entityTags = $this->tags()->get()->pluck($type)->all();
 
         // Prepare the tags to be added and removed
         $tagsToAdd = array_diff($tags, $entityTags);
@@ -157,7 +157,7 @@ trait TaggableTrait
             $tag->save();
         }
 
-        if ($this->tags->contains($tag->id) === false) {
+        if ($this->tags()->get()->contains($tag->id) === false) {
             $this->tags()->attach($tag);
         }
     }
@@ -167,7 +167,7 @@ trait TaggableTrait
      */
     public function untag($tags = null)
     {
-        $tags = $tags ?: $this->tags->pluck('name')->all();
+        $tags = $tags ?: $this->tags()->get()->pluck('name')->all();
 
         foreach ($tags as $tag) {
             $this->removeTag($tag);
