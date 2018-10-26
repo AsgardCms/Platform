@@ -23,12 +23,9 @@ trait TaggableTrait
 
     public function scopeWhereTag(Builder $query, $tags, string $type = 'slug'): Builder
     {
-        if (is_string($tags) === true) {
-            $tags = [$tags];
-        }
         $query->with('translations');
 
-        foreach ($tags as $tag) {
+        foreach (array_wrap($tags) as $tag) {
             $query->whereHas('tags', function (Builder $query) use ($type, $tag) {
                 $query->whereHas('translations', function (Builder $query) use ($type, $tag) {
                     $query->where($type, $tag);
@@ -41,9 +38,8 @@ trait TaggableTrait
 
     public function scopeWithTag(Builder $query, $tags, string $type = 'slug'): Builder
     {
-        if (is_string($tags) === true) {
-            $tags = [$tags];
-        }
+        $tags = array_wrap($tags);
+
         $query->with('translations');
 
         return $query->whereHas('tags', function (Builder $query) use ($type, $tags) {
@@ -98,7 +94,7 @@ trait TaggableTrait
 
     public function tag($tags): bool
     {
-        foreach ($tags as $tag) {
+        foreach (array_wrap($tags) as $tag) {
             $this->addTag($tag);
         }
 
