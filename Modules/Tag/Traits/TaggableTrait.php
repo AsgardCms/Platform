@@ -63,7 +63,7 @@ trait TaggableTrait
     {
         $instance = new static;
 
-        return $instance->createTagsModel()->with('translations')->whereNamespace($instance->getEntityClassName());
+        return self::createTagsModel()->with('translations')->where('namespace', $instance->getEntityClassName());
     }
 
     public function setTags($tags, string $type = 'slug'): bool
@@ -103,8 +103,7 @@ trait TaggableTrait
 
     public function addTag(string $name)
     {
-        $tag = $this->createTagsModel()->where('namespace', $this->getEntityClassName())
-            ->with('translations')
+        $tag = self::allTags()
             ->whereHas('translations', function (Builder $q) use ($name) {
                 $q->where('slug', $this->generateTagSlug($name));
             })->first();
@@ -140,9 +139,7 @@ trait TaggableTrait
 
     public function removeTag(string $name)
     {
-        $tag = $this->createTagsModel()
-            ->where('namespace', $this->getEntityClassName())
-            ->with('translations')
+        $tag = self::allTags()
             ->whereHas('translations', function (Builder $q) use ($name) {
                 $q->where('slug', $this->generateTagSlug($name));
             })->first();
