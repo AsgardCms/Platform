@@ -3,35 +3,25 @@
 namespace Modules\Tag\Traits;
 
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\MorphToMany;
 use Modules\Tag\Entities\Tag;
 
 trait TaggableTrait
 {
-    /**
-     * {@inheritdoc}
-     */
     protected static $tagsModel = Tag::class;
 
-    /**
-     * {@inheritdoc}
-     */
-    public static function getTagsModel()
+    public static function getTagsModel(): string
     {
         return static::$tagsModel;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public static function setTagsModel($model)
     {
         static::$tagsModel = $model;
     }
 
-    /**
-     * {@inheritdoc}
-     */
-    public function scopeWhereTag(Builder $query, $tags, $type = 'slug')
+    public function scopeWhereTag(Builder $query, $tags, string $type = 'slug'): Builder
     {
         if (is_string($tags) === true) {
             $tags = [$tags];
@@ -49,10 +39,7 @@ trait TaggableTrait
         return $query;
     }
 
-    /**
-     * {@inheritdoc}
-     */
-    public function scopeWithTag(Builder $query, $tags, $type = 'slug')
+    public function scopeWithTag(Builder $query, $tags, string $type = 'slug'): Builder
     {
         if (is_string($tags) === true) {
             $tags = [$tags];
@@ -66,36 +53,24 @@ trait TaggableTrait
         });
     }
 
-    /**
-     * {@inheritdoc}
-     */
-    public function tags()
+    public function tags(): MorphToMany
     {
         return $this->morphToMany(static::$tagsModel, 'taggable', 'tag__tagged', 'taggable_id', 'tag_id');
     }
 
-    /**
-     * {@inheritdoc}
-     */
-    public static function createTagsModel()
+    public static function createTagsModel(): Model
     {
         return new static::$tagsModel;
     }
 
-    /**
-     * {@inheritdoc}
-     */
-    public static function allTags()
+    public static function allTags(): Builder
     {
         $instance = new static;
 
         return $instance->createTagsModel()->with('translations')->whereNamespace($instance->getEntityClassName());
     }
 
-    /**
-     * {@inheritdoc}
-     */
-    public function setTags($tags, $type = 'slug')
+    public function setTags($tags, string $type = 'slug'): bool
     {
         if (empty($tags)) {
             $tags = [];
@@ -121,10 +96,7 @@ trait TaggableTrait
         return true;
     }
 
-    /**
-     * {@inheritdoc}
-     */
-    public function tag($tags)
+    public function tag($tags): bool
     {
         foreach ($tags as $tag) {
             $this->addTag($tag);
@@ -133,10 +105,7 @@ trait TaggableTrait
         return true;
     }
 
-    /**
-     * {@inheritdoc}
-     */
-    public function addTag($name)
+    public function addTag(string $name)
     {
         $tag = $this->createTagsModel()->where('namespace', $this->getEntityClassName())
             ->with('translations')
@@ -162,10 +131,7 @@ trait TaggableTrait
         }
     }
 
-    /**
-     * {@inheritdoc}
-     */
-    public function untag($tags = null)
+    public function untag($tags = null): bool
     {
         $tags = $tags ?: $this->tags()->get()->pluck('name')->all();
 
@@ -176,10 +142,7 @@ trait TaggableTrait
         return true;
     }
 
-    /**
-     * {@inheritdoc}
-     */
-    public function removeTag($name)
+    public function removeTag(string $name)
     {
         $tag = $this->createTagsModel()
             ->where('namespace', $this->getEntityClassName())
@@ -193,10 +156,7 @@ trait TaggableTrait
         }
     }
 
-    /**
-     * {@inheritdoc}
-     */
-    protected function getEntityClassName()
+    protected function getEntityClassName(): string
     {
         if (isset(static::$entityNamespace)) {
             return static::$entityNamespace;
@@ -205,10 +165,7 @@ trait TaggableTrait
         return $this->tags()->getMorphClass();
     }
 
-    /**
-     * {@inheritdoc}
-     */
-    public function generateTagSlug($name, $separator = '-')
+    public function generateTagSlug($name, $separator = '-'): string
     {
         // Convert all dashes/underscores into separator
         $flip = $separator == '-' ? '_' : '-';
