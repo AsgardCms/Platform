@@ -16,7 +16,7 @@ trait TaggableTrait
         return static::$tagsModel;
     }
 
-    public static function setTagsModel($model)
+    public static function setTagsModel(string $model)
     {
         static::$tagsModel = $model;
     }
