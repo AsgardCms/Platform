@@ -123,7 +123,7 @@ class SentinelAuthentication implements Authentication
      * @param $permission
      * @return bool
      */
-    public function hasAccess($permission)
+    public function hasAccess($permission) : bool
     {
         if (! Sentinel::check()) {
             return false;
@@ -136,7 +136,7 @@ class SentinelAuthentication implements Authentication
      * Check if the user is logged in
      * @return bool
      */
-    public function check()
+    public function check() : bool
     {
         $user = Sentinel::check();
 
@@ -153,14 +153,14 @@ class SentinelAuthentication implements Authentication
      */
     public function user()
     {
-        return Sentinel::check();
+        return Sentinel::getUser();
     }
 
     /**
      * Get the ID for the currently authenticated user
      * @return int
      */
-    public function id()
+    public function id() : int
     {
         $user = $this->user();
 
