@@ -195,10 +195,10 @@ abstract class EloquentBaseRepository implements BaseRepository
     /**
      * @inheritdoc
      */
-    public function where($field, $value, $operator=null)
+    public function where(string $field, $value, string $operator = null)
     {
-        if (null==$operator) {
-            $operator='=';
+        if ($operator === null) {
+            $operator = '=';
         } else {
             list($value, $operator) = [$operator, $value];
         }
