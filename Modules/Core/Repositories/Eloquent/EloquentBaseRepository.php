@@ -191,4 +191,26 @@ abstract class EloquentBaseRepository implements BaseRepository
     {
         return true;
     }
+
+    /**
+     * @inheritdoc
+     */
+    public function where(string $field, $value, string $operator = null)
+    {
+        if ($operator === null) {
+            $operator = '=';
+        } else {
+            list($value, $operator) = [$operator, $value];
+        }
+
+        return $this->model->where($field, $operator, $value);
+    }
+
+    /**
+     * @inheritdoc
+     */
+    public function with($relationships)
+    {
+        return $this->model->with($relationships);
+    }
 }
