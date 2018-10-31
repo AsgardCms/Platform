@@ -66,7 +66,6 @@ class $MODULE$ServiceProvider extends ServiceProvider
      */
     protected function registerEloquentFactoriesFrom($path)
     {
-        debug_print_backtrace();
         $this->app->make(EloquentFactory::class)->load($path);
     }
 }
