@@ -2,6 +2,7 @@
 
 namespace Modules\$MODULE$\Providers;
 
+use Illuminate\Database\Eloquent\Factory as EloquentFactory;
 use Illuminate\Support\ServiceProvider;
 use Modules\Core\Traits\CanPublishConfiguration;
 use Modules\Core\Events\BuildingSidebar;
@@ -31,6 +32,8 @@ class $MODULE$ServiceProvider extends ServiceProvider
         $this->app['events']->listen(LoadingBackendTranslations::class, function (LoadingBackendTranslations $event) {
             // append translations
         });
+
+        $this->registerEloquentFactoriesFrom(__DIR__ . '/../Database/factories');
     }
 
     public function boot()
@@ -53,5 +56,17 @@ class $MODULE$ServiceProvider extends ServiceProvider
     private function registerBindings()
     {
 // add bindings
+    }
+
+    /**
+     * Register factories.
+     *
+     * @param  string  $path
+     * @return void
+     */
+    protected function registerEloquentFactoriesFrom($path)
+    {
+        debug_print_backtrace();
+        $this->app->make(EloquentFactory::class)->load($path);
     }
 }
