@@ -98,4 +98,10 @@ interface BaseRepository
      * @return bool
      */
     public function clearCache();
+
+    /**
+     * @param string $field
+     * @param array $values
+     */
+    public function whereIn(string $field, array $values);
 }

@@ -220,4 +220,15 @@ abstract class BaseCacheDecorator implements BaseRepository
             $this->entityName
         );
     }
+
+    /**
+     * @param string $field
+     * @param array $values
+     */
+    public function whereIn(string $field, array $values)
+    {
+        return $this->remember(function () use ($field, $values) {
+            return $this->repository->whereIn($field, $values);
+        });
+    }
 }

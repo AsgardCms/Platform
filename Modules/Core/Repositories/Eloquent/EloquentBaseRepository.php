@@ -191,4 +191,13 @@ abstract class EloquentBaseRepository implements BaseRepository
     {
         return true;
     }
+
+    /**
+     * @param string $field
+     * @param array $values
+     */
+    public function whereIn(string $field, array $values)
+    {
+        return $this->model->whereIn($field, $values);
+    }
 }
