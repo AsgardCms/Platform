@@ -102,6 +102,7 @@ interface BaseRepository
     /**
      * @param string $field
      * @param array $values
+     * @return Builder;
      */
-    public function whereIn(string $field, array $values);
+    public function whereIn(string $field, array $values) : Builder;
 }
