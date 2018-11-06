@@ -224,7 +224,7 @@ abstract class BaseCacheDecorator implements BaseRepository
     /**
      * @inheritdoc
      */
-    public function whereIn(string $field, array $values)
+    public function whereIn(string $field, array $values) : Builder
     {
         return $this->repository->whereIn($field, $values);
     }
