@@ -215,12 +215,10 @@ abstract class EloquentBaseRepository implements BaseRepository
     }
 
     /**
-     * @param string $field
-     * @param array $values
+     * @inheritdoc
      */
-    public function whereIn(string $field, array $values)
+    public function whereIn(string $field, array $values) : Builder
     {
         return $this->model->whereIn($field, $values);
     }
-
 }
