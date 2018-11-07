@@ -73,7 +73,7 @@ class AuthController extends BasePublicController
                 ->withSuccess(trans('user::messages.account activated you can now login'));
         }
 
-        return redirect()->route('register')
+        return redirect()->route('login')
             ->withError(trans('user::messages.there was an error with the activation'));
     }
 
