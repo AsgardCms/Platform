@@ -98,4 +98,20 @@ interface BaseRepository
      * @return bool
      */
     public function clearCache();
+
+    /**
+     * Add where statement to current builder
+     *
+     * @param string $field
+     * @param string|int $value
+     * @param string $operator
+     */
+    public function where(string $field, $value, string $operator = null);
+
+    /**
+     * Eager relationship(s) loading
+     *
+     * @param array|string $relationships
+     */
+    public function with($relationships);
 }

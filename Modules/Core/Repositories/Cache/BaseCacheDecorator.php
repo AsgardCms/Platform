@@ -220,4 +220,24 @@ abstract class BaseCacheDecorator implements BaseRepository
             $this->entityName
         );
     }
+
+    /**
+     * @inheritdoc
+     */
+    public function where(string $field, $value, string $operator = null)
+    {
+        return $this->remember(function () use ($field, $value, $operator) {
+            return $this->repository->where($field, $value, $operator);
+        });
+    }
+
+    /**
+     * @inheritdoc
+     */
+    public function with($relationships)
+    {
+        return $this->remember(function () use ($relationships) {
+            return $this->repository->with($relationships);
+        });
+    }
 }
