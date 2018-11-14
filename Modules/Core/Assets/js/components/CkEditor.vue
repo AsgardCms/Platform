@@ -5,7 +5,6 @@
         :value="value"
         :types="types"
         :config="config"
-        class="ckeditor"
     ></textarea>
 </template>
 
