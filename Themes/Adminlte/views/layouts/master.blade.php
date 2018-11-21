@@ -81,6 +81,7 @@
         locales: {!! json_encode(LaravelLocalization::getSupportedLocales()) !!},
         currentLocale: '{{ locale() }}',
         editor: '{{ $activeEditor }}',
+        ckeditorCustomConfig: '{{ config('asgard.core.core.ckeditor-config-file-path', '') }}',
         adminPrefix: '{{ config('asgard.core.core.admin-prefix') }}',
         hideDefaultLocaleInURL: '{{ config('laravellocalization.hideDefaultLocaleInURL') }}',
         filesystem: '{{ config('asgard.media.config.filesystem') }}'
