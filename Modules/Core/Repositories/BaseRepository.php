@@ -114,4 +114,11 @@ interface BaseRepository
      * @param array|string $relationships
      */
     public function with($relationships);
+
+    /**
+     * @param string $field
+     * @param array $values
+     * @return Builder;
+     */
+    public function whereIn(string $field, array $values) : Builder;
 }
