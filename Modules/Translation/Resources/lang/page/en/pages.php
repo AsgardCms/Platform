@@ -20,6 +20,7 @@ return [
     'is homepage' => 'Homepage ?',
     'body' => 'Body',
     'status' => 'Status',
+    'live' => 'Page Live on Website',
     'pages were updated' => 'Pages were updated',
 
     'back to index' => 'Go back to the pages index',
