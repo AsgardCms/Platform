@@ -1,9 +1,5 @@
 <template>
-    <el-button
-            size="mini"
-            @click.prevent="goToEditPage()">
-        <i class="fa fa-pencil"></i>
-    </el-button>
+    <el-button size="mini" @click.prevent="goToEditPage()"><i class="fa fa-pencil"></i></el-button>
 </template>
 
 <script>
