@@ -8,7 +8,9 @@
                 <el-breadcrumb-item>
                     <a href="/backend">Home</a>
                 </el-breadcrumb-item>
-                <el-breadcrumb-item :to="{name: 'admin.page.page.index'}">{{ trans('pages.pages') }}</el-breadcrumb-item>
+                <el-breadcrumb-item :to="{name: 'admin.page.page.index'}">
+                    {{ trans('pages.pages') }}
+                </el-breadcrumb-item>
             </el-breadcrumb>
         </div>
 
@@ -19,7 +21,7 @@
                         <div class="sc-table">
                             <div class="tool-bar el-row" style="padding-bottom: 20px;">
                                 <div class="actions el-col el-col-8">
-                                    <el-dropdown @command="handleExtraActions" v-if="showExtraButtons">
+                                    <el-dropdown v-if="showExtraButtons" @command="handleExtraActions">
                                         <el-button type="primary">
                                             {{ trans('core.table.actions') }}<i class="el-icon-caret-bottom el-icon--right"></i>
                                         </el-button>
@@ -35,47 +37,45 @@
                                     </router-link>
                                 </div>
                                 <div class="search el-col el-col-5">
-                                    <el-input prefix-icon="el-icon-search" @keyup.native="performSearch" v-model="searchQuery">
-                                    </el-input>
+                                    <el-input v-model="searchQuery" prefix-icon="el-icon-search" @keyup.native="performSearch"></el-input>
                                 </div>
                             </div>
 
                             <el-table
-                                    :data="data"
-                                    stripe
-                                    style="width: 100%"
-                                    ref="pageTable"
-                                    v-loading.body="tableIsLoading"
-                                    @sort-change="handleSortChange"
-                                    @selection-change="handleSelectionChange">
-                                <el-table-column
-                                        type="selection"
-                                        width="55">
+                                v-loading.body="tableIsLoading"
+                                ref="pageTable"
+                                :data="data"
+                                stripe
+                                style="width: 100%"
+                                @sort-change="handleSortChange"
+                                @selection-change="handleSelectionChange"
+                            >
+                                <el-table-column type="selection" width="55">
                                 </el-table-column>
                                 <el-table-column :label="trans('pages.status')" width="100">
                                     <template slot-scope="scope">
-                                        <i class="fa fa-circle" :class="(scope.row.translations.status === true) ? 'text-success':'text-danger'"></i>
+                                        <i :class="(scope.row.translations.status === true) ? 'text-success':'text-danger'" class="fa fa-circle"></i>
                                     </template>
                                 </el-table-column>
                                 <el-table-column prop="id" label="Id" width="75" sortable="custom">
                                 </el-table-column>
-                                <el-table-column prop="translations.title" :label="trans('pages.title')">
+                                <el-table-column :label="trans('pages.title')" prop="translations.title">
                                     <template slot-scope="scope">
-                                        <a @click.prevent="goToEdit(scope)" href="#">
-                                            {{  scope.row.translations.title }}
+                                        <a href="#" @click.prevent="goToEdit(scope)">
+                                            {{ scope.row.translations.title }}
                                         </a>
                                     </template>
                                 </el-table-column>
-                                <el-table-column prop="translations.slug" :label="trans('pages.slug')">
+                                <el-table-column :label="trans('pages.slug')" prop="translations.slug">
                                     <template slot-scope="scope">
-                                        <a @click.prevent="goToEdit(scope)" href="#">
-                                            {{  scope.row.translations.slug }}
+                                        <a href="#" @click.prevent="goToEdit(scope)">
+                                            {{ scope.row.translations.slug }}
                                         </a>
                                     </template>
                                 </el-table-column>
-                                <el-table-column prop="created_at" :label="trans('core.table.created at')" sortable="custom">
+                                <el-table-column :label="trans('core.table.created at')" prop="created_at" sortable="custom">
                                 </el-table-column>
-                                <el-table-column prop="actions" :label="trans('core.table.actions')">
+                                <el-table-column :label="trans('core.table.actions')" prop="actions">
                                     <template slot-scope="scope">
                                         <el-button-group>
                                             <edit-button :to="{name: 'admin.page.page.edit', params: {pageId: scope.row.id}}"></edit-button>
@@ -100,13 +100,15 @@
                 </div>
             </div>
         </div>
-        <button v-shortkey="['c']" @shortkey="pushRoute({name: 'admin.page.page.create'})" v-show="false"></button>
+        <button v-shortkey="['c']" v-show="false" @shortkey="pushRoute({name: 'admin.page.page.create'})"></button>
     </div>
 </template>
 
 <script>
     import axios from 'axios';
-    import _ from 'lodash';
+    import debounce from 'lodash/debounce';
+    import map from 'lodash/map';
+    import merge from 'lodash/merge';
     import ShortcutHelper from '../../../../Core/Assets/js/mixins/ShortcutHelper';
 
     let data;
@@ -136,6 +138,9 @@
                 this.showExtraButtons = this.selectedPages.length >= 1;
             },
         },
+        mounted() {
+            this.fetchData();
+        },
         methods: {
             queryServer(customProperties) {
                 const properties = {
@@ -146,7 +151,7 @@
                     search: this.searchQuery,
                 };
 
-                axios.get(route('api.page.page.indexServerSide', _.merge(properties, customProperties)))
+                axios.get(route('api.page.page.indexServerSide', merge(properties, customProperties)))
                     .then((response) => {
                         this.tableIsLoading = false;
                         this.data = response.data.data;
@@ -176,13 +181,13 @@
                 this.tableIsLoading = true;
                 this.queryServer({ order_by: event.prop, order: event.order });
             },
-            performSearch: _.debounce(function (query) {
+            performSearch: debounce((query) => {
                 console.log(`searching:${query.target.value}`);
                 this.tableIsLoading = true;
                 this.queryServer({ search: query.target.value });
             }, 300),
             handleExtraActions(action) {
-                const pageIds = _.map(this.selectedPages, elem => elem.id);
+                const pageIds = map(this.selectedPages, elem => elem.id);
                 axios.get(route('api.page.page.mark-status', { action, pageIds: JSON.stringify(pageIds) }))
                     .then((response) => {
                         this.$message({
@@ -211,16 +216,15 @@
                 this.$router.push({ name: 'admin.page.page.edit', params: { pageId: scope.row.id } });
             },
         },
-        mounted() {
-            this.fetchData();
-        },
     };
 </script>
+
 <style>
     .text-success {
-        color: #13ce66;
+        color: #13CE66;
     }
+
     .text-danger {
-        color: #ff4949;
+        color: #FF4949;
     }
 </style>
