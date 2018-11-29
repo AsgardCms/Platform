@@ -63,7 +63,7 @@
                             </el-col>
                         </el-row>
                         <el-table
-                            :data="data"
+                            :data="media"
                             stripe
                             style="width: 100%"
                             ref="mediaTable"
@@ -75,8 +75,8 @@
                             <el-table-column label="" width="150">
                                 <template slot-scope="scope">
                                     <img :src="scope.row.small_thumb" alt="" v-if="scope.row.is_image"/>
-                                    <i :class="`fa ${scope.row.fa_icon}`" style="font-size: 38px;" v-if="! scope.row.is_image && ! scope.row.is_folder"></i>
-                                    <i class="fa fa-folder" style="font-size: 38px;" v-if="scope.row.is_folder"></i>
+                                    <i class="fa fa-folder" style="font-size: 38px;" v-else-if="scope.row.is_folder"></i>
+                                    <i :class="`fa ${scope.row.fa_icon}`" style="font-size: 38px;" v-else></i>
                                 </template>
                             </el-table-column>
                             <el-table-column prop="filename" :label="trans('media.table.filename')" sortable="custom">
@@ -114,7 +114,7 @@
                                                 >
                                                     <i class="fa fa-pencil"></i>
                                                 </el-button>
-                                                <delete-button :scope="scope" :rows="data"></delete-button>
+                                                <delete-button :scope="scope" :rows="media"></delete-button>
                                             </el-button-group>
                                         </div>
                                     </div>
@@ -161,7 +161,7 @@
         },
         data() {
             return {
-                data: [],
+                media: [],
                 tableIsLoading: false,
                 meta: {
                     current_page: 1,
@@ -197,7 +197,7 @@
                 axios.get(route('api.media.all-vue', _.merge(properties, customProperties)))
                     .then((response) => {
                         this.tableIsLoading = false;
-                        this.data = response.data.data;
+                        this.media = response.data.data;
                         this.meta = response.data.meta;
                         this.links = response.data.links;
                         this.order_meta.order_by = properties.order_by;
