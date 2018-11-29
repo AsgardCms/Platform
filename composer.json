@@ -70,7 +70,7 @@
     },
     "scripts": {
         "post-install-cmd": [
-            "php artisan clear-compiled"
+            "@php artisan clear-compiled"
         ],
         "pre-update-cmd": [],
         "post-autoload-dump": [
