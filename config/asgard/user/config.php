@@ -79,10 +79,10 @@ return [
     'casts' => [
     ],
     /*
-     |--------------------------------------------------------------------------
-     | Dynamic relations
-     |--------------------------------------------------------------------------
-     | Add relations that will be dynamically added to the User entity
+    |--------------------------------------------------------------------------
+    | Dynamic relations
+    |--------------------------------------------------------------------------
+    | Add relations that will be dynamically added to the User entity
      */
     'relations' => [
 //        'extension' => function ($self) {

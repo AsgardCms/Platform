@@ -1,11 +1,11 @@
 <?php
 
 return [
-   /*
-   |--------------------------------------------------------------------------
-   | The prefix that'll be used for the administration
-   |--------------------------------------------------------------------------
-   */
+    /*
+    |--------------------------------------------------------------------------
+    | The prefix that'll be used for the administration
+    |--------------------------------------------------------------------------
+    */
     'admin-prefix' => 'backend',
 
     /*
@@ -32,18 +32,18 @@ return [
     */
     'skin' => 'skin-blue',
 
-   /*
-   |--------------------------------------------------------------------------
-   | WYSIWYG Backend Editor
-   |--------------------------------------------------------------------------
-   | Define which editor you would like to use for the backend wysiwygs.
-   | These classes are event handlers, listening to EditorIsRendering
-   | you can define your own handlers and use them here
-   | Options:
-   | - \Modules\Core\Events\Handlers\LoadCkEditor::class
-   | - \Modules\Core\Events\Handlers\LoadSimpleMde::class
-   */
-   'wysiwyg-handler' => \Modules\Core\Events\Handlers\LoadCkEditor::class,
+    /*
+    |--------------------------------------------------------------------------
+    | WYSIWYG Backend Editor
+    |--------------------------------------------------------------------------
+    | Define which editor you would like to use for the backend wysiwygs.
+    | These classes are event handlers, listening to EditorIsRendering
+    | you can define your own handlers and use them here
+    | Options:
+    | - \Modules\Core\Events\Handlers\LoadCkEditor::class
+    | - \Modules\Core\Events\Handlers\LoadSimpleMde::class
+    */
+    'wysiwyg-handler' => \Modules\Core\Events\Handlers\LoadCkEditor::class,
     /*
     |--------------------------------------------------------------------------
     | Custom CKeditor configuration file
@@ -63,22 +63,22 @@ return [
     | Backend and Frontend routes.
     */
     'middleware' => [
-       'backend' => [
-           'auth.admin',
-       ],
-       'frontend' => [
-       ],
-       'api' => [
-           'api',
-       ],
+        'backend' => [
+            'auth.admin',
+        ],
+        'frontend' => [
+        ],
+        'api' => [
+            'api',
+        ],
     ],
 
-   /*
-   |--------------------------------------------------------------------------
-   | Define which assets will be available through the asset manager
-   |--------------------------------------------------------------------------
-   | These assets are registered on the asset manager
-   */
+    /*
+    |--------------------------------------------------------------------------
+    | Define which assets will be available through the asset manager
+    |--------------------------------------------------------------------------
+    | These assets are registered on the asset manager
+    */
     'admin-assets' => [
         // Css
         'bootstrap.css' => ['theme' => 'vendor/bootstrap/dist/css/bootstrap.min.css'],
@@ -178,5 +178,5 @@ return [
     | Check if asgard was installed
     |--------------------------------------------------------------------------
     */
-    'is_installed' => env('INSTALLED', false)
+    'is_installed' => env('INSTALLED', false),
 ];
