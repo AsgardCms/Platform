@@ -24,17 +24,17 @@
                         <p>@setting('dashboard::welcome-description')</p>
                     </div>
                     @if (setting('core::site-name') === '')
-                    <div class="box-footer">
-                        <a class="btn btn-primary btn-flat" href="{{ route('dashboard.module.settings', 'core') }}">
-                            <i class="fa fa-cog"></i> {{ trans('dashboard::dashboard.configure your website') }}
-                        </a>
-                        <a class="btn btn-default btn-flat" href="{{ route('admin.page.page.index') }}">
-                            {{ trans('dashboard::dashboard.add pages') }}
-                        </a>
-                        <a class="btn btn-default btn-flat" href="{{ route('admin.menu.menu.index') }}">
-                            {{ trans('dashboard::dashboard.add menus') }}
-                        </a>
-                    </div>
+                        <div class="box-footer">
+                            <a class="btn btn-primary btn-flat" href="{{ route('dashboard.module.settings', 'core') }}">
+                                <i class="fa fa-cog"></i> {{ trans('dashboard::dashboard.configure your website') }}
+                            </a>
+                            <a class="btn btn-default btn-flat" href="{{ route('admin.page.page.index') }}">
+                                {{ trans('dashboard::dashboard.add pages') }}
+                            </a>
+                            <a class="btn btn-default btn-flat" href="{{ route('admin.menu.menu.index') }}">
+                                {{ trans('dashboard::dashboard.add menus') }}
+                            </a>
+                        </div>
                     @endif
                 </div>
             @endif

@@ -2,9 +2,9 @@
 
 namespace App\Providers;
 
+use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\ServiceProvider;
-use Illuminate\Support\Carbon;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -18,7 +18,7 @@ class AppServiceProvider extends ServiceProvider
         Schema::defaultStringLength(191);
 
         Carbon::setLocale(config('app.locale'));
-        Carbon::serializeUsing(function ($carbon) {
+        Carbon::serializeUsing(function (Carbon $carbon) {
             return $carbon->format('d/m/y H:i:s');
         });
     }
