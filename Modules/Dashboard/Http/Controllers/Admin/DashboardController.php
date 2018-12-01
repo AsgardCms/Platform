@@ -28,9 +28,14 @@ class DashboardController extends AdminBaseController
     public function __construct(RepositoryInterface $modules, WidgetRepository $widget, Authentication $auth)
     {
         parent::__construct();
-        $this->bootWidgets($modules);
         $this->widget = $widget;
         $this->auth = $auth;
+
+        $this->middleware(function ($request, $next) use ($modules) {
+            $this->bootWidgets($modules);
+
+            return $next($request);
+        });
     }
 
     /**
