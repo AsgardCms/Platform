@@ -28,40 +28,36 @@ Vue.component('TagsInput', require('../../../Modules/Tag/Assets/js/components/Ta
 Vue.component('SingleMedia', require('../../../Modules/Media/Assets/js/components/SingleMedia.vue'));
 Vue.component('MediaManager', require('../../../Modules/Media/Assets/js/components/MediaManager.vue'));
 
-const currentLocale = window.AsgardCMS.currentLocale,
-    adminPrefix = window.AsgardCMS.adminPrefix;
+const { currentLocale, adminPrefix } = window.AsgardCMS.adminPrefix;
 
 function makeBaseUrl() {
-    if (window.AsgardCMS.hideDefaultLocaleInURL == 1) {
+    if (window.AsgardCMS.hideDefaultLocaleInURL === '1') {
         return adminPrefix;
     }
     return `${currentLocale}/${adminPrefix}`;
 }
 
 const router = new VueRouter({
-    mode: 'history',
-    base: makeBaseUrl(),
-    routes: [
-        ...PageRoutes,
-        ...MediaRoutes,
-        ...UserRoutes,
-    ],
-});
-
-const messages = {
-    [currentLocale]: window.AsgardCMS.translations,
-};
-
-const i18n = new VueI18n({
-    locale: currentLocale,
-    messages,
-});
-
-const app = new Vue({
-    el: '#app',
-    router,
-    i18n,
-});
+        mode: 'history',
+        base: makeBaseUrl(),
+        routes: [
+            ...PageRoutes,
+            ...MediaRoutes,
+            ...UserRoutes,
+        ],
+    }),
+    messages = {
+        [currentLocale]: window.AsgardCMS.translations,
+    },
+    i18n = new VueI18n({
+        locale: currentLocale,
+        messages,
+    }),
+    app = new Vue({
+        el: '#app',
+        router,
+        i18n,
+    });
 
 window.axios.interceptors.response.use(null, (error) => {
     if (error.response === undefined) {

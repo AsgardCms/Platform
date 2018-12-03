@@ -4,13 +4,19 @@ module.exports = {
         'plugin:vue/recommended',
     ],
     rules: {
-        indent: [2, 4],
+        'indent': ['error', 4],
         'no-undef': 'off',
         'max-len': 'off',
         'no-console': 'off',
         'one-var': ['error', { 'var': 'consecutive', 'let': 'consecutive', 'const': 'consecutive' }],
         'no-plusplus': ['error', { 'allowForLoopAfterthoughts': true }],
         'quote-props': ['error', 'as-needed', { 'unnecessary': false }],
+        'object-curly-newline': ['error', {
+            'consistent': true,
+            'multiline': true,
+            'minProperties': 8,
+        }],
+        'no-param-reassign': ['error', { 'props': false }],
         'vue/html-indent': ['error', 4],
         'vue/max-attributes-per-line': ['error', {
             'singleline': 4,
