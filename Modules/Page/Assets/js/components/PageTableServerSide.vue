@@ -61,14 +61,14 @@
                                 </el-table-column>
                                 <el-table-column :label="trans('pages.title')" prop="translations.title">
                                     <template slot-scope="scope">
-                                        <a href="#" @click.prevent="goToEdit(scope)">
+                                        <a :href="editRoute(scope)" @click.prevent="goToEdit(scope)">
                                             {{ scope.row.translations.title }}
                                         </a>
                                     </template>
                                 </el-table-column>
                                 <el-table-column :label="trans('pages.slug')" prop="translations.slug">
                                     <template slot-scope="scope">
-                                        <a href="#" @click.prevent="goToEdit(scope)">
+                                        <a :href="editRoute(scope)" @click.prevent="goToEdit(scope)">
                                             {{ scope.row.translations.slug }}
                                         </a>
                                     </template>
@@ -86,14 +86,14 @@
                             </el-table>
                             <div class="pagination-wrap" style="text-align: center; padding-top: 20px;">
                                 <el-pagination
-                                        @size-change="handleSizeChange"
-                                        @current-change="handleCurrentChange"
-                                        :current-page.sync="meta.current_page"
-                                        :page-sizes="[10, 20, 30, 50, 100]"
-                                        :page-size="parseInt(meta.per_page)"
-                                        layout="total, sizes, prev, pager, next, jumper"
-                                        :total="meta.total">
-                                </el-pagination>
+                                    :current-page.sync="meta.current_page"
+                                    :page-sizes="[10, 20, 30, 50, 100]"
+                                    :page-size="parseInt(meta.per_page)"
+                                    :total="meta.total"
+                                    layout="total, sizes, prev, pager, next, jumper"
+                                    @size-change="handleSizeChange"
+                                    @current-change="handleCurrentChange"
+                                ></el-pagination>
                             </div>
                         </div>
                     </div>
@@ -110,10 +110,16 @@
     import map from 'lodash/map';
     import merge from 'lodash/merge';
     import ShortcutHelper from '../../../../Core/Assets/js/mixins/ShortcutHelper';
+    import DeleteComponent from '../../../../Core/Assets/js/components/DeleteComponent.vue';
+    import EditButtonComponent from '../../../../Core/Assets/js/components/EditButtonComponent.vue';
 
     let data;
 
     export default {
+        components: {
+            'delete-button': DeleteComponent,
+            'edit-button': EditButtonComponent,
+        },
         mixins: [ShortcutHelper],
         data() {
             return {
@@ -214,6 +220,9 @@
             },
             goToEdit(scope) {
                 this.$router.push({ name: 'admin.page.page.edit', params: { pageId: scope.row.id } });
+            },
+            editRoute(scope) {
+                return route('admin.page.page.edit', [scope.row.id]);
             },
         },
     };

@@ -5,6 +5,7 @@
         :value="value"
         :types="types"
         :config="config"
+        class="editor"
     ></textarea>
 </template>
 
@@ -12,7 +13,6 @@
     // Source: https://github.com/dangvanthanh/vue-ckeditor2
     let inc = new Date().getTime();
     export default {
-        name: 'vue-ckeditor',
         props: {
             name: {
                 type: String,
@@ -98,8 +98,9 @@
         },
     };
 </script>
+
 <style>
-    .ckeditor::after {
+    .editor::after {
         content: "";
         display: table;
         clear: both;

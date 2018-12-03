@@ -5,8 +5,7 @@ import UserForm from './components/UserForm.vue';
 import UserProfile from './components/UserProfile.vue';
 import ApiKeys from './components/ApiKeys.vue';
 
-
-const locales = window.AsgardCMS.locales;
+const { locales } = window.AsgardCMS;
 
 export default [
     // Role Routes

@@ -1,11 +1,15 @@
 <template>
     <el-form-item :label="label">
-        <el-select v-model="tags" multiple filterable allow-create remote default-first-option @change="triggerEvent">
-            <el-option v-for="tag in availableTags"
-                :key="tag.slug"
-                :label="tag.slug"
-                :value="tag.name"
-            ></el-option>
+        <el-select
+            v-model="tags"
+            multiple
+            filterable
+            allow-create
+            remote
+            default-first-option
+            @change="triggerEvent"
+        >
+            <el-option v-for="tag in availableTags" :key="tag.slug" :label="tag.slug" :value="tag.name"></el-option>
         </el-select>
     </el-form-item>
 </template>
@@ -15,9 +19,9 @@
 
     export default {
         props: {
-            namespace: { type: String },
-            label: { type: String, default: 'Tags' },
-            currentTags: { default: null },
+            namespace: { required: true, type: String },
+            label: { default: 'Tags', type: String },
+            currentTags: { default: null, type: Object },
         },
         data() {
             return {
@@ -25,13 +29,8 @@
                 availableTags: {},
             };
         },
-        methods: {
-            triggerEvent() {
-                this.$emit('input', this.tags);
-            },
-        },
         watch: {
-            currentTags: function () {
+            currentTags() {
                 if (this.currentTags !== null) {
                     this.tags = this.currentTags;
                 }
@@ -39,9 +38,14 @@
         },
         mounted() {
             axios.get(route('api.tag.tag.by-namespace', { namespace: this.namespace }))
-                .then(response => {
+                .then((response) => {
                     this.availableTags = response.data;
                 });
+        },
+        methods: {
+            triggerEvent() {
+                this.$emit('input', this.tags);
+            },
         },
     };
 </script>

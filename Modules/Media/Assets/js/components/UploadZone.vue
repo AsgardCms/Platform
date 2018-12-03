@@ -1,12 +1,12 @@
 <template>
     <el-upload
-        class="media-upload"
-        drag
         :action="uploadUrl"
-        list-type="picture"
         :show-file-list="false"
         :http-request="uploadFile"
+        list-type="picture"
+        drag
         multiple
+        class="media-upload"
     >
         <i class="el-icon-upload"></i>
         <div class="el-upload__text">Drop file here or <em>click to upload</em></div>
@@ -18,7 +18,7 @@
 
     export default {
         props: {
-            parentId: { type: Number },
+            parentId: { default: null, type: Number },
         },
         data() {
             return {
@@ -55,6 +55,7 @@
         },
     };
 </script>
+
 <style>
     .media-upload {
         margin-bottom: 10px;

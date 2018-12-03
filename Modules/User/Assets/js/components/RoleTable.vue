@@ -8,7 +8,8 @@
                 <el-breadcrumb-item>
                     <a href="/backend">{{ trans('core.breadcrumb.home') }}</a>
                 </el-breadcrumb-item>
-                <el-breadcrumb-item :to="{name: 'admin.user.roles.index'}">{{ trans('roles.title.roles') }}
+                <el-breadcrumb-item :to="{name: 'admin.user.roles.index'}">
+                    {{ trans('roles.title.roles') }}
                 </el-breadcrumb-item>
             </el-breadcrumb>
         </div>
@@ -21,48 +22,45 @@
                             <div class="tool-bar el-row" style="padding-bottom: 20px;">
                                 <div class="actions el-col el-col-8">
                                     <router-link :to="{name: 'admin.user.roles.create'}">
-                                        <el-button type="primary"><i class="el-icon-edit"></i>
+                                        <el-button type="primary">
+                                            <i class="el-icon-edit"></i>
                                             {{ trans('roles.new-role') }}
                                         </el-button>
                                     </router-link>
                                 </div>
                                 <div class="search el-col el-col-5">
-                                    <el-input prefix-icon="el-icon-search" @keyup.native="performSearch" v-model="searchQuery">
-                                    </el-input>
+                                    <el-input v-model="searchQuery" prefix-icon="el-icon-search" @keyup.native="performSearch"></el-input>
                                 </div>
                             </div>
 
                             <el-table
-                                    :data="data"
-                                    stripe
-                                    style="width: 100%"
-                                    ref="pageTable"
-                                    v-loading.body="tableIsLoading"
-                                    @sort-change="handleSortChange">
-                                <el-table-column prop="id" label="Id" width="75" sortable="custom">
-                                </el-table-column>
-                                <el-table-column prop="name" :label="trans('roles.table.name')" sortable="custom">
+                                v-loading.body="tableIsLoading"
+                                ref="pageTable"
+                                :data="data"
+                                stripe
+                                style="width: 100%"
+                                @sort-change="handleSortChange"
+                            >
+                                <el-table-column label="Id" prop="id" width="75" sortable="custom"></el-table-column>
+                                <el-table-column :label="trans('roles.table.name')" prop="name" sortable="custom">
                                     <template slot-scope="scope">
-                                        <a @click.prevent="goToEdit(scope)" href="#">
+                                        <a :href="editRoute(scope)" @click.prevent="goToEdit(scope)">
                                             {{ scope.row.name }}
                                         </a>
                                     </template>
                                 </el-table-column>
-                                <el-table-column prop="slug" :label="trans('roles.table.slug')" sortable="custom">
+                                <el-table-column :label="trans('roles.table.slug')" prop="slug" sortable="custom">
                                     <template slot-scope="scope">
-                                        <a @click.prevent="goToEdit(scope)" href="#">
+                                        <a :href="editRoute(scope)" @click.prevent="goToEdit(scope)">
                                             {{ scope.row.slug }}
                                         </a>
                                     </template>
                                 </el-table-column>
-                                <el-table-column prop="created_at" :label="trans('core.table.created at')"
-                                                 sortable="custom">
-                                </el-table-column>
-                                <el-table-column prop="actions" :label="trans('core.table.actions')">
+                                <el-table-column :label="trans('core.table.created at')" prop="created_at" sortable="custom"></el-table-column>
+                                <el-table-column :label="trans('core.table.actions')" prop="actions">
                                     <template slot-scope="scope">
                                         <el-button-group>
-                                            <edit-button
-                                                    :to="{name: 'admin.user.roles.edit', params: {roleId: scope.row.id}}"></edit-button>
+                                            <edit-button :to="{name: 'admin.user.roles.edit', params: {roleId: scope.row.id}}"></edit-button>
                                             <delete-button :scope="scope" :rows="data"></delete-button>
                                         </el-button-group>
                                     </template>
@@ -70,30 +68,37 @@
                             </el-table>
                             <div class="pagination-wrap" style="text-align: center; padding-top: 20px;">
                                 <el-pagination
-                                        @size-change="handleSizeChange"
-                                        @current-change="handleCurrentChange"
-                                        :current-page.sync="meta.current_page"
-                                        :page-sizes="[10, 20, 30, 50, 100]"
-                                        :page-size="parseInt(meta.per_page)"
-                                        layout="total, sizes, prev, pager, next, jumper"
-                                        :total="meta.total">
-                                </el-pagination>
+                                    :current-page.sync="meta.current_page"
+                                    :page-sizes="[10, 20, 30, 50, 100]"
+                                    :page-size="parseInt(meta.per_page)"
+                                    :total="meta.total"
+                                    layout="total, sizes, prev, pager, next, jumper"
+                                    @size-change="handleSizeChange"
+                                    @current-change="handleCurrentChange"
+                                ></el-pagination>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        <button v-shortkey="['c']" @shortkey="pushRoute({name: 'admin.user.roles.create'})" v-show="false"></button>
+        <button v-shortkey="['c']" v-show="false" @shortkey="pushRoute({name: 'admin.user.roles.create'})"></button>
     </div>
 </template>
 
 <script>
     import axios from 'axios';
-    import _ from 'lodash';
+    import debounce from 'lodash/debounce';
+    import merge from 'lodash/merge';
     import ShortcutHelper from '../../../../Core/Assets/js/mixins/ShortcutHelper';
+    import DeleteComponent from '../../../../Core/Assets/js/components/DeleteComponent.vue';
+    import EditButtonComponent from '../../../../Core/Assets/js/components/EditButtonComponent.vue';
 
     export default {
+        components: {
+            'delete-button': DeleteComponent,
+            'edit-button': EditButtonComponent,
+        },
         mixins: [ShortcutHelper],
         data() {
             return {
@@ -111,6 +116,9 @@
                 tableIsLoading: false,
             };
         },
+        mounted() {
+            this.fetchData();
+        },
         methods: {
             queryServer(customProperties) {
                 const properties = {
@@ -121,7 +129,7 @@
                     search: this.searchQuery,
                 };
 
-                axios.get(route('api.user.role.index', _.merge(properties, customProperties)))
+                axios.get(route('api.user.role.index', merge(properties, customProperties)))
                     .then((response) => {
                         this.tableIsLoading = false;
                         this.data = response.data.data;
@@ -151,7 +159,7 @@
                 this.tableIsLoading = true;
                 this.queryServer({ order_by: event.prop, order: event.order });
             },
-            performSearch: _.debounce(function (query) {
+            performSearch: debounce(function (query) {
                 console.log(`searching:${query.target.value}`);
                 this.tableIsLoading = true;
                 this.queryServer({ search: query.target.value });
@@ -159,9 +167,9 @@
             goToEdit(scope) {
                 this.$router.push({ name: 'admin.user.roles.edit', params: { roleId: scope.row.id } });
             },
-        },
-        mounted() {
-            this.fetchData();
+            editRoute(scope) {
+                return route('admin.user.roles.edit', [scope.row.id]);
+            },
         },
     };
 </script>

@@ -155,9 +155,15 @@
     import Slugify from '../../../../Core/Assets/js/mixins/Slugify';
     import ShortcutHelper from '../../../../Core/Assets/js/mixins/ShortcutHelper';
     import ActiveEditor from '../../../../Core/Assets/js/mixins/ActiveEditor';
+    import SingleMedia from '../../../../Media/Assets/js/components/SingleMedia.vue';
     import SingleFileSelector from '../../../../Media/Assets/js/mixins/SingleFileSelector';
+    import TagsInput from '../../../../Tag/Assets/js/components/TagInput.vue';
 
     export default {
+        components: {
+            'single-media': SingleMedia,
+            'tags-input': TagsInput,
+        },
         mixins: [Slugify, ShortcutHelper, ActiveEditor, SingleFileSelector],
         props: {
             locales: { default: null, type: Object },

@@ -2,7 +2,7 @@ import MediaManager from './components/MediaManager.vue';
 import MediaList from './components/MediaList.vue';
 import MediaForm from './components/MediaForm.vue';
 
-const locales = window.AsgardCMS.locales;
+const { locales } = window.AsgardCMS;
 
 export default [
     {

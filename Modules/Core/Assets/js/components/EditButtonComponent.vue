@@ -5,7 +5,7 @@
 <script>
     export default {
         props: {
-            to: { type: Object, required: true },
+            to: { required: true, type: Object },
         },
         methods: {
             goToEditPage() {
