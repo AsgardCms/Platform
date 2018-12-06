@@ -64,8 +64,9 @@
                     </div>
                 </div>
                 <div class="col-md-4">
-                    <img v-if="media.is_image" :src="media.path" alt="" style="width: 100%;">
-                    <i v-else class="fa fa-file" style="font-size: 50px;"></i>
+                    <img v-if="media.is_image" key="image" :src="media.path" alt="" style="width: 100%;">
+                    <i v-else-if="media.is_folder" key="folder" class="fa fa-folder" style="font-size: 50px;"></i>
+                    <i v-else key="faIcon" :class="`fa ${media.fa_icon}`" style="font-size: 50px;"></i>
                 </div>
             </div>
         </el-form>
@@ -106,7 +107,21 @@
                         keywords: '',
                     }])
                     .fromPairs()
-                    // .merge({template: 'default', is_home: 0, medias_single: []})
+                    .merge({
+                        id: '',
+                        filename: '',
+                        path: '',
+                        is_image: '',
+                        is_folder: '',
+                        media_type: '',
+                        fa_icon: '',
+                        created_at: '',
+                        folder_id: '',
+                        small_thumb: '',
+                        medium_thumb: '',
+                        urls: [],
+                        thumbnails: [],
+                    })
                     .value(),
                 form: new Form(),
                 loading: false,

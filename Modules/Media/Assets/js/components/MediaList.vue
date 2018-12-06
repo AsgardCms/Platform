@@ -63,9 +63,9 @@
                             <el-table-column type="selection" width="55"></el-table-column>
                             <el-table-column label="" width="150">
                                 <template slot-scope="scope">
-                                    <img v-if="scope.row.is_image" :src="scope.row.small_thumb" alt="">
-                                    <i v-else-if="scope.row.is_folder" class="fa fa-folder" style="font-size: 38px;"></i>
-                                    <i v-else :class="`fa ${scope.row.fa_icon}`" style="font-size: 38px;"></i>
+                                    <img v-if="scope.row.is_image" key="image" :src="scope.row.small_thumb" alt="">
+                                    <i v-else-if="scope.row.is_folder" key="folder" class="fa fa-folder" style="font-size: 38px;"></i>
+                                    <i v-else key="faIcon" :class="`fa ${scope.row.fa_icon}`" style="font-size: 38px;"></i>
                                 </template>
                             </el-table-column>
                             <el-table-column :label="trans('media.table.filename')" prop="filename" sortable="custom">
@@ -164,6 +164,9 @@
                 canEditFolders: true,
             };
         },
+        watch: {
+            '$route': 'fetchMediaData',
+        },
         mounted() {
             if (window.AsgardCMS.filesystem === 's3') {
                 this.canEditFolders = false;
@@ -210,12 +213,14 @@
             },
             fetchMediaData() {
                 this.tableIsLoading = true;
+                this.meta.current_page = 1;
                 if (this.$route.query.folder_id !== undefined) {
                     this.queryServer({ folder_id: this.$route.query.folder_id });
                     this.fetchFolderBreadcrumb(this.$route.query.folder_id);
                     return;
                 }
                 this.queryServer();
+                this.fetchFolderBreadcrumb(0);
             },
             fetchFolderBreadcrumb(folderId) {
                 if (folderId === 0) {
@@ -255,10 +260,8 @@
             }, 300),
             enterFolder(scope) {
                 this.tableIsLoading = true;
-                this.queryServer({ folder_id: scope.row.id });
                 this.folderId = scope.row.id;
                 this.$router.push({ query: { folder_id: scope.row.id } });
-                this.fetchFolderBreadcrumb(scope.row.id);
             },
             insertMedia(scope) {
                 this.$events.emit(this.eventName, scope.row);
@@ -277,15 +280,12 @@
             },
             changeRoot(folderId) {
                 this.tableIsLoading = true;
-                this.queryServer({ folder_id: folderId });
                 this.folderId = folderId;
                 if (folderId === 0) {
                     this.$router.push({ query: {} });
                 } else {
                     this.$router.push({ query: { folder_id: folderId } });
                 }
-
-                this.fetchFolderBreadcrumb(folderId);
             },
             batchDelete() {
                 this.$confirm(this.trans('core.modal.confirmation-message'), this.trans('core.modal.title'), {
@@ -305,7 +305,7 @@
                                 });
                                 this.filesAreDeleting = false;
                                 this.$refs.mediaTable.clearSelection();
-                                this.queryServer();
+                                this.fetchMediaData();
                             });
                     })
                     .catch(() => {
