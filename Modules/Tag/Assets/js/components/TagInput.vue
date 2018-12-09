@@ -21,7 +21,7 @@
         props: {
             namespace: { required: true, type: String },
             label: { default: 'Tags', type: String },
-            currentTags: { default: null, type: Object },
+            currentTags: { default: null, type: Array },
         },
         data() {
             return {

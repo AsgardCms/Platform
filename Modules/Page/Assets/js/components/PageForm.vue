@@ -134,7 +134,7 @@
                             </el-form-item>
                             <tags-input v-model="tags" :current-tags="tags" namespace="asgardcms/page"></tags-input>
                             <single-media
-                                :entity-id="$route.params.pageId"
+                                :entity-id="page.id"
                                 zone="image"
                                 entity="Modules\Page\Entities\Page"
                                 @single-file-selected="selectSingleFile($event, 'page')"
