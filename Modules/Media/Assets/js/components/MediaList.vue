@@ -24,19 +24,15 @@
                         <div class="tool-bar el-row" style="padding-bottom: 20px;">
                             <div class="actions el-col el-col-19">
                                 <new-folder :parent-id="folderId"></new-folder>
-                                <div style="margin: 0 15px;">
-                                    <el-button type="primary" @click="toggleUploadZone">
-                                        {{ trans('media.upload file') }}
-                                    </el-button>
-                                </div>
-                                <el-button-group>
-                                    <el-button :disabled="selectedMedia.length === 0" type="warning" @click="showMoveMedia">
-                                        {{ trans('core.move') }}
-                                    </el-button>
-                                    <el-button :disabled="selectedMedia.length === 0" :loading="filesAreDeleting" type="danger" @click.prevent="batchDelete">
-                                        {{ trans('core.button.delete') }}
-                                    </el-button> 
-                                </div>
+                                <el-button type="primary" @click="toggleUploadZone">
+                                    {{ trans('media.upload file') }}
+                                </el-button>
+                                <el-button :disabled="selectedMedia.length === 0" type="warning" @click="showMoveMedia">
+                                    {{ trans('core.move') }}
+                                </el-button>
+                                <el-button :disabled="selectedMedia.length === 0" :loading="filesAreDeleting" type="danger" @click.prevent="batchDelete">
+                                    {{ trans('core.button.delete') }}
+                                </el-button>
                             </div>
                             <div class="search el-col el-col-5">
                                 <el-input v-model="searchQuery" prefix-icon="el-icon-search" @keyup.native="performSearch"></el-input>
