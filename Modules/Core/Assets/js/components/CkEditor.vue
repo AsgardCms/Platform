@@ -12,6 +12,7 @@
 <script>
     // Source: https://github.com/dangvanthanh/vue-ckeditor2
     let inc = new Date().getTime();
+
     export default {
         props: {
             name: {

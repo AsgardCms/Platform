@@ -91,9 +91,7 @@
     import TagsInput from '../../../../Tag/Assets/js/components/TagInput.vue';
 
     export default {
-        components: {
-            'tags-input': TagsInput,
-        },
+        components: { TagsInput },
         props: {
             locales: { default: null, type: Object },
         },

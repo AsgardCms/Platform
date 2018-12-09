@@ -80,9 +80,7 @@
     import AsgardPermissions from './AsgardPermissions.vue';
 
     export default {
-        components: {
-            'asgard-permissions': AsgardPermissions,
-        },
+        components: { AsgardPermissions },
         mixins: [Slugify, ShortcutHelper],
         props: {
             locales: { default: null, type: Object },

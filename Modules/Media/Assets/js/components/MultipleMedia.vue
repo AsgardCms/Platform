@@ -39,10 +39,7 @@
     import StringHelpers from '../../../../Core/Assets/js/mixins/StringHelpers';
 
     export default {
-        components: {
-            'media-list': MediaList,
-            'upload-zone': UploadZone,
-        },
+        components: { MediaList, UploadZone },
         mixins: [StringHelpers, RandomString],
         props: {
             zone: { required: true, type: String },

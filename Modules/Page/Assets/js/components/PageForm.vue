@@ -160,10 +160,7 @@
     import TagsInput from '../../../../Tag/Assets/js/components/TagInput.vue';
 
     export default {
-        components: {
-            'single-media': SingleMedia,
-            'tags-input': TagsInput,
-        },
+        components: { SingleMedia, TagsInput },
         mixins: [Slugify, ShortcutHelper, ActiveEditor, SingleFileSelector],
         props: {
             locales: { default: null, type: Object },

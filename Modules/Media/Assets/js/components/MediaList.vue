@@ -124,18 +124,15 @@
     import axios from 'axios';
     import debounce from 'lodash/debounce';
     import merge from 'lodash/merge';
-    import MoveMediaDialog from './MoveMediaDialog.vue';
+    import MoveDialog from './MoveMediaDialog.vue';
     import NewFolder from './NewFolder.vue';
     import RenameFolder from './RenameFolder.vue';
     import UploadZone from './UploadZone.vue';
+    import DeleteButton from '../../../../Core/Assets/js/components/DeleteComponent.vue';
+    import EditButton from '../../../../Core/Assets/js/components/EditButtonComponent.vue';
 
     export default {
-        components: {
-            'move-dialog': MoveMediaDialog,
-            'new-folder': NewFolder,
-            'rename-folder': RenameFolder,
-            'upload-zone': UploadZone,
-        },
+        components: { MoveDialog, NewFolder, RenameFolder, UploadZone, DeleteButton, EditButton },
         props: {
             singleModal: { default: false, type: Boolean },
             eventName: { default: null, type: String },

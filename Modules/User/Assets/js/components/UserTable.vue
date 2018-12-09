@@ -100,14 +100,11 @@
     import debounce from 'lodash/debounce';
     import merge from 'lodash/merge';
     import ShortcutHelper from '../../../../Core/Assets/js/mixins/ShortcutHelper';
-    import DeleteComponent from '../../../../Core/Assets/js/components/DeleteComponent.vue';
-    import EditButtonComponent from '../../../../Core/Assets/js/components/EditButtonComponent.vue';
+    import DeleteButton from '../../../../Core/Assets/js/components/DeleteComponent.vue';
+    import EditButton from '../../../../Core/Assets/js/components/EditButtonComponent.vue';
 
     export default {
-        components: {
-            'delete-button': DeleteComponent,
-            'edit-button': EditButtonComponent,
-        },
+        components: { DeleteButton, EditButton },
         mixins: [ShortcutHelper],
         data() {
             return {

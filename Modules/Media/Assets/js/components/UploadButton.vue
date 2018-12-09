@@ -31,6 +31,7 @@
             },
             requestHeaders() {
                 const userApiToken = document.head.querySelector('meta[name="user-api-token"]');
+
                 return {
                     Authorization: `Bearer ${userApiToken.content}`,
                 };
