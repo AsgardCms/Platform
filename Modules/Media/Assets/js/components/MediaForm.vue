@@ -117,7 +117,8 @@
                         folder_id: '',
                         small_thumb: '',
                         medium_thumb: '',
-                        urls: [],
+                        tags: [],
+                        urls: {},
                         thumbnails: [],
                     })
                     .value(),
