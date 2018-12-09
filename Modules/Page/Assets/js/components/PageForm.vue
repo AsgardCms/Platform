@@ -132,7 +132,7 @@
                                 </el-select>
                                 <div v-if="form.errors.has('template')" class="el-form-item__error" v-text="form.errors.first('template')"></div>
                             </el-form-item>
-                            <tags-input v-model="tags" :current-tags="tags" namespace="asgardcms/page"></tags-input>
+                            <tags-input v-model="page.tags" :current-tags="page.tags" namespace="asgardcms/page"></tags-input>
                             <single-media
                                 :entity-id="page.id"
                                 zone="image"
@@ -150,7 +150,6 @@
 
 <script>
     import axios from 'axios';
-    import merge from 'lodash/merge';
     import Form from 'form-backend-validation';
     import Slugify from '../../../../Core/Assets/js/mixins/Slugify';
     import ShortcutHelper from '../../../../Core/Assets/js/mixins/ShortcutHelper';
@@ -181,9 +180,8 @@
                         og_type: '',
                     }])
                     .fromPairs()
-                    .merge({ template: 'default', is_home: 0, medias_single: [] })
+                    .merge({ id: null, template: 'default', is_home: 0, tags: [], urls: {} })
                     .value(),
-
                 templates: {
                     index: 'index',
                     home: 'home',
@@ -191,7 +189,6 @@
                 },
                 form: new Form(),
                 loading: false,
-                tags: {},
                 activeTab: window.AsgardCMS.currentLocale || 'en',
             };
         },
@@ -207,7 +204,7 @@
         },
         methods: {
             onSubmit() {
-                this.form = new Form(merge(this.page, { tags: this.tags }));
+                this.form = new Form(this.page);
                 this.loading = true;
 
                 this.form.post(this.getRoute())
@@ -246,7 +243,6 @@
                     .then((response) => {
                         this.loading = false;
                         this.page = response.data.data;
-                        this.tags = response.data.data.tags;
                         $('.publicUrl').attr('href', this.page.urls.public_url).show();
                     });
             },
