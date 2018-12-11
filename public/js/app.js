@@ -8627,20 +8627,22 @@ var render = function() {
                                 {
                                   model: {
                                     value:
-                                      _vm.permissions["" + subPermissionTitle][
-                                        "" + permissionAction
+                                      _vm.permissions[
+                                        subPermissionTitle +
+                                          "." +
+                                          permissionAction
                                       ],
                                     callback: function($$v) {
                                       _vm.$set(
-                                        _vm.permissions[
-                                          "" + subPermissionTitle
-                                        ],
-                                        "" + permissionAction,
+                                        _vm.permissions,
+                                        subPermissionTitle +
+                                          "." +
+                                          permissionAction,
                                         $$v
                                       )
                                     },
                                     expression:
-                                      "permissions[`${subPermissionTitle}`][`${permissionAction}`]"
+                                      "permissions[`${subPermissionTitle}.${permissionAction}`]"
                                   }
                                 },
                                 [
@@ -10894,7 +10896,7 @@ vue__WEBPACK_IMPORTED_MODULE_1___default.a.use(vue_simplemde__WEBPACK_IMPORTED_M
 
 __webpack_require__(/*! ./mixins */ "./resources/assets/js/mixins.js");
 
-vue__WEBPACK_IMPORTED_MODULE_1___default.a.component('ckeditor', __webpack_require__(/*! ../../../Modules/Core/Assets/js/components/CkEditor.vue */ "./Modules/Core/Assets/js/components/CkEditor.vue"));
+vue__WEBPACK_IMPORTED_MODULE_1___default.a.component('ckeditor', __webpack_require__(/*! ../../../Modules/Core/Assets/js/components/CkEditor.vue */ "./Modules/Core/Assets/js/components/CkEditor.vue").default);
 var _window$AsgardCMS = window.AsgardCMS,
     currentLocale = _window$AsgardCMS.currentLocale,
     adminPrefix = _window$AsgardCMS.adminPrefix;
