@@ -18,7 +18,7 @@ class FullRoleTransformer extends Resource
             'slug' => $this->resource->slug,
             'created_at' => $this->resource->created_at,
             'permissions' => $permissions,
-            'users' => UserTransformer::collection($this->resource->whenLoaded('users')),
+            'users' => UserTransformer::collection($this->whenLoaded('users')),
             'urls' => [],
         ];
         if ($this->resource->id) {
