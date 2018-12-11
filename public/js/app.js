@@ -1335,11 +1335,11 @@ var locales = window.AsgardCMS.locales;
 /* harmony default export */ __webpack_exports__["default"] = ([// Role Routes
 {
   path: '/user/roles',
-  name: 'admin.user.roles.index',
+  name: 'admin.user.role.index',
   component: _components_RoleTable_vue__WEBPACK_IMPORTED_MODULE_0__["default"]
 }, {
   path: '/user/roles/create',
-  name: 'admin.user.roles.create',
+  name: 'admin.user.role.create',
   component: _components_RoleForm_vue__WEBPACK_IMPORTED_MODULE_1__["default"],
   props: {
     locales: locales,
@@ -1347,7 +1347,7 @@ var locales = window.AsgardCMS.locales;
   }
 }, {
   path: '/user/roles/:roleId/edit',
-  name: 'admin.user.roles.edit',
+  name: 'admin.user.role.edit',
   component: _components_RoleForm_vue__WEBPACK_IMPORTED_MODULE_1__["default"],
   props: {
     locales: locales,
@@ -1356,11 +1356,11 @@ var locales = window.AsgardCMS.locales;
 }, // User Routes
 {
   path: '/user/users',
-  name: 'admin.user.users.index',
+  name: 'admin.user.user.index',
   component: _components_UserTable_vue__WEBPACK_IMPORTED_MODULE_2__["default"]
 }, {
   path: '/user/users/create',
-  name: 'admin.user.users.create',
+  name: 'admin.user.user.create',
   component: _components_UserForm_vue__WEBPACK_IMPORTED_MODULE_3__["default"],
   props: {
     locales: locales,
@@ -1368,7 +1368,7 @@ var locales = window.AsgardCMS.locales;
   }
 }, {
   path: '/user/users/:userId/edit',
-  name: 'admin.user.users.edit',
+  name: 'admin.user.user.edit',
   component: _components_UserForm_vue__WEBPACK_IMPORTED_MODULE_3__["default"],
   props: {
     locales: locales,
@@ -1377,11 +1377,11 @@ var locales = window.AsgardCMS.locales;
 }, // Account routes
 {
   path: '/account/profile',
-  name: 'admin.user.users.account',
+  name: 'admin.user.user.account',
   component: _components_UserProfile_vue__WEBPACK_IMPORTED_MODULE_4__["default"]
 }, {
   path: '/account/api-keys',
-  name: 'admin.user.users.account.api-keys',
+  name: 'admin.user.user.account.api-keys',
   component: _components_ApiKeys_vue__WEBPACK_IMPORTED_MODULE_5__["default"]
 }]);
 
@@ -4310,7 +4310,7 @@ __webpack_require__.r(__webpack_exports__);
         });
 
         _this.$router.push({
-          name: 'admin.user.roles.index'
+          name: 'admin.user.role.index'
         });
       }).catch(function (error) {
         console.log(error);
@@ -4324,7 +4324,7 @@ __webpack_require__.r(__webpack_exports__);
     },
     onCancel: function onCancel() {
       this.$router.push({
-        name: 'admin.user.roles.index'
+        name: 'admin.user.role.index'
       });
     },
     generateSlug: function generateSlug() {
@@ -4555,14 +4555,14 @@ __webpack_require__.r(__webpack_exports__);
     }, 300),
     goToEdit: function goToEdit(scope) {
       this.$router.push({
-        name: 'admin.user.roles.edit',
+        name: 'admin.user.role.edit',
         params: {
           roleId: scope.row.id
         }
       });
     },
     editRoute: function editRoute(scope) {
-      return route('admin.user.roles.edit', [scope.row.id]);
+      return route('admin.user.role.edit', [scope.row.id]);
     }
   }
 });
@@ -4758,7 +4758,7 @@ __webpack_require__.r(__webpack_exports__);
         });
 
         _this.$router.push({
-          name: 'admin.user.users.index'
+          name: 'admin.user.user.index'
         });
       }).catch(function (error) {
         console.log(error);
@@ -4772,7 +4772,7 @@ __webpack_require__.r(__webpack_exports__);
     },
     onCancel: function onCancel() {
       this.$router.push({
-        name: 'admin.user.users.index'
+        name: 'admin.user.user.index'
       });
     },
     fetchUser: function fetchUser() {
@@ -5179,14 +5179,14 @@ __webpack_require__.r(__webpack_exports__);
     }, 300),
     goToEdit: function goToEdit(scope) {
       this.$router.push({
-        name: 'admin.user.users.edit',
+        name: 'admin.user.user.edit',
         params: {
           userId: scope.row.id
         }
       });
     },
     editRoute: function editRoute(scope) {
-      return route('admin.user.users.edit', [scope.row.id]);
+      return route('admin.user.user.edit', [scope.row.id]);
     }
   }
 });
@@ -8302,7 +8302,7 @@ var render = function() {
             _vm._v(" "),
             _c(
               "el-breadcrumb-item",
-              { attrs: { to: { name: "admin.user.users.account.api-keys" } } },
+              { attrs: { to: { name: "admin.user.user.account.api-keys" } } },
               [_vm._v(_vm._s(_vm.trans("users.api-keys")) + "\n            ")]
             )
           ],
@@ -8747,7 +8747,7 @@ var render = function() {
               _vm._v(" "),
               _c(
                 "el-breadcrumb-item",
-                { attrs: { to: { name: "admin.user.roles.index" } } },
+                { attrs: { to: { name: "admin.user.role.index" } } },
                 [
                   _vm._v(
                     "\n                " +
@@ -8759,7 +8759,7 @@ var render = function() {
               _vm._v(" "),
               _c(
                 "el-breadcrumb-item",
-                { attrs: { to: { name: "admin.user.roles.create" } } },
+                { attrs: { to: { name: "admin.user.role.create" } } },
                 [
                   _vm._v(
                     "\n                " +
@@ -9025,7 +9025,7 @@ var render = function() {
         ],
         on: {
           shortkey: function($event) {
-            _vm.pushRoute({ name: "admin.user.roles.index" })
+            _vm.pushRoute({ name: "admin.user.role.index" })
           }
         }
       })
@@ -9080,7 +9080,7 @@ var render = function() {
             _vm._v(" "),
             _c(
               "el-breadcrumb-item",
-              { attrs: { to: { name: "admin.user.roles.index" } } },
+              { attrs: { to: { name: "admin.user.role.index" } } },
               [
                 _vm._v(
                   "\n                " +
@@ -9117,9 +9117,7 @@ var render = function() {
                       [
                         _c(
                           "router-link",
-                          {
-                            attrs: { to: { name: "admin.user.roles.create" } }
-                          },
+                          { attrs: { to: { name: "admin.user.role.create" } } },
                           [
                             _c("el-button", { attrs: { type: "primary" } }, [
                               _c("i", { staticClass: "el-icon-edit" }),
@@ -9284,7 +9282,7 @@ var render = function() {
                                   _c("edit-button", {
                                     attrs: {
                                       to: {
-                                        name: "admin.user.roles.edit",
+                                        name: "admin.user.role.edit",
                                         params: { roleId: scope.row.id }
                                       }
                                     }
@@ -9354,7 +9352,7 @@ var render = function() {
       ],
       on: {
         shortkey: function($event) {
-          _vm.pushRoute({ name: "admin.user.roles.create" })
+          _vm.pushRoute({ name: "admin.user.role.create" })
         }
       }
     })
@@ -9414,7 +9412,7 @@ var render = function() {
               _vm._v(" "),
               _c(
                 "el-breadcrumb-item",
-                { attrs: { to: { name: "admin.user.users.index" } } },
+                { attrs: { to: { name: "admin.user.user.index" } } },
                 [
                   _vm._v(
                     "\n                " +
@@ -9426,7 +9424,7 @@ var render = function() {
               _vm._v(" "),
               _c(
                 "el-breadcrumb-item",
-                { attrs: { to: { name: "admin.user.users.create" } } },
+                { attrs: { to: { name: "admin.user.user.create" } } },
                 [
                   _vm._v(
                     "\n                " +
@@ -10076,7 +10074,7 @@ var render = function() {
         ],
         on: {
           shortkey: function($event) {
-            _vm.pushRoute({ name: "admin.user.users.index" })
+            _vm.pushRoute({ name: "admin.user.user.index" })
           }
         }
       })
@@ -10133,7 +10131,7 @@ var render = function() {
               _vm._v(" "),
               _c(
                 "el-breadcrumb-item",
-                { attrs: { to: { name: "admin.user.users.account" } } },
+                { attrs: { to: { name: "admin.user.user.account" } } },
                 [
                   _vm._v(
                     "\n                " +
@@ -10513,7 +10511,7 @@ var render = function() {
             _vm._v(" "),
             _c(
               "el-breadcrumb-item",
-              { attrs: { to: { name: "admin.user.users.index" } } },
+              { attrs: { to: { name: "admin.user.user.index" } } },
               [
                 _vm._v(
                   "\n                " +
@@ -10550,9 +10548,7 @@ var render = function() {
                       [
                         _c(
                           "router-link",
-                          {
-                            attrs: { to: { name: "admin.user.users.create" } }
-                          },
+                          { attrs: { to: { name: "admin.user.user.create" } } },
                           [
                             _c("el-button", { attrs: { type: "primary" } }, [
                               _c("i", { staticClass: "el-icon-edit" }),
@@ -10753,7 +10749,7 @@ var render = function() {
                                   _c("edit-button", {
                                     attrs: {
                                       to: {
-                                        name: "admin.user.users.edit",
+                                        name: "admin.user.user.edit",
                                         params: { userId: scope.row.id }
                                       }
                                     }
@@ -10823,7 +10819,7 @@ var render = function() {
       ],
       on: {
         shortkey: function($event) {
-          _vm.pushRoute({ name: "admin.user.users.create" })
+          _vm.pushRoute({ name: "admin.user.user.create" })
         }
       }
     })

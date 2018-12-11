@@ -9,10 +9,10 @@
                 <el-breadcrumb-item>
                     <a href="/backend">{{ trans('core.breadcrumb.home') }}</a>
                 </el-breadcrumb-item>
-                <el-breadcrumb-item :to="{name: 'admin.user.users.index'}">
+                <el-breadcrumb-item :to="{name: 'admin.user.user.index'}">
                     {{ trans('users.title.users') }}
                 </el-breadcrumb-item>
-                <el-breadcrumb-item :to="{name: 'admin.user.users.create'}">
+                <el-breadcrumb-item :to="{name: 'admin.user.user.create'}">
                     {{ trans(`users.${pageTitle}`) }}
                 </el-breadcrumb-item>
             </el-breadcrumb>
@@ -114,7 +114,7 @@
                 </div>
             </div>
         </el-form>
-        <button v-shortkey="['b']" v-show="false" @shortkey="pushRoute({name: 'admin.user.users.index'})"></button>
+        <button v-shortkey="['b']" v-show="false" @shortkey="pushRoute({name: 'admin.user.user.index'})"></button>
     </div>
 </template>
 
@@ -163,7 +163,7 @@
                             type: 'success',
                             message: response.message,
                         });
-                        this.$router.push({ name: 'admin.user.users.index' });
+                        this.$router.push({ name: 'admin.user.user.index' });
                     })
                     .catch((error) => {
                         console.log(error);
@@ -175,7 +175,7 @@
                     });
             },
             onCancel() {
-                this.$router.push({ name: 'admin.user.users.index' });
+                this.$router.push({ name: 'admin.user.user.index' });
             },
             fetchUser() {
                 this.loading = true;

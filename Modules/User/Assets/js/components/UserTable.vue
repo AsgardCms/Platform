@@ -8,7 +8,7 @@
                 <el-breadcrumb-item>
                     <a href="/backend">{{ trans('core.breadcrumb.home') }}</a>
                 </el-breadcrumb-item>
-                <el-breadcrumb-item :to="{name: 'admin.user.users.index'}">
+                <el-breadcrumb-item :to="{name: 'admin.user.user.index'}">
                     {{ trans('users.title.users') }}
                 </el-breadcrumb-item>
             </el-breadcrumb>
@@ -21,7 +21,7 @@
                         <div class="sc-table">
                             <div class="tool-bar el-row" style="padding-bottom: 20px;">
                                 <div class="actions el-col el-col-8">
-                                    <router-link :to="{name: 'admin.user.users.create'}">
+                                    <router-link :to="{name: 'admin.user.user.create'}">
                                         <el-button type="primary">
                                             <i class="el-icon-edit"></i>
                                             {{ trans('users.button.new-user') }}
@@ -69,7 +69,7 @@
                                 <el-table-column :label="trans('core.table.actions')" prop="actions">
                                     <template slot-scope="scope">
                                         <el-button-group>
-                                            <edit-button :to="{name: 'admin.user.users.edit', params: {userId: scope.row.id}}"></edit-button>
+                                            <edit-button :to="{name: 'admin.user.user.edit', params: {userId: scope.row.id}}"></edit-button>
                                             <delete-button :scope="scope" :rows="data"></delete-button>
                                         </el-button-group>
                                     </template>
@@ -91,7 +91,7 @@
                 </div>
             </div>
         </div>
-        <button v-shortkey="['c']" v-show="false" @shortkey="pushRoute({name: 'admin.user.users.create'})"></button>
+        <button v-shortkey="['c']" v-show="false" @shortkey="pushRoute({name: 'admin.user.user.create'})"></button>
     </div>
 </template>
 
@@ -171,10 +171,10 @@
                 this.queryServer({ search: query.target.value });
             }, 300),
             goToEdit(scope) {
-                this.$router.push({ name: 'admin.user.users.edit', params: { userId: scope.row.id } });
+                this.$router.push({ name: 'admin.user.user.edit', params: { userId: scope.row.id } });
             },
             editRoute(scope) {
-                return route('admin.user.users.edit', [scope.row.id]);
+                return route('admin.user.user.edit', [scope.row.id]);
             },
         },
     };

@@ -9,10 +9,10 @@
                 <el-breadcrumb-item>
                     <a href="/backend">{{ trans('core.breadcrumb.home') }}</a>
                 </el-breadcrumb-item>
-                <el-breadcrumb-item :to="{name: 'admin.user.roles.index'}">
+                <el-breadcrumb-item :to="{name: 'admin.user.role.index'}">
                     {{ trans('roles.title.roles') }}
                 </el-breadcrumb-item>
-                <el-breadcrumb-item :to="{name: 'admin.user.roles.create'}">
+                <el-breadcrumb-item :to="{name: 'admin.user.role.create'}">
                     {{ trans(`roles.${pageTitle}`) }}
                 </el-breadcrumb-item>
             </el-breadcrumb>
@@ -68,7 +68,7 @@
                 </div>
             </div>
         </el-form>
-        <button v-shortkey="['b']" v-show="false" @shortkey="pushRoute({name: 'admin.user.roles.index'})"></button>
+        <button v-shortkey="['b']" v-show="false" @shortkey="pushRoute({name: 'admin.user.role.index'})"></button>
     </div>
 </template>
 
@@ -113,7 +113,7 @@
                             type: 'success',
                             message: response.message,
                         });
-                        this.$router.push({ name: 'admin.user.roles.index' });
+                        this.$router.push({ name: 'admin.user.role.index' });
                     })
                     .catch((error) => {
                         console.log(error);
@@ -125,7 +125,7 @@
                     });
             },
             onCancel() {
-                this.$router.push({ name: 'admin.user.roles.index' });
+                this.$router.push({ name: 'admin.user.role.index' });
             },
             generateSlug() {
                 this.role.slug = this.slugify(this.role.name);
