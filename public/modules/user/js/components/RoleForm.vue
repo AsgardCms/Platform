@@ -2,50 +2,49 @@
     <div>
         <div class="content-header">
             <h1>
-                {{ trans(`roles.${pageTitle}`) }} <small>{{ role.name }}</small>
+                {{ trans(`roles.${pageTitle}`) }}
+                <small>{{ role.name }}</small>
             </h1>
             <el-breadcrumb separator="/">
                 <el-breadcrumb-item>
                     <a href="/backend">{{ trans('core.breadcrumb.home') }}</a>
                 </el-breadcrumb-item>
-                <el-breadcrumb-item :to="{name: 'admin.user.roles.index'}">{{ trans('roles.title.roles') }}
+                <el-breadcrumb-item :to="{name: 'admin.user.role.index'}">
+                    {{ trans('roles.title.roles') }}
                 </el-breadcrumb-item>
-                <el-breadcrumb-item :to="{name: 'admin.user.roles.create'}">{{ trans(`roles.${pageTitle}`) }}
+                <el-breadcrumb-item :to="{name: 'admin.user.role.create'}">
+                    {{ trans(`roles.${pageTitle}`) }}
                 </el-breadcrumb-item>
             </el-breadcrumb>
         </div>
-        <el-form ref="form"
-                 :model="role"
-                 label-width="120px"
-                 label-position="top"
-                 v-loading.body="loading"
-                 @keydown="form.errors.clear($event.target.name);">
+        <el-form
+            v-loading.body="loading"
+            ref="form"
+            :model="role"
+            label-width="120px"
+            label-position="top"
+            @keydown="form.errors.clear($event.target.name)"
+        >
             <div class="row">
                 <div class="col-md-12">
                     <div class="box box-primary">
                         <div class="box-body">
                             <el-tabs>
                                 <el-tab-pane :label="trans('roles.tabs.data')">
-                                    <el-form-item :label="trans('roles.form.name')"
-                                                  :class="{'el-form-item is-error': form.errors.has('name') }">
+                                    <el-form-item :label="trans('roles.form.name')" :class="{'el-form-item is-error': form.errors.has('name') }">
                                         <el-input v-model="role.name"></el-input>
-                                        <div class="el-form-item__error" v-if="form.errors.has('name')"
-                                             v-text="form.errors.first('name')"></div>
+                                        <div v-if="form.errors.has('name')" class="el-form-item__error" v-text="form.errors.first('name')"></div>
                                     </el-form-item>
 
-                                    <el-form-item :label="trans('roles.form.slug')"
-                                                  :class="{'el-form-item is-error': form.errors.has('slug') }">
+                                    <el-form-item :label="trans('roles.form.slug')" :class="{'el-form-item is-error': form.errors.has('slug') }">
                                         <el-input v-model="role.slug">
                                             <el-button slot-scope="prepend" @click="generateSlug">Generate</el-button>
                                         </el-input>
-                                        <div class="el-form-item__error" v-if="form.errors.has('slug')"
-                                             v-text="form.errors.first('slug')"></div>
+                                        <div v-if="form.errors.has('slug')" class="el-form-item__error" v-text="form.errors.first('slug')"></div>
                                     </el-form-item>
                                 </el-tab-pane>
                                 <el-tab-pane :label="trans('roles.tabs.permissions')">
-                                    <asgard-permissions v-model="role.permissions"
-                                                        is-role
-                                                        :current-permissions="role.permissions"></asgard-permissions>
+                                    <asgard-permissions v-model="role.permissions" :current-permissions="role.permissions" is-role></asgard-permissions>
                                 </el-tab-pane>
                                 <el-tab-pane :label="trans('users.title.users')">
                                     <h3>{{ trans('roles.title.users-with-roles') }}</h3>
@@ -57,10 +56,11 @@
                         </div>
                         <div class="box-footer">
                             <el-form-item>
-                                <el-button type="primary" @click="onSubmit()" :loading="loading">
+                                <el-button :loading="loading" type="primary" @click="onSubmit()">
                                     {{ trans('core.save') }}
                                 </el-button>
-                                <el-button @click="onCancel()">{{ trans('core.button.cancel') }}
+                                <el-button @click="onCancel()">
+                                    {{ trans('core.button.cancel') }}
                                 </el-button>
                             </el-form-item>
                         </div>
@@ -68,7 +68,7 @@
                 </div>
             </div>
         </el-form>
-        <button v-shortkey="['b']" @shortkey="pushRoute({name: 'admin.user.roles.index'})" v-show="false"></button>
+        <button v-shortkey="['b']" v-show="false" @shortkey="pushRoute({name: 'admin.user.role.index'})"></button>
     </div>
 </template>
 
@@ -80,13 +80,11 @@
     import AsgardPermissions from './AsgardPermissions.vue';
 
     export default {
+        components: { AsgardPermissions },
         mixins: [Slugify, ShortcutHelper],
-        components: {
-            'asgard-permissions': AsgardPermissions,
-        },
         props: {
-            locales: { default: null },
-            pageTitle: { default: null, String },
+            locales: { default: null, type: Object },
+            pageTitle: { default: null, type: String },
         },
         data() {
             return {
@@ -100,6 +98,9 @@
                 loading: false,
             };
         },
+        mounted() {
+            this.fetchRole();
+        },
         methods: {
             onSubmit() {
                 this.form = new Form(this.role);
@@ -112,7 +113,7 @@
                             type: 'success',
                             message: response.message,
                         });
-                        this.$router.push({ name: 'admin.user.roles.index' });
+                        this.$router.push({ name: 'admin.user.role.index' });
                     })
                     .catch((error) => {
                         console.log(error);
@@ -124,7 +125,7 @@
                     });
             },
             onCancel() {
-                this.$router.push({ name: 'admin.user.roles.index' });
+                this.$router.push({ name: 'admin.user.role.index' });
             },
             generateSlug() {
                 this.role.slug = this.slugify(this.role.name);
@@ -149,9 +150,6 @@
                 }
                 return route('api.user.role.store');
             },
-        },
-        mounted() {
-            this.fetchRole();
         },
     };
 </script>

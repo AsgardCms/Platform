@@ -1,14 +1,15 @@
 <template>
     <el-upload
-            class="upload-demo"
-            :action="uploadUrl"
-            :on-remove="handleRemove"
-            :on-success="handleSuccess"
-            :show-file-list="false"
-            :http-request="uploadFile"
-            :multiple="true"
-            style="display: inline-block; margin-right: 10px;">
-        <el-button size="small" type="primary" style="padding: 13px 9px;" :loading="fileIsUploading">{{ trans('media.upload file') }}</el-button>
+        :action="uploadUrl"
+        :on-remove="handleRemove"
+        :on-success="handleSuccess"
+        :show-file-list="false"
+        :http-request="uploadFile"
+        :multiple="true"
+        class="upload-demo"
+        style="display: inline-block; margin-right: 10px;"
+    >
+        <el-button :loading="fileIsUploading" size="small" type="primary" style="padding: 13px 9px;">{{ trans('media.upload file') }}</el-button>
     </el-upload>
 </template>
 
@@ -17,7 +18,7 @@
 
     export default {
         props: {
-            parentId: { type: Number },
+            parentId: { default: null, type: Number },
         },
         data() {
             return {
@@ -26,10 +27,11 @@
         },
         computed: {
             uploadUrl() {
-                return route('api.media.store').domain + route('api.media.store').url;
+                return route('api.media.store').toString();
             },
             requestHeaders() {
                 const userApiToken = document.head.querySelector('meta[name="user-api-token"]');
+
                 return {
                     Authorization: `Bearer ${userApiToken.content}`,
                 };
@@ -58,22 +60,25 @@
                         });
                     });
             },
-            handleRemove() {},
-        },
-        mounted() {
+            handleRemove() {
+            },
         },
     };
 </script>
+
 <style>
     .el-upload__input {
         display: none !important;
     }
+
     .el-upload--text {
         display: block;
     }
+
     .el-upload-dragger {
         width: 100%;
     }
+
     .media-upload {
         margin-bottom: 10px;
     }

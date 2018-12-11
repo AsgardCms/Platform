@@ -1,8 +1,7 @@
-import PageTable from './components/PageTable.vue';
 import PageTableServerSide from './components/PageTableServerSide.vue';
 import PageForm from './components/PageForm.vue';
 
-const locales = window.AsgardCMS.locales;
+const { locales } = window.AsgardCMS;
 
 export default [
     {

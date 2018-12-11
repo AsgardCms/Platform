@@ -5,11 +5,12 @@
 </template>
 
 <script>
-   export default {
+    export default {
         data() {
             return {};
         },
+        mounted() {
+        },
         methods: {},
-        mounted() {},
     };
 </script>
