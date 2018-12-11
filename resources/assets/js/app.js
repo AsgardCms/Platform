@@ -21,7 +21,7 @@ Vue.use(VueEvents);
 Vue.use(VueSimplemde);
 require('./mixins');
 
-Vue.component('ckeditor', require('../../../Modules/Core/Assets/js/components/CkEditor.vue'));
+Vue.component('ckeditor', require('../../../Modules/Core/Assets/js/components/CkEditor.vue').default);
 
 const { currentLocale, adminPrefix } = window.AsgardCMS;
 
