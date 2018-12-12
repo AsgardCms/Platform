@@ -119,7 +119,6 @@
 <script>
     import axios from 'axios';
     import debounce from 'lodash/debounce';
-    import merge from 'lodash/merge';
     import MoveDialog from './MoveMediaDialog.vue';
     import NewFolder from './NewFolder.vue';
     import RenameFolder from './RenameFolder.vue';
@@ -194,7 +193,7 @@
                     folder_id: this.folderId,
                 };
 
-                axios.get(route('api.media.all-vue', merge(properties, customProperties)))
+                axios.get(route('api.media.all-vue', { ...properties, ...customProperties }))
                     .then((response) => {
                         this.tableIsLoading = false;
                         this.media = response.data.data;

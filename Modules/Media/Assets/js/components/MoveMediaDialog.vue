@@ -37,7 +37,6 @@
 
 <script>
     import axios from 'axios';
-    import merge from 'lodash/merge';
     import Form from 'form-backend-validation';
 
     export default {
@@ -93,7 +92,7 @@
                 this.selectIsLoading = true;
                 axios.get(route('api.media.folders.all-nestable'))
                     .then((response) => {
-                        this.options = merge(response.data, { 0: 'Root' });
+                        this.options = { ...response.data, 0: 'Root' };
                         this.selectIsLoading = false;
                     });
             },

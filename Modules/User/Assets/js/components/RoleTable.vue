@@ -89,7 +89,6 @@
 <script>
     import axios from 'axios';
     import debounce from 'lodash/debounce';
-    import merge from 'lodash/merge';
     import ShortcutHelper from '../../../../Core/Assets/js/mixins/ShortcutHelper';
     import DeleteButton from '../../../../Core/Assets/js/components/DeleteComponent.vue';
     import EditButton from '../../../../Core/Assets/js/components/EditButtonComponent.vue';
@@ -126,7 +125,7 @@
                     search: this.searchQuery,
                 };
 
-                axios.get(route('api.user.role.index', merge(properties, customProperties)))
+                axios.get(route('api.user.role.index', { ...properties, ...customProperties }))
                     .then((response) => {
                         this.tableIsLoading = false;
                         this.data = response.data.data;

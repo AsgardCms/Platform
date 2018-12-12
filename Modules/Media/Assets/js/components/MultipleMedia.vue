@@ -31,7 +31,6 @@
     import find from 'lodash/find';
     import forEach from 'lodash/forEach';
     import isEmpty from 'lodash/isEmpty';
-    import merge from 'lodash/merge';
     import reject from 'lodash/reject';
     import MediaList from './MediaList.vue';
     import RandomString from '../mixins/RandomString';
@@ -75,7 +74,7 @@
                 if (find(this.selectedMedia, mediaData) === undefined) {
                     if (!this.selectedMedia) this.selectedMedia = [];
                     this.selectedMedia.push(mediaData);
-                    this.$emit('multiple-file-selected', merge(mediaData, { zone: this.zone }));
+                    this.$emit('multiple-file-selected', { ...mediaData, zone: this.zone });
                 }
             });
         },
@@ -96,7 +95,7 @@
                     .then((response) => {
                         this.selectedMedia = response.data.data;
                         forEach(this.selectedMedia, (file) => {
-                            this.$emit('multiple-file-selected', merge(file, { zone: this.zone }));
+                            this.$emit('multiple-file-selected', { ...file, zone: this.zone });
                         });
                     });
             },

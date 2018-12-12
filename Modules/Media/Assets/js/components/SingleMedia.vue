@@ -26,7 +26,6 @@
 <script>
     import axios from 'axios';
     import isEmpty from 'lodash/isEmpty';
-    import merge from 'lodash/merge';
     import MediaList from './MediaList.vue';
     import RandomString from '../mixins/RandomString';
     import StringHelpers from '../../../../Core/Assets/js/mixins/StringHelpers';
@@ -68,7 +67,7 @@
             this.$events.listen(this.eventName, (mediaData) => {
                 this.dialogVisible = false;
                 this.selectedMedia = mediaData;
-                this.$emit('single-file-selected', merge(mediaData, { zone: this.zone }));
+                this.$emit('single-file-selected', { ...mediaData, zone: this.zone });
             });
         },
         methods: {
@@ -86,7 +85,7 @@
                         entity_id: this.entityId,
                     }))
                     .then((response) => {
-                        this.$emit('single-file-selected', merge(response.data.data, { zone: this.zone }));
+                        this.$emit('single-file-selected', { ...response.data.data, zone: this.zone });
                         this.selectedMedia = response.data.data;
                     });
             },
