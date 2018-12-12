@@ -24,6 +24,7 @@
             label-position="top"
             @keydown="form.errors.clear($event.target.name)"
         >
+            <form-errors :form="form"></form-errors>
             <div class="row">
                 <div class="col-md-10">
                     <div class="box box-primary">
@@ -154,6 +155,7 @@
 <script>
     import axios from 'axios';
     import Form from 'form-backend-validation';
+    import FormErrors from '../../../../Core/Assets/js/components/FormErrors.vue';
     import Slugify from '../../../../Core/Assets/js/mixins/Slugify';
     import ShortcutHelper from '../../../../Core/Assets/js/mixins/ShortcutHelper';
     import ActiveEditor from '../../../../Core/Assets/js/mixins/ActiveEditor';
@@ -162,7 +164,7 @@
     import TagsInput from '../../../../Tag/Assets/js/components/TagInput.vue';
 
     export default {
-        components: { SingleMedia, TagsInput },
+        components: { FormErrors, SingleMedia, TagsInput },
         mixins: [Slugify, ShortcutHelper, ActiveEditor, SingleFileSelector],
         props: {
             locales: { default: null, type: Object },
