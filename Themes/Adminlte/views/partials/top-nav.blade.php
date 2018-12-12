@@ -3,9 +3,7 @@
     <!-- Sidebar toggle button-->
     <a href="#" class="navbar-btn sidebar-toggle" data-toggle="push-menu" role="button" style="margin: 0;">
         <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
+        <i class="fa fa-bars" title="Toggle navigation"></i>
     </a>
 
     <div class="navbar-custom-menu">
