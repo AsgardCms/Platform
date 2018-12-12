@@ -32,7 +32,7 @@
                             <el-tabs>
                                 <el-tab-pane :label="trans('roles.tabs.data')">
                                     <el-form-item :label="trans('roles.form.name')" :class="{'el-form-item is-error': form.errors.has('name') }">
-                                        <el-input v-model="role.name"></el-input>
+                                        <el-input v-model="role.name" @input="generateSlug"></el-input>
                                         <div v-if="form.errors.has('name')" class="el-form-item__error" v-text="form.errors.first('name')"></div>
                                     </el-form-item>
 
