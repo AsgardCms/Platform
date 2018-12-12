@@ -19,7 +19,7 @@ module.exports = {
         'no-param-reassign': ['error', { 'props': false }],
         'vue/html-indent': ['error', 4],
         'vue/max-attributes-per-line': ['error', {
-            'singleline': 4,
+            'singleline': 5,
             'multiline': {
                 'max': 1,
                 'allowFirstLine': false,
@@ -34,6 +34,8 @@ module.exports = {
             'svg': 'any',
             'math': 'always',
         }],
+        'vue/singleline-html-element-content-newline': ['off'],
+        'vue/component-name-in-template-casing': ['error', 'kebab-case'],
     },
     overrides: [
         {

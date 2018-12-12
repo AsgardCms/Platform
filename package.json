@@ -21,9 +21,9 @@
     "bootstrap-sass": "^3.3.7",
     "cross-env": "^5.2.0",
     "eslint": "^4.19.1",
-    "eslint-config-airbnb-base": "^13.0.0",
-    "eslint-plugin-import": "^2.13.0",
-    "eslint-plugin-vue": "^4.5.0",
+    "eslint-config-airbnb-base": "^13.1.0",
+    "eslint-plugin-import": "^2.14.0",
+    "eslint-plugin-vue": "^5.0.0",
     "laravel-mix": "^4.0.1",
     "resolve-url-loader": "2.3.1",
     "sass": "^1.15.2",
@@ -38,13 +38,13 @@
     "lodash": "^4.17.11",
     "moment": "^2.22.2",
     "typy": "^2.0.1",
-    "vue": "^2.5.20",
+    "vue": "^2.5.21",
     "vue-data-tables": "^3.4.0",
     "vue-events": "^3.1.0",
     "vue-i18n": "^8.1.0",
     "vue-router": "^3.0.1",
     "vue-shortkey": "^3.1.6",
     "vue-simplemde": "^0.4.8",
-    "vue-template-compiler": "^2.5.20"
+    "vue-template-compiler": "^2.5.21"
   }
 }

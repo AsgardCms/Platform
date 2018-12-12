@@ -41,7 +41,6 @@
     import Form from 'form-backend-validation';
 
     export default {
-        props: {},
         data() {
             return {
                 selectedMedia: [],

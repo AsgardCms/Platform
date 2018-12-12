@@ -48,8 +48,8 @@
                             </el-col>
                         </el-row>
                         <el-table
-                            v-loading.body="tableIsLoading"
                             ref="mediaTable"
+                            v-loading.body="tableIsLoading"
                             :data="media"
                             stripe
                             style="width: 100%"
@@ -246,7 +246,7 @@
                 this.tableIsLoading = true;
                 this.queryServer({ order_by: event.prop, order: event.order });
             },
-            performSearch: debounce(function (query) {
+            performSearch: debounce((query) => {
                 console.log(`searching:${query.target.value}`);
                 this.tableIsLoading = true;
                 this.queryServer({ search: query.target.value });

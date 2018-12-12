@@ -18,8 +18,8 @@
             </el-breadcrumb>
         </div>
         <el-form
-            v-loading.body="loading"
             ref="form"
+            v-loading.body="loading"
             :model="role"
             label-width="120px"
             label-position="top"
@@ -38,7 +38,7 @@
 
                                     <el-form-item :label="trans('roles.form.slug')" :class="{'el-form-item is-error': form.errors.has('slug') }">
                                         <el-input v-model="role.slug">
-                                            <el-button slot-scope="prepend" @click="generateSlug">Generate</el-button>
+                                            <el-button slot="prepend" @click="generateSlug">Generate</el-button>
                                         </el-input>
                                         <div v-if="form.errors.has('slug')" class="el-form-item__error" v-text="form.errors.first('slug')"></div>
                                     </el-form-item>
@@ -68,7 +68,7 @@
                 </div>
             </div>
         </el-form>
-        <button v-shortkey="['b']" v-show="false" @shortkey="pushRoute({name: 'admin.user.role.index'})"></button>
+        <button v-show="false" v-shortkey="['b']" @shortkey="pushRoute({name: 'admin.user.role.index'})"></button>
     </div>
 </template>
 

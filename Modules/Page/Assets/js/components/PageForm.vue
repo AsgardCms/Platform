@@ -29,7 +29,7 @@
                     <div class="box box-primary">
                         <div class="box-body">
                             <el-tabs v-model="activeTab">
-                                <el-tab-pane v-for="(localeArray, locale) in locales" :label="localeArray.name" :key="localeArray.name" :name="locale">
+                                <el-tab-pane v-for="(localeArray, locale) in locales" :key="localeArray.name" :label="localeArray.name" :name="locale">
                                     <span slot="label" :class="{'error' : form.errors.has(locale)}">{{ localeArray.name }}</span>
                                     <el-form-item :label="trans('pages.title')" :class="{'el-form-item is-error': form.errors.has(locale + '.title') }">
                                         <el-input v-model="page[locale].title"></el-input>
@@ -61,7 +61,7 @@
                                                 </a>
                                             </h4>
                                         </div>
-                                        <div :id="`collapseMeta-${locale}`" style="height: 0px;" class="panel-collapse collapse">
+                                        <div :id="`collapseMeta-${locale}`" style="height: 0;" class="panel-collapse collapse">
                                             <div class="box-body">
                                                 <el-form-item :label="trans('pages.meta_title')">
                                                     <el-input v-model="page[locale].meta_title"></el-input>
@@ -81,7 +81,7 @@
                                                 </a>
                                             </h4>
                                         </div>
-                                        <div :id="`collapseFacebook-${locale}`" style="height: 0px;" class="panel-collapse collapse">
+                                        <div :id="`collapseFacebook-${locale}`" style="height: 0;" class="panel-collapse collapse">
                                             <div class="box-body">
                                                 <el-form-item :label="trans('pages.og_title')">
                                                     <el-input v-model="page[locale].og_title"></el-input>
@@ -108,7 +108,6 @@
                                             {{ trans('core.button.cancel') }}
                                         </el-button>
                                     </el-form-item>
-
                                 </el-tab-pane>
                             </el-tabs>
                         </div>
@@ -144,7 +143,7 @@
                 </div>
             </div>
         </el-form>
-        <button v-shortkey="['b']" v-show="false" @shortkey="pushRoute({name: 'admin.page.page.index'})"></button>
+        <button v-show="false" v-shortkey="['b']" @shortkey="pushRoute({name: 'admin.page.page.index'})"></button>
     </div>
 </template>
 

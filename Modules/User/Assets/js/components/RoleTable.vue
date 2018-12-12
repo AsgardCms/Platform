@@ -34,8 +34,8 @@
                             </div>
 
                             <el-table
-                                v-loading.body="tableIsLoading"
                                 ref="pageTable"
+                                v-loading.body="tableIsLoading"
                                 :data="data"
                                 stripe
                                 style="width: 100%"
@@ -82,7 +82,7 @@
                 </div>
             </div>
         </div>
-        <button v-shortkey="['c']" v-show="false" @shortkey="pushRoute({name: 'admin.user.role.create'})"></button>
+        <button v-show="false" v-shortkey="['c']" @shortkey="pushRoute({name: 'admin.user.role.create'})"></button>
     </div>
 </template>
 
@@ -156,7 +156,7 @@
                 this.tableIsLoading = true;
                 this.queryServer({ order_by: event.prop, order: event.order });
             },
-            performSearch: debounce(function (query) {
+            performSearch: debounce((query) => {
                 console.log(`searching:${query.target.value}`);
                 this.tableIsLoading = true;
                 this.queryServer({ search: query.target.value });

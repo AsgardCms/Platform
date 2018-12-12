@@ -94,9 +94,6 @@
             parseTranslation(label) {
                 return this.trans(label.split('::')[1]);
             },
-            getPermissionKey(subPermissionTitle, permissionAction) {
-                return `${subPermissionTitle}.${permissionAction}`;
-            },
             changeState(permissionPart, actions, state) {
                 forEach(actions, (translationKey, key) => {
                     this.permissions[`${permissionPart}.${key}`] = state;

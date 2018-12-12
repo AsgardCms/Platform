@@ -31,7 +31,8 @@
                                         </el-dropdown-menu>
                                     </el-dropdown>
                                     <router-link :to="{name: 'admin.page.page.create'}">
-                                        <el-button type="primary"><i class="el-icon-edit"></i>
+                                        <el-button type="primary">
+                                            <i class="el-icon-edit"></i>
                                             {{ trans('pages.create page') }}
                                         </el-button>
                                     </router-link>
@@ -42,8 +43,8 @@
                             </div>
 
                             <el-table
-                                v-loading.body="tableIsLoading"
                                 ref="pageTable"
+                                v-loading.body="tableIsLoading"
                                 :data="data"
                                 stripe
                                 style="width: 100%"
@@ -100,7 +101,7 @@
                 </div>
             </div>
         </div>
-        <button v-shortkey="['c']" v-show="false" @shortkey="pushRoute({name: 'admin.page.page.create'})"></button>
+        <button v-show="false" v-shortkey="['c']" @shortkey="pushRoute({name: 'admin.page.page.create'})"></button>
     </div>
 </template>
 

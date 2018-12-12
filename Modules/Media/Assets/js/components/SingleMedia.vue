@@ -28,12 +28,11 @@
     import isEmpty from 'lodash/isEmpty';
     import merge from 'lodash/merge';
     import MediaList from './MediaList.vue';
-    import UploadZone from './UploadZone.vue';
     import RandomString from '../mixins/RandomString';
     import StringHelpers from '../../../../Core/Assets/js/mixins/StringHelpers';
 
     export default {
-        components: { MediaList, UploadZone },
+        components: { MediaList },
         mixins: [StringHelpers, RandomString],
         props: {
             zone: { required: true, type: String },

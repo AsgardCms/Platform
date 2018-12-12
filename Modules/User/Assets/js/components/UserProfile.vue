@@ -15,8 +15,8 @@
         </div>
 
         <el-form
-            v-loading.body="loading"
             ref="form"
+            v-loading.body="loading"
             :model="user"
             label-width="120px"
             label-position="top"
@@ -28,8 +28,7 @@
                         <div class="box-body">
                             <el-tabs>
                                 <el-tab-pane :label="trans('users.tabs.data')">
-                                    <span slot="label" :class="{'error' : form.errors.any()}">{{ trans('users.tabs.data') }}
-                                    </span>
+                                    <span slot="label" :class="{'error' : form.errors.any()}">{{ trans('users.tabs.data') }}</span>
                                     <el-form-item :label="trans('users.form.first-name')" :class="{'el-form-item is-error': form.errors.has('first_name') }">
                                         <el-input v-model="user.first_name"></el-input>
                                         <div v-if="form.errors.has('first_name')" class="el-form-item__error" v-text="form.errors.first('first_name')"></div>
