@@ -2108,9 +2108,11 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var form_backend_validation__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! form-backend-validation */ "./node_modules/form-backend-validation/dist/index.js");
-/* harmony import */ var form_backend_validation__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(form_backend_validation__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _Tag_Assets_js_components_TagInput_vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../Tag/Assets/js/components/TagInput.vue */ "./Modules/Tag/Assets/js/components/TagInput.vue");
+/* harmony import */ var lodash_chain__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! lodash/chain */ "./node_modules/lodash/chain.js");
+/* harmony import */ var lodash_chain__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(lodash_chain__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var form_backend_validation__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! form-backend-validation */ "./node_modules/form-backend-validation/dist/index.js");
+/* harmony import */ var form_backend_validation__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(form_backend_validation__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _Tag_Assets_js_components_TagInput_vue__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../../Tag/Assets/js/components/TagInput.vue */ "./Modules/Tag/Assets/js/components/TagInput.vue");
 //
 //
 //
@@ -2197,12 +2199,13 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+
 
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   components: {
-    TagsInput: _Tag_Assets_js_components_TagInput_vue__WEBPACK_IMPORTED_MODULE_2__["default"]
+    TagsInput: _Tag_Assets_js_components_TagInput_vue__WEBPACK_IMPORTED_MODULE_3__["default"]
   },
   props: {
     locales: {
@@ -2212,7 +2215,7 @@ __webpack_require__.r(__webpack_exports__);
   },
   data: function data() {
     return {
-      media: _(this.locales).keys().map(function (locale) {
+      media: lodash_chain__WEBPACK_IMPORTED_MODULE_1___default()(this.locales).keys().map(function (locale) {
         return [locale, {
           description: '',
           alt_attribute: '',
@@ -2234,7 +2237,7 @@ __webpack_require__.r(__webpack_exports__);
         urls: {},
         thumbnails: []
       }).value(),
-      form: new form_backend_validation__WEBPACK_IMPORTED_MODULE_1___default.a(),
+      form: new form_backend_validation__WEBPACK_IMPORTED_MODULE_2___default.a(),
       loading: false,
       activeTab: window.AsgardCMS.currentLocale || 'en'
     };
@@ -2259,7 +2262,7 @@ __webpack_require__.r(__webpack_exports__);
     onSubmit: function onSubmit() {
       var _this2 = this;
 
-      this.form = new form_backend_validation__WEBPACK_IMPORTED_MODULE_1___default.a(this.media);
+      this.form = new form_backend_validation__WEBPACK_IMPORTED_MODULE_2___default.a(this.media);
       this.loading = true;
       this.form.put(route('api.media.media.update', {
         file: this.media.id
@@ -3276,14 +3279,16 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var form_backend_validation__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! form-backend-validation */ "./node_modules/form-backend-validation/dist/index.js");
-/* harmony import */ var form_backend_validation__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(form_backend_validation__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _Core_Assets_js_mixins_Slugify__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../Core/Assets/js/mixins/Slugify */ "./Modules/Core/Assets/js/mixins/Slugify.js");
-/* harmony import */ var _Core_Assets_js_mixins_ShortcutHelper__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../../Core/Assets/js/mixins/ShortcutHelper */ "./Modules/Core/Assets/js/mixins/ShortcutHelper.js");
-/* harmony import */ var _Core_Assets_js_mixins_ActiveEditor__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../../Core/Assets/js/mixins/ActiveEditor */ "./Modules/Core/Assets/js/mixins/ActiveEditor.js");
-/* harmony import */ var _Media_Assets_js_components_SingleMedia_vue__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../../../Media/Assets/js/components/SingleMedia.vue */ "./Modules/Media/Assets/js/components/SingleMedia.vue");
-/* harmony import */ var _Media_Assets_js_mixins_SingleFileSelector__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../../../Media/Assets/js/mixins/SingleFileSelector */ "./Modules/Media/Assets/js/mixins/SingleFileSelector.js");
-/* harmony import */ var _Tag_Assets_js_components_TagInput_vue__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../../../Tag/Assets/js/components/TagInput.vue */ "./Modules/Tag/Assets/js/components/TagInput.vue");
+/* harmony import */ var lodash_chain__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! lodash/chain */ "./node_modules/lodash/chain.js");
+/* harmony import */ var lodash_chain__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(lodash_chain__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var form_backend_validation__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! form-backend-validation */ "./node_modules/form-backend-validation/dist/index.js");
+/* harmony import */ var form_backend_validation__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(form_backend_validation__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _Core_Assets_js_mixins_Slugify__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../../Core/Assets/js/mixins/Slugify */ "./Modules/Core/Assets/js/mixins/Slugify.js");
+/* harmony import */ var _Core_Assets_js_mixins_ShortcutHelper__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../../Core/Assets/js/mixins/ShortcutHelper */ "./Modules/Core/Assets/js/mixins/ShortcutHelper.js");
+/* harmony import */ var _Core_Assets_js_mixins_ActiveEditor__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../../../Core/Assets/js/mixins/ActiveEditor */ "./Modules/Core/Assets/js/mixins/ActiveEditor.js");
+/* harmony import */ var _Media_Assets_js_components_SingleMedia_vue__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../../../Media/Assets/js/components/SingleMedia.vue */ "./Modules/Media/Assets/js/components/SingleMedia.vue");
+/* harmony import */ var _Media_Assets_js_mixins_SingleFileSelector__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../../../Media/Assets/js/mixins/SingleFileSelector */ "./Modules/Media/Assets/js/mixins/SingleFileSelector.js");
+/* harmony import */ var _Tag_Assets_js_components_TagInput_vue__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../../../Tag/Assets/js/components/TagInput.vue */ "./Modules/Tag/Assets/js/components/TagInput.vue");
 //
 //
 //
@@ -3433,6 +3438,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+
 
 
 
@@ -3443,10 +3449,10 @@ __webpack_require__.r(__webpack_exports__);
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   components: {
-    SingleMedia: _Media_Assets_js_components_SingleMedia_vue__WEBPACK_IMPORTED_MODULE_5__["default"],
-    TagsInput: _Tag_Assets_js_components_TagInput_vue__WEBPACK_IMPORTED_MODULE_7__["default"]
+    SingleMedia: _Media_Assets_js_components_SingleMedia_vue__WEBPACK_IMPORTED_MODULE_6__["default"],
+    TagsInput: _Tag_Assets_js_components_TagInput_vue__WEBPACK_IMPORTED_MODULE_8__["default"]
   },
-  mixins: [_Core_Assets_js_mixins_Slugify__WEBPACK_IMPORTED_MODULE_2__["default"], _Core_Assets_js_mixins_ShortcutHelper__WEBPACK_IMPORTED_MODULE_3__["default"], _Core_Assets_js_mixins_ActiveEditor__WEBPACK_IMPORTED_MODULE_4__["default"], _Media_Assets_js_mixins_SingleFileSelector__WEBPACK_IMPORTED_MODULE_6__["default"]],
+  mixins: [_Core_Assets_js_mixins_Slugify__WEBPACK_IMPORTED_MODULE_3__["default"], _Core_Assets_js_mixins_ShortcutHelper__WEBPACK_IMPORTED_MODULE_4__["default"], _Core_Assets_js_mixins_ActiveEditor__WEBPACK_IMPORTED_MODULE_5__["default"], _Media_Assets_js_mixins_SingleFileSelector__WEBPACK_IMPORTED_MODULE_7__["default"]],
   props: {
     locales: {
       default: null,
@@ -3459,7 +3465,7 @@ __webpack_require__.r(__webpack_exports__);
   },
   data: function data() {
     return {
-      page: _(this.locales).keys().map(function (locale) {
+      page: lodash_chain__WEBPACK_IMPORTED_MODULE_1___default()(this.locales).keys().map(function (locale) {
         return [locale, {
           title: '',
           slug: '',
@@ -3482,7 +3488,7 @@ __webpack_require__.r(__webpack_exports__);
         home: 'home',
         default: 'default'
       },
-      form: new form_backend_validation__WEBPACK_IMPORTED_MODULE_1___default.a(),
+      form: new form_backend_validation__WEBPACK_IMPORTED_MODULE_2___default.a(),
       loading: false,
       activeTab: window.AsgardCMS.currentLocale || 'en'
     };
@@ -3501,7 +3507,7 @@ __webpack_require__.r(__webpack_exports__);
     onSubmit: function onSubmit() {
       var _this = this;
 
-      this.form = new form_backend_validation__WEBPACK_IMPORTED_MODULE_1___default.a(this.page);
+      this.form = new form_backend_validation__WEBPACK_IMPORTED_MODULE_2___default.a(this.page);
       this.loading = true;
       this.form.post(this.getRoute()).then(function (response) {
         _this.loading = false;

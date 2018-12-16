@@ -86,6 +86,7 @@
 
 <script>
     import axios from 'axios';
+    import chain from 'lodash/chain';
     import Form from 'form-backend-validation';
     import TagsInput from '../../../../Tag/Assets/js/components/TagInput.vue';
 
@@ -96,7 +97,7 @@
         },
         data() {
             return {
-                media: _(this.locales)
+                media: chain(this.locales)
                     .keys()
                     .map(locale => [locale, {
                         description: '',
