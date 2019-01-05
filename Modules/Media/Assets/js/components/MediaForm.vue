@@ -63,9 +63,13 @@
                     </div>
                 </div>
                 <div class="col-md-4">
-                    <img v-if="media.is_image" key="image" :src="media.path" alt="" style="width: 100%;">
-                    <i v-else-if="media.is_folder" key="folder" class="fa fa-folder" style="font-size: 50px;"></i>
-                    <i v-else key="faIcon" :class="`fa ${media.fa_icon}`" style="font-size: 50px;"></i>
+                    <div v-if="media.is_image">
+                        <img :src="media.path" alt="" class="img-responsive">
+                    </div>
+                    <div v-else>
+                        <i v-if="media.fa_icon" :class="media.fa_icon" class="fa fa-5x"></i>
+                        <i v-else class="fa fa-5x fa-file"></i>
+                    </div>
                 </div>
             </div>
         </el-form>

@@ -59,9 +59,16 @@
                             <el-table-column type="selection" width="55"></el-table-column>
                             <el-table-column label="" width="150">
                                 <template slot-scope="scope">
-                                    <img v-if="scope.row.is_image" key="image" :src="scope.row.small_thumb" alt="">
-                                    <i v-else-if="scope.row.is_folder" key="folder" class="fa fa-folder" style="font-size: 38px;"></i>
-                                    <i v-else key="faIcon" :class="`fa ${scope.row.fa_icon}`" style="font-size: 38px;"></i>
+                                    <span v-if="scope.row.is_image">
+                                        <img :src="scope.row.small_thumb" alt="" class="img-responsive">
+                                    </span>
+                                    <span v-else-if="scope.row.is_folder">
+                                        <i class="fa fa-2x fa-folder"></i>
+                                    </span>
+                                    <span v-else>
+                                        <i v-if="scope.row.fa_icon" :class="scope.row.fa_icon" class="fa fa-2x"></i>
+                                        <i v-else class="fa fa-2x fa-file"></i>
+                                    </span>
                                 </template>
                             </el-table-column>
                             <el-table-column :label="trans('media.table.filename')" prop="filename" sortable="custom">
