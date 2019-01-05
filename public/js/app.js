@@ -2108,11 +2108,9 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var lodash_chain__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! lodash/chain */ "./node_modules/lodash/chain.js");
-/* harmony import */ var lodash_chain__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(lodash_chain__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var form_backend_validation__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! form-backend-validation */ "./node_modules/form-backend-validation/dist/index.js");
-/* harmony import */ var form_backend_validation__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(form_backend_validation__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var _Tag_Assets_js_components_TagInput_vue__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../../Tag/Assets/js/components/TagInput.vue */ "./Modules/Tag/Assets/js/components/TagInput.vue");
+/* harmony import */ var form_backend_validation__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! form-backend-validation */ "./node_modules/form-backend-validation/dist/index.js");
+/* harmony import */ var form_backend_validation__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(form_backend_validation__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _Tag_Assets_js_components_TagInput_vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../Tag/Assets/js/components/TagInput.vue */ "./Modules/Tag/Assets/js/components/TagInput.vue");
 //
 //
 //
@@ -2199,13 +2197,16 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-
+//
+//
+//
+//
 
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   components: {
-    TagsInput: _Tag_Assets_js_components_TagInput_vue__WEBPACK_IMPORTED_MODULE_3__["default"]
+    TagsInput: _Tag_Assets_js_components_TagInput_vue__WEBPACK_IMPORTED_MODULE_2__["default"]
   },
   props: {
     locales: {
@@ -2215,7 +2216,7 @@ __webpack_require__.r(__webpack_exports__);
   },
   data: function data() {
     return {
-      media: lodash_chain__WEBPACK_IMPORTED_MODULE_1___default()(this.locales).keys().map(function (locale) {
+      media: window._(this.locales).keys().map(function (locale) {
         return [locale, {
           description: '',
           alt_attribute: '',
@@ -2237,7 +2238,7 @@ __webpack_require__.r(__webpack_exports__);
         urls: {},
         thumbnails: []
       }).value(),
-      form: new form_backend_validation__WEBPACK_IMPORTED_MODULE_2___default.a(),
+      form: new form_backend_validation__WEBPACK_IMPORTED_MODULE_1___default.a(),
       loading: false,
       activeTab: window.AsgardCMS.currentLocale || 'en'
     };
@@ -2262,7 +2263,7 @@ __webpack_require__.r(__webpack_exports__);
     onSubmit: function onSubmit() {
       var _this2 = this;
 
-      this.form = new form_backend_validation__WEBPACK_IMPORTED_MODULE_2___default.a(this.media);
+      this.form = new form_backend_validation__WEBPACK_IMPORTED_MODULE_1___default.a(this.media);
       this.loading = true;
       this.form.put(route('api.media.media.update', {
         file: this.media.id
@@ -2336,6 +2337,13 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -3279,16 +3287,14 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var lodash_chain__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! lodash/chain */ "./node_modules/lodash/chain.js");
-/* harmony import */ var lodash_chain__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(lodash_chain__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var form_backend_validation__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! form-backend-validation */ "./node_modules/form-backend-validation/dist/index.js");
-/* harmony import */ var form_backend_validation__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(form_backend_validation__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var _Core_Assets_js_mixins_Slugify__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../../Core/Assets/js/mixins/Slugify */ "./Modules/Core/Assets/js/mixins/Slugify.js");
-/* harmony import */ var _Core_Assets_js_mixins_ShortcutHelper__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../../Core/Assets/js/mixins/ShortcutHelper */ "./Modules/Core/Assets/js/mixins/ShortcutHelper.js");
-/* harmony import */ var _Core_Assets_js_mixins_ActiveEditor__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../../../Core/Assets/js/mixins/ActiveEditor */ "./Modules/Core/Assets/js/mixins/ActiveEditor.js");
-/* harmony import */ var _Media_Assets_js_components_SingleMedia_vue__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../../../Media/Assets/js/components/SingleMedia.vue */ "./Modules/Media/Assets/js/components/SingleMedia.vue");
-/* harmony import */ var _Media_Assets_js_mixins_SingleFileSelector__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../../../Media/Assets/js/mixins/SingleFileSelector */ "./Modules/Media/Assets/js/mixins/SingleFileSelector.js");
-/* harmony import */ var _Tag_Assets_js_components_TagInput_vue__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../../../Tag/Assets/js/components/TagInput.vue */ "./Modules/Tag/Assets/js/components/TagInput.vue");
+/* harmony import */ var form_backend_validation__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! form-backend-validation */ "./node_modules/form-backend-validation/dist/index.js");
+/* harmony import */ var form_backend_validation__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(form_backend_validation__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _Core_Assets_js_mixins_Slugify__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../Core/Assets/js/mixins/Slugify */ "./Modules/Core/Assets/js/mixins/Slugify.js");
+/* harmony import */ var _Core_Assets_js_mixins_ShortcutHelper__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../../Core/Assets/js/mixins/ShortcutHelper */ "./Modules/Core/Assets/js/mixins/ShortcutHelper.js");
+/* harmony import */ var _Core_Assets_js_mixins_ActiveEditor__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../../Core/Assets/js/mixins/ActiveEditor */ "./Modules/Core/Assets/js/mixins/ActiveEditor.js");
+/* harmony import */ var _Media_Assets_js_components_SingleMedia_vue__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../../../Media/Assets/js/components/SingleMedia.vue */ "./Modules/Media/Assets/js/components/SingleMedia.vue");
+/* harmony import */ var _Media_Assets_js_mixins_SingleFileSelector__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../../../Media/Assets/js/mixins/SingleFileSelector */ "./Modules/Media/Assets/js/mixins/SingleFileSelector.js");
+/* harmony import */ var _Tag_Assets_js_components_TagInput_vue__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../../../Tag/Assets/js/components/TagInput.vue */ "./Modules/Tag/Assets/js/components/TagInput.vue");
 //
 //
 //
@@ -3438,7 +3444,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-
 
 
 
@@ -3449,10 +3454,10 @@ __webpack_require__.r(__webpack_exports__);
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   components: {
-    SingleMedia: _Media_Assets_js_components_SingleMedia_vue__WEBPACK_IMPORTED_MODULE_6__["default"],
-    TagsInput: _Tag_Assets_js_components_TagInput_vue__WEBPACK_IMPORTED_MODULE_8__["default"]
+    SingleMedia: _Media_Assets_js_components_SingleMedia_vue__WEBPACK_IMPORTED_MODULE_5__["default"],
+    TagsInput: _Tag_Assets_js_components_TagInput_vue__WEBPACK_IMPORTED_MODULE_7__["default"]
   },
-  mixins: [_Core_Assets_js_mixins_Slugify__WEBPACK_IMPORTED_MODULE_3__["default"], _Core_Assets_js_mixins_ShortcutHelper__WEBPACK_IMPORTED_MODULE_4__["default"], _Core_Assets_js_mixins_ActiveEditor__WEBPACK_IMPORTED_MODULE_5__["default"], _Media_Assets_js_mixins_SingleFileSelector__WEBPACK_IMPORTED_MODULE_7__["default"]],
+  mixins: [_Core_Assets_js_mixins_Slugify__WEBPACK_IMPORTED_MODULE_2__["default"], _Core_Assets_js_mixins_ShortcutHelper__WEBPACK_IMPORTED_MODULE_3__["default"], _Core_Assets_js_mixins_ActiveEditor__WEBPACK_IMPORTED_MODULE_4__["default"], _Media_Assets_js_mixins_SingleFileSelector__WEBPACK_IMPORTED_MODULE_6__["default"]],
   props: {
     locales: {
       default: null,
@@ -3465,7 +3470,7 @@ __webpack_require__.r(__webpack_exports__);
   },
   data: function data() {
     return {
-      page: lodash_chain__WEBPACK_IMPORTED_MODULE_1___default()(this.locales).keys().map(function (locale) {
+      page: window._(this.locales).keys().map(function (locale) {
         return [locale, {
           title: '',
           slug: '',
@@ -3488,7 +3493,7 @@ __webpack_require__.r(__webpack_exports__);
         home: 'home',
         default: 'default'
       },
-      form: new form_backend_validation__WEBPACK_IMPORTED_MODULE_2___default.a(),
+      form: new form_backend_validation__WEBPACK_IMPORTED_MODULE_1___default.a(),
       loading: false,
       activeTab: window.AsgardCMS.currentLocale || 'en'
     };
@@ -3507,7 +3512,7 @@ __webpack_require__.r(__webpack_exports__);
     onSubmit: function onSubmit() {
       var _this = this;
 
-      this.form = new form_backend_validation__WEBPACK_IMPORTED_MODULE_2___default.a(this.page);
+      this.form = new form_backend_validation__WEBPACK_IMPORTED_MODULE_1___default.a(this.page);
       this.loading = true;
       this.form.post(this.getRoute()).then(function (response) {
         _this.loading = false;
@@ -5828,22 +5833,20 @@ var render = function() {
             _vm._v(" "),
             _c("div", { staticClass: "col-md-4" }, [
               _vm.media.is_image
-                ? _c("img", {
-                    key: "image",
-                    staticStyle: { width: "100%" },
-                    attrs: { src: _vm.media.path, alt: "" }
-                  })
-                : _vm.media.is_folder
-                  ? _c("i", {
-                      key: "folder",
-                      staticClass: "fa fa-folder",
-                      staticStyle: { "font-size": "50px" }
+                ? _c("div", [
+                    _c("img", {
+                      staticClass: "img-responsive",
+                      attrs: { src: _vm.media.path, alt: "" }
                     })
-                  : _c("i", {
-                      key: "faIcon",
-                      class: "fa " + _vm.media.fa_icon,
-                      staticStyle: { "font-size": "50px" }
-                    })
+                  ])
+                : _c("div", [
+                    _vm.media.fa_icon
+                      ? _c("i", {
+                          staticClass: "fa fa-5x",
+                          class: _vm.media.fa_icon
+                        })
+                      : _c("i", { staticClass: "fa fa-5x fa-file" })
+                  ])
             ])
           ])
         ]
@@ -6148,24 +6151,31 @@ var render = function() {
                           fn: function(scope) {
                             return [
                               scope.row.is_image
-                                ? _c("img", {
-                                    key: "image",
-                                    attrs: {
-                                      src: scope.row.small_thumb,
-                                      alt: ""
-                                    }
-                                  })
+                                ? _c("span", [
+                                    _c("img", {
+                                      staticClass: "img-responsive",
+                                      attrs: {
+                                        src: scope.row.small_thumb,
+                                        alt: ""
+                                      }
+                                    })
+                                  ])
                                 : scope.row.is_folder
-                                  ? _c("i", {
-                                      key: "folder",
-                                      staticClass: "fa fa-folder",
-                                      staticStyle: { "font-size": "38px" }
-                                    })
-                                  : _c("i", {
-                                      key: "faIcon",
-                                      class: "fa " + scope.row.fa_icon,
-                                      staticStyle: { "font-size": "38px" }
-                                    })
+                                  ? _c("span", [
+                                      _c("i", {
+                                        staticClass: "fa fa-2x fa-folder"
+                                      })
+                                    ])
+                                  : _c("span", [
+                                      scope.row.fa_icon
+                                        ? _c("i", {
+                                            staticClass: "fa fa-2x",
+                                            class: scope.row.fa_icon
+                                          })
+                                        : _c("i", {
+                                            staticClass: "fa fa-2x fa-file"
+                                          })
+                                    ])
                             ]
                           }
                         }
@@ -10956,7 +10966,7 @@ function makeBaseUrl() {
 var router = new vue_router__WEBPACK_IMPORTED_MODULE_3__["default"]({
   mode: 'history',
   base: makeBaseUrl(),
-  routes: _toConsumableArray(_Modules_Page_Assets_js_PageRoutes__WEBPACK_IMPORTED_MODULE_8__["default"]).concat(_toConsumableArray(_Modules_Media_Assets_js_MediaRoutes__WEBPACK_IMPORTED_MODULE_9__["default"]), _toConsumableArray(_Modules_User_Assets_js_UserRoutes__WEBPACK_IMPORTED_MODULE_10__["default"]))
+  routes: [].concat(_toConsumableArray(_Modules_Page_Assets_js_PageRoutes__WEBPACK_IMPORTED_MODULE_8__["default"]), _toConsumableArray(_Modules_Media_Assets_js_MediaRoutes__WEBPACK_IMPORTED_MODULE_9__["default"]), _toConsumableArray(_Modules_User_Assets_js_UserRoutes__WEBPACK_IMPORTED_MODULE_10__["default"]))
 }),
     messages = _defineProperty({}, currentLocale, window.AsgardCMS.translations),
     i18n = new vue_i18n__WEBPACK_IMPORTED_MODULE_2__["default"]({
