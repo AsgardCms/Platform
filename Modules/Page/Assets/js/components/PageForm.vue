@@ -149,7 +149,6 @@
 
 <script>
     import axios from 'axios';
-    import chain from 'lodash/chain';
     import Form from 'form-backend-validation';
     import Slugify from '../../../../Core/Assets/js/mixins/Slugify';
     import ShortcutHelper from '../../../../Core/Assets/js/mixins/ShortcutHelper';
@@ -167,7 +166,7 @@
         },
         data() {
             return {
-                page: chain(this.locales)
+                page: window._(this.locales)
                     .keys()
                     .map(locale => [locale, {
                         title: '',
