@@ -55,7 +55,7 @@ abstract class RoutingServiceProvider extends ServiceProvider
         $router->group([
             'namespace' => $this->namespace,
             'prefix' => LaravelLocalization::setLocale(),
-            'middleware' => ['localizationRedirect', 'web'],
+            'middleware' => ['localizationRedirect','localeSessionRedirect','web'],
         ], function (Router $router) {
             $this->loadBackendRoutes($router);
             $this->loadFrontendRoutes($router);
