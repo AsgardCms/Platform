@@ -99,8 +99,8 @@ return [
         'simplemde.css' => ['theme' => 'vendor/simplemde/dist/simplemde.min.css'],
         // Javascript
         'bootstrap.js' => ['theme' => 'vendor/bootstrap/dist/js/bootstrap.min.js'],
-        'font-awesome.js' => ['cdn' => 'https://use.fontawesome.com/releases/v5.6.0/js/all.js'],
-        'font-awesome-v4-shims.js' => ['cdn' => 'https://use.fontawesome.com/releases/v5.6.0/js/v4-shims.js'],
+        'font-awesome.js' => ['cdn' => 'https://use.fontawesome.com/releases/v5.7.1/js/all.js'],
+        'font-awesome-v4-shims.js' => ['cdn' => 'https://use.fontawesome.com/releases/v5.7.1/js/v4-shims.js'],
         'mousetrap.js' => ['theme' => 'js/vendor/mousetrap.min.js'],
         'alertify.js' => ['theme' => 'js/vendor/alertify/alertify.js'],
         'icheck.js' => ['theme' => 'vendor/iCheck/icheck.min.js'],
