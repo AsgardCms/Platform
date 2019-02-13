@@ -54,7 +54,11 @@
 
                                     <el-form-item :label="trans('pages.status')"
                                                   :class="{'el-form-item is-error': form.errors.has(locale + '.status') }">
-                                        <el-checkbox v-model="page[locale].status">{{ trans('pages.status') }}</el-checkbox>
+                                            <el-switch
+                                                v-model="page[locale].status"
+                                                active-color="#13ce66"
+                                                inactive-color="#ff4949">
+                                            </el-switch>
                                         <div class="el-form-item__error" v-if="form.errors.has(locale + '.status')"
                                              v-text="form.errors.first(locale + '.status')"></div>
                                     </el-form-item>
@@ -185,6 +189,7 @@
                         og_title: '',
                         og_description: '',
                         og_type: '',
+                        status: false
                     }])
                     .fromPairs()
                     .merge({ template: 'default', is_home: 0, medias_single: [] })

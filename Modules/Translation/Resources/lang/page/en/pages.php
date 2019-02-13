@@ -19,7 +19,7 @@ return [
     'template' => 'Page template name',
     'is homepage' => 'Homepage ?',
     'body' => 'Body',
-    'status' => 'Status',
+    'status' => 'Is it available in frontend?',
     'pages were updated' => 'Pages were updated',
 
     'back to index' => 'Go back to the pages index',
