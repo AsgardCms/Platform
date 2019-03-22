@@ -84,7 +84,7 @@ class MenuItemController extends AdminBaseController
      */
     private function getMenuSelect($menu)
     {
-        return $menu->menuitems()->where('is_root', '!=', true)->get()->nest()->listsFlattened('title');
+        return $menu->menuitems()->where('is_root', '!=', true)->get()->noCleaning()->nest()->listsFlattened('title');
     }
 
     /**
