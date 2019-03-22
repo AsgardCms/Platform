@@ -2460,8 +2460,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
-//
-//
 
 
 
@@ -5486,7 +5484,7 @@ var render = function() {
       on: {
         click: function($event) {
           $event.preventDefault()
-          _vm.goToEditPage()
+          return _vm.goToEditPage()
         }
       }
     },
@@ -5595,7 +5593,7 @@ var render = function() {
           },
           on: {
             keydown: function($event) {
-              _vm.form.errors.clear($event.target.name)
+              return _vm.form.errors.clear($event.target.name)
             }
           }
         },
@@ -5784,7 +5782,7 @@ var render = function() {
                                     },
                                     on: {
                                       click: function($event) {
-                                        _vm.onSubmit()
+                                        return _vm.onSubmit()
                                       }
                                     }
                                   },
@@ -5802,7 +5800,7 @@ var render = function() {
                                   {
                                     on: {
                                       click: function($event) {
-                                        _vm.onCancel()
+                                        return _vm.onCancel()
                                       }
                                     }
                                   },
@@ -6096,7 +6094,7 @@ var render = function() {
                                 key: folder.id,
                                 nativeOn: {
                                   click: function($event) {
-                                    _vm.changeRoot(folder.id, index)
+                                    return _vm.changeRoot(folder.id, index)
                                   }
                                 }
                               },
@@ -6145,13 +6143,13 @@ var render = function() {
                     _vm._v(" "),
                     _c("el-table-column", {
                       attrs: { label: "", width: "150" },
-                      scopedSlots: _vm._u([
-                        {
-                          key: "default",
-                          fn: function(scope) {
-                            return [
-                              scope.row.is_image
-                                ? _c("span", [
+                      scopedSlots: _vm._u(
+                        [
+                          {
+                            key: "default",
+                            fn: function(scope) {
+                              return scope.row.is_image
+                                ? [
                                     _c("img", {
                                       staticClass: "img-responsive",
                                       attrs: {
@@ -6159,27 +6157,14 @@ var render = function() {
                                         alt: ""
                                       }
                                     })
-                                  ])
-                                : scope.row.is_folder
-                                  ? _c("span", [
-                                      _c("i", {
-                                        staticClass: "fa fa-2x fa-folder"
-                                      })
-                                    ])
-                                  : _c("span", [
-                                      scope.row.fa_icon
-                                        ? _c("i", {
-                                            staticClass: "fa fa-2x",
-                                            class: scope.row.fa_icon
-                                          })
-                                        : _c("i", {
-                                            staticClass: "fa fa-2x fa-file"
-                                          })
-                                    ])
-                            ]
+                                  ]
+                                : undefined
+                            }
                           }
-                        }
-                      ])
+                        ],
+                        null,
+                        true
+                      )
                     }),
                     _vm._v(" "),
                     _c("el-table-column", {
@@ -6188,55 +6173,39 @@ var render = function() {
                         prop: "filename",
                         sortable: "custom"
                       },
-                      scopedSlots: _vm._u([
-                        {
-                          key: "default",
-                          fn: function(scope) {
-                            return [
-                              scope.row.is_folder
-                                ? _c(
-                                    "strong",
-                                    {
-                                      staticStyle: { cursor: "pointer" },
-                                      on: {
-                                        click: function($event) {
-                                          _vm.enterFolder(scope)
-                                        }
-                                      }
-                                    },
-                                    [
-                                      _vm._v(
-                                        "\n                                    " +
-                                          _vm._s(scope.row.filename) +
-                                          "\n                                "
-                                      )
-                                    ]
-                                  )
-                                : _c("span", [
+                      scopedSlots: _vm._u(
+                        [
+                          {
+                            key: "default",
+                            fn: function(scope) {
+                              return scope.row.is_folder
+                                ? [
                                     _c(
-                                      "a",
+                                      "strong",
                                       {
-                                        attrs: { href: "#" },
+                                        staticStyle: { cursor: "pointer" },
                                         on: {
                                           click: function($event) {
-                                            $event.preventDefault()
-                                            _vm.goToEdit(scope)
+                                            return _vm.enterFolder(scope)
                                           }
                                         }
                                       },
                                       [
                                         _vm._v(
-                                          "\n                                        " +
+                                          "\n                                    " +
                                             _vm._s(scope.row.filename) +
-                                            "\n                                    "
+                                            "\n                                "
                                         )
                                       ]
                                     )
-                                  ])
-                            ]
+                                  ]
+                                : undefined
+                            }
                           }
-                        }
-                      ])
+                        ],
+                        null,
+                        true
+                      )
                     }),
                     _vm._v(" "),
                     _c("el-table-column", {
@@ -6270,7 +6239,7 @@ var render = function() {
                                           on: {
                                             click: function($event) {
                                               $event.preventDefault()
-                                              _vm.insertMedia(scope)
+                                              return _vm.insertMedia(scope)
                                             }
                                           }
                                         },
@@ -6318,7 +6287,7 @@ var render = function() {
                                                           $event
                                                         ) {
                                                           $event.preventDefault()
-                                                          _vm.showEditFolder(
+                                                          return _vm.showEditFolder(
                                                             scope.row
                                                           )
                                                         }
@@ -6378,7 +6347,10 @@ var render = function() {
                       },
                       on: {
                         "update:currentPage": function($event) {
-                          _vm.$set(_vm.meta, "current_page", $event)
+                          return _vm.$set(_vm.meta, "current_page", $event)
+                        },
+                        "update:current-page": function($event) {
+                          return _vm.$set(_vm.meta, "current_page", $event)
                         },
                         "size-change": _vm.handleSizeChange,
                         "current-change": _vm.handleCurrentChange
@@ -6482,7 +6454,7 @@ var render = function() {
               nativeOn: {
                 submit: function($event) {
                   $event.preventDefault()
-                  _vm.onSubmit()
+                  return _vm.onSubmit()
                 }
               }
             },
@@ -6566,7 +6538,7 @@ var render = function() {
                   attrs: { type: "warning" },
                   on: {
                     click: function($event) {
-                      _vm.onSubmit()
+                      return _vm.onSubmit()
                     }
                   }
                 },
@@ -6661,7 +6633,7 @@ var render = function() {
               nativeOn: {
                 submit: function($event) {
                   $event.preventDefault()
-                  _vm.onSubmit()
+                  return _vm.onSubmit()
                 }
               }
             },
@@ -6719,7 +6691,7 @@ var render = function() {
                   attrs: { type: "primary" },
                   on: {
                     click: function($event) {
-                      _vm.onSubmit()
+                      return _vm.onSubmit()
                     }
                   }
                 },
@@ -6791,7 +6763,7 @@ var render = function() {
               nativeOn: {
                 submit: function($event) {
                   $event.preventDefault()
-                  _vm.onSubmit()
+                  return _vm.onSubmit()
                 }
               }
             },
@@ -6849,7 +6821,7 @@ var render = function() {
                   attrs: { type: "primary" },
                   on: {
                     click: function($event) {
-                      _vm.onSubmit()
+                      return _vm.onSubmit()
                     }
                   }
                 },
@@ -7126,7 +7098,7 @@ var render = function() {
           },
           on: {
             keydown: function($event) {
-              _vm.form.errors.clear($event.target.name)
+              return _vm.form.errors.clear($event.target.name)
             }
           }
         },
@@ -7181,7 +7153,7 @@ var render = function() {
                                 _c("el-input", {
                                   on: {
                                     input: function($event) {
-                                      _vm.generateSlug($event, locale)
+                                      return _vm.generateSlug($event, locale)
                                     }
                                   },
                                   model: {
@@ -7238,7 +7210,10 @@ var render = function() {
                                         attrs: { slot: "prepend" },
                                         on: {
                                           click: function($event) {
-                                            _vm.generateSlug($event, locale)
+                                            return _vm.generateSlug(
+                                              $event,
+                                              locale
+                                            )
                                           }
                                         },
                                         slot: "prepend"
@@ -7647,7 +7622,7 @@ var render = function() {
                                     },
                                     on: {
                                       click: function($event) {
-                                        _vm.onSubmit()
+                                        return _vm.onSubmit()
                                       }
                                     }
                                   },
@@ -7665,7 +7640,7 @@ var render = function() {
                                   {
                                     on: {
                                       click: function($event) {
-                                        _vm.onCancel()
+                                        return _vm.onCancel()
                                       }
                                     }
                                   },
@@ -7791,7 +7766,7 @@ var render = function() {
                       },
                       on: {
                         "single-file-selected": function($event) {
-                          _vm.selectSingleFile($event, "page")
+                          return _vm.selectSingleFile($event, "page")
                         }
                       }
                     })
@@ -7821,7 +7796,7 @@ var render = function() {
         ],
         on: {
           shortkey: function($event) {
-            _vm.pushRoute({ name: "admin.page.page.index" })
+            return _vm.pushRoute({ name: "admin.page.page.index" })
           }
         }
       })
@@ -8080,7 +8055,7 @@ var render = function() {
                                   on: {
                                     click: function($event) {
                                       $event.preventDefault()
-                                      _vm.goToEdit(scope)
+                                      return _vm.goToEdit(scope)
                                     }
                                   }
                                 },
@@ -8115,7 +8090,7 @@ var render = function() {
                                   on: {
                                     click: function($event) {
                                       $event.preventDefault()
-                                      _vm.goToEdit(scope)
+                                      return _vm.goToEdit(scope)
                                     }
                                   }
                                 },
@@ -8198,7 +8173,10 @@ var render = function() {
                       },
                       on: {
                         "update:currentPage": function($event) {
-                          _vm.$set(_vm.meta, "current_page", $event)
+                          return _vm.$set(_vm.meta, "current_page", $event)
+                        },
+                        "update:current-page": function($event) {
+                          return _vm.$set(_vm.meta, "current_page", $event)
                         },
                         "size-change": _vm.handleSizeChange,
                         "current-change": _vm.handleCurrentChange
@@ -8227,7 +8205,7 @@ var render = function() {
       ],
       on: {
         shortkey: function($event) {
-          _vm.pushRoute({ name: "admin.page.page.create" })
+          return _vm.pushRoute({ name: "admin.page.page.create" })
         }
       }
     })
@@ -8412,7 +8390,7 @@ var render = function() {
                             attrs: { slot: "prepend" },
                             on: {
                               click: function($event) {
-                                _vm.destroyApiKey(key)
+                                return _vm.destroyApiKey(key)
                               }
                             },
                             slot: "prepend"
@@ -8469,7 +8447,7 @@ var render = function() {
               attrs: { type: "text" },
               on: {
                 click: function($event) {
-                  _vm.changeStateForAll(1)
+                  return _vm.changeStateForAll(1)
                 }
               }
             },
@@ -8489,7 +8467,7 @@ var render = function() {
                   attrs: { type: "text" },
                   on: {
                     click: function($event) {
-                      _vm.changeStateForAll(0)
+                      return _vm.changeStateForAll(0)
                     }
                   }
                 },
@@ -8509,7 +8487,7 @@ var render = function() {
               attrs: { type: "text" },
               on: {
                 click: function($event) {
-                  _vm.changeStateForAll(-1)
+                  return _vm.changeStateForAll(-1)
                 }
               }
             },
@@ -8554,7 +8532,7 @@ var render = function() {
                                 attrs: { type: "text" },
                                 on: {
                                   click: function($event) {
-                                    _vm.changeState(
+                                    return _vm.changeState(
                                       subPermissionTitle,
                                       permissionActions,
                                       1
@@ -8578,7 +8556,7 @@ var render = function() {
                                     attrs: { type: "text" },
                                     on: {
                                       click: function($event) {
-                                        _vm.changeState(
+                                        return _vm.changeState(
                                           subPermissionTitle,
                                           permissionActions,
                                           0
@@ -8602,7 +8580,7 @@ var render = function() {
                                 attrs: { type: "text" },
                                 on: {
                                   click: function($event) {
-                                    _vm.changeState(
+                                    return _vm.changeState(
                                       subPermissionTitle,
                                       permissionActions,
                                       -1
@@ -8841,7 +8819,7 @@ var render = function() {
           },
           on: {
             keydown: function($event) {
-              _vm.form.errors.clear($event.target.name)
+              return _vm.form.errors.clear($event.target.name)
             }
           }
         },
@@ -9022,7 +9000,7 @@ var render = function() {
                             attrs: { loading: _vm.loading, type: "primary" },
                             on: {
                               click: function($event) {
-                                _vm.onSubmit()
+                                return _vm.onSubmit()
                               }
                             }
                           },
@@ -9040,7 +9018,7 @@ var render = function() {
                           {
                             on: {
                               click: function($event) {
-                                _vm.onCancel()
+                                return _vm.onCancel()
                               }
                             }
                           },
@@ -9081,7 +9059,7 @@ var render = function() {
         ],
         on: {
           shortkey: function($event) {
-            _vm.pushRoute({ name: "admin.user.role.index" })
+            return _vm.pushRoute({ name: "admin.user.role.index" })
           }
         }
       })
@@ -9260,7 +9238,7 @@ var render = function() {
                                   on: {
                                     click: function($event) {
                                       $event.preventDefault()
-                                      _vm.goToEdit(scope)
+                                      return _vm.goToEdit(scope)
                                     }
                                   }
                                 },
@@ -9296,7 +9274,7 @@ var render = function() {
                                   on: {
                                     click: function($event) {
                                       $event.preventDefault()
-                                      _vm.goToEdit(scope)
+                                      return _vm.goToEdit(scope)
                                     }
                                   }
                                 },
@@ -9379,7 +9357,10 @@ var render = function() {
                       },
                       on: {
                         "update:currentPage": function($event) {
-                          _vm.$set(_vm.meta, "current_page", $event)
+                          return _vm.$set(_vm.meta, "current_page", $event)
+                        },
+                        "update:current-page": function($event) {
+                          return _vm.$set(_vm.meta, "current_page", $event)
                         },
                         "size-change": _vm.handleSizeChange,
                         "current-change": _vm.handleCurrentChange
@@ -9408,7 +9389,7 @@ var render = function() {
       ],
       on: {
         shortkey: function($event) {
-          _vm.pushRoute({ name: "admin.user.role.create" })
+          return _vm.pushRoute({ name: "admin.user.role.create" })
         }
       }
     })
@@ -9516,7 +9497,7 @@ var render = function() {
           },
           on: {
             keydown: function($event) {
-              _vm.form.errors.clear($event.target.name)
+              return _vm.form.errors.clear($event.target.name)
             }
           }
         },
@@ -10076,7 +10057,7 @@ var render = function() {
                             attrs: { loading: _vm.loading, type: "primary" },
                             on: {
                               click: function($event) {
-                                _vm.onSubmit()
+                                return _vm.onSubmit()
                               }
                             }
                           },
@@ -10094,7 +10075,7 @@ var render = function() {
                           {
                             on: {
                               click: function($event) {
-                                _vm.onCancel()
+                                return _vm.onCancel()
                               }
                             }
                           },
@@ -10135,7 +10116,7 @@ var render = function() {
         ],
         on: {
           shortkey: function($event) {
-            _vm.pushRoute({ name: "admin.user.user.index" })
+            return _vm.pushRoute({ name: "admin.user.user.index" })
           }
         }
       })
@@ -10228,7 +10209,7 @@ var render = function() {
           },
           on: {
             keydown: function($event) {
-              _vm.form.errors.clear($event.target.name)
+              return _vm.form.errors.clear($event.target.name)
             }
           }
         },
@@ -10493,7 +10474,7 @@ var render = function() {
                             attrs: { loading: _vm.loading, type: "primary" },
                             on: {
                               click: function($event) {
-                                _vm.onSubmit()
+                                return _vm.onSubmit()
                               }
                             }
                           },
@@ -10691,7 +10672,7 @@ var render = function() {
                                   on: {
                                     click: function($event) {
                                       $event.preventDefault()
-                                      _vm.goToEdit(scope)
+                                      return _vm.goToEdit(scope)
                                     }
                                   }
                                 },
@@ -10727,7 +10708,7 @@ var render = function() {
                                   on: {
                                     click: function($event) {
                                       $event.preventDefault()
-                                      _vm.goToEdit(scope)
+                                      return _vm.goToEdit(scope)
                                     }
                                   }
                                 },
@@ -10763,7 +10744,7 @@ var render = function() {
                                   on: {
                                     click: function($event) {
                                       $event.preventDefault()
-                                      _vm.goToEdit(scope)
+                                      return _vm.goToEdit(scope)
                                     }
                                   }
                                 },
@@ -10846,7 +10827,10 @@ var render = function() {
                       },
                       on: {
                         "update:currentPage": function($event) {
-                          _vm.$set(_vm.meta, "current_page", $event)
+                          return _vm.$set(_vm.meta, "current_page", $event)
+                        },
+                        "update:current-page": function($event) {
+                          return _vm.$set(_vm.meta, "current_page", $event)
                         },
                         "size-change": _vm.handleSizeChange,
                         "current-change": _vm.handleCurrentChange
@@ -10875,7 +10859,7 @@ var render = function() {
       ],
       on: {
         shortkey: function($event) {
-          _vm.pushRoute({ name: "admin.user.user.create" })
+          return _vm.pushRoute({ name: "admin.user.user.create" })
         }
       }
     })

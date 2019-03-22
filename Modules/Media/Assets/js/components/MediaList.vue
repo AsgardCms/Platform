@@ -58,29 +58,27 @@
                         >
                             <el-table-column type="selection" width="55"></el-table-column>
                             <el-table-column label="" width="150">
-                                <template slot-scope="scope">
-                                    <span v-if="scope.row.is_image">
-                                        <img :src="scope.row.small_thumb" alt="" class="img-responsive">
-                                    </span>
-                                    <span v-else-if="scope.row.is_folder">
-                                        <i class="fa fa-2x fa-folder"></i>
-                                    </span>
-                                    <span v-else>
-                                        <i v-if="scope.row.fa_icon" :class="scope.row.fa_icon" class="fa fa-2x"></i>
-                                        <i v-else class="fa fa-2x fa-file"></i>
-                                    </span>
+                                <template v-if="scope.row.is_image" slot-scope="scope">
+                                    <img :src="scope.row.small_thumb" alt="" class="img-responsive">
+                                </template>
+                                <template v-else-if="scope.row.is_folder" slot-scope="scope">
+                                    <i class="fa fa-2x fa-folder"></i>
+                                </template>
+                                <template v-else slot-scope="scope">
+                                    <i v-if="scope.row.fa_icon" :class="scope.row.fa_icon" class="fa fa-2x"></i>
+                                    <i v-else class="fa fa-2x fa-file"></i>
                                 </template>
                             </el-table-column>
                             <el-table-column :label="trans('media.table.filename')" prop="filename" sortable="custom">
-                                <template slot-scope="scope">
-                                    <strong v-if="scope.row.is_folder" style="cursor: pointer;" @click="enterFolder(scope)">
+                                <template v-if="scope.row.is_folder" slot-scope="scope">
+                                    <strong style="cursor: pointer;" @click="enterFolder(scope)">
                                         {{ scope.row.filename }}
                                     </strong>
-                                    <span v-else>
-                                        <a href="#" @click.prevent="goToEdit(scope)">
-                                            {{ scope.row.filename }}
-                                        </a>
-                                    </span>
+                                </template>
+                                <template v-else slot-scope="scope">
+                                    <a href="#" @click.prevent="goToEdit(scope)">
+                                        {{ scope.row.filename }}
+                                    </a>
                                 </template>
                             </el-table-column>
                             <el-table-column :label="trans('core.table.created at')" prop="created_at" sortable="custom" width="150"></el-table-column>
