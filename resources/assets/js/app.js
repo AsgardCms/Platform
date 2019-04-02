@@ -21,7 +21,6 @@ Vue.use(VueEvents);
 Vue.use(VueSimplemde);
 require('./mixins');
 
-
 Vue.component('ckeditor', require('../../../Modules/Core/Assets/js/components/CkEditor.vue'));
 Vue.component('DeleteButton', require('../../../Modules/Core/Assets/js/components/DeleteComponent.vue'));
 Vue.component('EditButton', require('../../../Modules/Core/Assets/js/components/EditButtonComponent.vue'));
@@ -29,9 +28,8 @@ Vue.component('TagsInput', require('../../../Modules/Tag/Assets/js/components/Ta
 Vue.component('SingleMedia', require('../../../Modules/Media/Assets/js/components/SingleMedia.vue'));
 Vue.component('MediaManager', require('../../../Modules/Media/Assets/js/components/MediaManager.vue'));
 
-
-const currentLocale = window.AsgardCMS.currentLocale;
-const adminPrefix = window.AsgardCMS.adminPrefix;
+const currentLocale = window.AsgardCMS.currentLocale,
+    adminPrefix = window.AsgardCMS.adminPrefix;
 
 function makeBaseUrl() {
     if (window.AsgardCMS.hideDefaultLocaleInURL == 1) {

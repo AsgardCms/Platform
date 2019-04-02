@@ -21,7 +21,7 @@ use Modules\Workshop\Scaffold\Module\Generators\ValueObjectGenerator;
 use Modules\Workshop\Scaffold\Module\ModuleScaffold;
 use Modules\Workshop\Scaffold\Theme\ThemeGeneratorFactory;
 use Modules\Workshop\Scaffold\Theme\ThemeScaffold;
-use Nwidart\Modules\Repository;
+use Nwidart\Modules\Contracts\RepositoryInterface;
 
 class WorkshopServiceProvider extends ServiceProvider
 {
@@ -55,7 +55,7 @@ class WorkshopServiceProvider extends ServiceProvider
         });
 
         app('router')->bind('module', function ($module) {
-            return app(Repository::class)->find($module);
+            return app(RepositoryInterface::class)->find($module);
         });
         app('router')->bind('theme', function ($theme) {
             return app(ThemeManager::class)->find($theme);

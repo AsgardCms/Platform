@@ -1,3 +1,9 @@
 {
-  "presets": ["es2015", "stage-3"]
+    "plugins": [
+        "syntax-dynamic-import",
+        "transform-object-rest-spread"
+    ],
+    "presets": [
+        ["env"]
+    ]
 }

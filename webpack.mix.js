@@ -1,4 +1,8 @@
-let mix = require('laravel-mix');
+const mix = require('laravel-mix');
+
+if (mix.inProduction()) {
+    mix.sourceMaps().disableNotifications().version();
+}
 
 /*
  |--------------------------------------------------------------------------
@@ -12,4 +16,5 @@ let mix = require('laravel-mix');
  */
 
 mix.js('resources/assets/js/app.js', 'public/js')
+    .extract(['vue', 'vue-i18n', 'vue-events', 'vue-router', 'vue-shortkey', 'vue-simplemde'])
     .sass('resources/assets/sass/app.scss', 'public/css');

@@ -46,9 +46,9 @@ class PublicController extends BasePublicController
 
         $template = $this->getTemplateForPage($page);
 
-        $alternate = $this->getAlternateMetaData($page);
+        $this->addAlternateUrls($this->getAlternateMetaData($page));
 
-        return view($template, compact('page', 'alternate'));
+        return view($template, compact('page'));
     }
 
     /**
@@ -62,9 +62,9 @@ class PublicController extends BasePublicController
 
         $template = $this->getTemplateForPage($page);
 
-        $alternate = $this->getAlternateMetaData($page);
+        $this->addAlternateUrls($this->getAlternateMetaData($page));
 
-        return view($template, compact('page', 'alternate'));
+        return view($template, compact('page'));
     }
 
     /**

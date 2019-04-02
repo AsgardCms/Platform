@@ -214,7 +214,6 @@ class ModuleScaffold
         $this->renameVendorName();
         $this->removeViewResources();
 
-        $this->finder->delete($this->getModulesPath('Http/routes.php'));
         $this->finder->delete($this->getModulesPath("Http/Controllers/{$this->name}Controller.php"));
     }
 
@@ -227,7 +226,7 @@ class ModuleScaffold
 
         $moduleJson = $this->loadProviders($moduleJson);
         $moduleJson = $this->setModuleOrderOrder($moduleJson);
-        $moduleJson = $this->removeStartPhpFile($moduleJson);
+        $moduleJson = $this->setModuleVersion($moduleJson);
 
         $this->finder->put($this->getModulesPath('module.json'), $moduleJson);
     }
@@ -260,16 +259,13 @@ JSON;
     }
 
     /**
-     * Remove the start.php start file
-     * Also removes the auto loading of that file
+     * Set the module version to 1.0.0 by default
      * @param string $content
      * @return string
      */
-    private function removeStartPhpFile($content)
+    private function setModuleVersion($content)
     {
-        $this->finder->delete($this->getModulesPath('start.php'));
-
-        return str_replace('"start.php"', '', $content);
+        return str_replace("\"active\"", "\"version\": \"1.0.0\",\n\t\"active\"", $content);
     }
 
     /**
@@ -301,7 +297,7 @@ JSON;
         $replace = <<<JSON
 "description": "",
     "type": "asgard-module",
-    "license": "MIT", 
+    "license": "MIT",
     "require": {
         "php": "^7.1.3",
         "composer/installers": "~1.0",

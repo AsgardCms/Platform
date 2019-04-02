@@ -89,7 +89,7 @@
                                         @size-change="handleSizeChange"
                                         @current-change="handleCurrentChange"
                                         :current-page.sync="meta.current_page"
-                                        :page-sizes="[10, 20, 50, 100]"
+                                        :page-sizes="[10, 20, 30, 50, 100]"
                                         :page-size="parseInt(meta.per_page)"
                                         layout="total, sizes, prev, pager, next, jumper"
                                         :total="meta.total">
@@ -118,7 +118,7 @@
                 data,
                 meta: {
                     current_page: 1,
-                    per_page: 10,
+                    per_page: 30,
                 },
                 order_meta: {
                     order_by: '',
