@@ -29,9 +29,7 @@
                                         @click="toggleUploadZone"
                                     >
                                         {{ trans('media.upload file') }}
-                                    </el-button>
-                                </div>
-                                <el-button-group>
+                                    </el-button> 
                                     <el-button
                                         type="warning"
                                         :disabled="selectedMedia.length === 0"
@@ -46,8 +44,8 @@
                                         :loading="filesAreDeleting"
                                     >
                                         {{ trans('core.button.delete') }}
-                                    </el-button>
-                                </el-button-group>
+                                    </el-button> 
+                                </div>
                             </div>
                             <div class="search el-col el-col-5">
                                 <el-input prefix-icon="el-icon-search" @keyup.native="performSearch" v-model="searchQuery"></el-input>
