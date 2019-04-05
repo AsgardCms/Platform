@@ -17,21 +17,4 @@ if (mix.inProduction()) {
 
 mix.js('resources/assets/js/app.js', 'public/js')
     .extract()
-    // .extract([
-    //     '@babel/polyfill',
-    //     'bootstrap-sass',
-    //     'element-ui',
-    //     'form-backend-validation',
-    //     'lodash',
-    //     'moment',
-    //     'typy',
-    //     'vue',
-    //     'vue-data-tables',
-    //     'vue-events',
-    //     'vue-i18n',
-    //     'vue-router',
-    //     'vue-shortkey',
-    //     'vue-simplemde',
-    //     'vue-template-compiler',
-    // ])
     .sass('resources/assets/sass/app.scss', 'public/css');
