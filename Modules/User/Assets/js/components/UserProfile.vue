@@ -97,6 +97,8 @@
                     permissions: {},
                     roles: {},
                     is_new: false,
+                    password:'',
+                    password_confirmation:'',
                 },
                 roles: {},
                 form: new Form(),
