@@ -15,7 +15,8 @@ class UpdateProfileRequest extends FormRequest
             'email' => "required|email|unique:users,email,{$userId}",
             'first_name' => 'required',
             'last_name' => 'required',
-            'password' => 'confirmed',
+            'password' => 'required|confirmed|min:3',
+            'password_confirmation'=>'required',
         ];
     }
 
