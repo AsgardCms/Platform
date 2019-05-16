@@ -21,4 +21,8 @@ $router->group(['prefix' => '/translation', 'middleware' => 'api.token'], functi
         'uses' => 'AllTranslationController',
         'as' => 'api.translation.translations.all',
     ]);
+    $router->get('list-locales-for-select', [
+        'uses' => 'LocaleController@listLocalesForSelect',
+        'as' => 'api.translation.translations.list-locales-for-select',
+    ]);
 });
