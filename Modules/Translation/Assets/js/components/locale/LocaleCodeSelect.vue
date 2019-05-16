@@ -75,11 +75,11 @@
             },
             _options: {
                 get: function(){
-                    if(this.options!=null){
-                        return this.options;
-                    }
                     if(this.opts.length>0){
                         return this.opts;
+                    }
+                    if(this.options!=null){
+                        return this.options;
                     }
                     return [];
                 },

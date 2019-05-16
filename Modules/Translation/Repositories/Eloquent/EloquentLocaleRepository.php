@@ -62,7 +62,7 @@ class EloquentLocaleRepository implements LocaleRepository
                 break;
         }
 
-        return $locales;
+        return $locales->values();
     }
 
     /**
