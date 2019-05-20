@@ -29,9 +29,7 @@
                                         @click="toggleUploadZone"
                                     >
                                         {{ trans('media.upload file') }}
-                                    </el-button>
-                                </div>
-                                <el-button-group>
+                                    </el-button> 
                                     <el-button
                                         type="warning"
                                         :disabled="selectedMedia.length === 0"
@@ -46,8 +44,8 @@
                                         :loading="filesAreDeleting"
                                     >
                                         {{ trans('core.button.delete') }}
-                                    </el-button>
-                                </el-button-group>
+                                    </el-button> 
+                                </div>
                             </div>
                             <div class="search el-col el-col-5">
                                 <el-input prefix-icon="el-icon-search" @keyup.native="performSearch" v-model="searchQuery"></el-input>
@@ -63,7 +61,7 @@
                             </el-col>
                         </el-row>
                         <el-table
-                            :data="data"
+                            :data="media"
                             stripe
                             style="width: 100%"
                             ref="mediaTable"
@@ -75,8 +73,8 @@
                             <el-table-column label="" width="150">
                                 <template slot-scope="scope">
                                     <img :src="scope.row.small_thumb" alt="" v-if="scope.row.is_image"/>
-                                    <i :class="`fa ${scope.row.fa_icon}`" style="font-size: 38px;" v-if="! scope.row.is_image && ! scope.row.is_folder"></i>
-                                    <i class="fa fa-folder" style="font-size: 38px;" v-if="scope.row.is_folder"></i>
+                                    <i class="fa fa-folder" style="font-size: 38px;" v-else-if="scope.row.is_folder"></i>
+                                    <i :class="`fa ${scope.row.fa_icon}`" style="font-size: 38px;" v-else></i>
                                 </template>
                             </el-table-column>
                             <el-table-column prop="filename" :label="trans('media.table.filename')" sortable="custom">
@@ -114,7 +112,7 @@
                                                 >
                                                     <i class="fa fa-pencil"></i>
                                                 </el-button>
-                                                <delete-button :scope="scope" :rows="data"></delete-button>
+                                                <delete-button :scope="scope" :rows="media"></delete-button>
                                             </el-button-group>
                                         </div>
                                     </div>
@@ -126,7 +124,7 @@
                                 @size-change="handleSizeChange"
                                 @current-change="handleCurrentChange"
                                 :current-page.sync="meta.current_page"
-                                :page-sizes="[10, 20, 50, 100]"
+                                :page-sizes="[10, 20, 30, 50, 100]"
                                 :page-size="parseInt(meta.per_page)"
                                 layout="total, sizes, prev, pager, next, jumper"
                                 :total="meta.total"
@@ -161,11 +159,11 @@
         },
         data() {
             return {
-                data: [],
+                media: [],
                 tableIsLoading: false,
                 meta: {
                     current_page: 1,
-                    per_page: 10,
+                    per_page: 30,
                 },
                 order_meta: {
                     order_by: '',
@@ -197,7 +195,7 @@
                 axios.get(route('api.media.all-vue', _.merge(properties, customProperties)))
                     .then((response) => {
                         this.tableIsLoading = false;
-                        this.data = response.data.data;
+                        this.media = response.data.data;
                         this.meta = response.data.meta;
                         this.links = response.data.links;
                         this.order_meta.order_by = properties.order_by;

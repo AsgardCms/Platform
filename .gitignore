@@ -10,5 +10,6 @@ yarn-error.log
 .env
 composer.lock
 package-lock.json
+yarn.lock
 .phpunit.result.cache
 .php_cs.cache

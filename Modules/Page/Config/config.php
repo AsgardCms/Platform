@@ -25,8 +25,8 @@ return [
     | Add relations that will be dynamically added to the Page entity
     */
     'relations' => [
-//        'extension' => function ($self) {
-//            return $self->belongsTo(PageExtension::class, 'id', 'page_id')->first();
+//        'extension' => function (): \Illuminate\Database\Eloquent\Relations\BelongsTo {
+//            return $this->belongsTo(PageExtension::class, 'id', 'page_id')->first();
 //        }
     ],
     /*
