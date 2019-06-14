@@ -35,5 +35,5 @@ interface LocaleRepository
      * @param array $locales
      * @return Collection
      */
-    public function translatableLocales(array $locales = null): Collection;
+    public function translatableLocales(): Collection;
 }
