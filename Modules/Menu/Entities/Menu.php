@@ -2,7 +2,7 @@
 
 namespace Modules\Menu\Entities;
 
-use Dimsav\Translatable\Translatable;
+use Astrotomic\Translatable\Translatable;
 use Illuminate\Database\Eloquent\Model;
 
 class Menu extends Model
