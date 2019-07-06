@@ -165,12 +165,7 @@ class EloquentPageRepository extends EloquentBaseRepository implements PageRepos
                 $pages->orderBy($request->get('order_by'), $order);
             }
         }
-        //dd($pages->toSql());
 
-//        $pages->with('translations')->join('page__page_translations as t', function ($join) {
-//            $join->on('page__pages.id', '=', 't.page_id');
-//        })->where('t.locale', locale())
-//            ->groupBy('page__pages.id')->orderBy("t.title", 'desc');
         return $pages->paginate($request->get('per_page', 10));
     }
 
