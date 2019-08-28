@@ -82,7 +82,7 @@ class EloquentFolderRepository extends EloquentBaseRepository implements FolderR
     {
         $path = $folder->path->getRelativeUrl();
 
-        return $this->model->where('path', 'like', "{$path}%")->get();
+        return $this->model->where('path', 'like', "{$path}/%")->get();
     }
 
     public function allNested(): NestedFoldersCollection
