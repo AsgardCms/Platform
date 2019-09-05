@@ -1896,31 +1896,31 @@ var inc = new Date().getTime();
   props: {
     name: {
       type: String,
-      default: function _default() {
+      "default": function _default() {
         return "editor-".concat(++inc);
       }
     },
     value: {
       type: String,
-      default: function _default() {
+      "default": function _default() {
         return '';
       }
     },
     id: {
       type: String,
-      default: function _default() {
+      "default": function _default() {
         return "editor-".concat(inc);
       }
     },
     types: {
       type: String,
-      default: function _default() {
+      "default": function _default() {
         return 'classic';
       }
     },
     config: {
       type: Object,
-      default: function _default() {
+      "default": function _default() {
         if (window.AsgardCMS.ckeditorCustomConfig !== '') {
           return {
             customConfig: window.AsgardCMS.ckeditorCustomConfig
@@ -2013,11 +2013,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
     rows: {
-      default: null,
+      "default": null,
       type: Array
     },
     scope: {
-      default: null,
+      "default": null,
       type: Object
     }
   },
@@ -2042,7 +2042,7 @@ __webpack_require__.r(__webpack_exports__);
         confirmButtonClass: 'el-button--danger'
       }).then(function () {
         var vm = _this;
-        axios.delete(_this.scope.row.urls.delete_url).then(function (response) {
+        axios["delete"](_this.scope.row.urls.delete_url).then(function (response) {
           if (response.data.errors === false) {
             vm.$message({
               type: 'success',
@@ -2050,13 +2050,13 @@ __webpack_require__.r(__webpack_exports__);
             });
             vm.rows.splice(vm.scope.$index, 1);
           }
-        }).catch(function (error) {
+        })["catch"](function (error) {
           vm.$message({
             type: 'error',
             message: error.data.message
           });
         });
-      }).catch(function () {
+      })["catch"](function () {
         _this.$message({
           type: 'info',
           message: _this.trans('core.delete cancelled')
@@ -2210,7 +2210,7 @@ __webpack_require__.r(__webpack_exports__);
   },
   props: {
     locales: {
-      default: null,
+      "default": null,
       type: Object
     }
   },
@@ -2281,7 +2281,7 @@ __webpack_require__.r(__webpack_exports__);
             folder_id: _this2.media.folder_id
           }
         });
-      }).catch(function (error) {
+      })["catch"](function (error) {
         console.log(error);
         _this2.loading = false;
 
@@ -2333,7 +2333,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Core_Assets_js_components_EditButtonComponent_vue__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../../../Core/Assets/js/components/EditButtonComponent.vue */ "./Modules/Core/Assets/js/components/EditButtonComponent.vue");
 var _this4 = undefined;
 
-function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; var ownKeys = Object.keys(source); if (typeof Object.getOwnPropertySymbols === 'function') { ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) { return Object.getOwnPropertyDescriptor(source, sym).enumerable; })); } ownKeys.forEach(function (key) { _defineProperty(target, key, source[key]); }); } return target; }
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(source, true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(source).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
@@ -2479,11 +2481,11 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
   },
   props: {
     singleModal: {
-      default: false,
+      "default": false,
       type: Boolean
     },
     eventName: {
-      default: null,
+      "default": null,
       type: String
     }
   },
@@ -2566,7 +2568,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         search: this.searchQuery,
         folder_id: this.folderId
       };
-      axios__WEBPACK_IMPORTED_MODULE_0___default.a.get(route('api.media.all-vue', _objectSpread({}, properties, customProperties))).then(function (response) {
+      axios__WEBPACK_IMPORTED_MODULE_0___default.a.get(route('api.media.all-vue', _objectSpread({}, properties, {}, customProperties))).then(function (response) {
         _this2.tableIsLoading = false;
         _this2.media = response.data.data;
         _this2.meta = response.data.meta;
@@ -2700,7 +2702,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
           _this5.fetchMediaData();
         });
-      }).catch(function () {
+      })["catch"](function () {
         _this5.$message({
           type: 'info',
           message: _this5.trans('core.delete cancelled')
@@ -2758,7 +2760,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var form_backend_validation__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! form-backend-validation */ "./node_modules/form-backend-validation/dist/index.js");
 /* harmony import */ var form_backend_validation__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(form_backend_validation__WEBPACK_IMPORTED_MODULE_1__);
-function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; var ownKeys = Object.keys(source); if (typeof Object.getOwnPropertySymbols === 'function') { ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) { return Object.getOwnPropertyDescriptor(source, sym).enumerable; })); } ownKeys.forEach(function (key) { _defineProperty(target, key, source[key]); }); } return target; }
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(source, true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(source).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
@@ -2842,7 +2846,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         _this2.dialogFormVisible = false;
 
         _this2.$events.emit('mediaWasMoved', response);
-      }).catch(function () {
+      })["catch"](function () {
         _this2.loading = false;
 
         _this2.$notify.error({
@@ -2882,7 +2886,9 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var form_backend_validation__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! form-backend-validation */ "./node_modules/form-backend-validation/dist/index.js");
 /* harmony import */ var form_backend_validation__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(form_backend_validation__WEBPACK_IMPORTED_MODULE_0__);
-function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; var ownKeys = Object.keys(source); if (typeof Object.getOwnPropertySymbols === 'function') { ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) { return Object.getOwnPropertyDescriptor(source, sym).enumerable; })); } ownKeys.forEach(function (key) { _defineProperty(target, key, source[key]); }); } return target; }
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(source, true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(source).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
@@ -2912,7 +2918,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
     parentId: {
-      default: null,
+      "default": null,
       type: Number
     }
   },
@@ -2946,7 +2952,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         _this.folder.name = '';
 
         _this.$events.emit('folderWasCreated', response);
-      }).catch(function (error) {
+      })["catch"](function (error) {
         console.log(error);
         _this.loading = false;
 
@@ -3036,7 +3042,7 @@ __webpack_require__.r(__webpack_exports__);
         _this2.dialogFormVisible = false;
 
         _this2.$events.emit('folderWasUpdated', response);
-      }).catch(function (error) {
+      })["catch"](function (error) {
         console.log(error);
         _this2.loading = false;
 
@@ -3071,7 +3077,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _MediaList_vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./MediaList.vue */ "./Modules/Media/Assets/js/components/MediaList.vue");
 /* harmony import */ var _mixins_RandomString__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../mixins/RandomString */ "./Modules/Media/Assets/js/mixins/RandomString.js");
 /* harmony import */ var _Core_Assets_js_mixins_StringHelpers__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../../Core/Assets/js/mixins/StringHelpers */ "./Modules/Core/Assets/js/mixins/StringHelpers.js");
-function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; var ownKeys = Object.keys(source); if (typeof Object.getOwnPropertySymbols === 'function') { ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) { return Object.getOwnPropertyDescriptor(source, sym).enumerable; })); } ownKeys.forEach(function (key) { _defineProperty(target, key, source[key]); }); } return target; }
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(source, true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(source).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
@@ -3120,11 +3128,11 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       type: String
     },
     entityId: {
-      default: null,
+      "default": null,
       type: Number
     },
     label: {
-      default: null,
+      "default": null,
       type: String
     }
   },
@@ -3228,7 +3236,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
     parentId: {
-      default: null,
+      "default": null,
       type: Number
     }
   },
@@ -3458,11 +3466,11 @@ __webpack_require__.r(__webpack_exports__);
   mixins: [_Core_Assets_js_mixins_Slugify__WEBPACK_IMPORTED_MODULE_2__["default"], _Core_Assets_js_mixins_ShortcutHelper__WEBPACK_IMPORTED_MODULE_3__["default"], _Core_Assets_js_mixins_ActiveEditor__WEBPACK_IMPORTED_MODULE_4__["default"], _Media_Assets_js_mixins_SingleFileSelector__WEBPACK_IMPORTED_MODULE_6__["default"]],
   props: {
     locales: {
-      default: null,
+      "default": null,
       type: Object
     },
     pageTitle: {
-      default: null,
+      "default": null,
       type: String
     }
   },
@@ -3489,7 +3497,7 @@ __webpack_require__.r(__webpack_exports__);
       templates: {
         index: 'index',
         home: 'home',
-        default: 'default'
+        "default": 'default'
       },
       form: new form_backend_validation__WEBPACK_IMPORTED_MODULE_1___default.a(),
       loading: false,
@@ -3523,7 +3531,7 @@ __webpack_require__.r(__webpack_exports__);
         _this.$router.push({
           name: 'admin.page.page.index'
         });
-      }).catch(function (error) {
+      })["catch"](function (error) {
         console.log(error);
         _this.loading = false;
 
@@ -3594,7 +3602,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Core_Assets_js_components_EditButtonComponent_vue__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../../../Core/Assets/js/components/EditButtonComponent.vue */ "./Modules/Core/Assets/js/components/EditButtonComponent.vue");
 var _this2 = undefined;
 
-function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; var ownKeys = Object.keys(source); if (typeof Object.getOwnPropertySymbols === 'function') { ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) { return Object.getOwnPropertyDescriptor(source, sym).enumerable; })); } ownKeys.forEach(function (key) { _defineProperty(target, key, source[key]); }); } return target; }
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(source, true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(source).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
@@ -3757,7 +3767,7 @@ var _data;
         order: this.order_meta.order,
         search: this.searchQuery
       };
-      axios__WEBPACK_IMPORTED_MODULE_0___default.a.get(route('api.page.page.indexServerSide', _objectSpread({}, properties, customProperties))).then(function (response) {
+      axios__WEBPACK_IMPORTED_MODULE_0___default.a.get(route('api.page.page.indexServerSide', _objectSpread({}, properties, {}, customProperties))).then(function (response) {
         _this.tableIsLoading = false;
         _this.data = response.data.data;
         _this.meta = response.data.meta;
@@ -3824,7 +3834,7 @@ var _data;
           page.translations.status = action === 'mark-online';
           return page;
         });
-      }).catch(function () {
+      })["catch"](function () {
         _this3.$message({
           type: 'error',
           message: _this3.trans('core.something went wrong')
@@ -3885,11 +3895,11 @@ __webpack_require__.r(__webpack_exports__);
       type: String
     },
     label: {
-      default: 'Tags',
+      "default": 'Tags',
       type: String
     },
     currentTags: {
-      default: null,
+      "default": null,
       type: Array
     }
   },
@@ -4021,7 +4031,7 @@ __webpack_require__.r(__webpack_exports__);
         type: 'warning',
         confirmButtonClass: 'el-button--danger'
       }).then(function () {
-        axios__WEBPACK_IMPORTED_MODULE_0___default.a.delete(route('api.account.api.destroy', {
+        axios__WEBPACK_IMPORTED_MODULE_0___default.a["delete"](route('api.account.api.destroy', {
           userTokenId: apiKey.id
         })).then(function (response) {
           _this3.loading = false;
@@ -4122,11 +4132,11 @@ __webpack_require__.r(__webpack_exports__);
   mixins: [_Core_Assets_js_mixins_StringHelpers__WEBPACK_IMPORTED_MODULE_2__["default"]],
   props: {
     isRole: {
-      default: false,
+      "default": false,
       type: Boolean
     },
     currentPermissions: {
-      default: null,
+      "default": null,
       type: Object
     }
   },
@@ -4282,11 +4292,11 @@ __webpack_require__.r(__webpack_exports__);
   mixins: [_Core_Assets_js_mixins_Slugify__WEBPACK_IMPORTED_MODULE_2__["default"], _Core_Assets_js_mixins_ShortcutHelper__WEBPACK_IMPORTED_MODULE_3__["default"]],
   props: {
     locales: {
-      default: null,
+      "default": null,
       type: Object
     },
     pageTitle: {
-      default: null,
+      "default": null,
       type: String
     }
   },
@@ -4322,7 +4332,7 @@ __webpack_require__.r(__webpack_exports__);
         _this.$router.push({
           name: 'admin.user.role.index'
         });
-      }).catch(function (error) {
+      })["catch"](function (error) {
         console.log(error);
         _this.loading = false;
 
@@ -4391,7 +4401,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Core_Assets_js_components_EditButtonComponent_vue__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../../Core/Assets/js/components/EditButtonComponent.vue */ "./Modules/Core/Assets/js/components/EditButtonComponent.vue");
 var _this2 = undefined;
 
-function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; var ownKeys = Object.keys(source); if (typeof Object.getOwnPropertySymbols === 'function') { ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) { return Object.getOwnPropertyDescriptor(source, sym).enumerable; })); } ownKeys.forEach(function (key) { _defineProperty(target, key, source[key]); }); } return target; }
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(source, true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(source).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
@@ -4524,7 +4536,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         order: this.order_meta.order,
         search: this.searchQuery
       };
-      axios__WEBPACK_IMPORTED_MODULE_0___default.a.get(route('api.user.role.index', _objectSpread({}, properties, customProperties))).then(function (response) {
+      axios__WEBPACK_IMPORTED_MODULE_0___default.a.get(route('api.user.role.index', _objectSpread({}, properties, {}, customProperties))).then(function (response) {
         _this.tableIsLoading = false;
         _this.data = response.data.data;
         _this.meta = response.data.meta;
@@ -4729,11 +4741,11 @@ __webpack_require__.r(__webpack_exports__);
   mixins: [_Core_Assets_js_mixins_ShortcutHelper__WEBPACK_IMPORTED_MODULE_2__["default"]],
   props: {
     locales: {
-      default: null,
+      "default": null,
       type: Object
     },
     pageTitle: {
-      default: null,
+      "default": null,
       type: String
     }
   },
@@ -4774,7 +4786,7 @@ __webpack_require__.r(__webpack_exports__);
         _this.$router.push({
           name: 'admin.user.user.index'
         });
-      }).catch(function (error) {
+      })["catch"](function (error) {
         console.log(error);
         _this.loading = false;
 
@@ -4933,7 +4945,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
     locales: {
-      default: null,
+      "default": null,
       type: Object
     }
   },
@@ -4967,7 +4979,7 @@ __webpack_require__.r(__webpack_exports__);
           type: 'success',
           message: response.message
         });
-      }).catch(function (error) {
+      })["catch"](function (error) {
         console.log(error);
         _this.loading = false;
 
@@ -5009,7 +5021,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Core_Assets_js_components_EditButtonComponent_vue__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../../Core/Assets/js/components/EditButtonComponent.vue */ "./Modules/Core/Assets/js/components/EditButtonComponent.vue");
 var _this2 = undefined;
 
-function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; var ownKeys = Object.keys(source); if (typeof Object.getOwnPropertySymbols === 'function') { ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) { return Object.getOwnPropertyDescriptor(source, sym).enumerable; })); } ownKeys.forEach(function (key) { _defineProperty(target, key, source[key]); }); } return target; }
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(source, true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(source).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
@@ -5151,7 +5165,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         order: this.order_meta.order,
         search: this.searchQuery
       };
-      axios__WEBPACK_IMPORTED_MODULE_0___default.a.get(route('api.user.user.index', _objectSpread({}, properties, customProperties))).then(function (response) {
+      axios__WEBPACK_IMPORTED_MODULE_0___default.a.get(route('api.user.user.index', _objectSpread({}, properties, {}, customProperties))).then(function (response) {
         _this.tableIsLoading = false;
         _this.data = response.data.data;
         _this.meta = response.data.meta;
@@ -10934,7 +10948,7 @@ vue__WEBPACK_IMPORTED_MODULE_1___default.a.use(vue_simplemde__WEBPACK_IMPORTED_M
 
 __webpack_require__(/*! ./mixins */ "./resources/assets/js/mixins.js");
 
-vue__WEBPACK_IMPORTED_MODULE_1___default.a.component('ckeditor', __webpack_require__(/*! ../../../Modules/Core/Assets/js/components/CkEditor.vue */ "./Modules/Core/Assets/js/components/CkEditor.vue").default);
+vue__WEBPACK_IMPORTED_MODULE_1___default.a.component('ckeditor', __webpack_require__(/*! ../../../Modules/Core/Assets/js/components/CkEditor.vue */ "./Modules/Core/Assets/js/components/CkEditor.vue")["default"]);
 var _window$AsgardCMS = window.AsgardCMS,
     currentLocale = _window$AsgardCMS.currentLocale,
     adminPrefix = _window$AsgardCMS.adminPrefix;
