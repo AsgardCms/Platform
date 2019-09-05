@@ -8,7 +8,8 @@
                 <el-breadcrumb-item>
                     <a href="/backend">{{ trans('core.breadcrumb.home') }}</a>
                 </el-breadcrumb-item>
-                <el-breadcrumb-item :to="{name: 'admin.user.user.account.api-keys'}">{{ trans('users.api-keys') }}
+                <el-breadcrumb-item :to="{name: 'admin.user.user.account.api-keys'}">
+                    {{ trans('users.api-keys') }}
                 </el-breadcrumb-item>
             </el-breadcrumb>
         </div>
@@ -27,7 +28,7 @@
                         <ul class="list-unstyled">
                             <li v-for="key in apiKeys" :key="key.id" style="margin-bottom: 20px;">
                                 <el-input v-model="key.access_token" disabled>
-                                    <el-button slot-scope="prepend" @click="destroyApiKey(key)">
+                                    <el-button slot="prepend" @click="destroyApiKey(key)">
                                         <i class="fa fa-times"></i>
                                     </el-button>
                                 </el-input>
@@ -80,18 +81,16 @@
                     type: 'warning',
                     confirmButtonClass: 'el-button--danger',
                 }).then(() => {
-                        axios.delete(route('api.account.api.destroy', { userTokenId: apiKey.id }))
-                            .then((response) => {
-                                this.loading = false;
-                                this.apiKeys = response.data.data;
-                                this.$message({
-                                    type: 'success',
-                                    message: response.data.message,
-                                });
+                    axios.delete(route('api.account.api.destroy', { userTokenId: apiKey.id }))
+                        .then((response) => {
+                            this.loading = false;
+                            this.apiKeys = response.data.data;
+                            this.$message({
+                                type: 'success',
+                                message: response.data.message,
                             });
-                    })
-                    .catch(() => {
-                    });
+                        });
+                });
             },
         },
     };

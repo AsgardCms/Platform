@@ -46,7 +46,7 @@
                                 </div>
                             </div>
                             <div class="col-md-9">
-                                <el-radio-group v-model="permissions[`${subPermissionTitle}`][`${permissionAction}`]">
+                                <el-radio-group v-model="permissions[`${subPermissionTitle}.${permissionAction}`]">
                                     <el-radio-button :label="1" @click="triggerEvent">{{ trans('roles.allow') }}</el-radio-button>
                                     <el-radio-button v-if="!isRole" :label="0" @click="triggerEvent">{{ trans('roles.inherit') }}</el-radio-button>
                                     <el-radio-button :label="-1" @click="triggerEvent">{{ trans('roles.deny') }}</el-radio-button>
@@ -93,9 +93,6 @@
             },
             parseTranslation(label) {
                 return this.trans(label.split('::')[1]);
-            },
-            getPermissionKey(subPermissionTitle, permissionAction) {
-                return `${subPermissionTitle}.${permissionAction}`;
             },
             changeState(permissionPart, actions, state) {
                 forEach(actions, (translationKey, key) => {

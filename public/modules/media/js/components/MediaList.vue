@@ -48,8 +48,8 @@
                             </el-col>
                         </el-row>
                         <el-table
-                            v-loading.body="tableIsLoading"
                             ref="mediaTable"
+                            v-loading.body="tableIsLoading"
                             :data="media"
                             stripe
                             style="width: 100%"
@@ -58,22 +58,27 @@
                         >
                             <el-table-column type="selection" width="55"></el-table-column>
                             <el-table-column label="" width="150">
-                                <template slot-scope="scope">
-                                    <img v-if="scope.row.is_image" key="image" :src="scope.row.small_thumb" alt="">
-                                    <i v-else-if="scope.row.is_folder" key="folder" class="fa fa-folder" style="font-size: 38px;"></i>
-                                    <i v-else key="faIcon" :class="`fa ${scope.row.fa_icon}`" style="font-size: 38px;"></i>
+                                <template v-if="scope.row.is_image" slot-scope="scope">
+                                    <img :src="scope.row.small_thumb" alt="" class="img-responsive">
+                                </template>
+                                <template v-else-if="scope.row.is_folder" slot-scope="scope">
+                                    <i class="fa fa-2x fa-folder"></i>
+                                </template>
+                                <template v-else slot-scope="scope">
+                                    <i v-if="scope.row.fa_icon" :class="scope.row.fa_icon" class="fa fa-2x"></i>
+                                    <i v-else class="fa fa-2x fa-file"></i>
                                 </template>
                             </el-table-column>
                             <el-table-column :label="trans('media.table.filename')" prop="filename" sortable="custom">
-                                <template slot-scope="scope">
-                                    <strong v-if="scope.row.is_folder" style="cursor: pointer;" @click="enterFolder(scope)">
+                                <template v-if="scope.row.is_folder" slot-scope="scope">
+                                    <strong style="cursor: pointer;" @click="enterFolder(scope)">
                                         {{ scope.row.filename }}
                                     </strong>
-                                    <span v-else>
-                                        <a href="#" @click.prevent="goToEdit(scope)">
-                                            {{ scope.row.filename }}
-                                        </a>
-                                    </span>
+                                </template>
+                                <template v-else slot-scope="scope">
+                                    <a href="#" @click.prevent="goToEdit(scope)">
+                                        {{ scope.row.filename }}
+                                    </a>
                                 </template>
                             </el-table-column>
                             <el-table-column :label="trans('core.table.created at')" prop="created_at" sortable="custom" width="150"></el-table-column>
@@ -119,7 +124,6 @@
 <script>
     import axios from 'axios';
     import debounce from 'lodash/debounce';
-    import merge from 'lodash/merge';
     import MoveDialog from './MoveMediaDialog.vue';
     import NewFolder from './NewFolder.vue';
     import RenameFolder from './RenameFolder.vue';
@@ -194,7 +198,7 @@
                     folder_id: this.folderId,
                 };
 
-                axios.get(route('api.media.all-vue', merge(properties, customProperties)))
+                axios.get(route('api.media.all-vue', { ...properties, ...customProperties }))
                     .then((response) => {
                         this.tableIsLoading = false;
                         this.media = response.data.data;
@@ -246,7 +250,7 @@
                 this.tableIsLoading = true;
                 this.queryServer({ order_by: event.prop, order: event.order });
             },
-            performSearch: debounce(function (query) {
+            performSearch: debounce((query) => {
                 console.log(`searching:${query.target.value}`);
                 this.tableIsLoading = true;
                 this.queryServer({ search: query.target.value });

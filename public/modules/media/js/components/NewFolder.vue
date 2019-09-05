@@ -21,7 +21,6 @@
 </template>
 
 <script>
-    import merge from 'lodash/merge';
     import Form from 'form-backend-validation';
 
     export default {
@@ -40,7 +39,7 @@
         },
         methods: {
             onSubmit() {
-                this.form = new Form(merge(this.folder, { parent_id: this.parentId }));
+                this.form = new Form({ ...this.folder, parent_id: this.parentId });
                 this.loading = true;
                 this.form.post(route('api.media.folders.store'))
                     .then((response) => {

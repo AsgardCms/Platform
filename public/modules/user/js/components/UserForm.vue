@@ -19,8 +19,8 @@
         </div>
 
         <el-form
-            v-loading.body="loading"
             ref="form"
+            v-loading.body="loading"
             :model="user"
             label-width="120px"
             label-position="top"
@@ -69,8 +69,8 @@
                                                 v-for="role in roles"
                                                 :key="role.id"
                                                 :label="role.name"
-                                                :value="role.id">
-                                            </el-option>
+                                                :value="role.id"
+                                            ></el-option>
                                         </el-select>
                                         <div v-if="form.errors.has('password')" class="el-form-item__error" v-text="form.errors.first('password')"></div>
                                     </el-form-item>
@@ -114,7 +114,7 @@
                 </div>
             </div>
         </el-form>
-        <button v-shortkey="['b']" v-show="false" @shortkey="pushRoute({name: 'admin.user.user.index'})"></button>
+        <button v-show="false" v-shortkey="['b']" @shortkey="pushRoute({name: 'admin.user.user.index'})"></button>
     </div>
 </template>
 

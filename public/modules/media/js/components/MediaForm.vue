@@ -17,8 +17,8 @@
             </el-breadcrumb>
         </div>
         <el-form
-            v-loading.body="loading"
             ref="form"
+            v-loading.body="loading"
             :model="media"
             label-width="120px"
             label-position="top"
@@ -30,7 +30,6 @@
                         <div class="box-body">
                             <el-tabs v-model="activeTab">
                                 <el-tab-pane v-for="(localeArray, locale) in locales" :key="localeArray.name" :label="localeArray.name" :name="locale">
-
                                     <el-form-item :label="trans('media.form.alt_attribute')" :class="{'el-form-item is-error': form.errors.has(locale + '.alt_attribute') }">
                                         <el-input v-model="media[locale].alt_attribute"></el-input>
                                         <div v-if="form.errors.has(locale + '.alt_attribute')" class="el-form-item__error" v-text="form.errors.first(locale + '.alt_attribute')"></div>
@@ -64,9 +63,13 @@
                     </div>
                 </div>
                 <div class="col-md-4">
-                    <img v-if="media.is_image" key="image" :src="media.path" alt="" style="width: 100%;">
-                    <i v-else-if="media.is_folder" key="folder" class="fa fa-folder" style="font-size: 50px;"></i>
-                    <i v-else key="faIcon" :class="`fa ${media.fa_icon}`" style="font-size: 50px;"></i>
+                    <div v-if="media.is_image">
+                        <img :src="media.path" alt="" class="img-responsive">
+                    </div>
+                    <div v-else>
+                        <i v-if="media.fa_icon" :class="media.fa_icon" class="fa fa-5x"></i>
+                        <i v-else class="fa fa-5x fa-file"></i>
+                    </div>
                 </div>
             </div>
         </el-form>
@@ -97,7 +100,7 @@
         },
         data() {
             return {
-                media: _(this.locales)
+                media: window._(this.locales)
                     .keys()
                     .map(locale => [locale, {
                         description: '',
