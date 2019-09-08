@@ -9,11 +9,11 @@ class UserProfileTransformer extends Resource
     public function toArray($request)
     {
         return [
-            'id' => $this->id,
-            'first_name' => $this->first_name,
-            'last_name' => $this->last_name,
-            'email' => $this->email,
-            'created_at' => $this->created_at,
+            'id' => $this->resource->id,
+            'first_name' => $this->resource->first_name,
+            'last_name' => $this->resource->last_name,
+            'email' => $this->resource->email,
+            'created_at' => $this->resource->created_at,
         ];
     }
 }

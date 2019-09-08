@@ -1,26 +1,21 @@
 <template>
     <div>
         <label class="el-form-item__label">{{ getFieldLabel() }}</label>
-        <div class="jsThumbnailImageWrapper jsSingleThumbnailWrapper" v-if="hasSelectedMedia">
+        <div v-if="hasSelectedMedia" class="jsThumbnailImageWrapper jsSingleThumbnailWrapper">
             <figure>
-                <img :src="this.selectedMedia.medium_thumb" alt="" v-if="this.selectedMedia.is_image"/>
-                <i :class="`fa ${this.selectedMedia.fa_icon}`" style="font-size: 60px;" v-if="! this.selectedMedia.is_image"></i>
-                <span v-if="! this.selectedMedia.is_image" style="display:block;">{{ this.selectedMedia.filename }}</span>
+                <img v-if="selectedMedia.is_image" :src="selectedMedia.medium_thumb" alt="">
+                <i v-else :class="`fa ${selectedMedia.fa_icon}`" style="font-size: 60px;"></i>
+                <span v-if="!selectedMedia.is_image" style="display:block;">{{ selectedMedia.filename }}</span>
             </figure>
             <div class="clearfix"></div>
             <el-button type="button" @click="unSelectMedia">{{ trans('media.remove media') }}</el-button>
         </div>
-        <div class="" v-else>
+        <div v-else class="">
             <el-button type="button" @click="dialogVisible = true">{{ trans('media.Browse') }}</el-button>
         </div>
 
-        <el-dialog
-                :visible.sync="dialogVisible"
-                fullscreen
-                :before-close="handleClose">
-
-            <media-list single-modal :event-name="this.eventName"></media-list>
-
+        <el-dialog :visible.sync="dialogVisible" :before-close="handleClose" width="75%">
+            <media-list :event-name="eventName" single-modal></media-list>
             <span slot="footer" class="dialog-footer">
                 <el-button @click="dialogVisible = false">{{ trans('core.button.cancel') }}</el-button>
             </span>
@@ -30,28 +25,19 @@
 
 <script>
     import axios from 'axios';
-    import UploadZone from './UploadZone.vue';
+    import isEmpty from 'lodash/isEmpty';
     import MediaList from './MediaList.vue';
-    import StringHelpers from '../../../../Core/Assets/js/mixins/StringHelpers.vue';
+    import RandomString from '../mixins/RandomString';
+    import StringHelpers from '../../../../Core/Assets/js/mixins/StringHelpers';
 
     export default {
-        mixins: [StringHelpers],
+        components: { MediaList },
+        mixins: [StringHelpers, RandomString],
         props: {
-            zone: { type: String, required: true },
-            entity: { type: String, required: true },
-            entityId: { default: null },
-            label: { type: String },
-        },
-        components: {
-            'upload-zone': UploadZone,
-            'media-list': MediaList,
-        },
-        watch: {
-            entityId() {
-                if (this.entityId) {
-                    this.fetchMedia();
-                }
-            },
+            zone: { required: true, type: String },
+            entity: { required: true, type: String },
+            entityId: { default: null, type: Number },
+            label: { default: null, type: String },
         },
         data() {
             return {
@@ -62,8 +48,27 @@
         },
         computed: {
             hasSelectedMedia() {
-                return !_.isEmpty(this.selectedMedia);
+                return !isEmpty(this.selectedMedia);
             },
+        },
+        watch: {
+            entityId() {
+                if (this.entityId) {
+                    this.fetchMedia();
+                }
+            },
+        },
+        mounted() {
+            if (this.entityId) {
+                this.fetchMedia();
+            }
+            this.eventName = `file-was-selected${this.randomString()}${Math.floor(Math.random() * 999999)}`;
+
+            this.$events.listen(this.eventName, (mediaData) => {
+                this.dialogVisible = false;
+                this.selectedMedia = mediaData;
+                this.$emit('single-file-selected', { ...mediaData, zone: this.zone });
+            });
         },
         methods: {
             handleClose(done) {
@@ -71,42 +76,22 @@
             },
             unSelectMedia() {
                 this.selectedMedia = {};
-                this.$emit('singleFileSelected', _.merge({ id: null }, { zone: this.zone }));
+                this.$emit('single-file-selected', { id: null, zone: this.zone });
             },
             fetchMedia() {
                 axios.get(route('api.media.find-first-by-zone-and-entity', {
-                    zone: this.zone,
-                    entity: this.entity,
-                    entity_id: this.entityId,
-                }))
+                        zone: this.zone,
+                        entity: this.entity,
+                        entity_id: this.entityId,
+                    }))
                     .then((response) => {
-                        this.$emit('singleFileSelected', _.merge(response.data.data, { zone: this.zone }));
+                        this.$emit('single-file-selected', { ...response.data.data, zone: this.zone });
                         this.selectedMedia = response.data.data;
                     });
             },
             getFieldLabel() {
                 return this.label || this.ucwords(this.zone.replace('_', ' '));
             },
-            makeId() {
-                let text = '';
-                const possible = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-
-                for (let i = 0; i < 5; i++) { text += possible.charAt(Math.floor(Math.random() * possible.length)); }
-
-                return text;
-            },
-        },
-        mounted() {
-            if (this.entityId) {
-                this.fetchMedia();
-            }
-            this.eventName = `fileWasSelected${this.makeId()}${Math.floor(Math.random() * 999999)}`;
-
-            this.$events.listen(this.eventName, (mediaData) => {
-                this.dialogVisible = false;
-                this.selectedMedia = mediaData;
-                this.$emit('singleFileSelected', _.merge(mediaData, { zone: this.zone }));
-            });
         },
     };
 </script>

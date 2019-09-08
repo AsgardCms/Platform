@@ -9,9 +9,9 @@ class TagTransformer extends Resource
     public function toArray($request)
     {
         return [
-            'id' => $this->id,
-            'slug' => $this->slug,
-            'name' => $this->name,
+            'id' => $this->resource->id,
+            'slug' => $this->resource->slug,
+            'name' => $this->resource->name,
         ];
     }
 }

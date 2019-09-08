@@ -9,9 +9,9 @@ class ApiKeysTransformer extends Resource
     public function toArray($request)
     {
         return [
-            'id' => $this->id,
-            'access_token' => $this->access_token,
-            'created_at' => $this->created_at,
+            'id' => $this->resource->id,
+            'access_token' => $this->resource->access_token,
+            'created_at' => $this->resource->created_at,
         ];
     }
 }

@@ -8,68 +8,56 @@
                 <el-breadcrumb-item>
                     <a href="/backend">{{ trans('core.breadcrumb.home') }}</a>
                 </el-breadcrumb-item>
-                <el-breadcrumb-item :to="{name: 'admin.user.users.account'}">{{ trans('users.breadcrumb.edit-profile') }}
+                <el-breadcrumb-item :to="{name: 'admin.user.user.account'}">
+                    {{ trans('users.breadcrumb.edit-profile') }}
                 </el-breadcrumb-item>
             </el-breadcrumb>
         </div>
 
-        <el-form ref="form"
-                 :model="user"
-                 label-width="120px"
-                 label-position="top"
-                 v-loading.body="loading"
-                 @keydown="form.errors.clear($event.target.name);">
+        <el-form
+            ref="form"
+            v-loading.body="loading"
+            :model="user"
+            label-width="120px"
+            label-position="top"
+            @keydown="form.errors.clear($event.target.name)"
+        >
             <div class="row">
                 <div class="col-md-12">
                     <div class="box box-primary">
                         <div class="box-body">
                             <el-tabs>
                                 <el-tab-pane :label="trans('users.tabs.data')">
-                                    <span slot="label"
-                                          :class="{'error' : form.errors.any()}">
-                                        {{ trans('users.tabs.data') }}
-                                    </span>
-                                    <el-form-item :label="trans('users.form.first-name')"
-                                                  :class="{'el-form-item is-error': form.errors.has('first_name') }">
+                                    <span slot="label" :class="{'error' : form.errors.any()}">{{ trans('users.tabs.data') }}</span>
+                                    <el-form-item :label="trans('users.form.first-name')" :class="{'el-form-item is-error': form.errors.has('first_name') }">
                                         <el-input v-model="user.first_name"></el-input>
-                                        <div class="el-form-item__error" v-if="form.errors.has('first_name')"
-                                             v-text="form.errors.first('first_name')"></div>
+                                        <div v-if="form.errors.has('first_name')" class="el-form-item__error" v-text="form.errors.first('first_name')"></div>
                                     </el-form-item>
-                                    <el-form-item :label="trans('users.form.last-name')"
-                                                  :class="{'el-form-item is-error': form.errors.has('last_name') }">
+                                    <el-form-item :label="trans('users.form.last-name')" :class="{'el-form-item is-error': form.errors.has('last_name') }">
                                         <el-input v-model="user.last_name"></el-input>
-                                        <div class="el-form-item__error" v-if="form.errors.has('last_name')"
-                                             v-text="form.errors.first('last_name')"></div>
+                                        <div v-if="form.errors.has('last_name')" class="el-form-item__error" v-text="form.errors.first('last_name')"></div>
                                     </el-form-item>
-                                    <el-form-item :label="trans('users.form.email')"
-                                                  :class="{'el-form-item is-error': form.errors.has('email') }">
+                                    <el-form-item :label="trans('users.form.email')" :class="{'el-form-item is-error': form.errors.has('email') }">
                                         <el-input v-model="user.email"></el-input>
-                                        <div class="el-form-item__error" v-if="form.errors.has('email')"
-                                             v-text="form.errors.first('email')"></div>
+                                        <div v-if="form.errors.has('email')" class="el-form-item__error" v-text="form.errors.first('email')"></div>
                                     </el-form-item>
                                 </el-tab-pane>
-                                <el-tab-pane :label="trans('users.tabs.new password')" v-if="! user.is_new">
-                                        <h4>{{ trans('users.new password setup') }}</h4>
-                                        <el-form-item :label="trans('users.form.password')"
-                                                      :class="{'el-form-item is-error': form.errors.has('password') }">
-                                            <el-input v-model="user.password"
-                                                      type="password"></el-input>
-                                            <div class="el-form-item__error" v-if="form.errors.has('password')"
-                                                 v-text="form.errors.first('password')"></div>
-                                        </el-form-item>
-                                        <el-form-item :label="trans('users.form.password-confirmation')"
-                                                      :class="{'el-form-item is-error': form.errors.has('password_confirmation') }">
-                                            <el-input v-model="user.password_confirmation"
-                                                      type="password"></el-input>
-                                            <div class="el-form-item__error" v-if="form.errors.has('password_confirmation')"
-                                                 v-text="form.errors.first('password_confirmation')"></div>
-                                        </el-form-item>
+                                <el-tab-pane v-if="!user.is_new" :label="trans('users.tabs.new password')">
+                                    <h4>{{ trans('users.new password setup') }}</h4>
+                                    <el-form-item :label="trans('users.form.password')" :class="{'el-form-item is-error': form.errors.has('password') }">
+                                        <el-input v-model="user.password" type="password"></el-input>
+                                        <div v-if="form.errors.has('password')" class="el-form-item__error" v-text="form.errors.first('password')"></div>
+                                    </el-form-item>
+                                    <el-form-item :label="trans('users.form.password-confirmation')" :class="{'el-form-item is-error': form.errors.has('password_confirmation') }">
+                                        <el-input v-model="user.password_confirmation" type="password"></el-input>
+                                        <div v-if="form.errors.has('password_confirmation')" class="el-form-item__error" v-text="form.errors.first('password_confirmation')"></div>
+                                    </el-form-item>
                                 </el-tab-pane>
                             </el-tabs>
                         </div>
                         <div class="box-footer">
                             <el-form-item>
-                                <el-button type="primary" @click="onSubmit()" :loading="loading">
+                                <el-button :loading="loading" type="primary" @click="onSubmit()">
                                     {{ trans('core.save') }}
                                 </el-button>
                             </el-form-item>
@@ -87,7 +75,7 @@
 
     export default {
         props: {
-            locales: { default: null },
+            locales: { default: null, type: Object },
         },
         data() {
             return {
@@ -102,6 +90,9 @@
                 form: new Form(),
                 loading: false,
             };
+        },
+        mounted() {
+            this.fetchUser();
         },
         methods: {
             onSubmit() {
@@ -133,9 +124,6 @@
                         this.user = response.data.data;
                     });
             },
-        },
-        mounted() {
-            this.fetchUser();
         },
     };
 </script>

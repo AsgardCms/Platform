@@ -13,24 +13,24 @@ class FullRoleTransformer extends Resource
         $permissions = $this->buildPermissionList($permissionsManager->all());
 
         $data = [
-            'id' => $this->id,
-            'name' => $this->name,
-            'slug' => $this->slug,
-            'created_at' => $this->created_at,
+            'id' => $this->resource->id,
+            'name' => $this->resource->name,
+            'slug' => $this->resource->slug,
+            'created_at' => $this->resource->created_at,
             'permissions' => $permissions,
             'users' => UserTransformer::collection($this->whenLoaded('users')),
             'urls' => [],
         ];
-        if ($this->id) {
+        if ($this->resource->id) {
             $data['urls'] = [
-                'delete_url' => route('api.user.role.destroy', $this->id),
+                'delete_url' => route('api.user.role.destroy', $this->resource->id),
             ];
         }
 
         return $data;
     }
 
-    private function buildPermissionList(array $permissionsConfig) : array
+    private function buildPermissionList(array $permissionsConfig): array
     {
         $list = [];
 
@@ -41,7 +41,7 @@ class FullRoleTransformer extends Resource
         foreach ($permissionsConfig as $mainKey => $subPermissions) {
             foreach ($subPermissions as $key => $permissionGroup) {
                 foreach ($permissionGroup as $lastKey => $description) {
-                    $list[strtolower($key) . '.' . $lastKey] = current_permission_value_for_roles($this, $key, $lastKey);
+                    $list[strtolower($key) . '.' . $lastKey] = current_permission_value_for_roles($this->resource, $key, $lastKey);
                 }
             }
         }

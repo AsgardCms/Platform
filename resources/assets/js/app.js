@@ -1,6 +1,6 @@
 require('./bootstrap');
 
-import 'babel-polyfill';
+import '@babel/polyfill';
 import Vue from 'vue';
 import VueI18n from 'vue-i18n';
 import VueRouter from 'vue-router';
@@ -21,47 +21,38 @@ Vue.use(VueEvents);
 Vue.use(VueSimplemde);
 require('./mixins');
 
-Vue.component('ckeditor', require('../../../Modules/Core/Assets/js/components/CkEditor.vue'));
-Vue.component('DeleteButton', require('../../../Modules/Core/Assets/js/components/DeleteComponent.vue'));
-Vue.component('EditButton', require('../../../Modules/Core/Assets/js/components/EditButtonComponent.vue'));
-Vue.component('TagsInput', require('../../../Modules/Tag/Assets/js/components/TagInput.vue'));
-Vue.component('SingleMedia', require('../../../Modules/Media/Assets/js/components/SingleMedia.vue'));
-Vue.component('MediaManager', require('../../../Modules/Media/Assets/js/components/MediaManager.vue'));
+Vue.component('ckeditor', require('../../../Modules/Core/Assets/js/components/CkEditor.vue').default);
 
-const currentLocale = window.AsgardCMS.currentLocale,
-    adminPrefix = window.AsgardCMS.adminPrefix;
+const { currentLocale, adminPrefix } = window.AsgardCMS;
 
 function makeBaseUrl() {
-    if (window.AsgardCMS.hideDefaultLocaleInURL == 1) {
+    if (window.AsgardCMS.hideDefaultLocaleInURL === '1') {
         return adminPrefix;
     }
     return `${currentLocale}/${adminPrefix}`;
 }
 
 const router = new VueRouter({
-    mode: 'history',
-    base: makeBaseUrl(),
-    routes: [
-        ...PageRoutes,
-        ...MediaRoutes,
-        ...UserRoutes,
-    ],
-});
-
-const messages = {
-    [currentLocale]: window.AsgardCMS.translations,
-};
-
-const i18n = new VueI18n({
-    locale: currentLocale,
-    messages,
-});
-
-const app = new Vue({
-    el: '#app',
-    router,
-    i18n,
-});
+        mode: 'history',
+        base: makeBaseUrl(),
+        routes: [
+            ...PageRoutes,
+            ...MediaRoutes,
+            ...UserRoutes,
+        ],
+    }),
+    messages = {
+        [currentLocale]: window.AsgardCMS.translations,
+    },
+    i18n = new VueI18n({
+        locale: currentLocale,
+        messages,
+    }),
+    app = new Vue({
+        el: '#app',
+        router,
+        i18n,
+    });
 
 window.axios.interceptors.response.use(null, (error) => {
     if (error.response === undefined) {

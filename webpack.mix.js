@@ -16,5 +16,5 @@ if (mix.inProduction()) {
  */
 
 mix.js('resources/assets/js/app.js', 'public/js')
-    .extract(['vue', 'vue-i18n', 'vue-events', 'vue-router', 'vue-shortkey', 'vue-simplemde'])
+    .extract()
     .sass('resources/assets/sass/app.scss', 'public/css');

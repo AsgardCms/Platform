@@ -30,17 +30,17 @@ class MediaTransformer extends Resource
     public function toArray($request)
     {
         $data = [
-            'id' => $this->id,
-            'filename' => $this->filename,
+            'id' => $this->resource->id,
+            'filename' => $this->resource->filename,
             'path' => $this->getPath(),
-            'is_image' => $this->isImage(),
-            'is_folder' => $this->isFolder(),
-            'media_type' => $this->media_type,
-            'fa_icon' => FileHelper::getFaIcon($this->media_type),
-            'created_at' => $this->created_at,
-            'folder_id' => $this->folder_id,
-            'small_thumb' => $this->imagy->getThumbnail($this->path, 'smallThumb'),
-            'medium_thumb' => $this->imagy->getThumbnail($this->path, 'mediumThumb'),
+            'is_image' => $this->resource->isImage(),
+            'is_folder' => $this->resource->isFolder(),
+            'media_type' => $this->resource->media_type,
+            'fa_icon' => FileHelper::getFaIcon($this->resource->media_type),
+            'created_at' => $this->resource->created_at,
+            'folder_id' => $this->resource->folder_id,
+            'small_thumb' => $this->imagy->getThumbnail($this->resource->path, 'smallThumb'),
+            'medium_thumb' => $this->imagy->getThumbnail($this->resource->path, 'mediumThumb'),
             'urls' => [
                 'delete_url' => $this->getDeleteUrl(),
             ],
@@ -51,19 +51,19 @@ class MediaTransformer extends Resource
 
             $data['thumbnails'][] = [
                 'name' => $thumbnailName,
-                'path' => $this->imagy->getThumbnail($this->path, $thumbnailName),
+                'path' => $this->imagy->getThumbnail($this->resource->path, $thumbnailName),
                 'size' => $thumbnail->size(),
             ];
         }
 
         foreach (LaravelLocalization::getSupportedLocales() as $locale => $supportedLocale) {
             $data[$locale] = [];
-            foreach ($this->translatedAttributes as $translatedAttribute) {
-                $data[$locale][$translatedAttribute] = $this->translateOrNew($locale)->$translatedAttribute;
+            foreach ($this->resource->translatedAttributes as $translatedAttribute) {
+                $data[$locale][$translatedAttribute] = $this->resource->translateOrNew($locale)->$translatedAttribute;
             }
         }
 
-        foreach ($this->tags as $tag) {
+        foreach ($this->resource->tags as $tag) {
             $data['tags'][] = $tag->name;
         }
 
@@ -72,19 +72,19 @@ class MediaTransformer extends Resource
 
     private function getPath()
     {
-        if ($this->is_folder) {
-            return $this->path->getRelativeUrl();
+        if ($this->resource->isFolder()) {
+            return $this->resource->path->getRelativeUrl();
         }
 
-        return (string) $this->path;
+        return (string) $this->resource->path;
     }
 
     private function getDeleteUrl()
     {
-        if ($this->isImage()) {
-            return route('api.media.media.destroy', $this->id);
+        if ($this->resource->isImage()) {
+            return route('api.media.media.destroy', $this->resource->id);
         }
 
-        return route('api.media.folders.destroy', $this->id);
+        return route('api.media.folders.destroy', $this->resource->id);
     }
 }

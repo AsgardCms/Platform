@@ -5,11 +5,10 @@
         </el-button>
 
         <el-dialog :title="trans('folders.create resource')" :visible.sync="dialogFormVisible" width="30%">
-            <el-form :model="folder" v-loading.body="loading" @submit.native.prevent="onSubmit()">
+            <el-form v-loading.body="loading" :model="folder" @submit.native.prevent="onSubmit()">
                 <el-form-item :label="trans('folders.folder name')" :class="{'el-form-item is-error': form.errors.has('name') }">
                     <el-input v-model="folder.name" auto-complete="off" autofocus></el-input>
-                    <div class="el-form-item__error" v-if="form.errors.has('name')"
-                         v-text="form.errors.first('name')"></div>
+                    <div v-if="form.errors.has('name')" class="el-form-item__error" v-text="form.errors.first('name')"></div>
                 </el-form-item>
             </el-form>
             <span slot="footer" class="dialog-footer">
@@ -26,7 +25,7 @@
 
     export default {
         props: {
-            parentId: { type: Number },
+            parentId: { default: null, type: Number },
         },
         data() {
             return {
@@ -40,7 +39,7 @@
         },
         methods: {
             onSubmit() {
-                this.form = new Form(_.merge(this.folder, { parent_id: this.parentId }));
+                this.form = new Form({ ...this.folder, parent_id: this.parentId });
                 this.loading = true;
                 this.form.post(route('api.media.folders.store'))
                     .then((response) => {
@@ -67,10 +66,9 @@
                 this.dialogFormVisible = false;
             },
         },
-        mounted() {
-        },
     };
 </script>
+
 <style>
     .new-folder {
         float: left;

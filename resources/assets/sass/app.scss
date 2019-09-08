@@ -3,22 +3,31 @@
 
 // Overwrite Label heights
 .el-form-item__label {
-  line-height: normal;
+    line-height: normal;
 }
+
+// Overwrite select & autocomplete display
+.el-select, .el-autocomplete, .el-transfer {
+    display: block;
+}
+
 // Overwrite table row heights
 .el-table td, .el-table th {
-  padding: 5px 0;
+    padding: 5px 0;
 }
+
 // Make pagination more clear
 .el-pager, .el-pager li {
-  font-weight: normal;
+    font-weight: normal;
 }
+
 .el-pager li.active {
-  font-weight: 900;
-  border: 1px solid #d8dce5;
-  border-radius: 3px;
+    font-weight: 900;
+    border: 1px solid #D8DCE5;
+    border-radius: 3px;
 }
+
 // Add back the padding on first/last column of table
 .el-table td:first-child .cell, .el-table th:first-child .cell {
-  padding-left: 10px;
+    padding-left: 10px;
 }

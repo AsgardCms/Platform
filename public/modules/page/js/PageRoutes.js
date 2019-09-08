@@ -1,14 +1,13 @@
 import PageTable from './components/PageTable.vue';
-import PageTableServerSide from './components/PageTableServerSide.vue';
 import PageForm from './components/PageForm.vue';
 
-const locales = window.AsgardCMS.locales;
+const { locales } = window.AsgardCMS;
 
 export default [
     {
         path: '/page/pages',
         name: 'admin.page.page.index',
-        component: PageTableServerSide,
+        component: PageTable,
     },
     {
         path: '/page/pages/create',

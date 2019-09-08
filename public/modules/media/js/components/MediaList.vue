@@ -2,16 +2,17 @@
     <div class="row" style="margin-top: -35px;">
         <div class="col-xs-12">
             <div class="sc-table">
-                 <div class="el-row">
+                <div class="el-row">
                     <div class="title">
                         <h4 v-if="singleModal">{{ trans('media.choose file') }}</h4>
-                        <h3 v-if="! singleModal">{{ trans('media.title.media') }}</h3>
+                        <h3 v-else>{{ trans('media.title.media') }}</h3>
                         <div class="media-breadcrumb">
-                            <el-breadcrumb separator="/" v-if="! singleModal">
+                            <el-breadcrumb v-if="!singleModal" separator="/">
                                 <el-breadcrumb-item>
                                     <a href="/backend">Home</a>
                                 </el-breadcrumb-item>
-                                <el-breadcrumb-item :to="{name: 'admin.media.media.index'}">{{ trans('media.breadcrumb.media') }}
+                                <el-breadcrumb-item :to="{name: 'admin.media.media.index'}">
+                                    {{ trans('media.breadcrumb.media') }}
                                 </el-breadcrumb-item>
                             </el-breadcrumb>
                         </div>
@@ -19,93 +20,81 @@
                 </div>
                 <div class="box box-primary">
                     <div class="box-body">
+                        <upload-zone v-if="showUploadZone" :parent-id="folderId"></upload-zone>
                         <div class="tool-bar el-row" style="padding-bottom: 20px;">
-                            <div class="actions el-col el-col-14">
+                            <div class="actions el-col el-col-19">
                                 <new-folder :parent-id="folderId"></new-folder>
-                                <upload-button :parent-id="folderId"></upload-button>
-                                <el-button-group style="width: 30%">
-                                    <el-button type="warning"
-                                               :disabled="selectedMedia.length === 0"
-                                               @click="showMoveMedia"
-                                               >{{ trans('core.move') }}
-                                    </el-button>
-                                    <el-button type="danger" :disabled="selectedMedia.length === 0"
-                                        @click.prevent="batchDelete" :loading="filesAreDeleting">
-                                        {{ trans('core.button.delete') }}
-                                    </el-button>
-                                </el-button-group>
+                                <el-button type="primary" @click="toggleUploadZone">
+                                    {{ trans('media.upload file') }}
+                                </el-button>
+                                <el-button :disabled="selectedMedia.length === 0" type="warning" @click="showMoveMedia">
+                                    {{ trans('core.move') }}
+                                </el-button>
+                                <el-button :disabled="selectedMedia.length === 0" :loading="filesAreDeleting" type="danger" @click.prevent="batchDelete">
+                                    {{ trans('core.button.delete') }}
+                                </el-button>
                             </div>
                             <div class="search el-col el-col-5">
-                                <el-input prefix-icon="el-icon-search" @keyup.native="performSearch" v-model="searchQuery">
-                                </el-input>
+                                <el-input v-model="searchQuery" prefix-icon="el-icon-search" @keyup.native="performSearch"></el-input>
                             </div>
                         </div>
                         <el-row>
                             <el-col :span="24">
                                 <el-breadcrumb separator="/" style="margin-bottom: 20px;">
-                                    <el-breadcrumb-item v-for="(folder, index) in folderBreadcrumb" @click.native="changeRoot(folder.id, index)" :key="folder.id">
+                                    <el-breadcrumb-item v-for="(folder, index) in folderBreadcrumb" :key="folder.id" @click.native="changeRoot(folder.id, index)">
                                         {{ folder.name }}
                                     </el-breadcrumb-item>
                                 </el-breadcrumb>
                             </el-col>
                         </el-row>
                         <el-table
-                                :data="data"
-                                stripe
-                                style="width: 100%"
-                                ref="mediaTable"
-                                v-loading.body="tableIsLoading"
-                                @sort-change="handleSortChange"
-                                @selection-change="handleSelectionChange">
-                            <el-table-column
-                                    type="selection"
-                                    width="55">
-                            </el-table-column>
+                            ref="mediaTable"
+                            v-loading.body="tableIsLoading"
+                            :data="media"
+                            stripe
+                            style="width: 100%"
+                            @sort-change="handleSortChange"
+                            @selection-change="handleSelectionChange"
+                        >
+                            <el-table-column type="selection" width="55"></el-table-column>
                             <el-table-column label="" width="150">
-                                <template slot-scope="scope">
-                                    <img :src="scope.row.small_thumb" alt="" v-if="scope.row.is_image"/>
-                                    <i :class="`fa ${scope.row.fa_icon}`" style="font-size: 38px;"
-                                       v-if="! scope.row.is_image && ! scope.row.is_folder"></i>
-                                    <i class="fa fa-folder" style="font-size: 38px;"
-                                       v-if="scope.row.is_folder"></i>
+                                <template v-if="scope.row.is_image" slot-scope="scope">
+                                    <img :src="scope.row.small_thumb" alt="" class="img-responsive">
+                                </template>
+                                <template v-else-if="scope.row.is_folder" slot-scope="scope">
+                                    <i class="fa fa-2x fa-folder"></i>
+                                </template>
+                                <template v-else slot-scope="scope">
+                                    <i v-if="scope.row.fa_icon" :class="scope.row.fa_icon" class="fa fa-2x"></i>
+                                    <i v-else class="fa fa-2x fa-file"></i>
                                 </template>
                             </el-table-column>
-
-                            <el-table-column prop="filename" :label="trans('media.table.filename')" sortable="custom">
-                                <template slot-scope="scope">
-                                    <strong v-if="scope.row.is_folder" style="cursor: pointer;" @click="enterFolder(scope)">
+                            <el-table-column :label="trans('media.table.filename')" prop="filename" sortable="custom">
+                                <template v-if="scope.row.is_folder" slot-scope="scope">
+                                    <strong style="cursor: pointer;" @click="enterFolder(scope)">
                                         {{ scope.row.filename }}
                                     </strong>
-                                    <span v-else>
-                                        <a href="#"
-                                           @click.prevent="goToEdit(scope)">{{ scope.row.filename }}</a>
-                                    </span>
+                                </template>
+                                <template v-else slot-scope="scope">
+                                    <a href="#" @click.prevent="goToEdit(scope)">
+                                        {{ scope.row.filename }}
+                                    </a>
                                 </template>
                             </el-table-column>
-                            <el-table-column prop="created_at" :label="trans('core.table.created at')" sortable="custom"
-                                             width="150">
-                            </el-table-column>
-                            <el-table-column prop="actions" label="" width="150">
+                            <el-table-column :label="trans('core.table.created at')" prop="created_at" sortable="custom" width="150"></el-table-column>
+                            <el-table-column label="" prop="actions" width="150">
                                 <template slot-scope="scope">
                                     <div class="pull-right">
-                                        <el-button
-                                                type="primary"
-                                                size="small"
-                                                @click.prevent="insertMedia(scope)"
-                                                v-if="singleModal && ! scope.row.is_folder">
+                                        <el-button v-if="singleModal && !scope.row.is_folder" type="primary" size="small" @click.prevent="insertMedia(scope)">
                                             {{ trans('media.insert') }}
                                         </el-button>
-                                        <div v-if="! singleModal">
+                                        <div v-if="!singleModal">
                                             <el-button-group>
-                                                <edit-button :to="{name: 'admin.media.media.edit', params: {mediaId: scope.row.id}}"
-                                                             v-if="! scope.row.is_folder"></edit-button>
-                                                <el-button
-                                                        size="mini"
-                                                        @click.prevent="showEditFolder(scope.row)"
-                                                        v-if="scope.row.is_folder && canEditFolders">
+                                                <edit-button v-if="!scope.row.is_folder" :to="{name: 'admin.media.media.edit', params: {mediaId: scope.row.id}}"></edit-button>
+                                                <el-button v-if="scope.row.is_folder && canEditFolders" size="mini" @click.prevent="showEditFolder(scope.row)">
                                                     <i class="fa fa-pencil"></i>
                                                 </el-button>
-                                                <delete-button :scope="scope" :rows="data"></delete-button>
+                                                <delete-button :scope="scope" :rows="media"></delete-button>
                                             </el-button-group>
                                         </div>
                                     </div>
@@ -114,14 +103,14 @@
                         </el-table>
                         <div class="pagination-wrap" style="text-align: center; padding-top: 20px;">
                             <el-pagination
-                                    @size-change="handleSizeChange"
-                                    @current-change="handleCurrentChange"
-                                    :current-page.sync="meta.current_page"
-                                    :page-sizes="[10, 20, 50, 100]"
-                                    :page-size="parseInt(meta.per_page)"
-                                    layout="total, sizes, prev, pager, next, jumper"
-                                    :total="meta.total">
-                            </el-pagination>
+                                :current-page.sync="meta.current_page"
+                                :page-sizes="[10, 20, 30, 50, 100]"
+                                :page-size="parseInt(meta.per_page)"
+                                :total="meta.total"
+                                layout="total, sizes, prev, pager, next, jumper"
+                                @size-change="handleSizeChange"
+                                @current-change="handleCurrentChange"
+                            ></el-pagination>
                         </div>
                     </div>
                 </div>
@@ -134,29 +123,27 @@
 
 <script>
     import axios from 'axios';
+    import debounce from 'lodash/debounce';
+    import MoveDialog from './MoveMediaDialog.vue';
     import NewFolder from './NewFolder.vue';
-    import UploadButton from './UploadButton.vue';
     import RenameFolder from './RenameFolder.vue';
-    import MoveMediaDialog from './MoveMediaDialog.vue';
+    import UploadZone from './UploadZone.vue';
+    import DeleteButton from '../../../../Core/Assets/js/components/DeleteComponent.vue';
+    import EditButton from '../../../../Core/Assets/js/components/EditButtonComponent.vue';
 
     export default {
-        components: {
-            'new-folder': NewFolder,
-            'upload-button': UploadButton,
-            'rename-folder': RenameFolder,
-            'move-dialog': MoveMediaDialog,
-        },
+        components: { MoveDialog, NewFolder, RenameFolder, UploadZone, DeleteButton, EditButton },
         props: {
-            singleModal: { type: Boolean },
-            eventName: {},
+            singleModal: { default: false, type: Boolean },
+            eventName: { default: null, type: String },
         },
         data() {
             return {
-                data: [],
+                media: [],
                 tableIsLoading: false,
                 meta: {
                     current_page: 1,
-                    per_page: 10,
+                    per_page: 30,
                 },
                 order_meta: {
                     order_by: '',
@@ -169,135 +156,13 @@
                 folderBreadcrumb: [
                     { id: 0, name: 'Home' },
                 ],
+                showUploadZone: false,
                 filesAreDeleting: false,
                 canEditFolders: true,
             };
         },
-        methods: {
-            queryServer(customProperties) {
-                const properties = {
-                    page: this.meta.current_page,
-                    per_page: this.meta.per_page,
-                    order_by: this.order_meta.order_by,
-                    order: this.order_meta.order,
-                    search: this.searchQuery,
-                    folder_id: this.folderId,
-                };
-
-                axios.get(route('api.media.all-vue', _.merge(properties, customProperties)))
-                    .then((response) => {
-                        this.tableIsLoading = false;
-                        this.data = response.data.data;
-                        this.meta = response.data.meta;
-                        this.links = response.data.links;
-
-                        this.order_meta.order_by = properties.order_by;
-                        this.order_meta.order = properties.order;
-                    });
-            },
-            fetchMediaData() {
-                this.tableIsLoading = true;
-                if (this.$route.query.folder_id !== undefined) {
-                    this.queryServer({ folder_id: this.$route.query.folder_id });
-                    this.fetchFolderBreadcrumb(this.$route.query.folder_id);
-                    return;
-                }
-                this.queryServer();
-            },
-            fetchFolderBreadcrumb(folderId) {
-                if (folderId === 0) {
-                    this.folderBreadcrumb = [
-                        { id: 0, name: 'Home' },
-                    ];
-                    return;
-                }
-                axios.get(route('api.media.folders.breadcrumb', { folder: folderId }))
-                    .then((response) => {
-                        this.folderBreadcrumb = response.data;
-                    });
-            },
-            handleSizeChange(event) {
-                console.log(`per page :${event}`);
-                this.tableIsLoading = true;
-                this.queryServer({ per_page: event });
-            },
-            handleCurrentChange(event) {
-                console.log(`current page :${event}`);
-                this.tableIsLoading = true;
-                this.queryServer({ page: event });
-            },
-            handleSortChange(event) {
-                console.log('sorting', event);
-                this.tableIsLoading = true;
-                this.queryServer({ order_by: event.prop, order: event.order });
-            },
-            performSearch: _.debounce(function (query) {
-                console.log(`searching:${query.target.value}`);
-                this.tableIsLoading = true;
-                this.queryServer({ search: query.target.value });
-            }, 300),
-            enterFolder(scope) {
-                this.tableIsLoading = true;
-                this.queryServer({ folder_id: scope.row.id });
-                this.folderId = scope.row.id;
-                this.$router.push({ query: { folder_id: scope.row.id } });
-                this.fetchFolderBreadcrumb(scope.row.id);
-            },
-            insertMedia(scope) {
-                this.$events.emit(this.eventName, scope.row);
-            },
-            handleSelectionChange(selectedMedia) {
-                this.selectedMedia = selectedMedia;
-            },
-            showEditFolder(scope) {
-                this.$events.emit('editFolderWasClicked', scope);
-            },
-            showMoveMedia() {
-                this.$events.emit('moveMediaWasClicked', this.selectedMedia);
-            },
-            changeRoot(folderId) {
-                this.tableIsLoading = true;
-                this.queryServer({ folder_id: folderId });
-                this.folderId = folderId;
-                if (folderId === 0) {
-                    this.$router.push({ query: {} });
-                } else {
-                    this.$router.push({ query: { folder_id: folderId } });
-                }
-
-                this.fetchFolderBreadcrumb(folderId);
-            },
-            batchDelete() {
-                this.$confirm(this.trans('core.modal.confirmation-message'), this.trans('core.modal.title'), {
-                    confirmButtonText: this.trans('core.button.delete'),
-                    cancelButtonText: this.trans('core.button.cancel'),
-                    type: 'warning',
-                })
-                    .then(() => {
-                        this.filesAreDeleting = true;
-                        axios.post(route('api.media.media.batch-destroy'), {
-                            files: this.selectedMedia,
-                        })
-                            .then((response) => {
-                                this.$message({
-                                    type: 'success',
-                                    message: response.data.message,
-                                });
-                                this.filesAreDeleting = false;
-                                this.$refs.mediaTable.clearSelection();
-                                this.queryServer();
-                            });
-                    })
-                    .catch(() => {
-                        this.$message({
-                            type: 'info',
-                            message: this.trans('core.delete cancelled'),
-                        });
-                    });
-            },
-            goToEdit(scope) {
-                this.$router.push({ name: 'admin.media.media.edit', params: { mediaId: scope.row.id } });
-            },
+        watch: {
+            '$route': 'fetchMediaData',
         },
         mounted() {
             if (window.AsgardCMS.filesystem === 's3') {
@@ -321,6 +186,135 @@
                 this.queryServer({ folder_id: eventData.folder_id });
                 this.fetchFolderBreadcrumb(eventData.folder_id);
             });
+        },
+        methods: {
+            queryServer(customProperties) {
+                const properties = {
+                    page: this.meta.current_page,
+                    per_page: this.meta.per_page,
+                    order_by: this.order_meta.order_by,
+                    order: this.order_meta.order,
+                    search: this.searchQuery,
+                    folder_id: this.folderId,
+                };
+
+                axios.get(route('api.media.all-vue', { ...properties, ...customProperties }))
+                    .then((response) => {
+                        this.tableIsLoading = false;
+                        this.media = response.data.data;
+                        this.meta = response.data.meta;
+                        this.links = response.data.links;
+                        this.order_meta.order_by = properties.order_by;
+                        this.order_meta.order = properties.order;
+                    });
+            },
+            fetchMediaData() {
+                this.tableIsLoading = true;
+                this.meta.current_page = 1;
+                if (this.$route.query.folder_id !== undefined) {
+                    this.queryServer({ folder_id: this.$route.query.folder_id });
+                    this.fetchFolderBreadcrumb(this.$route.query.folder_id);
+                    return;
+                }
+                this.queryServer();
+                this.fetchFolderBreadcrumb(0);
+            },
+            fetchFolderBreadcrumb(folderId) {
+                if (folderId === 0) {
+                    this.folderBreadcrumb = [
+                        {
+                            id: 0,
+                            name: 'Home',
+                        },
+                    ];
+
+                    return;
+                }
+                axios.get(route('api.media.folders.breadcrumb', { folder: folderId }))
+                    .then((response) => {
+                        this.folderBreadcrumb = response.data;
+                    });
+            },
+            handleSizeChange(event) {
+                console.log(`per page :${event}`);
+                this.tableIsLoading = true;
+                this.queryServer({ per_page: event });
+            },
+            handleCurrentChange(event) {
+                console.log(`current page :${event}`);
+                this.tableIsLoading = true;
+                this.queryServer({ page: event });
+            },
+            handleSortChange(event) {
+                console.log('sorting', event);
+                this.tableIsLoading = true;
+                this.queryServer({ order_by: event.prop, order: event.order });
+            },
+            performSearch: debounce((query) => {
+                console.log(`searching:${query.target.value}`);
+                this.tableIsLoading = true;
+                this.queryServer({ search: query.target.value });
+            }, 300),
+            enterFolder(scope) {
+                this.tableIsLoading = true;
+                this.folderId = scope.row.id;
+                this.$router.push({ query: { folder_id: scope.row.id } });
+            },
+            insertMedia(scope) {
+                this.$events.emit(this.eventName, scope.row);
+            },
+            handleSelectionChange(selectedMedia) {
+                this.selectedMedia = selectedMedia;
+            },
+            toggleUploadZone() {
+                this.showUploadZone = !this.showUploadZone;
+            },
+            showEditFolder(scope) {
+                this.$events.emit('editFolderWasClicked', scope);
+            },
+            showMoveMedia() {
+                this.$events.emit('moveMediaWasClicked', this.selectedMedia);
+            },
+            changeRoot(folderId) {
+                this.tableIsLoading = true;
+                this.folderId = folderId;
+                if (folderId === 0) {
+                    this.$router.push({ query: {} });
+                } else {
+                    this.$router.push({ query: { folder_id: folderId } });
+                }
+            },
+            batchDelete() {
+                this.$confirm(this.trans('core.modal.confirmation-message'), this.trans('core.modal.title'), {
+                        confirmButtonText: this.trans('core.button.delete'),
+                        cancelButtonText: this.trans('core.button.cancel'),
+                        type: 'warning',
+                    })
+                    .then(() => {
+                        this.filesAreDeleting = true;
+                        axios.post(route('api.media.media.batch-destroy'), {
+                                files: this.selectedMedia,
+                            })
+                            .then((response) => {
+                                this.$message({
+                                    type: 'success',
+                                    message: response.data.message,
+                                });
+                                this.filesAreDeleting = false;
+                                this.$refs.mediaTable.clearSelection();
+                                this.fetchMediaData();
+                            });
+                    })
+                    .catch(() => {
+                        this.$message({
+                            type: 'info',
+                            message: this.trans('core.delete cancelled'),
+                        });
+                    });
+            },
+            goToEdit(scope) {
+                this.$router.push({ name: 'admin.media.media.edit', params: { mediaId: scope.row.id } });
+            },
         },
     };
 </script>
