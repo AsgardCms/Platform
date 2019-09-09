@@ -2462,6 +2462,10 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
 
 
 
@@ -2658,7 +2662,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       this.showUploadZone = !this.showUploadZone;
     },
     showEditFolder: function showEditFolder(scope) {
-      this.$events.emit('editFolderWasClicked', scope);
+      this.$events.emit('editFolderWasClicked', scope.row);
     },
     showMoveMedia: function showMoveMedia() {
       this.$events.emit('moveMediaWasClicked', this.selectedMedia);
@@ -6157,12 +6161,12 @@ var render = function() {
                     _vm._v(" "),
                     _c("el-table-column", {
                       attrs: { label: "", width: "150" },
-                      scopedSlots: _vm._u(
-                        [
-                          {
-                            key: "default",
-                            fn: function(scope) {
-                              return scope.row.is_image
+                      scopedSlots: _vm._u([
+                        {
+                          key: "default",
+                          fn: function(scope) {
+                            return [
+                              scope.row.is_image
                                 ? [
                                     _c("img", {
                                       staticClass: "img-responsive",
@@ -6172,13 +6176,26 @@ var render = function() {
                                       }
                                     })
                                   ]
-                                : undefined
-                            }
+                                : scope.row.is_folder
+                                ? [
+                                    _c("i", {
+                                      staticClass: "fa fa-2x fa-folder"
+                                    })
+                                  ]
+                                : [
+                                    scope.row.fa_icon
+                                      ? _c("i", {
+                                          staticClass: "fa fa-2x",
+                                          class: scope.row.fa_icon
+                                        })
+                                      : _c("i", {
+                                          staticClass: "fa fa-2x fa-file"
+                                        })
+                                  ]
+                            ]
                           }
-                        ],
-                        null,
-                        true
-                      )
+                        }
+                      ])
                     }),
                     _vm._v(" "),
                     _c("el-table-column", {
@@ -6187,12 +6204,12 @@ var render = function() {
                         prop: "filename",
                         sortable: "custom"
                       },
-                      scopedSlots: _vm._u(
-                        [
-                          {
-                            key: "default",
-                            fn: function(scope) {
-                              return scope.row.is_folder
+                      scopedSlots: _vm._u([
+                        {
+                          key: "default",
+                          fn: function(scope) {
+                            return [
+                              scope.row.is_folder
                                 ? [
                                     _c(
                                       "strong",
@@ -6206,20 +6223,38 @@ var render = function() {
                                       },
                                       [
                                         _vm._v(
-                                          "\n                                    " +
+                                          "\n                                        " +
                                             _vm._s(scope.row.filename) +
-                                            "\n                                "
+                                            "\n                                    "
                                         )
                                       ]
                                     )
                                   ]
-                                : undefined
-                            }
+                                : [
+                                    _c(
+                                      "a",
+                                      {
+                                        attrs: { href: "#" },
+                                        on: {
+                                          click: function($event) {
+                                            $event.preventDefault()
+                                            return _vm.goToEdit(scope)
+                                          }
+                                        }
+                                      },
+                                      [
+                                        _vm._v(
+                                          "\n                                        " +
+                                            _vm._s(scope.row.filename) +
+                                            "\n                                    "
+                                        )
+                                      ]
+                                    )
+                                  ]
+                            ]
                           }
-                        ],
-                        null,
-                        true
-                      )
+                        }
+                      ])
                     }),
                     _vm._v(" "),
                     _c("el-table-column", {
@@ -6302,7 +6337,7 @@ var render = function() {
                                                         ) {
                                                           $event.preventDefault()
                                                           return _vm.showEditFolder(
-                                                            scope.row
+                                                            scope
                                                           )
                                                         }
                                                       }
