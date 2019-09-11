@@ -8697,20 +8697,18 @@ var render = function() {
                                 {
                                   model: {
                                     value:
-                                      _vm.permissions["" + subPermissionTitle][
-                                        "" + permissionAction
+                                      _vm.permissions[subPermissionTitle][
+                                        permissionAction
                                       ],
                                     callback: function($$v) {
                                       _vm.$set(
-                                        _vm.permissions[
-                                          "" + subPermissionTitle
-                                        ],
-                                        "" + permissionAction,
+                                        _vm.permissions[subPermissionTitle],
+                                        permissionAction,
                                         $$v
                                       )
                                     },
                                     expression:
-                                      "permissions[`${subPermissionTitle}`][`${permissionAction}`]"
+                                      "permissions[subPermissionTitle][permissionAction]"
                                   }
                                 },
                                 [
