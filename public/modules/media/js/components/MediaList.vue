@@ -58,27 +58,31 @@
                         >
                             <el-table-column type="selection" width="55"></el-table-column>
                             <el-table-column label="" width="150">
-                                <template v-if="scope.row.is_image" slot-scope="scope">
-                                    <img :src="scope.row.small_thumb" alt="" class="img-responsive">
-                                </template>
-                                <template v-else-if="scope.row.is_folder" slot-scope="scope">
-                                    <i class="fa fa-2x fa-folder"></i>
-                                </template>
-                                <template v-else slot-scope="scope">
-                                    <i v-if="scope.row.fa_icon" :class="scope.row.fa_icon" class="fa fa-2x"></i>
-                                    <i v-else class="fa fa-2x fa-file"></i>
+                                <template slot-scope="scope">
+                                    <template v-if="scope.row.is_image">
+                                        <img :src="scope.row.small_thumb" alt="" class="img-responsive">
+                                    </template>
+                                    <template v-else-if="scope.row.is_folder">
+                                        <i class="fa fa-2x fa-folder"></i>
+                                    </template>
+                                    <template v-else>
+                                        <i v-if="scope.row.fa_icon" :class="scope.row.fa_icon" class="fa fa-2x"></i>
+                                        <i v-else class="fa fa-2x fa-file"></i>
+                                    </template>
                                 </template>
                             </el-table-column>
                             <el-table-column :label="trans('media.table.filename')" prop="filename" sortable="custom">
-                                <template v-if="scope.row.is_folder" slot-scope="scope">
-                                    <strong style="cursor: pointer;" @click="enterFolder(scope)">
-                                        {{ scope.row.filename }}
-                                    </strong>
-                                </template>
-                                <template v-else slot-scope="scope">
-                                    <a href="#" @click.prevent="goToEdit(scope)">
-                                        {{ scope.row.filename }}
-                                    </a>
+                                <template slot-scope="scope">
+                                    <template v-if="scope.row.is_folder">
+                                        <strong style="cursor: pointer;" @click="enterFolder(scope)">
+                                            {{ scope.row.filename }}
+                                        </strong>
+                                    </template>
+                                    <template v-else>
+                                        <a href="#" @click.prevent="goToEdit(scope)">
+                                            {{ scope.row.filename }}
+                                        </a>
+                                    </template>
                                 </template>
                             </el-table-column>
                             <el-table-column :label="trans('core.table.created at')" prop="created_at" sortable="custom" width="150"></el-table-column>
@@ -91,7 +95,7 @@
                                         <div v-if="!singleModal">
                                             <el-button-group>
                                                 <edit-button v-if="!scope.row.is_folder" :to="{name: 'admin.media.media.edit', params: {mediaId: scope.row.id}}"></edit-button>
-                                                <el-button v-if="scope.row.is_folder && canEditFolders" size="mini" @click.prevent="showEditFolder(scope.row)">
+                                                <el-button v-if="scope.row.is_folder && canEditFolders" size="mini" @click.prevent="showEditFolder(scope)">
                                                     <i class="fa fa-pencil"></i>
                                                 </el-button>
                                                 <delete-button :scope="scope" :rows="media"></delete-button>
@@ -270,7 +274,7 @@
                 this.showUploadZone = !this.showUploadZone;
             },
             showEditFolder(scope) {
-                this.$events.emit('editFolderWasClicked', scope);
+                this.$events.emit('editFolderWasClicked', scope.row);
             },
             showMoveMedia() {
                 this.$events.emit('moveMediaWasClicked', this.selectedMedia);
