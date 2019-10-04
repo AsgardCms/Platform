@@ -37,9 +37,9 @@ class UserRegistration
 
         $user = $this->createUser();
 
-        if ($this->hasProfileData()) {
-            $this->createProfileForUser($user);
-        }
+        // if ($this->hasProfileData()) {
+        //     $this->createProfileForUser($user);
+        // }
 
         $this->assignUserToUsersGroup($user);
 
@@ -64,18 +64,18 @@ class UserRegistration
      * Check if the request input has a profile key
      * @return bool
      */
-    private function hasProfileData()
-    {
-        return isset($this->input['profile']);
-    }
+    // private function hasProfileData()
+    // {
+    //     return isset($this->input['profile']);
+    // }
 
     /**
      * Create a profile for the given user
      * @param $user
      */
-    private function createProfileForUser($user)
-    {
-        $profileData = array_merge($this->input['profile'], ['user_id' => $user->id]);
-        app('Modules\Profile\Repositories\ProfileRepository')->create($profileData);
-    }
+    // private function createProfileForUser($user)
+    // {
+    //     $profileData = array_merge($this->input['profile'], ['user_id' => $user->id]);
+    //     app('Modules\Profile\Repositories\ProfileRepository')->create($profileData);
+    // }
 }
