@@ -8,7 +8,8 @@
                 <el-breadcrumb-item>
                     <a href="/backend">{{ trans('core.breadcrumb.home') }}</a>
                 </el-breadcrumb-item>
-                <el-breadcrumb-item :to="{name: 'admin.user.users.account.api-keys'}">{{ trans('users.api-keys') }}
+                <el-breadcrumb-item :to="{name: 'admin.user.user.account.api-keys'}">
+                    {{ trans('users.api-keys') }}
                 </el-breadcrumb-item>
             </el-breadcrumb>
         </div>
@@ -25,11 +26,9 @@
                     </div>
                     <div class="box-body">
                         <ul class="list-unstyled">
-                            <li style="margin-bottom: 20px;"
-                                v-for="key in apiKeys"
-                                :key="key.id">
+                            <li v-for="key in apiKeys" :key="key.id" style="margin-bottom: 20px;">
                                 <el-input v-model="key.access_token" disabled>
-                                    <el-button slot-scope="prepend" @click="destroyApiKey(key)">
+                                    <el-button slot="prepend" @click="destroyApiKey(key)">
                                         <i class="fa fa-times"></i>
                                     </el-button>
                                 </el-input>
@@ -51,6 +50,9 @@
                 loading: false,
                 apiKeys: {},
             };
+        },
+        mounted() {
+            this.fetchApiKeys();
         },
         methods: {
             fetchApiKeys() {
@@ -88,13 +90,8 @@
                                 message: response.data.message,
                             });
                         });
-                })
-                .catch(() => {
                 });
             },
-        },
-        mounted() {
-            this.fetchApiKeys();
         },
     };
 </script>

@@ -1,9 +1,18 @@
 {
     "plugins": [
-        "syntax-dynamic-import",
-        "transform-object-rest-spread"
+        "@babel/plugin-syntax-dynamic-import",
+        "@babel/plugin-proposal-object-rest-spread"
     ],
     "presets": [
-        ["env"]
+        [
+            "@babel/preset-env",
+            {
+                "targets": {
+                    "browsers": ["defaults"]
+                },
+                "modules": false,
+                "forceAllTransforms": true
+            }
+        ]
     ]
 }

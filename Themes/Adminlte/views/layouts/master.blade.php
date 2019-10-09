@@ -88,7 +88,7 @@
                 filesystem: '{{ config('asgard.media.config.filesystem') }}'
             };
         </script>
-        
+
         @section('scripts-before')
         @show
 

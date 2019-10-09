@@ -10,22 +10,22 @@ class FullPageTransformer extends Resource
     public function toArray($request)
     {
         $pageData = [
-            'id' => $this->id,
-            'template' => $this->template,
-            'is_home' => $this->is_home,
+            'id' => $this->resource->id,
+            'template' => $this->resource->template,
+            'is_home' => $this->resource->is_home,
             'urls' => [
-                'public_url' => $this->getCanonicalUrl(),
+                'public_url' => $this->resource->getCanonicalUrl(),
             ],
         ];
 
         foreach (LaravelLocalization::getSupportedLocales() as $locale => $supportedLocale) {
             $pageData[$locale] = [];
-            foreach ($this->translatedAttributes as $translatedAttribute) {
-                $pageData[$locale][$translatedAttribute] = $this->translateOrNew($locale)->$translatedAttribute;
+            foreach ($this->resource->translatedAttributes as $translatedAttribute) {
+                $pageData[$locale][$translatedAttribute] = $this->resource->translateOrNew($locale)->$translatedAttribute;
             }
         }
 
-        foreach ($this->tags as $tag) {
+        foreach ($this->resource->tags as $tag) {
             $pageData['tags'][] = $tag->name;
         }
 

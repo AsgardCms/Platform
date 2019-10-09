@@ -13,27 +13,27 @@ class FullUserTransformer extends Resource
         $permissions = $this->buildPermissionList($permissionsManager->all());
 
         $data = [
-            'id' => $this->id,
-            'first_name' => $this->first_name,
-            'last_name' => $this->last_name,
-            'email' => $this->email,
-            'is_activated' => $this->isActivated(),
-            'last_login' => $this->last_login,
-            'created_at' => $this->created_at,
+            'id' => $this->resource->id,
+            'first_name' => $this->resource->first_name,
+            'last_name' => $this->resource->last_name,
+            'email' => $this->resource->email,
+            'is_activated' => $this->resource->isActivated(),
+            'last_login' => $this->resource->last_login,
+            'created_at' => $this->resource->created_at,
             'permissions' => $permissions,
-            'roles' => $this->roles->pluck('id'),
+            'roles' => $this->resource->roles->pluck('id'),
             'urls' => [],
         ];
-        if ($this->id) {
+        if ($this->resource->id) {
             $data['urls'] = [
-                'delete_url' => route('api.user.user.destroy', $this->id),
+                'delete_url' => route('api.user.user.destroy', $this->resource->id),
             ];
         }
 
         return $data;
     }
 
-    private function buildPermissionList(array $permissionsConfig) : array
+    private function buildPermissionList(array $permissionsConfig): array
     {
         $list = [];
 
@@ -44,7 +44,7 @@ class FullUserTransformer extends Resource
         foreach ($permissionsConfig as $mainKey => $subPermissions) {
             foreach ($subPermissions as $key => $permissionGroup) {
                 foreach ($permissionGroup as $lastKey => $description) {
-                    $list[strtolower($key) . '.' . $lastKey] = current_permission_value($this, $key, $lastKey);
+                    $list[strtolower($key) . '.' . $lastKey] = current_permission_value($this->resource, $key, $lastKey);
                 }
             }
         }

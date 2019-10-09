@@ -5,19 +5,18 @@ import UserForm from './components/UserForm.vue';
 import UserProfile from './components/UserProfile.vue';
 import ApiKeys from './components/ApiKeys.vue';
 
-
-const locales = window.AsgardCMS.locales;
+const { locales } = window.AsgardCMS;
 
 export default [
     // Role Routes
     {
         path: '/user/roles',
-        name: 'admin.user.roles.index',
+        name: 'admin.user.role.index',
         component: RoleTable,
     },
     {
         path: '/user/roles/create',
-        name: 'admin.user.roles.create',
+        name: 'admin.user.role.create',
         component: RoleForm,
         props: {
             locales,
@@ -26,7 +25,7 @@ export default [
     },
     {
         path: '/user/roles/:roleId/edit',
-        name: 'admin.user.roles.edit',
+        name: 'admin.user.role.edit',
         component: RoleForm,
         props: {
             locales,
@@ -36,12 +35,12 @@ export default [
     // User Routes
     {
         path: '/user/users',
-        name: 'admin.user.users.index',
+        name: 'admin.user.user.index',
         component: UserTable,
     },
     {
         path: '/user/users/create',
-        name: 'admin.user.users.create',
+        name: 'admin.user.user.create',
         component: UserForm,
         props: {
             locales,
@@ -50,7 +49,7 @@ export default [
     },
     {
         path: '/user/users/:userId/edit',
-        name: 'admin.user.users.edit',
+        name: 'admin.user.user.edit',
         component: UserForm,
         props: {
             locales,
@@ -60,12 +59,12 @@ export default [
     // Account routes
     {
         path: '/account/profile',
-        name: 'admin.user.users.account',
+        name: 'admin.user.user.account',
         component: UserProfile,
     },
     {
         path: '/account/api-keys',
-        name: 'admin.user.users.account.api-keys',
+        name: 'admin.user.user.account.api-keys',
         component: ApiKeys,
     },
 ];
