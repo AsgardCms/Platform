@@ -4,6 +4,7 @@ namespace Modules\User\Http\Controllers;
 
 use Illuminate\Foundation\Bus\DispatchesJobs;
 use Modules\Core\Http\Controllers\BasePublicController;
+use Modules\User\Events\UserLoggedIn;
 use Modules\User\Exceptions\InvalidOrExpiredResetCode;
 use Modules\User\Exceptions\UserNotFoundException;
 use Modules\User\Http\Requests\LoginRequest;
@@ -41,6 +42,9 @@ class AuthController extends BasePublicController
         if ($error) {
             return redirect()->back()->withInput()->withError($error);
         }
+
+        $user = $this->auth->user();
+        event(new UserLoggedIn($user));
 
         return redirect()->intended(route(config('asgard.user.config.redirect_route_after_login')))
                 ->withSuccess(trans('user::messages.successfully logged in'));
