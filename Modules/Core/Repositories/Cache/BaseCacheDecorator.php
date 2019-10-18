@@ -175,6 +175,7 @@ abstract class BaseCacheDecorator implements BaseRepository
     /**
      * @param \Closure $callback
      * @param null|string $key
+     * @param null|int    $time
      * @return mixed
      */
     protected function remember(\Closure $callback, $key = null, $time = null)
