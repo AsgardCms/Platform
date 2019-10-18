@@ -3,9 +3,14 @@
 namespace Modules\$MODULE$\Providers;
 
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
+use Modules\Core\Events\BuildingSidebar;
+use Modules\$MODULE$\Events\Handlers\$SIDEBAR_LISTENER_NAME$;
 
 class EventServiceProvider extends ServiceProvider
 {
     protected $listen = [
+        BuildingSidebar::class => [
+            $SIDEBAR_LISTENER_NAME$::class
+        ],
     ];
 }
