@@ -101,6 +101,7 @@ class ModuleScaffold
 
         $this->filesGenerator->forModule($this->name)
             ->generateModuleProvider()
+            ->generateEventProvider()
             ->generate($this->files);
 
         $this->cleanUpModuleJson();
@@ -240,6 +241,7 @@ class ModuleScaffold
     {
         $newProviders = <<<JSON
 "Modules\\\\{$this->name}\\\Providers\\\\{$this->name}ServiceProvider",
+        "Modules\\\\{$this->name}\\\Providers\\\\EventServiceProvider",
         "Modules\\\\{$this->name}\\\Providers\\\RouteServiceProvider"
 JSON;
 

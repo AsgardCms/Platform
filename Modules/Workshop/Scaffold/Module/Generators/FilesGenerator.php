@@ -37,6 +37,20 @@ class FilesGenerator extends Generator
     }
 
     /**
+     * Generate the base module event provider
+     * @return $this
+     */
+    public function generateEventProvider()
+    {
+        $this->writeFile(
+            $this->getModulesPath("Providers/EventServiceProvider"),
+            $this->getContentFor('module-event-provider.stub')
+        );
+
+        return $this;
+    }
+
+    /**
      * Get the content for the given file
      *
      * @param $stub
