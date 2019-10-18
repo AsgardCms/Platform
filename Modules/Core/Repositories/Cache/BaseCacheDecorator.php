@@ -177,7 +177,7 @@ abstract class BaseCacheDecorator implements BaseRepository
      * @param null|string $key
      * @return mixed
      */
-    protected function remember(\Closure $callback, $key = null)
+    protected function remember(\Closure $callback, $key = null, $time = null)
     {
         $cacheKey = $this->makeCacheKey($key);
 
@@ -187,7 +187,12 @@ abstract class BaseCacheDecorator implements BaseRepository
             $store = $store->tags([$this->entityName, 'global']);
         }
 
-        return $store->remember($cacheKey, $this->cacheTime, $callback);
+        $cacheTime = $this->cacheTime;
+        if (null !== $time) {
+            $cacheTime = $time;
+        }
+
+        return $store->remember($cacheKey, $cacheTime, $callback);
     }
 
     /**
