@@ -9,6 +9,7 @@
         >
             <el-form v-loading.body="loading" @submit.native.prevent="onSubmit()">
                 <el-form-item :label="`To`" :class="{'el-form-item is-error': form.errors.has('destinationFolder') }">
+                    <form-errors :form="form"></form-errors>
                     <el-select v-model="destinationFolder" placeholder="Select">
                         <el-option
                             v-for="(item, id) in options"
@@ -38,8 +39,10 @@
 <script>
     import axios from 'axios';
     import Form from 'form-backend-validation';
+    import FormErrors from '../../../../Core/Assets/js/components/FormErrors.vue';
 
     export default {
+        components: { FormErrors },
         data() {
             return {
                 selectedMedia: [],
