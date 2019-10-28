@@ -15,6 +15,6 @@ if (mix.inProduction()) {
  |
  */
 
-mix.js('resources/assets/js/app.js', 'public/js')
+mix.js('resources/js/app.js', 'public/js')
     .extract()
-    .sass('resources/assets/sass/app.scss', 'public/css');
+    .sass('resources/sass/app.scss', 'public/css');
