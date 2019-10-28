@@ -6,6 +6,7 @@
 
         <el-dialog :title="trans('folders.create resource')" :visible.sync="dialogFormVisible" width="30%">
             <el-form v-loading.body="loading" :model="folder" @submit.native.prevent="onSubmit()">
+                <form-errors :form="form"></form-errors>
                 <el-form-item :label="trans('folders.folder name')" :class="{'el-form-item is-error': form.errors.has('name') }">
                     <el-input v-model="folder.name" auto-complete="off" autofocus></el-input>
                     <div v-if="form.errors.has('name')" class="el-form-item__error" v-text="form.errors.first('name')"></div>
@@ -22,8 +23,10 @@
 
 <script>
     import Form from 'form-backend-validation';
+    import FormErrors from '../../../../Core/Assets/js/components/FormErrors.vue';
 
     export default {
+        components: { FormErrors },
         props: {
             parentId: { default: null, type: Number },
         },

@@ -24,6 +24,7 @@
             label-position="top"
             @keydown="form.errors.clear($event.target.name)"
         >
+            <form-errors :form="form"></form-errors>
             <div class="row">
                 <div class="col-md-10">
                     <div class="box box-primary">
@@ -49,7 +50,11 @@
                                     </el-form-item>
 
                                     <el-form-item :label="trans('pages.status')" :class="{'el-form-item is-error': form.errors.has(locale + '.status') }">
-                                        <el-checkbox v-model="page[locale].status">{{ trans('pages.live') }}</el-checkbox>
+                                        <el-switch
+                                            v-model="page[locale].status"
+                                            active-color="#13ce66"
+                                            inactive-color="#ff4949">
+                                        </el-switch>
                                         <div v-if="form.errors.has(locale + '.status')" class="el-form-item__error" v-text="form.errors.first(locale + '.status')"></div>
                                     </el-form-item>
 
@@ -150,6 +155,7 @@
 <script>
     import axios from 'axios';
     import Form from 'form-backend-validation';
+    import FormErrors from '../../../../Core/Assets/js/components/FormErrors.vue';
     import Slugify from '../../../../Core/Assets/js/mixins/Slugify';
     import ShortcutHelper from '../../../../Core/Assets/js/mixins/ShortcutHelper';
     import ActiveEditor from '../../../../Core/Assets/js/mixins/ActiveEditor';
@@ -158,7 +164,7 @@
     import TagsInput from '../../../../Tag/Assets/js/components/TagInput.vue';
 
     export default {
-        components: { SingleMedia, TagsInput },
+        components: { FormErrors, SingleMedia, TagsInput },
         mixins: [Slugify, ShortcutHelper, ActiveEditor, SingleFileSelector],
         props: {
             locales: { default: null, type: Object },
@@ -177,6 +183,7 @@
                         og_title: '',
                         og_description: '',
                         og_type: '',
+                        status: false
                     }])
                     .fromPairs()
                     .merge({ id: null, template: 'default', is_home: 0, tags: [], urls: {} })

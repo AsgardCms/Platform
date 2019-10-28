@@ -25,6 +25,7 @@
             label-position="top"
             @keydown="form.errors.clear($event.target.name)"
         >
+            <form-errors :form="form"></form-errors>
             <div class="row">
                 <div class="col-md-12">
                     <div class="box box-primary">
@@ -75,12 +76,13 @@
 <script>
     import axios from 'axios';
     import Form from 'form-backend-validation';
+    import FormErrors from '../../../../Core/Assets/js/components/FormErrors.vue';
     import Slugify from '../../../../Core/Assets/js/mixins/Slugify';
     import ShortcutHelper from '../../../../Core/Assets/js/mixins/ShortcutHelper';
     import AsgardPermissions from './AsgardPermissions.vue';
 
     export default {
-        components: { AsgardPermissions },
+        components: { AsgardPermissions, FormErrors },
         mixins: [Slugify, ShortcutHelper],
         props: {
             locales: { default: null, type: Object },
