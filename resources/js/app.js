@@ -8,9 +8,9 @@ import ElementUI from 'element-ui';
 import VueEvents from 'vue-events';
 import locale from 'element-ui/lib/locale/lang/en';
 import VueSimplemde from 'vue-simplemde';
-import PageRoutes from '../../../Modules/Page/Assets/js/PageRoutes';
-import MediaRoutes from '../../../Modules/Media/Assets/js/MediaRoutes';
-import UserRoutes from '../../../Modules/User/Assets/js/UserRoutes';
+import PageRoutes from '../../Modules/Page/Assets/js/PageRoutes';
+import MediaRoutes from '../../Modules/Media/Assets/js/MediaRoutes';
+import UserRoutes from '../../Modules/User/Assets/js/UserRoutes';
 
 Vue.use(ElementUI, { locale });
 Vue.use(VueI18n);
@@ -21,7 +21,7 @@ Vue.use(VueEvents);
 Vue.use(VueSimplemde);
 require('./mixins');
 
-Vue.component('ckeditor', require('../../../Modules/Core/Assets/js/components/CkEditor.vue').default);
+Vue.component('ckeditor', require('../../Modules/Core/Assets/js/components/CkEditor.vue').default);
 
 const { currentLocale, adminPrefix } = window.AsgardCMS;
 
