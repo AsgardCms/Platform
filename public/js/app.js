@@ -5680,24 +5680,26 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "el-alert",
-    { attrs: { title: "Error", type: "error", "show-icon": "" } },
-    [
-      _vm._l(_vm.form.errors.all(), function(errors, field) {
-        return _c("div", { key: field }, [_c("p", [_vm._v(_vm._s(field))])])
-      }),
-      _vm._v(" "),
-      _c(
-        "ul",
-        _vm._l(_vm.errors, function(error, index) {
-          return _c("li", { key: index }, [_vm._v(_vm._s(error))])
+  return _vm.form.errors.any()
+    ? _c(
+        "el-alert",
+        { attrs: { title: "Error", type: "error", "show-icon": "" } },
+        _vm._l(_vm.form.errors.all(), function(errors, field) {
+          return _c("div", { key: field }, [
+            _c("p", [_vm._v(_vm._s(field))]),
+            _vm._v(" "),
+            _c(
+              "ul",
+              _vm._l(errors, function(error, index) {
+                return _c("li", { key: index }, [_vm._v(_vm._s(error))])
+              }),
+              0
+            )
+          ])
         }),
         0
       )
-    ],
-    2
-  )
+    : _vm._e()
 }
 var staticRenderFns = []
 render._withStripped = true
