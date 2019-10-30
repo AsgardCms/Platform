@@ -1,11 +1,11 @@
 <template>
-    <el-alert title="Error" type="error" show-icon>
+    <el-alert v-if="form.errors.any()" title="Error" type="error" show-icon>
         <div v-for="(errors, field) in form.errors.all()" :key="field">
             <p>{{ field }}</p>
+            <ul>
+                <li v-for="(error, index) in errors" :key="index">{{ error }}</li>
+            </ul>
         </div>
-        <ul>
-            <li v-for="(error, index) in errors" :key="index">{{ error }}</li>
-        </ul>
     </el-alert>
 </template>
 
