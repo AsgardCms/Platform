@@ -3,25 +3,25 @@
 namespace Modules\Translation\Providers;
 
 use Illuminate\Support\Facades\Schema;
-use Illuminate\Support\ServiceProvider;
-use Modules\Core\Events\BuildingSidebar;
 use Illuminate\Support\Facades\Validator;
-use Modules\Translation\Entities\Translation;
-use Modules\Core\Traits\CanPublishConfiguration;
+use Illuminate\Support\ServiceProvider;
 use Modules\Core\Composers\CurrentUserViewComposer;
+use Modules\Core\Events\BuildingSidebar;
 use Modules\Core\Events\LoadingBackendTranslations;
-use Modules\Translation\Services\TranslationLoader;
 use Modules\Core\Traits\CanGetSidebarClassForModule;
-use Modules\Translation\Repositories\LocaleRepository;
-use Modules\Translation\Entities\TranslationTranslation;
-use Modules\Translation\Repositories\TranslationRepository;
+use Modules\Core\Traits\CanPublishConfiguration;
 use Modules\Translation\Console\BuildTranslationsCacheCommand;
-use Modules\Translation\Repositories\FileTranslationRepository;
+use Modules\Translation\Entities\Translation;
+use Modules\Translation\Entities\TranslationTranslation;
 use Modules\Translation\Events\Handlers\RegisterTranslationSidebar;
 use Modules\Translation\Repositories\Cache\CacheTranslationDecorator;
 use Modules\Translation\Repositories\Eloquent\EloquentLocaleRepository;
 use Modules\Translation\Repositories\Eloquent\EloquentTranslationRepository;
 use Modules\Translation\Repositories\File\FileTranslationRepository as FileDiskTranslationRepository;
+use Modules\Translation\Repositories\FileTranslationRepository;
+use Modules\Translation\Repositories\LocaleRepository;
+use Modules\Translation\Repositories\TranslationRepository;
+use Modules\Translation\Services\TranslationLoader;
 
 class TranslationServiceProvider extends ServiceProvider
 {
@@ -52,6 +52,7 @@ class TranslationServiceProvider extends ServiceProvider
 
         $this->app['events']->listen(LoadingBackendTranslations::class, function (LoadingBackendTranslations $event) {
             $event->load('translations', array_dot(trans('translation::translations')));
+            $event->load('locales', array_dot(trans('translation::locales')));
         });
 
         app('router')->bind('translations', function ($id) {
