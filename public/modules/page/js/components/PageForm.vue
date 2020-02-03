@@ -220,7 +220,7 @@
                             type: 'success',
                             message: response.message,
                         });
-                        this.$router.push({ name: 'admin.page.page.index' });
+                        this.pushRoute({ name: 'admin.page.page.index' });
                     })
                     .catch((error) => {
                         console.log(error);
@@ -232,7 +232,7 @@
                     });
             },
             onCancel() {
-                this.$router.push({ name: 'admin.page.page.index' });
+                this.pushRoute({ name: 'admin.page.page.index' });
             },
             fetchTemplates() {
                 axios.get(route('api.page.page-templates.index'))

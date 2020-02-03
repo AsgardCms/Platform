@@ -9,7 +9,7 @@
         },
         methods: {
             goToEditPage() {
-                this.$router.push(this.to);
+                this.pushRoute(this.to);
             },
         },
     };

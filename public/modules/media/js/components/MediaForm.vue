@@ -157,7 +157,7 @@
                             type: 'success',
                             message: response.message,
                         });
-                        this.$router.push({ name: 'admin.media.media.index', query: { folder_id: this.media.folder_id } });
+                        this.pushRoute({ name: 'admin.media.media.index', query: { folder_id: this.media.folder_id } });
                     })
                     .catch((error) => {
                         console.log(error);
@@ -170,10 +170,10 @@
             },
             onCancel() {
                 if (this.media.folder_id === 0) {
-                    this.$router.push({ name: 'admin.media.media.index', query: {} });
+                    this.pushRoute({ name: 'admin.media.media.index', query: {} });
                     return;
                 }
-                this.$router.push({ name: 'admin.media.media.index', query: { folder_id: this.media.folder_id } });
+                this.pushRoute({ name: 'admin.media.media.index', query: { folder_id: this.media.folder_id } });
             },
         },
     };

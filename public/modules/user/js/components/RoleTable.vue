@@ -161,7 +161,7 @@
                 this.queryServer({ search: query.target.value });
             }, 300),
             goToEdit(scope) {
-                this.$router.push({ name: 'admin.user.role.edit', params: { roleId: scope.row.id } });
+                this.pushRoute({ name: 'admin.user.role.edit', params: { roleId: scope.row.id } });
             },
             editRoute(scope) {
                 return route('admin.user.role.edit', [scope.row.id]);

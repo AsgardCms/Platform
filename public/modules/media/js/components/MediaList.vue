@@ -262,7 +262,7 @@
             enterFolder(scope) {
                 this.tableIsLoading = true;
                 this.folderId = scope.row.id;
-                this.$router.push({ query: { folder_id: scope.row.id } });
+                this.pushRoute({ query: { folder_id: scope.row.id } });
             },
             insertMedia(scope) {
                 this.$events.emit(this.eventName, scope.row);
@@ -283,9 +283,9 @@
                 this.tableIsLoading = true;
                 this.folderId = folderId;
                 if (folderId === 0) {
-                    this.$router.push({ query: {} });
+                    this.pushRoute({ query: {} });
                 } else {
-                    this.$router.push({ query: { folder_id: folderId } });
+                    this.pushRoute({ query: { folder_id: folderId } });
                 }
             },
             batchDelete() {
@@ -317,7 +317,7 @@
                     });
             },
             goToEdit(scope) {
-                this.$router.push({ name: 'admin.media.media.edit', params: { mediaId: scope.row.id } });
+                this.pushRoute({ name: 'admin.media.media.edit', params: { mediaId: scope.row.id } });
             },
         },
     };

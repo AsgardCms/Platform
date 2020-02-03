@@ -165,7 +165,7 @@
                             type: 'success',
                             message: response.message,
                         });
-                        this.$router.push({ name: 'admin.user.user.index' });
+                        this.pushRoute({ name: 'admin.user.user.index' });
                     })
                     .catch((error) => {
                         console.log(error);
@@ -177,7 +177,7 @@
                     });
             },
             onCancel() {
-                this.$router.push({ name: 'admin.user.user.index' });
+                this.pushRoute({ name: 'admin.user.user.index' });
             },
             fetchUser() {
                 this.loading = true;
