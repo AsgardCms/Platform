@@ -94,9 +94,11 @@
     import Form from 'form-backend-validation';
     import FormErrors from '../../../../Core/Assets/js/components/FormErrors.vue';
     import TagsInput from '../../../../Tag/Assets/js/components/TagInput.vue';
+    import ShortcutHelper from '../../../../Core/Assets/js/mixins/ShortcutHelper';
 
     export default {
         components: { FormErrors, TagsInput },
+        mixins: [ShortcutHelper],
         props: {
             locales: { default: null, type: Object },
         },

@@ -3,7 +3,10 @@
 </template>
 
 <script>
+    import ShortcutHelper from '../../../../Core/Assets/js/mixins/ShortcutHelper';
+
     export default {
+        mixins: [ShortcutHelper],
         props: {
             to: { required: true, type: Object },
         },
