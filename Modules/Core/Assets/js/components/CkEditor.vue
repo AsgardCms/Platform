@@ -5,12 +5,12 @@
         :value="value"
         :types="types"
         :config="config"
+        :disabled="readOnlyMode"
         class="editor"
     ></textarea>
 </template>
 
 <script>
-    // Source: https://github.com/dangvanthanh/vue-ckeditor2
     let inc = new Date().getTime();
 
     export default {
@@ -43,9 +43,18 @@
                     return undefined;
                 },
             },
+            instanceReadyCallback: {
+                type: Function,
+            },
+            readOnlyMode: {
+                type: Boolean,
+                default: () => false,
+            },
         },
         data() {
-            return { destroyed: false };
+            return {
+                instanceValue: '',
+            };
         },
         computed: {
             instance() {
@@ -54,56 +63,117 @@
         },
         watch: {
             value(val) {
-                if (this.instance) {
-                    const html = this.instance.getData();
-                    if (val !== html) {
-                        this.instance.setData(val);
+                try {
+                    if (this.instance) {
+                        this.update(val);
                     }
+                } catch (e) {
                 }
+            },
+            readOnlyMode(val) {
+                this.instance.setReadOnly(val);
             },
         },
         mounted() {
-            if (typeof CKEDITOR === 'undefined') {
-                console.log('CKEDITOR is missing (http://ckeditor.com/)');
-            } else {
-                if (this.types === 'inline') {
-                    CKEDITOR.inline(this.id, this.config);
-                } else {
-                    CKEDITOR.replace(this.id, this.config);
-                }
-                this.instance.on('change', () => {
-                    const html = this.instance.getData();
-                    if (html !== this.value) {
-                        this.$emit('input', html);
-                        this.$emit('update:value', html);
-                    }
-                });
-                this.instance.on('blur', () => {
-                    this.$emit('blur', this.instance);
-                });
-                this.instance.on('focus', () => {
-                    this.$emit('focus', this.instance);
-                });
-            }
+            this.create();
         },
-        beforeDestroy() {
-            if (!this.destroyed) {
-                this.instance.focusManager.blur(true);
-                this.instance.removeAllListeners();
+        methods: {
+            create() {
+                if (typeof CKEDITOR === 'undefined') {
+                    console.log('CKEDITOR is missing (http://ckeditor.com/)');
+                } else {
+                    if (this.types === 'inline') {
+                        CKEDITOR.inline(this.id, this.config);
+                    } else {
+                        CKEDITOR.replace(this.id, this.config);
+                    }
+
+                    this.instance.setData(this.value);
+
+                    this.instance.on('instanceReady', () => {
+                        this.instance.setData(this.value);
+                    });
+
+                    // Ckeditor change event
+                    this.instance.on('change', this.onChange);
+
+                    // Ckeditor mode html or source
+                    this.instance.on('mode', this.onMode);
+
+                    // Ckeditor blur event
+                    this.instance.on('blur', evt => {
+                        this.$emit('blur', evt);
+                    });
+
+                    // Ckeditor focus event
+                    this.instance.on('focus', evt => {
+                        this.$emit('focus', evt);
+                    });
+
+                    // Ckeditor contentDom event
+                    this.instance.on('contentDom', evt => {
+                        this.$emit('contentDom', evt);
+                    });
+
+                    // Ckeditor dialog definition event
+                    CKEDITOR.on('dialogDefinition', evt => {
+                        this.$emit('dialogDefinition', evt);
+                    });
+
+                    // Ckeditor file upload request event
+                    this.instance.on('fileUploadRequest', evt => {
+                        this.$emit('fileUploadRequest', evt);
+                    });
+
+                    // Ckditor file upload response event
+                    this.instance.on('fileUploadResponse', evt => {
+                        setTimeout(() => {
+                            this.onChange();
+                        }, 0);
+                        this.$emit('fileUploadResponse', evt);
+                    });
+
+                    // Listen for instanceReady event
+                    if (typeof this.instanceReadyCallback !== 'undefined') {
+                        this.instance.on('instanceReady', this.instanceReadyCallback);
+                    }
+
+                    // Registering the beforeDestroyed hook right after creating the instance
+                    this.$once('hook:beforeDestroy', () => {
+                        this.destroy();
+                    });
+                }
+            },
+            update(val) {
+                if (this.instanceValue !== val) {
+                    this.instance.setData(val, { internal: false });
+                    this.instanceValue = val;
+                }
+            },
+            destroy() {
                 try {
-                    this.instance.destroy();
+                    let editor = window['CKEDITOR'];
+                    if (editor.instances && editor.instances[this.id]) {
+                        editor.instances[this.id].destroy();
+                    }
                 } catch (e) {
                 }
-                this.destroyed = true;
-            }
+            },
+            onMode() {
+                if (this.instance.mode === 'source') {
+                    let editable = this.instance.editable();
+                    editable.attachListener(editable, 'input', () => {
+                        this.onChange();
+                    });
+                }
+            },
+            onChange() {
+                let html = this.instance.getData();
+                if (html !== this.value) {
+                    this.$emit('input', html);
+                    this.instanceValue = html;
+                }
+            },
         },
     };
 </script>
-
-<style>
-    .editor::after {
-        content: "";
-        display: table;
-        clear: both;
-    }
-</style>
