@@ -216,7 +216,7 @@
                 this.selectedPages = selectedPages;
             },
             goToEdit(scope) {
-                this.$router.push({ name: 'admin.page.page.edit', params: { pageId: scope.row.id } });
+                this.pushRoute({ name: 'admin.page.page.edit', params: { pageId: scope.row.id } });
             },
             editRoute(scope) {
                 return route('admin.page.page.edit', [scope.row.id]);

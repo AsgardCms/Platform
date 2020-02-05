@@ -11,9 +11,7 @@
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _CkEditor_vue_vue_type_template_id_7f3e887a___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./CkEditor.vue?vue&type=template&id=7f3e887a& */ "./Modules/Core/Assets/js/components/CkEditor.vue?vue&type=template&id=7f3e887a&");
 /* harmony import */ var _CkEditor_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./CkEditor.vue?vue&type=script&lang=js& */ "./Modules/Core/Assets/js/components/CkEditor.vue?vue&type=script&lang=js&");
-/* empty/unused harmony star reexport *//* harmony import */ var _CkEditor_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./CkEditor.vue?vue&type=style&index=0&lang=css& */ "./Modules/Core/Assets/js/components/CkEditor.vue?vue&type=style&index=0&lang=css&");
-/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
-
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
 
 
 
@@ -21,7 +19,7 @@ __webpack_require__.r(__webpack_exports__);
 
 /* normalize component */
 
-var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__["default"])(
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
   _CkEditor_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
   _CkEditor_vue_vue_type_template_id_7f3e887a___WEBPACK_IMPORTED_MODULE_0__["render"],
   _CkEditor_vue_vue_type_template_id_7f3e887a___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
@@ -50,22 +48,6 @@ component.options.__file = "Modules/Core/Assets/js/components/CkEditor.vue"
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_CkEditor_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/babel-loader/lib??ref--4-0!../../../../../node_modules/vue-loader/lib??vue-loader-options!./CkEditor.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./Modules/Core/Assets/js/components/CkEditor.vue?vue&type=script&lang=js&");
 /* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_CkEditor_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
-
-/***/ }),
-
-/***/ "./Modules/Core/Assets/js/components/CkEditor.vue?vue&type=style&index=0&lang=css&":
-/*!*****************************************************************************************!*\
-  !*** ./Modules/Core/Assets/js/components/CkEditor.vue?vue&type=style&index=0&lang=css& ***!
-  \*****************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_CkEditor_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/style-loader!../../../../../node_modules/css-loader??ref--6-1!../../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../../node_modules/postcss-loader/src??ref--6-2!../../../../../node_modules/vue-loader/lib??vue-loader-options!./CkEditor.vue?vue&type=style&index=0&lang=css& */ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./Modules/Core/Assets/js/components/CkEditor.vue?vue&type=style&index=0&lang=css&");
-/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_CkEditor_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_CkEditor_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__);
-/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_CkEditor_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__) if(__WEBPACK_IMPORT_KEY__ !== 'default') (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_CkEditor_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__[key]; }) }(__WEBPACK_IMPORT_KEY__));
- /* harmony default export */ __webpack_exports__["default"] = (_node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_CkEditor_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0___default.a); 
 
 /***/ }),
 
@@ -334,8 +316,22 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = ({
   methods: {
-    pushRoute: function pushRoute(route) {
-      this.$router.push(route);
+    pushRoute: function pushRoute(route, onError) {
+      this.$router.push(route, function () {}, function (error) {
+        // vue-router 3.1.0+ push/replace causes NavigationDuplicated error
+        // for routing to the same location
+        if (error.name === 'NavigationDuplicated') {
+          return;
+        }
+
+        if (typeof onError === 'function') {
+          for (var _len = arguments.length, args = new Array(_len > 1 ? _len - 1 : 0), _key = 1; _key < _len; _key++) {
+            args[_key - 1] = arguments[_key];
+          }
+
+          onError.apply(void 0, [error].concat(args));
+        }
+      });
     }
   }
 });
@@ -1959,7 +1955,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-// Source: https://github.com/dangvanthanh/vue-ckeditor2
+//
 var inc = new Date().getTime();
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
@@ -1998,11 +1994,20 @@ var inc = new Date().getTime();
 
         return undefined;
       }
+    },
+    instanceReadyCallback: {
+      type: Function
+    },
+    readOnlyMode: {
+      type: Boolean,
+      "default": function _default() {
+        return false;
+      }
     }
   },
   data: function data() {
     return {
-      destroyed: false
+      instanceValue: ''
     };
   },
   computed: {
@@ -2012,54 +2017,113 @@ var inc = new Date().getTime();
   },
   watch: {
     value: function value(val) {
-      if (this.instance) {
-        var html = this.instance.getData();
-
-        if (val !== html) {
-          this.instance.setData(val);
+      try {
+        if (this.instance) {
+          this.update(val);
         }
-      }
+      } catch (e) {}
+    },
+    readOnlyMode: function readOnlyMode(val) {
+      this.instance.setReadOnly(val);
     }
   },
   mounted: function mounted() {
-    var _this = this;
-
-    if (typeof CKEDITOR === 'undefined') {
-      console.log('CKEDITOR is missing (http://ckeditor.com/)');
-    } else {
-      if (this.types === 'inline') {
-        CKEDITOR.inline(this.id, this.config);
-      } else {
-        CKEDITOR.replace(this.id, this.config);
-      }
-
-      this.instance.on('change', function () {
-        var html = _this.instance.getData();
-
-        if (html !== _this.value) {
-          _this.$emit('input', html);
-
-          _this.$emit('update:value', html);
-        }
-      });
-      this.instance.on('blur', function () {
-        _this.$emit('blur', _this.instance);
-      });
-      this.instance.on('focus', function () {
-        _this.$emit('focus', _this.instance);
-      });
-    }
+    this.create();
   },
-  beforeDestroy: function beforeDestroy() {
-    if (!this.destroyed) {
-      this.instance.focusManager.blur(true);
-      this.instance.removeAllListeners();
+  methods: {
+    create: function create() {
+      var _this = this;
 
+      if (typeof CKEDITOR === 'undefined') {
+        console.log('CKEDITOR is missing (http://ckeditor.com/)');
+      } else {
+        if (this.types === 'inline') {
+          CKEDITOR.inline(this.id, this.config);
+        } else {
+          CKEDITOR.replace(this.id, this.config);
+        }
+
+        this.instance.setData(this.value);
+        this.instance.on('instanceReady', function () {
+          _this.instance.setData(_this.value);
+        }); // Ckeditor change event
+
+        this.instance.on('change', this.onChange); // Ckeditor mode html or source
+
+        this.instance.on('mode', this.onMode); // Ckeditor blur event
+
+        this.instance.on('blur', function (evt) {
+          _this.$emit('blur', evt);
+        }); // Ckeditor focus event
+
+        this.instance.on('focus', function (evt) {
+          _this.$emit('focus', evt);
+        }); // Ckeditor contentDom event
+
+        this.instance.on('contentDom', function (evt) {
+          _this.$emit('contentDom', evt);
+        }); // Ckeditor dialog definition event
+
+        CKEDITOR.on('dialogDefinition', function (evt) {
+          _this.$emit('dialogDefinition', evt);
+        }); // Ckeditor file upload request event
+
+        this.instance.on('fileUploadRequest', function (evt) {
+          _this.$emit('fileUploadRequest', evt);
+        }); // Ckditor file upload response event
+
+        this.instance.on('fileUploadResponse', function (evt) {
+          setTimeout(function () {
+            _this.onChange();
+          }, 0);
+
+          _this.$emit('fileUploadResponse', evt);
+        }); // Listen for instanceReady event
+
+        if (typeof this.instanceReadyCallback !== 'undefined') {
+          this.instance.on('instanceReady', this.instanceReadyCallback);
+        } // Registering the beforeDestroyed hook right after creating the instance
+
+
+        this.$once('hook:beforeDestroy', function () {
+          _this.destroy();
+        });
+      }
+    },
+    update: function update(val) {
+      if (this.instanceValue !== val) {
+        this.instance.setData(val, {
+          internal: false
+        });
+        this.instanceValue = val;
+      }
+    },
+    destroy: function destroy() {
       try {
-        this.instance.destroy();
-      } catch (e) {}
+        var editor = window['CKEDITOR'];
 
-      this.destroyed = true;
+        if (editor.instances && editor.instances[this.id]) {
+          editor.instances[this.id].destroy();
+        }
+      } catch (e) {}
+    },
+    onMode: function onMode() {
+      var _this2 = this;
+
+      if (this.instance.mode === 'source') {
+        var editable = this.instance.editable();
+        editable.attachListener(editable, 'input', function () {
+          _this2.onChange();
+        });
+      }
+    },
+    onChange: function onChange() {
+      var html = this.instance.getData();
+
+      if (html !== this.value) {
+        this.$emit('input', html);
+        this.instanceValue = html;
+      }
     }
   }
 });
@@ -2146,11 +2210,14 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _Core_Assets_js_mixins_ShortcutHelper__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../../Core/Assets/js/mixins/ShortcutHelper */ "./Modules/Core/Assets/js/mixins/ShortcutHelper.js");
 //
 //
 //
 //
+
 /* harmony default export */ __webpack_exports__["default"] = ({
+  mixins: [_Core_Assets_js_mixins_ShortcutHelper__WEBPACK_IMPORTED_MODULE_0__["default"]],
   props: {
     to: {
       required: true,
@@ -2159,7 +2226,7 @@ __webpack_require__.r(__webpack_exports__);
   },
   methods: {
     goToEditPage: function goToEditPage() {
-      this.$router.push(this.to);
+      this.pushRoute(this.to);
     }
   }
 });
@@ -2216,6 +2283,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var form_backend_validation__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(form_backend_validation__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _Core_Assets_js_components_FormErrors_vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../Core/Assets/js/components/FormErrors.vue */ "./Modules/Core/Assets/js/components/FormErrors.vue");
 /* harmony import */ var _Tag_Assets_js_components_TagInput_vue__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../../Tag/Assets/js/components/TagInput.vue */ "./Modules/Tag/Assets/js/components/TagInput.vue");
+/* harmony import */ var _Core_Assets_js_mixins_ShortcutHelper__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../../Core/Assets/js/mixins/ShortcutHelper */ "./Modules/Core/Assets/js/mixins/ShortcutHelper.js");
 //
 //
 //
@@ -2307,6 +2375,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+
 
 
 
@@ -2316,6 +2385,7 @@ __webpack_require__.r(__webpack_exports__);
     FormErrors: _Core_Assets_js_components_FormErrors_vue__WEBPACK_IMPORTED_MODULE_2__["default"],
     TagsInput: _Tag_Assets_js_components_TagInput_vue__WEBPACK_IMPORTED_MODULE_3__["default"]
   },
+  mixins: [_Core_Assets_js_mixins_ShortcutHelper__WEBPACK_IMPORTED_MODULE_4__["default"]],
   props: {
     locales: {
       "default": null,
@@ -2383,7 +2453,7 @@ __webpack_require__.r(__webpack_exports__);
           message: response.message
         });
 
-        _this2.$router.push({
+        _this2.pushRoute({
           name: 'admin.media.media.index',
           query: {
             folder_id: _this2.media.folder_id
@@ -2401,14 +2471,14 @@ __webpack_require__.r(__webpack_exports__);
     },
     onCancel: function onCancel() {
       if (this.media.folder_id === 0) {
-        this.$router.push({
+        this.pushRoute({
           name: 'admin.media.media.index',
           query: {}
         });
         return;
       }
 
-      this.$router.push({
+      this.pushRoute({
         name: 'admin.media.media.index',
         query: {
           folder_id: this.media.folder_id
@@ -2439,11 +2509,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _UploadZone_vue__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./UploadZone.vue */ "./Modules/Media/Assets/js/components/UploadZone.vue");
 /* harmony import */ var _Core_Assets_js_components_DeleteComponent_vue__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../../../Core/Assets/js/components/DeleteComponent.vue */ "./Modules/Core/Assets/js/components/DeleteComponent.vue");
 /* harmony import */ var _Core_Assets_js_components_EditButtonComponent_vue__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../../../Core/Assets/js/components/EditButtonComponent.vue */ "./Modules/Core/Assets/js/components/EditButtonComponent.vue");
+/* harmony import */ var _Core_Assets_js_mixins_ShortcutHelper__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../../../Core/Assets/js/mixins/ShortcutHelper */ "./Modules/Core/Assets/js/mixins/ShortcutHelper.js");
 var _this4 = undefined;
 
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 
-function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(source, true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(source).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
@@ -2582,6 +2653,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 
 
+
 /* harmony default export */ __webpack_exports__["default"] = ({
   components: {
     MoveDialog: _MoveMediaDialog_vue__WEBPACK_IMPORTED_MODULE_2__["default"],
@@ -2591,6 +2663,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     DeleteButton: _Core_Assets_js_components_DeleteComponent_vue__WEBPACK_IMPORTED_MODULE_6__["default"],
     EditButton: _Core_Assets_js_components_EditButtonComponent_vue__WEBPACK_IMPORTED_MODULE_7__["default"]
   },
+  mixins: [_Core_Assets_js_mixins_ShortcutHelper__WEBPACK_IMPORTED_MODULE_8__["default"]],
   props: {
     singleModal: {
       "default": false,
@@ -2754,7 +2827,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     enterFolder: function enterFolder(scope) {
       this.tableIsLoading = true;
       this.folderId = scope.row.id;
-      this.$router.push({
+      this.pushRoute({
         query: {
           folder_id: scope.row.id
         }
@@ -2780,11 +2853,11 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       this.folderId = folderId;
 
       if (folderId === 0) {
-        this.$router.push({
+        this.pushRoute({
           query: {}
         });
       } else {
-        this.$router.push({
+        this.pushRoute({
           query: {
             folder_id: folderId
           }
@@ -2822,7 +2895,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       });
     },
     goToEdit: function goToEdit(scope) {
-      this.$router.push({
+      this.pushRoute({
         name: 'admin.media.media.edit',
         params: {
           mediaId: scope.row.id
@@ -2875,7 +2948,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Core_Assets_js_components_FormErrors_vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../Core/Assets/js/components/FormErrors.vue */ "./Modules/Core/Assets/js/components/FormErrors.vue");
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 
-function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(source, true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(source).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
@@ -3007,7 +3080,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Core_Assets_js_components_FormErrors_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../../Core/Assets/js/components/FormErrors.vue */ "./Modules/Core/Assets/js/components/FormErrors.vue");
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 
-function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(source, true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(source).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
@@ -3209,7 +3282,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Core_Assets_js_mixins_StringHelpers__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../../Core/Assets/js/mixins/StringHelpers */ "./Modules/Core/Assets/js/mixins/StringHelpers.js");
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 
-function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(source, true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(source).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
@@ -3667,7 +3740,7 @@ __webpack_require__.r(__webpack_exports__);
           message: response.message
         });
 
-        _this.$router.push({
+        _this.pushRoute({
           name: 'admin.page.page.index'
         });
       })["catch"](function (error) {
@@ -3681,7 +3754,7 @@ __webpack_require__.r(__webpack_exports__);
       });
     },
     onCancel: function onCancel() {
-      this.$router.push({
+      this.pushRoute({
         name: 'admin.page.page.index'
       });
     },
@@ -3743,7 +3816,7 @@ var _this2 = undefined;
 
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 
-function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(source, true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(source).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
@@ -3984,7 +4057,7 @@ var _data;
       this.selectedPages = selectedPages;
     },
     goToEdit: function goToEdit(scope) {
-      this.$router.push({
+      this.pushRoute({
         name: 'admin.page.page.edit',
         params: {
           pageId: scope.row.id
@@ -4472,7 +4545,7 @@ __webpack_require__.r(__webpack_exports__);
           message: response.message
         });
 
-        _this.$router.push({
+        _this.pushRoute({
           name: 'admin.user.role.index'
         });
       })["catch"](function (error) {
@@ -4486,7 +4559,7 @@ __webpack_require__.r(__webpack_exports__);
       });
     },
     onCancel: function onCancel() {
-      this.$router.push({
+      this.pushRoute({
         name: 'admin.user.role.index'
       });
     },
@@ -4546,7 +4619,7 @@ var _this2 = undefined;
 
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 
-function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(source, true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(source).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
@@ -4723,7 +4796,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       });
     }, 300),
     goToEdit: function goToEdit(scope) {
-      this.$router.push({
+      this.pushRoute({
         name: 'admin.user.role.edit',
         params: {
           roleId: scope.row.id
@@ -4930,7 +5003,7 @@ __webpack_require__.r(__webpack_exports__);
           message: response.message
         });
 
-        _this.$router.push({
+        _this.pushRoute({
           name: 'admin.user.user.index'
         });
       })["catch"](function (error) {
@@ -4944,7 +5017,7 @@ __webpack_require__.r(__webpack_exports__);
       });
     },
     onCancel: function onCancel() {
-      this.$router.push({
+      this.pushRoute({
         name: 'admin.user.user.index'
       });
     },
@@ -5176,7 +5249,7 @@ var _this2 = undefined;
 
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 
-function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(source, true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(source).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
@@ -5362,7 +5435,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       });
     }, 300),
     goToEdit: function goToEdit(scope) {
-      this.$router.push({
+      this.pushRoute({
         name: 'admin.user.user.edit',
         params: {
           userId: scope.row.id
@@ -5374,25 +5447,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     }
   }
 });
-
-/***/ }),
-
-/***/ "./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./Modules/Core/Assets/js/components/CkEditor.vue?vue&type=style&index=0&lang=css&":
-/*!************************************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/css-loader??ref--6-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--6-2!./node_modules/vue-loader/lib??vue-loader-options!./Modules/Core/Assets/js/components/CkEditor.vue?vue&type=style&index=0&lang=css& ***!
-  \************************************************************************************************************************************************************************************************************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-exports = module.exports = __webpack_require__(/*! ../../../../../node_modules/css-loader/lib/css-base.js */ "./node_modules/css-loader/lib/css-base.js")(false);
-// imports
-
-
-// module
-exports.push([module.i, "\n.editor::after {\n    content: \"\";\n    display: table;\n    clear: both;\n}\n", ""]);
-
-// exports
-
 
 /***/ }),
 
@@ -5450,36 +5504,6 @@ exports.push([module.i, "\n.text-success {\n    color: #13CE66;\n}\n.text-danger
 
 // exports
 
-
-/***/ }),
-
-/***/ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./Modules/Core/Assets/js/components/CkEditor.vue?vue&type=style&index=0&lang=css&":
-/*!****************************************************************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/style-loader!./node_modules/css-loader??ref--6-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--6-2!./node_modules/vue-loader/lib??vue-loader-options!./Modules/Core/Assets/js/components/CkEditor.vue?vue&type=style&index=0&lang=css& ***!
-  \****************************************************************************************************************************************************************************************************************************************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-
-var content = __webpack_require__(/*! !../../../../../node_modules/css-loader??ref--6-1!../../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../../node_modules/postcss-loader/src??ref--6-2!../../../../../node_modules/vue-loader/lib??vue-loader-options!./CkEditor.vue?vue&type=style&index=0&lang=css& */ "./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./Modules/Core/Assets/js/components/CkEditor.vue?vue&type=style&index=0&lang=css&");
-
-if(typeof content === 'string') content = [[module.i, content, '']];
-
-var transform;
-var insertInto;
-
-
-
-var options = {"hmr":true}
-
-options.transform = transform
-options.insertInto = undefined;
-
-var update = __webpack_require__(/*! ../../../../../node_modules/style-loader/lib/addStyles.js */ "./node_modules/style-loader/lib/addStyles.js")(content, options);
-
-if(content.locals) module.exports = content.locals;
-
-if(false) {}
 
 /***/ }),
 
@@ -5590,7 +5614,13 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c("textarea", {
     staticClass: "editor",
-    attrs: { name: _vm.name, id: _vm.id, types: _vm.types, config: _vm.config },
+    attrs: {
+      name: _vm.name,
+      id: _vm.id,
+      types: _vm.types,
+      config: _vm.config,
+      disabled: _vm.readOnlyMode
+    },
     domProps: { value: _vm.value }
   })
 }

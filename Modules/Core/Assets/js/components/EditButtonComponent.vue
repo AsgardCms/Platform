@@ -3,13 +3,16 @@
 </template>
 
 <script>
+    import ShortcutHelper from '../../../../Core/Assets/js/mixins/ShortcutHelper';
+
     export default {
+        mixins: [ShortcutHelper],
         props: {
             to: { required: true, type: Object },
         },
         methods: {
             goToEditPage() {
-                this.$router.push(this.to);
+                this.pushRoute(this.to);
             },
         },
     };

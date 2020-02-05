@@ -94,9 +94,11 @@
     import Form from 'form-backend-validation';
     import FormErrors from '../../../../Core/Assets/js/components/FormErrors.vue';
     import TagsInput from '../../../../Tag/Assets/js/components/TagInput.vue';
+    import ShortcutHelper from '../../../../Core/Assets/js/mixins/ShortcutHelper';
 
     export default {
         components: { FormErrors, TagsInput },
+        mixins: [ShortcutHelper],
         props: {
             locales: { default: null, type: Object },
         },
@@ -157,7 +159,7 @@
                             type: 'success',
                             message: response.message,
                         });
-                        this.$router.push({ name: 'admin.media.media.index', query: { folder_id: this.media.folder_id } });
+                        this.pushRoute({ name: 'admin.media.media.index', query: { folder_id: this.media.folder_id } });
                     })
                     .catch((error) => {
                         console.log(error);
@@ -170,10 +172,10 @@
             },
             onCancel() {
                 if (this.media.folder_id === 0) {
-                    this.$router.push({ name: 'admin.media.media.index', query: {} });
+                    this.pushRoute({ name: 'admin.media.media.index', query: {} });
                     return;
                 }
-                this.$router.push({ name: 'admin.media.media.index', query: { folder_id: this.media.folder_id } });
+                this.pushRoute({ name: 'admin.media.media.index', query: { folder_id: this.media.folder_id } });
             },
         },
     };

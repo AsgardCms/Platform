@@ -115,7 +115,7 @@
                             type: 'success',
                             message: response.message,
                         });
-                        this.$router.push({ name: 'admin.user.role.index' });
+                        this.pushRoute({ name: 'admin.user.role.index' });
                     })
                     .catch((error) => {
                         console.log(error);
@@ -127,7 +127,7 @@
                     });
             },
             onCancel() {
-                this.$router.push({ name: 'admin.user.role.index' });
+                this.pushRoute({ name: 'admin.user.role.index' });
             },
             generateSlug() {
                 this.role.slug = this.slugify(this.role.name);
