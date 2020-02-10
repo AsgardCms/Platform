@@ -49,6 +49,37 @@ return [
 
     'debug' => env('APP_DEBUG', false),
 
+    'debug_blacklist' => [
+        '_ENV' => [
+            'APP_KEY',
+            'DB_USERNAME',
+            'DB_PASSWORD',
+            'AWS_ACCESS_KEY_ID',
+            'AWS_SECRET_ACCESS_KEY',
+            'MAIL_USERNAME',
+            'MAIL_PASSWORD',
+            'PUSHER_APP_KEY',
+            'PUSHER_APP_SECRET',
+        ],
+
+        '_SERVER' => [
+            'APP_KEY',
+            'DB_USERNAME',
+            'DB_PASSWORD',
+            'AWS_ACCESS_KEY_ID',
+            'AWS_SECRET_ACCESS_KEY',
+            'MAIL_USERNAME',
+            'MAIL_PASSWORD',
+            'PUSHER_APP_KEY',
+            'PUSHER_APP_SECRET',
+        ],
+
+        '_POST' => [
+            'password',
+            'password_confirmation',
+        ],
+    ],
+
     /*
     |--------------------------------------------------------------------------
     | Application URL
