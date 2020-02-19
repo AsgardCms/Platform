@@ -26,6 +26,7 @@
             label-position="top"
             @keydown="form.errors.clear($event.target.name)"
         >
+            <form-errors :form="form"></form-errors>
             <div class="row">
                 <div class="col-md-12">
                     <div class="box box-primary">
@@ -121,11 +122,12 @@
 <script>
     import axios from 'axios';
     import Form from 'form-backend-validation';
+    import FormErrors from '../../../../Core/Assets/js/components/FormErrors.vue';
     import ShortcutHelper from '../../../../Core/Assets/js/mixins/ShortcutHelper';
     import AsgardPermissions from './AsgardPermissions.vue';
 
     export default {
-        components: { AsgardPermissions },
+        components: { AsgardPermissions, FormErrors },
         mixins: [ShortcutHelper],
         props: {
             locales: { default: null, type: Object },
@@ -163,7 +165,7 @@
                             type: 'success',
                             message: response.message,
                         });
-                        this.$router.push({ name: 'admin.user.user.index' });
+                        this.pushRoute({ name: 'admin.user.user.index' });
                     })
                     .catch((error) => {
                         console.log(error);
@@ -175,7 +177,7 @@
                     });
             },
             onCancel() {
-                this.$router.push({ name: 'admin.user.user.index' });
+                this.pushRoute({ name: 'admin.user.user.index' });
             },
             fetchUser() {
                 this.loading = true;

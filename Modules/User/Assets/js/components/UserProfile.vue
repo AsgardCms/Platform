@@ -22,6 +22,7 @@
             label-position="top"
             @keydown="form.errors.clear($event.target.name)"
         >
+            <form-errors :form="form"></form-errors>
             <div class="row">
                 <div class="col-md-12">
                     <div class="box box-primary">
@@ -72,8 +73,10 @@
 <script>
     import axios from 'axios';
     import Form from 'form-backend-validation';
+    import FormErrors from '../../../../Core/Assets/js/components/FormErrors.vue';
 
     export default {
+        components: { FormErrors },
         props: {
             locales: { default: null, type: Object },
         },

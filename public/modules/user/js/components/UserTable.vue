@@ -170,7 +170,7 @@
                 this.queryServer({ search: query.target.value });
             }, 300),
             goToEdit(scope) {
-                this.$router.push({ name: 'admin.user.user.edit', params: { userId: scope.row.id } });
+                this.pushRoute({ name: 'admin.user.user.edit', params: { userId: scope.row.id } });
             },
             editRoute(scope) {
                 return route('admin.user.user.edit', [scope.row.id]);

@@ -26,15 +26,9 @@ abstract class BaseCacheDecorator implements BaseRepository
      */
     protected $locale;
 
-    /**
-     * @var int caching time
-     */
-    protected $cacheTime;
-
     public function __construct()
     {
-        $this->cache = app(Repository::class);
-        $this->cacheTime = app(ConfigRepository::class)->get('cache.time', 60);
+        $this->cache = app(Repository::class);        
         $this->locale = app()->getLocale();
     }
 
@@ -175,9 +169,10 @@ abstract class BaseCacheDecorator implements BaseRepository
     /**
      * @param \Closure $callback
      * @param null|string $key
+     * @param null|int    $time
      * @return mixed
      */
-    protected function remember(\Closure $callback, $key = null)
+    protected function remember(\Closure $callback, $key = null, $time = null)
     {
         $cacheKey = $this->makeCacheKey($key);
 
@@ -187,7 +182,10 @@ abstract class BaseCacheDecorator implements BaseRepository
             $store = $store->tags([$this->entityName, 'global']);
         }
 
-        return $store->remember($cacheKey, $this->cacheTime, $callback);
+        // If no $time is passed, just use the default from config
+        $cacheTime = $time ?? app(ConfigRepository::class)->get('cache.time', 60);
+
+        return $store->remember($cacheKey, $cacheTime, $callback);
     }
 
     /**
