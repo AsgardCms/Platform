@@ -34,7 +34,7 @@ class ImagyTest extends MediaTestCase
     /**
      *
      */
-    public function setUp()
+    protected function setUp():void
     {
         parent::setUp();
         $this->app['config']->set('asgard.media.config.files-path', '/assets/media/');
@@ -47,7 +47,7 @@ class ImagyTest extends MediaTestCase
         $this->finder->copy("{$this->mediaPath}google-map.png", "{$this->testbenchPublicPath}google-map.png");
     }
 
-    public function tearDown()
+    protected function tearDown():void
     {
         $this->finder->delete("{$this->testbenchPublicPath}google-map.png");
         $this->finder->delete("{$this->testbenchPublicPath}google-map_smallThumb.png");
