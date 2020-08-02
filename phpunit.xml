@@ -29,10 +29,10 @@
         </testsuite>
         <testsuite name="Tag">
             <directory>./Modules/Tag/Tests/</directory>
-        </testsuite>
+        </testsuite>-->
         <testsuite name="Translation">
             <directory>./Modules/Translation/Tests/</directory>
-        </testsuite>-->
+        </testsuite>
         <testsuite name="User">
             <directory>./Modules/User/Tests/</directory>
         </testsuite>

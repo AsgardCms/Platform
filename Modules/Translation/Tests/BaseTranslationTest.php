@@ -11,7 +11,7 @@ use Orchestra\Testbench\TestCase;
 
 abstract class BaseTranslationTest extends TestCase
 {
-    public function setUp()
+    protected function setUp():void
     {
         parent::setUp();
 
