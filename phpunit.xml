@@ -12,7 +12,7 @@
         <testsuite name="Core">
             <directory>./Modules/Core/Tests/</directory>
         </testsuite>
-        <testsuite name="Dashboard">
+        <!-- <testsuite name="Dashboard">
             <directory>./Modules/Dashboard/Tests/</directory>
         </testsuite>
         <testsuite name="Media">
@@ -38,7 +38,7 @@
         </testsuite>
         <testsuite name="Workshop">
             <directory>./Modules/Workshop/Tests/</directory>
-        </testsuite>
+        </testsuite> -->
     </testsuites>
     <filter>
         <whitelist processUncoveredFilesFromWhitelist="true">
