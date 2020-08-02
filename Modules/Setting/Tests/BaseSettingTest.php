@@ -15,7 +15,7 @@ abstract class BaseSettingTest extends TestCase
      */
     protected $settingRepository;
 
-    public function setUp()
+    protected function setUp():void
     {
         parent::setUp();
 

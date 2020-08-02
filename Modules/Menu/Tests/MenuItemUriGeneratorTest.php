@@ -17,7 +17,7 @@ class MenuItemUriGeneratorTest extends BaseMenuTest
      */
     private $menuItemUriGenerator;
 
-    public function setUp()
+    protected function setUp():void
     {
         parent::setUp();
         $this->page = app(PageRepository::class);
@@ -45,6 +45,7 @@ class MenuItemUriGeneratorTest extends BaseMenuTest
     {
         Event::fake();
         $this->page->create([
+            'id' => 1,
             'is_home' => 1,
             'template' => 'default',
             'en' => [
@@ -54,12 +55,13 @@ class MenuItemUriGeneratorTest extends BaseMenuTest
             ],
         ]);
         $this->page->create([
+            'id' => 2,
             'is_home' => 0,
             'template' => 'default',
             'en' => [
                 'title' => 'About',
-                'slug' => 'about',
                 'body' => 'My Page Body',
+                'slug' => 'about',
             ],
         ]);
         $menu = $this->createMenu('main', 'Main');
@@ -76,7 +78,7 @@ class MenuItemUriGeneratorTest extends BaseMenuTest
         ];
         $this->menuItem->create($data);
 
-        self::assertEquals('awesome-page/about', $this->menuItemUriGenerator->generateUri(2, '1', 'en'));
+        self::assertEquals('awesome-page/about', $this->menuItemUriGenerator->generateUri(2, 1, 'en'));
     }
 
     /** @test */
