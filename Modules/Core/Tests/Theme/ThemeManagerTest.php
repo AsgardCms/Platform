@@ -15,7 +15,7 @@ class ThemeManagerTest extends BaseTestCase
     /**
      *
      */
-    public function setUp()
+    protected function setUp():void
     {
         parent::setUp();
 

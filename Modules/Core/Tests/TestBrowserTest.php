@@ -9,7 +9,7 @@ use Modules\User\Database\Seeders\SentinelUserSeedTableSeeder;
 
 abstract class TestBrowserTest extends BaseTestCase
 {
-    public function setUp()
+    protected function setUp():void
     {
         parent::setUp();
 
