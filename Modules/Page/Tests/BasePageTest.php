@@ -21,7 +21,7 @@ abstract class BasePageTest extends TestCase
      */
     protected $page;
 
-    public function setUp()
+    protected function setUp():void
     {
         parent::setUp();
 

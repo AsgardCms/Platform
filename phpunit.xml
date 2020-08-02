@@ -20,11 +20,11 @@
         </testsuite>
         <testsuite name="Menu">
             <directory>./Modules/Menu/Tests/</directory>
-        </testsuite>
+        </testsuite>-->
         <testsuite name="Page">
             <directory>./Modules/Page/Tests/</directory>
         </testsuite>
-        <testsuite name="Setting">
+        <!-- <testsuite name="Setting">
             <directory>./Modules/Setting/Tests/</directory>
         </testsuite>-->
         <testsuite name="Tag">
