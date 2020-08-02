@@ -35,10 +35,10 @@
         </testsuite>
         <testsuite name="User">
             <directory>./Modules/User/Tests/</directory>
-        </testsuite>
+        </testsuite> -->
         <testsuite name="Workshop">
             <directory>./Modules/Workshop/Tests/</directory>
-        </testsuite> -->
+        </testsuite>
     </testsuites>
     <filter>
         <whitelist processUncoveredFilesFromWhitelist="true">
