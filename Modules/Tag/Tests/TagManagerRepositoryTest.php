@@ -13,7 +13,7 @@ class TagManagerRepositoryTest extends BaseTestCase
      */
     private $tagManager;
 
-    public function setUp()
+    protected function setUp():void
     {
         parent::setUp();
 

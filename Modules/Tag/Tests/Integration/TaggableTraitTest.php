@@ -20,7 +20,7 @@ class TaggableTraitTest extends BaseTestCase
      */
     private $page;
 
-    public function setUp()
+    protected function setUp():void
     {
         parent::setUp();
 
