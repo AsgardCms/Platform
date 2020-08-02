@@ -32,10 +32,10 @@
         </testsuite>
         <testsuite name="Translation">
             <directory>./Modules/Translation/Tests/</directory>
-        </testsuite>
+        </testsuite>-->
         <testsuite name="User">
             <directory>./Modules/User/Tests/</directory>
-        </testsuite> -->
+        </testsuite>
         <testsuite name="Workshop">
             <directory>./Modules/Workshop/Tests/</directory>
         </testsuite>

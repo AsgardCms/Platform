@@ -18,7 +18,7 @@ final class PermissionsAdderTest extends BaseUserTestCase
      */
     private $user;
 
-    public function setUp()
+    protected function setUp():void
     {
         parent::setUp();
         $this->role = app(RoleRepository::class);
