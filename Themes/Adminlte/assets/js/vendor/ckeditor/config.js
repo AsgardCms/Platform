@@ -1,12 +1,12 @@
 /**
- * @license Copyright (c) 2003-2013, CKSource - Frederico Knabben. All rights reserved.
- * For licensing, see LICENSE.md or http://ckeditor.com/license
+ * @license Copyright (c) 2003-2020, CKSource - Frederico Knabben. All rights reserved.
+ * For licensing, see https://ckeditor.com/legal/ckeditor-oss-license
  */
 
 CKEDITOR.editorConfig = function( config ) {
 	// Define changes to default configuration here.
-	// For the complete reference:
-	// http://docs.ckeditor.com/#!/api/CKEDITOR.config
+	// For complete reference see:
+	// https://ckeditor.com/docs/ckeditor4/latest/api/CKEDITOR_config.html
     config.skin = 'bootstrapck';
 
 	// The toolbar groups arrangement, optimized for two toolbar rows.
@@ -27,14 +27,14 @@ CKEDITOR.editorConfig = function( config ) {
 		{ name: 'about' }
 	];
 
-	// Remove some buttons, provided by the standard plugins, which we don't
-	// need to have in the Standard(s) toolbar.
+	// Remove some buttons provided by the standard plugins, which are
+	// not needed in the Standard(s) toolbar.
 	config.removeButtons = 'Underline,Subscript,Superscript';
 
-	// Se the most common block elements.
+	// Set the most common block elements.
 	config.format_tags = 'p;h1;h2;h3;pre';
 
-	// Make dialogs simpler.
+	// Simplify the dialog windows.
 	config.removeDialogTabs = 'image:advanced;link:advanced';
 	config.allowedContent = true;
 	config.filebrowserBrowseUrl =  Asgard.mediaGridCkEditor;

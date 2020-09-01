@@ -32,6 +32,7 @@
   "dependencies": {
     "@babel/polyfill": "^7.0.0",
     "axios": "^0.18.0",
+    "ckeditor4-vue": "^1.0",
     "element-ui": "^2.4.7",
     "font-awesome": "^4.7.0",
     "form-backend-validation": "^2.3.3",
