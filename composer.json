@@ -51,8 +51,12 @@
         ],
         "psr-4": {
             "App\\": "app/",
-            "Modules\\": "Modules/"
-        }
+            "Modules\\": "Modules/",
+            "Illuminate\\Http\\Resources\\": "overrides/Illuminate/Http/Resources"
+        },
+        "exclude-from-classmap": [
+            "vendor/laravel/framework/src/Illuminate/Http/Resources/DelegatesToResource.php"
+        ]
     },
     "autoload-dev": {
         "psr-4": {
