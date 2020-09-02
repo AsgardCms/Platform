@@ -4,6 +4,7 @@ php:
   - 7.1
   - 7.2
   - 7.3
+  - 7.4
 
 cache:
   directories:
@@ -23,4 +24,3 @@ before_script:
 script: vendor/bin/phpunit
 
 sudo: false
-
