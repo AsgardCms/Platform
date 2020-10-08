@@ -57,6 +57,7 @@ abstract class BaseSettingTest extends TestCase
                 'translatable' => false,
             ],
         ]);
+        $app['config']->set('translatable.locales', ['en', 'fr']);
     }
 
     protected function getPackageAliases($app)
