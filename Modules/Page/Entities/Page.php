@@ -2,7 +2,7 @@
 
 namespace Modules\Page\Entities;
 
-use Dimsav\Translatable\Translatable;
+use Astrotomic\Translatable\Translatable;
 use Illuminate\Database\Eloquent\Model;
 use Modules\Core\Traits\NamespacedEntity;
 use Modules\Media\Support\Traits\MediaRelation;
