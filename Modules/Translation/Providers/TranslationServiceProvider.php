@@ -53,6 +53,7 @@ class TranslationServiceProvider extends ServiceProvider
 
         $this->app['events']->listen(LoadingBackendTranslations::class, function (LoadingBackendTranslations $event) {
             $event->load('translations', array_dot(trans('translation::translations')));
+            $event->load('locales', array_dot(trans('translation::locales')));
         });
 
         app('router')->bind('translations', function ($id) {

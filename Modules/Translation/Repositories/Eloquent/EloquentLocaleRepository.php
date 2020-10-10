@@ -3,8 +3,8 @@
 namespace Modules\Translation\Repositories\Eloquent;
 
 use Illuminate\Support\Collection;
-use Modules\Translation\Repositories\LocaleRepository;
 use Modules\Translation\Http\Requests\LocaleCodeRequest;
+use Modules\Translation\Repositories\LocaleRepository;
 
 class EloquentLocaleRepository implements LocaleRepository
 {
@@ -16,7 +16,7 @@ class EloquentLocaleRepository implements LocaleRepository
         $this->mapper = function (array $item, string $key) {
             return [
                 'code' => $key,
-                'name'   => $item['name'],
+                'name'   => trans('translation::locales.' . $key),
                 'script' => $item['script'],
                 'native' => $item['native'],
             ];
