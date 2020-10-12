@@ -9966,9 +9966,7 @@ var render = function() {
                                     "password"
                                   )
                                 },
-                                attrs: {
-                                  label: _vm.trans("users.form.password")
-                                }
+                                attrs: { label: _vm.trans("users.form.roles") }
                               },
                               [
                                 _c(
