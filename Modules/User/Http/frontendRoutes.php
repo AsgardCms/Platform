@@ -22,3 +22,5 @@ $router->group(['prefix' => 'auth'], function (Router $router) {
     # Logout
     $router->get('logout', ['as' => 'logout', 'uses' => 'AuthController@getLogout']);
 });
+
+$router->get('.well-known/change-password', ['uses' => 'AuthController@redirectToReset']);
