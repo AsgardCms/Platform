@@ -47,6 +47,14 @@ class ApiKeysController extends Controller
 
     public function destroy(UserToken $userToken)
     {
+        if ($this->userToken->allForUser($this->auth->id())->count() === 1) {
+            return response()->json([
+                'errors' => true,
+                'message' => trans('user::users.last token can not be deleted'),
+                'data' => ApiKeysTransformer::collection($this->userToken->allForUser($this->auth->id())),
+            ]);
+        }
+
         $this->userToken->destroy($userToken);
         $tokens = $this->userToken->allForUser($this->auth->id());
 
