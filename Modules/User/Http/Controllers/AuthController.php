@@ -121,9 +121,4 @@ class AuthController extends BasePublicController
         return redirect()->route('login')
             ->withSuccess(trans('user::messages.password reset'));
     }
-
-    public function redirectToReset()
-    {
-        return redirect()->route('reset');
-    }
 }
