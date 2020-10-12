@@ -5,6 +5,7 @@ namespace Modules\User\Http\Controllers\Api;
 use Illuminate\Routing\Controller;
 use Modules\User\Contracts\Authentication;
 use Modules\User\Entities\UserToken;
+use Modules\User\Http\Requests\DeleteUserTokenRequest;
 use Modules\User\Repositories\UserTokenRepository;
 use Modules\User\Transformers\ApiKeysTransformer;
 
@@ -45,7 +46,7 @@ class ApiKeysController extends Controller
         ]);
     }
 
-    public function destroy(UserToken $userToken)
+    public function destroy(DeleteUserTokenRequest $request, UserToken $userToken)
     {
         $this->userToken->destroy($userToken);
         $tokens = $this->userToken->allForUser($this->auth->id());
