@@ -1,7 +1,7 @@
 <?php foreach ($changelog['versions'] as $version => $info): ?>
 <dl class="dl-horizontal">
     <dt>
-        <?php if (str_contains($version, ['unreleased', 'dev'])): ?>
+        <?php if (Illuminate\Support\Str::contains($version, ['unreleased', 'dev'])): ?>
             {{ $version }}
         <?php else: ?>
             <a href="{{ $changelog['url'].'/releases/tag/'.$version }}" target="_blank">
