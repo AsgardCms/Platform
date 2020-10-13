@@ -3,6 +3,8 @@ versions:
     "@unreleased":
         added:
             - Laravel 5.6 compatibility
+        changed:
+            - Prevent users from deleting other users API tokens
     "3.6.0":
          changed:
          - Adding a test the user token is correctly generated
