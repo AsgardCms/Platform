@@ -2,7 +2,6 @@
 
 namespace Modules\User\Repositories\Eloquent;
 
-use Illuminate\Database\QueryException;
 use Modules\Core\Repositories\Eloquent\EloquentBaseRepository;
 use Modules\User\Repositories\UserTokenRepository;
 use Ramsey\Uuid\Uuid;
@@ -25,13 +24,8 @@ class EloquentUserTokenRepository extends EloquentBaseRepository implements User
      */
     public function generateFor($userId)
     {
-        try {
-            $uuid4 = Uuid::uuid4();
-            $userToken = $this->model->create(['user_id' => $userId, 'access_token' => $uuid4]);
-        } catch (QueryException $e) {
-            $this->generateFor($userId);
-        }
+       $uuid4 = Uuid::uuid4();
 
-        return $userToken;
+       return $this->model->create(['user_id' => $userId, 'access_token' => $uuid4]);
     }
 }
