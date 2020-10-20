@@ -28,6 +28,17 @@ class CacheLocaleDecorator extends BaseCacheDecorator implements LocaleRepositor
     }
 
     /** {@inheritdoc} */
+    public function listLocalesForSelect(LocaleCodeRequest $request): Collection
+    {
+        return $this->remember(
+            function () use ($request) {
+                return $this->repository->listLocalesForSelect($request);
+            },
+            'locales_for_select'
+        );
+    }
+
+    /** {@inheritdoc} */
     public function availableLocales() : Collection
     {
         return $this->remember(
