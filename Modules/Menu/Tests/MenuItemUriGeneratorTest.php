@@ -2,7 +2,6 @@
 
 namespace Modules\Menu\Tests;
 
-use Illuminate\Support\Facades\Event;
 use Modules\Menu\Services\MenuItemUriGenerator;
 use Modules\Page\Repositories\PageRepository;
 
@@ -43,7 +42,6 @@ class MenuItemUriGeneratorTest extends BaseMenuTest
     /** @test */
     public function it_generates_uri_with_the_parents_slug()
     {
-        Event::fake();
         $this->page->create([
             'is_home' => 1,
             'template' => 'default',
@@ -74,15 +72,15 @@ class MenuItemUriGeneratorTest extends BaseMenuTest
                 'uri' => 'awesome-page',
             ],
         ];
-        $this->menuItem->create($data);
+        $menuitem = $this->menuItem->create($data);
 
-        self::assertEquals('awesome-page/about', $this->menuItemUriGenerator->generateUri(2, '1', 'en'));
+
+        self::assertEquals('awesome-page/about', $this->menuItemUriGenerator->generateUri(2, $menuitem->id, 'en'));
     }
 
     /** @test */
     public function it_generates_uri_with_multiple_parents()
     {
-        Event::fake();
         $this->page->create([
             'is_home' => 1,
             'template' => 'default',
@@ -122,28 +120,27 @@ class MenuItemUriGeneratorTest extends BaseMenuTest
                 'uri' => 'awesome-page',
             ],
         ];
-        $this->menuItem->create($data);
+        $menuitem1 = $this->menuItem->create($data);
         $data = [
             'menu_id' => $menu->id,
             'position' => 0,
             'target' => '_self',
             'page_id' => 2,
-            'parent_id' => 1,
+            'parent_id' => $menuitem1->id,
             'en' => [
                 'status' => 1,
                 'title' => 'Second Menu Item',
                 'uri' => 'awesome-page/mid-page',
             ],
         ];
-        $this->menuItem->create($data);
+        $menuitem2 = $this->menuItem->create($data);
 
-        self::assertEquals('awesome-page/mid-page/about', $this->menuItemUriGenerator->generateUri(3, '2', 'en'));
+        self::assertEquals('awesome-page/mid-page/about', $this->menuItemUriGenerator->generateUri(3, $menuitem2->id, 'en'));
     }
 
     /** @test */
     public function it_generates_a_uri_if_parent_isnt_a_page()
     {
-        Event::fake();
         $this->page->create([
             'is_home' => 0,
             'template' => 'default',
@@ -166,8 +163,8 @@ class MenuItemUriGeneratorTest extends BaseMenuTest
                 'uri' => 'awesome-page',
             ],
         ];
-        $this->menuItem->create($data);
+        $menuitem = $this->menuItem->create($data);
 
-        self::assertEquals('awesome-page/about', $this->menuItemUriGenerator->generateUri(1, '1', 'en'));
+        self::assertEquals('awesome-page/about', $this->menuItemUriGenerator->generateUri(1, $menuitem->id, 'en'));
     }
 }
