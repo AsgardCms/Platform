@@ -64,7 +64,7 @@
                                     </div>
                                 </el-tab-pane>
                                 <el-tab-pane :label="trans('users.tabs.roles')">
-                                    <el-form-item :label="trans('users.form.roles')" :class="{'el-form-item is-error': form.errors.has('password') }">
+                                    <el-form-item :label="trans('users.form.roles')" :class="{'el-form-item is-error': form.errors.has('roles') }">
                                         <el-select v-model="user.roles" multiple placeholder="Select">
                                             <el-option
                                                 v-for="role in roles"
@@ -73,7 +73,7 @@
                                                 :value="role.id"
                                             ></el-option>
                                         </el-select>
-                                        <div v-if="form.errors.has('password')" class="el-form-item__error" v-text="form.errors.first('password')"></div>
+                                        <div v-if="form.errors.has('roles')" class="el-form-item__error" v-text="form.errors.first('roles')"></div>
                                     </el-form-item>
                                 </el-tab-pane>
                                 <el-tab-pane :label="trans('users.tabs.permissions')">
