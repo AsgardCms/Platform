@@ -14,7 +14,7 @@
             <el-button type="button" @click="dialogVisible = true">{{ trans('media.Browse') }}</el-button>
         </div>
 
-        <el-dialog :visible.sync="dialogVisible" :before-close="handleClose" width="75%">
+        <el-dialog :visible.sync="dialogVisible" :before-close="handleClose" :title="trans('media.choose file')" width="75%">
             <media-list :event-name="eventName" single-modal></media-list>
             <span slot="footer" class="dialog-footer">
                 <el-button @click="dialogVisible = false">{{ trans('core.button.cancel') }}</el-button>

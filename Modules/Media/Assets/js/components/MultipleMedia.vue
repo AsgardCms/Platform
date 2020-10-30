@@ -16,6 +16,7 @@
         <el-dialog
             :visible.sync="dialogVisible"
             :before-close="handleClose"
+            :title="trans('media.choose file')"
             width="75%"
         >
             <media-list :event-name="eventName" single-modal></media-list>
