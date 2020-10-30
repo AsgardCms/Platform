@@ -68,7 +68,7 @@
                     <div class="row">
                         <div class="col-sm-12 module-details">
                             <div class="module-title-wrap">
-                                <div class="module-type pull-left">
+                                <div class="module-type">
                                     <i class="fa fa-cube"></i>
                                     <span>{{ module_version($module) }}</span>
                                 </div>

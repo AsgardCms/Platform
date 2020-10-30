@@ -60,7 +60,7 @@
                     <div class="row">
                         <div class="col-sm-6 module-details">
                             <div class="module-title-wrap">
-                                <div class="module-type pull-left">
+                                <div class="module-type">
                                     <i class="fa fa-picture-o"></i>
                                     <span>
                                         {{  theme_version($theme) }}
