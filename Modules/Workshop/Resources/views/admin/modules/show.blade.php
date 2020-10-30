@@ -19,14 +19,22 @@
 
 @push('css-stack')
     <style>
+        .module-title-wrap {
+            display: flex;
+            align-items: center;
+        }
         .module-type {
             text-align: center;
+            margin-right: 10px;
         }
         .module-type span {
             display: block;
         }
         .module-type i {
             font-size: 124px;
+        }
+        .module-title {
+            margin: 0;
         }
         form {
             display: inline;
@@ -59,11 +67,13 @@
                 <div class="box-body">
                     <div class="row">
                         <div class="col-sm-12 module-details">
-                            <div class="module-type pull-left">
-                                <i class="fa fa-cube"></i>
-                                <span>{{ module_version($module) }}</span>
+                            <div class="module-title-wrap">
+                                <div class="module-type">
+                                    <i class="fa fa-cube"></i>
+                                    <span>{{ module_version($module) }}</span>
+                                </div>
+                                <h2 class="module-title">{{ ucfirst($module->getName()) }}</h2>
                             </div>
-                            <h2>{{ ucfirst($module->getName()) }}</h2>
                             <p>{{ $module->getDescription() }}</p>
                         </div>
                     </div>

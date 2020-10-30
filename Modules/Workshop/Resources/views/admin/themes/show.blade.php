@@ -19,8 +19,13 @@
 
 @push('css-stack')
     <style>
+        .module-title-wrap {
+            display: flex;
+            align-items: center;
+        }
         .module-type {
             text-align: center;
+            margin-right: 10px;
         }
         .module-type span {
             display: block;
@@ -29,8 +34,8 @@
             font-size: 124px;
             margin-right: 20px;
         }
-        .module-type span {
-            margin-left: -20px;
+        .module-title {
+            margin: 0;
         }
         form {
             display: inline;
@@ -54,13 +59,15 @@
                 <div class="box-body">
                     <div class="row">
                         <div class="col-sm-6 module-details">
-                            <div class="module-type pull-left">
-                                <i class="fa fa-picture-o"></i>
-                                <span>
-                                    {{  theme_version($theme) }}
-                                </span>
+                            <div class="module-title-wrap">
+                                <div class="module-type">
+                                    <i class="fa fa-picture-o"></i>
+                                    <span>
+                                        {{  theme_version($theme) }}
+                                    </span>
+                                </div>
+                                <h2 class="module-title">{{ ucfirst($theme->getName()) }}</h2>
                             </div>
-                            <h2>{{ ucfirst($theme->getName()) }}</h2>
                             <p>{{ $theme->getDescription() }}</p>
                         </div>
                         <div class="col-sm-6">
