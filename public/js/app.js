@@ -2529,6 +2529,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
 
 
 
@@ -6043,6 +6044,10 @@ var render = function() {
         _c("div", { staticClass: "sc-table" }, [
           _c("div", { staticClass: "el-row" }, [
             _c("div", { staticClass: "title" }, [
+              _vm.singleModal === false
+                ? _c("h3", [_vm._v(_vm._s(_vm.trans("media.title.media")))])
+                : _vm._e(),
+              _vm._v(" "),
               _c(
                 "div",
                 { staticClass: "media-breadcrumb" },

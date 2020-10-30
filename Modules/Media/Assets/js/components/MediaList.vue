@@ -4,6 +4,7 @@
             <div class="sc-table">
                 <div class="el-row">
                     <div class="title">
+                        <h3 v-if="singleModal === false">{{ trans('media.title.media') }}</h3>
                         <div class="media-breadcrumb">
                             <el-breadcrumb v-if="!singleModal" separator="/">
                                 <el-breadcrumb-item>
