@@ -31,7 +31,7 @@
                         <div class="box-body">
                             <el-tabs v-model="activeTab">
                                 <el-tab-pane v-for="(localeArray, locale) in locales" :key="localeArray.name" :label="localeArray.name" :name="locale">
-                                    <span slot="label" :class="{'error' : form.errors.has(locale)}">{{ localeArray.name }}</span>
+                                    <span slot="label" :class="{'error' : form.errors.has(locale)}"><i :class="'flag-icon flag-icon-' + locale"></i> &nbsp; {{ localeArray.name }}</span>
                                     <el-form-item :label="trans('pages.title')" :class="{'el-form-item is-error': form.errors.has(locale + '.title') }">
                                         <el-input v-model="page[locale].title" @input="generateSlug($event, locale)"></el-input>
                                         <div v-if="form.errors.has(locale + '.title')" class="el-form-item__error" v-text="form.errors.first(locale + '.title')"></div>
