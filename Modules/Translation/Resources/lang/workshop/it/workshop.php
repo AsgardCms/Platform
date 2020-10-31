@@ -3,5 +3,6 @@
 return [
     'title'   => 'Workshop',
     'modules' => 'Moduli',
-    'themes' => 'Themes',
+    'themes' => 'Temi',
+    'show sidebar group' => 'Mostra gruppo sidebar',
 ];

@@ -6,9 +6,9 @@ return [
     'page updated' => 'Pagina modificata con successo.',
     'page deleted' => 'Pagina eliminata con successo.',
 
-    'template is required' => 'Il nome del template &#232; richiesto.',
-    'title is required' => 'Il titolo &#232; richiesto.',
-    'slug is required' => 'Lo slug &#232; richiesto.',
-    'body is required' => 'Il corpo &#232; richiesto.',
-    'only one homepage allowed' => 'Solo una homepage &#232; consentita',
+    'template is required' => 'Il nome del template è richiesto.',
+    'title is required' => 'Il titolo è richiesto.',
+    'slug is required' => 'Lo slug è richiesto.',
+    'body is required' => 'Il corpo è richiesto.',
+    'only one homepage allowed' => 'Solo una homepage è consentita',
 ];

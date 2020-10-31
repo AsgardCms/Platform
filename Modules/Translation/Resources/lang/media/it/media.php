@@ -38,7 +38,8 @@ return [
     'create resource' => 'Crea media',
     'edit resource' => 'Modifica media',
     'destroy resource' => 'Cancella media',
-    'file too large' => 'Il file è stroppo pesante, la dimensione massiima è di :size MB.',
+    'file uploaded' => 'File caricato con successo',
+    'file too large' => 'Il file è troppo pesante, la dimensione massima è di :size MB.',
     'some files not moved' => 'Alcuni file non sono stati spostati',
     'files moved successfully' => 'I file sono stati spostati correttamente',
 ];
