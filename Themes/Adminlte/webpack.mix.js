@@ -30,6 +30,7 @@ mix.copyDirectory('node_modules/admin-lte', 'assets/vendor/admin-lte');
 // mix.copyDirectory('node_modules/datatables.net', 'assets/vendor/datatables.net');
 // mix.copyDirectory('node_modules/datatables.net-bs', 'assets/vendor/datatables.net-bs');
 mix.copyDirectory('node_modules/font-awesome', 'assets/vendor/font-awesome');
+mix.copyDirectory('node_modules/flag-icon-css', 'assets/vendor/flag-icon-css');
 // mix.copyDirectory('node_modules/gridstack', 'assets/vendor/gridstack');
 // mix.copyDirectory('node_modules/icheck', 'assets/vendor/iCheck');
 // mix.copyDirectory('node_modules/jquery', 'assets/vendor/jquery');

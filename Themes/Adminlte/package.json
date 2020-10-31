@@ -20,6 +20,7 @@
     "datatables.net": "^1.10.16",
     "datatables.net-bs": "^1.10.16",
     "element-ui": "^1.4.6",
+    "flag-icon-css": "^3.5.0",
     "font-awesome": "^4.7.0",
     "form-backend-validation": "^2.0.1",
     "gridstack": ">=0.2.2",
