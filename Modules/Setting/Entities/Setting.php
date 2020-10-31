@@ -17,6 +17,7 @@ class Setting extends Model
     public function isMedia(): bool
     {
         $value = json_decode($this->plainValue, true);
+
         return is_array($value) && isset($value['medias_single']);
     }
 }

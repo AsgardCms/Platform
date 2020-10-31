@@ -1,6 +1,5 @@
 <?php
 
-
 return [
     'name' => 'Dashboard',
     'edit grid' => 'Modifica griglia',

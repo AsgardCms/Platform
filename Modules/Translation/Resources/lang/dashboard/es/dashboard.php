@@ -19,4 +19,3 @@ return [
     'add pages' => 'Agregar página',
     'add menus' => 'Agregar menus',
 ];
-

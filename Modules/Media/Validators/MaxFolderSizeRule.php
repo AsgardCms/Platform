@@ -2,10 +2,10 @@
 
 namespace Modules\Media\Validators;
 
+use FilesystemIterator;
 use Illuminate\Contracts\Validation\Rule;
 use RecursiveDirectoryIterator;
 use RecursiveIteratorIterator;
-use FilesystemIterator;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 class MaxFolderSizeRule implements Rule
@@ -46,7 +46,7 @@ class MaxFolderSizeRule implements Rule
     public function getDirSize($directory) : int
     {
         $size = 0;
-        foreach (new RecursiveIteratorIterator(new RecursiveDirectoryIterator($directory,FilesystemIterator::SKIP_DOTS)) as $file) {
+        foreach (new RecursiveIteratorIterator(new RecursiveDirectoryIterator($directory, FilesystemIterator::SKIP_DOTS)) as $file) {
             $size += $file->getSize();
         }
 

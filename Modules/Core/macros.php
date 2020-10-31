@@ -182,7 +182,7 @@ Form::macro('i18nFile', function ($name, $title, ViewErrorBag $errors, $lang, $o
     } else {
         $nameForm = "{$lang}[$name]";
     }
-    
+
     $options = array_merge(['class' => 'form-control'], $options);
 
     $string = "<div class='form-group " . ($errors->has($lang . '.' . $name) ? ' has-error' : '') . "'>";
@@ -194,8 +194,8 @@ Form::macro('i18nFile', function ($name, $title, ViewErrorBag $errors, $lang, $o
         $currentData = false;
     }
 
-    $string .= Form::file("{$lang}[{$name}]",$options);
-     
+    $string .= Form::file("{$lang}[{$name}]", $options);
+
     $string .= $errors->first("{$lang}.{$name}", '<span class="help-block">:message</span>');
     $string .= '</div>';
 
@@ -384,7 +384,7 @@ Form::macro('normalFile', function ($name, $title, ViewErrorBag $errors, $object
         $currentData = null;
     }
 
-    $string .= Form::file($name,$options);
+    $string .= Form::file($name, $options);
     $string .= $errors->first($name, '<span class="help-block">:message</span>');
     $string .= '</div>';
 

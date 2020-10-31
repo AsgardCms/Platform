@@ -28,7 +28,7 @@ abstract class BaseCacheDecorator implements BaseRepository
 
     public function __construct()
     {
-        $this->cache = app(Repository::class);        
+        $this->cache = app(Repository::class);
         $this->locale = app()->getLocale();
     }
 

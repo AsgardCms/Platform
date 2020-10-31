@@ -74,7 +74,6 @@ class MenuItemUriGeneratorTest extends BaseMenuTest
         ];
         $menuitem = $this->menuItem->create($data);
 
-
         self::assertEquals('awesome-page/about', $this->menuItemUriGenerator->generateUri(2, $menuitem->id, 'en'));
     }
 
