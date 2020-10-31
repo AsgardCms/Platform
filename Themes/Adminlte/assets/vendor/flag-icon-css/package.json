@@ -1,0 +1,79 @@
+{
+  "_from": "flag-icon-css",
+  "_id": "flag-icon-css@3.5.0",
+  "_inBundle": false,
+  "_integrity": "sha512-pgJnJLrtb0tcDgU1fzGaQXmR8h++nXvILJ+r5SmOXaaL/2pocunQo2a8TAXhjQnBpRLPtZ1KCz/TYpqeNuE2ew==",
+  "_location": "/flag-icon-css",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "tag",
+    "registry": true,
+    "raw": "flag-icon-css",
+    "name": "flag-icon-css",
+    "escapedName": "flag-icon-css",
+    "rawSpec": "",
+    "saveSpec": null,
+    "fetchSpec": "latest"
+  },
+  "_requiredBy": [
+    "#USER",
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/flag-icon-css/-/flag-icon-css-3.5.0.tgz",
+  "_shasum": "430747d5cb91e60babf85494de99173c16dc7cf2",
+  "_spec": "flag-icon-css",
+  "_where": "C:\\serverpath\\D2018\\myne\\ACMS3\\Platform\\Themes\\Adminlte",
+  "author": {
+    "name": "Panayiotis Lipiridis",
+    "email": "lipiridis@gmail.com"
+  },
+  "bugs": {
+    "url": "https://github.com/lipis/flag-icon-css/issues"
+  },
+  "bundleDependencies": false,
+  "deprecated": false,
+  "description": "> A collection of all country flags in SVG — plus the CSS for easier integration. > See the [demo](https://flagicons.lipis.dev).",
+  "devDependencies": {
+    "grunt": "1.1.0",
+    "grunt-contrib-connect": "2.1.0",
+    "grunt-contrib-cssmin": "3.0.0",
+    "grunt-contrib-less": "2.0.0",
+    "grunt-contrib-watch": "1.1.0",
+    "husky": "4.2.5",
+    "lint-staged": "10.2.9",
+    "prettier": "2.0.5",
+    "svgo": "1.3.2"
+  },
+  "homepage": "https://github.com/lipis/flag-icon-css#readme",
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "http://opensource.org/licenses/MIT"
+    }
+  ],
+  "lint-staged": {
+    "*.{json,md,scss,less,yaml,yml}": [
+      "prettier --write"
+    ]
+  },
+  "name": "flag-icon-css",
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/lipis/flag-icon-css.git"
+  },
+  "scripts": {
+    "build": "grunt build",
+    "fix": "yarn prettier --write",
+    "prettier": "prettier \"**/*.{json,md,scss,less,yaml,yml}\"",
+    "svgo": "svgo --pretty --indent=2 --precision=1 --config=svgo.yaml",
+    "svgo:all": "find flags | grep '\\.svg$' | xargs -Iz -n 1 yarn svgo z",
+    "svgo:min": "find flags | grep '\\.svg$' | xargs -Iz -n 1 svgo --config=svgo.yaml z",
+    "test": "yarn prettier --list-different"
+  },
+  "version": "3.5.0"
+}

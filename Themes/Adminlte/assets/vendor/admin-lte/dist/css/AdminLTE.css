@@ -5669,3 +5669,17 @@ table.text-center th {
     white-space: normal !important;
   }
 }
+
+/* Custom */
+
+/* remove broken icon from AdminLTE navbar menu toggle, also it yet used a SVG icon instead */
+.main-header .sidebar-toggle::before {
+  content: "";
+}
+/* fix for `gb-eng` icon flag that we want show only with `en` (sorry USA, AU and other english lang countries) */
+.flag-icon-en {
+  background-image: url('../../../flag-icon-css/flags/4x3/gb.svg');
+}
+.flag-icon-en.flag-icon-squared {
+  background-image: url('../../../flag-icon-css/flags/1x1/gb.svg');
+}

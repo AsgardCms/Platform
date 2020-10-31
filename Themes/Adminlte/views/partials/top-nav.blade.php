@@ -13,14 +13,19 @@
             <?php endif; ?>
             <li>
                 <a href="" class="publicUrl" style="display: none">
-                    <i class="fa fa-eye"></i> {{ trans('page::pages.view-page') }}
+                    <i class="fa fa-eye"></i>  &nbsp; {{ trans('page::pages.view-page') }}
                 </a>
             </li>
-            <li><a href="{{ url('/') }}"><i class="fa fa-eye"></i> {{ trans('core::core.general.view website') }}</a></li>
+            <li>
+                <a href="{{ url('/') }}">
+                    <i class="fa fa-eye"></i>  &nbsp;
+                        {{ trans('core::core.general.view website') }}
+                </a>
+            </li>
             @if(count(LaravelLocalization::getSupportedLocales())>1)
             <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                    <i class="fa fa-flag"></i>
+                    <i class="flag-icon flag-icon-{{ locale() }}"></i> &nbsp;
                     <span>
                         {{ LaravelLocalization::getCurrentLocaleName()  }}
                         <i class="caret"></i>
@@ -30,7 +35,7 @@
                     @foreach(LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
                         <li class="{{ App::getLocale() == $localeCode ? 'active' : '' }}">
                             <a rel="alternate" lang="{{$localeCode}}" href="{{LaravelLocalization::getLocalizedURL($localeCode) }}">
-                                {!! $properties['native'] !!}
+                                <i class="flag-icon flag-icon-{{ $localeCode }}"></i> &nbsp; {!! $properties['native'] !!}
                             </a>
                         </li>
                     @endforeach
