@@ -16,7 +16,7 @@ class MenuItemUriGeneratorTest extends BaseMenuTest
      */
     private $menuItemUriGenerator;
 
-    public function setUp()
+    public function setUp(): void
     {
         parent::setUp();
         $this->page = app(PageRepository::class);

@@ -25,11 +25,11 @@
     "php": "^7.1.3",
     "composer/installers": "~1.0",
     "nwidart/laravel-menus": "^3.0",
-    "typicms/nestablecollection": "1.1.12"
+    "typicms/nestablecollection": "^1.1"
   },
   "require-dev": {
     "phpunit/phpunit": "~7.0",
-    "orchestra/testbench": "3.6.*",
+    "orchestra/testbench": "3.8.*",
     "fzaninotto/faker": "1.4.0",
     "doctrine/dbal": "~2.5",
     "idavoll/page-module": "4.0.x-dev"

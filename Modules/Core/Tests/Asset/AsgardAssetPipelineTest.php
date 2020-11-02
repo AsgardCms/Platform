@@ -19,7 +19,7 @@ class AsgardAssetPipelineTest extends BaseTestCase
     /**
      *
      */
-    public function setUp()
+    public function setUp(): void
     {
         parent::__construct();
         $this->refreshApplication();

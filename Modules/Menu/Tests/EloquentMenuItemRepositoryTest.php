@@ -10,7 +10,7 @@ use Modules\Menu\Events\MenuItemWasUpdated;
 
 class EloquentMenuItemRepositoryTest extends BaseMenuTest
 {
-    public function setUp()
+    public function setUp(): void
     {
         parent::setUp();
     }

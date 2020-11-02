@@ -15,17 +15,16 @@ use Modules\Core\Providers\CoreServiceProvider;
 use Modules\Media\Providers\MediaServiceProvider;
 use Modules\Tag\Providers\TagServiceProvider;
 use Nwidart\Modules\LaravelModulesServiceProvider;
-use Nwidart\Modules\Providers\BootstrapServiceProvider;
 use Orchestra\Testbench\TestCase;
 
 abstract class MediaTestCase extends TestCase
 {
     protected function getPackageProviders($app)
     {
+
         return [
             TranslationServiceProvider::class,
             LaravelModulesServiceProvider::class,
-            BootstrapServiceProvider::class,
             CoreServiceProvider::class,
             TagServiceProvider::class,
             \Modules\Media\Image\ImageServiceProvider::class,
@@ -49,6 +48,7 @@ abstract class MediaTestCase extends TestCase
 
     protected function getEnvironmentSetUp($app)
     {
+
         $app['path.base'] = __DIR__ . '/..';
         $app['config']->set('asgard.media.config', ['filesystem' => 'local']);
         $app['config']->set('modules', [
@@ -66,6 +66,8 @@ abstract class MediaTestCase extends TestCase
         $app['config']->set('filesystems.disks.local.url', 'http://localhost');
         $app['config']->set('filesystems.disks.local.visibility', 'public');
         $app['config']->set('filesystems.disks.local.root', base_path());
+
+
     }
 
     protected function resetDatabase()

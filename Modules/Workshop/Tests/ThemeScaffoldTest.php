@@ -28,7 +28,7 @@ class ThemeScaffoldTest extends BaseTestCase
      */
     protected $testThemePath;
 
-    public function setUp()
+    public function setUp(): void
     {
         parent::setUp();
         $this->finder = $this->app['files'];
@@ -45,7 +45,7 @@ class ThemeScaffoldTest extends BaseTestCase
         $this->scaffold->setName($this->testThemeName)->forType('frontend')->setVendor('asgardcms')->generate();
     }
 
-    public function tearDown()
+    public function tearDown(): void
     {
         $this->finder->deleteDirectory($this->testThemePath);
         $this->finder->deleteDirectory(base_path("Themes"));
