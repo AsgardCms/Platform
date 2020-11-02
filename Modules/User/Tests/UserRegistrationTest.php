@@ -17,7 +17,7 @@ class UserRegistrationTest extends BaseUserTestCase
      */
     private $user;
 
-    public function setUp()
+    public function setUp(): void
     {
         parent::setUp();
         $this->role = app(RoleRepository::class);

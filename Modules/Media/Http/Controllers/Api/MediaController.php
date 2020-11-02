@@ -106,8 +106,10 @@ class MediaController extends Controller
         $entity = $entityModel::find($request->get('entity_id'));
         if ($entity && in_array('Modules\Media\Support\Traits\MediaRelation', class_uses($entity)) && $entity->files()->count()) {
             $files = $this->file->findMultipleFilesByZoneForEntity($request->get('zone'), $entity);
+
             return MediaTransformer::collection($files);
         }
+
         return response()->json(['data' => null]);
     }
 

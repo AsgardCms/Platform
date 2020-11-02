@@ -9,7 +9,7 @@ class MenuOrdenerTest extends BaseMenuTest
      */
     protected $menuOrdener;
 
-    public function setUp()
+    public function setUp(): void
     {
         parent::setUp();
         $this->createMenu('main', 'Main Menu');

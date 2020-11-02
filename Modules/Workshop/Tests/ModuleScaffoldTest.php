@@ -28,7 +28,7 @@ class ModuleScaffoldTest extends BaseTestCase
      */
     protected $testModuleSanitizedName;
 
-    public function setUp()
+    public function setUp(): void
     {
         $this->testModuleName = 'Testing_The-TestModule';
         $this->testModuleSanitizedName = 'TestingTheTestModule';
@@ -104,7 +104,7 @@ class ModuleScaffoldTest extends BaseTestCase
             ->scaffold();
     }
 
-    public function tearDown()
+    public function tearDown(): void
     {
         if (file_exists(__DIR__ . '/../Modules/')) {
             self::delTree(__DIR__ . '/../Modules/');

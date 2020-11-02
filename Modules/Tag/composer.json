@@ -20,7 +20,7 @@
   },
   "require-dev": {
     "phpunit/phpunit": "~7.0",
-    "orchestra/testbench": "3.6.*",
+    "orchestra/testbench": "3.8.*",
     "idavoll/page-module": "4.0.x-dev"
   },
   "autoload": {

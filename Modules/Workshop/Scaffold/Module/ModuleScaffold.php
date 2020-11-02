@@ -307,7 +307,7 @@ JSON;
     },
     "require-dev": {
         "phpunit/phpunit": "~7.0",
-        "orchestra/testbench": "3.6.*"
+        "orchestra/testbench": "3.8.*"
     },
     "autoload-dev": {
         "psr-4": {

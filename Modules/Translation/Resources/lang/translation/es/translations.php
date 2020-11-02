@@ -38,4 +38,3 @@ return [
     'import resource' => 'Importar traducciones',
     'export resource' => 'Exportar traducciones',
 ];
-

@@ -24,8 +24,8 @@ class EloquentUserTokenRepository extends EloquentBaseRepository implements User
      */
     public function generateFor($userId)
     {
-       $uuid4 = Uuid::uuid4();
+        $uuid4 = Uuid::uuid4();
 
-       return $this->model->create(['user_id' => $userId, 'access_token' => $uuid4]);
+        return $this->model->create(['user_id' => $userId, 'access_token' => $uuid4]);
     }
 }

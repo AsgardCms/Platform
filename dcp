@@ -35,6 +35,10 @@ if [ $# -gt 0 ]; then
     elif [ "$1" == "npm" ]; then
         shift 1
         $COMPOSE run --rm -w /var/www/html node npm $@
+    elif [ "$1" == "php" ]; then
+        shift 1
+        EXEC_CMD="cd /var/www/html && php $@"
+        $COMPOSE exec app bash -c "$EXEC_CMD"
     else
         $COMPOSE $@
     fi

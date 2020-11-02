@@ -77,7 +77,7 @@ class Page extends Model implements TaggableInterface
         #i: No relation found, return the call to parent (Eloquent) to handle it.
         return parent::__call($method, $parameters);
     }
-    
+
     public function getImageAttribute()
     {
         $thumbnail = $this->files()->where('zone', 'image')->first();

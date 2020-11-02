@@ -12,7 +12,7 @@ class ThumbnailsManagerTest extends MediaTestCase
      */
     private $thumbnailManager;
 
-    public function setUp()
+    public function setUp(): void
     {
         parent::setUp();
         $this->thumbnailManager = app(ThumbnailManager::class);

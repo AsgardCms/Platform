@@ -23,6 +23,6 @@ class ResizeCanvas implements ImageHandlerInterface
 
         $callback = isset($options['callback']) ? $options['callback'] : null;
 
-        return $image->resizeCanvas ($options['width'], $options['height'], $callback);
+        return $image->resizeCanvas($options['width'], $options['height'], $callback);
     }
 }

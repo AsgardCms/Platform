@@ -9,7 +9,7 @@ class SettingsTest extends BaseSettingTest
      */
     protected $setting;
 
-    public function setUp()
+    public function setUp(): void
     {
         parent::setUp();
         $this->setting = app('Modules\Setting\Support\Settings');
