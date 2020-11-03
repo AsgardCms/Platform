@@ -14,13 +14,13 @@
         "php": "^7.2",
         "astrotomic/laravel-translatable": "^11.9",
         "cartalyst/sentinel": "^2.0",
-        "doctrine/dbal": "<2.10.3",
+        "doctrine/dbal": "^2.11",
         "fideloper/proxy": "^4.0",
         "floatingpoint/stylist": "dev-master",
         "intervention/image": "^2.5",
         "laracasts/presenter": "^0.2.4",
-        "laravel/framework": "5.8.*",
-        "laravel/tinker": "^1.0",
+        "laravel/framework": "^6.20",
+        "laravel/tinker": "^2.0",
         "maatwebsite/laravel-sidebar": "^2.4",
         "mcamara/laravel-localization": "^1.6",
         "nwidart/laravel-menus": "^4.0",
@@ -42,18 +42,17 @@
         "idavoll/workshop-module": "4.0.x-dev"
     },
     "require-dev": {
-        "barryvdh/laravel-debugbar": "^3.2",
-        "beyondcode/laravel-dump-server": "^1.0",
-        "filp/whoops": "^2.0",
-        "fzaninotto/faker": "^1.4",
+        "barryvdh/laravel-debugbar": "^3.5",
+        "fzaninotto/faker": "^1.9.1",
         "league/commonmark": "^0.18.3",
         "league/flysystem-aws-s3-v3": "^1.0",
         "mockery/mockery": "^1.0",
         "nunomaduro/collision": "^3.0",
-        "orchestra/testbench": "3.8.*",
-        "phpunit/phpunit": "^7.5",
+        "orchestra/testbench": "^4.8",
+        "phpunit/phpunit": "^8.0",
         "predis/predis": "^1.1",
-        "roave/security-advisories": "dev-master"
+        "roave/security-advisories": "dev-master",
+        "facade/ignition": "^1.4"
     },
     "autoload": {
         "classmap": [
