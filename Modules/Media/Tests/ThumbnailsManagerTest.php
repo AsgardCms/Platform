@@ -3,7 +3,6 @@
 namespace Modules\Media\Tests;
 
 use Modules\Media\Image\ThumbnailManager;
-use Modules\Media\Tests\MediaTestCase;
 
 class ThumbnailsManagerTest extends MediaTestCase
 {
