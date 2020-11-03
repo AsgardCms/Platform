@@ -2,9 +2,9 @@
 
 namespace Modules\Translation\Transformers;
 
-use Illuminate\Http\Resources\Json\Resource;
+use Illuminate\Http\Resources\Json\JsonResource;
 
-class LocaleSelectTransformer extends Resource
+class LocaleSelectTransformer extends JsonResource
 {
     public function toArray($request)
     {

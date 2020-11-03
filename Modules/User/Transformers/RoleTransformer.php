@@ -2,9 +2,9 @@
 
 namespace Modules\User\Transformers;
 
-use Illuminate\Http\Resources\Json\Resource;
+use Illuminate\Http\Resources\Json\JsonResource;
 
-class RoleTransformer extends Resource
+class RoleTransformer extends JsonResource
 {
     public function toArray($request)
     {
