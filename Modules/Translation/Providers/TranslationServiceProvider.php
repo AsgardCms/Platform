@@ -2,6 +2,7 @@
 
 namespace Modules\Translation\Providers;
 
+use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\ServiceProvider;
@@ -52,8 +53,8 @@ class TranslationServiceProvider extends ServiceProvider
         );
 
         $this->app['events']->listen(LoadingBackendTranslations::class, function (LoadingBackendTranslations $event) {
-            $event->load('translations', array_dot(trans('translation::translations')));
-            $event->load('locales', array_dot(trans('translation::locales')));
+            $event->load('translations', Arr::dot(trans('translation::translations')));
+            $event->load('locales', Arr::dot(trans('translation::locales')));
         });
 
         app('router')->bind('translations', function ($id) {

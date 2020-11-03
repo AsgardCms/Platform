@@ -2,6 +2,7 @@
 
 namespace Modules\Dashboard\Foundation\Widgets;
 
+use Illuminate\Support\Str;
 use Illuminate\Contracts\View\Factory;
 use Modules\Dashboard\Composers\WidgetViewComposer;
 
@@ -21,7 +22,7 @@ abstract class BaseWidget
                          ->with($this->data())
                          ->render();
 
-            $sluggedName = str_slug($this->name());
+            $sluggedName = Str::slug($this->name());
 
             $widgetViewComposer
                 ->setWidgetName($sluggedName)

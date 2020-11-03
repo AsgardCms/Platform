@@ -2,6 +2,7 @@
 
 namespace Modules\Media\Events\Handlers;
 
+use Illuminate\Support\Arr;
 use Modules\Media\Contracts\StoringMedia;
 
 class HandleMediaStorage
@@ -22,12 +23,12 @@ class HandleMediaStorage
     private function handleMultiMedia(StoringMedia $event)
     {
         $entity = $event->getEntity();
-        $postMedias = array_get($event->getSubmissionData(), 'medias_multi', []);
+        $postMedias = Arr::get($event->getSubmissionData(), 'medias_multi', []);
 
         foreach ($postMedias as $zone => $attributes) {
             $syncList = [];
             $orders = $this->getOrdersFrom($attributes);
-            foreach (array_get($attributes, 'files', []) as $fileId) {
+            foreach (Arr::get($attributes, 'files', []) as $fileId) {
                 $syncList[$fileId] = [];
                 $syncList[$fileId]['imageable_type'] = get_class($entity);
                 $syncList[$fileId]['zone'] = $zone;
@@ -44,7 +45,7 @@ class HandleMediaStorage
     private function handleSingleMedia(StoringMedia $event)
     {
         $entity = $event->getEntity();
-        $postMedia = array_get($event->getSubmissionData(), 'medias_single', []);
+        $postMedia = Arr::get($event->getSubmissionData(), 'medias_single', []);
 
         foreach ($postMedia as $zone => $fileId) {
             if (!empty($fileId)) {
@@ -62,7 +63,7 @@ class HandleMediaStorage
      */
     private function getOrdersFrom(array $attributes)
     {
-        $orderString = array_get($attributes, 'orders');
+        $orderString = Arr::get($attributes, 'orders');
 
         if ($orderString === null) {
             return [];

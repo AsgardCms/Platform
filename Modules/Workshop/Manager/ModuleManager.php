@@ -2,6 +2,7 @@
 
 namespace Modules\Workshop\Manager;
 
+use Illuminate\Support\Arr;
 use Illuminate\Config\Repository as Config;
 use Illuminate\Filesystem\Filesystem;
 use Illuminate\Support\Collection;
@@ -144,7 +145,7 @@ class ModuleManager
 
         $changelog = $yamlParser->parse(file_get_contents($path));
 
-        $changelog['versions'] = $this->limitLastVersionsAmount(array_get($changelog, 'versions', []));
+        $changelog['versions'] = $this->limitLastVersionsAmount(Arr::get($changelog, 'versions', []));
 
         return $changelog;
     }

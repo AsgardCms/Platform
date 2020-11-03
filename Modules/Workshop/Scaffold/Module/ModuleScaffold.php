@@ -2,6 +2,7 @@
 
 namespace Modules\Workshop\Scaffold\Module;
 
+use Illuminate\Support\Str;
 use Illuminate\Contracts\Config\Repository;
 use Illuminate\Contracts\Console\Kernel;
 use Illuminate\Filesystem\Filesystem;
@@ -139,7 +140,7 @@ class ModuleScaffold
      */
     public function getName()
     {
-        return studly_case($this->name);
+        return Str::studly($this->name);
     }
 
     /**

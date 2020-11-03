@@ -2,6 +2,7 @@
 
 namespace Modules\Core\Downloader;
 
+use Illuminate\Support\Str;
 use GuzzleHttp\Client;
 use Illuminate\Filesystem\Filesystem;
 use RuntimeException;
@@ -157,11 +158,11 @@ class Downloader
 
     private function extractPackageNameFrom($package)
     {
-        if (str_contains($package, '/') === false) {
+        if (Str::contains($package, '/') === false) {
             throw new \Exception('You need to use vendor/name structure');
         }
 
-        return studly_case(substr(strrchr($package, '/'), 1));
+        return Str::studly(substr(strrchr($package, '/'), 1));
     }
 
     public function forBranch($branchName)

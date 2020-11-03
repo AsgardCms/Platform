@@ -2,6 +2,7 @@
 
 namespace Modules\Workshop\Manager;
 
+use Illuminate\Support\Arr;
 use FloatingPoint\Stylist\Theme\Exceptions\ThemeNotFoundException;
 use FloatingPoint\Stylist\Theme\Json;
 use FloatingPoint\Stylist\Theme\Theme;
@@ -103,7 +104,7 @@ class StylistThemeManager implements ThemeManager
 
         $changelog = $yamlParser->parse($yamlFile);
 
-        $changelog['versions'] = $this->limitLastVersionsAmount(array_get($changelog, 'versions', []));
+        $changelog['versions'] = $this->limitLastVersionsAmount(Arr::get($changelog, 'versions', []));
 
         return $changelog;
     }

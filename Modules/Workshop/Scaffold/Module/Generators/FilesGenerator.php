@@ -2,6 +2,7 @@
 
 namespace Modules\Workshop\Scaffold\Module\Generators;
 
+use Illuminate\Support\Str;
 use Illuminate\Contracts\Filesystem\FileNotFoundException;
 
 class FilesGenerator extends Generator
@@ -72,8 +73,8 @@ class FilesGenerator extends Generator
             [
                 $this->name,
                 strtolower($this->name),
-                strtolower(str_plural($this->name)),
-                str_plural($this->name),
+                strtolower(Str::plural($this->name)),
+                Str::plural($this->name),
                 "Register{$this->name}Sidebar",
             ],
             $stub

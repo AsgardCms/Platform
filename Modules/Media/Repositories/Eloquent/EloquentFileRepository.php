@@ -2,6 +2,7 @@
 
 namespace Modules\Media\Repositories\Eloquent;
 
+use Illuminate\Support\Arr;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Http\Request;
 use Modules\Core\Repositories\Eloquent\EloquentBaseRepository;
@@ -29,7 +30,7 @@ class EloquentFileRepository extends EloquentBaseRepository implements FileRepos
         event($event = new FileIsUpdating($file, $data));
         $file->update($event->getAttributes());
 
-        $file->setTags(array_get($data, 'tags', []));
+        $file->setTags(Arr::get($data, 'tags', []));
 
         event(new FileWasUpdated($file));
 

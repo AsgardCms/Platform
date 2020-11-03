@@ -2,6 +2,7 @@
 
 namespace Modules\Core\Events;
 
+use Illuminate\Support\Str;
 use Modules\Core\Foundation\Asset\Pipeline\AssetPipeline;
 
 class CollectingAssets
@@ -43,7 +44,7 @@ class CollectingAssets
     {
         $request = request();
 
-        return str_is($route, $request->route()->getName());
+        return Str::is($route, $request->route()->getName());
     }
 
     /**
@@ -56,7 +57,7 @@ class CollectingAssets
         $request = request();
 
         foreach ($routes as $route) {
-            if (str_is($route, $request->route()->getName()) === true) {
+            if (Str::is($route, $request->route()->getName()) === true) {
                 return true;
             }
         }

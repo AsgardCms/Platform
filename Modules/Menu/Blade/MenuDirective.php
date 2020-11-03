@@ -1,6 +1,7 @@
 <?php
 
 namespace Modules\Menu\Blade;
+use Illuminate\Support\Arr;
 
 final class MenuDirective
 {
@@ -21,9 +22,9 @@ final class MenuDirective
      */
     private function extractArguments(array $arguments)
     {
-        $this->name = array_get($arguments, 0);
-        $this->presenter = array_get($arguments, 1);
-        $this->bindings = array_get($arguments, 2, []);
+        $this->name = Arr::get($arguments, 0);
+        $this->presenter = Arr::get($arguments, 1);
+        $this->bindings = Arr::get($arguments, 2, []);
     }
 
     /**

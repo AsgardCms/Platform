@@ -1,6 +1,7 @@
 <?php
 
 namespace Modules\Core\Blade;
+use Illuminate\Support\Arr;
 
 class AsgardEditorDirective
 {
@@ -26,9 +27,9 @@ class AsgardEditorDirective
      */
     private function extractArguments(array $arguments)
     {
-        $this->fieldName = array_get($arguments, 0);
-        $this->labelName = array_get($arguments, 1);
-        $this->content = array_get($arguments, 2);
-        $this->lang = array_get($arguments, 3);
+        $this->fieldName = Arr::get($arguments, 0);
+        $this->labelName = Arr::get($arguments, 1);
+        $this->content = Arr::get($arguments, 2);
+        $this->lang = Arr::get($arguments, 3);
     }
 }

@@ -30,6 +30,7 @@
                         <tr>
                             <th>Key</th>
                             <?php foreach (config('laravellocalization.supportedLocales') as $locale => $language): ?>
+use Illuminate\Support\Arr;
                                 <th>{{ $locale }}</th>
                             <?php endforeach; ?>
                         </tr>
@@ -41,7 +42,7 @@
                             <td>{{ $key }}</td>
                             <?php foreach (config('laravellocalization.supportedLocales') as $locale => $language): ?>
                                 <td style="position:relative;">
-                                    <a class="translation" data-pk="{{ $locale }}__-__{{ $key }}">{{ is_array(array_get($translationGroup, $locale, null)) ?: array_get($translationGroup, $locale, null) }}</a>
+                                    <a class="translation" data-pk="{{ $locale }}__-__{{ $key }}">{{ is_array(Arr::get($translationGroup, $locale, null)) ?: Arr::get($translationGroup, $locale, null) }}</a>
                                     <a href="" style="position: absolute; right: 5px;" class="openRevisionModal"
                                        data-pk="{{ $locale }}__-__{{ $key }}"><i class="fa fa-search-plus"></i></a>
                                 </td>

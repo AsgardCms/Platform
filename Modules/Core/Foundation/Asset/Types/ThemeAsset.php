@@ -2,6 +2,7 @@
 
 namespace Modules\Core\Foundation\Asset\Types;
 
+use Illuminate\Support\Arr;
 use FloatingPoint\Stylist\Facades\ThemeFacade as Theme;
 
 class ThemeAsset implements AssetType
@@ -27,6 +28,6 @@ class ThemeAsset implements AssetType
 
     private function getPath()
     {
-        return array_get($this->path, 'theme');
+        return Arr::get($this->path, 'theme');
     }
 }
