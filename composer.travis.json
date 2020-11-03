@@ -1,0 +1,90 @@
+{
+    "name": "asgardcms/platform",
+    "description": "The AsgardCms application.",
+    "keywords": [
+        "cms",
+        "asgardcms",
+        "multilingual",
+        "laravel",
+        "laravel5"
+    ],
+    "license": "MIT",
+    "type": "project",
+    "require": {
+        "php": "^7.2",
+        "astrotomic/laravel-translatable": "^11.9",
+        "cartalyst/sentinel": "^2.0",
+        "doctrine/dbal": "<2.10.3",
+        "fideloper/proxy": "^4.0",
+        "floatingpoint/stylist": "dev-master",
+        "intervention/image": "^2.5",
+        "laracasts/presenter": "^0.2.4",
+        "laravel/framework": "5.8.*",
+        "laravel/tinker": "^1.0",
+        "maatwebsite/laravel-sidebar": "^2.4",
+        "mcamara/laravel-localization": "^1.6",
+        "nwidart/laravel-menus": "^4.0",
+        "nwidart/laravel-modules": "^5.0",
+        "symfony/yaml": "^5.1",
+        "typicms/nestablecollection": "^1.1",
+        "venturecraft/revisionable": "^1.35"
+    },
+    "require-dev": {
+        "barryvdh/laravel-debugbar": "^3.2",
+        "beyondcode/laravel-dump-server": "^1.0",
+        "filp/whoops": "^2.0",
+        "fzaninotto/faker": "^1.4",
+        "league/commonmark": "^0.18.3",
+        "league/flysystem-aws-s3-v3": "^1.0",
+        "mockery/mockery": "^1.0",
+        "nunomaduro/collision": "^3.0",
+        "orchestra/testbench": "3.8.*",
+        "phpunit/phpunit": "^7.5",
+        "predis/predis": "^1.1",
+        "roave/security-advisories": "dev-master"
+    },
+    "autoload": {
+        "classmap": [
+            "database/seeds",
+            "database/factories"
+        ],
+        "psr-4": {
+            "App\\": "app/",
+            "Modules\\": "Modules/",
+            "Illuminate\\Http\\Resources\\": "overrides/Illuminate/Http/Resources"
+        },
+        "exclude-from-classmap": [
+            "vendor/laravel/framework/src/Illuminate/Http/Resources/DelegatesToResource.php"
+        ]
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Tests\\": "tests/"
+        }
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "4.0.x-dev"
+        },
+        "laravel": {
+            "dont-discover": []
+        }
+    },
+    "scripts": {
+        "post-install-cmd": [
+            "@php artisan clear-compiled"
+        ],
+        "pre-update-cmd": [],
+        "post-autoload-dump": [
+            "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",
+            "@php artisan package:discover --ansi"
+        ]
+    },
+    "config": {
+        "preferred-install": "dist",
+        "sort-packages": true,
+        "optimize-autoloader": true
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}
