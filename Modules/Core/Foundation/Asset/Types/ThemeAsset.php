@@ -2,8 +2,8 @@
 
 namespace Modules\Core\Foundation\Asset\Types;
 
-use Illuminate\Support\Arr;
 use FloatingPoint\Stylist\Facades\ThemeFacade as Theme;
+use Illuminate\Support\Arr;
 
 class ThemeAsset implements AssetType
 {

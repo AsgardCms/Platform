@@ -2,9 +2,9 @@
 
 namespace Modules\Media\Image;
 
-use Illuminate\Support\Arr;
 use GuzzleHttp\Psr7\Stream;
 use Illuminate\Contracts\Filesystem\Factory;
+use Illuminate\Support\Arr;
 use Intervention\Image\ImageManager;
 use Modules\Media\Entities\File;
 use Modules\Media\ValueObjects\MediaPath;

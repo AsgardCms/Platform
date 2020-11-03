@@ -9,7 +9,6 @@ use Modules\Core\Sidebar\AdminSidebar;
 
 class SidebarServiceProvider extends ServiceProvider implements DeferrableProvider
 {
-
     /**
      * Register the service provider.
      * @return void

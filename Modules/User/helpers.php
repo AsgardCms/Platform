@@ -1,4 +1,5 @@
 <?php
+
 use Illuminate\Support\Arr;
 
 if (function_exists('current_permission_value') === false) {

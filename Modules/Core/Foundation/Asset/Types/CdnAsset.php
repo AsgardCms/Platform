@@ -1,6 +1,7 @@
 <?php
 
 namespace Modules\Core\Foundation\Asset\Types;
+
 use Illuminate\Support\Arr;
 
 class CdnAsset implements AssetType

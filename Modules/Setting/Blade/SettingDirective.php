@@ -1,6 +1,7 @@
 <?php
 
 namespace Modules\Setting\Blade;
+
 use Illuminate\Support\Arr;
 
 final class SettingDirective

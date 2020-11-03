@@ -2,10 +2,10 @@
 
 namespace Modules\Workshop\Scaffold\Module;
 
-use Illuminate\Support\Str;
 use Illuminate\Contracts\Config\Repository;
 use Illuminate\Contracts\Console\Kernel;
 use Illuminate\Filesystem\Filesystem;
+use Illuminate\Support\Str;
 use Modules\Workshop\Scaffold\Module\Exception\ModuleExistsException;
 use Modules\Workshop\Scaffold\Module\Generators\EntityGenerator;
 use Modules\Workshop\Scaffold\Module\Generators\FilesGenerator;

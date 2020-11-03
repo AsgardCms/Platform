@@ -2,11 +2,11 @@
 
 namespace Modules\Page\Repositories\Eloquent;
 
-use Illuminate\Support\Arr;
-use Illuminate\Support\Str;
 use Illuminate\Contracts\Pagination\LengthAwarePaginator;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\Request;
+use Illuminate\Support\Arr;
+use Illuminate\Support\Str;
 use Mcamara\LaravelLocalization\LaravelLocalization;
 use Modules\Core\Repositories\Eloquent\EloquentBaseRepository;
 use Modules\Page\Entities\Page;

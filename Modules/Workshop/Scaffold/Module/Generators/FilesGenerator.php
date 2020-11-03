@@ -2,8 +2,8 @@
 
 namespace Modules\Workshop\Scaffold\Module\Generators;
 
-use Illuminate\Support\Str;
 use Illuminate\Contracts\Filesystem\FileNotFoundException;
+use Illuminate\Support\Str;
 
 class FilesGenerator extends Generator
 {

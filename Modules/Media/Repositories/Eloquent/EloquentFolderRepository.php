@@ -2,9 +2,9 @@
 
 namespace Modules\Media\Repositories\Eloquent;
 
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Str;
-use Illuminate\Database\Eloquent\Collection;
 use Modules\Core\Repositories\Eloquent\EloquentBaseRepository;
 use Modules\Media\Entities\File;
 use Modules\Media\Events\FolderIsCreating;

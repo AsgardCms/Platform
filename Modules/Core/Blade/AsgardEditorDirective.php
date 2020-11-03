@@ -1,6 +1,7 @@
 <?php
 
 namespace Modules\Core\Blade;
+
 use Illuminate\Support\Arr;
 
 class AsgardEditorDirective

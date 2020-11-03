@@ -2,8 +2,8 @@
 
 namespace Modules\Core\Console;
 
-use Illuminate\Support\Str;
 use Illuminate\Console\Command;
+use Illuminate\Support\Str;
 use Modules\Core\Downloader\Downloader;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputOption;

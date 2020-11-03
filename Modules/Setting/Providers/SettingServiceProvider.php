@@ -2,8 +2,8 @@
 
 namespace Modules\Setting\Providers;
 
-use Illuminate\Support\Arr;
 use Illuminate\Foundation\AliasLoader;
+use Illuminate\Support\Arr;
 use Illuminate\Support\ServiceProvider;
 use Modules\Core\Events\BuildingSidebar;
 use Modules\Core\Events\LoadingBackendTranslations;

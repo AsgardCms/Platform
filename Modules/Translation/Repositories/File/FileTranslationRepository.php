@@ -2,9 +2,9 @@
 
 namespace Modules\Translation\Repositories\File;
 
-use Illuminate\Support\Arr;
 use Illuminate\Contracts\Translation\Loader;
 use Illuminate\Filesystem\Filesystem;
+use Illuminate\Support\Arr;
 use Modules\Translation\Repositories\FileTranslationRepository as FileTranslationRepositoryInterface;
 
 class FileTranslationRepository implements FileTranslationRepositoryInterface

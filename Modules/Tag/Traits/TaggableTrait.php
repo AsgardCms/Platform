@@ -2,10 +2,10 @@
 
 namespace Modules\Tag\Traits;
 
-use Illuminate\Support\Arr;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\MorphToMany;
+use Illuminate\Support\Arr;
 use Modules\Tag\Entities\Tag;
 
 trait TaggableTrait

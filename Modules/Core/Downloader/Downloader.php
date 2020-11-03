@@ -2,9 +2,9 @@
 
 namespace Modules\Core\Downloader;
 
-use Illuminate\Support\Str;
 use GuzzleHttp\Client;
 use Illuminate\Filesystem\Filesystem;
+use Illuminate\Support\Str;
 use RuntimeException;
 use Symfony\Component\Console\Helper\ProgressBar;
 use Symfony\Component\Console\Output\OutputInterface;

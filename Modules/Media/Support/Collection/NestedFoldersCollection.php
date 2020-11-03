@@ -2,8 +2,8 @@
 
 namespace Modules\Media\Support\Collection;
 
-use Illuminate\Support\Arr;
 use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Support\Arr;
 use Illuminate\Support\Collection as BaseCollection;
 
 class NestedFoldersCollection extends Collection

@@ -2,13 +2,13 @@
 
 namespace Modules\Core\Providers;
 
-use Illuminate\Support\Arr;
-use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Router;
+use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Support\Str;
 use Modules\Core\Blade\AsgardEditorDirective;
 use Modules\Core\Console\DeleteModuleCommand;
 use Modules\Core\Console\DownloadModuleCommand;

@@ -2,8 +2,8 @@
 
 namespace Modules\Media\Providers;
 
-use Illuminate\Support\Arr;
 use Illuminate\Contracts\Events\Dispatcher as DispatcherContract;
+use Illuminate\Support\Arr;
 use Illuminate\Support\ServiceProvider;
 use Modules\Core\Events\BuildingSidebar;
 use Modules\Core\Events\LoadingBackendTranslations;

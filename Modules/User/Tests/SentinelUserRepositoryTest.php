@@ -2,8 +2,8 @@
 
 namespace Modules\User\Tests;
 
-use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Event;
+use Illuminate\Support\Str;
 use Modules\User\Entities\Sentinel\User;
 use Modules\User\Events\UserHasRegistered;
 use Modules\User\Events\UserIsCreating;

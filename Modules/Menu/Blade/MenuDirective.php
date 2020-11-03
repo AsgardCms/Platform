@@ -1,6 +1,7 @@
 <?php
 
 namespace Modules\Menu\Blade;
+
 use Illuminate\Support\Arr;
 
 final class MenuDirective

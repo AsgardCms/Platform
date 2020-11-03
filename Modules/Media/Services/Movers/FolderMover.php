@@ -2,8 +2,8 @@
 
 namespace Modules\Media\Services\Movers;
 
-use Illuminate\Support\Str;
 use Illuminate\Contracts\Filesystem\Factory;
+use Illuminate\Support\Str;
 use League\Flysystem\FileExistsException;
 use Modules\Media\Entities\File;
 use Modules\Media\Repositories\FileRepository;

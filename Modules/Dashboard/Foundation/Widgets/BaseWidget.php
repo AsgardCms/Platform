@@ -2,8 +2,8 @@
 
 namespace Modules\Dashboard\Foundation\Widgets;
 
-use Illuminate\Support\Str;
 use Illuminate\Contracts\View\Factory;
+use Illuminate\Support\Str;
 use Modules\Dashboard\Composers\WidgetViewComposer;
 
 abstract class BaseWidget

@@ -2,8 +2,8 @@
 
 namespace Modules\User\Providers;
 
-use Illuminate\Support\Arr;
 use Cartalyst\Sentinel\Laravel\SentinelServiceProvider;
+use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\ServiceProvider;
 use Modules\Core\Events\BuildingSidebar;

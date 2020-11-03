@@ -2,10 +2,10 @@
 
 namespace Modules\Workshop\Scaffold\Module\Generators;
 
-use Illuminate\Support\Str;
 use Illuminate\Contracts\Config\Repository;
 use Illuminate\Contracts\Filesystem\FileNotFoundException;
 use Illuminate\Filesystem\Filesystem;
+use Illuminate\Support\Str;
 
 class EntityGenerator extends Generator
 {
