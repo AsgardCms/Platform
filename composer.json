@@ -39,7 +39,8 @@
         "idavoll/tag-module": "4.0.x-dev",
         "idavoll/translation-module": "4.0.x-dev",
         "idavoll/user-module": "4.0.x-dev",
-        "idavoll/workshop-module": "4.0.x-dev"
+        "idavoll/workshop-module": "4.0.x-dev",
+        "laravel/ui": "^2.0"
     },
     "require-dev": {
         "barryvdh/laravel-debugbar": "^3.5",
