@@ -28,6 +28,9 @@
         "symfony/yaml": "^5.1",
         "typicms/nestablecollection": "^1.1",
         "venturecraft/revisionable": "^1.35",
+        "laravel/ui": "^2.4",
+        "fruitcake/laravel-cors": "^2.0",
+        "guzzlehttp/guzzle": "^6.3",
         "idavoll/adminlte-theme": "4.0.x-dev",
         "idavoll/core-module": "4.0.x-dev",
         "idavoll/dashboard-module": "4.0.x-dev",
@@ -39,10 +42,7 @@
         "idavoll/tag-module": "4.0.x-dev",
         "idavoll/translation-module": "4.0.x-dev",
         "idavoll/user-module": "4.0.x-dev",
-        "idavoll/workshop-module": "4.0.x-dev",
-        "laravel/ui": "^2.4",
-        "fruitcake/laravel-cors": "^2.0",
-        "guzzlehttp/guzzle": "^6.3"
+        "idavoll/workshop-module": "4.0.x-dev"
     },
     "require-dev": {
         "barryvdh/laravel-debugbar": "^3.5",
