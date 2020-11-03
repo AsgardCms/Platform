@@ -31,11 +31,11 @@ abstract class BaseUserTestCase extends TestCase
     {
         $app['path.base'] = __DIR__ . '/..';
         $app['config']->set('database.default', 'sqlite');
-        $app['config']->set('database.connections.sqlite', array(
+        $app['config']->set('database.connections.sqlite', [
             'driver' => 'sqlite',
             'database' => ':memory:',
             'prefix' => '',
-        ));
+        ]);
         $app['config']->set('translatable.locales', ['en', 'fr']);
         $app['config']->set('modules.paths.modules', __DIR__ . '/../Modules');
         $app['config']->set('cartalyst.sentinel.users.model', \Modules\User\Entities\Sentinel\User::class);

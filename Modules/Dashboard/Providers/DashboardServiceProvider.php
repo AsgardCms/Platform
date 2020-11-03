@@ -75,6 +75,6 @@ class DashboardServiceProvider extends ServiceProvider
      */
     public function provides()
     {
-        return array();
+        return [];
     }
 }

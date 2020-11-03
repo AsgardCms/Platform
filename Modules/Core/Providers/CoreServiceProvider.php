@@ -102,7 +102,7 @@ class CoreServiceProvider extends ServiceProvider
      */
     public function provides()
     {
-        return array();
+        return [];
     }
 
     /**

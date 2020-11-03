@@ -36,11 +36,11 @@ abstract class BaseSettingTest extends TestCase
     {
         $app['path.base'] = __DIR__ . '/..';
         $app['config']->set('database.default', 'sqlite');
-        $app['config']->set('database.connections.sqlite', array(
+        $app['config']->set('database.connections.sqlite', [
             'driver' => 'sqlite',
             'database' => ':memory:',
             'prefix' => '',
-        ));
+        ]);
         $app['config']->set('asgard.core.settings', [
             'site-name' => [
                 'description' => 'core::settings.site-name',

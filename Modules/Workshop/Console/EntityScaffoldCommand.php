@@ -34,9 +34,9 @@ final class EntityScaffoldCommand extends Command
 
     protected function getArguments()
     {
-        return array(
-            array('entity', InputArgument::REQUIRED, 'The name of the entity.'),
-            array('module', InputArgument::REQUIRED, 'The name of module will be used.'),
-        );
+        return [
+            ['entity', InputArgument::REQUIRED, 'The name of the entity.'],
+            ['module', InputArgument::REQUIRED, 'The name of module will be used.'],
+        ];
     }
 }
