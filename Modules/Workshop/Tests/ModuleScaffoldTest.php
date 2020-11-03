@@ -533,7 +533,7 @@ class ModuleScaffoldTest extends BaseTestCase
         ];
 
         foreach ($matches as $match) {
-            $this->assertContains($match, $controllerContents);
+            $this->assertStringContainsString($match, $controllerContents);
         }
 
         $this->cleanUp();
@@ -549,7 +549,7 @@ class ModuleScaffoldTest extends BaseTestCase
         $path = $this->testModulePath . '/Http/backendRoutes.php';
         $file = $this->finder->get($path);
         $this->assertTrue($this->finder->isFile($path));
-        $this->assertContains('overwritten by custom config', $file);
+        $this->assertStringContainsString('overwritten by custom config', $file);
 
         $this->cleanUp();
     }
