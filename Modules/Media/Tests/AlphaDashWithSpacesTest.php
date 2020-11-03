@@ -13,7 +13,6 @@ final class AlphaDashWithSpacesTest extends MediaTestCase
 {
     public function test_it_creates_instance_of_validator()
     {
-        //die(x);
         $obj = new AlphaDashWithSpaces();
         $this->assertInstanceOf(AlphaDashWithSpaces::class, $obj);
     }
