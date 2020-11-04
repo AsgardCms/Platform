@@ -24,7 +24,7 @@
         "maatwebsite/laravel-sidebar": "^2.4",
         "mcamara/laravel-localization": "^1.6",
         "nwidart/laravel-menus": "^5.0",
-        "nwidart/laravel-modules": "^5.0",
+        "nwidart/laravel-modules": "^6.0",
         "symfony/yaml": "^5.1",
         "typicms/nestablecollection": "^1.1",
         "venturecraft/revisionable": "^1.35",
@@ -43,6 +43,7 @@
         "idavoll/translation-module": "4.0.x-dev",
         "idavoll/user-module": "4.0.x-dev",
         "idavoll/workshop-module": "4.0.x-dev"
+
     },
     "require-dev": {
         "barryvdh/laravel-debugbar": "^3.5",

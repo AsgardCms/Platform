@@ -268,7 +268,7 @@ JSON;
      */
     private function setModuleVersion($content)
     {
-        return str_replace("\"active\"", "\"version\": \"1.0.0\",\n\t\"active\"", $content);
+        return str_replace("\"description\"", "\"version\": \"1.0.0\",\n\t\"description\"", $content);
     }
 
     /**
