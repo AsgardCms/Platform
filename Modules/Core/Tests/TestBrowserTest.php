@@ -2,6 +2,7 @@
 
 namespace Modules\Core\Tests;
 
+use Database\Seeders\DatabaseSeeder;
 use Intervention\Image\ImageServiceProvider;
 use Modules\Page\Database\Seeders\PageDatabaseSeeder;
 use Modules\User\Database\Seeders\SentinelGroupSeedTableSeeder;
