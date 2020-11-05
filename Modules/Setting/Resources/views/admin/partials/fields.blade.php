@@ -1,6 +1,5 @@
 <?php foreach ($settings as $settingName => $moduleInfo): ?>
-use Illuminate\Support\Arr;
-use Illuminate\Support\Str;
+
     <?php $type = Arr::get($moduleInfo, 'translatable', false) ? 'translatable' : 'plain' ?>
     <?php $fieldView = Str::contains($moduleInfo['view'], '::') ? $moduleInfo['view'] : "setting::admin.fields.$type.{$moduleInfo['view']}" ?>
     <?php $locale = isset($locale) ? $locale : '' ?>

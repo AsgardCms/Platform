@@ -1,4 +1,3 @@
-use Illuminate\Support\Facades\Request;
 <div class="row">
     <div class="col-md-6">
         {!! Form::open(['route' => 'admin.workshop.workbench.generate.index', 'method' => 'post']) !!}

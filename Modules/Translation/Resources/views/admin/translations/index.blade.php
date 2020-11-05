@@ -30,7 +30,6 @@
                         <tr>
                             <th>Key</th>
                             <?php foreach (config('laravellocalization.supportedLocales') as $locale => $language): ?>
-use Illuminate\Support\Arr;
                                 <th>{{ $locale }}</th>
                             <?php endforeach; ?>
                         </tr>

@@ -1,4 +1,3 @@
-use Illuminate\Support\Arr;
 <div class="form-group">
     <label for="{{ $settingName }}">{{ trans($moduleInfo['description']) }}</label>
     <select multiple class="locales" name="{{ $settingName }}[]" id="{{ $settingName }}">
