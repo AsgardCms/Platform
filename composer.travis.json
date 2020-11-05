@@ -16,22 +16,22 @@
         "cartalyst/sentinel": "^4.0",
         "doctrine/dbal": "^2.10",
         "fideloper/proxy": "^4.4",
+        "fruitcake/laravel-cors": "^2.0",
+        "guzzlehttp/guzzle": "^6.3",
+        "imagina/laravel-menus": "dev-master",
         "imagina/stylist": "^2.0",
         "intervention/image": "^2.5",
         "laracasts/presenter": "^0.2.4",
         "laravel/framework": "^7.29",
         "laravel/tinker": "^2.5",
+        "laravel/ui": "^2.4",
         "maatwebsite/laravel-sidebar": "^2.4",
         "mcamara/laravel-localization": "^1.6",
-        "imagina/laravel-menus": "dev-master",
         "nwidart/laravel-modules": "^6.0",
         "symfony/yaml": "^5.1",
+        "tightenco/ziggy": "^0.9.4",
         "typicms/nestablecollection": "^1.1",
-        "venturecraft/revisionable": "^1.35",
-        "laravel/ui": "^2.4",
-        "fruitcake/laravel-cors": "^2.0",
-        "guzzlehttp/guzzle": "^6.3"
-
+        "venturecraft/revisionable": "^1.35"
     },
     "require-dev": {
         "barryvdh/laravel-debugbar": "^3.5",
