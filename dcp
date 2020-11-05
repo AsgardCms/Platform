@@ -39,6 +39,10 @@ if [ $# -gt 0 ]; then
         shift 1
         EXEC_CMD="cd /var/www/html && php $@"
         $COMPOSE exec app bash -c "$EXEC_CMD"
+    elif [ "$1" == "node" ]; then
+        shift 1
+        EXEC_CMD="cd /var/www/html && node $@"
+        $COMPOSE exec app bash -c "$EXEC_CMD"
     else
         $COMPOSE $@
     fi
