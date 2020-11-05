@@ -52,13 +52,11 @@
         "facade/ignition": "^2.0"
     },
     "autoload": {
-        "classmap": [
-            "database/seeds",
-            "database/factories"
-        ],
         "psr-4": {
             "App\\": "app/",
-            "Modules\\": "Modules/"
+            "Modules\\": "Modules/",
+            "Database\\Factories\\": "database/factories/",
+            "Database\\Seeders\\": "database/seeders/"
         }
     },
     "autoload-dev": {
@@ -91,5 +89,4 @@
     },
     "minimum-stability": "dev",
     "prefer-stable": true
-
 }
