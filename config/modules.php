@@ -180,7 +180,7 @@ return [
     |--------------------------------------------------------------------------
     */
     'register' => [
-        'translations' => true,
+        'translations' => false,
         /**
          * load files on boot or register method
          *

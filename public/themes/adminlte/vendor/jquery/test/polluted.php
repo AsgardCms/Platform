@@ -1,46 +1,46 @@
 <?php
 	$baseURL = "http://ajax.googleapis.com/ajax/libs/";
-	$libraries = array(
-		"Dojo" => array(
-			"versions" => array( "1.1.1", "1.2.0", "1.2.3", "1.3.0", "1.3.1", "1.3.2", "1.4.0", "1.4.1", "1.4.3", "1.5.0" ),
+	$libraries = [
+		"Dojo" => [
+			"versions" => [ "1.1.1", "1.2.0", "1.2.3", "1.3.0", "1.3.1", "1.3.2", "1.4.0", "1.4.1", "1.4.3", "1.5.0" ],
 			"url" => "dojo/XYZ/dojo/dojo.xd.js"
-		),
-		"ExtCore" => array(
-			"versions" => array( "3.0.0", "3.1.0" ),
+		],
+		"ExtCore" => [
+			"versions" => [ "3.0.0", "3.1.0" ],
 			"url" => "ext-core/XYZ/ext-core.js"
-		),
-		"jQuery" => array(
-			"versions" => array( "1.2.3", "1.2.6", "1.3.0", "1.3.1", "1.3.2", "1.4.0", "1.4.1", "1.4.2", "1.4.3", "1.4.4", "1.5.0" ),
+		],
+		"jQuery" => [
+			"versions" => [ "1.2.3", "1.2.6", "1.3.0", "1.3.1", "1.3.2", "1.4.0", "1.4.1", "1.4.2", "1.4.3", "1.4.4", "1.5.0" ],
 			"url" => "jquery/XYZ/jquery.min.js"
-		),
-		"jQueryUI" => array(
-			"versions" => array( "1.5.2", "1.5.3", "1.6.0", "1.7.0", "1.7.1", "1.7.2", "1.7.3", "1.8.0", "1.8.1", "1.8.2", "1.8.4", "1.8.5", "1.8.6", "1.8.7", "1.8.8", "1.8.9" ),
+		],
+		"jQueryUI" => [
+			"versions" => [ "1.5.2", "1.5.3", "1.6.0", "1.7.0", "1.7.1", "1.7.2", "1.7.3", "1.8.0", "1.8.1", "1.8.2", "1.8.4", "1.8.5", "1.8.6", "1.8.7", "1.8.8", "1.8.9" ],
 			"url" => "jqueryui/XYZ/jquery-ui.min.js"
-		),
-		"MooTools" => array(
-			"versions" => array( "1.1.1", "1.1.2", "1.2.1", "1.2.2", "1.2.3", "1.2.4", "1.2.5", "1.3.0" ),
+		],
+		"MooTools" => [
+			"versions" => [ "1.1.1", "1.1.2", "1.2.1", "1.2.2", "1.2.3", "1.2.4", "1.2.5", "1.3.0" ],
 			"url" => "mootools/XYZ/mootools-yui-compressed.js"
-		),
-		"Prototype" => array(
-			"versions" => array( "1.6.0.2", "1.6.0.3", "1.6.1.0", "1.7.0.0" ),
+		],
+		"Prototype" => [
+			"versions" => [ "1.6.0.2", "1.6.0.3", "1.6.1.0", "1.7.0.0" ],
 			"url" => "prototype/XYZ/prototype.js"
-		),
-		"scriptaculous" => array(
-			"versions" => array( "1.8.1", "1.8.2", "1.8.3" ),
+		],
+		"scriptaculous" => [
+			"versions" => [ "1.8.1", "1.8.2", "1.8.3" ],
 			"url" => "scriptaculous/XYZ/scriptaculous.js"
-		),
-		"SWFObject" => array(
-			"versions" => array( "2.1", "2.2" ),
+		],
+		"SWFObject" => [
+			"versions" => [ "2.1", "2.2" ],
 			"url" => "swfobject/XYZ/swfobject.js"
-		),
-		"YUI" => array(
-			"versions" => array( "2.6.0", "2.7.0", "2.8.0r4", "2.8.1", "2.8.2", "3.3.0" ),
+		],
+		"YUI" => [
+			"versions" => [ "2.6.0", "2.7.0", "2.8.0r4", "2.8.1", "2.8.2", "3.3.0" ],
 			"url" =>    "yui/XYZ/build/yui/yui-min.js"
-		)
-	);
+		]
+	];
 
 	if( count($_POST) ) {
-		$includes = array();
+		$includes = [];
 		foreach( $_POST as $name => $ver ){
 			if ( empty( $libraries[ $name ] )) {
 				echo "unsupported library ". $name;
