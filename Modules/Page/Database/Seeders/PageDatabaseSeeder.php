@@ -2,7 +2,6 @@
 
 namespace Modules\Page\Database\Seeders;
 
-use Database\Seeders\DatabaseSeeder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Seeder;
 use Modules\Page\Repositories\PageRepository;

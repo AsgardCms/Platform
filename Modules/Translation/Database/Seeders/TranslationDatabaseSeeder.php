@@ -2,7 +2,6 @@
 
 namespace Modules\Translation\Database\Seeders;
 
-use Database\Seeders\DatabaseSeeder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Seeder;
 
