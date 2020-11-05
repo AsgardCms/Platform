@@ -40,7 +40,6 @@ class PublicController extends BasePublicController
 
         $currentTranslatedPage = $page->getTranslation(locale());
         if ($slug !== $currentTranslatedPage->slug) {
-
             return redirect()->to($currentTranslatedPage->locale . '/' . $currentTranslatedPage->slug, 301);
         }
 

@@ -16,7 +16,7 @@ class MenuItemUriGeneratorTest extends BaseMenuTest
      */
     private $menuItemUriGenerator;
 
-    public function setUp()
+    public function setUp(): void
     {
         parent::setUp();
         $this->page = app(PageRepository::class);
@@ -73,7 +73,6 @@ class MenuItemUriGeneratorTest extends BaseMenuTest
             ],
         ];
         $menuitem = $this->menuItem->create($data);
-
 
         self::assertEquals('awesome-page/about', $this->menuItemUriGenerator->generateUri(2, $menuitem->id, 'en'));
     }

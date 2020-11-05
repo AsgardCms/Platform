@@ -27,19 +27,7 @@
         "nwidart/laravel-modules": "^5.0",
         "symfony/yaml": "^5.1",
         "typicms/nestablecollection": "^1.1",
-        "venturecraft/revisionable": "^1.35",
-        "idavoll/adminlte-theme": "4.0.x-dev",
-        "idavoll/core-module": "4.0.x-dev",
-        "idavoll/dashboard-module": "4.0.x-dev",
-        "idavoll/flatly-theme": "4.0.x-dev",
-        "idavoll/media-module": "4.0.x-dev",
-        "idavoll/menu-module": "4.0.x-dev",
-        "idavoll/page-module": "4.0.x-dev",
-        "idavoll/setting-module": "4.0.x-dev",
-        "idavoll/tag-module": "4.0.x-dev",
-        "idavoll/translation-module": "4.0.x-dev",
-        "idavoll/user-module": "4.0.x-dev",
-        "idavoll/workshop-module": "4.0.x-dev"
+        "venturecraft/revisionable": "^1.35"
     },
     "require-dev": {
         "barryvdh/laravel-debugbar": "^3.2",

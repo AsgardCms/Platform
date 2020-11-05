@@ -10,7 +10,7 @@ use Modules\Setting\Events\SettingWasUpdated;
 
 class EloquentSettingRepositoryTest extends BaseSettingTest
 {
-    public function setUp()
+    public function setUp(): void
     {
         parent::setUp();
     }

@@ -50,7 +50,7 @@ class EloquentSettingRepository extends EloquentBaseRepository implements Settin
 
         foreach ($settings as $settingName => $settingValues) {
             // Check if media exists
-            if($settingName == 'medias_single') {
+            if ($settingName == 'medias_single') {
                 // Get first key of values (Original settingName)
                 foreach ($settingValues as $key => $value) {
                     $normalisedValue = [ $settingName => [$key => $value] ];

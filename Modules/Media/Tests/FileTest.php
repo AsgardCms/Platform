@@ -13,7 +13,7 @@ class FileTest extends MediaTestCase
      */
     private $file;
 
-    public function setUp()
+    public function setUp(): void
     {
         parent::setUp();
 

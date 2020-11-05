@@ -1,4 +1,5 @@
 <?php
+
 return [
     /*
     |--------------------------------------------------------------------------
@@ -63,7 +64,7 @@ return [
     ],
     'not_in'               => 'El campo :attribute seleccionado es inválido.',
     'not_regex'            => 'El formato del campo :attribute es inválido.',
-	'numeric'              => 'El campo :attribute debe ser un número.',
+    'numeric'              => 'El campo :attribute debe ser un número.',
     'present'              => 'El campo :attribute debe estar presente.',
     'regex'                => 'El formato del campo :attribute es inválido.',
     'required'             => 'El campo :attribute es obligatorio.',

@@ -53,8 +53,8 @@ class SetAppKey implements SetupScript
     protected function generateRandomKey()
     {
         return 'base64:' . base64_encode(
-                Encrypter::generateKey(config('app.cipher'))
-            );
+            Encrypter::generateKey(config('app.cipher'))
+        );
     }
 
     /**

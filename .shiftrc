@@ -1,0 +1,111 @@
+; Within this file you may set preferences for Shift.
+; These may be used to customize the behavior of the
+; Shift bot by disabling or guiding the automation.
+
+
+; Section to set options for PHP Shifts.
+[php]
+
+; The path to the .php_cs config file included
+; in your project for Shift to apply your
+; custom code style instead of PSR-2.
+phpcs = ""
+
+
+; Section to set general options for all Shifts.
+[shift]
+
+; Additional paths Shift should scan which are
+; not included in a default project structure.
+; Separate multiple paths with `:`
+additional_paths = "Modules:Themes"
+
+; Any paths Shift should not scan which are
+; included in a default project structure.
+; Separate multiple paths with `:`
+excluded_paths = ""
+
+
+; Section to set options for Laravel Shifts.
+[laravel]
+
+; The path to your Models. By default Shift
+; will attempt to scan both the app/ and
+; app/Models path.
+models_path = ""
+
+; Report any Controllers containing actions
+; outside the seven default resource methods:
+; index, create, store, edit, update,
+; show, destroy
+resourceful_controllers = true
+
+; Fix Laravel Facade references to use an
+; explicit import instead of their global
+; alias.
+global_facades = true
+
+; Fix Controllers and Middlewares to use the
+; auto-injected Request object instead of
+; the Request Facade or helper function.
+leverage_request = true
+
+; Report validation in controllers using the
+; Validate Facade or request->validate method
+; as opportunities to use Form Requests.
+controller_validation = true
+
+; Use (or convert) the array syntax for the
+; validation rules in Form Requests instead
+; of pipe delimited strings.
+form_request_array_syntax = true
+
+; Report Models or Controllers which extend
+; custom classes instead of the core classes
+; as an opporuntity to use traits.
+core_inheritance = true
+
+; Register routes using static `::class`
+; references for better static analysis.
+; This syntax has been supported since
+; Laravel 6 and the default convention
+; since Laravel 8.
+class_based_routes = true
+
+; Report routes containing "api" within
+; the routes/web.php file as an opporuntity
+; to relocate them to the appropriate
+; routes/api.php file
+api_routes = true
+
+; Force the upgrade for core config files
+; for easier review within the Pull Request
+; instead of manually reviewing.
+force_upgrade_config = true
+
+; All Shifts check that the default Laravel
+; namespaces are autoloaded. However, if you
+; you have chosen to customize your app
+; namespace or follow an alternative app
+; structure, you may disable these checks.
+check_namespaces = true
+
+
+; Section to set options for Tailwind Shifts.
+[tailwind]
+
+; The location of your compiled CSS file
+; to convert. By default Shift uses
+; `public/css/app.css`
+compiled_css = ""
+
+; The path to your CSS source files where
+; Shift will save generated stylesheets.
+; By default Shift uses `resources/css`
+source_path = ""
+
+; The path to your HTML templates Shift should
+; scan for CSS class or style changes. By
+; default Shift scans `resources/views`
+; Separate multiple paths with `:`
+template_paths = ""
