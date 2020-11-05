@@ -36,11 +36,13 @@
                         </thead>
                         <tbody>
                         <?php if (isset($modules)): ?>
+
                         <?php foreach ($modules as $module): ?>
+
                         <tr>
                             <td>
                                 <a href="{{ route('admin.workshop.modules.show', [$module->getLowerName()]) }}">
-                                    {{ $module->name }}
+                                    {{ $module->getName() }}
                                 </a>
                             </td>
                             <td>
@@ -50,8 +52,8 @@
                             </td>
                             <td>
                                 <a href="{{ route('admin.workshop.modules.show', [$module->getLowerName()]) }}">
-                                    <span class="label label-{{$module->enabled() ? 'success' : 'danger'}}">
-                                        {{ $module->enabled() ? trans('workshop::modules.enabled') : trans('workshop::modules.disabled') }}
+                                    <span class="label label-{{$module->isEnabled() ? 'success' : 'danger'}}">
+                                        {{ $module->isEnabled() ? trans('workshop::modules.enabled') : trans('workshop::modules.disabled') }}
                                     </span>
                                 </a>
                             </td>
