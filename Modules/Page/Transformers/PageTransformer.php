@@ -2,9 +2,9 @@
 
 namespace Modules\Page\Transformers;
 
-use Illuminate\Http\Resources\Json\Resource;
+use Illuminate\Http\Resources\Json\JsonResource;
 
-class PageTransformer extends Resource
+class PageTransformer extends JsonResource
 {
     public function toArray($request)
     {

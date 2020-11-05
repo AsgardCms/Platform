@@ -3,6 +3,7 @@
 namespace Modules\Translation\Services;
 
 use Illuminate\Filesystem\Filesystem;
+use Illuminate\Support\Arr;
 use Modules\Translation\ValueObjects\TranslationGroup;
 
 class TranslationsWriter
@@ -87,7 +88,7 @@ class TranslationsWriter
                 $fileName = $this->getFileNameFrom($key);
                 $key = str_replace($moduleName . '::' . $fileName . '.', '', $key);
 
-                array_set($tree[$locale][$moduleName][$fileName], $key, $trans);
+                Arr::set($tree[$locale][$moduleName][$fileName], $key, $trans);
             }
         }
 

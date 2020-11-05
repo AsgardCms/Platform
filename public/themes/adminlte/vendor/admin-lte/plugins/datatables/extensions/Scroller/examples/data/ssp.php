@@ -28,21 +28,21 @@ $primaryKey = 'id';
 // The `db` parameter represents the column name in the database, while the `dt`
 // parameter represents the DataTables column identifier. In this case simple
 // indexes
-$columns = array(
-	array( 'db' => 'id',         'dt' => 0 ),
-	array( 'db' => 'firstname',  'dt' => 1 ),
-	array( 'db' => 'surname',    'dt' => 2 ),
-	array( 'db' => 'zip',        'dt' => 3 ),
-	array( 'db' => 'country',    'dt' => 4 )
-);
+$columns = [
+	[ 'db' => 'id',         'dt' => 0 ],
+	[ 'db' => 'firstname',  'dt' => 1 ],
+	[ 'db' => 'surname',    'dt' => 2 ],
+	[ 'db' => 'zip',        'dt' => 3 ],
+	[ 'db' => 'country',    'dt' => 4 ]
+];
 
 // SQL server connection information
-$sql_details = array(
+$sql_details = [
 	'user' => '',
 	'pass' => '',
 	'db'   => '',
 	'host' => ''
-);
+];
 
 
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *

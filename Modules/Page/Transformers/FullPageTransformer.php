@@ -2,10 +2,10 @@
 
 namespace Modules\Page\Transformers;
 
-use Illuminate\Http\Resources\Json\Resource;
+use Illuminate\Http\Resources\Json\JsonResource;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
-class FullPageTransformer extends Resource
+class FullPageTransformer extends JsonResource
 {
     public function toArray($request)
     {

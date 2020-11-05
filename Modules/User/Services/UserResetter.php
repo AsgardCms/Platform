@@ -2,6 +2,7 @@
 
 namespace Modules\User\Services;
 
+use Illuminate\Support\Arr;
 use Modules\User\Contracts\Authentication;
 use Modules\User\Events\UserHasBegunResetProcess;
 use Modules\User\Exceptions\InvalidOrExpiredResetCode;
@@ -48,14 +49,14 @@ class UserResetter
      */
     public function finishReset(array $data)
     {
-        $user = $this->user->find(array_get($data, 'userId'));
+        $user = $this->user->find(Arr::get($data, 'userId'));
 
         if ($user === null) {
             throw new UserNotFoundException();
         }
 
-        $code = array_get($data, 'code');
-        $password = array_get($data, 'password');
+        $code = Arr::get($data, 'code');
+        $password = Arr::get($data, 'password');
         if (! $this->auth->completeResetPassword($user, $code, $password)) {
             throw new InvalidOrExpiredResetCode();
         }

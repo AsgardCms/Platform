@@ -5,6 +5,7 @@ namespace Modules\Tag\Traits;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\MorphToMany;
+use Illuminate\Support\Arr;
 use Modules\Tag\Entities\Tag;
 
 trait TaggableTrait
@@ -25,7 +26,7 @@ trait TaggableTrait
     {
         $query->with('translations');
 
-        foreach (array_wrap($tags) as $tag) {
+        foreach (Arr::wrap($tags) as $tag) {
             $query->whereHas('tags', function (Builder $query) use ($type, $tag) {
                 $query->whereHas('translations', function (Builder $query) use ($type, $tag) {
                     $query->where($type, $tag);
@@ -38,7 +39,7 @@ trait TaggableTrait
 
     public function scopeWithTag(Builder $query, $tags, string $type = 'slug'): Builder
     {
-        $tags = array_wrap($tags);
+        $tags = Arr::wrap($tags);
 
         $query->with('translations');
 
@@ -94,7 +95,7 @@ trait TaggableTrait
 
     public function tag($tags): bool
     {
-        foreach (array_wrap($tags) as $tag) {
+        foreach (Arr::wrap($tags) as $tag) {
             $this->addTag($tag);
         }
 

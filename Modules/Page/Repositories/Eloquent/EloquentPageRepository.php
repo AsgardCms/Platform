@@ -5,6 +5,8 @@ namespace Modules\Page\Repositories\Eloquent;
 use Illuminate\Contracts\Pagination\LengthAwarePaginator;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\Request;
+use Illuminate\Support\Arr;
+use Illuminate\Support\Str;
 use Mcamara\LaravelLocalization\LaravelLocalization;
 use Modules\Core\Repositories\Eloquent\EloquentBaseRepository;
 use Modules\Page\Entities\Page;
@@ -53,7 +55,7 @@ class EloquentPageRepository extends EloquentBaseRepository implements PageRepos
      */
     public function create($data)
     {
-        if (array_get($data, 'is_home') === '1') {
+        if (Arr::get($data, 'is_home') === '1') {
             $this->removeOtherHomepage();
         }
 
@@ -62,7 +64,7 @@ class EloquentPageRepository extends EloquentBaseRepository implements PageRepos
 
         event(new PageWasCreated($page, $data));
 
-        $page->setTags(array_get($data, 'tags', []));
+        $page->setTags(Arr::get($data, 'tags', []));
 
         return $page;
     }
@@ -74,7 +76,7 @@ class EloquentPageRepository extends EloquentBaseRepository implements PageRepos
      */
     public function update($model, $data)
     {
-        if (array_get($data, 'is_home') === '1') {
+        if (Arr::get($data, 'is_home') === '1') {
             $this->removeOtherHomepage($model->id);
         }
 
@@ -83,7 +85,7 @@ class EloquentPageRepository extends EloquentBaseRepository implements PageRepos
 
         event(new PageWasUpdated($model, $data));
 
-        $model->setTags(array_get($data, 'tags', []));
+        $model->setTags(Arr::get($data, 'tags', []));
 
         return $model;
     }
@@ -153,7 +155,7 @@ class EloquentPageRepository extends EloquentBaseRepository implements PageRepos
         if ($request->get('order_by') !== null && $request->get('order') !== 'null') {
             $order = $request->get('order') === 'ascending' ? 'asc' : 'desc';
 
-            if (str_contains($request->get('order_by'), '.')) {
+            if (Str::contains($request->get('order_by'), '.')) {
                 $fields = explode('.', $request->get('order_by'));
 
                 $pages->with('translations')->join('page__page_translations as t', function ($join) {

@@ -2,6 +2,7 @@
 
 namespace Modules\Tag\Blade;
 
+use Illuminate\Support\Arr;
 use Modules\Tag\Contracts\TaggableInterface;
 use Modules\Tag\Repositories\TagRepository;
 
@@ -58,10 +59,10 @@ class TagWidget
      */
     private function extractArguments(array $arguments)
     {
-        $this->namespace = array_get($arguments, 0);
-        $this->entity = array_get($arguments, 1);
-        $this->view = array_get($arguments, 2);
-        $this->name = array_get($arguments, 3);
+        $this->namespace = Arr::get($arguments, 0);
+        $this->entity = Arr::get($arguments, 1);
+        $this->view = Arr::get($arguments, 2);
+        $this->name = Arr::get($arguments, 3);
     }
 
     /**

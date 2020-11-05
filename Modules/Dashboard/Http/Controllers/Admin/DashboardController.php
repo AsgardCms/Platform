@@ -97,7 +97,7 @@ class DashboardController extends AdminBaseController
     private function bootWidgets(RepositoryInterface $modules)
     {
         foreach ($modules->allEnabled() as $module) {
-            if (! $module->widgets) {
+            if (! isset($module->widgets)) {
                 continue;
             }
             foreach ($module->widgets as $widgetClass) {

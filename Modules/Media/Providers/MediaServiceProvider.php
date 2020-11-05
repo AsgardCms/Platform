@@ -3,6 +3,7 @@
 namespace Modules\Media\Providers;
 
 use Illuminate\Contracts\Events\Dispatcher as DispatcherContract;
+use Illuminate\Support\Arr;
 use Illuminate\Support\ServiceProvider;
 use Modules\Core\Events\BuildingSidebar;
 use Modules\Core\Events\LoadingBackendTranslations;
@@ -69,8 +70,8 @@ class MediaServiceProvider extends ServiceProvider
         );
 
         $this->app['events']->listen(LoadingBackendTranslations::class, function (LoadingBackendTranslations $event) {
-            $event->load('media', array_dot(trans('media::media')));
-            $event->load('folders', array_dot(trans('media::folders')));
+            $event->load('media', Arr::dot(trans('media::media')));
+            $event->load('folders', Arr::dot(trans('media::folders')));
         });
 
         app('router')->bind('media', function ($id) {
@@ -105,7 +106,7 @@ class MediaServiceProvider extends ServiceProvider
      */
     public function provides()
     {
-        return array();
+        return [];
     }
 
     private function registerBindings()

@@ -39,6 +39,7 @@ return [
 
         'array' => [
             'driver' => 'array',
+            'serialize' => false,
         ],
 
         'database' => [
@@ -84,6 +85,11 @@ return [
             'table' => env('DYNAMODB_CACHE_TABLE', 'cache'),
             'endpoint' => env('DYNAMODB_ENDPOINT'),
         ],
+
+        'translations' => [
+            'driver' => env('TRANSLATIONS_CACHE_DRIVER', 'file'),
+            'path' => storage_path('framework/cache/data/translations'),
+        ]
 
     ],
 

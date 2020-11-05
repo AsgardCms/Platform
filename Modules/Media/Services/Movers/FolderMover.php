@@ -3,6 +3,7 @@
 namespace Modules\Media\Services\Movers;
 
 use Illuminate\Contracts\Filesystem\Factory;
+use Illuminate\Support\Str;
 use League\Flysystem\FileExistsException;
 use Modules\Media\Entities\File;
 use Modules\Media\Repositories\FileRepository;
@@ -111,7 +112,7 @@ final class FolderMover implements MoverInterface
 
     private function getNewPathFor(string $filename, File $folder) : string
     {
-        return $this->removeDoubleSlashes($folder->path->getRelativeUrl() . '/' . str_slug($filename));
+        return $this->removeDoubleSlashes($folder->path->getRelativeUrl() . '/' . Str::slug($filename));
     }
 
     private function removeDoubleSlashes(string $string) : string

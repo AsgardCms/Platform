@@ -3,6 +3,7 @@
 namespace Modules\Core\Console;
 
 use Illuminate\Console\Command;
+use Illuminate\Support\Str;
 use Modules\Core\Downloader\Downloader;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputOption;
@@ -98,11 +99,11 @@ class DownloadModuleCommand extends Command
 
     private function extractPackageNameFrom($package)
     {
-        if (str_contains($package, '/') === false) {
+        if (Str::contains($package, '/') === false) {
             throw new \Exception('You need to use vendor/name structure');
         }
 
-        return studly_case(substr(strrchr($package, '/'), 1));
+        return Str::studly(substr(strrchr($package, '/'), 1));
     }
 
     /**
