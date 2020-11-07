@@ -6,26 +6,20 @@
         "asgardcms",
         "multilingual",
         "laravel",
-        "laravel5"
+        "laravel8"
     ],
     "license": "MIT",
     "type": "project",
-    "repositories": [
-        {
-            "type": "vcs",
-            "url": "https://github.com/imagina/laravel-menus.git"
-        }
-    ],
     "require": {
         "php": "^7.3",
         "astrotomic/laravel-translatable": "^11.9",
-        "cartalyst/sentinel": "^4.0",
+        "cartalyst/sentinel": "^5.0",
         "doctrine/dbal": "^2.11",
         "fideloper/proxy": "^4.4",
         "fruitcake/laravel-cors": "^2.0",
         "guzzlehttp/guzzle": "^7.0.1",
         "imagina/laravel-menus": "dev-master",
-        "imagina/stylist": "^2.0",
+        "imagina/stylist": "^3.0",
         "intervention/image": "^2.5",
         "laracasts/presenter": "^0.2.4",
         "laravel/framework": "^8.13",
@@ -37,7 +31,20 @@
         "symfony/yaml": "^5.1",
         "tightenco/ziggy": "^0.9.4",
         "typicms/nestablecollection": "^1.1",
-        "venturecraft/revisionable": "^1.35"
+        "venturecraft/revisionable": "^1.35",
+        "idavoll/adminlte-theme": "4.0.x-dev",
+        "idavoll/core-module": "4.0.x-dev",
+        "idavoll/dashboard-module": "4.0.x-dev",
+        "idavoll/flatly-theme": "4.0.x-dev",
+        "idavoll/media-module": "4.0.x-dev",
+        "idavoll/menu-module": "4.0.x-dev",
+        "idavoll/page-module": "4.0.x-dev",
+        "idavoll/setting-module": "4.0.x-dev",
+        "idavoll/tag-module": "4.0.x-dev",
+        "idavoll/translation-module": "4.0.x-dev",
+        "idavoll/user-module": "4.0.x-dev",
+        "idavoll/workshop-module": "4.0.x-dev"
+
     },
     "require-dev": {
         "barryvdh/laravel-debugbar": "^3.5",
@@ -48,7 +55,6 @@
         "orchestra/testbench": "^6.2",
         "phpunit/phpunit": "^9.3",
         "predis/predis": "^1.1",
-        "roave/security-advisories": "dev-master",
         "facade/ignition": "^2.3.6"
     },
     "autoload": {
