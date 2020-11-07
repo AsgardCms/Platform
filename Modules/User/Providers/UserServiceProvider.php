@@ -3,6 +3,7 @@
 namespace Modules\User\Providers;
 
 use Cartalyst\Sentinel\Laravel\SentinelServiceProvider;
+use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\ServiceProvider;
 use Modules\Core\Events\BuildingSidebar;
@@ -70,8 +71,8 @@ class UserServiceProvider extends ServiceProvider
             $this->getSidebarClassForModule('user', RegisterUserSidebar::class)
         );
         $this->app['events']->listen(LoadingBackendTranslations::class, function (LoadingBackendTranslations $event) {
-            $event->load('users', array_dot(trans('user::users')));
-            $event->load('roles', array_dot(trans('user::roles')));
+            $event->load('users', Arr::dot(trans('user::users')));
+            $event->load('roles', Arr::dot(trans('user::roles')));
         });
         $this->commands([
             GrantModulePermissionsCommand::class,
@@ -116,7 +117,7 @@ class UserServiceProvider extends ServiceProvider
      */
     public function provides()
     {
-        return array();
+        return [];
     }
 
     private function registerBindings()

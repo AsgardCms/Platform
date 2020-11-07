@@ -2,6 +2,8 @@
 
 namespace Modules\Setting\Blade;
 
+use Illuminate\Support\Arr;
+
 final class SettingDirective
 {
     /**
@@ -32,8 +34,8 @@ final class SettingDirective
      */
     private function extractArguments(array $arguments)
     {
-        $this->settingName = array_get($arguments, 0);
-        $this->locale = array_get($arguments, 1);
-        $this->default = array_get($arguments, 2);
+        $this->settingName = Arr::get($arguments, 0);
+        $this->locale = Arr::get($arguments, 1);
+        $this->default = Arr::get($arguments, 2);
     }
 }

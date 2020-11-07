@@ -2,14 +2,13 @@
 
 namespace Modules\Core\Providers;
 
+use Illuminate\Contracts\Support\DeferrableProvider;
 use Illuminate\Support\ServiceProvider;
 use Maatwebsite\Sidebar\SidebarManager;
 use Modules\Core\Sidebar\AdminSidebar;
 
-class SidebarServiceProvider extends ServiceProvider
+class SidebarServiceProvider extends ServiceProvider implements DeferrableProvider
 {
-    protected $defer = true;
-
     /**
      * Register the service provider.
      * @return void

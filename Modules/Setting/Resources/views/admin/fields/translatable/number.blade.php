@@ -2,7 +2,7 @@
     $defaultValue = isset($moduleInfo['default']) ? $moduleInfo['default']: '';
     $defaultOptions = [
         'class' => 'form-control',
-        'placeholder' => trans($moduleInfo['description'])
+        'placeholder' => trans($moduleInfo['description']),
     ];
     $options = array_merge($defaultOptions, isset($moduleInfo['options']) ? $moduleInfo['options'] : []);
 ?>

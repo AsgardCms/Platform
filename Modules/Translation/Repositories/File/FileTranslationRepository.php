@@ -4,6 +4,7 @@ namespace Modules\Translation\Repositories\File;
 
 use Illuminate\Contracts\Translation\Loader;
 use Illuminate\Filesystem\Filesystem;
+use Illuminate\Support\Arr;
 use Modules\Translation\Repositories\FileTranslationRepository as FileTranslationRepositoryInterface;
 
 class FileTranslationRepository implements FileTranslationRepositoryInterface
@@ -36,7 +37,7 @@ class FileTranslationRepository implements FileTranslationRepositoryInterface
         foreach ($files as $locale => $files) {
             foreach ($files as $namespace => $file) {
                 $trans = $this->finder->getRequire($file);
-                $trans = array_dot($trans);
+                $trans = Arr::dot($trans);
 
                 foreach ($trans as $key => $value) {
                     $translations[$locale]["{$namespace}.{$key}"] = $value;

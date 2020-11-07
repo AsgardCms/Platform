@@ -2,6 +2,8 @@
 
 namespace Modules\Core\Foundation\Asset\Types;
 
+use Illuminate\Support\Arr;
+
 class CdnAsset implements AssetType
 {
     /**
@@ -20,6 +22,6 @@ class CdnAsset implements AssetType
      */
     public function url()
     {
-        return array_get($this->path, 'cdn');
+        return Arr::get($this->path, 'cdn');
     }
 }

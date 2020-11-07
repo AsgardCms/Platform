@@ -5,6 +5,7 @@ namespace Modules\Workshop\Scaffold\Module\Generators;
 use Illuminate\Contracts\Config\Repository;
 use Illuminate\Contracts\Filesystem\FileNotFoundException;
 use Illuminate\Filesystem\Filesystem;
+use Illuminate\Support\Str;
 
 class EntityGenerator extends Generator
 {
@@ -138,7 +139,7 @@ class EntityGenerator extends Generator
      */
     private function generateViewsFor($entity)
     {
-        $lowerCasePluralEntity = strtolower(str_plural($entity));
+        $lowerCasePluralEntity = strtolower(Str::plural($entity));
         $this->finder->makeDirectory($this->getModulesPath("Resources/views/admin/{$lowerCasePluralEntity}/partials"), 0755, true);
 
         foreach ($this->views as $stub => $view) {
@@ -156,7 +157,7 @@ class EntityGenerator extends Generator
      */
     private function generateLanguageFilesFor($entity)
     {
-        $lowerCaseEntity = str_plural(strtolower($entity));
+        $lowerCaseEntity = Str::plural(strtolower($entity));
         $path = $this->getModulesPath('Resources/lang/en');
         if (!$this->finder->isDirectory($path)) {
             $this->finder->makeDirectory($path);
@@ -175,7 +176,7 @@ class EntityGenerator extends Generator
     private function generateMigrationsFor($entity)
     {
         usleep(250000);
-        $lowercasePluralEntityName = strtolower(str_plural($entity));
+        $lowercasePluralEntityName = strtolower(Str::plural($entity));
         $lowercaseModuleName = strtolower($this->name);
         $migrationName = $this->getDateTimePrefix() . "create_{$lowercaseModuleName}_{$lowercasePluralEntityName}_table";
         $this->writeFile(

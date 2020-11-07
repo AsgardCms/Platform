@@ -2,6 +2,7 @@
 
 namespace Modules\Media\Blade;
 
+use Illuminate\Support\Arr;
 use Modules\Media\Image\Imagy;
 
 class MediaThumbnailDirective
@@ -38,7 +39,7 @@ class MediaThumbnailDirective
      */
     private function extractArguments(array $arguments)
     {
-        $this->path = array_get($arguments, 0);
-        $this->thumbnail = array_get($arguments, 1);
+        $this->path = Arr::get($arguments, 0);
+        $this->thumbnail = Arr::get($arguments, 1);
     }
 }

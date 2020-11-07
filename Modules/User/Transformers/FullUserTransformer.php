@@ -2,10 +2,10 @@
 
 namespace Modules\User\Transformers;
 
-use Illuminate\Http\Resources\Json\Resource;
+use Illuminate\Http\Resources\Json\JsonResource;
 use Modules\User\Permissions\PermissionManager;
 
-class FullUserTransformer extends Resource
+class FullUserTransformer extends JsonResource
 {
     public function toArray($request)
     {

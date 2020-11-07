@@ -7,7 +7,7 @@ $q = strtolower($_GET["term"]);
 // remove slashes if they were magically added
 if (get_magic_quotes_gpc()) $q = stripslashes($q);
 
-$items = array(
+$items = [
 "Great Bittern"=>"Botaurus stellaris",
 "Little Grebe"=>"Tachybaptus ruficollis",
 "Black-necked Grebe"=>"Podiceps nigricollis",
@@ -571,12 +571,12 @@ $items = array(
 "Green Heron"=>"Butorides virescens",
 "Solitary Sandpiper"=>"Tringa solitaria",
 "Heuglin's Gull"=>"Larus heuglini"
-);
+];
 
-$result = array();
+$result = [];
 foreach ($items as $key=>$value) {
 	if (strpos(strtolower($key), $q) !== false) {
-		array_push($result, array("id"=>$value, "label"=>$key, "value" => strip_tags($key)));
+		array_push($result, ["id"=>$value, "label"=>$key, "value" => strip_tags($key)]);
 	}
 	if (count($result) > 11)
 		break;

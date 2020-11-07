@@ -130,11 +130,11 @@ abstract class Generator
             [
                 $this->name,
                 strtolower($this->name),
-                strtolower(str_plural($this->name)),
+                strtolower(Str::plural($this->name)),
                 $class,
                 strtolower($class),
-                strtolower(str_plural($class)),
-                str_plural($class),
+                strtolower(Str::plural($class)),
+                Str::plural($class),
                 $this->entityType,
             ],
             $stub
