@@ -25,9 +25,9 @@
     "nwidart/laravel-modules": "^6.0",
     "laravelcollective/html": "5.7.*",
     "laracasts/presenter": "^0.2.4",
-    "astrotomic/laravel-translatable": "^11.1",
+    "astrotomic/laravel-translatable": "^11.9",
     "mcamara/laravel-localization": "^1.6",
-    "imagina/stylist": "^2.0",
+    "imagina/stylist": "^3.0",
     "maatwebsite/laravel-sidebar": "^2.4",
     "yajra/laravel-datatables-oracle": "~8.0",
     "tightenco/ziggy": "^0.9.4"
