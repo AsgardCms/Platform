@@ -10,7 +10,7 @@ cache:
     - $HOME/.composer/cache
 
 env:
-  - LARAVEL_VERSION="~5.7" TESTBENCH_VERSION="~3.7"
+  - LARAVEL_VERSION="~7.0" TESTBENCH_VERSION="~5.7"
 
 before_script:
   - phpenv config-rm xdebug.ini

@@ -146,7 +146,7 @@ return [
             'pace.css',
             'selectize-default.css',
             'asgard.css',
-            'flag-icon.css'
+            'flag-icon.css',
         ],
         'js' => [
             'bootstrap.js',

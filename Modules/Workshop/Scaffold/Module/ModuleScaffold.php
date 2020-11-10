@@ -5,6 +5,7 @@ namespace Modules\Workshop\Scaffold\Module;
 use Illuminate\Contracts\Config\Repository;
 use Illuminate\Contracts\Console\Kernel;
 use Illuminate\Filesystem\Filesystem;
+use Illuminate\Support\Str;
 use Modules\Workshop\Scaffold\Module\Exception\ModuleExistsException;
 use Modules\Workshop\Scaffold\Module\Generators\EntityGenerator;
 use Modules\Workshop\Scaffold\Module\Generators\FilesGenerator;
@@ -139,7 +140,7 @@ class ModuleScaffold
      */
     public function getName()
     {
-        return studly_case($this->name);
+        return Str::studly($this->name);
     }
 
     /**
@@ -267,7 +268,7 @@ JSON;
      */
     private function setModuleVersion($content)
     {
-        return str_replace("\"active\"", "\"version\": \"1.0.0\",\n\t\"active\"", $content);
+        return str_replace("\"description\"", "\"version\": \"1.0.0\",\n\t\"description\"", $content);
     }
 
     /**

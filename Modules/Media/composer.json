@@ -36,7 +36,7 @@
     "league/flysystem-aws-s3-v3": "~1.0",
     "mockery/mockery": "^0.9.5",
     "friendsofphp/php-cs-fixer": "^2.12",
-    "doctrine/dbal": "^2.5"
+    "doctrine/dbal": "^2.10"
   },
   "autoload-dev": {
     "psr-4": {

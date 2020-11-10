@@ -2,6 +2,7 @@
 
 namespace Modules\Core\Foundation\Asset\Types;
 
+use Illuminate\Support\Arr;
 use Nwidart\Modules\Facades\Module;
 
 class ModuleAsset implements AssetType
@@ -27,6 +28,6 @@ class ModuleAsset implements AssetType
 
     private function getPath()
     {
-        return array_get($this->path, 'module');
+        return Arr::get($this->path, 'module');
     }
 }

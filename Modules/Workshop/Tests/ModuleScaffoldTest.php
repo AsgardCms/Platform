@@ -2,6 +2,7 @@
 
 namespace Modules\Workshop\Tests;
 
+use Illuminate\Support\Str;
 use Modules\Workshop\Scaffold\Module\Exception\ModuleExistsException;
 use Modules\Workshop\Scaffold\Module\ModuleScaffold;
 
@@ -48,7 +49,7 @@ class ModuleScaffoldTest extends BaseTestCase
      */
     public static function delTree($dir)
     {
-        $files = array_diff(scandir($dir), array('.', '..'));
+        $files = array_diff(scandir($dir), ['.', '..']);
         foreach ($files as $file) {
             (is_dir("$dir/$file")) ? self::delTree("$dir/$file") : unlink("$dir/$file");
         }
@@ -277,17 +278,17 @@ class ModuleScaffoldTest extends BaseTestCase
         $file = $this->finder->get($this->testModulePath . "/Providers/{$this->testModuleSanitizedName}ServiceProvider.php");
 
         $sidebarEventListenerName = "Register{$this->testModuleSanitizedName}Sidebar";
-        $this->assertTrue(str_contains(
+        $this->assertTrue(Str::contains(
             $file,
             '$this->loadMigrationsFrom(__DIR__ . \'/../Database/Migrations\');'
         ), 'Migrations arent loaded');
 
-        $this->assertTrue(str_contains(
+        $this->assertTrue(Str::contains(
             $file,
             '$this->app[\'events\']->listen(BuildingSidebar::class, ' . $sidebarEventListenerName . '::class);'
         ), 'Sidebar event handler was not present');
 
-        $this->assertTrue(str_contains(
+        $this->assertTrue(Str::contains(
             $file,
             '$this->app[\'events\']->listen(LoadingBackendTranslations::class,'
         ), 'Translations registering was not present');
@@ -354,8 +355,8 @@ class ModuleScaffoldTest extends BaseTestCase
 
         $file = $this->finder->get($this->testModulePath . "/Events/Handlers/Register{$this->testModuleSanitizedName}Sidebar.php");
 
-        $this->assertTrue(str_contains($file, '$menu->group'));
-        $this->assertTrue(str_contains($file, "class Register{$this->testModuleSanitizedName}Sidebar"));
+        $this->assertTrue(Str::contains($file, '$menu->group'));
+        $this->assertTrue(Str::contains($file, "class Register{$this->testModuleSanitizedName}Sidebar"));
 
         $this->cleanUp();
     }
@@ -367,8 +368,8 @@ class ModuleScaffoldTest extends BaseTestCase
 
         $file = $this->finder->get($this->testModulePath . "/Events/Handlers/Register{$this->testModuleSanitizedName}Sidebar.php");
 
-        $this->assertFalse(str_contains($file, '$menu->group'));
-        $this->assertTrue(str_contains($file, 'return $menu'));
+        $this->assertFalse(Str::contains($file, '$menu->group'));
+        $this->assertTrue(Str::contains($file, 'return $menu'));
 
         $this->cleanUp();
     }
@@ -532,7 +533,7 @@ class ModuleScaffoldTest extends BaseTestCase
         ];
 
         foreach ($matches as $match) {
-            $this->assertContains($match, $controllerContents);
+            $this->assertStringContainsString($match, $controllerContents);
         }
 
         $this->cleanUp();
@@ -548,7 +549,7 @@ class ModuleScaffoldTest extends BaseTestCase
         $path = $this->testModulePath . '/Http/backendRoutes.php';
         $file = $this->finder->get($path);
         $this->assertTrue($this->finder->isFile($path));
-        $this->assertContains('overwritten by custom config', $file);
+        $this->assertStringContainsString('overwritten by custom config', $file);
 
         $this->cleanUp();
     }

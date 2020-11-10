@@ -19,7 +19,7 @@ class DeleteFolderOnDisk
 
     public function handle(FolderIsDeleting $event)
     {
-        $this->finder->disk($this->getConfiguredFilesystem())->deleteDirectory($this->getDestinationPath($event->folder->getOriginal('path')));
+        $this->finder->disk($this->getConfiguredFilesystem())->deleteDirectory($this->getDestinationPath($event->folder->getRawOriginal('path')));
     }
 
     /**

@@ -3,6 +3,7 @@
 namespace Modules\Setting\Providers;
 
 use Illuminate\Foundation\AliasLoader;
+use Illuminate\Support\Arr;
 use Illuminate\Support\ServiceProvider;
 use Modules\Core\Events\BuildingSidebar;
 use Modules\Core\Events\LoadingBackendTranslations;
@@ -55,7 +56,7 @@ class SettingServiceProvider extends ServiceProvider
         );
 
         $this->app['events']->listen(LoadingBackendTranslations::class, function (LoadingBackendTranslations $event) {
-            $event->load('settings', array_dot(trans('setting::settings')));
+            $event->load('settings', Arr::dot(trans('setting::settings')));
         });
     }
 
@@ -74,7 +75,7 @@ class SettingServiceProvider extends ServiceProvider
      */
     public function provides()
     {
-        return array();
+        return [];
     }
 
     private function registerBindings()

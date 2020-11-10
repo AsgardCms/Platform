@@ -3,6 +3,7 @@
 namespace Modules\User\Tests;
 
 use Illuminate\Support\Facades\Event;
+use Illuminate\Support\Str;
 use Modules\User\Entities\Sentinel\User;
 use Modules\User\Events\UserHasRegistered;
 use Modules\User\Events\UserIsCreating;
@@ -388,7 +389,7 @@ class SentinelUserRepositoryTest extends BaseUserTestCase
     {
         return $this->role->create([
             'name' => $name,
-            'slug' => str_slug($name),
+            'slug' => Str::slug($name),
         ]);
     }
 }

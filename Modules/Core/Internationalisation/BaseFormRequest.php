@@ -3,6 +3,7 @@
 namespace Modules\Core\Internationalisation;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Support\Arr;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
 abstract class BaseFormRequest extends FormRequest
@@ -86,7 +87,7 @@ abstract class BaseFormRequest extends FormRequest
             $translations[$key] = $this->get($key);
         }
         $results['translations'] = $translations;
-        array_forget($results, $locales);
+        Arr::forget($results, $locales);
 
         return $results;
     }

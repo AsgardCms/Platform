@@ -2,6 +2,7 @@
 
 namespace Modules\Translation\Importers;
 
+use Illuminate\Support\Arr;
 use League\Csv\Reader;
 use Modules\Translation\Repositories\TranslationRepository;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
@@ -32,7 +33,7 @@ class TranslationsImporter
                 return true;
             }
 
-            $key = array_get($row, 'key');
+            $key = Arr::get($row, 'key');
             array_shift($row);
             $data = [];
             foreach ($row as $locale => $value) {

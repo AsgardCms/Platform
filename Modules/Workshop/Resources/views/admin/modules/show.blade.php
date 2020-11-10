@@ -8,12 +8,12 @@
                 <i class="fa fa-reply"></i>
             </a>
         </small>
-        {{ $module->name }} <small>{{ trans('workshop::modules.module') }}</small>
+        {{ $module->getName() }} <small>{{ trans('workshop::modules.module') }}</small>
     </h1>
     <ol class="breadcrumb">
         <li><a href="{{ route('dashboard.index') }}"><i class="fa fa-dashboard"></i> {{ trans('user::users.breadcrumb.home') }}</a></li>
         <li><a href="{{ route('admin.workshop.modules.index') }}">{{ trans('workshop::modules.breadcrumb.modules') }}</a></li>
-        <li class="active">{{ trans('workshop::modules.viewing module') }} {{ $module->name }}</li>
+        <li class="active">{{ trans('workshop::modules.viewing module') }} {{ $module->getName() }}</li>
     </ol>
 @stop
 
@@ -48,17 +48,17 @@
             <div class="box box-primary">
                 <div class="box-header">
                     <div class="box-tools pull-right">
-                        <?php $status = $module->enabled() ? 'disable' : 'enable'; ?>
+                        <?php $status = $module->isEnabled() ? 'disable' : 'enable'; ?>
                         <button class="btn btn-box-tool jsPublishAssets" data-toggle="tooltip"
                                 title="" data-original-title="{{ trans("workshop::modules.publish assets") }}">
                             <i class="fa fa-cloud-upload"></i>
                             {{ trans("workshop::modules.publish assets") }}
                         </button>
-                            <?php $routeName = $module->enabled() ? 'disable' : 'enable' ?>
+                            <?php $routeName = $module->isEnabled() ? 'disable' : 'enable' ?>
                         {!! Form::open(['route' => ["admin.workshop.modules.$routeName", $module->getName()], 'method' => 'post']) !!}
                             <button class="btn btn-box-tool" data-toggle="tooltip" type="submit"
                                     title="" data-original-title="{{ trans("workshop::modules.{$status}") }}">
-                                <i class="fa fa-toggle-{{ $module->enabled() ? 'on' : 'off' }}"></i>
+                                <i class="fa fa-toggle-{{ $module->isEnabled() ? 'on' : 'off' }}"></i>
                                 {{ trans("workshop::modules.{$status}") }}
                             </button>
                         {!! Form::close() !!}

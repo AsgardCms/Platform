@@ -6,6 +6,7 @@ use FloatingPoint\Stylist\Theme\Exceptions\ThemeNotFoundException;
 use FloatingPoint\Stylist\Theme\Json;
 use FloatingPoint\Stylist\Theme\Theme;
 use Illuminate\Filesystem\Filesystem;
+use Illuminate\Support\Arr;
 use Symfony\Component\Yaml\Parser;
 
 class StylistThemeManager implements ThemeManager
@@ -103,7 +104,7 @@ class StylistThemeManager implements ThemeManager
 
         $changelog = $yamlParser->parse($yamlFile);
 
-        $changelog['versions'] = $this->limitLastVersionsAmount(array_get($changelog, 'versions', []));
+        $changelog['versions'] = $this->limitLastVersionsAmount(Arr::get($changelog, 'versions', []));
 
         return $changelog;
     }

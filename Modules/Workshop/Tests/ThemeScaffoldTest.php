@@ -2,6 +2,7 @@
 
 namespace Modules\Workshop\Tests;
 
+use Illuminate\Support\Str;
 use Modules\Workshop\Scaffold\Theme\Exceptions\FileTypeNotFoundException;
 use Modules\Workshop\Scaffold\Theme\Exceptions\ThemeExistsException;
 use Modules\Workshop\Scaffold\Theme\ThemeScaffold;
@@ -116,8 +117,8 @@ class ThemeScaffoldTest extends BaseTestCase
         $this->generateFrontendTheme();
 
         $this->assertTrue($this->finder->isFile($this->testThemePath . '/theme.json'));
-        $this->assertTrue(str_contains($this->finder->get($this->testThemePath . '/theme.json'), '"name": "' . $this->testThemeName . '",'));
-        $this->assertTrue(str_contains($this->finder->get($this->testThemePath . '/theme.json'), '"type": "frontend"'));
+        $this->assertTrue(Str::contains($this->finder->get($this->testThemePath . '/theme.json'), '"name": "' . $this->testThemeName . '",'));
+        $this->assertTrue(Str::contains($this->finder->get($this->testThemePath . '/theme.json'), '"type": "frontend"'));
     }
 
     /** @test */
@@ -128,7 +129,7 @@ class ThemeScaffoldTest extends BaseTestCase
         $this->generateFrontendTheme();
 
         $this->assertTrue($this->finder->isFile($this->testThemePath . '/composer.json'));
-        $this->assertTrue(str_contains($this->finder->get($this->testThemePath . '/composer.json'), '"name": "asgardcms/TestingTheme-theme",'));
+        $this->assertTrue(Str::contains($this->finder->get($this->testThemePath . '/composer.json'), '"name": "asgardcms/TestingTheme-theme",'));
     }
 
     /** @test */
@@ -193,6 +194,6 @@ class ThemeScaffoldTest extends BaseTestCase
         $this->generateFrontendTheme();
 
         $this->assertTrue($this->finder->isFile($this->testThemePath . '/theme.json'));
-        $this->assertTrue(str_contains($this->finder->get($this->testThemePath . '/theme.json'), '"version": "1.0.0"'));
+        $this->assertTrue(Str::contains($this->finder->get($this->testThemePath . '/theme.json'), '"version": "1.0.0"'));
     }
 }

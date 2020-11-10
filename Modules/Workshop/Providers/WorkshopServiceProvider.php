@@ -2,6 +2,7 @@
 
 namespace Modules\Workshop\Providers;
 
+use Illuminate\Support\Arr;
 use Illuminate\Support\ServiceProvider;
 use Modules\Core\Events\BuildingSidebar;
 use Modules\Core\Events\LoadingBackendTranslations;
@@ -49,9 +50,9 @@ class WorkshopServiceProvider extends ServiceProvider
         );
 
         $this->app['events']->listen(LoadingBackendTranslations::class, function (LoadingBackendTranslations $event) {
-            $event->load('workshop', array_dot(trans('workshop::workshop')));
-            $event->load('modules', array_dot(trans('workshop::modules')));
-            $event->load('themes', array_dot(trans('workshop::themes')));
+            $event->load('workshop', Arr::dot(trans('workshop::workshop')));
+            $event->load('modules', Arr::dot(trans('workshop::modules')));
+            $event->load('themes', Arr::dot(trans('workshop::themes')));
         });
 
         app('router')->bind('module', function ($module) {

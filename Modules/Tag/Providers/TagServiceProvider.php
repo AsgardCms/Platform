@@ -2,6 +2,7 @@
 
 namespace Modules\Tag\Providers;
 
+use Illuminate\Support\Arr;
 use Illuminate\Support\ServiceProvider;
 use Modules\Core\Events\BuildingSidebar;
 use Modules\Core\Events\LoadingBackendTranslations;
@@ -44,7 +45,7 @@ class TagServiceProvider extends ServiceProvider
         );
 
         $this->app['events']->listen(LoadingBackendTranslations::class, function (LoadingBackendTranslations $event) {
-            $event->load('tags', array_dot(trans('tag::tags')));
+            $event->load('tags', Arr::dot(trans('tag::tags')));
         });
 
         app('router')->bind('tag__tag', function ($id) {
@@ -67,7 +68,7 @@ class TagServiceProvider extends ServiceProvider
      */
     public function provides()
     {
-        return array();
+        return [];
     }
 
     private function registerBindings()

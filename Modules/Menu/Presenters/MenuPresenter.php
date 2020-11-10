@@ -2,6 +2,7 @@
 
 namespace Modules\Menu\Presenters;
 
+use Illuminate\Support\Str;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 use Nwidart\Menus\MenuItem;
 use Nwidart\Menus\Presenters\Presenter;
@@ -10,7 +11,7 @@ class MenuPresenter extends Presenter
 {
     public function setLocale($item)
     {
-        if (starts_with($item->url, 'http')) {
+        if (Str::startsWith($item->url, 'http')) {
             return;
         }
         if (LaravelLocalization::hideDefaultLocaleInURL() === false) {
