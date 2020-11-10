@@ -4,6 +4,7 @@ versions:
         added:
             - Laravel 5.6 compatibility
         changed:
+            - Prevents the deletion of the last API token
             - Prevent users from deleting other users API tokens
             - Added redirect for standard password change URL
     "3.6.0":

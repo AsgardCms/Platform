@@ -58,6 +58,7 @@ return [
     'generate one' => 'Generate one.',
     'token generated' => 'API token was successfully generated',
     'token deleted' => 'API token was successfully deleted',
+    'last token can not be deleted' => 'Last token can not be deleted',
     'list user' => 'List users',
     'create user' => 'Create users',
     'edit user' => 'Edit users',
