@@ -24,7 +24,7 @@
   "require": {
     "php": "^7.1.3",
     "composer/installers": "~1.0",
-    "imagina/laravel-menus": "dev-master",
+    "nwidart/laravel-menus": "^7.0",
     "typicms/nestablecollection": "^1.1"
   },
   "require-dev": {

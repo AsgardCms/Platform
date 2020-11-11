@@ -18,7 +18,7 @@
         "fideloper/proxy": "^4.4",
         "fruitcake/laravel-cors": "^2.0",
         "guzzlehttp/guzzle": "^7.0.1",
-        "imagina/laravel-menus": "dev-master",
+        "nwidart/laravel-menus": "^7.0",
         "imagina/stylist": "^3.0",
         "intervention/image": "^2.5",
         "laracasts/presenter": "^0.2.4",
