@@ -33,7 +33,9 @@
         "symfony/yaml": "^5.1",
         "tightenco/ziggy": "^0.9.4",
         "typicms/nestablecollection": "^1.1",
-        "venturecraft/revisionable": "^1.35"
+        "venturecraft/revisionable": "^1.35",
+        "yajra/laravel-datatables-oracle": "~9.0"
+
     },
     "require-dev": {
         "barryvdh/laravel-debugbar": "^3.5",

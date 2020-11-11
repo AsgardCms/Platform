@@ -34,6 +34,7 @@
         "tightenco/ziggy": "^0.9.4",
         "typicms/nestablecollection": "^1.1",
         "venturecraft/revisionable": "^1.35",
+        "yajra/laravel-datatables-oracle": "~9.0",
         "idavoll/adminlte-theme": "4.0.x-dev",
         "idavoll/core-module": "4.0.x-dev",
         "idavoll/dashboard-module": "4.0.x-dev",
