@@ -31,7 +31,7 @@
     "phpunit/phpunit": "~7.0",
     "orchestra/testbench": "3.8.*",
     "fzaninotto/faker": "1.4.0",
-    "doctrine/dbal": "^2.10",
+    "doctrine/dbal": "^2.11",
     "idavoll/page-module": "4.0.x-dev"
   },
   "autoload-dev": {

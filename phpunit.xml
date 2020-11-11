@@ -1,57 +1,49 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<phpunit backupGlobals="false"
-         backupStaticAttributes="false"
-         bootstrap="vendor/autoload.php"
-         colors="true"
-         convertErrorsToExceptions="true"
-         convertNoticesToExceptions="true"
-         convertWarningsToExceptions="true"
-         processIsolation="false"
-         stopOnFailure="false">
-    <testsuites>
-        <testsuite name="Core">
-            <directory>./Modules/Core/Tests/</directory>
-        </testsuite>
-        <testsuite name="Dashboard">
-            <directory>./Modules/Dashboard/Tests/</directory>
-        </testsuite>
-        <testsuite name="Media">
-            <directory>./Modules/Media/Tests/</directory>
-        </testsuite>
-        <testsuite name="Menu">
-            <directory>./Modules/Menu/Tests/</directory>
-        </testsuite>
-        <testsuite name="Page">
-            <directory>./Modules/Page/Tests/</directory>
-        </testsuite>
-        <testsuite name="Setting">
-            <directory>./Modules/Setting/Tests/</directory>
-        </testsuite>
-        <testsuite name="Tag">
-            <directory>./Modules/Tag/Tests/</directory>
-        </testsuite>
-        <testsuite name="Translation">
-            <directory>./Modules/Translation/Tests/</directory>
-        </testsuite>
-        <testsuite name="User">
-            <directory>./Modules/User/Tests/</directory>
-        </testsuite>
-        <testsuite name="Workshop">
-            <directory>./Modules/Workshop/Tests/</directory>
-        </testsuite>
-    </testsuites>
-    <filter>
-        <whitelist processUncoveredFilesFromWhitelist="true">
-            <directory suffix=".php">./app</directory>
-        </whitelist>
-    </filter>
-    <php>
-        <env name="APP_ENV" value="testing"/>
-        <env name="BCRYPT_ROUNDS" value="4"/>
-        <env name="APP_URL" value="http://localhost"/>
-        <env name="CACHE_DRIVER" value="array"/>
-        <env name="SESSION_DRIVER" value="array"/>
-        <env name="QUEUE_CONNECTION" value="sync"/>
-        <env name="MAIL_MAILER" value="array"/>
-    </php>
+<phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" backupGlobals="false" backupStaticAttributes="false" bootstrap="vendor/autoload.php" colors="true" convertErrorsToExceptions="true" convertNoticesToExceptions="true" convertWarningsToExceptions="true" processIsolation="false" stopOnFailure="false" xsi:noNamespaceSchemaLocation="https://schema.phpunit.de/9.3/phpunit.xsd">
+  <coverage processUncoveredFiles="true">
+    <include>
+      <directory suffix=".php">./app</directory>
+    </include>
+  </coverage>
+  <testsuites>
+    <testsuite name="Core">
+      <directory>./Modules/Core/Tests/</directory>
+    </testsuite>
+    <testsuite name="Dashboard">
+      <directory>./Modules/Dashboard/Tests/</directory>
+    </testsuite>
+    <testsuite name="Media">
+      <directory>./Modules/Media/Tests/</directory>
+    </testsuite>
+    <testsuite name="Menu">
+      <directory>./Modules/Menu/Tests/</directory>
+    </testsuite>
+    <testsuite name="Page">
+      <directory>./Modules/Page/Tests/</directory>
+    </testsuite>
+    <testsuite name="Setting">
+      <directory>./Modules/Setting/Tests/</directory>
+    </testsuite>
+    <testsuite name="Tag">
+      <directory>./Modules/Tag/Tests/</directory>
+    </testsuite>
+    <testsuite name="Translation">
+      <directory>./Modules/Translation/Tests/</directory>
+    </testsuite>
+    <testsuite name="User">
+      <directory>./Modules/User/Tests/</directory>
+    </testsuite>
+    <testsuite name="Workshop">
+      <directory>./Modules/Workshop/Tests/</directory>
+    </testsuite>
+  </testsuites>
+  <php>
+    <env name="APP_ENV" value="testing"/>
+    <env name="BCRYPT_ROUNDS" value="4"/>
+    <env name="APP_URL" value="http://localhost"/>
+    <env name="CACHE_DRIVER" value="array"/>
+    <env name="SESSION_DRIVER" value="array"/>
+    <env name="QUEUE_CONNECTION" value="sync"/>
+    <env name="MAIL_MAILER" value="array"/>
+  </php>
 </phpunit>
