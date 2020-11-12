@@ -77,6 +77,7 @@ return [
     | Set the fields that will be casted by Eloquent
     */
     'casts' => [
+        'permissions' => 'json',
     ],
     /*
     |--------------------------------------------------------------------------
