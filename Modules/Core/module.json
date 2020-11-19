@@ -6,7 +6,7 @@
     "require": {},
     "version": "2.5.0",
     "active": 1,
-    "order": 0,
+    "priority": 0,
     "providers": [
         "Modules\\Core\\Providers\\CoreServiceProvider",
         "Modules\\Core\\Providers\\SidebarServiceProvider",
