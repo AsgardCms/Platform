@@ -341,7 +341,7 @@ class ModuleScaffoldTest extends BaseTestCase
     {
         $this->scaffoldModuleWithEloquent();
 
-        $file = $this->finder->isFile($this->testModulePath . "/Events/Handlers/Register{$this->testModuleSanitizedName}Sidebar.php");
+        $file = $this->finder->isFile($this->testModulePath . "/Listeners/Register{$this->testModuleSanitizedName}Sidebar.php");
 
         $this->assertTrue($file);
 
@@ -353,7 +353,7 @@ class ModuleScaffoldTest extends BaseTestCase
     {
         $this->scaffoldModuleWithEloquent();
 
-        $file = $this->finder->get($this->testModulePath . "/Events/Handlers/Register{$this->testModuleSanitizedName}Sidebar.php");
+        $file = $this->finder->get($this->testModulePath . "/Listeners/Register{$this->testModuleSanitizedName}Sidebar.php");
 
         $this->assertTrue(Str::contains($file, '$menu->group'));
         $this->assertTrue(Str::contains($file, "class Register{$this->testModuleSanitizedName}Sidebar"));
@@ -366,7 +366,7 @@ class ModuleScaffoldTest extends BaseTestCase
     {
         $this->scaffoldModule('Eloquent', [], []);
 
-        $file = $this->finder->get($this->testModulePath . "/Events/Handlers/Register{$this->testModuleSanitizedName}Sidebar.php");
+        $file = $this->finder->get($this->testModulePath . "/Listeners/Register{$this->testModuleSanitizedName}Sidebar.php");
 
         $this->assertFalse(Str::contains($file, '$menu->group'));
         $this->assertTrue(Str::contains($file, 'return $menu'));
@@ -509,13 +509,13 @@ class ModuleScaffoldTest extends BaseTestCase
     }
 
     /** @test */
-    public function it_sets_module_order_to_1_in_module_json_file()
+    public function it_sets_module_priority_to_1_in_module_json_file()
     {
         $this->scaffoldModuleWithEloquent();
 
         $moduleJson = $this->getModuleFile();
 
-        $this->assertEquals(1, $moduleJson->order);
+        $this->assertEquals(1, $moduleJson->priority);
     }
 
     /** @test */

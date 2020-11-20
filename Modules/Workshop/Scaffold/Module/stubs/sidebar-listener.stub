@@ -1,6 +1,6 @@
 <?php
 
-namespace Modules\$MODULE_NAME$\Events\Handlers;
+namespace Modules\$MODULE_NAME$\Listeners;
 
 use Maatwebsite\Sidebar\Group;
 use Maatwebsite\Sidebar\Item;

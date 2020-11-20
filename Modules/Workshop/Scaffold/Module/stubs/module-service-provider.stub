@@ -7,7 +7,7 @@ use Illuminate\Support\ServiceProvider;
 use Modules\Core\Traits\CanPublishConfiguration;
 use Modules\Core\Events\BuildingSidebar;
 use Modules\Core\Events\LoadingBackendTranslations;
-use Modules\$MODULE$\Events\Handlers\$SIDEBAR_LISTENER_NAME$;
+use Modules\$MODULE$\Listeners\$SIDEBAR_LISTENER_NAME$;
 
 class $MODULE$ServiceProvider extends ServiceProvider
 {
@@ -33,7 +33,7 @@ class $MODULE$ServiceProvider extends ServiceProvider
             // append translations
         });
 
-        $this->registerEloquentFactoriesFrom(__DIR__ . '/../Database/factories');
+
     }
 
     public function boot()
@@ -58,14 +58,5 @@ class $MODULE$ServiceProvider extends ServiceProvider
 // add bindings
     }
 
-    /**
-     * Register factories.
-     *
-     * @param  string  $path
-     * @return void
-     */
-    protected function registerEloquentFactoriesFrom($path)
-    {
-        $this->app->make(EloquentFactory::class)->load($path);
-    }
+
 }
