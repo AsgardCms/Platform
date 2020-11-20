@@ -258,7 +258,7 @@ JSON;
      */
     private function setModuleOrderOrder($content)
     {
-        return str_replace('"order": 0,', '"order": 1,', $content);
+        return str_replace('"priority": 0,', '"priority": 1,', $content);
     }
 
     /**

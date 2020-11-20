@@ -28,7 +28,7 @@
         "laravel/ui": "^3.0",
         "maatwebsite/laravel-sidebar": "^2.4",
         "mcamara/laravel-localization": "^1.6",
-        "nwidart/laravel-modules": "^6.0",
+        "nwidart/laravel-modules": "^8.0",
         "ramsey/uuid": "^4.0",
         "symfony/yaml": "^5.1",
         "tightenco/ziggy": "^0.9.4",

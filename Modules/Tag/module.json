@@ -9,7 +9,7 @@
     ],
     "version": "2.5.0",
     "active": 1,
-    "order": 1,
+    "priority": 1,
     "providers": [
         "Modules\\Tag\\Providers\\TagServiceProvider",
         "Modules\\Tag\\Providers\\RouteServiceProvider"

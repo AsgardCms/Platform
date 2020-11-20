@@ -5,7 +5,7 @@
   "keywords": [],
   "version": "2.5.0",
   "active": 1,
-  "order": 1,
+  "priority": 1,
   "providers": [
     "Modules\\User\\Providers\\UserServiceProvider",
     "Modules\\User\\Providers\\EventServiceProvider",
