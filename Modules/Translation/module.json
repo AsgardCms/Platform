@@ -5,7 +5,7 @@
     "version": "2.5.0",
     "keywords": [],
     "active": 1,
-    "order": 2,
+    "priority": 2,
     "providers": [
         "Modules\\Translation\\Providers\\RouteServiceProvider"
     ],
