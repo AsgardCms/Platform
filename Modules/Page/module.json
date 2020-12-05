@@ -5,7 +5,7 @@
     "keywords": [],
     "version": "2.5.0",
     "active": 1,
-    "order": 9999,
+    "priority": 9999,
     "providers": [
         "Modules\\Page\\Providers\\RouteServiceProvider",
         "Modules\\Page\\Providers\\PageServiceProvider"
