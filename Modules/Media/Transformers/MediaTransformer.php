@@ -81,7 +81,7 @@ class MediaTransformer extends JsonResource
 
     private function getDeleteUrl()
     {
-        if ($this->resource->isImage()) {
+        if (!$this->resource->isFolder()) {
             return route('api.media.media.destroy', $this->resource->id);
         }
 
