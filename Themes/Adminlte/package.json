@@ -38,7 +38,7 @@
     "webpack-shell-plugin": "^0.5.0"
   },
   "devDependencies": {
-    "axios": "^0.16.2",
+    "axios": "^0.21.1",
     "bootstrap-sass": "^3.3.7",
     "cross-env": "^5.0.5",
     "jquery": "^3.1.1",
