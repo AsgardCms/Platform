@@ -7,7 +7,7 @@ if (! function_exists('module_version')) {
             return \Modules\Core\Foundation\AsgardCms::VERSION;
         }
 
-        return $module->version;
+        return $module->json()->get('version');
     }
 }
 
