@@ -1,6 +1,7 @@
-FROM ubuntu:16.04
+FROM ubuntu:18.04
 
 MAINTAINER Julien Tant <julien@craftyx.fr>
+MAINTAINER Esteban Zeller <esteban.zeller@gmail.com>
 
 RUN apt-get update \
     && apt-get install --no-install-recommends -y software-properties-common locales supervisor \
@@ -13,57 +14,52 @@ ENV LC_ALL=en_US.UTF-8
 
 RUN add-apt-repository ppa:nginx/stable \
     && add-apt-repository ppa:ondrej/php \
-    && apt-get update \
-    && apt-get install --no-install-recommends -y \
+    && apt-get update
+RUN apt-get install --no-install-recommends -y \
         nginx \
-        php7.0-fpm \
-        php7.0-cli \
-        php7.0-xdebug \
-        php7.0-pdo \
-        php7.0-pdo-mysql \
-        php7.0-sqlite3 \
-        php7.0-xml \
-        php7.0-mbstring \
-        php7.0-tokenizer \
-        php7.0-zip \
-        php7.0-mcrypt \
-        php7.0-gd \
-        php7.0-curl \
-        curl \
-    && mkdir /run/php \
-    && curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer \
-    && version=$(php -r "echo PHP_MAJOR_VERSION.PHP_MINOR_VERSION;") \
-    && curl -A "Docker" -o /tmp/blackfire-probe.tar.gz -D - -L -s https://blackfire.io/api/v1/releases/probe/php/linux/amd64/$version \
-    && tar zxpf /tmp/blackfire-probe.tar.gz -C /tmp \
-    && mv /tmp/blackfire-*.so $(php -r "echo ini_get('extension_dir');")/blackfire.so \
-    && printf "extension=blackfire.so\nblackfire.agent_socket=tcp://blackfire:8707\n" > /etc/php/7.0/mods-available/blackfire.ini \
-    && phpenmod blackfire \
-    && apt-get remove -y --purge software-properties-common curl \
-    && apt-get clean \
-    && apt-get autoremove -y \
-    && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+        php7.3-fpm \
+        php7.3-cli \
+        php7.3-xdebug \
+        php7.3-pdo \
+        php7.3-pdo-mysql \
+        php7.3-pdo-pgsql \
+        php7.3-sqlite3 \
+        php7.3-xml \
+        php7.3-mbstring \
+        php7.3-tokenizer \
+        php7.3-zip \
+        php7.3-mcrypt \
+        php7.3-gd \
+        php7.3-curl \
+        php7.3-soap \
+        php7.3-redis \
+        curl
+RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
+RUN apt-get remove -y --purge software-properties-common curl
+RUN apt-get clean
+RUN apt-get autoremove -y && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 COPY default /etc/nginx/sites-enabled/default
-COPY php.ini /etc/php/7.0/fpm/php.ini
-COPY php-fpm.conf /etc/php/7.0/fpm/php-fpm.conf
+COPY php.ini /etc/php/7.3/fpm/php.ini
+COPY php-fpm.conf /etc/php/7.3/fpm/php-fpm.conf
 COPY supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 
-COPY laravel.ini /etc/php/7.0/fpm/conf.d/laravel.ini
-#COPY disabled-xdebug.ini /etc/php/7.0/mods-available/xdebug.ini
-COPY enabled-xdebug.ini /etc/php/7.0/mods-available/xdebug.ini
+COPY laravel.ini /etc/php/7.3/fpm/conf.d/laravel.ini
+#COPY disabled-xdebug.ini /etc/php/7.3/mods-available/xdebug.ini
+COPY enabled-xdebug.ini /etc/php/7.3/mods-available/xdebug.ini
 
-RUN /etc/init.d/php7.0-fpm restart
+RUN /etc/init.d/php7.3-fpm restart
 
 RUN mkdir /tmp/certgen
 WORKDIR /tmp/certgen
-RUN openssl genrsa -des3 -passout pass:x -out server.pass.key 2048 \
-    && openssl rsa -passin pass:x -in server.pass.key -out server.key \
-    && rm server.pass.key \
-    && openssl req -new -key server.key -out server.csr -subj "/CN=asgardcms.com" \
-    && openssl x509 -req -days 365 -in server.csr -signkey server.key -out server.crt \
-    && cp server.crt /etc/ssl/certs/ \
-    && cp server.key /etc/ssl/private/ \
-    && rm -rf /tmp/certgen
+RUN openssl genrsa -des3 -passout pass:gsahdg -out server.pass.key 2048
+RUN openssl rsa -passin pass:gsahdg -in server.pass.key -out server.key
+RUN rm server.pass.key
+RUN openssl req -new -key server.key -out server.csr -subj "/CN=asgardcms.com"
+RUN openssl x509 -req -days 365 -in server.csr -signkey server.key -out server.crt
+RUN cp server.crt /etc/ssl/certs/
+RUN cp server.key /etc/ssl/private/
+RUN rm -rf /tmp/certgen
 
 EXPOSE 80
 EXPOSE 443
