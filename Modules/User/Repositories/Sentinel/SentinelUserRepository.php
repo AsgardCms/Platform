@@ -202,8 +202,7 @@ class SentinelUserRepository implements UserRepository
 
         if ($request->get('search') !== null) {
             $term = $request->get('search');
-            $roles->where('first_name', 'LIKE', "%{$term}%")
-                ->orWhere('last_name', 'LIKE', "%{$term}%")
+            $roles->whereRaw('CONCAT(first_name, " ", last_name) LIKE ? ', "%{$term}%")
                 ->orWhere('email', 'LIKE', "%{$term}%")
                 ->orWhere('id', $term);
         }
