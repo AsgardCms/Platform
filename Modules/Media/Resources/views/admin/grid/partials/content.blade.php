@@ -76,14 +76,23 @@
                                     <ul class="dropdown-menu" role="menu">
                                         <?php foreach ($thumbnails as $thumbnail): ?>
                                         <li data-file-path="{{ Imagy::getThumbnail($file->path, $thumbnail->name()) }}"
-                                            data-id="{{ $file->id }}" data-media-type="{{ $file->media_type }}"
-                                            data-mimetype="{{ $file->mimetype }}" class="jsInsertImage">
+                                            data-id="{{ $file->id }}"
+                                            data-media-type="{{ $file->media_type }}"
+                                            data-mimetype="{{ $file->mimetype }}"
+                                            data-alt="{{ $file->alt_attribute }}"
+                                            class="jsInsertImage"
+                                        >
                                             <a href="">{{ $thumbnail->name() }} ({{ $thumbnail->size() }})</a>
                                         </li>
                                         <?php endforeach; ?>
                                         <li class="divider"></li>
-                                        <li data-file-path="{{ $file->path }}" data-id="{{ $file->id }}"
-                                            data-media-type="{{ $file->media_type }}" data-mimetype="{{ $file->mimetype }}" class="jsInsertImage">
+                                        <li data-file-path="{{ $file->path }}"
+                                            data-id="{{ $file->id }}"
+                                            data-media-type="{{ $file->media_type }}"
+                                            data-mimetype="{{ $file->mimetype }}"
+                                            data-alt="{{ $file->alt_attribute }}"
+                                            class="jsInsertImage"
+                                        >
                                             <a href="">Original</a>
                                         </li>
                                     </ul>
