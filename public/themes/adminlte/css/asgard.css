@@ -72,6 +72,9 @@ footer.main-footer p.text-muted {
   padding: 10px 25px 10px 15px;
   font-size: 12px;
 }
+.sidebar-menu .menu-icon {
+  margin-right: 5px;
+}
 .sidebar-menu .append {
   margin-top: -44px;
 }
