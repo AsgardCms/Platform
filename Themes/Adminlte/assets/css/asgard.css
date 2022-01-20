@@ -32,13 +32,15 @@ ul.notifications-list li {
 .jsThumbnailImageWrapper figure {
   position: relative;
   display: inline-block;
-  margin-right: 20px;
   margin-bottom: 20px;
   background-color: #fff;
   border: 1px solid #eee;
   padding: 3px;
   border-radius: 3px;
   vertical-align: bottom;
+}
+.jsThumbnailImageWrapper figure img {
+  max-width: 100%;
 }
 .jsThumbnailImageWrapper i.removeIcon {
   position: absolute;
