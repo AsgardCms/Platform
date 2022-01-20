@@ -10,9 +10,20 @@
                 return ( match && match.length > 1 ) ? match[1] : null;
             }
 
+            var imageButton = $(this);
             var funcNum = getUrlParam('CKEditorFuncNum');
 
-            window.opener.CKEDITOR.tools.callFunction(funcNum, $(this).data('file-path'));
+            window.opener.CKEDITOR.tools.callFunction(funcNum, imageButton.data('file-path'), function () {
+                var dialog = this.getDialog();
+                if (dialog.getName() !== 'image') {
+                    return;
+                }
+                var altField = dialog.getContentElement('info', 'txtAlt');
+                var altValue = imageButton.data('alt');
+                if (altField && altValue) {
+                    altField.setValue(altValue);
+                }
+            });
             window.close();
         });
     });
