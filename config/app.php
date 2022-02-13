@@ -49,7 +49,7 @@ return [
 
     'debug' => env('APP_DEBUG', false),
 
-    'debug_blacklist' => [
+    'debug_hide' => [
         '_ENV' => [
             'APP_KEY',
             'DB_USERNAME',
