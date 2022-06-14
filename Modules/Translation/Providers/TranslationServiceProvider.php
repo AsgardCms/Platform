@@ -115,6 +115,10 @@ class TranslationServiceProvider extends ServiceProvider
         $this->app->bind(TranslationRepository::class, function () {
             $repository = new EloquentTranslationRepository(new Translation());
 
+            if (! config('app.cache')) {
+                return $repository;
+            }
+            
             return new CacheTranslationDecorator($repository);
         });
 
