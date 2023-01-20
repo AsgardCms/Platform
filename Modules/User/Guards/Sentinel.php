@@ -12,7 +12,7 @@ class Sentinel implements LaravelGuard
      * Determine if the current user is authenticated.
      * @return bool
      */
-    public function check()
+    public function check(): bool
     {
         if (SentinelFacade::check()) {
             return true;
@@ -25,7 +25,7 @@ class Sentinel implements LaravelGuard
      * Determine if the current user is a guest.
      * @return bool
      */
-    public function guest()
+    public function guest(): bool
     {
         return SentinelFacade::guest();
     }
@@ -34,7 +34,7 @@ class Sentinel implements LaravelGuard
      * Get the currently authenticated user.
      * @return \Illuminate\Contracts\Auth\Authenticatable|null
      */
-    public function user()
+    public function user(): ?Authenticatable
     {
         return SentinelFacade::getUser();
     }
@@ -43,7 +43,7 @@ class Sentinel implements LaravelGuard
      * Get the ID for the currently authenticated user.
      * @return int|null
      */
-    public function id()
+    public function id(): ?int
     {
         if ($user = SentinelFacade::check()) {
             return $user->id;
@@ -57,7 +57,7 @@ class Sentinel implements LaravelGuard
      * @param  array $credentials
      * @return bool
      */
-    public function validate(array $credentials = [])
+    public function validate(array $credentials = []): bool
     {
         return SentinelFacade::validForCreation($credentials);
     }
@@ -67,9 +67,18 @@ class Sentinel implements LaravelGuard
      * @param  \Illuminate\Contracts\Auth\Authenticatable $user
      * @return bool
      */
-    public function setUser(Authenticatable $user)
+    public function setUser(Authenticatable $user): bool
     {
         return SentinelFacade::login($user);
+    }
+
+    /**
+     * Determine if the guard has a user instance.*
+     * @return bool
+     */
+    public function hasUser(): bool
+    {
+        return !is_null($this->user());
     }
 
     /**
@@ -77,7 +86,7 @@ class Sentinel implements LaravelGuard
      * @param  \Illuminate\Contracts\Auth\Authenticatable $user
      * @return bool
      */
-    public function login(Authenticatable $user)
+    public function login(Authenticatable $user): bool
     {
         return $this->setUser($user);
     }
@@ -87,7 +96,7 @@ class Sentinel implements LaravelGuard
      * @param bool $remember
      * @return bool
      */
-    public function attempt(array $credentials, $remember = false)
+    public function attempt(array $credentials, bool $remember = false): bool
     {
         return SentinelFacade::authenticate($credentials, $remember);
     }
@@ -95,7 +104,7 @@ class Sentinel implements LaravelGuard
     /**
      * @return bool
      */
-    public function logout()
+    public function logout(): bool
     {
         return SentinelFacade::logout();
     }
@@ -104,7 +113,7 @@ class Sentinel implements LaravelGuard
      * @param int $userId
      * @return bool
      */
-    public function loginUsingId($userId)
+    public function loginUsingId(int $userId): bool
     {
         $user = app(\Modules\User\Repositories\UserRepository::class)->find($userId);
 
