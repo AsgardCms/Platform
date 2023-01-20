@@ -158,7 +158,7 @@ class Imagy
         $resource = $image->detach();
         $config = [
             'visibility' => 'public',
-            'mimetype' => \GuzzleHttp\Psr7\mimetype_from_filename($filename),
+            'mimetype' => \GuzzleHttp\Psr7\MimeType::fromFilename($filename),
         ];
         if ($this->fileExists($filename)) {
             return $this->filesystem->disk($this->getConfiguredFilesystem())->updateStream($filename, $resource, $config);

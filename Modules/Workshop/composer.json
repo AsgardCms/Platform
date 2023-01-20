@@ -21,14 +21,14 @@
     "source": "https://github.com/AsgardCms/Workshop"
   },
   "require": {
-    "php": "^7.1.3",
+    "php": "^8.0",
     "composer/installers": "~1.0",
-    "symfony/yaml": "^5.1"
+    "symfony/yaml": "^v6.2.2"
   },
   "require-dev": {
-    "phpunit/phpunit": "~7.0",
-    "orchestra/testbench": "3.8.*",
-    "spatie/phpunit-snapshot-assertions": "^1.0"
+    "phpunit/phpunit": "~9.5",
+    "orchestra/testbench": "^7.16",
+    "spatie/phpunit-snapshot-assertions": "^4.2.16"
   },
   "autoload-dev": {
     "psr-4": {
@@ -42,5 +42,10 @@
     }
   },
   "minimum-stability": "dev",
-  "prefer-stable": true
+  "prefer-stable": true,
+  "config": {
+    "allow-plugins": {
+      "composer/installers": false
+    }
+  }
 }

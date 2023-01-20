@@ -22,18 +22,27 @@
     "source": "https://github.com/AsgardCms/Menu"
   },
   "require": {
-    "php": "^7.1.3",
+    "php": "^8.0",
     "composer/installers": "~1.0",
-    "nwidart/laravel-menus": "^7.0",
-    "typicms/nestablecollection": "^1.1"
+    "nwidart/laravel-menus": "dev-master",
+    "typicms/nestablecollection": "~2.0"
   },
   "require-dev": {
-    "phpunit/phpunit": "~7.0",
-    "orchestra/testbench": "3.8.*",
-    "fzaninotto/faker": "1.4.0",
-    "doctrine/dbal": "^2.11",
-    "idavoll/page-module": "4.0.x-dev"
+    "phpunit/phpunit": "~9.5",
+    "orchestra/testbench": "~7.16",
+    "doctrine/dbal": "~3.5",
+    "idavoll/page-module": "dev-master"
   },
+  "repositories": [
+    {
+      "type": "git",
+      "url": "https://github.com/dineshsailor/nWidart-laravel-menus"
+    },
+    {
+      "type": "git",
+      "url": "https://github.com/varshaaweblabs/Idavoll-Page"
+    }
+  ],
   "autoload-dev": {
     "psr-4": {
       "Modules\\Menu\\": ".",
